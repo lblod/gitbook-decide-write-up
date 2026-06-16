@@ -7,7 +7,7 @@ description: >-
 # Write-up UC0.0 Data space
 
 {% hint style="warning" %}
-This page is under construction!
+This page is under construction
 {% endhint %}
 
 {% hint style="info" %}
@@ -24,11 +24,9 @@ The wanted deliverable is a functioning LD\&L data space grounded in the DS4SSCC
 
 ### Link to other deliverables
 
-As the umbrella document for UC0.0, this write-up is linked to all eight component write-ups that together make up the foundational data space layer: [UC0.0 Pipelines](write-up-uc0.0-pipelines.md), [UC0.0 Human Validation (HV)](write-up-uc0.0-human-validation-hv.md), [UC0.0 DCAT](write-up-dcat.md), [UC0.0 Authorization Policies Store (ODRL)](write-up-odrl.md), [UC0.0 Universal Trust Data Registry (VC)](write-up-verifiable-credentials.md), [UC0.0 Data Space Protocol (DSP)](write-up-dsp.md), [UC0.0 Data Quality Manager](write-up-data-quality-manager.md), and [UC0.0 Repeatable Data Plan](write-up-repeatable-data-plan.md).&#x20;
+As the umbrella document for UC0.0, this write-up is linked to all eight component write-ups that together make up the foundational data space layer: [UC0.0 Pipelines](write-up-uc0.0-pipelines.md), [UC0.0 Human Validation (HV)](write-up-uc0.0-human-validation-hv.md), [UC0.0 DCAT](write-up-dcat.md), [UC0.0 Authorization Policies Store (ODRL)](write-up-odrl.md), [UC0.0 Universal Trust Data Registry (VC)](write-up-verifiable-credentials.md), [UC0.0 Data Space Protocol (DSP)](write-up-dsp.md), [UC0.0 Data Quality Manager](write-up-data-quality-manager.md), and [UC0.0 Repeatable Data Plan](write-up-repeatable-data-plan.md).
 
 Each of the concrete usecases –[UC0.1 Policy Impact Report](../write-up-uc0.1-policy-impact-report.md), [UC1 Restrictive Mobility Zones](../write-up-uc1-restricted-mobility-zones.md), and [UC2 Smart Search](../write-up-uc2-smart-search.md)– also builds on the infrastructure documented here and in the component write-ups above.
-
-
 
 ## Glossary
 
@@ -99,15 +97,15 @@ ELI also allows identifying subdivisions of a decision: article, paragraph etc, 
 
 ELI recommends using the FOAF vocabulary for describing persons and the ORG ontology for describing organizations (see Fig. 2).
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption><p>Fig. 1: High-level overview of ELI. Documents are described with three layers. The lifecycle of legislation documents can be tracked using specialized ELI properties. Source: slides Thomas Francart (<a href="https://www.europarl.europa.eu/cmsdata/290451/CLOSEuP_Day1-am_ELI-ELI_DL.pdf">https://www.europarl.europa.eu/cmsdata/290451/CLOSEuP_Day1-am_ELI-ELI_DL.pdf</a>) </p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption><p>Fig. 1: High-level overview of ELI. Documents are described with three layers. The lifecycle of legislation documents can be tracked using specialized ELI properties. Source: slides Thomas Francart (<a href="https://www.europarl.europa.eu/cmsdata/290451/CLOSEuP_Day1-am_ELI-ELI_DL.pdf">https://www.europarl.europa.eu/cmsdata/290451/CLOSEuP_Day1-am_ELI-ELI_DL.pdf</a>)</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption><p>Fig. 2: ELI reuses the FOAF vocabulary for describing Agents, and ORG for organizations.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption><p>Fig. 2: ELI reuses the FOAF vocabulary for describing Agents, and ORG for organizations.</p></figcaption></figure>
 
 #### European Legislation Identifier - Draft Legislation (ELI-DL)
 
 ELI-DL allows to capture the documents that are created during the drafting of the legislation. It is an activity-based model where [activities](http://data.europa.eu/eli/eli-draft-legislation-ontology#Activity) can "consist of" sub-activities and can "[motivate](http://data.europa.eu/eli/eli-draft-legislation-ontology#was_motivated_by)" other activities. It provides relations to the ELI documents: a document can an input or output of an activity, activities can foresee a change in legislation, activities can be recorded in documents. More specific classes are introduced by ELI-DL, such as [Process](http://data.europa.eu/eli/eli-draft-legislation-ontology#Process), [Foreseen activities](http://data.europa.eu/eli/eli-draft-legislation-ontology#ForeseenActivity), [Participant](http://data.europa.eu/eli/eli-draft-legislation-ontology#Participation) and [Vote](http://data.europa.eu/eli/eli-draft-legislation-ontology#Vote). However, in DECIDe, we focus on the use of Activity for identifying meetings and consultations of agenda items, and tracking the participants.
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption><p>Fig. 3: ELI-DL is an event-based model where activities are linked with eachother and with ELI documents ( are the </p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption><p>Fig. 3: ELI-DL is an event-based model where activities are linked with eachother and with ELI documents ( are the</p></figcaption></figure>
 
 #### Web Annotation Model
 
@@ -151,9 +149,9 @@ The DECIDe application is built as a [semantic.works application](https://semant
 
 The diagram below illustrates how these services interact with each other. The boxes represent services, with the core services in the middle and left-hand side. The greyed "custom-service" box illustrates how a custom service is typically wired into an application. Note, that applications typically will contain many different custom services. The arrows in the diagram represent how services communicate with each other using HTTP messages.
 
-As such it uses the following core semantic.works services. The core services are shown in the diagram below. Boxes are services and arrows are HTTP messages being sent. The virtuoso triplestore is shown as a cylinder. The image also shows a `custom-service`, this is because any other service added in the context of a semantic.works project (like in DECIDe) works in the same way: it may receive HTTP calls dispatched from the dispatcher, performs SPARQL queries through mu-authorization and/or be informed of changes through delta notifications from the delta-notifier. Some services may have other capabilities and those will be noted specifically (e.g. AI services or services that need Elastic Search capabilities).&#x20;
+As such it uses the following core semantic.works services. The core services are shown in the diagram below. Boxes are services and arrows are HTTP messages being sent. The virtuoso triplestore is shown as a cylinder. The image also shows a `custom-service`, this is because any other service added in the context of a semantic.works project (like in DECIDe) works in the same way: it may receive HTTP calls dispatched from the dispatcher, performs SPARQL queries through mu-authorization and/or be informed of changes through delta notifications from the delta-notifier. Some services may have other capabilities and those will be noted specifically (e.g. AI services or services that need Elastic Search capabilities).
 
-<figure><img src="../../.gitbook/assets/lokale-bron-architecture-core-components (3).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/lokale-bron-architecture-core-components (1).jpg" alt=""><figcaption></figcaption></figure>
 
 In summary, the `identifier` is the service through which messages arrive at the application. The `dispatcher` is responsible to determine the appropriate service to which to forward each message. Each service in turn, the `mu-resources` and `custom-service` in the diagram, can retrieve data from the `triplestore` , which is subject to authorisation rules enforced by `mu-authorization` . The `delta-notifier` is responsible to notify services about data changes these services might be interested in. Finally, `migrations` provides an easy way for the developers or maintainers of an application to add or modify data in the `tripelstore`. The remainder of this section will zoom into each of the core services in more detail. The custom services that are part of the DECIDe application will be discussed in the appropriate write-ups.
 
@@ -221,8 +219,3 @@ In general, the open-source edition of virtuoso is the triplestore of choice for
 The migrations component allows the definition of migration files to modify the contents of the triplestore. This can be done using either SPARQL queries or by directly inserting turtle files into specified graphs.
 
 **GitHub:** [https://github.com/mu-semtech/mu-migrations-service](https://github.com/mu-semtech/mu-migrations-service)
-
-
-
-
-
