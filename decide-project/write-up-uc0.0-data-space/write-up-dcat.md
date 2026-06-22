@@ -159,9 +159,13 @@ n/a
 
 ## Possible future work
 
-### Possible future work DECIDe data space related
+### Making the data space tamper-proof
 
-### Possible future work LBLOD related
+The data space will provide a couple of DCAT Distributions holding various represenation of the space's data sets. When downloading, users will want to be sure that the contents of these sets has not been tampered with. This can be guaranteed for simple downloads by creating a [SHA-256 hash](https://datatracker.ietf.org/doc/html/rfc6234) of the archive's contents, then signing the resulting checksum with the private key of the owner of the dataset and publishing that hash as part of the distribution's DCAT description, for instance using the `http://spdx.org/rdf/terms#checksum` predicate. The public key corresponding to this private key can be published using the owner's DID (see [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md "mention")). Users of the distribution can then easily figure out if the distribution has been tampered with by applying the public key of the owner that they find in the owner's DID to the signature and verifying that the SHA256 of their download results in the same checksum value.
+
+The same process can be done to certify the correctness of the DCAT distribution regarding a certain dataset. We could construct a [n-triples](https://www.w3.org/TR/rdf12-n-triples/) file that contains all triples making up the dataset and its distributions in a stable, repeatable fashion, for instance by sorting the triples by subject, then by predicate and then by object, excluding our signature predicate itself. We can then take this n-triples file and again perform a SHA-256 hash on it and signing the result using the private key of the owner of the DCAT description, likely the owner of the dataset or the owner of the dataspace.
+
+Some distributions are bound to describe a SPARQL endpoint where the data can be queried. Since the contents of the corresponding triplestore will be regularly updated, proving that this contents has been tamper free is much more difficult. One way we see to guarantee this is by leveraging the power of LDES yet again. We could put the entire contents of the triplestore in an LDES feed, which then gives us a stable representation that we can sign. Either in its entirity as snapshots of the stream or we sign parts of the stream, for instance the pages of the LDES stream. This becomes quite expensive to create and validate, though as the stream can grow quite large: we store the expression text contents and all annotations discovered by AI agents and their human validators. Practically, one will likely have to decide which contents is worth serializing in such an LDES feed and signing only those parts.
 
 ## Relevant links
 
