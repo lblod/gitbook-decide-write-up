@@ -161,11 +161,36 @@ n/a
 
 ### Making the data space tamper-proof
 
-The data space will provide a couple of DCAT Distributions holding various represenation of the space's data sets. When downloading, users will want to be sure that the contents of these sets has not been tampered with. This can be guaranteed for simple downloads by creating a [SHA-256 hash](https://datatracker.ietf.org/doc/html/rfc6234) of the archive's contents, then signing the resulting checksum with the private key of the owner of the dataset and publishing that hash as part of the distribution's DCAT description, for instance using the `http://spdx.org/rdf/terms#checksum` predicate. The public key corresponding to this private key can be published using the owner's DID (see [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md "mention")). Users of the distribution can then easily figure out if the distribution has been tampered with by applying the public key of the owner that they find in the owner's DID to the signature and verifying that the SHA256 of their download results in the same checksum value.
+When obtaining (meta) data from the data space, users want to be sure they obtain the correct, unmodified (meta) data.
+Similarly, data space members and data providers want assurances that unauthorised changes are prevented when possible and can be detected otherwise.
 
-The same process can be done to certify the correctness of the DCAT distribution regarding a certain dataset. We could construct a [n-triples](https://www.w3.org/TR/rdf12-n-triples/) file that contains all triples making up the dataset and its distributions in a stable, repeatable fashion, for instance by sorting the triples by subject, then by predicate and then by object, excluding our signature predicate itself. We can then take this n-triples file and again perform a SHA-256 hash on it and signing the result using the private key of the owner of the DCAT description, likely the owner of the dataset or the owner of the dataspace.
+Currently, the DECIDe application relies on access control to prevent unauthorised changes to stored data and the use of secure protocols, e.g. https, to protect data in transit.
+But it does not provide users a way to explicitly verify the integrity of the (meta) data they receive.
+Note, due to the federated setup of a data space, it will finally be the responsibility of each data space member to ensure the integrity of the data they offer.
 
-Some distributions are bound to describe a SPARQL endpoint where the data can be queried. Since the contents of the corresponding triplestore will be regularly updated, proving that this contents has been tamper free is much more difficult. One way we see to guarantee this is by leveraging the power of LDES yet again. We could put the entire contents of the triplestore in an LDES feed, which then gives us a stable representation that we can sign. Either in its entirity as snapshots of the stream or we sign parts of the stream, for instance the pages of the LDES stream. This becomes quite expensive to create and validate, though as the stream can grow quite large: we store the expression text contents and all annotations discovered by AI agents and their human validators. Practically, one will likely have to decide which contents is worth serializing in such an LDES feed and signing only those parts.
+A logical initial step, would be to usie DCAT's [checksum](https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum) property for distributions.
+This property allows to link a DCAT `Distribution` resource to a `http://spdx.org/rdf/terms#Checksum` resource that specifies a checksum and algorithm used to compute it.
+For single file distributions, e.g. a Turtle file or archive of files, the recipient can calculate the the checksum of the received file and compare this to the original one.
+For this to be effective, this does require that the checksum can be [transmitted via a separate channel](https://www.w3.org/TR/vocab-dcat-3/#security_and_privacy) to ensure its integrity.
+Providing such a channel would require extending the DECIDe application.
+One possibility would be that data space members cryptographically sign the checksum resources for the distributions they produce.
+The data space member's public key required to verify such signatures could be published using the member's DID (see [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md)).
+Alternatively, one could cryptographically sign a Distribution file as a whole, the signature would than be transmitted along with the actual distribution contents.
+This would allow to leverage existing technologies such as [openpgp](https://www.openpgp.org/about/) to publish public keys and verify signatures.
+
+For distributions that provide more dynamic access the data, e.g. SPARQL endpoints, the above approaches are not feasible.
+Providing users the means to verify the integrity the responses they receive for their queries will require an analysis of existing approaches in this field.
+One possibility would be to explore whether LDES can be leveraged to provide an auditable log of (parts of) the contents of the triplestore.
+This would allow users to verify received responses against the data in the LDES feed.
+This still poses significant challenges, such as how to guarantee the integrity of the feed itself.
+
+Finally, ensuring the integrity of the DCAT data itself remains an open question.
+For instance, an attacker should not be able to add a malicious distribution, e.g. one pointing to an download URL under the attacker's control, to a dataset.
+One avenue to explore would be to cryptographically sign (parts of) DCAT resources.
+But this still poses some open challenges.
+For instance, any generated signature likely depends on the order of the signed triples, as different order will lead to different signatures, irrespective of any actual data changes.
+A investigation of existing approaches is needed, as well as a more detailed analysis of how to approaches described above could be re-applied here.
+
 
 ## Relevant links
 
