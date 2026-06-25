@@ -178,7 +178,8 @@ The data space member's public key required to verify such signatures could be p
 Alternatively, one could cryptographically sign a Distribution file as a whole, the signature would than be transmitted along with the actual distribution contents.
 This would allow to leverage existing technologies such as [openpgp](https://www.openpgp.org/about/) to publish public keys and verify signatures.
 
-For distributions that provide more dynamic access the data, e.g. SPARQL endpoints, the above approaches are not feasible.
+For distributions that provide more dynamic access the data, e.g. SPARQL endpoints, the above approaches are not feasible because the data in these distributions changes often as new decisions come in and new annotations are generated.
+For every such change, a new checksum would have to be generated and it would be almost impossible for users to know which checksum matches the current dataset.
 Providing users the means to verify the integrity the responses they receive for their queries will require an analysis of existing approaches in this field.
 One possibility would be to explore whether LDES can be leveraged to provide an auditable log of (parts of) the contents of the triplestore.
 This would allow users to verify received responses against the data in the LDES feed.
