@@ -175,7 +175,7 @@ For this to be effective, this does require that the checksum can be [transmitte
 Providing such a channel would require extending the DECIDe application.
 One possibility would be that data space members cryptographically sign the checksum resources for the distributions they produce.
 The data space member's public key required to verify such signatures could be published using the member's DID (see [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md)).
-Alternatively, one could cryptographically sign a Distribution file as a whole, the signature would than be transmitted along with the actual distribution contents.
+Alternatively, one could cryptographically sign a Distribution file as a whole, the signature would then be transmitted along with the actual distribution contents.
 This would allow to leverage existing technologies such as [openpgp](https://www.openpgp.org/about/) to publish public keys and verify signatures.
 
 For distributions that provide more dynamic access the data, e.g. SPARQL endpoints, the above approaches are not feasible because the data in these distributions changes often as new decisions come in and new annotations are generated.
