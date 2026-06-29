@@ -53,7 +53,7 @@ UC1 uses the same codelist mapping established in UC0.1, making the data model a
 ## Glossary
 
 {% hint style="info" %}
-See the [UC0.0 Data space glossary](write-up-uc0.0-data-space/#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`,and Triplestore.
+See the [UC0.0 Data space glossary](write-up-uc0.0-data-space#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`,and Triplestore.
 
 See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#glossary) for definitions of Context window, Dual-head NER model, (BERT) Encoder, Fine-tuning, LLM, NER, NEL, Ollama, Regex, Span, and Token.
 
@@ -74,7 +74,7 @@ UC1 proposes to close that gap by automatically classifying RMZ decisions, extra
 
 ### Pilot partners
 
-Freiburg is the lead pilot partner for UC1 implementation, and Ghent participates as a second pilot site. Also Ui! is using the data that results from this use case.&#x20;
+Freiburg is the lead pilot partner for UC1 implementation, and Ghent participates as a second pilot site. Also Ui! is using the data that results from this use case.
 
 ### Target audience / Personas
 
@@ -84,7 +84,7 @@ The primary audience for UC1 output is municipal staff responsible for maintaini
 
 ### Functionality (requirements)
 
-UC1 is an end-to-end AI-assisted annotation pipeline that (1) classifies whether a decision concerns an RMZ, (2) extracts the named locations from the decision text and links them to authoritative address and geometry registries, and (3) extracts the temporal scope of the zone. Its output –annotations stored as `oa:Annotation` triples– is designed for consumption by external (pilot partners') GIS tools via SPARQL, not for presentation through a purpose-built UC1 interface.&#x20;
+UC1 is an end-to-end AI-assisted annotation pipeline that (1) classifies whether a decision concerns an RMZ, (2) extracts the named locations from the decision text and links them to authoritative address and geometry registries, and (3) extracts the temporal scope of the zone. Its output –annotations stored as `oa:Annotation` triples– is designed for consumption by external (pilot partners') GIS tools via SPARQL, not for presentation through a purpose-built UC1 interface.
 
 Human validation of AI-extracted annotations is handled through two HV interfaces: location and date annotations are validated through the general entity validation interface built in UC0.0, while RMZ classification annotations are validated through a similar codelist mapping interface as UC0.1.
 
@@ -100,7 +100,7 @@ UC1 builds on three shared components, documented elsewhere:
 
 ## Datasources, datasets and datastandards
 
-The shared data sources for all use cases are documented in the [write-up-uc0.0-data-space](write-up-uc0.0-data-space/ "mention"). This section covers the data sources and standards specific to UC1.
+The shared data sources for all use cases are documented in the [write-up-uc0.0-data-space](write-up-uc0.0-data-space "mention"). This section covers the data sources and standards specific to UC1.
 
 ### Data sources
 
@@ -138,7 +138,7 @@ This requires an implementation of the datamodel described in the [write-up-uc0.
 * rdf:predicate: `prov:atLocation` is used to express that the location is where the decision has impact on (impact\_location by the refinement step - described below)
 * rdf:object: refers to an `rdf:Resource` with type `dct:Location` is used as body. The resource has a `rdfs:label` containing the location text in the decision and links to a `locn:Geometry` containing its coordinates in WKT format.
 
-<figure><img src="../.gitbook/assets/image (31).png" alt="" width="375"><figcaption><p>Fig. 2</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (30).png" alt="" width="375"><figcaption><p>Fig. 2</p></figcaption></figure>
 
 Q3: When are these locations impacted by this decision?
 
@@ -186,7 +186,7 @@ The RMZ codelist uses a flat (single-level) structure rather than a hierarchical
 
 The `skos:definition` of this single concept provides a non-exhaustive enumeration of the sub-types, expressed in both English and Dutch:
 
-<table><thead><tr><th>Sub-type (EN)</th><th width="249">Description</th><th>Source (eg. definition authority)</th></tr></thead><tbody><tr><td>Low Emission Zone (LEZ)<br>Zero Emission Zone (ZEZ)</td><td>A geographically defined area where access is restricted based on vehicle emission standards.</td><td><a href="https://www.wikidata.org/wiki/Q647266">https://www.wikidata.org/wiki/Q647266</a><br><a href="https://urbanaccessregulations.eu/">Urban Access Regulations (UVAR)</a></td></tr><tr><td>Car-Free Zone<br>Pedestrian Zone</td><td>A zone prioritised for pedestrians where motorised traffic is prohibited or heavily restricted (eg. only access to permit holders between certain hours)</td><td><a href="https://www.wikidata.org/wiki/Q369730">https://www.wikidata.org/wiki/Q369730</a></td></tr><tr><td>Cycling Street/Zone</td><td>A street where cyclists have priority</td><td><a href="https://www.wikidata.org/wiki/Q1249483">https://www.wikidata.org/wiki/Q1249483</a><br><a href="https://www.vlaanderen.be/datavindplaats/catalogus/afgeleide-zones-fietsstraatzone">https://www.vlaanderen.be/datavindplaats/catalogus/afgeleide-zones-fietsstraatzone</a></td></tr><tr><td>Home/Pedestrian  zone</td><td>A street/zone designed as a social space for pedestrians and cyclists; motorised transport is permitted, but limited</td><td><a href="https://www.wikidata.org/wiki/Q8034016">https://www.wikidata.org/wiki/Q8034016</a><br><a href="https://www.wikidata.org/wiki/Q1628979">https://www.wikidata.org/wiki/Q1628979</a></td></tr><tr><td>School Street</td><td>A street closed to motorised traffic on certain days/hours, creating a pedestrian zone allowing children to play on the street.</td><td><a href="https://www.wikidata.org/wiki/Q3097917">https://www.wikidata.org/wiki/Q3097917</a></td></tr><tr><td>Work</td><td>Occupancy of public domain for works (eg. scaffolding, construction crane, etc.)</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Werk">https://data.vlaanderen.be/ns/mobiliteit/#Werk</a></td></tr><tr><td>Groundwork</td><td>Occupancy of public domain for construction or infrastructure works</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Grondwerk">https://data.vlaanderen.be/ns/mobiliteit/#Grondwerk</a></td></tr><tr><td>Events</td><td>Occupancy of public domain by a temporary event (sports, markets, festivals)</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Evenement">https://data.vlaanderen.be/ns/mobiliteit/#Evenement</a></td></tr></tbody></table>
+<table><thead><tr><th>Sub-type (EN)</th><th width="249">Description</th><th>Source (eg. definition authority)</th></tr></thead><tbody><tr><td>Low Emission Zone (LEZ)<br>Zero Emission Zone (ZEZ)</td><td>A geographically defined area where access is restricted based on vehicle emission standards.</td><td><a href="https://www.wikidata.org/wiki/Q647266">https://www.wikidata.org/wiki/Q647266</a><br><a href="https://urbanaccessregulations.eu/">Urban Access Regulations (UVAR)</a></td></tr><tr><td>Car-Free Zone<br>Pedestrian Zone</td><td>A zone prioritised for pedestrians where motorised traffic is prohibited or heavily restricted (eg. only access to permit holders between certain hours)</td><td><a href="https://www.wikidata.org/wiki/Q369730">https://www.wikidata.org/wiki/Q369730</a></td></tr><tr><td>Cycling Street/Zone</td><td>A street where cyclists have priority</td><td><a href="https://www.wikidata.org/wiki/Q1249483">https://www.wikidata.org/wiki/Q1249483</a><br><a href="https://www.vlaanderen.be/datavindplaats/catalogus/afgeleide-zones-fietsstraatzone">https://www.vlaanderen.be/datavindplaats/catalogus/afgeleide-zones-fietsstraatzone</a></td></tr><tr><td>Home/Pedestrian zone</td><td>A street/zone designed as a social space for pedestrians and cyclists; motorised transport is permitted, but limited</td><td><a href="https://www.wikidata.org/wiki/Q8034016">https://www.wikidata.org/wiki/Q8034016</a><br><a href="https://www.wikidata.org/wiki/Q1628979">https://www.wikidata.org/wiki/Q1628979</a></td></tr><tr><td>School Street</td><td>A street closed to motorised traffic on certain days/hours, creating a pedestrian zone allowing children to play on the street.</td><td><a href="https://www.wikidata.org/wiki/Q3097917">https://www.wikidata.org/wiki/Q3097917</a></td></tr><tr><td>Work</td><td>Occupancy of public domain for works (eg. scaffolding, construction crane, etc.)</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Werk">https://data.vlaanderen.be/ns/mobiliteit/#Werk</a></td></tr><tr><td>Groundwork</td><td>Occupancy of public domain for construction or infrastructure works</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Grondwerk">https://data.vlaanderen.be/ns/mobiliteit/#Grondwerk</a></td></tr><tr><td>Events</td><td>Occupancy of public domain by a temporary event (sports, markets, festivals)</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Evenement">https://data.vlaanderen.be/ns/mobiliteit/#Evenement</a></td></tr></tbody></table>
 
 By including these sub-type descriptions in the concept definition, the LLM has sufficient context to recognise a broad range of mobility-restricting decisions, from permanent zone establishments to temporary road closures for events or construction. The flat codelist design effectively turns the classification into a binary question (is this decision about an RMZ or not?) while still covering the full breadth of RMZ sub-types through the descriptive definition. Expanding the codelist to a hierarchical taxonomy where each sub-type becomes its own concept is identified as a possible future iteration.
 
@@ -202,8 +202,6 @@ The codelist mapping approach was chosen over alternatives (such as keyword-base
 
 The codelist mapping runs as an independent classification step within the Named Entity Linking Service. Its output (whether a decision is RMZ-related or not) is stored as a codelist mapping annotation in the triplestore. This annotation does not directly feed into the NER or entity formatting steps; rather, it acts as a **filter**. The RMZ tool queries the triplestore for decisions annotated as RMZ-related, and for those decisions, it retrieves the location and date annotations produced by the NER pipeline (see secions below on Q2 and Q3).
 
-
-
 #### Q2: Which locations are impacted by this RMZ decision?
 
 **Which components**
@@ -213,8 +211,6 @@ Answering this question requires three components working in sequence. All three
 1. **Named Entity Recognition (NER)** detects `LOCATION` spans in the decision text.
 2. **Named Entity Refinement** classifies each `LOCATION` span as `impact_location` or `context_location`.
 3. **Entity Formatting (locations)** parses each `impact_location` span into structured address components.
-
-
 
 **How they work together**
 
@@ -231,8 +227,6 @@ The NER model detects two location spans:
 
 Both are labelled as `LOCATION` with no further distinction.
 
-
-
 **Step 2: Named Entity Refinement.** The refinement model [svercoutere/longformer-classifier-refinement-abb](https://huggingface.co/svercoutere/longformer-classifier-refinement-abb), a Longformer variant fine-tuned for entity-in-context classification, re-classifies each `LOCATION` span by considering the surrounding context. The Longformer's extended context window (4,096 tokens vs. 512 for standard BERT) allows it to see the broader document structure, including the motivation section, the decision section, and the full paragraph surrounding the entity. This is critical for distinguishing between impacted and contextual locations.
 
 The refinement model assigns one of two sub-types:
@@ -240,8 +234,6 @@ The refinement model assigns one of two sub-types:
 <table><thead><tr><th width="166.854736328125">Sub-type</th><th width="398.1005859375">Description</th><th>Example</th></tr></thead><tbody><tr><td><code>impact_location</code></td><td>A location directly affected by the decision: the street being closed, the zone being established, the address receiving a permit.</td><td><em>"Veldstraat between housenumber 12 and 28"</em></td></tr><tr><td><code>context_location</code></td><td>A location mentioned for context that is not directly affected: references to other RMZs, addresses of involved parties, historical references.</td><td><em>"Korenmarkt"</em></td></tr></tbody></table>
 
 In the context of UC1, **only `impact_location` entities are retained**. Context locations are stored in the triplestore (they are still valid annotations) but are not surfaced by the RMZ tool.
-
-
 
 **Step 3: Entity Formatting (LocationFormatter).** Each `impact_location` span is still a raw text string at this point (e.g., `"Veldstraat between housenumber 12 and 28"`). The Entity Formatting step, implemented by the `EntityFormatter` class, routes it to the `LocationFormatter`, a dual-head NER model ([svercoutere/abb-dual-location-component-ner](https://huggingface.co/svercoutere/abb-dual-location-component-ner)) that decomposes the text into structured address components. For full details, see <mark style="background-color:$warning;">Formatting of Location Entities</mark>.
 
@@ -293,15 +285,11 @@ Output step 5 (simplified):
   ]
 ```
 
-
-
 **Why these components**
 
 * **NER** is necessary because locations appear as free text embedded in natural-language decision documents. There is no structured field containing the impacted address.
 * **Refinement** is necessary because a single decision typically mentions multiple locations for different purposes. Without distinguishing `impact_location` from `context_location`, the RMZ tool would display irrelevant addresses (e.g., the contact address of a contractor, a reference to a different municipality).
 * **Location Formatting** is necessary because the raw text span (`"Scaldisstraat 23-25, 2000 Antwerpen"`) is not directly usable for geocoding, database queries, or structured display. The formatting step produces normalised, component-level address data that downstream tools (geocoders, map visualisations, SPARQL queries) can consume.
-
-
 
 #### Q3: When are these locations impacted by this decision?
 
@@ -312,8 +300,6 @@ Answering this question requires the same first two components as Q2, plus the d
 1. **Named Entity Recognition (NER)** detects `DATE` spans in the decision text.
 2. **Named Entity Refinement** classifies each `DATE` span into a temporal sub-type.
 3. **Entity Formatting (dates)** parses each date/period span into standardised start/end date pairs and serialises them as linked data.
-
-
 
 **How they work together**
 
@@ -374,11 +360,7 @@ This distinction between `xsd:Date` and `time:ProperInterval` is determined by t
 
 The full flow for a single decision through the UC1-relevant parts of the pipeline is:
 
-
-
-<figure><img src="../.gitbook/assets/UC1_writeup.drawio (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-
+<figure><img src="../.gitbook/assets/UC1_writeup.drawio (1).png" alt=""><figcaption></figcaption></figure>
 
 Steps 2 through 4 are part of the same UC0.0 AI pipeline execution. They run as consecutive sub-steps within the Entity Extraction Task of the NER Service for every decision, regardless of whether it is RMZ-related or not. The codelist mapping (step 1) runs separately within the Named Entity Linking Service, and its result is what the RMZ tool uses to filter which decisions to display. For the filtered decisions, the tool retrieves the location and date annotations produced by steps 2 through 4.
 
@@ -392,18 +374,18 @@ UC1 does not have a purpose-built standalone user interface. The pipeline output
 
 That said, this use case has 2 relevant interfaces, related to the Human Validation of AI-produced annotations:
 
-1. Validation of discovered entities within a decision: the validation of an address/location within a decision&#x20;
+1. Validation of discovered entities within a decision: the validation of an address/location within a decision
 2. Validation of AI annotations about a decision: i.e. What is this decision about? (Restricted Mobility Zones)
 
 The first interface is explained in the [Design section of Write-up UC 0.0: Human Validation](write-up-uc0.0-data-space/write-up-uc0.0-human-validation-hv.md#validation-of-ai-annotations-within-a-decision). In this section, we will be focusing about this second interface.
 
-#### Validating AI annotations about a decision&#x20;
+#### Validating AI annotations about a decision
 
 This interface differs slightly from the validation within a decision. While the interface for validations within a decision starts off with a list of all the decisions available, this interface starts with the user selecting a local authority and a codelist. This is because a domain validator is typically responsible for a specific policy area, so selecting by codelist and local authority first surfaces the annotations relevant to their expertise and reduces the list to a workable size.
 
 {% embed url="https://www.figma.com/design/NjruUlbybDlI3qyqjDhnbG/DECIDe?node-id=7-12161&t=zqjcFM5xMeAoifyy-4" %}
 
-Once the user selects the local authority and the codelist (within DECIDe i.e. the Sustainable Development Goals and the Restricted Mobility Zones) they want to view, the list of relevant decisions is shown and ready to be validated.&#x20;
+Once the user selects the local authority and the codelist (within DECIDe i.e. the Sustainable Development Goals and the Restricted Mobility Zones) they want to view, the list of relevant decisions is shown and ready to be validated.
 
 In addition to selecting the codelist, the user can also select sub-elements in the codelist. This is not relevant in this use case, as we work with a flat, single-level codelist. This is, however, relevant in UC0.1, and is explained in more details in the [design section of the write-up for UC0.1.](write-up-uc0.1-policy-impact-report.md#final-ui-design-and-why-if-any)
 

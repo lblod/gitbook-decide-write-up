@@ -169,11 +169,11 @@ The confidence score is also optional; its meaning is defined by the AI agent th
 
 Like all other components developed in the DECIDe project, the components for UC0.1 are created as microservices in the semantic.works architecture.
 
-The components involved in UC0.1 are shown in the <mark style="background-color:$warning;">diagram</mark> below:
+The components involved in UC0.1 are shown in the diagram below:
 
-<figure><img src="../.gitbook/assets/UC0.1-architecture-Page-1.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/lokale-bron-architecture-UC0.1.jpg" alt=""><figcaption></figcaption></figure>
 
-<mark style="background-color:$warning;">In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core components, marked with a</mark> <mark style="background-color:$warning;">**C**</mark><mark style="background-color:$warning;">, are described in the core semantic.works components section of the</mark> [<mark style="background-color:$warning;">UC0.0 Data space write-up</mark>](write-up-uc0.0-data-space#core-semantic.works-components)<mark style="background-color:$warning;">, whereas the job-controller and the singleton task are described in</mark> [<mark style="background-color:$warning;">UC0.0 Pipelines writeup</mark>](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md)<mark style="background-color:$warning;">.</mark>
+In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core components, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](write-up-uc0.0-data-space#core-semantic.works-components), whereas the job-controller and the singleton task, marked with a **J**, are described in [UC0.0 Pipelines writeup](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md).
 
 From this diagram, it becomes clear that on a microservice level, UC0.1 is fairly simplistic. The main challenges lie in the AI models used (see later).
 
