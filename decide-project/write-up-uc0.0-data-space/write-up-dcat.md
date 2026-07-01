@@ -91,9 +91,19 @@ Three types of endpoints can be described in the catalog: SPARQL endpoints, LDES
 
 ### Data standards
 
-| Standard | Link |
-| -------- | ---- |
-|          |      |
+The semantic foundation is DCAT-AP v3, the SEMIC European application profile of the W3C DCAT vocabulary. DCAT-AP v3 was chosen because it is a required standard in the DSSC Blueprint, it is structurally compatible with the existing Flemish DCAT-AP-VL publications (which are v2-based), and it adds useful features over v2 –versioning, dataset series, and inverse properties– without breaking backward compatibility.
+
+Three distribution types are modelled:
+
+* A SPARQL endpoint is modelled as a `dcat:DataService` with an `endpointURL`, linked to its dataset via `dcat:servesDataset`.&#x20;
+* An LDES feed is modelled as a `dcat:Distribution` simultaneously typed as `ldes:EventSource`, with `dct:conformsTo` pointing to the LDES specification and supported media types listed explicitly.&#x20;
+* A Resource API (JSON:API) is modelled as a `dcat:Distribution` with `dcat:mediaType` set to the JSON:API media type identifier. The Resource API option is the least interoperable of the three –the resources configuration that links its output to the semantic model is not public– and was included as a concession to project partners with limited linked data experience who prefer a JSON-based API over a SPARQL endpoint or LDES feed.
+
+ODRL policies are co-published per dataset using `odrl:hasPolicy` on the `dcat:Dataset` description. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. Both are surfaced by the LDES-based federation mechanism and replicated into the Federation Catalogue alongside the core DCAT metadata.
+
+LDES was selected as the federation mechanism because it is event-driven: rather than periodically re-downloading entire catalog files, the Federation Catalogue receives incremental updates as dataset descriptions change. This is consistent with how LDES is used elsewhere in the LBLOD stack, and aligns with the [direction SEMIC is taking for DCAT-AP feeds](https://data.europa.eu/sites/default/files/report/Georges%20Lobo%20%26%20Pavlina%20Fragkou.pdf) at the European level –a prototype for LDES-based DCAT-AP exchange was set up in Belgium and Sweden in 2024.
+
+For the Ghent pilot, DCAT-AP-VL (v2) is used for the local publication to Metadata Vlaanderen in addition to the DCAT-AP v3 description used within the DECIDe data space. The two profiles are structurally compatible; the versioning gap means some v3 features are not expressible in the Flemish local publication, but this does not affect the DECIDe data space operation.
 
 ## Final architecture
 
@@ -113,19 +123,26 @@ A typical client flow is shown below. The client queries the well-known location
 
 ### Final semantic components
 
-The semantic foundation is DCAT-AP v3, the SEMIC European application profile of the W3C DCAT vocabulary. DCAT-AP v3 was chosen because it is a required standard in the DSSC Blueprint, it is structurally compatible with the existing Flemish DCAT-AP-VL publications (which are v2-based), and it adds useful features over v2 –versioning, dataset series, and inverse properties– without breaking backward compatibility.
+The components used to realize the DCAT federation layer are shown in the image below. 
 
-Three distribution types are modelled:
+<figure><img src="../../.gitbook/assets/lokale-bron-architecture-DCAT-components.jpg" alt=""><figcaption></figcaption></figure>
 
-* A SPARQL endpoint is modelled as a `dcat:DataService` with an `endpointURL`, linked to its dataset via `dcat:servesDataset`.
-* An LDES feed is modelled as a `dcat:Distribution` simultaneously typed as `ldes:EventSource`, with `dct:conformsTo` pointing to the LDES specification and supported media types listed explicitly.
-* A Resource API (JSON:API) is modelled as a `dcat:Distribution` with `dcat:mediaType` set to the JSON:API media type identifier. The Resource API option is the least interoperable of the three –the resources configuration that links its output to the semantic model is not public– and was included as a concession to project partners with limited linked data experience who prefer a JSON-based API over a SPARQL endpoint or LDES feed.
+In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core components, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](write-up-uc0.0-data-space#core-semantic.works-components). Services specific to the DCAT federation layer are described below.
 
-ODRL policies are co-published per dataset using `odrl:hasPolicy` on the `dcat:Dataset` description. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. Both are surfaced by the LDES-based federation mechanism and replicated into the Federation Catalogue alongside the core DCAT metadata.
+#### Frontend DCAT 
+TODO
 
-LDES was selected as the federation mechanism because it is event-driven: rather than periodically re-downloading entire catalog files, the Federation Catalogue receives incremental updates as dataset descriptions change. This is consistent with how LDES is used elsewhere in the LBLOD stack, and aligns with the [direction SEMIC is taking for DCAT-AP feeds](https://data.europa.eu/sites/default/files/report/Georges%20Lobo%20%26%20Pavlina%20Fragkou.pdf) at the European level –a prototype for LDES-based DCAT-AP exchange was set up in Belgium and Sweden in 2024.
+#### DCAT
+TODO
 
-For the Ghent pilot, DCAT-AP-VL (v2) is used for the local publication to Metadata Vlaanderen in addition to the DCAT-AP v3 description used within the DECIDe data space. The two profiles are structurally compatible; the versioning gap means some v3 features are not expressible in the Flemish local publication, but this does not affect the DECIDe data space operation.
+#### LDES-serve-feed
+TODO
+
+#### LDES-delta-pusher
+TODO
+
+#### datadumps
+TODO
 
 ### Other explored semantic components
 
