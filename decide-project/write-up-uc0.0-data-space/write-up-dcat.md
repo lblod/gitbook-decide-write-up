@@ -97,25 +97,23 @@ Three types of endpoints can be described in the catalog: SPARQL endpoints, LDES
 | -------- | ---- |
 |          |      |
 
-## Final architecture (and why)
+## Final architecture
 
-The DECIDe DCAT architecture follows a federated model: each participating city or organisation maintains its own DCAT catalog, and the Federation Catalogue aggregates those member catalogs by following their LDES feeds.
+The DECIDe DCAT architecture follows a federated model: each participating city or organisation maintains its own DCAT catalog, and the Federation Catalogue aggregates those member catalogs by following their LDES feeds and replicating, then republishing its contents.
 
 At the city level, each pilot city has a DCAT catalog describing its datasets and distributions. The catalog is public within DECIDe scope –authentication is applied at the level of individual endpoints, not at the catalog level.
 
-The Federation Catalogue operates by following the DCAT LDES feeds published by each member catalog. As member catalogs update, the Federation Catalogue replicates new or changed metadata entries into its own triplestore –not the underlying data, only the metadata pointing to access endpoints. The Federation Catalogue then exposes the aggregated metadata in three ways: a human-readable catalog UI for browsing by non-technical users, a SPARQL endpoint for querying the catalog metadata directly, and a DCAT LDES feed that allows other catalogs at regional, federal, or European level to follow and replicate the DECIDe catalog's contents.
+The Federation Catalogue operates by following the DCAT LDES feeds published by each member catalog in their own system. This is shown in the image below. As member catalogs update, the Federation Catalogue replicates new or changed metadata entries into its own triplestore –not the underlying data, only the DCAT instances /describing/ the data: Catalog, Dataset, DataService and Distribution instances. The Federation Catalogue then exposes the aggregated metadata in three ways: a human-readable catalog UI for browsing by non-technical users, a SPARQL endpoint for querying the catalog metadata directly, and a DCAT LDES feed that allows other catalogs at regional, federal, or European level to follow and replicate the DECIDe catalog's contents.
 
-ODRL policies and SHACL shapes are co-federated alongside DCAT catalog entries. When the Federation Catalogue follows a member catalog's LDES feed, it also picks up the ODRL access rules and SHACL structural descriptions attached to those catalog instances, making the full discovery metadata (what the data is, how to access it, what rules govern access, and what structure to expect) available from the Federation Catalogue.
-
-
+ODRL policies and SHACL shapes are co-federated alongside DCAT catalog entries. When the Federation Catalogue follows a member catalog's LDES feed, it also picks up the ODRL policies and SHACL structural descriptions attached to those catalog instances, making the full discovery metadata (what the data is, how to access it, what rules govern access, and what structure to expect) available from the Federation Catalogue.
 
 <figure><img src="../../.gitbook/assets/dcat-federation.jpg" alt=""><figcaption></figcaption></figure>
 
-A typical client flow is shown below. The client queries the well-known location of the Federation Catalogue to find available dataset distributions and their endpoints. From the DCAT descriptions they learn which endpoints require authentication and which are public. They authenticate where required –using Verifiable Credentials– and then access the endpoints relevant to them.
+A typical client flow is shown below. The client queries the well-known location of the Federation Catalogue to find available dataset distributions and their endpoints (1). From the DCAT descriptions they learn which endpoints require authentication and which are public from the ODRL policy attached to the distributions. As the distribution data/endpoints are not replicated, the user then accesses them in the environment of the data space participant that publishes the data and the user authenticates where required (2) and then access the endpoints relevant to them (3). The way authentication and authorization works for the distribution access is left to the data space participant. Each endpoint has a DCAT description that is put on the participant's LDES feed and thus replicated in the federating DCAT catalog.
 
 <figure><img src="../../.gitbook/assets/lokale-bron-architecture-DCAT.jpg" alt=""><figcaption></figcaption></figure>
 
-### Final semantic components (and why) (if any)
+### Final semantic components
 
 The semantic foundation is DCAT-AP v3, the SEMIC European application profile of the W3C DCAT vocabulary. DCAT-AP v3 was chosen because it is a required standard in the DSSC Blueprint, it is structurally compatible with the existing Flemish DCAT-AP-VL publications (which are v2-based), and it adds useful features over v2 –versioning, dataset series, and inverse properties– without breaking backward compatibility.
 
@@ -127,35 +125,39 @@ Three distribution types are modelled:
 
 ODRL policies are co-published per dataset using `odrl:hasPolicy` on the `dcat:Dataset` description. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. Both are surfaced by the LDES-based federation mechanism and replicated into the Federation Catalogue alongside the core DCAT metadata.
 
-LDES was selected as the federation mechanism because it is event-driven: rather than periodically re-downloading entire catalog files, the Federation Catalogue receives incremental updates as dataset descriptions change. This is consistent with how LDES is used elsewhere in the LBLOD stack, and aligns with the direction SEMIC is taking for DCAT-AP feeds at the European level –a prototype for LDES-based DCAT-AP exchange was set up in Belgium and Sweden in 2024.
+LDES was selected as the federation mechanism because it is event-driven: rather than periodically re-downloading entire catalog files, the Federation Catalogue receives incremental updates as dataset descriptions change. This is consistent with how LDES is used elsewhere in the LBLOD stack, and aligns with the [direction SEMIC is taking for DCAT-AP feeds](https://data.europa.eu/sites/default/files/report/Georges%20Lobo%20%26%20Pavlina%20Fragkou.pdf) at the European level –a prototype for LDES-based DCAT-AP exchange was set up in Belgium and Sweden in 2024.
 
 For the Ghent pilot, DCAT-AP-VL (v2) is used for the local publication to Metadata Vlaanderen in addition to the DCAT-AP v3 description used within the DECIDe data space. The two profiles are structurally compatible; the versioning gap means some v3 features are not expressible in the Flemish local publication, but this does not affect the DECIDe data space operation.
 
-### Other explored semantic components (and why not)
+### Other explored semantic components
 
 Two alternative federation approaches were assessed before settling on the LDES-based architecture.
 
 The **Data space Interoperability Framework PoC** (using the CKAN DCAT extension format) was suggested by DS4SSCC coaches in the context of DECIDe. It is a minimal federation solution –intentionally excluding identity, contracting, and consent– that works by having independent catalogs register with a federating instance, which then fetches their catalog information and exposes a distributed search endpoint. The core problem for DECIDe is the format requirement: the PoC requires the format used by the CKAN DCAT extension, which does not support SHACL descriptions of dataset contents or ODRL policy extensions. Adding these within the CKAN format would require building a custom adapter, at which point the ready-made solution loses most of its value. The federated search mechanism was also assessed as unlikely to scale: distributing a search query across many registered independent catalogs, with no clear pagination strategy, does not generalise to a large data space. This approach was ruled out on both grounds.
 
-The **Eclipse EDC Federated Catalog** was also assessed. It works by crawling the DSP catalog endpoint of the catalogs it federates, making it architecturally closer to what DECIDe ultimately built than the CKAN PoC. DECIDe chose not to implement the Data Space Protocol at this stage –the DSP did not yet offer a comprehensive solution guaranteeing interoperability when examined– which already rules out the Eclipse approach as a dependency. In addition, the adopters documentation for the Eclipse Federated Catalog was still in a TBD state at the time of assessment, and it was unclear how the system handles federated catalogs using a different DCAT application profile than the federating catalog.
+The **Eclipse EDC Federated Catalog** was also assessed. It works by crawling the DSP catalog endpoint of the catalogs it federates, making it architecturally closer to what DECIDe ultimately built than the CKAN PoC. DECIDe chose not to implement the Data Space Protocol at this stage (though a minimal compatibility service was eventually trialed, see the DSP write-up) which already rules out the Eclipse approach as a dependency. In addition, the adopters documentation for the Eclipse Federated Catalog was still in a TBD state at the time of assessment, and it was unclear how the system handles federated catalogs using a different DCAT application profile than the federating catalog.
 
-### Final AI components (and why) (if any)
+### Final AI components 
 
-n/a
+No AI components are deployed to realize the DCAT federation Catalogue. 
 
-### Other explored AI components (and why not)
+## Final UI design
 
-n/a
+Only a very minimalistic UI was provided for the DCAT catalog. It allows users to search for datasets and then view their DCAT properties in a graphical interface.
 
-## Final UI design (and why) (if any)
+Searching for content:
 
-### Other explored UI design (and why not)
+<figure><img src="../../.gitbook/assets/dcat-ui1.png" alt=""><figcaption></figcaption></figure>
 
-n/a
+Viewing a dataset:
 
-## Testing approach
+<figure><img src="../../.gitbook/assets/dcat-ui2.png" alt=""><figcaption></figcaption></figure>
 
-### Risks & mitigations
+Viewing a distribution:
+
+<figure><img src="../../.gitbook/assets/dcat-ui3.png" alt=""><figcaption></figcaption></figure>
+
+Currently no functionality is provided for administrators of the dataspace to create, delete or edit DCAT instances. This should be done by creating such descriptions as database migrations in the application configuration or by running the [scripts included with the DECIDe project's GitHub repository](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset) that generate DCAT descriptions and downloads for the standard datasets in the data space.
 
 ## Possible future work
 
@@ -192,11 +194,16 @@ But this still poses some open challenges.
 For instance, any generated signature likely depends on the order of the signed triples, as different order will lead to different signatures, irrespective of any actual data changes.
 A investigation of existing approaches is needed, as well as a more detailed analysis of how to approaches described above could be re-applied here.
 
+### Extending the DCAT UI with CRUD functionality
+
+As stated before, currently no create, delete or update support exists in the DCAT catalog UI. This could be added, but only with great care not to modify DCAT information that was received from an LDES feed. The LDES client could put those in a separate, read only graph when storing them so even Admin users can't accidentally modify them. Another potential issue is the great extensibility of the DCAT contents. There is a risk when implementing this that a choice will have to be made between limiting the set of properties supported by the UI (similar to the path taken by the CKAN DCAT plugin), or making the editing UI very technical, almost resembling the creation of a SPARQL query as a migration and thereby making the UI itself rather pointless.
 
 ## Relevant links
 
-Link to github
+Link to automatic DCAT content generation scripts: https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset
 
-Link to front-ends // Link to dev/test/prod (if any)
+Link to federated DCAT catalog UI: https://ds.decide.lblod.info
 
-ACM/IDM link if relevant
+Link to federated DCAT sparql endpoint: https://ds.decide.lblod.info/api/sparql
+
+Link to federated DCAT LDES feed: https://ds.decide.lblod.info/ldes/public/1
