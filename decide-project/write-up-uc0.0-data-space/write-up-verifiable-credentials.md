@@ -53,7 +53,7 @@ Whereas the credential establishes trust, the authorisation policy describes the
 See the [UC0.0 Data space glossary](./#glossary) for definitions of DCAT, LBLOD, and ODRL.
 {% endhint %}
 
-<table><thead><tr><th width="174">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td><a href="https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/veiligheidsbouwstenen/toegangsbeheer">ACM/IDM</a></td><td>Access and Identification Management system used by the Flemish government. Oauth2 based.</td></tr><tr><td><a href="https://www.w3.org/TR/did-1.1/">DID (Decentralised Identifier)</a>.</td><td>A globally unique identifier that does not require a central registration authority. Resolves to a DID Document containing public keys and service endpoints.</td></tr><tr><td><code>did:key</code></td><td>Lightweight DID method where the identifier is derived directly from a public key. No web hosting required. Used for human participants in DECIDe.</td></tr><tr><td><code>did:web</code></td><td>DID method where the identifier is bound to a web domain. Allows key rotation while keeping the DID stable. Mandated for organisations in DECIDe.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc8410">ED25519</a></td><td>A public/private key-based digital signature algorithm, supported in DECIDe</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc6979">ES256</a></td><td>ECDSA using P-256 and SHA-256. Another public/private key-based digital signature algorithm, supported in DECIDe.</td></tr><tr><td><a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU+Digital+Identity+Wallet+Home">EUDI</a></td><td>EU digital identity</td></tr><tr><td><a href="https://json-ld.org/">JSON-LD</a></td><td>JSON-based Linked Data format. Enables semantic interoperability through shared vocabularies. Preferred credential content format in the long term; currently limited by wallet support.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc7517">JWK (JSON Web Key)</a></td><td>Standard format for representing cryptographic keys.</td></tr><tr><td><a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OID4VC (Open ID For Verifiable Credential Issuance)</a>. </td><td>The protocol used in DECIDe for issuing credentials to wallet applications (pre-authorised flow only).</td></tr><tr><td><a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OID4FP (Open ID For Verifiable Presentations)</a></td><td>The protocol used in DECIDe for requesting and receiving credential presentations from wallet apps.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/">SD-JWT-VC (Selective Disclosure JWT for Verifiable Credentials)</a></td><td>Specification for a JSON based data format for verifiable credentials with selective disclosure</td></tr><tr><td><a href="https://www.w3.org/TR/vc-data-model/">VC (Verifiable Credential)</a></td><td>W3C standard for cryptographically signed digital attestations. Allows a Holder to prove claims to a Verifier without direct interaction with the Issuer at verification time.</td></tr><tr><td><a href="https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#name-verifiable-digital-credentia">VCT (Verifiable Credential Type)</a></td><td>A URL that dereferences to the JSON definition of the format of a SD-JWT-VC credential.</td></tr></tbody></table>
+<table><thead><tr><th width="174">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td><a href="https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/veiligheidsbouwstenen/toegangsbeheer">ACM/IDM</a></td><td>Access and Identification Management system used by the Flemish government. Oauth2 based.</td></tr><tr><td><a href="https://www.w3.org/TR/did-1.1/">DID (Decentralised Identifier)</a>.</td><td>A globally unique identifier that does not require a central registration authority. Resolves to a DID Document containing public keys and service endpoints.</td></tr><tr><td><code>did:key</code></td><td>Lightweight DID method where the identifier is derived directly from a public key. No web hosting required. Used for human participants in DECIDe.</td></tr><tr><td><code>did:web</code></td><td>DID method where the identifier is bound to a web domain. Allows key rotation while keeping the DID stable. Mandated for organisations in DECIDe.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc8410">ED25519</a></td><td>A public/private key-based digital signature algorithm, supported in DECIDe</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc6979">ES256</a></td><td>ECDSA using P-256 and SHA-256. Another public/private key-based digital signature algorithm, supported in DECIDe.</td></tr><tr><td><a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU+Digital+Identity+Wallet+Home">EUDI</a></td><td>EU digital identity</td></tr><tr><td><a href="https://json-ld.org/">JSON-LD</a></td><td>JSON-based Linked Data format. Enables semantic interoperability through shared vocabularies. Preferred credential content format in the long term; currently limited by wallet support.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc7517">JWK (JSON Web Key)</a></td><td>Standard format for representing cryptographic keys.</td></tr><tr><td><a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OID4VC (Open ID For Verifiable Credential Issuance)</a>.</td><td>The protocol used in DECIDe for issuing credentials to wallet applications (pre-authorised flow only).</td></tr><tr><td><a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OID4FP (Open ID For Verifiable Presentations)</a></td><td>The protocol used in DECIDe for requesting and receiving credential presentations from wallet apps.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/">SD-JWT-VC (Selective Disclosure JWT for Verifiable Credentials)</a></td><td>Specification for a JSON based data format for verifiable credentials with selective disclosure</td></tr><tr><td><a href="https://www.w3.org/TR/vc-data-model/">VC (Verifiable Credential)</a></td><td>W3C standard for cryptographically signed digital attestations. Allows a Holder to prove claims to a Verifier without direct interaction with the Issuer at verification time.</td></tr><tr><td><a href="https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#name-verifiable-digital-credentia">VCT (Verifiable Credential Type)</a></td><td>A URL that dereferences to the JSON definition of the format of a SD-JWT-VC credential.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -87,14 +87,12 @@ We also see the initial pilot partners as dataspace consumers in this regard.
 
 ### User journeys
 
-There are two ways we demonstrate the value of Verifiable Credentials in DECIDe:&#x20;
+There are two ways we demonstrate the value of Verifiable Credentials in DECIDe:
 
 * Data Space Membership Credential
 * 'Buying' a credential to access to a non-public distribution
 
 See below [#credential-usecases](write-up-verifiable-credentials.md#credential-usecases "mention") for more detail.
-
-
 
 ## Datasources, datasets and datastandards
 
@@ -117,7 +115,7 @@ See below [#credential-usecases](write-up-verifiable-credentials.md#credential-u
 | Verifiable Credentials                                          | [https://www.w3.org/TR/vc-data-model/](https://www.w3.org/TR/vc-data-model/)                                                 |
 | SD-JWT-VC (Selective Disclosure JWT for Verifiable Credentials) | [https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/) |
 
-This section will provide some practical examples how Verifiable Credentials are used. More in depth explanation of the complete flow of verifiable credentials, cryptographic algorithms etc. will lead this write-up too far.   &#x20;
+This section will provide some practical examples how Verifiable Credentials are used. More in depth explanation of the complete flow of verifiable credentials, cryptographic algorithms etc. will lead this write-up too far.
 
 #### Verifiable Credentials
 
@@ -239,8 +237,6 @@ For each disclosure the holder sent, the verifier:
 
 Claims with no matching disclosure remain hidden — the verifier only sees their hashes, which are computationally irreversible without the salt.
 
-
-
 ## Final architecture (and why)
 
 Implementation of the VC issuer and verifier services started in August 2025, inspired by the requirements in the technical presentation on **Identity and Attestation Management** given in Ljubljana in 2025 (slide 33 in particular) and those put forward in the DSSC Blueprint. Following the advice given in Ljubljana, the team started simple — some additions were therefore left as future work and are flagged in the section [#possible-future-work](write-up-verifiable-credentials.md#possible-future-work "mention").
@@ -253,10 +249,10 @@ Currently, we only support human-to-machine interaction for our credentials, mea
 
 ### Identity methods
 
-We require participants of the dataspace to use **decentralised identifiers** which verifiably are under control of certain data space participants.&#x20;
+We require participants of the dataspace to use **decentralised identifiers** which verifiably are under control of certain data space participants.
 
 * **Organisations:** We mandate the use of `did:web`. This is slightly more demanding than `did:key` as it requires hosting a DID file, but allows rotation of cryptographic material while keeping the DID stable. Because `did:web` is bound to the domain it is hosted on, it provides reasonable assurance that the DID indeed belongs to the data space partner. The DID should still be verified through interpersonal communication between both parties.
-* **Human participants:** We mandate the use of `did:key`  derived directly from the public key in the wallet.
+* **Human participants:** We mandate the use of `did:key` derived directly from the public key in the wallet.
 * **Key algorithms:** We support the use of ED25519 and ES256, chosen for good security and the best support in the libraries used.
 
 ### Credential Issuance
@@ -293,13 +289,13 @@ The [Paradym wallet](https://github.com/animo/paradym-wallet) was selected as pr
 
 [DSSC recommended the use of the EUDI wallet architecture](https://dssc.eu/space/BVE2/1071255941/Trust+Framework#8.1-The-European-Digital-Identity-Framework-Regulation) and therefore we wanted to guarantee support for the EUDI Wallet Reference Implementation. This proved more challenging than hoped:
 
-* At the time of writing, the EUDI wallet does not support DIDs for identifying the wallet's user. As DIDs are a recommendation from DSSC, the JWK provided by the EUDI wallet is converted into a `did:key`  to keep as close as possible to the Paradym wallet implementation. This `did:key` is stored in the certificate, however, the certificate itself is still bound to the JWK through the cnf header.
+* At the time of writing, the EUDI wallet does not support DIDs for identifying the wallet's user. As DIDs are a recommendation from DSSC, the JWK provided by the EUDI wallet is converted into a `did:key` to keep as close as possible to the Paradym wallet implementation. This `did:key` is stored in the certificate, however, the certificate itself is still bound to the JWK through the cnf header.
 * The EUDI Wallet does not support DIDs for identifying and securing issuers. The issuer must use X.509 to sign its certificates. The EUDI Wallet also added additional certificate requirements, requiring –among other things– the app to be built specifically for the DECIDe use case and rebuilt on certificate rotation.
 * The EUDI Wallet does not support cookies. The API was reworked to use query parameters to pass state along during the OID4VCI and OID4VP process.
 
 #### Other wallets considered
 
-We researched the available wallets and what types of credentials they supported. When implementation started, it was quite hard to find wallets that implemented enough of the most recent OID4VCI and OID4VP specs to be useful. Even [the list of EBSI recommended wallets](https://ec.europa.eu/digital-building-blocks/sites/spaces/EBSI/pages/475267168/Conformant+wallets#find-your-wallet) proved to be of limited use as the spec was still in flux, many wallets implemented significantly older versions, we can only examine Open Source wallets, and some of the examples didn't provide a link to the actual  implementation itself.
+We researched the available wallets and what types of credentials they supported. When implementation started, it was quite hard to find wallets that implemented enough of the most recent OID4VCI and OID4VP specs to be useful. Even [the list of EBSI recommended wallets](https://ec.europa.eu/digital-building-blocks/sites/spaces/EBSI/pages/475267168/Conformant+wallets#find-your-wallet) proved to be of limited use as the spec was still in flux, many wallets implemented significantly older versions, we can only examine Open Source wallets, and some of the examples didn't provide a link to the actual implementation itself.
 
 In the end the other wallets –in addition to Paradym and EUDI– we examined for testing were not in line with the latest version of the spec.
 
@@ -384,58 +380,56 @@ Any participant wanting to **verify** DECIDe credentials must:
 
 Once this is done, a participant can use any of our supported wallets to confirm that the OID4VCI and OID4VP interaction works as expected. Paradym wallet is recommended as it builds on the DID specificiation and has a great debug support to understand what exactly is going wrong when building the issuer or verifier. The EUDI Wallet reference implementation requires additional configuration effort on the participant's end (see earlier).
 
-
-
 ## Final UI design (and why) (if any)
 
 {% hint style="info" %}
-For this project, in the interest of time, all interfaces designed and built by ABB have been using ABB’s design system: [Appuniversum](https://appuniversum.github.io/ember-appuniversum/?path=/story/introduction--page).&#x20;
+For this project, in the interest of time, all interfaces designed and built by ABB have been using ABB’s design system: [Appuniversum](https://appuniversum.github.io/ember-appuniversum/?path=/story/introduction--page).
 
-Where illustrations are needed to support the interface, ABB uses [unDraw](https://undraw.co/illustrations), a free illustration library.&#x20;
+Where illustrations are needed to support the interface, ABB uses [unDraw](https://undraw.co/illustrations), a free illustration library.
 
 This applies for all use cases.
 {% endhint %}
 
-From the user journeys described above, there is a clear need for an interface to allow the user to:&#x20;
+From the user journeys described above, there is a clear need for an interface to allow the user to:
 
 1. Request a verifiable credential
-2. Logging in with the received credential &#x20;
+2. Logging in with the received credential
 
 The interface and the different journeys can be found on figma:
 
 {% embed url="https://www.figma.com/design/NjruUlbybDlI3qyqjDhnbG/DECIDe?node-id=7-371&t=zqjcFM5xMeAoifyy-4" %}
 
-Both journeys start on the same login screen. Here the user chooses whether they’re logging in for the first time and need to request a verifiable credential, or whether they already have one and which to use this credential to log in.&#x20;
+Both journeys start on the same login screen. Here the user chooses whether they’re logging in for the first time and need to request a verifiable credential, or whether they already have one and which to use this credential to log in.
 
 The login screen can be triggered, for example, from the DCAT interface, where a verifiable credential is needed to access certain data.
 
-#### Journey 1: Requesting the verifiable credential&#x20;
+#### Journey 1: Requesting the verifiable credential
 
 When a user chooses this option, they get presented with a multi-step process. Splitting up complex journeys into concise tasks allows the user to feel more calm and in control about what they’re doing. The user is always aware in which step of the process they are (1st UX heuristic: Visibility of System Status) and can always go back to the previous step (3rd UX heuristic: User Control and Freedom).
 
-In the first step, we prompt the user to download a digital wallet. In the second step, we ask the user to scan the presented QR-code with the digital wallet they just downloaded. Showing the QR-code is in a separate step ensures a safer credential generation: Timing out the QR-code every 30 seconds in case the user takes too long.&#x20;
+In the first step, we prompt the user to download a digital wallet. In the second step, we ask the user to scan the presented QR-code with the digital wallet they just downloaded. Showing the QR-code is in a separate step ensures a safer credential generation: Timing out the QR-code every 30 seconds in case the user takes too long.
 
-Once the user scans the QR-code with their digital wallet successfully, they need to complete their journey using the wallet. We show this with a very simple screen with an illustration and a heading telling them to do so. A loading element is also being shown, implying that the screen is waiting to show something: A success/error message.&#x20;
+Once the user scans the QR-code with their digital wallet successfully, they need to complete their journey using the wallet. We show this with a very simple screen with an illustration and a heading telling them to do so. A loading element is also being shown, implying that the screen is waiting to show something: A success/error message.
 
 The success message is shown for a short amount of time, before redirecting the user to the login screen, where they can login with their newly generated credential.
 
-The error message will let the user know their credential has not been issued. Following the 8th UX heuristic (Help Users Recognise, Diagnose, and Recover from Errors), we are showing the user why the credential has not been granted, and how they can solve this.&#x20;
+The error message will let the user know their credential has not been issued. Following the 8th UX heuristic (Help Users Recognise, Diagnose, and Recover from Errors), we are showing the user why the credential has not been granted, and how they can solve this.
 
 #### Journey 2: Logging in with the received credential
 
-Once the user completed the first journey (once), they can now log in to view the data. To do this, the user needs to choose the login option on the first screen of the interface. The user will then be presented with a QR-code (which also regenerates after 30 seconds), which they need to scan with the digital wallet that granted their verifiable credential.&#x20;
+Once the user completed the first journey (once), they can now log in to view the data. To do this, the user needs to choose the login option on the first screen of the interface. The user will then be presented with a QR-code (which also regenerates after 30 seconds), which they need to scan with the digital wallet that granted their verifiable credential.
 
-Once this is done, the user will see the same _redirect-to-wallet_ screen they see in the first journey. Just like in the first journey, they will either get a success or an error message, which will either grant or deny them access, respectively.&#x20;
+Once this is done, the user will see the same _redirect-to-wallet_ screen they see in the first journey. Just like in the first journey, they will either get a success or an error message, which will either grant or deny them access, respectively.
 
 ### Other explored UI design (and why not)
 
 #### Read manual
 
-To comply with the 10th UX heuristic (Help and Documentation) the different interface screens show a link to read a manual. This is necessary to help the user complete the journeys in case of any issues or confusion. In the interest of time, this manual has not yet been created for this project.&#x20;
+To comply with the 10th UX heuristic (Help and Documentation) the different interface screens show a link to read a manual. This is necessary to help the user complete the journeys in case of any issues or confusion. In the interest of time, this manual has not yet been created for this project.
 
 #### Blurry QR-code
 
-As an extra safety precaution, We can add an extra step to the first (Request a verifiable credential) journey. This step would force the user to click a “Reveal QR-code” button manually, which would allow the user to ensure they are in a secure location where nobody can scan the QR-code over their shoulder. In the interest of time, this manual has not yet been created for this project.&#x20;
+As an extra safety precaution, We can add an extra step to the first (Request a verifiable credential) journey. This step would force the user to click a “Reveal QR-code” button manually, which would allow the user to ensure they are in a secure location where nobody can scan the QR-code over their shoulder. In the interest of time, this manual has not yet been created for this project.
 
 <br>
 
@@ -465,10 +459,10 @@ The new [DSSC Blueprint (v3)](https://blueprint.dssc.eu/) now states regarding w
 
 We don't currently have a data space membership credential for organisations. This is because we only support awarding credentials to human participants of the data space and such a credential would have to be issued to an organization party, not a human participant.
 
-Once M2M support is in place, a DECIDe Data Space Membership Credential for organisations would be a relatively straightforward extension:&#x20;
+Once M2M support is in place, a DECIDe Data Space Membership Credential for organisations would be a relatively straightforward extension:
 
 * the organisation publishes their `did:web`
-* set up a service to interact with the DECIDe OID4VCI issuance service signed with the private key corresponding to their their `did:web`,&#x20;
+* set up a service to interact with the DECIDe OID4VCI issuance service signed with the private key corresponding to their their `did:web`,
 * and receive a signed verifiable credential linked to the `did:web`, thus providing proof they adhere to the data space Rulebook.
 
 #### Other issuer services
@@ -477,7 +471,7 @@ One of our partners, UI, is considering adding support for DECIDe Verifiable Cre
 
 #### Arbitrary linked data (JSON-LD) credentials
 
-Wallet support for JSON-LD-based credentials is currently lacking. Regardless, we see value in creating such credentials for M2M that certify arbitrary linked data as signed by a certain party and unmodified since its creation. An obvious example would be the Data Space Membership credentials above, but other use cases come to mind, for instance a signed DCAT description of the datasets and services in the data space or a credential proving that a data space participant agrees to the ODRL policy related to a specific dataset.&#x20;
+Wallet support for JSON-LD-based credentials is currently lacking. Regardless, we see value in creating such credentials for M2M that certify arbitrary linked data as signed by a certain party and unmodified since its creation. An obvious example would be the Data Space Membership credentials above, but other use cases come to mind, for instance a signed DCAT description of the datasets and services in the data space or a credential proving that a data space participant agrees to the ODRL policy related to a specific dataset.
 
 That said, it seems that such an implementation would be quite custom at the moment, see the service that needs to be set up in the previous section.
 

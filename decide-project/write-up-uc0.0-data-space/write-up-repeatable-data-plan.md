@@ -20,19 +20,11 @@ This page is under construction
 
 ### Opportunity (problem, need, desire)
 
-
-
 ### Pilot partners
-
-
 
 ### Target audience / Personas
 
-
-
 ### Functionality (requirements)
-
-
 
 ## Datasources, datasets and datastandards
 

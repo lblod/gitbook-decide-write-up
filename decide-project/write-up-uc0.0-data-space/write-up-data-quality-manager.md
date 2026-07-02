@@ -12,9 +12,15 @@ The wanted deliverable is a **SHACL validation layer**: an automated service tha
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
-| <p><strong>D2.4</strong> (Adjusted) Data Quality<br>Manager available</p>                              | <p><strong>T2.6</strong> Adjust and test open source semantic Data Quality Manager,<br>implemented in Flanders (if needed).</p> |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| <p><strong>D2.5</strong> (Adjusted) Data<br>Quality Manager integrated<br>at relevant pilot sites</p> | **T2.7** Integrate Data Quality Manager in local DS German pilots.                                                              |
+|
+
+**D2.4** (Adjusted) Data Quality
+
+| <p><br>Manager available</p>          | <p><strong>T2.6</strong> Adjust and test open source semantic Data Quality Manager,<br>implemented in Flanders (if needed).</p> |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **D2.5** (Adjusted) Data              |                                                                                                                                 |
+| <p><br>Quality Manager integrated</p> |                                                                                                                                 |
+| <p><br>at relevant pilot sites</p>    | **T2.7** Integrate Data Quality Manager in local DS German pilots.                                                              |
 
 ### Link to other deliverables
 
@@ -56,7 +62,7 @@ The primary audience for the SHACL validation output is the DECIDe development a
 
 ### Functionality (requirements)
 
-The SHACL validation component is designed as a periodically automated process rather than an interactive interface. Because the triplestore may contain thousands of decisions and related entities,  validation must operate in batches rather than loading everything into memory at once. The component must also be generically configurable.
+The SHACL validation component is designed as a periodically automated process rather than an interactive interface. Because the triplestore may contain thousands of decisions and related entities, validation must operate in batches rather than loading everything into memory at once. The component must also be generically configurable.
 
 <table><thead><tr><th width="611.919921875" valign="top">Requirement</th><th valign="top">Priority</th></tr></thead><tbody><tr><td valign="top">SHACL validation runs periodically via cron job</td><td valign="top">Must-have</td></tr><tr><td valign="top">Configurable using SHACL</td><td valign="top">Must-have</td></tr><tr><td valign="top">SHACL shapes cover ELI Work, ELI Expression, and Organisation core entities</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation processes resources in batches to handle large datasets without memory issues</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation results stored as a report in the triplestore</td><td valign="top">Must-have</td></tr><tr><td valign="top">REST API endpoint exposes the latest validation report in JSON format</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Extensions placed in the shared loket-report-generation-service for ecosystem reusability</td><td valign="top">Must-have</td></tr><tr><td valign="top">SPARQL-based SHACL shapes supported alongside standard SHACL shapes</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">HTTP 404 returned by the API when no report is found</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Previous report deleted on each run to preserve only the latest report</td><td valign="top">Nice-to-have</td></tr></tbody></table>
 
@@ -85,7 +91,7 @@ DECIDe triplestore (Virtuoso) Internal. The SHACL validation service reads ELI a
 
 <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
-In this drawing, rdf classes are represented by rounded rectangles. Predicates are shown as arrows connecting their origin as the predicate subject to their target as a predicate object.  The circles are concrete entities. In the drawing, one validation result is shown explaining that the decision `https://data.gent.be/id/besluiten/23.1214.2233.007` from the city of Ghent does not have a language property in the triplestore.
+In this drawing, rdf classes are represented by rounded rectangles. Predicates are shown as arrows connecting their origin as the predicate subject to their target as a predicate object. The circles are concrete entities. In the drawing, one validation result is shown explaining that the decision `https://data.gent.be/id/besluiten/23.1214.2233.007` from the city of Ghent does not have a language property in the triplestore.
 
 The prefixes used in this section are:
 
@@ -149,12 +155,12 @@ A REST API (Extension 4) exposing the latest validation report is added to the s
 }
 ```
 
-Three standard SHACL shape files and one SPARQL-based shape file are included in the app-decide configuration (Extension 5). The ELI and Organization entities are essential for the correct processing of the enrichment pipelines (NER and NEL):&#x20;
+Three standard SHACL shape files and one SPARQL-based shape file are included in the app-decide configuration (Extension 5). The ELI and Organization entities are essential for the correct processing of the enrichment pipelines (NER and NEL):
 
 * Shapes for ELI Work entities: config/reports/shacl/work.ttl
 * Shapes for ELI Expression entities: config/reports/shacl/expression.ttl
 * Shapes for Organisation entities: config/reports/shacl/organization.ttl
-* SPARQL-based constraint demonstrating sh:SPARQLConstraint usage for ELI Expressions: config/reports/sparql/expression.sparql &#x20;
+* SPARQL-based constraint demonstrating sh:SPARQLConstraint usage for ELI Expressions: config/reports/sparql/expression.sparql
 
 ### Other explored semantic components (and why not)
 
@@ -190,7 +196,7 @@ This way, the service will be integrated and tested on the server of each city.
 
 The service uses a cron mechanism to periodically run the validations ([https://github.com/lblod/loket-report-generation-service/tree/master#reports](https://github.com/lblod/loket-report-generation-service/tree/master#reports)). By default, the SHACL validations will run every day at 03:00 ([https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35](https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35)).
 
-Testing can be done by navigating to the provided REST API `/shacl-reports/latest/issues` .&#x20;
+Testing can be done by navigating to the provided REST API `/shacl-reports/latest/issues` .
 
 During DECIDe, we will monitor the validation results and analyze what their root causes are.
 
@@ -223,8 +229,6 @@ A lightweight UI that surfaces the latest validation report in a human-readable 
 A [demo video of the data quality manager](https://www.youtube.com/watch?v=0R8QUt8Fp84\&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App\&index=2). The video goes step-by-step through the validation process: what are shapes, how does it fetch data, what does the validation service output (logs and REST API). As described above, the service will run automatically using a cron mechnanism and will validate all the decisions in batches, but this can take a while. For demonstration purposes, we loaded a sample set to show end-to-end the results.
 
 The validation results of the DECIDe server are available through this REST API: [http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues](http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues) <mark style="color:$warning;">Service will be back online after review here:</mark> [<mark style="color:$warning;">https://github.com/lblod/loket-report-generation-service/pull/17</mark>](https://github.com/lblod/loket-report-generation-service/pull/17)
-
-
 
 {% embed url="https://github.com/lblod/app-decide/blob/development/config/reports/shacl/work.ttl" %}
 

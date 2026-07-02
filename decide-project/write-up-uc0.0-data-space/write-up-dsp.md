@@ -65,9 +65,9 @@ The team conducted a thorough technical analysis of DSP version 2025-1 covering 
 
 Following this analysis and implementation experience, the decision was made not to proceed with DSP in DECIDe. The core conclusion is that DSP, by itself, does not sufficiently guarantee interoperability between dataspace participants. The specification is deliberately technology-agnostic –giving implementers maximum flexibility– but in doing so leaves too many critical decisions open. Participants who both claim to support DSP may still be unable to exchange data without additional agreements, because the specification does not mandate a concrete lower bound on what must be supported.
 
-Four specific gaps drove this conclusion.&#x20;
+Four specific gaps drove this conclusion.
 
-* First, DSP provides no mechanism for a message sender to discover in advance which `callbackAddress` formats a recipient understands; the sender may receive an error but cannot know what format to use instead.&#x20;
+* First, DSP provides no mechanism for a message sender to discover in advance which `callbackAddress` formats a recipient understands; the sender may receive an error but cannot know what format to use instead.
 * Second, the Transfer Process Protocol is explicitly agnostic about wire protocols, meaning consumers have no standardised way to learn which transfer formats a provider supports –they must rely on provider documentation or trial and error.
 * Third, the Contract Negotiation Protocol leaves the actual decision-making logic entirely out of scope: how a Provider evaluates an incoming offer, whether to accept or reject it, and crucially why. The specification makes reason-giving optional, so a terminated negotiation may leave the other party with no explanation, and left guessing what they can do differently.
 * Fourth, authentication and authorisation methods are left almost entirely open: the specification advises use of the HTTP `Authorization` header but says nothing about which token types to use or how to obtain them.
@@ -124,15 +124,15 @@ The team conducted a detailed technical analysis of all three DSP sub-protocols,
 
 #### ODRL Offers for DECIDe
 
-DSP relies on members using ODRL `Offer`s to exchange information on the datasets they offer and under which conditions. In ODRL, an `Offer` is a specific kind of `Policy` that does not itself grant any rights, but can be used to publicise which data an entity can provide and under which conditions. An `Offer` consists of three main parts:&#x20;
+DSP relies on members using ODRL `Offer`s to exchange information on the datasets they offer and under which conditions. In ODRL, an `Offer` is a specific kind of `Policy` that does not itself grant any rights, but can be used to publicise which data an entity can provide and under which conditions. An `Offer` consists of three main parts:
 
 * a description of the data it concerns (typically as `Asset`s or `Asset Collection`s),
-* the conditions under which that data would be made available (defined as `Rule`s), and&#x20;
-* some identification of the `Party` that acts as assigning entity of the `Offer`.&#x20;
+* the conditions under which that data would be made available (defined as `Rule`s), and
+* some identification of the `Party` that acts as assigning entity of the `Offer`.
 
 For more information on the ODRL model and its concepts, please visit the [ODRL write-up](write-up-odrl.md#the-odrl-information-model).
 
-DSP imposes two constraints on how `Offer`s must be defined that depart from standard ODRL.&#x20;
+DSP imposes two constraints on how `Offer`s must be defined that depart from standard ODRL.
 
 1. First, the data an `Offer` concerns must be described as a DCAT `Dataset` or `Distribution` rather than an ODRL `Asset` or `Asset Collection`. In other words, an `Offer` will not explicitly describe the data itself but will refer to the appropriate DCAT resources as targets. For more background on DCAT and how it is used within DECIDe, consult the dedicated [DCAT write-up](write-up-dcat.md).
 2. Second, the `Offer`s exchanged in DSP messages do not explicitly refer to the assigner entity, despite this being mandated by the ODRL Information Model. To remain compliant with both standards, the DECIDe application can be specified as assigning `Party` in the stored `Offer` definition, while this property is omitted when exchanging `Offer`s as part of DSP.
@@ -199,7 +199,7 @@ For state management, the team proposed persisting each negotiation as a `dspace
 
 This sub-protocol defines the messages a `Consumer` and `Provider` can exchange to set up the actual transfer of a dataset distribution. The exchange starts with a request from the `Consumer` specifying an `Agreement` and a distribution `format`; if valid, the transfer is started. Subsequent messages can be sent by either side to mark the transfer as suspended, completed, or terminated. The protocol does not cover the actual data transfer itself –only how the transfer should be initiated and tracked.
 
-What makes a `TransferRequestMessage` valid is not fully specified by the protocol, but the team identified four reasonable criteria:&#x20;
+What makes a `TransferRequestMessage` valid is not fully specified by the protocol, but the team identified four reasonable criteria:
 
 * the specified `Agreement` must be known by the `Provider` and itself valid
 * the `Agreement` must name the requesting `Consumer` as assignee
@@ -210,7 +210,7 @@ To keep scope manageable, the team proposed limiting wire protocol support to HT
 
 #### Authentication
 
-The HTTPS binding states that "_\[a]ll requests SHOULD use the `Authorization` header to include an authorization token_" but adds that "_The semantics of such tokens are not part of this specification._" Further implementation decisions, such as which kind of tokens to support as well as how to obtain them, are left to the dataspace members.&#x20;
+The HTTPS binding states that "_\[a]ll requests SHOULD use the `Authorization` header to include an authorization token_" but adds that "_The semantics of such tokens are not part of this specification._" Further implementation decisions, such as which kind of tokens to support as well as how to obtain them, are left to the dataspace members.
 
 The `Version` message's `auth` property could be used to let connectors communicate which authorisation methods they support, but its vague wording, that it "_describes how a Dataspace Protocol endpoint is **secured**_"– leaves doubt about what exactly this covers and how it relates to the use of the HTTP `Authorisation` header. It is unclear whether, for instance, a rate-limiting policy to prevent DoS attacks would also count as "securing" an endpoint. The `auth` property also does not appear to support advertising multiple methods for a single endpoint version, for example, supporting both Basic authentication and OAuth simultaneously.
 

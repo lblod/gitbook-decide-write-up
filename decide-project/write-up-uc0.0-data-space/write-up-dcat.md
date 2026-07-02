@@ -41,8 +41,6 @@ The Data Space Protocol governs how data exchange requests between participants 
 
 [write-up-dsp.md](write-up-dsp.md "mention")
 
-
-
 ## Glossary
 
 {% hint style="info" %}
@@ -107,8 +105,6 @@ The Federation Catalogue operates by following the DCAT LDES feeds published by 
 
 ODRL policies and SHACL shapes are co-federated alongside DCAT catalog entries. When the Federation Catalogue follows a member catalog's LDES feed, it also picks up the ODRL access rules and SHACL structural descriptions attached to those catalog instances, making the full discovery metadata (what the data is, how to access it, what rules govern access, and what structure to expect) available from the Federation Catalogue.
 
-
-
 <figure><img src="../../.gitbook/assets/dcat-federation.jpg" alt=""><figcaption></figcaption></figure>
 
 A typical client flow is shown below. The client queries the well-known location of the Federation Catalogue to find available dataset distributions and their endpoints. From the DCAT descriptions they learn which endpoints require authentication and which are public. They authenticate where required –using Verifiable Credentials– and then access the endpoints relevant to them.
@@ -121,8 +117,8 @@ The semantic foundation is DCAT-AP v3, the SEMIC European application profile of
 
 Three distribution types are modelled:
 
-* A SPARQL endpoint is modelled as a `dcat:DataService` with an `endpointURL`, linked to its dataset via `dcat:servesDataset`.&#x20;
-* An LDES feed is modelled as a `dcat:Distribution` simultaneously typed as `ldes:EventSource`, with `dct:conformsTo` pointing to the LDES specification and supported media types listed explicitly.&#x20;
+* A SPARQL endpoint is modelled as a `dcat:DataService` with an `endpointURL`, linked to its dataset via `dcat:servesDataset`.
+* An LDES feed is modelled as a `dcat:Distribution` simultaneously typed as `ldes:EventSource`, with `dct:conformsTo` pointing to the LDES specification and supported media types listed explicitly.
 * A Resource API (JSON:API) is modelled as a `dcat:Distribution` with `dcat:mediaType` set to the JSON:API media type identifier. The Resource API option is the least interoperable of the three –the resources configuration that links its output to the semantic model is not public– and was included as a concession to project partners with limited linked data experience who prefer a JSON-based API over a SPARQL endpoint or LDES feed.
 
 ODRL policies are co-published per dataset using `odrl:hasPolicy` on the `dcat:Dataset` description. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. Both are surfaced by the LDES-based federation mechanism and replicated into the Federation Catalogue alongside the core DCAT metadata.
@@ -161,37 +157,15 @@ n/a
 
 ### Making the data space tamper-proof
 
-When obtaining (meta) data from the data space, users want to be sure they obtain the correct, unmodified (meta) data.
-Similarly, data space members and data providers want assurances that unauthorised changes are prevented when possible and can be detected otherwise.
+When obtaining (meta) data from the data space, users want to be sure they obtain the correct, unmodified (meta) data. Similarly, data space members and data providers want assurances that unauthorised changes are prevented when possible and can be detected otherwise.
 
-Currently, the DECIDe application relies on access control to prevent unauthorised changes to stored data and the use of secure protocols, e.g. https, to protect data in transit.
-But it does not provide users a way to explicitly verify the integrity of the (meta) data they receive.
-Note, due to the federated setup of a data space, it will finally be the responsibility of each data space member to ensure the integrity of the data they offer.
+Currently, the DECIDe application relies on access control to prevent unauthorised changes to stored data and the use of secure protocols, e.g. https, to protect data in transit. But it does not provide users a way to explicitly verify the integrity of the (meta) data they receive. Note, due to the federated setup of a data space, it will finally be the responsibility of each data space member to ensure the integrity of the data they offer.
 
-A logical initial step, would be to usie DCAT's [checksum](https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum) property for distributions.
-This property allows to link a DCAT `Distribution` resource to a `http://spdx.org/rdf/terms#Checksum` resource that specifies a checksum and algorithm used to compute it.
-For single file distributions, e.g. a Turtle file or archive of files, the recipient can calculate the the checksum of the received file and compare this to the original one.
-For this to be effective, this does require that the checksum can be [transmitted via a separate channel](https://www.w3.org/TR/vocab-dcat-3/#security_and_privacy) to ensure its integrity.
-Providing such a channel would require extending the DECIDe application.
-One possibility would be that data space members cryptographically sign the checksum resources for the distributions they produce.
-The data space member's public key required to verify such signatures could be published using the member's DID (see [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md)).
-Alternatively, one could cryptographically sign a Distribution file as a whole, the signature would then be transmitted along with the actual distribution contents.
-This would allow to leverage existing technologies such as [openpgp](https://www.openpgp.org/about/) to publish public keys and verify signatures.
+A logical initial step, would be to usie DCAT's [checksum](https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum) property for distributions. This property allows to link a DCAT `Distribution` resource to a `http://spdx.org/rdf/terms#Checksum` resource that specifies a checksum and algorithm used to compute it. For single file distributions, e.g. a Turtle file or archive of files, the recipient can calculate the the checksum of the received file and compare this to the original one. For this to be effective, this does require that the checksum can be [transmitted via a separate channel](https://www.w3.org/TR/vocab-dcat-3/#security_and_privacy) to ensure its integrity. Providing such a channel would require extending the DECIDe application. One possibility would be that data space members cryptographically sign the checksum resources for the distributions they produce. The data space member's public key required to verify such signatures could be published using the member's DID (see [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md)). Alternatively, one could cryptographically sign a Distribution file as a whole, the signature would then be transmitted along with the actual distribution contents. This would allow to leverage existing technologies such as [openpgp](https://www.openpgp.org/about/) to publish public keys and verify signatures.
 
-For distributions that provide more dynamic access the data, e.g. SPARQL endpoints, the above approaches are not feasible because the data in these distributions changes often as new decisions come in and new annotations are generated.
-For every such change, a new checksum would have to be generated and it would be almost impossible for users to know which checksum matches the current dataset.
-Providing users the means to verify the integrity the responses they receive for their queries will require an analysis of existing approaches in this field.
-One possibility would be to explore whether LDES can be leveraged to provide an auditable log of (parts of) the contents of the triplestore.
-This would allow users to verify received responses against the data in the LDES feed.
-This still poses significant challenges, such as how to guarantee the integrity of the feed itself.
+For distributions that provide more dynamic access the data, e.g. SPARQL endpoints, the above approaches are not feasible because the data in these distributions changes often as new decisions come in and new annotations are generated. For every such change, a new checksum would have to be generated and it would be almost impossible for users to know which checksum matches the current dataset. Providing users the means to verify the integrity the responses they receive for their queries will require an analysis of existing approaches in this field. One possibility would be to explore whether LDES can be leveraged to provide an auditable log of (parts of) the contents of the triplestore. This would allow users to verify received responses against the data in the LDES feed. This still poses significant challenges, such as how to guarantee the integrity of the feed itself.
 
-Finally, ensuring the integrity of the DCAT data itself remains an open question.
-For instance, an attacker should not be able to add a malicious distribution, e.g. one pointing to an download URL under the attacker's control, to a dataset.
-One avenue to explore would be to cryptographically sign (parts of) DCAT resources.
-But this still poses some open challenges.
-For instance, any generated signature likely depends on the order of the signed triples, as different order will lead to different signatures, irrespective of any actual data changes.
-A investigation of existing approaches is needed, as well as a more detailed analysis of how to approaches described above could be re-applied here.
-
+Finally, ensuring the integrity of the DCAT data itself remains an open question. For instance, an attacker should not be able to add a malicious distribution, e.g. one pointing to an download URL under the attacker's control, to a dataset. One avenue to explore would be to cryptographically sign (parts of) DCAT resources. But this still poses some open challenges. For instance, any generated signature likely depends on the order of the signed triples, as different order will lead to different signatures, irrespective of any actual data changes. A investigation of existing approaches is needed, as well as a more detailed analysis of how to approaches described above could be re-applied here.
 
 ## Relevant links
 

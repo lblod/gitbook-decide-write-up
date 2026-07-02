@@ -60,7 +60,7 @@ A data space revolves around data — and before any analysis, AI enrichment, or
 
 The opportunity is not just about getting the data in, but doing so in a way that is transparent, inspectable, and extensible: individual pipeline steps are small and replaceable, every task records its inputs and outputs, and failures are traceable. The same backbone that ingests raw decisions today can be extended with new enrichment models or new data sources without redesigning the whole system.
 
-The pipeline infrastructure is the answer to these prerequisites: a set of configurable, reusable tools that harvest LD\&L from all sources and normalise it to a single common representation. The European Legislation Identifier (ELI) was chosen as that representation because it provides a vocabulary specifically designed for describing legislation –structuring each decision as a Work, Expression, and Manifestation– that is source-agnostic and already adopted within European public administrations. Normalising all input to ELI at ingestion means every downstream step operates on identical data structures, regardless of which city the decision came from or in what format it was originally published.&#x20;
+The pipeline infrastructure is the answer to these prerequisites: a set of configurable, reusable tools that harvest LD\&L from all sources and normalise it to a single common representation. The European Legislation Identifier (ELI) was chosen as that representation because it provides a vocabulary specifically designed for describing legislation –structuring each decision as a Work, Expression, and Manifestation– that is source-agnostic and already adopted within European public administrations. Normalising all input to ELI at ingestion means every downstream step operates on identical data structures, regardless of which city the decision came from or in what format it was originally published.
 
 On top of this normalised base, a set of AI pipelines produce the structured annotations that the downstream use cases depend on, and that can be validated through Human Validation interfaces.
 
@@ -100,7 +100,7 @@ The PDF to ELI pipeline extracts content from PDFs and initializes the [three le
 
 * [eli:Work](http://data.europa.eu/eli/ontology#Work): is still an empty class with only a UUID provided, but it is important for compliancy with ELI, and for later steps in the pipeline that the work level is initialized
 * [eli:Expression](http://data.europa.eu/eli/ontology#Expression): is set with the content of the PDF in its original language
-* [eli:Manifestation](http://data.europa.eu/eli/ontology#Manifestation): contains metadata of the PDF: media type, URL, and bytesize&#x20;
+* [eli:Manifestation](http://data.europa.eu/eli/ontology#Manifestation): contains metadata of the PDF: media type, URL, and bytesize
 
 <figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption><p>Fig. 1: PDF to ELI pipeline sets the three ELI levels</p></figcaption></figure>
 
@@ -108,7 +108,7 @@ The PDF to ELI pipeline extracts content from PDFs and initializes the [three le
 
 The raw data of the city of Ghent uses the application profile "[OSLO Besluit publicatie](https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/)" as data model. Although this is an extension of ELI, in practice, only the extension for `eli:Expression` ("Besluit") is implemented. This means we need to provide a sibling \`eli:Work\` for every Besluit.
 
-Instead of mapping to a new `eli:Expression` resource, we could reuse the URI of oslo:Besluit, and add an extra type of Expression. The property `epvoc:expressionContent` is filled with a waterfall system: if there is a `prov:value` with the content of the decision, we use that. Else if there are articles with content, we use the aggregation of the content. Otherwise, the title and description of the decision is used (Fig. 2).&#x20;
+Instead of mapping to a new `eli:Expression` resource, we could reuse the URI of oslo:Besluit, and add an extra type of Expression. The property `epvoc:expressionContent` is filled with a waterfall system: if there is a `prov:value` with the content of the decision, we use that. Else if there are articles with content, we use the aggregation of the content. Otherwise, the title and description of the decision is used (Fig. 2).
 
 Agents, such as governing bodies and mandatees, are also mapped with `dct:creator` and `dct:contributor` to align with ELI-EP.
 
@@ -148,7 +148,7 @@ Another example, when a title is detected in the text, a statement can be made w
 * predicate = eli:title
 * object = text of the title
 
-A full list of mappings can be found on Gitbook here:&#x20;
+A full list of mappings can be found on Gitbook here:
 
 {% file src="../../.gitbook/assets/datamodel AI annotations.pdf" %}
 
@@ -166,13 +166,11 @@ For example, the location entity with label "Theatergassen 8, 96047 Bamberg" can
 * predicate = skos:exactMatch
 * object = <[https://www.openstreetmap.org/way/38114254](https://www.openstreetmap.org/way/38114254)>
 
-
-
 ## Final architecture (and why)
 
-The pipeline infrastructure is the foundational backbone for the ingestion and enrichment of LD\&L within the DECIDe data space.&#x20;
+The pipeline infrastructure is the foundational backbone for the ingestion and enrichment of LD\&L within the DECIDe data space.
 
-* Three **ingestion pipelines** bring LD\&L from each pilot city's source format into the data space and standardise it to a common linked-data representation (ELI): one for OSLO-Besluit data from Ghent, one for Freiburg's OParl-based council information system, and one for PDF documents –the only format available for decisions from Bamberg.&#x20;
+* Three **ingestion pipelines** bring LD\&L from each pilot city's source format into the data space and standardise it to a common linked-data representation (ELI): one for OSLO-Besluit data from Ghent, one for Freiburg's OParl-based council information system, and one for PDF documents –the only format available for decisions from Bamberg.
 * Working on top of this normalised input, the enrichment tasks of the **AI pipeline** generate the annotations that downstream use cases depend on.
 * Underpinning all of this is a **job and task management infrastructure** that controls when and how each pipeline runs, sequences its individual steps, tracks status in the triplestore, and surfaces failures for inspection.
 
@@ -358,7 +356,7 @@ Next to proxying an OParl API into ELI, a harvesting mechanism is provided by th
 
 [**Harvesting helper service - adding UUIDs**](https://github.com/lblod/import-with-sameas-service)
 
-This service adds UUIDs to the harvested OParl resources. This is a best practice in the semantic.works stack. This is required to expose resources with a JSON API using the mu-resources service.  When a resource is already available in the triplestore, the UUID must be reused to prevent multiple UUIDs for the same thing. If there is no UUID found, a new UUID is minted for the resource using standard libraries.&#x20;
+This service adds UUIDs to the harvested OParl resources. This is a best practice in the semantic.works stack. This is required to expose resources with a JSON API using the mu-resources service. When a resource is already available in the triplestore, the UUID must be reused to prevent multiple UUIDs for the same thing. If there is no UUID found, a new UUID is minted for the resource using standard libraries.
 
 [**Diff service**](https://github.com/lblod/harvesting-diff-service)
 
@@ -398,9 +396,9 @@ n/a
 
 ### AI pipeline
 
-The AI pipeline operates on the normalised ELI data produced by the previously mentioned ingestion pipelines. Its purpose is to extract structured, machine-readable information from the unstructured text of decisions and connect it to existing resources as linked data. The pipeline consists of four sequential tasks, orchestrated by the job controller in the same way as the ingestion steps.&#x20;
+The AI pipeline operates on the normalised ELI data produced by the previously mentioned ingestion pipelines. Its purpose is to extract structured, machine-readable information from the unstructured text of decisions and connect it to existing resources as linked data. The pipeline consists of four sequential tasks, orchestrated by the job controller in the same way as the ingestion steps.
 
-A general overview of the AI pipeline is given in the <mark style="background-color:$warning;">following figure</mark>. The tasks are organised in 2 services: the Named Entity Recognition (NER) service which houses three tasks, and the Named Entity Linking (NEL) which has one.&#x20;
+A general overview of the AI pipeline is given in the <mark style="background-color:$warning;">following figure</mark>. The tasks are organised in 2 services: the Named Entity Recognition (NER) service which houses three tasks, and the Named Entity Linking (NEL) which has one.
 
 <figure><img src="../../.gitbook/assets/models-UC0.0.drawio(3).png" alt=""><figcaption></figcaption></figure>
 
@@ -408,25 +406,23 @@ All outputs of the AI pipeline are stored as `oa:Annotation` triples in the trip
 
 #### Translation Task
 
-The first step translates the decision text into English to allow all subsequent AI processing to operate in a single language to address many of the multilinguality requirements of the project, regardless of whether the original document was in Dutch or German. This avoids the need for retraining models on different datasets every time the DECIDe system would be used on LD\&L in another language in the future.&#x20;
+The first step translates the decision text into English to allow all subsequent AI processing to operate in a single language to address many of the multilinguality requirements of the project, regardless of whether the original document was in Dutch or German. This avoids the need for retraining models on different datasets every time the DECIDe system would be used on LD\&L in another language in the future.
 
 The major downside of this approach is that position-based annotations which label a subsequence of the text will have position offsets on the English version. This is a significant downside, mitigated by the entity projection step described below. Multilingual models such as XLM-RoBERTa were briefly considered as an alternative. However, even models pre-trained on multilingual data can suffer significant performance degradation when fine-tuned on a dataset that does not cover all target languages, a real constraint given the only Dutch and German data available for the pilot.
 
-Another downside is translation error, which is why two translation backends are available via configuration: either the open-source variant of Mistral Nemo 12B running locally via Ollama, or the [European Commission's eTranslation API service](https://translation.ec.europa.eu/tools-and-resources/ai-translation-and-language-tools_en). The latter is used by the European Commission itself and is therefore considered very high quality. Its downside is unfortunately an asynchronous execution model and strict rate limiting, making it impractical for application on larger volumes of decisions.&#x20;
+Another downside is translation error, which is why two translation backends are available via configuration: either the open-source variant of Mistral Nemo 12B running locally via Ollama, or the [European Commission's eTranslation API service](https://translation.ec.europa.eu/tools-and-resources/ai-translation-and-language-tools_en). The latter is used by the European Commission itself and is therefore considered very high quality. Its downside is unfortunately an asynchronous execution model and strict rate limiting, making it impractical for application on larger volumes of decisions.
 
 Finally, the translated text is stored in the annotation format, as a suggested eli:Expression
 
 <figure><img src="../../.gitbook/assets/image (2).png" alt="" width="375"><figcaption></figcaption></figure>
 
-
-
 #### Segmentation Task
 
 The segmentation task follows the translation task and operates on the English translation of the decision. The table below lists the output of the text segmentation model, which partitions the text in basic blocks. Each entry in the table is a type of entity which can be detected in a text, and is emitted in a span format: (`start_position`, `end_position`, `label`). E.g.: (35, 72, TITLE) means the text substring between character 35 and 72 was recognised as a TITLE.
 
-The discovered entities from the segmentation task are saved in the triplestore as annotations. The segmentation step relies on Mistral Large 3, a proprietary LLM hosted externally within the European Union.&#x20;
+The discovered entities from the segmentation task are saved in the triplestore as annotations. The segmentation step relies on Mistral Large 3, a proprietary LLM hosted externally within the European Union.
 
-<table><thead><tr><th width="212.326171875">Entity</th><th>Description</th></tr></thead><tbody><tr><td><p>TITLE </p><p></p></td><td>The official title of the municipal decision or document.</td></tr><tr><td><p>PARTICIPANTS </p><p></p></td><td>A metadata block listing the individuals involved in the meeting or decision. This often includes lists of who was present (nl: <em>Aanwezig</em>), excused/absent (nl: <em>Verontschuldigd</em>), the responsible official (nl: <em>Verantwoordelijk</em>), the secretary (nl: <em>Secretaris</em>), etc.</td></tr><tr><td><p>MOTIVATION </p><p></p></td><td>The contextual background, reasoning, and justification for the decision. This includes the direct cause or trigger (nl: <em>aanleiding</em>)</td></tr><tr><td>PREVIOUS_DECISIONS</td><td>Specific references, citations, or summaries of prior decisions that are directly linked to the current document and provide legal or historical context for the resolution being passed.</td></tr><tr><td>LEGAL_FRAMEWORK</td><td>Citations of the specific laws, regulations, or legal precedents. This includes both the general regulations that give the municipality the authority to act (nl: <em>regelgeving waaruit blijkt dat het orgaan bevoegd is/Regelgeving bevoegdheid</em>) and the specific legal grounds on which this particular decision is based (nl: <em>op basis van welke regels (rechtsgronden) wordt deze beslissing genomen/Wetgeving</em>).</td></tr><tr><td><p>DECISION </p><p></p></td><td>The core, binding content of the decision; the text that outlines what is being formally enacted, ruled, or established.</td></tr><tr><td><p>VOTING </p><p></p></td><td>The specific record of votes. This can range from a simple statement (e.g., "unanimously adopted", "20 votes for, 5 against") to a detailed breakdown including the names of proponents (nl: <em>voorstanders</em>), opponents (nl: <em>tegenstanders</em>), and abstentions (nl: <em>onthouding(en)</em>).</td></tr><tr><td><p>ARTICLE </p><p></p></td><td>The specific, numbered provisions, rules, or regulations that make up the operative part of the decision (e.g., "Article 1," "Article 2").</td></tr></tbody></table>
+<table><thead><tr><th width="212.326171875">Entity</th><th>Description</th></tr></thead><tbody><tr><td>TITLE</td><td>The official title of the municipal decision or document.</td></tr><tr><td>PARTICIPANTS</td><td>A metadata block listing the individuals involved in the meeting or decision. This often includes lists of who was present (nl: <em>Aanwezig</em>), excused/absent (nl: <em>Verontschuldigd</em>), the responsible official (nl: <em>Verantwoordelijk</em>), the secretary (nl: <em>Secretaris</em>), etc.</td></tr><tr><td>MOTIVATION</td><td>The contextual background, reasoning, and justification for the decision. This includes the direct cause or trigger (nl: <em>aanleiding</em>)</td></tr><tr><td>PREVIOUS_DECISIONS</td><td>Specific references, citations, or summaries of prior decisions that are directly linked to the current document and provide legal or historical context for the resolution being passed.</td></tr><tr><td>LEGAL_FRAMEWORK</td><td>Citations of the specific laws, regulations, or legal precedents. This includes both the general regulations that give the municipality the authority to act (nl: <em>regelgeving waaruit blijkt dat het orgaan bevoegd is/Regelgeving bevoegdheid</em>) and the specific legal grounds on which this particular decision is based (nl: <em>op basis van welke regels (rechtsgronden) wordt deze beslissing genomen/Wetgeving</em>).</td></tr><tr><td>DECISION</td><td>The core, binding content of the decision; the text that outlines what is being formally enacted, ruled, or established.</td></tr><tr><td>VOTING</td><td>The specific record of votes. This can range from a simple statement (e.g., "unanimously adopted", "20 votes for, 5 against") to a detailed breakdown including the names of proponents (nl: <em>voorstanders</em>), opponents (nl: <em>tegenstanders</em>), and abstentions (nl: <em>onthouding(en)</em>).</td></tr><tr><td>ARTICLE</td><td>The specific, numbered provisions, rules, or regulations that make up the operative part of the decision (e.g., "Article 1," "Article 2").</td></tr></tbody></table>
 
 #### Entity Recognition Task
 
@@ -442,7 +438,7 @@ An initial detection pass is performed using [PedroDKE/multilingual-ner-abb](htt
 | LOCATION             | A geographical place, address, street, or area.                                                                                              | <ul><li>"Mengener Str. 32"</li><li>"Gent"</li><li>"Freiburg i.Br.-Lehen, Breisgauer Str., Flst. 68/1 and 68/3"</li></ul>                                |
 | LEGAL\_GROUND        | A citation to a specific law, decree, statute, or legal article that serves as the foundation for the decision.                              | <p>"Application according to <em><mark style="color:yellow;">§ 34 GemO</mark></em> by the faction Bündnis 90/Die Grünen from<br>October 9, 2019..."</p> |
 | ADMINISTRATIVE\_BODY | The specific municipal body, council, or committee (e.g., city council, welfare council) that is responsible for making the decision.        | "The <mark style="color:yellow;">Town Council</mark>, in accordance with item 2 of Document G-24/034, reappoints..."                                    |
-| MANDATARY            | An individual person involved in the decision-making process, often listed with their name and function (e.g., mayor, councilor, secretary). | <p></p><ul><li>"Hafsa El-Bazioui, schepen-voorzitter"</li><li>"Lien Van Tornhout, voorzitter"</li><li>"Pieter De Crem, burgemeester"</li></ul>          |
+| MANDATARY            | An individual person involved in the decision-making process, often listed with their name and function (e.g., mayor, councilor, secretary). | <ul><li>"Hafsa El-Bazioui, schepen-voorzitter"</li><li>"Lien Van Tornhout, voorzitter"</li><li>"Pieter De Crem, burgemeester"</li></ul>                 |
 
 **Entity refinement**
 
@@ -450,7 +446,7 @@ A second pass refines coarser entity types into specific sub-types using [sverco
 
 The output remains a span, meaning the refinement model might modify for example (35, 48, LOCATION) into (35, 48, context\_location).
 
-<table><thead><tr><th width="151.1533203125">Entity</th><th width="231.8193359375">Description</th><th>Example</th></tr></thead><tbody><tr><td>context_date</td><td>Any other date mentioned in the text that provides context, background, or a temporal anchor</td><td>"due to the events of <mark style="color:yellow;">10 May 2023</mark>..."</td></tr><tr><td>context_location</td><td>Other locations mentioned for context that are not directly affected by the decisions made in this article/decision.</td><td>"Similar roadworks happened on the <mark style="color:yellow;">veldstraat"</mark></td></tr><tr><td>context_period</td><td>Any time period mentioned in the text that provides background, context, or a temporal anchor</td><td>"during the festival <mark style="color:yellow;">between 30/11/2024 and 05/12/2024"</mark></td></tr><tr><td>entry_date </td><td>The date the decision becomes effective.</td><td>"This regulation enters into force on <mark style="color:yellow;">January 25, 2026"</mark></td></tr><tr><td>expiry_date</td><td>The date the decision or its effects are no longer valid.</td><td>"Duration of road works: 25 Januari 2026 - <mark style="color:yellow;">2nd of February 2026"</mark></td></tr><tr><td>impact_location</td><td>A location <em>directly</em> affected by the decision </td><td>"the street being closed, the address receiving a permit, a new <em>speelstraat</em>"</td></tr><tr><td>legal_basis_date</td><td>A date that is part of the name/title of a cited law</td><td>"the law of <mark style="color:yellow;">12 July 1998"</mark></td></tr><tr><td>publication_date</td><td>The date the decision was formally published.</td><td></td></tr><tr><td>session_date </td><td> The date the meeting/session was held.</td><td></td></tr><tr><td>validity_period</td><td>The specific time range during which the <em>impact</em> or <em>subject</em> of the decision takes place.</td><td>"in the reference period <mark style="color:yellow;">from 30/10/2025 until 01/01/2026"</mark></td></tr></tbody></table>
+<table><thead><tr><th width="151.1533203125">Entity</th><th width="231.8193359375">Description</th><th>Example</th></tr></thead><tbody><tr><td>context_date</td><td>Any other date mentioned in the text that provides context, background, or a temporal anchor</td><td>"due to the events of <mark style="color:yellow;">10 May 2023</mark>..."</td></tr><tr><td>context_location</td><td>Other locations mentioned for context that are not directly affected by the decisions made in this article/decision.</td><td>"Similar roadworks happened on the <mark style="color:yellow;">veldstraat"</mark></td></tr><tr><td>context_period</td><td>Any time period mentioned in the text that provides background, context, or a temporal anchor</td><td>"during the festival <mark style="color:yellow;">between 30/11/2024 and 05/12/2024"</mark></td></tr><tr><td>entry_date</td><td>The date the decision becomes effective.</td><td>"This regulation enters into force on <mark style="color:yellow;">January 25, 2026"</mark></td></tr><tr><td>expiry_date</td><td>The date the decision or its effects are no longer valid.</td><td>"Duration of road works: 25 Januari 2026 - <mark style="color:yellow;">2nd of February 2026"</mark></td></tr><tr><td>impact_location</td><td>A location <em>directly</em> affected by the decision</td><td>"the street being closed, the address receiving a permit, a new <em>speelstraat</em>"</td></tr><tr><td>legal_basis_date</td><td>A date that is part of the name/title of a cited law</td><td>"the law of <mark style="color:yellow;">12 July 1998"</mark></td></tr><tr><td>publication_date</td><td>The date the decision was formally published.</td><td></td></tr><tr><td>session_date</td><td>The date the meeting/session was held.</td><td></td></tr><tr><td>validity_period</td><td>The specific time range during which the <em>impact</em> or <em>subject</em> of the decision takes place.</td><td>"in the reference period <mark style="color:yellow;">from 30/10/2025 until 01/01/2026"</mark></td></tr></tbody></table>
 
 **Entity Formatting**
 
@@ -460,7 +456,7 @@ Date and date period entities are routed to a rule-based parser ([dateperiodpars
 
 Location entities are routed to a dual-head NER model implemented in the [decide-location-formatter](https://github.com/semantic-ai/decide-location-formatter) (based on [xlm-roberta-base](https://huggingface.co/FacebookAI/xlm-roberta-base)) that decomposes the free text span into structured address components (street, house number, postcode, city, etc.) and produces Nominatim-compatible address strings for later geocoding as part of the Named Entity Linking service.
 
-At the end of this step, the span-based detections are translated into linked data, where possible based on the ELI and LOCN ontologies. They are then saved as `oa:Annotation`, linked to the English Expression in the triplestore.&#x20;
+At the end of this step, the span-based detections are translated into linked data, where possible based on the ELI and LOCN ontologies. They are then saved as `oa:Annotation`, linked to the English Expression in the triplestore.
 
 **Entity Projection**
 
@@ -480,56 +476,70 @@ The process works as follows:
 
 The extraction tasks described above identify entities as text spans, strings like "City Council" or "Gent", but do not resolve them to specific linked data resources with a fixed known URI. Two documents from different cities might both mention "City Council", yet refer to entirely different organisations. The Named Entity Linking (NEL) service closes this gap: it takes the extracted entities and attempts to find their corresponding URI in the target LOD endpoints. Currently, the service links administrative bodies and locations; support for additional entity types (e.g. mandataries, legal documents) has been investigated but is not yet implemented.
 
-**The problem**
-
-Entity linking against a SPARQL-based knowledge graph is fundamentally different from a simple database lookup. The entity label as it appears in the decision text may not match the label stored in the triplestore (e.g. names can appear in different languages, as abbreviations, or informal variants) and the same label can refer to different resources depending on context: "City Council" in a Ghent decision points to a different URI than "City Council" in a Bruges decision. Resolving these ambiguities requires combining the text label with contextual clues –such as the location of the governing body, the administrative level, and the broader document context– and translating all of that into the correct SPARQL query against the correct endpoint. This makes entity linking a problem that benefits from the flexibility of a language model rather than a fixed set of search rules.
-
-
-
-**Architecture: agentic LLM with MCP**
-
 The NEL service is built as a FastAPI application that integrates a [LangChain](https://www.langchain.com/)-based agent with a Model Context Protocol (MCP) server. The architecture is designed around one central insight: writing correct SPARQL queries against an unfamiliar schema requires both knowledge of the SPARQL language and understanding of the target database's class hierarchy, property names, and naming conventions. Rather than hard-coding queries for each entity type –which would be brittle and difficult to extend– the service delegates query construction to an LLM, augmented with schema context retrieved from a vector knowledge base (i.e. RAG).&#x20;
-
-MCP is the mechanism that gives the agent its tools. Instead of hard-wiring capabilities into the agent, the protocol defines a set of callable tools with clear inputs and outputs; the LLM decides when to use them, allowing it to actively interact with its environment –searching for schema context, executing queries, resolving locations– rather than just generating text.
-
-The service consists of four core components:
 
 * **FastAPI application:** Serves as the entry point. It exposes the `/delta` webhook endpoint through which the delta notifier triggers processing of newly scheduled entity linking tasks. When a delta arrives, the service polls the triplestore for tasks with status "scheduled", picks them up, and processes them asynchronously. The MCP server is mounted directly into the application routing (`/mcp`), making it accessible to both the internal agent and external clients.
 * **LangChain agent:** A tool-calling agent that receives a structured request (containing entity class, entity label, and location) and autonomously determines how to find the corresponding URI. The agent supports multiple LLM providers (OpenAI, Mistral, Ollama) and returns a structured `SparqlResponse` containing the matched URI, its label, and the reasoning behind the selection.
 * **MCP server:** Exposes a standardised set of tools to the agent following the Model Context Protocol. Three tools are central to the linking flow:
   * `search_sparql_docs`: retrieves relevant SPARQL examples and schema definitions from the vector knowledge base, giving the LLM the context it needs to construct a syntactically and semantically correct query.
-  * `execute_sparql_query`: validates the LLM-generated SPARQL query against the known schema (using the [sparql\_llm](https://pypi.org/project/sparql-llm/) library), fixes minor issues automatically, and executes the query against the target LOD endpoint. If validation fails, the error is returned to the agent so it can refine and retry. After three retries the agent stops and the entity remains unlinked.&#x20;
+  * `execute_sparql_query`: validates the LLM-generated SPARQL query against the known schema (using the [sparql\_llm](https://pypi.org/project/sparql-llm/) library), fixes minor issues automatically, and executes the query against the target LOD endpoint. If validation fails, the error is returned to the agent so it can refine and retry. After three retries the agent stops and the entity remains unlinked.
   * `search_location`**:** resolves a location string to structured geographic information via a Nominatim lookup, returning precise coordinates along with contextual details such as the municipality, region, and neighbourhood.
 * **Knowledge base:** A vector database ([Qdrant](https://qdrant.tech/) in production, in-memory for development) storing VOID shapes (schema definitions describing available classes and properties) and example SPARQL queries for the target endpoints. Loaded from configuration files at initialisation, embedded using embeddinggemma via Ollama, and indexed. When the agent calls `search_sparql_docs`, the knowledge base returns the most relevant documents by cosine similarity, giving the LLM the precise schema context it needs to write a correct query for the entity type at hand.
-
-
-
-**Execution flow**
-
-The end-to-end flow for linking a single entity proceeds as follows:
-
-<figure><img src="../../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces2Fuploads2FUC0.0_Entity_Linking_Service.drawio.png" alt=""><figcaption></figcaption></figure>
 
 1. A delta notification arrives, signalling that a new entity linking task has been scheduled in the triplestore.
 2. The service picks up the task and transitions its status from "scheduled" to "busy".
 3. The task's input is fetched from the triplestore: the NER annotation containing the entity class, label, and optionally a spatial reference (`dct:spatial`).
 4. The entity class, label, and location are passed to the LangChain agent as a structured request.
-5. The agent selects a linking strategy based on entity type.&#x20;
-   1. For administrative bodies, it calls `search_sparql_docs` to retrieve schema definitions and example queries, uses this context to generate a SPARQL query targeting the appropriate LOD endpoint, then calls `execute_sparql_query` to validate and run it –refining and retrying if the query fails, up to three times.&#x20;
+5. The agent selects a linking strategy based on entity type.
+   1. For administrative bodies, it calls `search_sparql_docs` to retrieve schema definitions and example queries, uses this context to generate a SPARQL query targeting the appropriate LOD endpoint, then calls `execute_sparql_query` to validate and run it –refining and retrying if the query fails, up to three times.
    2. For locations, it calls `search_location` directly, which performs a Nominatim lookup and returns structured geographic information without involving SPARQL.
 6. Once the agent has identified the best matching URI, it returns a `SparqlResponse` with the URI, label, and reasoning.
 7. The service creates a new `oa:Annotation` in the triplestore, with an `oa:hasBody` pointing to a new `rdf:Statement` that asserts `skos:exactMatch` between the extracted entity and the found URI.
 8. The task transitions to "success" and its results container is written to the triplestore, making the output available to the job controller for any subsequent pipeline steps.
 
+The services used to realize Named Entity Linking are shown in the figure below:
 
+<figure><img src="../../.gitbook/assets/lokale-bron-architecture-NEL.jpg" alt=""><figcaption></figcaption></figure>
 
-**Why this approach**
+In this image, services are shown as rectangles, where core services are marked with a bold C. Communication between services happens through HTTP requests and are shown as arrows from the sender to the recipient. Delta messages are also such HTTP requests, but those are shown as dashed arrows. Databases are shown as cylinders.
 
-The agentic architecture handles a problem that does not lend itself to a single deterministic query strategy. Different entity types require different lookup approaches, and even within a single type the query may need adjustment depending on how the entity is described in the source text. An LLM-based agent handles this naturally: if a strict exact-match query returns nothing, the agent can broaden the search with a regex or relaxed filter, guided by schema context from the knowledge base. A fixed set of hand-written queries would require manual maintenance for every new entity type, endpoint, or naming convention encountered.
+Core services are described in the general architecture and will not be repeated below. Only the search service will be highlighted again to describe the index holding the organization data.
+
+**Named Entity Linking Service**
+
+This service performs the logic necessary to link entities discovered by the Named Entity Recognition service to the official URI of the discovered entities. It is informed by the deltanotifier about named entity linking tasks and picks them up sequentially from the mu-authorization SPARQL endpoint. It receives the discovered entity type and the text of the entity from the results of the named entity recognition task. It uses the local authority URI that was configured when the enrichment job was created as an additional filter when linking entities.
+
+Entities of the type 'Location' are searched for in the nominatim service, with the name of the local authority (e.g. Bamberg, Freiburg or Gent) as additional context. This results in an `rdf:Statement` that links the original location using `skos:exactMatch` to an openstreetmap uri, e.g. `https://www.openstreetmap.org/way/37189488`. It also ensures stores the `locn:geometry` returned by the nominatim service with the original `dct:Location` entity discovered by the NER service.
+
+Entities of the type 'Organization' are searched for in the mu-search service using fuzzy search, again filtered so only organizations linked to the local authority of the job are returned. The highest match is selected as the entity to link to using an `rdf:Statement` linking the original Organization to the found Organization with `skos:exactMatch`.
+
+We noticed that the nominatim search sometimes could take a while, and that some locations often were reused in different decisions. To speed up the linking of locations, we added a LRU cache to the Named Entity Linking service that stored the 1024 most recently used nominatim lookup results.
+
+**Search**
+
+The search service contains an index that links `org:Organizations` to the local authority they belong to. It is informed by the delta notifier regarding changes in the database and if an update happens to an organization, it updates this index in elastic search. It also exposes a search endpoint to find Organizations in this index using fuzzy search on the organization's name.
+
+**Nominatim**
+
+The Nominatim service is an off the shelf docker container that is configured with open streetmap data and that provides an API to lookup a location using a text search. It returns a link to the openstreetmap description of the location and the geometry of the location as [geoJSON](https://geojson.org/). This is then transformed to the [WKT format](https://libgeos.org/specifications/wkt/) and stored as the value for the `locn:geometry` of the original entity discovered by the Named Entity Linking.
 
 ### Other explored AI components (and why not)
 
-n/a
+We originally tried an Agentic AI approach for Named Entity Linking because entity linking against a SPARQL-based knowledge graph is fundamentally different from a simple database lookup. The entity label as it appears in the decision text may not match the label stored in the triplestore (e.g. names can appear in different languages, as abbreviations, or informal variants) and the same label can refer to different resources depending on context: "City Council" in a Ghent decision points to a different URI than "City Council" in a Bruges decision. Resolving these ambiguities requires combining the text label with contextual clues, such as the location of the governing body, the administrative level, and the broader document context, and translating all of that into the correct SPARQL query against the correct endpoint. This makes entity linking a problem that benefits from the flexibility of a language model rather than a fixed set of search rules.
+
+We explored the idea of using an Agentic AI approach for named entity linking. In this approach, entity linking was performed by a mistral-medium LLM with an MCP (Model Context Protocol) server that allows the LLM to make use of three tools:
+
+* `search_sparql_docs`: retrieves relevant SPARQL examples and schema definitions from the vector knowledge base, giving the LLM the context it needs to construct a syntactically and semantically correct query.
+* `execute_sparql_query`: validates the LLM-generated SPARQL query against the known schema (using the sparql\_llm library), fixes minor issues automatically, and executes the query against the target LOD endpoint. If validation fails, the error is returned to the agent so it can refine and retry. After three retries the agent stops and the entity remains unlinked.
+* `search_location`: resolves a location string to structured geographic information via a Nominatim lookup, returning precise coordinates along with contextual details such as the municipality, region, and neighbourhood.
+
+Schematically, this is represented in the following figure:
+
+<figure><img src="../../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces2Fuploads2FUC0.0_Entity_Linking_Service.drawio.png" alt=""><figcaption></figcaption></figure>
+
+However, we noticed that this resulted in quite undeterministic behaviour of the NEL service. The queries performed by the service were quite erratic and the LLM even consulted SPARQL endpoints that didn't have anything to do with the project (e.g. the [dbpedia](https://www.dbpedia.org/) SPARQL endpoint). As a result, the service took much longer than anticipated to find the links for entities. We scrapped this approach and replaced it by the non-AI approach above to make the service more deterministic and faster.
+
+This may reduce the number of entities that we can find true URIs for in the named entity linking phase, but we preferred predictability and performance over potentially discovering more links. Especially given that these links may not be trustworthy given that they can result from SPARQL endpoints that we didn't approve the contens of.
 
 ## Final UI design (and why) (if any)
 

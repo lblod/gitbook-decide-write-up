@@ -49,7 +49,7 @@ See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipe
 See the [UC0.1 Policy Impact Report glossary](write-up-uc0.1-policy-impact-report.md#glossary) for definitions of System prompt
 {% endhint %}
 
-<table><thead><tr><th width="172.3984375">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>ANN (Approximate Nearest-Neighbour) search</td><td>The technique a vector database uses to find similar vectors efficiently. <em>Approximate</em> means it sacrifices a small amount of precision in exchange for searching millions of vectors in milliseconds instead of seconds. Used by UC2's search service to find document vectors close to the embedded question.</td></tr><tr><td>Grounding</td><td>The constraint that an LLM's answer must be derived from specific provided source documents, rather than from its general training knowledge. In UC2, grounding is enforced through the system prompt, which instructs the LLM to answer only from the retrieved documents and to acknowledge when none are relevant.</td></tr><tr><td>Inference</td><td>Running a trained model on new data to produce an output –distinct from training. <em>Local inference</em> means running the model on a self-hosted server (e.g. via Ollama) rather than calling an external API; this avoids per-token costs and external data egress but may have higher latency. Hosted APIs (Mistral, OpenAI) typically offer lower latency but incur per-token costs.</td></tr><tr><td>Latency</td><td>The delay between sending a request to an AI model and receiving its response. In DECIDe, latency is a key factor when choosing between self-hosted models (e.g. via Ollama) and external hosted APIs: hosted APIs tend to respond faster but involve external data transfer and per-call or per-token costs, while self-hosted models keep data local but may increase latency.</td></tr><tr><td>Provider-agnostic / Vendor lock-in</td><td><p>A design in which the LLM provider can be swapped –Mistral, OpenAI, Ollama– without code changes. UC2 achieves this through LangChain's unified interface; switching providers is a configuration change, not a development effort.</p><p>The opposite is <em>vendor lock-in</em>, where the application is tied to one provider's specific API.</p></td></tr><tr><td>Relevance score / Relevance threshold</td><td>When a vector search returns documents, each result usually comes with a similarity score indicating how closely it matches the query. A <em>relevance threshold</em> is a minimum score below which results are discarded as too weak to be useful. </td></tr><tr><td>Semantic search</td><td>A search approach that finds documents based on meaning rather than exact keyword overlap. Implemented in UC2 via vector similarity between the embedded question and pre-embedded document content.</td></tr><tr><td>Stateless service</td><td>A service that keeps no memory of past requests between calls. Each request is handled independently, making the service easy to scale and easy to replace, but meaning every question is treated in isolation. UC2 is deliberately stateless, which is why follow-up questions within the same conversation are not supported in the current implementation.</td></tr><tr><td>Top-N</td><td>The number of documents to retrieve from the vector search and pass to the LLM as context. UC2 defaults to 3. Higher values give the LLM more context but also introduce weaker matches that may dilute or mislead the answer.</td></tr><tr><td>Embedding Vector</td><td>An embedding vector is like a <strong>mathematical fingerprint</strong> for a word, sentence, or image. It turns complex information into a format that computers can easily compare, analyze, and use to find patterns or similarities. Pieces of text that are similar in meaning also have similar embedding vectors, so it's easy to compare them mathematically.</td></tr></tbody></table>
+<table><thead><tr><th width="172.3984375">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>ANN (Approximate Nearest-Neighbour) search</td><td>The technique a vector database uses to find similar vectors efficiently. <em>Approximate</em> means it sacrifices a small amount of precision in exchange for searching millions of vectors in milliseconds instead of seconds. Used by UC2's search service to find document vectors close to the embedded question.</td></tr><tr><td>Grounding</td><td>The constraint that an LLM's answer must be derived from specific provided source documents, rather than from its general training knowledge. In UC2, grounding is enforced through the system prompt, which instructs the LLM to answer only from the retrieved documents and to acknowledge when none are relevant.</td></tr><tr><td>Inference</td><td>Running a trained model on new data to produce an output –distinct from training. <em>Local inference</em> means running the model on a self-hosted server (e.g. via Ollama) rather than calling an external API; this avoids per-token costs and external data egress but may have higher latency. Hosted APIs (Mistral, OpenAI) typically offer lower latency but incur per-token costs.</td></tr><tr><td>Latency</td><td>The delay between sending a request to an AI model and receiving its response. In DECIDe, latency is a key factor when choosing between self-hosted models (e.g. via Ollama) and external hosted APIs: hosted APIs tend to respond faster but involve external data transfer and per-call or per-token costs, while self-hosted models keep data local but may increase latency.</td></tr><tr><td>Provider-agnostic / Vendor lock-in</td><td><p>A design in which the LLM provider can be swapped –Mistral, OpenAI, Ollama– without code changes. UC2 achieves this through LangChain's unified interface; switching providers is a configuration change, not a development effort.</p><p>The opposite is <em>vendor lock-in</em>, where the application is tied to one provider's specific API.</p></td></tr><tr><td>Relevance score / Relevance threshold</td><td>When a vector search returns documents, each result usually comes with a similarity score indicating how closely it matches the query. A <em>relevance threshold</em> is a minimum score below which results are discarded as too weak to be useful.</td></tr><tr><td>Semantic search</td><td>A search approach that finds documents based on meaning rather than exact keyword overlap. Implemented in UC2 via vector similarity between the embedded question and pre-embedded document content.</td></tr><tr><td>Stateless service</td><td>A service that keeps no memory of past requests between calls. Each request is handled independently, making the service easy to scale and easy to replace, but meaning every question is treated in isolation. UC2 is deliberately stateless, which is why follow-up questions within the same conversation are not supported in the current implementation.</td></tr><tr><td>Top-N</td><td>The number of documents to retrieve from the vector search and pass to the LLM as context. UC2 defaults to 3. Higher values give the LLM more context but also introduce weaker matches that may dilute or mislead the answer.</td></tr><tr><td>Embedding Vector</td><td>An embedding vector is like a <strong>mathematical fingerprint</strong> for a word, sentence, or image. It turns complex information into a format that computers can easily compare, analyze, and use to find patterns or similarities. Pieces of text that are similar in meaning also have similar embedding vectors, so it's easy to compare them mathematically.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -100,15 +100,15 @@ The underlying mechanism is a Retrieval-Augmented Generation (RAG) pipeline: the
 | Web Annotation Vocabulary (`oa:Annotation`) | [https://www.w3.org/TR/annotation-vocab/](https://www.w3.org/TR/annotation-vocab/) |
 | Simple Knowledge Organization System (SKOS) | [https://www.w3.org/TR/skos-reference/](https://www.w3.org/TR/skos-reference/)     |
 
-The core of UC2 are questions of users about LD\&L and answers that are generated by LLMs based on decisions. We based the data model on schema.org with `schema:Question` and `schema:Answer` . Next to the text (`schema:text`) of the question and answer, we also capture the full prompt to the LLM using `dct:description`. Another specific property is `ext:owningBody` to capture the municipality that is relevant for the user. This is used to filter decisions per municipality.&#x20;
+The core of UC2 are questions of users about LD\&L and answers that are generated by LLMs based on decisions. We based the data model on schema.org with `schema:Question` and `schema:Answer` . Next to the text (`schema:text`) of the question and answer, we also capture the full prompt to the LLM using `dct:description`. Another specific property is `ext:owningBody` to capture the municipality that is relevant for the user. This is used to filter decisions per municipality.
 
 <figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>Fig. 1 Questions and Answers are modelled using Schema.org</p></figcaption></figure>
 
-The answer is based on a set of decisions, ranked by confidence of being relevant. `schema:Quotation` is used to add confidence to the decision that was used. Currently, the quotation reflects the complete decision that is used as source (`oa:hasSource` ). However, this could later be extended with `oa:hasSelector` to reference a specific part of the decision that contributed to the answer. `schema:citation` is used to link the answer with the quotations.&#x20;
+The answer is based on a set of decisions, ranked by confidence of being relevant. `schema:Quotation` is used to add confidence to the decision that was used. Currently, the quotation reflects the complete decision that is used as source (`oa:hasSource` ). However, this could later be extended with `oa:hasSelector` to reference a specific part of the decision that contributed to the answer. `schema:citation` is used to link the answer with the quotations.
 
 <figure><img src="../.gitbook/assets/image (35).png" alt="" width="181"><figcaption><p>Fig. 2 Quotations are used as extension of decisions.</p></figcaption></figure>
 
-While the HVT annotates on AI annotations, in UC2 users can add a thums up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [#web-annotation-model](write-up-uc0.0-data-space/#web-annotation-model "mention").
+While the HVT annotates on AI annotations, in UC2 users can add a thums up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [write-up-uc0.0-data-space](write-up-uc0.0-data-space#web-annotation-model "mention").
 
 <figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption><p>Fig. 3: Answers can be annotated with feedback</p></figcaption></figure>
 
@@ -120,7 +120,7 @@ In general, the architectural picture of this use case is shown in the image bel
 
 <figure><img src="../.gitbook/assets/lokale-bron-architecture-UC2(3).jpg" alt=""><figcaption></figcaption></figure>
 
-In this image, services are shown as rectangles, where core services are marked with a bold **C**. Communication between services happens through HTTP requests and are shown as arrows from the sender to the recipient. Delta messages are also such HTTP requests, but those are shown as dashed arrows. Databases are shown as cylinders.&#x20;
+In this image, services are shown as rectangles, where core services are marked with a bold **C**. Communication between services happens through HTTP requests and are shown as arrows from the sender to the recipient. Delta messages are also such HTTP requests, but those are shown as dashed arrows. Databases are shown as cylinders.
 
 Apart from the search and elastic search services, and a brief recap about the contents of the triplestore, all core services were described in the general architecture. All other services will be described in the following sections.
 
@@ -198,7 +198,7 @@ Request:
 ```
 {% endcode %}
 
-The response returns the generated natural-language answer and the source decisions that were passed to the LLM, each carrying its URI, title, and truncated content:&#x20;
+The response returns the generated natural-language answer and the source decisions that were passed to the LLM, each carrying its URI, title, and truncated content:
 
 Response:
 
@@ -225,7 +225,7 @@ This is the web application hosting the web interface that the user can interact
 
 **GitHub:** [https://github.com/lblod/frontend-decide-question-answering](https://github.com/lblod/frontend-decide-question-answering)
 
-### Final AI components&#x20;
+### Final AI components
 
 Answer generation is handled by an LLM invoked through LangChain's init\_chat\_model abstraction. LangChain was chosen specifically to avoid vendor lock-in: the provider and model are controlled entirely by environment variables, and switching from a self-hosted Ollama instance to a cloud provider such as Mistral AI or OpenAI requires no code changes, only a dependency addition and environment reconfiguration. The default model in development is Mistral-Nemo running on a local Ollama server. Mistral-Nemo was selected because it offers strong multilingual performance at a parameter count that is practical for self-hosted inference. For production deployments where latency and throughput requirements exceed what self-hosted inference can provide, the provider can be switched to the Mistral API or an equivalent without architectural changes.
 
@@ -241,33 +241,33 @@ The UC2 interface is designed around the familiar pattern of AI-powered chat int
 
 Common across all reference interfaces is an opening screen focused on a single action: asking a question. The UC2 interface follows this pattern and adds a local authority filter before the question field, which helps constrain retrieval to a relevant corpus. If the selected authority has provided example questions, a set of suggested prompts is also displayed, giving users a starting point without requiring them to formulate a query from scratch. This gives the users more Flexibility and Efficiency of Use (7th UX Heuristic).
 
-Once the user types or selects a question, they are taken to the next screen, where their question will appear as a speech bubble on the right, and a loading indicator on the left until the AI answer shows up. This is a very common pattern in chat interfaces.&#x20;
+Once the user types or selects a question, they are taken to the next screen, where their question will appear as a speech bubble on the right, and a loading indicator on the left until the AI answer shows up. This is a very common pattern in chat interfaces.
 
-Four important decisions were made when designing this interface:&#x20;
+Four important decisions were made when designing this interface:
 
 1. Validating responses (HV)
-2. Not allowing continuous conversations&#x20;
+2. Not allowing continuous conversations
 3. What to do when AI cannot find a relevant answer
 4. Language of the interface
 
 #### Validating responses (HV)
 
-To comply with the Human Validation requirement shared across DECIDe use cases, the same thumbs up/down system used in UC0.0 is incorporated directly into the interface.&#x20;
+To comply with the Human Validation requirement shared across DECIDe use cases, the same thumbs up/down system used in UC0.0 is incorporated directly into the interface.
 
-Every response to a question includes a sources section at the bottom, listing the decisions used to generate that answer. Each decision can be clicked on and read separately in an external tab. Each decision can also be validated with a thumbs up/down to indicate whether that decision is relevant and used correctly.&#x20;
+Every response to a question includes a sources section at the bottom, listing the decisions used to generate that answer. Each decision can be clicked on and read separately in an external tab. Each decision can also be validated with a thumbs up/down to indicate whether that decision is relevant and used correctly.
 
 A second validation at the bottom of the response captures the user's judgement on the overall answer.
 
-#### Not allowing continuous conversations&#x20;
+#### Not allowing continuous conversations
 
 UC2 deliberately does not support multi-turn conversational interaction. Each request is processed statelessly, with no context carried from a previous exchange into the system prompt. Rather than build conversational state management within the project scope, the team directed that capacity toward higher-priority features. Two navigation buttons cover the most common follow-up needs without requiring multi-turn architecture:
 
-* **Ask another question**: The user can use this to navigate back to the first screen, and type a new question; their local authority remains selected.&#x20;
-* **Update question**: This can be used if the user wished to update their previously typed question with more detail to get a more relevant answer, as a compromise for not allowing follow-up and clarification questions. It takes the user back to the previous page, but this time with their question visible inside the text field.&#x20;
+* **Ask another question**: The user can use this to navigate back to the first screen, and type a new question; their local authority remains selected.
+* **Update question**: This can be used if the user wished to update their previously typed question with more detail to get a more relevant answer, as a compromise for not allowing follow-up and clarification questions. It takes the user back to the previous page, but this time with their question visible inside the text field.
 
 #### <mark style="background-color:$warning;">What to do when no relevant answer is found</mark>
 
-An LLM will always generate a response, even when the retrieved documents are not relevant to the question. <mark style="background-color:$warning;">We can numerically gauge the relevance rate</mark> and decided on a threshold of relevance. If this threshold is not met, the user will get an error message (9th UX Heuristic: Help Users Recognise, Diagnose, and Recover from Errors):&#x20;
+An LLM will always generate a response, even when the retrieved documents are not relevant to the question. <mark style="background-color:$warning;">We can numerically gauge the relevance rate</mark> and decided on a threshold of relevance. If this threshold is not met, the user will get an error message (9th UX Heuristic: Help Users Recognise, Diagnose, and Recover from Errors):
 
 > Sorry, we were unable to find any relevant information in any decision. Try rewording your question or giving more details to help us find the relevant information for you.
 
@@ -312,4 +312,3 @@ A retrieved decision may be an amendment of an earlier one, making it contextual
 Link to github: [https://github.com/semantic-ai/decide-question-answering](https://github.com/semantic-ai/decide-question-answering)
 
 Link to front-ends // Link to dev/test/prod (if any)
-
