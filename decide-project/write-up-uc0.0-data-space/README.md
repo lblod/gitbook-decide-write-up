@@ -141,9 +141,9 @@ The DECIDe application is built as a [semantic.works application](https://semant
 1. core services that provide functionality that is required in many different application; and
 2. custom services that provide application-specific functionality.
 
-The diagram below illustrates how these services interact with each other. The boxes represent services, with the core services in the middle and left-hand side. The greyed "custom-service" box illustrates how a custom service is typically wired into an application. Note, that applications typically will contain many different custom services, each specialized to their own specific goal. The arrows in the diagram represent how services communicate with each other using HTTP messages, the arrows point from the sender of the HTTP message to its receiver.
+The core services are shown in the diagram below. Boxes are services and arrows are HTTP messages being sent, the arrows point from the sender of the HTTP message to its receiver. The virtuoso triplestore is shown as a cylinder. 
 
-The core services are shown in the diagram below. Boxes are services and arrows are HTTP messages being sent. The virtuoso triplestore is shown as a cylinder. The image also shows a `custom-service`, this is because any other service added in the context of a semantic.works project (like in DECIDe) works in the same way: it may receive HTTP calls dispatched from the dispatcher, performs SPARQL queries through mu-authorization and/or be informed of changes through delta notifications from the delta-notifier.
+The image also shows a `custom-service`, this is because any other service added in the context of a semantic.works project (like in DECIDe) works in the same way: it may receive HTTP calls dispatched from the dispatcher, performs SPARQL queries through mu-authorization and/or be informed of changes through delta notifications from the delta-notifier.
 
 <figure><img src="../../.gitbook/assets/lokale-bron-architecture-core-components (1).jpg" alt=""><figcaption></figcaption></figure>
 
@@ -171,9 +171,9 @@ GitHub: [https://github.com/mu-semtech/mu-dispatcher](https://github.com/mu-semt
 
 #### Delta notifier
 
-An update to the database may have consequences elsewhere in the application. The delta notifier is used to inform services of such changes
+An update to the database may have consequences elsewhere in the application. The delta notifier is used to inform services of such changes.
 
-The delta notifier is informed by the mu-authorization service of changes in the database. The delta notifier can be configured to forward certain changes, called deltas, to specific services. Each delta essentially consists of a collection of inserts and delete statements representing which triples have been added to or removed from graphs the database. Based on its configuration the delta notifier determines for each delta which services should be informed and sends out the appropriate notifications containing the relevant changes.
+The delta notifier is informed by the mu-authorization service of changes in the database. The delta notifier can be configured to forward certain changes, called 'deltas' or 'delta messages', to specific services. Each such delta message essentially consists of a collection of insert and delete statements representing which triples have been added to or removed from specific graphs the database. Based on its configuration the delta notifier determines for each delta message which services should be informed and sends out the appropriate notifications containing the relevant changes.
 
 Github: [https://github.com/mu-semtech/delta-notifier](https://github.com/mu-semtech/delta-notifier)
 
