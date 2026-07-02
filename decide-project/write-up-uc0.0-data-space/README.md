@@ -124,43 +124,35 @@ Another feature of the Web Annotation Model is the ability to refer to a specifi
 
 The DECIDe data space is organised around four layers that build on one another.
 
-**Access and federation** is the outermost layer: it governs how the data space is discovered, how participants are identified, and what they are permitted to do. The DCAT catalogue makes datasets and distributions findable; the Data Space Protocol (DSP) governs how exchange requests are initiated and negotiated; the Authorization Policies Store (ODRL) defines access rules in machine-readable format; and the Universal Trust Data Registry (VC) manages participant identity. The Repeatable Data Plan sits alongside these components, covering data management and planning at the data space level.
+**Access and federation** is the outermost layer: it governs how the data space is discovered, how participants are identified, and what they are permitted to do. The DCAT catalogue makes datasets and distributions findable and the Authorization Policies Store (ODRL) defines access rules in machine-readable format. Specifically for the DECIDe project, a DSP connector was developed to provide support for the Data Space Protocol and a Verifiable credentials login service with built in Trusted Issuer Registry was built to provide additional ways to authenticate users. The Repeatable Data Plan sits alongside these components, covering data management and planning at the data space level.
 
 **Data ingestion** is where raw LD\&L from the three pilot cities enters the system and is brought to a common representation. The Pipelines infrastructure harvests decisions from LBLOD/OSLO (Ghent), OParl (Freiburg), and PDF documents (Bamberg, and supplementarily the other cities), and normalises each to the European Legislation Identifier (ELI) standard. The result is a shared corpus of formal decisions in the triplestore.
 
-**Data enrichment** operates on top of the normalised corpus to produce structured, queryable annotations. The AI enrichment pipelines generate `oa:Annotation` triples linking decisions to policy concepts, geographic entities, and temporal periods. The Human Validation (HV) layer provides domain experts with per-use-case interfaces to review and vote on these annotations, adding a human-endorsed signal layer without modifying the underlying data.
+**Data enrichment** operates on top of the normalised corpus to produce structured, queryable annotations. The AI enrichment pipelines generate `oa:Annotation` triples linking decisions to policy concepts, geographic entities, and temporal periods. The Human Validation (HV) layer provides users with per-use-case interfaces to review and vote on these annotations, adding a human-endorsed signal layer without modifying the underlying data.
 
 **Concrete applications** are built on top of the enriched decisions. UC0.1 delivers a Policy Impact Report visualising how local decisions across the three cities relate to the UN Sustainable Development Goals. UC1 uses the NER pipeline and codelist mapping to identify and classify decisions concerning restricted mobility zones. UC2 provides an AI-powered smart search interface over the full LD\&L corpus.
 
-The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each component write-up documents the architecture of its own layer in detail; this section provides the single end-to-end view that situates all components in relation to one another.
-
-_<mark style="background-color:$warning;">Architecture drawing of all components</mark>_
-
-_<mark style="background-color:$warning;">TODO update or remove depending on the decision in the comment:</mark>_
-
-<figure><img src="../../.gitbook/assets/lokale-bron-architecture-general-architecture(1).jpg" alt=""><figcaption></figcaption></figure>
+The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each use case  write-up documents the architecture of its own layer in detail, adding specialized services to the base architecture; this section will continue to describe the core micro-services that will be reused across all use cases.
 
 ### Core semantic.works services
 
-The DECIDe application is built as a [semantic.works application](https://semantic.works/). As such the application consists of a set of services that collaborate to achieve application's functionality. A "service" in a semantic.works application is a piece of software with clearly defined responsibilities. In other words, each service executes a (small) part the functionality provided by the application as a whole. A semantic.works application essentially consists out of two kinds of services:
+The DECIDe application is built as a [semantic.works application](https://semantic.works/). As such the application consists of a set of micro-services that collaborate to achieve application's functionality. A "service" in a semantic.works application is a piece of software with clearly defined responsibilities. In other words, each service executes a (small) part the functionality provided by the application as a whole. A semantic.works application essentially consists out of two kinds of services:
 
-1. core services that provide functionality that is required in every application; and
+1. core services that provide functionality that is required in many different application; and
 2. custom services that provide application-specific functionality.
 
-The diagram below illustrates how these services interact with each other. The boxes represent services, with the core services in the middle and left-hand side. The greyed "custom-service" box illustrates how a custom service is typically wired into an application. Note, that applications typically will contain many different custom services. The arrows in the diagram represent how services communicate with each other using HTTP messages.
+The core services are shown in the diagram below. Boxes are services and arrows are HTTP messages being sent, the arrows point from the sender of the HTTP message to its receiver. The virtuoso triplestore is shown as a cylinder. 
 
-As such it uses the following core semantic.works services. The core services are shown in the diagram below. Boxes are services and arrows are HTTP messages being sent. The virtuoso triplestore is shown as a cylinder. The image also shows a `custom-service`, this is because any other service added in the context of a semantic.works project (like in DECIDe) works in the same way: it may receive HTTP calls dispatched from the dispatcher, performs SPARQL queries through mu-authorization and/or be informed of changes through delta notifications from the delta-notifier. Some services may have other capabilities and those will be noted specifically (e.g. AI services or services that need Elastic Search capabilities).
+The image also shows a `custom-service`, this is because any other service added in the context of a semantic.works project (like in DECIDe) works in the same way: it may receive HTTP calls dispatched from the dispatcher, performs SPARQL queries through mu-authorization and/or be informed of changes through delta notifications from the delta-notifier.
 
 <figure><img src="../../.gitbook/assets/lokale-bron-architecture-core-components (1).jpg" alt=""><figcaption></figcaption></figure>
 
-In summary, the `identifier` is the service through which messages arrive at the application. The `dispatcher` is responsible to determine the appropriate service to which to forward each message. Each service in turn, the `mu-resources` and `custom-service` in the diagram, can retrieve data from the `triplestore` , which is subject to authorisation rules enforced by `mu-authorization` . The `delta-notifier` is responsible to notify services about data changes these services might be interested in. Finally, `migrations` provides an easy way for the developers or maintainers of an application to add or modify data in the `tripelstore`. The remainder of this section will zoom into each of the core services in more detail. The custom services that are part of the DECIDe application will be discussed in the appropriate write-ups.
+In summary, the `identifier` is the service through which messages arrive at the application. The `dispatcher` is responsible to determine the appropriate service to which to forward each message. Each service in turn, the `mu-resources` and `custom-service` in the diagram, can retrieve data from the `triplestore` , which is subject to authorisation rules enforced by `mu-authorization` . The `delta-notifier` is responsible to notify services about data changes these services might be interested in. Finally, `migrations` provides an easy way for the developers or maintainers of an application to add or modify data in the `triplestore`. The remainder of this section will zoom into each of the core services in more detail. The custom services that are part of the DECIDe application will be discussed in the appropriate write-ups.
 
 #### Identifier
 
 The **mu-identifier** is an HTTP proxy used to identify sessions for incoming messages so that other services can make use of this information. All external requests pass through this service, and its main responsibility is to identify which user is sending requests.\
 The identifier itself is not connected to the database, but reasons about the data it receives and forwards it.
-
-In theory, another service could be used that functions as a proxy, but in practice this is not done.
 
 The mu-identifier is responsible for:
 
@@ -173,23 +165,21 @@ GitHub: [https://github.com/mu-semtech/mu-identifier](https://github.com/mu-semt
 
 #### Dispatcher
 
-This service is used to dispatch requests to appropriate services based on the path of incoming requests.
+This service is used to dispatch requests to appropriate services based on the properties of incoming requests. The most important property used to determine the target service is the request's path, but other properties like the accept header and the subdomain can also be used, depending on the configuration used in the application.
 
 GitHub: [https://github.com/mu-semtech/mu-dispatcher](https://github.com/mu-semtech/mu-dispatcher)
 
 #### Delta notifier
 
-An update to the database may have consequences elsewhere in the application. For this, the delta notifier is used.
+An update to the database may have consequences elsewhere in the application. The delta notifier is used to inform services of such changes.
 
-The delta notifier is informed by the mu-authorization service of changes in the database. The delta notifier can be configured to forward certain changes, called deltas, to specific services. Each delta essentially consists of a collection of inserts and delete statements representing which triples have been added or removed from the database. Based on its configuration the delta notifier determines for each delta which services should be informed and sends out the appropriate notifications containing the relevant changes.
-
-The delta notifier is also a core component of semantic.works. There are essentially no real alternatives within this architecture.
+The delta notifier is informed by the mu-authorization service of changes in the database. The delta notifier can be configured to forward certain changes, called 'deltas' or 'delta messages', to specific services. Each such delta message essentially consists of a collection of insert and delete statements representing which triples have been added to or removed from specific graphs the database. Based on its configuration the delta notifier determines for each delta message which services should be informed and sends out the appropriate notifications containing the relevant changes.
 
 Github: [https://github.com/mu-semtech/delta-notifier](https://github.com/mu-semtech/delta-notifier)
 
 #### Resources
 
-Resources provides frontend developers with a way to perform [JSON:API](https://jsonapi.org/) CRUD operations on a SPARQL endpoint. This allows them to work with a much more familiar model without needing deep knowledge of linked data. It's mainly used to interact with frontend services and not really meant as a way to exchange data with external partners (backend for frontend pattern).
+Resources, also called mu-resources, provides frontend developers with a way to perform [JSON:API](https://jsonapi.org/) CRUD operations on a SPARQL endpoint. This allows them to work with a much more familiar model without needing deep knowledge of linked data. It's mainly used to interact with frontend services and not really meant as a way to exchange data with external partners (backend for frontend pattern).
 
 GitHub: [https://github.com/mu-semtech/mu-cl-resources](https://github.com/mu-semtech/mu-cl-resources)
 
@@ -197,9 +187,9 @@ GitHub: [https://github.com/mu-semtech/mu-cl-resources](https://github.com/mu-se
 
 The Mu-authorization service, a.k.a. sparql-parser, a.k.a **SPARQL Endpoint Authorization Service (SEAS)** is an authorization layer that rewrites queries that are send to the database by taking the user’s permissions into account. Based on preconfigured rights, the service decides which graphs an update queries may write to, and from which graphs select queries may read.
 
-The SEAS component recently underwent a revision that greatly increases efficiency. The way configuration is done has changed. It is strongly recommended to use only the new **“sparql-parser”** implementation.
+The SEAS service recently underwent a revision that greatly increases efficiency. The way configuration is done has changed. It is strongly recommended to use only the new **“sparql-parser”** implementation.
 
-Mu-authorization received additional features in the scope of the DECIDe project. This is because the component is receiving support for ODRL to define its authorization rules in the scope of DECIDe, the goal is to work towards more interoperability with other data spaces. While this goal is likely too lofty to be solved by simply adding ODRL as a configuration language, it will at least unlock a more common configuration language that will be understood outside of the LBLOD sphere as well, which is a nice first step.
+Mu-authorization received additional features in the scope of the DECIDe project: the service received support for ODRL to define its authorization rules in the scope of DECIDe, the goal is to work towards more interoperability with other data spaces. While this goal is likely too lofty to be solved by simply adding ODRL as a configuration language, it will at least unlock a more common configuration language that will be understood outside of the LBLOD sphere as well, which is a nice first step.
 
 GitHub old: [https://github.com/mu-semtech/mu-authorization](https://github.com/mu-semtech/mu-authorization)
 
@@ -207,15 +197,15 @@ GitHub new: [https://github.com/mu-semtech/sparql-parser](https://github.com/mu-
 
 #### Triplestore (Virtuoso)
 
-The triplestore provides a SPARQL endpoint to manage the linked data of the source. It is _the_ core component of a local source; all other components will make use of this database.\
-Note: the triplestore itself has no built-in security for reading or writing triples. For this, we have the SEAS layer (see above).
+The triplestore provides a SPARQL endpoint to manage the linked data of the source. It is the heart of the data space, all other services will make use of this database.\
+Note: the triplestore itself has no built-in security for reading or writing triples. Because of this all services always access the triplestore through mu-authorization (see above).
 
 GitHub: [https://github.com/redpencilio/docker-virtuoso](https://github.com/redpencilio/docker-virtuoso)
 
-In general, the open-source edition of virtuoso is the triplestore of choice for semantic.works projects and in DECIDe, this is also the triplestore chosen. In theory, there are several alternatives for the triplestore and its corresponding SPARQL endpoint, e.g., Apache Jena, GraphDB, … Only Virtuoso is truly “battle tested” in production environments. As long as the endpoint is SPARQL-compliant (spec: [https://www.w3.org/TR/sparql11-query/](https://www.w3.org/TR/sparql11-query/)) the environment _should_ work, but in practice every triplestore appears to have small “peculiarities” where they slightly deviate from the spec. So if you choose an alternative, make sure to thoroughly test it with a technical team that has sufficient know-how.
+In general, the open-source edition of virtuoso is the triplestore of choice for semantic.works projects and in DECIDe, this is also the triplestore chosen. In theory, there are several alternatives for the triplestore and its corresponding SPARQL endpoint, e.g., Apache Jena, GraphDB, QLever, … Only Virtuoso is truly “battle tested” in production environments. As long as the endpoint is SPARQL-compliant (spec: [https://www.w3.org/TR/sparql11-query/](https://www.w3.org/TR/sparql11-query/)) the environment _should_ work, but in practice every triplestore appears to have small “peculiarities” where they slightly deviate from the specification. So if you choose an alternative, make sure to thoroughly test it with a technical team that has sufficient know-how.
 
 #### Migrations
 
-The migrations component allows the definition of migration files to modify the contents of the triplestore. This can be done using either SPARQL queries or by directly inserting turtle files into specified graphs.
+The migrations service allows the definition of migration files to modify the contents of the triplestore. This can be done using either SPARQL queries or by directly inserting turtle files into specified graphs. The migrations service is the only service that writes directly to the triplestore, mostly because mu-authorization only supports SPARQL queries and lacks support for inserting turtle files.
 
 **GitHub:** [https://github.com/mu-semtech/mu-migrations-service](https://github.com/mu-semtech/mu-migrations-service)
