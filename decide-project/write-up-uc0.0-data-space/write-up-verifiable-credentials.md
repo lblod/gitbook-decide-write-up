@@ -23,7 +23,7 @@ That being said, the aim is to extend this initial trust setup to handle two sce
 
 To address both scenarios, the proposal commits to studying and implementing (or reusing) a solution based on W3C DID and W3C Verifiable Credentials. The GAIA-X Trust Framework is cited as the closest existing reference implementation.
 
-The Universal Trust Data Registry is one of three inter-dependent Reference Architecture components that DECIDe commits to incorporating, alongside the Federation Catalogue and the Authorization Policies Store.
+The Universal Trust Data Registry is one of three inter-dependent Reference Architecture components that DECIDe commits to incorporating, alongside the Federating Catalogue and the Authorization Policies Store.
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
@@ -37,9 +37,9 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 The Universal Trust Data Registry is one of three inter-dependent components of the Reference Architecture of the DS4SSCC blueprint. It therefor is deeply linked to the following:
 
-#### Federation Catalogue (DCAT)
+#### Federating Catalogue (DCAT)
 
-The Federation Catalogue is the primary entry point for discovering trusted data in the data space. The DECIDe project aims to explore the Universal Trust Data Registry as an augmentation of the Federation Catalogue — adding W3C DID and W3C VC-based identity verification on top of the DCAT-based discovery layer. Non-public dataset distributions published in the DCAT catalogue are protected by the Universal Trust Data Registry and Authorisation Policies Store stack. The user discovers a distribution, reads its policy, and then acquires the necessary credential.\
+The Federating Catalogue is the primary entry point for discovering trusted data in the data space. The DECIDe project aims to explore the Universal Trust Data Registry as an augmentation of the Federating Catalogue — adding W3C DID and W3C VC-based identity verification on top of the DCAT-based discovery layer. Non-public dataset distributions published in the DCAT catalogue are protected by the Universal Trust Data Registry and Authorisation Policies Store stack. The user discovers a distribution, reads its policy, and then acquires the necessary credential.\
 [write-up-dcat.md](write-up-dcat.md "mention") [write-up-dsp.md](write-up-dsp.md "mention")
 
 #### Authorization Policies Store (ODRL)

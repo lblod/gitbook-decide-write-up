@@ -14,7 +14,7 @@ The intention of the DECIDe project is to build a data space connecting multiple
 
 We therefore set out to identify a standardised policy language suited to a linked-data context, evaluate the available options –with XACML 3.0 and ODRL as the main candidates– and implement the chosen language by mapping the existing access rules to it and extending sparql-parser to enforce it natively. The wanted deliverable is an **Authorization Policies Store**: a central registry of access rights, aligned with the DS4SSCC Reference Architecture, that all data space services can consume. We also scoped in describing the path towards supporting delegation of access rights –allowing one party to transfer a subset of their access to another– as a key capability for more complex multi-organisation sharing scenarios.
 
-The Authorization Policies Store is one of three inter-dependent Reference Architecture components that DECIDe must incorporate, alongside the Federation Catalogue and the Universal Trust Data Registry.
+The Authorization Policies Store is one of three inter-dependent Reference Architecture components that DECIDe must incorporate, alongside the Federating Catalogue and the Universal Trust Data Registry.
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
