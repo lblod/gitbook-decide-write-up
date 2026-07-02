@@ -146,15 +146,9 @@ ELI provides one starting date to indicate when legislation becomes applicable: 
 
 <figure><img src="../.gitbook/assets/image (33).png" alt="" width="375"><figcaption><p>Fig. 3</p></figcaption></figure>
 
-## Final architecture (and why)
+## Final architecture
 
-### Final semantic components (and why) (if any)
-
-### Other explored semantic components (and why not)
-
-### Final AI components (and why) (if any)
-
-UC1 reuses, rather than rebuilds, the AI components developed in UC0.0 (the NER and date extraction pipelines) and UC0.1 (the Codelist Mapping Tool). The UC1-specific contribution is the configuration of those components against RMZ-specific codelists and address registries.
+UC1 reuses, rather than rebuilds, the components developed in UC0.0 (the NER and date extraction pipelines) and UC0.1 (the Codelist Mapping Tool). The UC1-specific contribution is the configuration of those components against RMZ-specific codelists and address registries. 
 
 The core challenge of UC1 is to extract structured mobility information from unstructured decision text. A municipal decision that establishes a restricted mobility zone typically contains all the relevant information (what kind of restriction, where, and when) but buries it in free-text prose across different sections of the document. For the RMZ tool to surface this information, each decision needs to be analysed along three axes:
 
@@ -166,17 +160,17 @@ Each question is addressed by a specific subset of the UC0.0/UC0.1 AI pipeline:
 
 <figure><img src="../.gitbook/assets/UC1_AI_Components.drawio (1).png" alt=""><figcaption></figcaption></figure>
 
-#### Component overview
+### Component overview
 
 <table><thead><tr><th width="149.39990234375">Component</th><th width="97.8017578125">Source</th><th width="147.1510009765625">Pipeline task</th><th width="155.0670166015625">Model / Tool</th><th>Role in UC1</th></tr></thead><tbody><tr><td>Codelist Mapping</td><td>UC0.1</td><td>Named Entity Linking Service</td><td>mistral-nemo (Mistral API)</td><td>Classify decisions as RMZ-related or not</td></tr><tr><td>Named Entity Recognition</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/PedroDKE/multilingual-ner-abb">PedroDKE/multilingual-ner-abb</a> (XLM-RoBERTa)</td><td>Detect <code>LOCATION</code> and <code>DATE</code> entity spans in decision text</td></tr><tr><td>Named Entity Refinement</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/longformer-classifier-refinement-abb">svercoutere/longformer-classifier-refinement-abb</a> (Longformer)</td><td>Refine <code>LOCATION</code> into <code>impact_location</code> / <code>context_location</code>; refine <code>DATE</code> into <code>entry_date</code> / <code>expiry_date</code> / <code>validity_period</code> / etc.</td></tr><tr><td>Entity Formatting (dates)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><p><a href="https://github.com/semantic-ai/decide-dateperiod-parser">github.com/semantic-ai/decide-dateperiod-parser</a></p><p>dateperiodparser (rule-based)</p></td><td>Parse date/period text spans into standardised <code>xsd:Date</code> or <code>time:ProperInterval</code></td></tr><tr><td>Entity Formatting (locations)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/abb-dual-location-component-ner">svercoutere/abb-dual-location-component-ner</a> (XLM-RoBERTa dual-head NER)</td><td>Parse location text spans into structured address components</td></tr><tr><td>Human Validation</td><td>UC0.0 / UC0.1</td><td>n/a</td><td>n/a</td><td>Human-in-the-loop review and correction of all AI-generated annotations</td></tr></tbody></table>
 
-#### Q1: Is this decision about a Restricted Mobility Zone?
+### Q1: Is this decision about a Restricted Mobility Zone?
 
-**Which component**
+#### Which component
 
 UC1 relies on the Codelist Mapping tool developed in UC0.1. This is a general-purpose, LLM-assisted zero-shot classification tool designed to map decisions to concepts in any SKOS codelist. In UC0.1, the primary codelist is the UN Sustainable Development Goals (SDGs), where the tool maps decisions to one or more of the 17 SDG targets. For UC1, the same tool and the same classification mechanism are reused with a different codelist: the Restricted Mobility Zone codelist. The approach, its alternatives, and the evaluation results are described in the [UC0.1 zero-shot classification documentation](write-up-uc0.1-policy-impact-report.md#phase-1-cold-start-classification-zero-shot-llm).
 
-**The flattened RMZ codelist**
+#### The flattened RMZ codelist
 
 The RMZ codelist uses a flat (single-level) structure rather than a hierarchical taxonomy. All sub-types of restricted mobility zones have been consolidated into the `skos:definition` of a single `skos:Concept`:
 
@@ -190,7 +184,7 @@ The `skos:definition` of this single concept provides a non-exhaustive enumerati
 
 By including these sub-type descriptions in the concept definition, the LLM has sufficient context to recognise a broad range of mobility-restricting decisions, from permanent zone establishments to temporary road closures for events or construction. The flat codelist design effectively turns the classification into a binary question (is this decision about an RMZ or not?) while still covering the full breadth of RMZ sub-types through the descriptive definition. Expanding the codelist to a hierarchical taxonomy where each sub-type becomes its own concept is identified as a possible future iteration.
 
-**Why this component**
+#### Why this component
 
 The codelist mapping approach was chosen over alternatives (such as keyword-based scoring or a dedicated binary classifier via custom developed models) for the following reasons:
 
@@ -198,13 +192,13 @@ The codelist mapping approach was chosen over alternatives (such as keyword-base
 2. **Generalisable.** The classification is driven by the codelist definition, not by a fixed set of rules. If the definition of what constitutes an RMZ changes, or if new sub-types are added, the codelist can be updated without retraining a model.
 3. **Consistent with UC0.1.** Using the same codelist mapping mechanism means the same annotation data model, the same human validation interface, and the same pipeline infrastructure can be reused. This reduces development effort and ensures architectural consistency across use cases.
 
-**Interaction with other components**
+#### Interaction with other components
 
 The codelist mapping runs as an independent classification step within the Named Entity Linking Service. Its output (whether a decision is RMZ-related or not) is stored as a codelist mapping annotation in the triplestore. This annotation does not directly feed into the NER or entity formatting steps; rather, it acts as a **filter**. The RMZ tool queries the triplestore for decisions annotated as RMZ-related, and for those decisions, it retrieves the location and date annotations produced by the NER pipeline (see secions below on Q2 and Q3).
 
-#### Q2: Which locations are impacted by this RMZ decision?
+### Q2: Which locations are impacted by this RMZ decision?
 
-**Which components**
+#### Which components
 
 Answering this question requires three components working in sequence. All three are part of the Entity Extraction Task within the UC0.0 NER Service (see [AI Pipeline UC0.0](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#ai-pipeline)):
 
@@ -212,7 +206,7 @@ Answering this question requires three components working in sequence. All three
 2. **Named Entity Refinement** classifies each `LOCATION` span as `impact_location` or `context_location`.
 3. **Entity Formatting (locations)** parses each `impact_location` span into structured address components.
 
-**How they work together**
+#### How they work together
 
 **Step 1: Named Entity Recognition.** The decision text (specifically, the English translation produced by the Translation Task upstream) is processed by the NER model [PedroDKE/multilingual-ner-abb](https://huggingface.co/PedroDKE/multilingual-ner-abb), a fine-tuned XLM-RoBERTa model. The model scans the text and detects entity spans, which are contiguous substrings that correspond to a particular entity type. For UC1, the relevant entity type is `LOCATION`.
 
@@ -250,7 +244,7 @@ The `LocationFormatter` performs several sub-steps:
 
 The result is a list of structured location entries, each with a `formatted_text` field containing the assembled address string, ready for display or geocoding.
 
-**Example:**\
+#### Example:
 Input span: `"At the level of Dorpstraat 23 and 25, 9000 Ghent"`\
 Output step 2 (simplified):
 
@@ -285,15 +279,15 @@ Output step 5 (simplified):
   ]
 ```
 
-**Why these components**
+#### Why these components
 
 * **NER** is necessary because locations appear as free text embedded in natural-language decision documents. There is no structured field containing the impacted address.
 * **Refinement** is necessary because a single decision typically mentions multiple locations for different purposes. Without distinguishing `impact_location` from `context_location`, the RMZ tool would display irrelevant addresses (e.g., the contact address of a contractor, a reference to a different municipality).
 * **Location Formatting** is necessary because the raw text span (`"Scaldisstraat 23-25, 2000 Antwerpen"`) is not directly usable for geocoding, database queries, or structured display. The formatting step produces normalised, component-level address data that downstream tools (geocoders, map visualisations, SPARQL queries) can consume.
 
-#### Q3: When are these locations impacted by this decision?
+### Q3: When are these locations impacted by this decision?
 
-**Which components**
+#### Which components
 
 Answering this question requires the same first two components as Q2, plus the date-specific formatting. All three are again part of the Entity Extraction Task within the [UC0.0 NER Service](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#entity-recognition-task):
 
@@ -349,7 +343,7 @@ After parsing, the `EntityFormatter` serialises the result into the appropriate 
 
 This distinction between `xsd:Date` and `time:ProperInterval` is determined by the `_DATE_OBJECT_MAP` in the `EntityFormatter`: labels like `entry_date` and `expiry_date` are mapped to `"date"` (producing an `xsd:Date`), while `validity_period` and `context_period` are mapped to `"interval"` (producing a `time:ProperInterval`).
 
-**Why these components**
+#### Why these components
 
 * **NER** is necessary because temporal information is embedded in free-text prose, not in structured metadata fields.
 * **Refinement** is necessary because a single decision mentions many dates for different purposes. The `session_date` (when the council met), the `publication_date` (when the decision was published), and `legal_basis_date` (the date in the title of a referenced law) are all irrelevant to the actual period during which the RMZ is active. Only `entry_date`, `expiry_date`, and `validity_period` define the RMZ's temporal scope.
@@ -364,11 +358,7 @@ The full flow for a single decision through the UC1-relevant parts of the pipeli
 
 Steps 2 through 4 are part of the same UC0.0 AI pipeline execution. They run as consecutive sub-steps within the Entity Extraction Task of the NER Service for every decision, regardless of whether it is RMZ-related or not. The codelist mapping (step 1) runs separately within the Named Entity Linking Service, and its result is what the RMZ tool uses to filter which decisions to display. For the filtered decisions, the tool retrieves the location and date annotations produced by steps 2 through 4.
 
-### Other explored AI components (and why not)
-
-n/a
-
-## Final UI design (and why) (if any)
+## Final UI design
 
 UC1 does not have a purpose-built standalone user interface. The pipeline outputs are exposed through a SPARQL endpoint for GIS consumption.
 
@@ -390,10 +380,6 @@ Once the user selects the local authority and the codelist (within DECIDe i.e. t
 In addition to selecting the codelist, the user can also select sub-elements in the codelist. This is not relevant in this use case, as we work with a flat, single-level codelist. This is, however, relevant in UC0.1, and is explained in more details in the [design section of the write-up for UC0.1.](write-up-uc0.1-policy-impact-report.md#final-ui-design-and-why-if-any)
 
 Once the filters have been applied, the user can validate the different decisions the same way they validate the discovered entities in UC0.0, namely with a thumbs up/down. Once small difference is, that in UC0.0, the user can read the decision in a split-screen to get enough context to validate the discovered entity. Because the entity the user is validating in this use case is about the whole decision, and there is no need to highlight specific parts of the text, the team has decided to only provide an external link to the decision, where the user can read the whole decision as it is published, in a different tab.
-
-### Other explored UI design (and why not)
-
-N/A
 
 ## Testing approach
 
