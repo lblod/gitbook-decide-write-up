@@ -33,7 +33,7 @@ The Authorization Policies Store and the Universal Trust Data Registry form a si
 
 #### Federation Layer (DCAT / DSP)
 
-The proposal aims for DCAT distributions to be extended with machine-readable access rights information –specifically investigating `dcterms:accessRights` or a similar mechanism. ODRL policies governing access to a distribution are therefore linked to how that distribution is described and discoverable in the DCAT catalogue. The Data Space Protocol (DSP) governs how data exchange requests are initiated and negotiated; ODRL policies determine what access is ultimately permitted.\
+The proposal aims for DCAT distributions to be extended with machine-readable access rights information –specifically investigating `dcterms:accessRights` or a similar mechanism. ODRL policies governing access to a distribution are therefore linked to how that distribution is described and discoverable in the DCAT catalogue. The Data Space Protocol (DSP) governs how data exchange requests are initiated and negotiated; ODRL policies describe what access is ultimately permitted and what data consumers can or should do with their dataset. It should be noted that the ODRL policies that describe the broad access and use of distributions is only loosely and manually connected with the ODRL policies that govern deeper data access inside the triplestore.  \
 [write-up-dcat.md](write-up-dcat.md "mention") [write-up-dsp.md](write-up-dsp.md "mention")
 
 ## Glossary
@@ -45,6 +45,25 @@ The glossary includes the most important concepts of the ODRL. See [#final-seman
 {% endhint %}
 
 <table><thead><tr><th width="211.978515625">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td><a href="https://en.wikipedia.org/wiki/Attribute-based_access_control">ABAC (Attribute-Based Access Control)</a></td><td>An access control model where rights are determined by attributes of the subject (e.g. group, role, department). The DECIDe authorisation model is ABAC in nature.</td></tr><tr><td>Access Control</td><td>The process of ensuring users only perform actions on a system in ways they are allowed to, such as ABAC and RBAC. Within this documentation, it's used as a synonym to Authorisation.</td></tr><tr><td><code>Action</code> (ODRL)</td><td>The operation a subject is permitted to perform on an <code>Asset</code>. In ODRL's common vocabulary, <code>read</code> and <code>modify</code> are the two pre-defined actions used in DECIDe.</td></tr><tr><td><code>Agreement</code> (ODRL)</td><td>A subclass of ODRL <code>Policy</code>: a set of <code>Rule</code>s explicitly agreed between two parties. This is very similar to a <code>Set</code>, with the difference that each rule in an <code>Agreement</code> must be explicitly assigned to some party by the assigning party.</td></tr><tr><td><code>Asset</code> (ODRL)</td><td>A resource to which a <code>Policy</code> applies. In DECIDe, an <code>Asset</code> corresponds to triples for a specific resource type within a graph, modelled as a SHACL NodeShape.</td></tr><tr><td><code>AssetCollection</code> (ODRL)</td><td>A subclass of <code>Asset</code> that identifies a collection of resources. In DECIDe, an <code>AssetCollection</code> corresponds to a named graph in the triplestore.</td></tr><tr><td>Authorisation</td><td>The process of ensuring users only perform actions on a system in ways they are allowed to. Within this documentation, it's used as a synonym to Access Control</td></tr><tr><td>Authorisation Policies Store</td><td>The DS4SSCC Reference Architecture component that serves as the central registry from which access rights can be consumed. In DECIDe, implemented as ODRL policies stored as linked data in the triplestore.</td></tr><tr><td><code>Constraint</code> (ODRL)</td><td>An ODRL mechanism for adding conditional refinements to Rules, Actions, Assets, or Parties. Not used in DECIDe; SHACL shapes and SPARQL queries are used instead.</td></tr><tr><td><code>Duty</code> (ODRL)</td><td>An ODRL <code>Rule</code> type granting a subject the obligation to exercise an action on an <code>Asset</code>. Not used in DECIDe.</td></tr><tr><td>Grant</td><td>The sparql-parser concept corresponding to an ODRL Permission: it assigns a right (read or write) on a graph to an allowed group.</td></tr><tr><td><a href="https://github.com/mu-semtech/sparql-parser">mu-auth / SEAS / sparql-parser</a></td><td>The authorisation enforcement technology in the semantic.works stack. mu-authorization was the original implementation; it was replaced by sparql-parser (also called SEAS). Access control is enforced by rewriting SPARQL queries at the endpoint level.</td></tr><tr><td><code>Offer</code> (ODRL)</td><td>A subclass of ODRL <code>Policy</code>: a policy that can be offered from one entity to another, but in itself does not grant any rights to the receiving entity.</td></tr><tr><td>PAP (Policy Administration Point)</td><td>The component through which authorisation policies are specified and managed. In DECIDe, currently a manual process of writing ODRL policies as TTL.</td></tr><tr><td><code>Party</code> (ODRL)</td><td>An entity with an active role in a policy (assigner or assignee). In DECIDe, individual users are <code>Parties</code>.</td></tr><tr><td><code>PartyCollection</code> (ODRL)</td><td>A subclass of <code>Party</code> that identifies a collection of entities. In DECIDe, a <code>PartyCollection</code> corresponds to a group of users as defined in semantic.works, with membership determined by a SPARQL query.</td></tr><tr><td>PDP (Policy Decision Point)</td><td>The component that evaluates a request against the applicable policy and decides whether it is permitted. In DECIDe, embedded in sparql-parser.</td></tr><tr><td>PEP (Policy Enforcement Point)</td><td>The component that intercepts requests and enforces the policy decision. In DECIDe, sparql-parser rewriting SPARQL queries at the endpoint level.</td></tr><tr><td><code>Permission</code> (ODRL)</td><td>An ODRL <code>Rule</code> type granting a subject the ability to exercise an action on an <code>Asset</code>. The only Rule type used in DECIDe.</td></tr><tr><td><code>Policy</code> (ODRL)</td><td>A collection of one or more <code>Rule</code>s, with 3 subclasses: <code>Set</code>, <code>Offer</code> and <code>Agreement</code>. DECIDe only uses <code>Set</code> policies.</td></tr><tr><td><code>Prohibition</code> (ODRL)</td><td>An ODRL <code>Rule</code> type granting a subject the inability to exercise an action on an <code>Asset</code>. Not used in DECIDe: everything not explicitly permitted is prohibited by default.</td></tr><tr><td><code>Rule</code> (ODRL)</td><td>An abstract concept with 3 subclasses: <code>Permission</code>, <code>Prohibition</code>, and <code>Duty</code>.</td></tr><tr><td><code>Set</code> (ODRL)</td><td>The most general subclass of ODRL <code>Policy</code>: any collection of Rules without additional restrictions (such as bilateral agreement structure or offer semantics).</td></tr><tr><td><a href="https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html">XACML (eXtensible Access Control Markup Language)</a></td><td>An OASIS standard for expressing and enforcing fine-grained access control policies. Cited in the proposal as a candidate for comparison with ODRL; not adopted in DECIDe.</td></tr></tbody></table>
+
+Prefixes that are used in this section:
+
+```turtle
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .  
+@prefix dcat: <http://www.w3.org/ns/dcat#> .  
+@prefix dct: <http://purl.org/dc/terms/> .  
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .  
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .  
+@prefix schema: <https://schema.org/> .  
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix private-ds-ex: <http://decide.data.gift/datasets/example/60e19fdf-b549-41b9-9adf-420379285127/> .
+@prefix public-ds-ex: <http://decide.data.gift/datasets/example/1ae2da8e-9889-426b-a7e8-9360c15ba2cd/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix : <http://example.org/> .
+```
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -78,9 +97,10 @@ The deliberate scope of the ODRL implementation covers only the subset of the OD
 
 ### Datasets available in the data space
 
-| Dataset                                          | IdP/Authentication service                         | Country of origin   | Domain                      | Shared within the project         | Reused within the project      |
-| ------------------------------------------------ | -------------------------------------------------- | ------------------- | --------------------------- | --------------------------------- | ------------------------------ |
-| Authorization policies (ODRL TTL in triplestore) | VC / session-based authentication (semantic.works) | Belgium (Ghent/ABB) | Access control / governance | Yes –consumed by all pilot sites– | Yes –enforced across use cases |
+| Dataset                                                 | IdP/Authentication service                         | Country of origin                         | Domain                      | Shared within the project         | Reused within the project      |
+| ------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------- | --------------------------- | --------------------------------- | ------------------------------ |
+| Authorization policies (ODRL TTL in triplestore)        | VC / session-based authentication (semantic.works) | Belgium (Ghent/ABB)                       | Access control / governance | Yes –consumed by all pilot sites– | Yes –enforced across use cases |
+| Dataset-specific usage policy (ODRL TTL in triplestore) | Not enforced                                       | Per partner, defaults provided by project | Governance                  | Yes                               | Yes –policies available to all datasets published |
 
 ### Data standards
 
@@ -149,14 +169,6 @@ Property shapes allow to specify constraints on properties. The `sh:propertyPath
 	a sh:PropertyShape ;
 	sh:propertyPath eli:title ;
 	sh:minCount 1 .
-```
-
-Prefixes that are used in this section:
-
-```turtle
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix eli: <http://data.europa.eu/eli/ontology#> .
-@prefix : <http://example.org/> .
 ```
 
 Further details of SHACL can be found in the specification: [https://www.w3.org/TR/shacl/#shacl-sparql](https://www.w3.org/TR/shacl/#shacl-sparql)
@@ -422,6 +434,53 @@ Finally, we do not support `Constraint` as its semantics don't properly fit our 
 
 Should sparql-parser gain support for constraint refinement of Actions or Rules in a future version, revisiting a more complete ODRL mapping could be worthwhile.
 
+#### ODRL use to describe dataset usage restrictions
+
+In DECIDe ODRL is also used to describe the usage restrictions of datasets. This is done by adding an ODRL Offer and linking it to a dataset. The offer is then published on the LDES and in the DCAT catalog together with the DCAT description of the dataset. As all the datasets in the DECIDe project are public, the publication of such policies was not a strong concern for the participants at this time and therefore, the standard offers in the DECIDe project are fairly minimal. Here is an example of an Offer that describes a dataset as public:
+
+```turtle
+public-ds-ex:policy a odrl:Offer, ext:PublicPolicy ;  
+    mu:uuid "ab4509a9-4676-4966-bc07-8c20a3eb1d80" ;
+    dct:description "Anyone may use this dataset" ;
+    odrl:permission [  
+        odrl:action odrl:read ;  
+        odrl:target public-ds-ex:dataset ;  
+        odrl:assigner <http://ds.decide.lblod.info> ;  
+    ] ;
+    odrl:prohibition [
+      odrl:action odrl:write ;
+      odrl:target public-ds-ex:dataset ;  
+      odrl:assigner <http://ds.decide.lblod.info> ;  
+    ] .
+```
+
+As there is no `odrl:assignee` for the permission and prohibition above, this Policy grants anyone the permission to view the dataset, but prohibits writing to the dataset. 
+
+An example of an Offer that describes a private dataset is:
+
+```turtle
+private-ds-ex:policy a odrl:Offer, ext:RestrictedPolicy ;  
+    mu:uuid "1d8e1e34-ac8c-4fb8-845a-a9e8ca0e9f6b" ;
+    dct: "Only licensed users may access this content" ;
+    odrl:conflict odrl:perm ;
+    odrl:permission [  
+        odrl:assigner <http://ds.decide.lblod.info> ;  
+        odrl:target private-ds-ex:dataset ;  
+        odrl:action odrl:read ;  
+        odrl:assignee private-ds-ex:licensedUserCollection ;  
+    ] ;
+    odrl:prohibition [  
+        odrl:assigner <http://ds.decide.lblod.info> ;  
+        odrl:target private-ds-ex:dataset ;  
+        odrl:action odrl:read, odrl:write ;  
+    ] .
+
+```
+
+In this case, the permission to read is only granted to an `odrl:PartyCollection` called `private-ds-ex:licensedUserCollection`. Reading and writing is prohibited by default. This means that only users who have bought a license can read the private dataset.
+
+These policies are only there for users to read (and possibly also automated systems that understand ODRL), they are not parsed, let alone enforced in the DECIDe data space. The only rules applied by the DECIDe dataspace are the ODRL authorisation policies above. This is because they work on a different level.
+
 ### Other explored semantic components (and why not)
 
 ### Final AI components (and why) (if any)
@@ -508,6 +567,12 @@ If one wants to specify multiple scopes for a single permission, these could be 
 Currently, group membership for ODRL PartyCollections is currently defined via embedded SPARQL queries that describe which users are members of that collection. The advantage of using SPARQL here is that we are highly flexible in how PartyCollection membership is defined. A disadvantage is, it requires policy writers to know sufficient SPARQL to understand and/or write such queries; and to have sufficient understanding of the underlying data model.
 
 Supporting ODRL Constraints for PartyCollection –transforming them to their corresponding SPARQL queries for sparql-parser– would make policies more readable and writable by a broader audience, though with some reduction in expressiveness as compared to arbitrary SPARQL. The trade-off warrants further evaluation.
+
+#### Unifying dataset ODRL policies and mu-authorization ODRL policies
+
+The authorization policies for mu-authorization expressed in ODRL are currently not connected automatically to the datasets published in the data space. This is not straight forward to enforce for all types of distributions either. The authorization policies make sense on the level of a SPARQL endpoint, but are much to fine grained for describing access to simple download distributions. On the other hand, the ODRL policies related to a dataset may specify information on what can or can't be done with a dataset's content, like republication or even reselling the dataset. These things fall more into the legal domain than in the software system authorization domain.
+
+Authorization ODRL policies are enforced by the mu-authorization component, this is not easy for the ODRL policies describing datasets in a DCAT catalog. Given the federated nature of the data space, some distributions may not be under control of the system but rather reside in the system of a participant, fully outside the scope of the system that holds a DCAT description of the dataset.
 
 ### Possible future work LBLOD related
 
