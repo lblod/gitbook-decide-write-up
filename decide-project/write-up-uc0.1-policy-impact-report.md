@@ -179,13 +179,13 @@ From this diagram, it becomes clear that on a microservice level, UC0.1 is fairl
 
 #### Codelist labelling service
 
-The codelist labeling service is the main component handling the work for UC0.1. It scans the database for tasks related to UC0.1 when it restarts, when it receives a delta-message, or when it completes its previous task.
+The codelist labeling service is the main component handling the work for UC0.1. It functions as a Custom Task Execution Service described in [the writeup on pipelines](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md).
 
 There are two independent types of jobs relevant for this service. For more information on the general jobs and tasks infrastructure, see [UC0.0 Pipelines writeup](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md).
 
 **Codelist-matching/training**
 
-The first is the `codelist-matching/training` job, which uses an LLM to generate the training data for a lightweight classifier model. That classifier is then used by the `codelist-matching/evaluation` job to classify ELI Expressions that arrive after the training run.
+The first is the `codelist-matching/training` operation, which uses an LLM to generate the training data for a lightweight classifier model. That classifier is then used by the `codelist-matching/evaluation` job to classify ELI Expressions that arrive after the training run.
 
 <figure><img src="../.gitbook/assets/image (3).png" alt="" width="375"><figcaption></figcaption></figure>
 
@@ -214,7 +214,7 @@ This creates two architectural requirements:
 1. Immediate usability (cold start)\
    The tool must produce useful classifications from day one, using only the codelist definition as a signal. No training data, no keyword lists, no pre-built classifiers.
 2. Training loop\
-   The tool must support continous learning: human validators correct the LLM's predictions, those corrections feed into a training pipeline, and the resulting classifier can replace the LLM with known precision, recall, and F1 scores.
+   The tool must support continuous learning: human validators correct the LLM's predictions, those corrections feed into a training pipeline, and the resulting classifier can replace the LLM with known precision, recall, and F1 scores.
 
 To satisfy these requirements, the architecture implements a two-phase classification lifecycle:
 

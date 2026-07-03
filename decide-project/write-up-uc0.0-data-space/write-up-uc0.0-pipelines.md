@@ -298,7 +298,9 @@ Like the singleton job service, the annotation job splitter service is a very sp
 
 #### Custom Task Execution Service
 
-Where the job controller handles sequencing of tasks in jobs, custom microservices do the actual work to perform the tasks. These are shown on the diagram as `example-task-service`. Each service exposes one or more `/delta` endpoints that receive POST requests containing delta messages with changes to a task resource. Each endpoint follows the same pattern: check the operation URI of the task and ignore if it doesn't match, mark the task as busy if it does, then execute the actual logic, and finally mark the task as succeeded or failed.
+Where the job controller handles sequencing of tasks in jobs, custom microservices do the actual work to perform the tasks. These are shown on the diagram as `example-task-service`. Each service exposes one or more `/delta` endpoints that receive POST requests containing delta messages with changes to a task resource. 
+
+These Custom Task Execution Services all follow the same pattern. When a delta message arrives, they check the database for tasks that they should complete. They also do this on restart, in case they went down and missed delta messages. When they find a task that has an operation URI that matches the one they are looking for, they mark the task as busy. Then they execute the actual logic, and finally mark the task as succeeded or failed.
 
 These services work purely based on these incoming delta messages, they do not respond to HTTP messages sent by the dispatcher like more user-interaction driven services would.
 
