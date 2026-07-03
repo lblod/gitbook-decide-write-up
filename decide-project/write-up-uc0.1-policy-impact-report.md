@@ -326,7 +326,7 @@ The pipeline consists of following steps:
    * **Weighted recall**: The average recall across all classes, weighted by their support. It measures how well the model identifies all actual instances of each class, adjusted for imbalance.
    * **Weighted F1**: The weighted average of F1-scores (harmonic mean of precision and recall) across classes. It provides a balance between precision and recall while accounting for class distribution.
 6. **Push to the Hugging Face Hub**. If a Hugging Face token and output model ID are configured, the best model checkpoint is pushed to the Hub (e.g., as `decide/sdg-classifier-v1`), making it publicly accessible for others to use as well.
-7.  **Record provenance.** The task builds a SPARQL INSERT query following the AIRO (<mark style="background-color:$warning;">AI Readiness Ontology</mark>) model to record:
+7.  **Record provenance.** The task builds a SPARQL INSERT query following the AIRO (AI Risk Ontology) model to record:
 
     * The model URI, its Hugging Face repository URL, and the commit OID
     * The source code's Git SHA
