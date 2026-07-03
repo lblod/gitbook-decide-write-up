@@ -305,6 +305,28 @@ LD\&L in the corpus carry AI-generated annotations from the UC0.1 enrichment pip
 
 A retrieved decision may be an amendment of an earlier one, making it contextually incomplete on its own. The construction of consolidated decisions –linking an original decision with its amendment history into a single authoritative text– is a UC0.0 pipeline concern. Once consolidated versions are available in the data space, UC2 could pass the consolidated text to the LLM rather than an isolated amendment, producing answers that reflect the current regulatory state in full rather than a fragment of it.
 
+#### Allowing questions that go further than expression contents
+
+In the current version of the question answering service, users will only get a valid response when asking questions that can be answered based on the *contents* of the expressions. This is because the only input given to the LLM is the text contents and title of the expressions whose vector representation is closest to the question.
+
+However, when asking the DECIDe partners for example questions, it quickly became clear that the interest goes much further than just the contents of the decisions. Many questions we received contained questions regarding aggregate data, or related data that isn't necessarily present in the decision text. For instance:
+
+- "Which decisions were approved in Ghent **in the last month?**"
+- "Do you have any **recent** decisions about subsidies for isolating my home better?"
+
+These questions require pre-filtering of the documents compared to the question based on additional properties, their decision date in this case.
+
+- "**How many** decisions were taken by the Ghent community council that **had an impact on the environment**?"
+
+This question not only wants to pre-filter the documents, it also wants to count the number of matching decisions. This is not possible for the LLM as it only receives the top N (configurable) decisions whose embedding vector is closest to the one of the question.
+
+To expand the use case and cover this set of questions, the question answering service needs to be expanded so it's LLM has [MCP (Model Context Protocol)](https://modelcontextprotocol.io/docs/learn/server-concepts) functionality. The LLM can then use the SPARQL endpoint and the Elastic search endpoint as an external tool and decide on its own which queries to execute in which service. SPARQL is a *very* expressive language, this adds a couple of risks:
+
+- To answer the user's question, the LLM needs to understand the structure of the SPARQL endpoint: which classes are there, which predicates are there. There is a risk that it wastes a lot of time figuring out the structure every time a user question arrives. To resolve this, example queries or SHACL files can be provided as context to the LLM together with the user question. 
+- Users with malicious intent could convince the LLM to run destructive queries, inserting or deleting triples into the SPARQL endpoint. This is easily countered by leveraging the [capabilities of mu-authorization](https://github.com/mu-semtech/sparql-parser#define-access-rights-for-specific-services) Simply giving the LLM a scope that only allows read access to the public information in the triplestore is enough.
+- Other ill-meaning users could decide to have the LLM run a lot of very heavy queries, resulting in a Denial of Service attack on the system. This can be mitigated by 1) providing the LLM with patterns of such malicious queries and telling it to refuse executing them, 2) extending mu-authorization so it disallows queries matching such patterns, 3) putting limits on the execution time of queries (built in for virtuoso) or queries sent from a certain service (requires an extension of mu-authorization).
+
+A very early prototype was built as an exploration of this extension in the DECIDe project, it can be found on GitHub: TODO
 ### Possible future work LBLOD related
 
 ## Relevant links
