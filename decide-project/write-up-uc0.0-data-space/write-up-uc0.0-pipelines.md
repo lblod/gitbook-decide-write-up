@@ -66,7 +66,7 @@ On top of this normalised base, a set of AI pipelines produce the structured ann
 
 ### Pilot partners
 
-All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). <mark style="background-color:$warning;">The pipeline infrastructure is deployed centrally by the DECIDe team at ABB; pilot cities do not operate the pipelines directly.</mark>
+All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.</mark>
 
 ### Target audience / Personas
 
@@ -88,7 +88,7 @@ The pipeline system covers two stages. The first is ingestion and normalisation:
 
 ### Datasets available in the data space
 
-<table><thead><tr><th width="128">Dataset</th><th width="132.375">IdP/Authentication service</th><th>Country of origin</th><th>Domain</th><th>Shared within the project</th><th>Reused within the project</th></tr></thead><tbody><tr><td>ELI-normalised LD&#x26;L decisions</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Local governance</td><td>Yes</td><td>Yes, base input for all AI pipelines</td></tr><tr><td>AI enrichments (<code>oa:Annotation</code>)</td><td>Data space authentication</td><td>Belgium</td><td></td><td>Yes</td><td>Yes, base for all use cases</td></tr></tbody></table>
+<table><thead><tr><th width="128">Dataset</th><th width="132.375">IdP/Authentication service</th><th>Country of origin</th><th>Domain</th><th>Shared within the project</th><th>Reused within the project</th></tr></thead><tbody><tr><td>ELI-normalised LD&#x26;L decisions</td><td>Public</td><td>Belgium / Germany</td><td>Local governance</td><td>Yes</td><td>Yes, base input for all AI pipelines</td></tr><tr><td>AI enrichments (<code>oa:Annotation</code>)</td><td>Public</td><td>Belgium, later on Germany as pipelines were run at partners</td><td></td><td>Yes</td><td>Yes, base for all use cases</td></tr></tbody></table>
 
 ### Data standards
 
@@ -148,7 +148,7 @@ Another example, when a title is detected in the text, a statement can be made w
 * predicate = eli:title
 * object = text of the title
 
-A full list of mappings can be found on Gitbook here:
+A full list of mappings can be found as an annex here:
 
 {% file src="../../.gitbook/assets/datamodel AI annotations.pdf" %}
 
