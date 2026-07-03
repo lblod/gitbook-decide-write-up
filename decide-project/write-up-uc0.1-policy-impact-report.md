@@ -349,7 +349,7 @@ This allows an operator to trigger a single batch job that classifies the entire
 
 ### Impact assessment
 
-The fourth task, `ImpactAssessmentTask` extends the classification with a policy impact analysis. For each decision that has been classified against a codelist concept, it assesses whether the decision's impact on that concept's domain is **positive**, **negative**, or **uncertain**.
+The fourth task, `ImpactAssessmentTask` extends the classification with a policy impact analysis. For each decision that has been classified against a codelist concept, it assesses whether the decision's impact on that concept's domain is **positive**, **negative**, or **unknown**.
 
 1. **Fetch classified decisions.** The task retrieves the `eli:Expression` instances along with their content, language, and corresponding `eli:Work` URI.
 2. **Fetch policy labels.** For each expression, the task queries the AI graph for existing `oa:classifying` annotations whose body is a concept in the task's codelist. Each annotation represents a previously assigned policy label.
@@ -358,7 +358,7 @@ The fourth task, `ImpactAssessmentTask` extends the classification with a policy
    * Consider the specific scope and targets of the label
    * Assess direct effects, then second-order effects
    * Weigh short-term and long-term consequences
-   * Conclude with an impact direction (positive / negative / <mark style="background-color:$warning;">uncertain</mark>) and confidence level (low / medium / high)
+   * Conclude with an impact direction (positive / negative / unknown) and confidence level (low / medium / high)
 4. **Store the result.** The impact direction is stored as an `ext:has_impact` predicate on the annotation in the AI graph of the triplestore.
 
 ### Other explored AI components (and why not)
@@ -478,7 +478,7 @@ The current deployment operates in cold start mode: the LLM (Mistral Large 3) ge
 
 #### Classifier that is able to distinguish neutral impact and unknown
 
-The current classifier cannot distinguish between genuinely neutral impact –a decision that has no effect on a given concept– and uncertain impact, where the model is not confident enough to assign a direction. Retraining with better-labelled data that preserves this distinction would yield higher-quality impact assessments and make the report more precise for end users.
+The current classifier cannot distinguish between genuinely neutral impact –a decision that has no effect on a given concept– and unknown impact, where the model is not confident enough to assign a direction. Retraining with better-labelled data that preserves this distinction would yield higher-quality impact assessments and make the report more precise for end users.
 
 #### Active learning to reduce annotation effort
 
