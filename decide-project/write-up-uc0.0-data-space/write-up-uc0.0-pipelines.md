@@ -66,7 +66,7 @@ On top of this normalised base, a set of AI pipelines produce the structured ann
 
 ### Pilot partners
 
-All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). <mark style="background-color:$warning;">The pipeline infrastructure is deployed centrally by the DECIDe team at ABB; pilot cities do not operate the pipelines directly.</mark>
+All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.</mark>
 
 ### Target audience / Personas
 
@@ -153,7 +153,7 @@ Another example, when a title is detected in the text, a statement can be made w
 * predicate = eli:title
 * object = text of the title
 
-A full list of mappings can be found on Gitbook here:
+A full list of mappings can be found as an annex here:
 
 {% file src="../../.gitbook/assets/datamodel AI annotations.pdf" %}
 
