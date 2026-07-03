@@ -6,10 +6,6 @@ description: >-
 
 # Write-up UC0.1 Policy Impact Report
 
-{% hint style="warning" %}
-This page is under construction
-{% endhint %}
-
 {% hint style="info" %}
 **Note:** In the original project proposal, this use case is embedded within Use Case 0.
 
@@ -223,7 +219,7 @@ To satisfy these requirements, the architecture implements a two-phase classific
 
 <figure><img src="../.gitbook/assets/uc0.1-writeup-Page-2.drawio (2).png" alt=""><figcaption></figcaption></figure>
 
-This lifecycle is implemented as the Codelist Mapping Tool, a standalone microservice (`codelist-labeling-service`) within the semantic.works stack as mentioned above. The service exposes <mark style="background-color:$warning;">four task operations</mark>, each triggered by the job controller through the standard jobs/tasks workflow:
+This lifecycle is implemented as the Codelist Mapping Tool, a standalone microservice (`codelist-labeling-service`) within the semantic.works stack as mentioned above. The service handles four types of task operations. As always, the tasks with those operations are each created by the job controller through the standard jobs/tasks workflow:
 
 <figure><img src="../.gitbook/assets/uc0.1-writeup.drawio.png" alt=""><figcaption></figcaption></figure>
 
