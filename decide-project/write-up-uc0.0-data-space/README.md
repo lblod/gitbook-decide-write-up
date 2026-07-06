@@ -134,7 +134,7 @@ The DECIDe data space is organised around four layers that build on one another.
 
 The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each use case  write-up documents the architecture of its own layer in detail, adding specialized services to the base architecture; this section will continue to describe the core micro-services that will be reused across all use cases.
 
-### Core semantic.works services
+### Core semantic.works components
 
 The DECIDe application is built as a [semantic.works application](https://semantic.works/). As such the application consists of a set of micro-services that collaborate to achieve application's functionality. A "service" in a semantic.works application is a piece of software with clearly defined responsibilities. In other words, each service executes a (small) part the functionality provided by the application as a whole. A semantic.works application essentially consists out of two kinds of services:
 
