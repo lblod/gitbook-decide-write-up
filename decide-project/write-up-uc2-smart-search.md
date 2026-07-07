@@ -326,7 +326,7 @@ To expand the use case and cover this set of questions, the question answering s
 - Users with malicious intent could convince the LLM to run destructive queries, inserting or deleting triples into the SPARQL endpoint. This is easily countered by leveraging the [capabilities of mu-authorization](https://github.com/mu-semtech/sparql-parser#define-access-rights-for-specific-services) Simply giving the LLM a scope that only allows read access to the public information in the triplestore is enough.
 - Other ill-meaning users could decide to have the LLM run a lot of very heavy queries, resulting in a Denial of Service attack on the system. This can be mitigated by 1) providing the LLM with patterns of such malicious queries and telling it to refuse executing them, 2) extending mu-authorization so it disallows queries matching such patterns, 3) putting limits on the execution time of queries (built in for virtuoso) or queries sent from a certain service (requires an extension of mu-authorization).
 
-A very early prototype was built as an exploration of this extension in the DECIDe project, it can be found on GitHub: TODO
+A very early prototype was built as an exploration of this extension in the DECIDe project, it can be found on GitHub: https://github.com/semantic-ai/entity-linking-backend/tree/research-mode
 ### Possible future work LBLOD related
 
 ## Relevant links
