@@ -305,7 +305,7 @@ Answering this question requires the same first two components as Q2, plus the d
 
 Other date sub-types exist in the pipeline but are **not relevant to the temporal scope of the RMZ**:
 
-<table><thead><tr><th width="170.7236328125">Sub-type</th><th>Why not relevant to UC1</th></tr></thead><tbody><tr><td><code>context_date</code></td><td>A date mentioned for background context, not tied to the RMZ's temporal scope.</td></tr><tr><td><code>session_date</code></td><td>The date of the council meeting, which is administrative metadata rather than the RMZ period.</td></tr><tr><td><code>publication_date</code></td><td>When the decision was formally published, not when the RMZ is active.</td></tr><tr><td><code>legal_basis_date</code></td><td>A date in the title of a cited law, which is a legislative reference rather than operational timing.</td></tr><tr><td><code>context_period</code></td><td>A period mentioned for context, not the RMZ's validity window.</td></tr></tbody></table>
+<table><thead><tr><th width="170.7236328125">Sub-type</th><th>Why not relevant to UC1</th></tr></thead><tbody><tr><td><code>context_date</code></td><td>A date mentioned for background context, not tied to the RMZ's temporal scope.</td></tr><tr><td><code>session_date</code></td><td>The date of the council meeting, which is administrative metadata rather than the RMZ period.</td></tr><tr><td><code>publication_date</code></td><td>When the decision was formally published, not when the RMZ is active.</td></tr><tr><td><code>context_period</code></td><td>A period mentioned for context, not the RMZ's validity window.</td></tr></tbody></table>
 
 **Step 3: Entity Formatting (DatePeriodParser).** Each relevant date span is routed by the `EntityFormatter` to the `DatePeriodParser`, a rule-based parser that converts free-text temporal expressions into standardised `(start, end)` date pairs. For full details, see <mark style="background-color:$warning;">Formatting of Date & Period Entities.</mark>
 
@@ -346,7 +346,7 @@ This distinction between `xsd:Date` and `time:ProperInterval` is determined by t
 #### Why these components
 
 * **NER** is necessary because temporal information is embedded in free-text prose, not in structured metadata fields.
-* **Refinement** is necessary because a single decision mentions many dates for different purposes. The `session_date` (when the council met), the `publication_date` (when the decision was published), and `legal_basis_date` (the date in the title of a referenced law) are all irrelevant to the actual period during which the RMZ is active. Only `entry_date`, `expiry_date`, and `validity_period` define the RMZ's temporal scope.
+* **Refinement** is necessary because a single decision mentions many dates for different purposes. The `session_date` (when the council met) and the `publication_date` (when the decision was published) are both irrelevant to the actual period during which the RMZ is active. Only `entry_date`, `expiry_date`, and `validity_period` define the RMZ's temporal scope.
 * **Date Period Parsing** is necessary because the raw text spans come in highly inconsistent formats. A single corpus may contain `"25 januari 2026"`, `"25/01/2026 - 02/02/2026"`, `"from January 25 until February 2"`, or `"Q1 2026"`. Standard date parsers (like `dateparser` or `dateutil`) can resolve a single date string but cannot handle ranges, periods, seasons, or multi-year sequences. The `DatePeriodParser` was designed specifically to normalise this variety into uniform `(start, end)` pairs.
 * **Linked-data serialisation** is necessary because the triplestore expects temporal entities in a specific RDF format. The `EntityFormatter`'s mapping from refined labels to either `xsd:Date` or `time:ProperInterval` ensures the correct ontology representation is used.
 
@@ -360,7 +360,7 @@ Steps 2 through 4 are part of the same UC0.0 AI pipeline execution. They run as 
 
 ## Final UI design
 
-UC1 does not have a purpose-built standalone user interface. The pipeline outputs are exposed through a SPARQL endpoint for GIS consumption.
+UC1 does not have a purpose-built standalone user interface. The pipeline outputs are exposed through a SPARQL endpoint for GIS consumption and a downloadable distribution that can be generated periodically. Both can be found in our DCAT catalog, read more about this in our [write-up on DCAT](./write-up-uc0.0-data-space/write-up-dcat.md) .
 
 That said, this use case has 2 relevant interfaces, related to the Human Validation of AI-produced annotations:
 
