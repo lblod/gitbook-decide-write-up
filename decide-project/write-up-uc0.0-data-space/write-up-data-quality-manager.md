@@ -59,7 +59,7 @@ The primary audience for the SHACL validation output is the DECIDe development a
 
 The SHACL validation component is designed as a periodically automated process rather than an interactive interface. Because the triplestore may contain thousands of decisions and related entities, validation must operate in batches rather than loading everything into memory at once. The component must also be generically configurable.
 
-<table><thead><tr><th width="611.919921875" valign="top">Requirement</th><th valign="top">Priority</th></tr></thead><tbody><tr><td valign="top">SHACL validation runs periodically via cron job</td><td valign="top">Must-have</td></tr><tr><td valign="top">Configurable using SHACL</td><td valign="top">Must-have</td></tr><tr><td valign="top">SHACL shapes cover ELI Work, ELI Expression, and Organisation core entities</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation processes resources in batches to handle large datasets without memory issues</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation results stored as a report in the triplestore</td><td valign="top">Must-have</td></tr><tr><td valign="top">REST API endpoint exposes the latest validation report in JSON format</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Extensions placed in the shared loket-report-generation-service for ecosystem reusability</td><td valign="top">Must-have</td></tr><tr><td valign="top">SPARQL-based SHACL shapes supported alongside standard SHACL shapes</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">HTTP 404 returned by the API when no report is found</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Previous report deleted on each run to preserve only the latest report</td><td valign="top">Nice-to-have</td></tr></tbody></table>
+<table><thead><tr><th width="611.919921875" valign="top">Requirement</th><th valign="top">Priority</th></tr></thead><tbody><tr><td valign="top">SHACL validation runs periodically via cron job</td><td valign="top">Must-have</td></tr><tr><td valign="top">Configurable using SHACL</td><td valign="top">Must-have</td></tr><tr><td valign="top">SHACL shapes cover ELI Work, ELI Expression, and Organisation core entities</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation processes resources in batches to handle large datasets without memory issues</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation results stored as a report in the triplestore</td><td valign="top">Must-have</td></tr><tr><td valign="top">REST API endpoint exposes the latest validation report in JSON format</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Extensions placed in the shared loket-report-generation-service for ecosystem reusability</td><td valign="top">Must-have</td></tr><tr><td valign="top">SPARQL-based SHACL shapes supported alongside standard SHACL shapes</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">HTTP 404 returned by the API when no report is found</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Previous report deleted on each run to preserve only the latest report</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">A limited set (sample) of decisions can be validated</td><td valign="top">Nice-to-have</td></tr></tbody></table>
 
 ## Datasources, datasets and datastandards
 
@@ -109,13 +109,15 @@ In this drawing, services are depicted as rectangles, the virtuoso triplestore i
 
 The data quality manager is a SHACL validation layer and is implemented by extending the existing shared LBLOD microservice `loket-report-generation-service`, which already contains a SHACL engine and a scheduling mechanism for periodic script execution. Rather than building a standalone validation service from scratch, the DECIDe team extended this service with the capabilities needed for the project and contributed those extensions back to the shared service, making them available to the broader LBLOD ecosystem.
 
-The validation script runs periodically via a cron job. It loads the target classes defined in the SHACL files, then iterates over all resources of each target class in batches (Extension 1). This batch-oriented approach was chosen because the volume of decisions in the triplestore makes loading all resources into memory at once impractical. Processing in bounded batches keeps memory usage stable regardless of dataset size. For each batch, resources are loaded into a temporary in-memory store, validated against the relevant SHACL and SPARQL-based shapes, and the results are appended to the validation report in the triplestore. At the end of each run, the previous report is deleted so only the latest report is retained.
+The validation script runs periodically via a cron job. It loads the target classes defined in the SHACL files, then iterates over all resources of each target class (Extension 1). Sampling can be enabled to iterate over a limited number of resources per target class (Extension 2). The resources are processed in batches, because the volume of decisions in the triplestore makes loading all resources into memory at once impractical. Processing in bounded batches keeps memory usage stable regardless of dataset size. For each batch, resources are loaded into a temporary in-memory store, validated against the relevant SHACL and SPARQL-based shapes, and the results are appended to the validation report in the triplestore.&#x20;
 
-Utility functions have been added to retrieve a set of triples for each resource (Extension 2).
+At the end of each run, the previous report(s) are deleted so only the latest report is retained. This deletion process also deletes the report and its results in batches.
 
-SPARQL-based SHACL shapes are executed differently from standard shapes (Extension 3): rather than evaluating them in-memory, the service imports the batch data into a temporary graph in the triplestore and runs the SPARQL queries directly against the triplestore engine. This is significantly faster for complex graph traversals and allows the full query capabilities of Virtuoso to be used for validation.
+Utility functions have been added to retrieve a set of triples for each resource (Extension 3).
 
-A REST API (Extension 4) exposing the latest validation report is added to the service increasing the visibility of the validation results. A JSON response following the JSON API specification is returned. For example:
+SPARQL-based SHACL shapes are executed differently from standard shapes (Extension 4): rather than evaluating them in-memory, the service imports the batch data into a temporary graph in the triplestore and runs the SPARQL queries directly against the triplestore engine. This is significantly faster for complex graph traversals and allows the full query capabilities of Virtuoso to be used for validation.
+
+A REST API (Extension 5) exposing the latest validation report is added to the service increasing the visibility of the validation results. A JSON response following the JSON API specification is returned. For example:
 
 ```json
 {
@@ -150,7 +152,7 @@ A REST API (Extension 4) exposing the latest validation report is added to the s
 }
 ```
 
-Three standard SHACL shape files and one SPARQL-based shape file are included in the app-decide configuration (Extension 5). The ELI and Organization entities are essential for the correct processing of the enrichment pipelines (NER and NEL):
+Three standard SHACL shape files and one SPARQL-based shape file are included in the app-decide configuration (Extension 6). The ELI and Organization entities are essential for the correct processing of the enrichment pipelines (NER and NEL):
 
 * Shapes for ELI Work entities: config/reports/shacl/work.ttl
 * Shapes for ELI Expression entities: config/reports/shacl/expression.ttl
@@ -183,13 +185,15 @@ n/a
 
 The validation service is part of the guidelines of the cities of deploying their own local data space:
 
-* Bamberg: [https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.bamberg.yml#L120](https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.bamberg.yml#L120)
-* Freiburg: [https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.freiburg.yml#L119](https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.freiburg.yml#L119)
-* Ghent: [https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.ghent.yml#L105](https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.ghent.yml#L105)
+* Bamberg: [https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.bamberg.yml#L111](https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.bamberg.yml#L111)
+* Freiburg: [https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.freiburg.yml#L110](https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.freiburg.yml#L110)
+* Ghent: [https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.ghent.yml#L96](https://github.com/lblod/app-decide/blob/development/docs/docker-compose.override.ghent.yml#L96)
 
-This way, the service will be integrated and tested on the server of each city.
+This way, the service is integrated and tested on the server of each city. By default, the application runs the service. No specific configuration is required by the city.
 
-The service uses a cron mechanism to periodically run the validations ([https://github.com/lblod/loket-report-generation-service/tree/master#reports](https://github.com/lblod/loket-report-generation-service/tree/master#reports)). By default, the SHACL validations will run every day at 03:00 ([https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35](https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35)).
+The service uses a cron mechanism to periodically run the validations ([https://github.com/lblod/loket-report-generation-service/tree/master#reports](https://github.com/lblod/loket-report-generation-service/tree/master#reports)). By default, the SHACL validations will run every day at 03:00 ([https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35](https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35)).&#x20;
+
+During testing, we discovered that validating all decisions causes a high load on the triple store: a validation issue in one municipality typically recurs for every decision. Therefore, we added sampling  to validate a limited set of 100 decisions in each validation run by default.
 
 Testing can be done by navigating to the provided REST API `/shacl-reports/latest/issues` .
 
