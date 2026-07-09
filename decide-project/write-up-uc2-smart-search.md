@@ -108,7 +108,7 @@ The answer is based on a set of decisions, ranked by confidence of being relevan
 
 <figure><img src="../.gitbook/assets/image (35).png" alt="" width="181"><figcaption><p>Fig. 2 Quotations are used as extension of decisions.</p></figcaption></figure>
 
-While the HVT annotates on AI annotations, in UC2 users can add a thums up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#web-annotation-model](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#web-annotation-model "mention").
+While the HVT annotates on AI annotations, in UC2 users can add a thumbs up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [write-up-uc0.0-data-space](write-up-uc0.0-data-space#web-annotation-model "mention").
 
 <figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption><p>Fig. 3: Answers can be annotated with feedback</p></figcaption></figure>
 
@@ -231,7 +231,7 @@ Answer generation is handled by an LLM invoked through LangChain's init\_chat\_m
 
 The LLM is given a custom system prompt that enforces three constraints: the answer must be grounded exclusively in the retrieved documents, the LLM must explicitly state when none of the retrieved documents are relevant to the question, and the answer must be produced in the same language as the question. This last constraint handles language switching transparently without any code-level branching between different language inputs.
 
-The same approach is taken for the LLM that generates the embeddings for the embedding service, but the two LLMs are separate models as they fulfill different roles.
+The same approach is taken for the LLM that generates the embeddings for the embedding service, but the two LLMs are separate models as they fulfil different roles.
 
 ## Final UI design (and why) (if any)
 
@@ -326,7 +326,7 @@ To expand the use case and cover this set of questions, the question answering s
 
  To cover the class of questions described above, future work proposes a multi-step workflow architecture built on LangGraph. LangGraph models a workflow as a stateful directed graph, where each node is a focused unit of work and the graph controls which node runs next based on the current state. The service would break the work into phases –gather context, build an explicit plan, execute that plan step by step, and validate the result– rather than attempting everything in a single pass.
 
-The key advantage is inspectability. Each phase has a clear responsibility, the shared state is explicit, and control-flow decisions –such as whether to continue, replan, or validate– are made deterministically by the graph rather than delegated to the model. This shared state, which is passed between each node, makes the full workflow context explicit and traceable. It holds the query, retrieved context, plan steps, step results, counters, and final answer as they move through the graph. Based on what the monitor observes in this state, the graph can continue executing plan steps, return to replanning, or move to validation.
+The key advantage is inspectability. Each phase has a clear responsibility, the shared state is explicit, and control-flow decisions –such as whether to continue, re-plan, or validate– are made deterministically by the graph rather than delegated to the model. This shared state, which is passed between each node, makes the full workflow context explicit and traceable. It holds the query, retrieved context, plan steps, step results, counters, and final answer as they move through the graph. Based on what the monitor observes in this state, the graph can continue executing plan steps, return to replanning, or move to validation.
 
 
 The proposed workflow consists of six phases:
@@ -360,7 +360,7 @@ SPARQL is a very expressive language. Giving the LLM the ability to formulate an
 
 - Users with malicious intent could convince the LLM to run destructive queries, inserting or deleting triples into the SPARQL endpoint. This is easily countered by leveraging the [capabilities of mu-authorization](https://github.com/mu-semtech/sparql-parser#define-access-rights-for-specific-services) Simply giving the LLM a scope that only allows read access to the public information in the triplestore is enough.
 - Other ill-meaning users could decide to have the LLM run a lot of very heavy queries, resulting in a Denial of Service attack on the system. This can be mitigated by 1) providing the LLM with patterns of such malicious queries and telling it to refuse executing them, 2) extending mu-authorization so it disallows queries matching such patterns, 3) putting limits on the execution time of queries (built in for virtuoso) or queries sent from a certain service (requires an extension of mu-authorization).
-- Because the LLM now operates as an agent that can take actions, the risk of prompt injection where malicious content in a retrieved document manipulates the model's behaviour. This becomes more consequential than in the current stateless pipelin, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
+- Because the LLM now operates as an agent that can take actions, the risk of prompt injection where malicious content in a retrieved document manipulates the model's behaviour. This becomes more consequential than in the current stateless pipeline, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
 
 ### Possible future work LBLOD related
 
