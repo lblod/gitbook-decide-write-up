@@ -12,15 +12,10 @@ The wanted deliverable is a **SHACL validation layer**: an automated service tha
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
-|
-
-**D2.4** (Adjusted) Data Quality
-
-| <p><br>Manager available</p>          | <p><strong>T2.6</strong> Adjust and test open source semantic Data Quality Manager,<br>implemented in Flanders (if needed).</p> |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| **D2.5** (Adjusted) Data              |                                                                                                                                 |
-| <p><br>Quality Manager integrated</p> |                                                                                                                                 |
-| <p><br>at relevant pilot sites</p>    | **T2.7** Integrate Data Quality Manager in local DS German pilots.                                                              |
+| Deliverable                                                                 | Tasks                                                                                                                           |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| <p><br><strong>D2.4</strong> (Adjusted) Data Quality Manager available</p>  | <p><strong>T2.6</strong> Adjust and test open source semantic Data Quality Manager,<br>implemented in Flanders (if needed).</p> |
+| **D2.5** (Adjusted) Data Quality Manager integrated at relevant pilot sites | **T2.7** Integrate Data Quality Manager in local DS German pilots.                                                              |
 
 ### Link to other deliverables
 
