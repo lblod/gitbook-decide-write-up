@@ -583,6 +583,10 @@ The PDF pipeline currently segments the meeting minutes text twice: once to dete
 
 While data space supports publishing private data, the pipeline is currently configured to handle public data only. The pipeline can be configured to store its data in private graphs, that are only readable by users with the correct access rights, but this requires turning off the processing services, configuring them with this new graph and restarting them. This is not very user-friendly. To get around this problem, we could move the target graph from the configuration of the service into the definition of the task, so it can be controlled in the UI. As we didn't have any private data to be processed by the pipeline in the pilots, we didn't cater for this scenario yet.
 
+#### PDF storage: per-administrative-unit graphs
+
+The PDF to ELI pipeline currently writes all extracted decisions into a single, shared PDF graph, regardless of which administrative unit the source PDF belongs to. In practice this means that PDF-derived data from Ghent, Freiburg, and Bamberg all lands in the same graph. The data is still correctly linked to the corresponding local authority so downstream queries relying on that link remain accurate but the storage graph itself does not reflect the administrative unit of origin. A future extension would make the target graph depend on the administrative unit selected when the pipeline is run, so that each local authority's PDF-derived decisions are stored in their own graph.
+
 ### Possible future work LBLOD related
 
 The [harvester frontend](write-up-uc0.0-pipelines.md#harvester-frontend) has been extended for the DECIDe project, but is not yet merged in the main branch on GitHub.
