@@ -25,7 +25,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 #### Authorization Policies Store (ODRL)
 
-Each DCAT distribution carries machine-readable access rights expressed as ODRL policies, co-published alongside the distribution metadata. The two components are tightly coupled: DCAT describes what datasets exist and how to reach them; ODRL describes the rules that apply.
+DCAT data services are targetted by ODRL rules for expressing machine-readable access right, and are published alongside the DCAT metadata on the LDES feed. The two components are tightly coupled: DCAT describes what datasets exist and how to reach them; ODRL describes the rules that apply.
 
 [write-up-odrl.md](write-up-odrl.md "mention")
 
