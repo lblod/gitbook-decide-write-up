@@ -99,7 +99,7 @@ Three distribution types are modelled:
 * An LDES feed is modelled as a `dcat:Distribution` simultaneously typed as `ldes:EventSource`, with `dct:conformsTo` pointing to the LDES specification and supported media types listed explicitly.
 * A Resource API (JSON:API) is modelled as a `dcat:Distribution` with `dcat:mediaType` set to the JSON:API media type identifier. The Resource API option is the least interoperable of the three –the resources configuration that links its output to the semantic model is not public– and was included as a concession to project partners with limited linked data experience who prefer a JSON-based API over a SPARQL endpoint or LDES feed.
 
-ODRL policies are co-published per dataset using `odrl:target` on the `dcat:Dataset` asset. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. The example below shows that a Licensed dataset is targetted by `odrl:Permission` and `odrl:Prohibition` rules. Also, a shape is added to the dataset as example to express its structure.
+ODRL policies are published per dataset using `odrl:target` on the `dcat:Dataset` asset. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. The example below shows that a Licensed dataset is targetted by `odrl:Permission` and `odrl:Prohibition` rules. Also, a shape is added to the dataset as example to express its structure.
 
 ```turtle
 private-ds-ex:dataset a dcat:Dataset ;  
