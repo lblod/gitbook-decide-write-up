@@ -99,9 +99,49 @@ Three distribution types are modelled:
 * An LDES feed is modelled as a `dcat:Distribution` simultaneously typed as `ldes:EventSource`, with `dct:conformsTo` pointing to the LDES specification and supported media types listed explicitly.
 * A Resource API (JSON:API) is modelled as a `dcat:Distribution` with `dcat:mediaType` set to the JSON:API media type identifier. The Resource API option is the least interoperable of the three –the resources configuration that links its output to the semantic model is not public– and was included as a concession to project partners with limited linked data experience who prefer a JSON-based API over a SPARQL endpoint or LDES feed.
 
-ODRL policies are co-published per dataset using `odrl:hasPolicy` on the `dcat:Dataset` description. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. Both are surfaced by the LDES-based federation mechanism and replicated into the Federating Catalogue alongside the core DCAT metadata.
+ODRL policies are co-published per dataset using `odrl:target` on the `dcat:Dataset` asset. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. The example below shows that a Licensed dataset is targetted by `odrl:Permission` and `odrl:Prohibition` rules. Also, a shape is added to the dataset as example to express its structure.
 
-LDES was selected as the federation mechanism because it is event-driven: rather than periodically re-downloading entire catalog files, the Federating Catalogue receives incremental updates as dataset descriptions change. This is consistent with how LDES is used elsewhere in the LBLOD stack, and aligns with the [direction SEMIC is taking for DCAT-AP feeds](https://data.europa.eu/sites/default/files/report/Georges%20Lobo%20%26%20Pavlina%20Fragkou.pdf) at the European level –a prototype for LDES-based DCAT-AP exchange was set up in Belgium and Sweden in 2024.
+```turtle
+private-ds-ex:dataset a dcat:Dataset ;  
+    mu:uuid "60e19fdf-b549-41b9-9adf-420379285127" ;
+    dct:title "Licensed Dataset" ;  
+    dct:description "An example dataset available only to users who purchased a valid license." ;
+    dct:conformsTo private-ds-ex:shape .
+
+private-ds-ex:shape a sh:NodeShape ;
+    sh:targetClass :ExampleClass ;
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path :ExampleProperty ;
+        sh:minCount 1 .
+    ] .
+    
+private-ds-ex:dataservice a dcat:DataService ;  
+    mu:uuid "341bc1ef-f4ab-4450-80af-b72d7c682e7f" ;
+    dct:format "application/sparql-query" ;  
+    dcat:endpointURL <https://ds.decide.lblod.info/api/private/sparql> ;
+    dcat:servesDataset private-ds-ex:dataset .
+
+private-ds-ex:policy a odrl:Offer, ext:RestrictedPolicy ;  
+    mu:uuid "1d8e1e34-ac8c-4fb8-845a-a9e8ca0e9f6b" ;
+    dct: "Only licensed users may access this content" ;
+    odrl:conflict odrl:perm ;
+    odrl:permission [  
+        a odrl:Permission ;
+        odrl:assigner <http://ds.decide.lblod.info> ;  
+        odrl:target private-ds-ex:dataset ;  
+        odrl:action odrl:read ;  
+        odrl:assignee private-ds-ex:licensedUserCollection ;  
+    ] ;
+    odrl:prohibition [  
+        a odrl:Prohibition ;
+        odrl:assigner <http://ds.decide.lblod.info> ;  
+        odrl:target private-ds-ex:dataset ;  
+        odrl:action odrl:read, odrl:write ;  
+    ] .
+```
+
+The ODRL policies and SHACL shapes are both sudfdfdfrfaced by the LDES-based federation mechanism and replicated into the Federating Catalogue alongside the core DCAT metadata. LDES was selected as the federation mechanism because it is event-driven: rather than periodically re-downloading entire catalog files, the Federating Catalogue receives incremental updates as dataset descriptions change. This is consistent with how LDES is used elsewhere in the LBLOD stack, and aligns with the [direction SEMIC is taking for DCAT-AP feeds](https://data.europa.eu/sites/default/files/report/Georges%20Lobo%20%26%20Pavlina%20Fragkou.pdf) at the European level –a prototype for LDES-based DCAT-AP exchange was set up in Belgium and Sweden in 2024.
 
 For the Ghent pilot, DCAT-AP-VL (v2) is used for the local publication to Metadata Vlaanderen in addition to the DCAT-AP v3 description used within the DECIDe data space. The two profiles are structurally compatible; the versioning gap means some v3 features are not expressible in the Flemish local publication, but this does not affect the DECIDe data space operation.
 
