@@ -436,7 +436,9 @@ Should sparql-parser gain support for constraint refinement of Actions or Rules 
 
 #### ODRL use to describe dataset usage restrictions
 
-In DECIDe ODRL is also used to describe the usage restrictions of datasets. This is done by adding an ODRL Offer and linking it to a dataset. The offer is then published on the LDES and in the DCAT catalog together with the DCAT description of the dataset. As all the datasets in the DECIDe project are public, the publication of such policies was not a strong concern for the participants at this time and therefore, the standard offers in the DECIDe project are fairly minimal. Here is an example of an Offer that describes a dataset as public:
+In DECIDe ODRL is also used to describe the *usage restrictions* of datasets. Note that this is going much further than 'dataset access restrictions', i.e. whether users can just read or write to the dataset. It also can define what users can or can't do with the dataset. For instance, should they attribute the original owner? Can they resell or republish the dataset? This is done by adding an ODRL Offer and linking it to a dataset. The offer is then published on the LDES and in the DCAT catalog together with the DCAT description of the dataset. 
+
+As all the datasets in the DECIDe project are public, the publication of such policies was not a strong concern for the participants at this time and therefore, the standard offers in the DECIDe project are fairly minimal. Here is an example of an Offer that describes a dataset as public:
 
 ```turtle
 public-ds-ex:policy a odrl:Offer, ext:PublicPolicy ;  
