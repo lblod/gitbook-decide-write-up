@@ -111,7 +111,7 @@ The DECIDe DCAT architecture follows a federated model: each participating city 
 
 At the city level, each pilot city has a DCAT catalog describing its datasets and distributions. The catalog is public within DECIDe scope –authentication is applied at the level of individual endpoints, not at the catalog level.
 
-The Federating Catalogue operates by following the DCAT LDES feeds published by each member catalog in their own system. This is shown in the image below. As member catalogs update, the Federating Catalogue replicates new or changed metadata entries into its own triplestore –not the underlying data, only the DCAT instances *describing* the data: Catalog, Dataset, DataService and Distribution instances. The Federating Catalogue then exposes the aggregated metadata in three ways: a human-readable catalog UI for browsing by non-technical users, a SPARQL endpoint for querying the catalog metadata directly, and a DCAT LDES feed that allows other catalogs at regional, federal, or European level to follow and replicate the DECIDe catalog's contents.
+The Federating Catalogue operates by following the DCAT LDES feeds published by each member catalog in their own system. This is shown in the image below. As member catalogs update, the Federating Catalogue replicates new or changed metadata entries into its own triplestore –not the underlying data, only the DCAT instances _describing_ the data: Catalog, Dataset, DataService and Distribution instances. The Federating Catalogue then exposes the aggregated metadata in three ways: a human-readable catalog UI for browsing by non-technical users, a SPARQL endpoint for querying the catalog metadata directly, and a DCAT LDES feed that allows other catalogs at regional, federal, or European level to follow and replicate the DECIDe catalog's contents.
 
 ODRL policies and SHACL shapes are co-federated alongside DCAT catalog entries. When the Federating Catalogue follows a member catalog's LDES feed, it also picks up the ODRL policies and SHACL structural descriptions attached to those catalog instances, making the full discovery metadata (what the data is, how to access it, what rules govern access, and what structure to expect) available from the Federating Catalogue.
 
@@ -119,44 +119,50 @@ ODRL policies and SHACL shapes are co-federated alongside DCAT catalog entries. 
 
 A typical client flow is shown below. The client queries the well-known location of the Federating Catalogue to find available dataset distributions and their endpoints (1). From the DCAT descriptions they learn which endpoints require authentication and which are public. This is described in the ODRL Policy instance that is attached to the DCAT datasets. As the distribution data/endpoints are not replicated, the user then accesses them in the environment of the data space participant that publishes the data and the user authenticates where required (2) and then access the endpoints relevant to them (3). The way authentication and authorization works for the distribution access is left to the data space participant. Each endpoint has a DCAT description that is put on the participant's LDES feed and thus replicated in the federating DCAT catalog.
 
-<figure><img src="../../.gitbook/assets/lokale-bron-architecture-DCAT.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/lokale-bron-architecture-Dataspace high level architecture(1).jpg" alt=""><figcaption></figcaption></figure>
 
 ### Final semantic components
 
-The services used to realize the DCAT federation layer are shown in the image below. 
+The services used to realize the DCAT federation layer are shown in the image below.
 
 <figure><img src="../../.gitbook/assets/lokale-bron-architecture-DCAT-components.jpg" alt=""><figcaption></figcaption></figure>
 
-In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core services, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](write-up-uc0.0-data-space#core-semantic.works-components). Services specific to the DCAT federation layer are described below.
+In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core services, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space/write-up-uc0.0-data-space#core-semantic.works-components). Services specific to the DCAT federation layer are described below.
 
-#### Frontend DCAT 
+#### Frontend DCAT
+
 This is the web application hosting the web interface through which users can search and view DCAT Catalogs, Datasets and Distributions in. The frontend is written in Ember and uses the endpoint provided by mu-resources to realize its functionality.
 
 **GitHub:** [https://github.com/lblod/frontend-decide-dcat](https://github.com/lblod/frontend-decide-dcat)
 
 #### DCAT
+
 The DCAT service offers a one-stop way to fetch a full description of the DCAT catalogs in the triplestore including all of its datasets and distributions in multiple file formats, `application/ld+json` and `application/n-triples` among others.
 
 **GitHub:** [https://github.com/lblod/dcat-service](https://github.com/lblod/dcat-service)
 
 #### LDES-delta-pusher
+
 The LDES-delta pusher is informed by the delta notifier about updates in the triplestore. When it detects an update to a DCAT related resource (Catalog, Dataset, DataService, Distribution, ODRL policy), it writes the current version of that resource to the set of LDES files on disk. It also has auto-healing functionality for the LDES stream in case it misses updates from the delta-notifier because either of the services was down for any reason. To accomplish this, it periodically reads out its own stream and compares it to its triplestore contents. If it discovers instances that are on the stream but no longer in the triplestore, it removes them from the stream by writing a Tombstone entity for them, informing clients that the instance is now gone. If it discovers an instance that is in the triplestore but not on the stream, it writes the latest version to the stream.
 
 **GitHub:** [https://github.com/redpencilio/ldes-delta-pusher-service/](https://github.com/redpencilio/ldes-delta-pusher-service/)
 
 #### LDES-serve-feed
+
 The LDES-servce-feed service takes the files created by the LDES-delta-pusher service and exposes them in multiple triple formats as a web service. Supported formats are `application/ld+json` and `application/n-triples`, among others.
 
 **GitHub:** [https://github.com/lblod/ldes-serve-feed-service](https://github.com/lblod/ldes-serve-feed-service)
 
 #### datadumps
-The datadumps service is a simple nginx web service that exposes distributions generated by data space participants. These distributions are generated together with their DCAT description using a dedicated `mu-cli` script called `publish_dataset`. The script is to be run manually by data space participants when they are ready to release a new version of their datasets. Every time the script runs, a new distribution is created for the new version of the datasets. The pre-configured datasets for each participant are:
-- codelists: Codelist annotations for SDGs and impact
-- rmz: Restricted Mobility Zone (RMZ) Concept annotations + locations for municipality
-- expressions: ELI (meta)data for expression + work + manifestation
-- human-validations: Human review annotations
 
-As this is just a default [Nginx docker container](https://hub.docker.com/_/nginx), there is no specific GitHub link. However, the `mu-cli` script to generate the distributions has an extensive README published: [https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset).
+The datadumps service is a simple nginx web service that exposes distributions generated by data space participants. These distributions are generated together with their DCAT description using a dedicated `mu-cli` script called `publish_dataset`. The script is to be run manually by data space participants when they are ready to release a new version of their datasets. Every time the script runs, a new distribution is created for the new version of the datasets. The pre-configured datasets for each participant are:
+
+* codelists: Codelist annotations for SDGs and impact
+* rmz: Restricted Mobility Zone (RMZ) Concept annotations + locations for municipality
+* expressions: ELI (meta)data for expression + work + manifestation
+* human-validations: Human review annotations
+
+As this is just a default [Nginx docker container](https://hub.docker.com/_/nginx), there is no specific GitHub link. However, the `mu-cli` script to generate the distributions has an extensive README published: [https://github.com/lblod/app-decide/tree/development/scripts/project/publish\_dataset](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset).
 
 ### Other explored semantic components
 
@@ -166,9 +172,9 @@ The **Data space Interoperability Framework PoC** (using the CKAN DCAT extension
 
 The **Eclipse EDC Federated Catalog** was also assessed. It works by crawling the DSP catalog endpoint of the catalogs it federates, making it architecturally closer to what DECIDe ultimately built than the CKAN PoC. DECIDe chose not to implement the Data Space Protocol at this stage (though a minimal compatibility service was eventually trialed, see the DSP write-up) which already rules out the Eclipse approach as a dependency. In addition, the adopters documentation for the Eclipse Federated Catalog was still in a TBD state at the time of assessment, and it was unclear how the system handles federated catalogs using a different DCAT application profile than the federating catalog.
 
-### Final AI components 
+### Final AI components
 
-No AI components are deployed to realize the DCAT Federating Catalogue. 
+No AI components are deployed to realize the DCAT Federating Catalogue.
 
 ## Final UI design
 
@@ -208,7 +214,7 @@ As stated before, currently no create, delete or update support exists in the DC
 
 ## Relevant links
 
-Link to automatic DCAT content generation scripts: https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset
+Link to automatic DCAT content generation scripts: https://github.com/lblod/app-decide/tree/development/scripts/project/publish\_dataset
 
 Link to federated DCAT catalog UI: https://ds.decide.lblod.info
 

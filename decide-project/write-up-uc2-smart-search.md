@@ -108,7 +108,7 @@ The answer is based on a set of decisions, ranked by confidence of being relevan
 
 <figure><img src="../.gitbook/assets/image (35).png" alt="" width="181"><figcaption><p>Fig. 2 Quotations are used as extension of decisions.</p></figcaption></figure>
 
-While the HVT annotates on AI annotations, in UC2 users can add a thums up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [write-up-uc0.0-data-space](write-up-uc0.0-data-space#web-annotation-model "mention").
+While the HVT annotates on AI annotations, in UC2 users can add a thums up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#web-annotation-model](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#web-annotation-model "mention").
 
 <figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption><p>Fig. 3: Answers can be annotated with feedback</p></figcaption></figure>
 

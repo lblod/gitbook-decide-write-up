@@ -59,7 +59,7 @@ UC1 uses the same codelist mapping and human validation patterns established in 
 ## Glossary
 
 {% hint style="info" %}
-See the [UC0.0 Data space glossary](write-up-uc0.0-data-space#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`, and Triplestore.
+See the [UC0.0 Data space glossary](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`, and Triplestore.
 
 See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#glossary) for definitions of Context window, Fine-tuning, LangChain, LLM, NER, and Ollama.
 {% endhint %}
@@ -173,7 +173,7 @@ The components involved in UC0.1 are shown in the diagram below:
 
 <figure><img src="../.gitbook/assets/lokale-bron-architecture-UC0.1.jpg" alt=""><figcaption></figcaption></figure>
 
-In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core components, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](write-up-uc0.0-data-space#core-semantic.works-components), whereas the job-controller and the singleton task, marked with a **J**, are described in [UC0.0 Pipelines writeup](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md).
+In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core components, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#core-semantic.works-components), whereas the job-controller and the singleton task, marked with a **J**, are described in [UC0.0 Pipelines writeup](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md).
 
 From this diagram, it becomes clear that on a microservice level, UC0.1 is fairly simplistic. The main challenges lie in the AI models used (see later).
 
