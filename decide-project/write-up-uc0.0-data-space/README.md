@@ -58,21 +58,7 @@ DECIDe serves multiple distinct audiences across its components: the technical s
 
 <table><thead><tr><th width="283.736328125">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P1</strong> Original decision data provider</td><td>A local authority –Ghent, Freiburg, or Bamberg– that publishes LD&#x26;L through its local infrastructure. Provides the primary data input to the data space without directly operating the DECIDe pipelines.</td></tr><tr><td><strong>P2</strong> Semantic framework owner</td><td>Defines decision models, concept schemes, and controlled vocabularies. Maintains the semantic standards –OSLO, codelist structures– that the data space builds on.</td></tr><tr><td><strong>P3</strong> Enrichment provider</td><td>Operates the AI annotation pipelines: triggers codelist mapping jobs, monitors NER pipeline runs, and verifies that annotation results are correctly written to the triplestore. Primarily ABB technical staff for the pilot.</td></tr><tr><td><strong>P4</strong> Domain validator</td><td>A human expert with subject-matter knowledge relevant to a specific annotation type: a sustainability officer validating SDG mappings (UC0.1), a mobility specialist validating RMZ classifications (UC1), or an IT/digiteam member validating entity links (UC0.0). Primary user of the HV interfaces.</td></tr><tr><td><strong>P5</strong> Non-technical application user</td><td>A policy officer, sustainability coordinator, civil servant, citizen, or any other person who consumes DECIDe's frontend applications without direct exposure to the underlying data infrastructure</td></tr><tr><td><strong>P6</strong> Data engineer (technical exploitation)</td><td>Configures and monitors the pipeline infrastructure: defines new jobs, updates cron schedules, diagnoses failed tasks, and manages data space component configuration. Primarily ABB technical staff for the pilot.</td></tr><tr><td><strong>P7</strong> Data space consumer (ecosystem participation)</td><td>An external organisation or individual that accesses data from the DECIDe data space as a consumer: discovers datasets through the DCAT catalogue, authenticates via the VC infrastructure, and queries data subject to the ODRL access policies.</td></tr></tbody></table>
 
-## Datasources, datasets and datastandards
-
-### Data sources
-
-| Data source | Type/category | Brief description |
-| ----------- | ------------- | ----------------- |
-|             |               |                   |
-
-### Datasets available in the data space
-
-| Dataset | IdP/Authentication service | Country of origin | Domain | Shared within the project | Reused within the project |
-| ------- | -------------------------- | ----------------- | ------ | ------------------------- | ------------------------- |
-|         |                            |                   |        |                           |                           |
-
-### Data standards
+## Datastandards
 
 In DECIDe, two international data standards are reused to support the use cases: ELI-EP for describing all data related to LD\&L, and Web Annotations Model for enriching LD\&L and capturing human feedback. ELI-EP is an Application Profile defined for the European Parliament, which is an umbrella for reusing several other data standards: ELI for describing the content of LD\&L decisions, ELI-DL for activities related to LD\&L, FOAF for persons, ORG for organizations. Below, we give a more detailed explanation of ELI, ELI-DL and Web Annotation Model, because these are crucial to understand the data standards of the specific write-ups.
 
@@ -85,7 +71,7 @@ In DECIDe, two international data standards are reused to support the use cases:
 | European Legislation Identifier - European Parliament (ELI-EP) | Application Profile | [https://europarl.github.io/eli-ep/](https://europarl.github.io/eli-ep/)                                                                                                                                                                                                   |
 | Web Annotation Model                                           | Ontology            | [https://www.w3.org/TR/annotation-model/](https://www.w3.org/TR/annotation-model/)                                                                                                                                                                                         |
 
-#### European Legislation Identifier (ELI)
+### European Legislation Identifier (ELI)
 
 ELI allows to describe any kind of document (Fig. 1). Documents can be LD\&L documents, but also legislation still in draft, or attachments of a decision. It is based on the librarian standard "[FRBR](https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records)", which introduces 3 layers (actually 4, but the last two are combined in ELI):
 
@@ -101,13 +87,13 @@ ELI recommends using the FOAF vocabulary for describing persons and the ORG onto
 
 <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption><p>Fig. 2: ELI reuses the FOAF vocabulary for describing Agents, and ORG for organizations.</p></figcaption></figure>
 
-#### European Legislation Identifier - Draft Legislation (ELI-DL)
+### European Legislation Identifier - Draft Legislation (ELI-DL)
 
 ELI-DL allows to capture the documents that are created during the drafting of the legislation. It is an activity-based model where [activities](http://data.europa.eu/eli/eli-draft-legislation-ontology#Activity) can "consist of" sub-activities and can "[motivate](http://data.europa.eu/eli/eli-draft-legislation-ontology#was_motivated_by)" other activities. It provides relations to the ELI documents: a document can an input or output of an activity, activities can foresee a change in legislation, activities can be recorded in documents. More specific classes are introduced by ELI-DL, such as [Process](http://data.europa.eu/eli/eli-draft-legislation-ontology#Process), [Foreseen activities](http://data.europa.eu/eli/eli-draft-legislation-ontology#ForeseenActivity), [Participant](http://data.europa.eu/eli/eli-draft-legislation-ontology#Participation) and [Vote](http://data.europa.eu/eli/eli-draft-legislation-ontology#Vote). However, in DECIDe, we focus on the use of Activity for identifying meetings and consultations of agenda items, and tracking the participants.
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption><p>Fig. 3: ELI-DL is an event-based model where activities are linked with eachother and with ELI documents ( are the</p></figcaption></figure>
 
-#### Web Annotation Model
+### Web Annotation Model
 
 The Web Annotation Model (W3C recommendation since 2017) is a simple, but powerful model to link two distinct pieces of information. Instead of directly linking two resources, an "annotation" sits between resources: an "[annotation](https://www.w3.org/TR/annotation-vocab/#annotation)" describes that a "[body](https://www.w3.org/TR/annotation-vocab/#hasbody)" resource is about a "[target](https://www.w3.org/TR/annotation-vocab/#hastarget)" resource (Fig. 4). For example, a decision about greening a certain street can lead to an annotation with as body the decision and as target the street. This approach has several benefits:
 
