@@ -98,19 +98,23 @@ In this write-up, we are focusing on the shared logic, data model, and governing
 
 ## Datasources, datasets and datastandards
 
-> The foundational data sources and datasets for DECIDe (LD\&L decisions, core data standards) are documented in the UC0.0 Pipelines write-ups. The HVT does not introduce new external data sources; it consumes AI-generated `oa:Annotation` objects from the triplestore and writes human validation votes back as additional linked data.
+> The foundational data sources and datasets for DECIDe (LD\&L decisions, core data standards) are documented in the UC0.0 Pipelines write-ups. The HVT uses the AI-generated `oa:Annotation` objects from all use cases, and writes human validation votes back as additional linked data.
 
 ### Data sources
 
 | Name of data source                             | Type/category          | Brief description                                                                               |
 | ----------------------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------- |
-| AI-generated annotation layer (`oa:Annotation`) | Internal (triplestore) | The enrichment outputs produced by the pipelines that serve as the input to all HVT interfaces. |
+| Named Entity Recognition enrichments (`oa:Annotation`) | Internal (triplestore) | The enrichment outputs produced by the NER service. |
+| Named Entity Linking enrichments (`oa:Annotation`) | Internal (triplestore) | The enrichment outputs produced by the NEL service. |
+| Codelist mapping enrichments (`oa:Annotation`) | Internal (triplestore) | The enrichment outputs produced by the codelist mapping service. |
+| Smart search response (`schema:Answer` and `schema:Quotation`) | Internal (triplestore) | The answer produced by the question answering service. |
+
 
 ### Datasets available in the data space
 
 | Dataset                                  | IdP/Authentication service | Country of origin                                                        | Domain     | Shared within the project | Reused within the project      |
 | ---------------------------------------- | -------------------------- | ------------------------------------------------------------------------ | ---------- | ------------------------- | ------------------------------ |
-| Human validation votes (`oa:Annotation`) | _?_                        | Belgium / Germany <mark style="background-color:$warning;">(any?)</mark> | Government | Yes                       | Yes, shown as aggregate number |
+| Human validation feedback (`oa:Annotation`) | Data space authentication                        | Belgium / Germany | Government | Yes                       | Yes - shown as aggregate number in Human Validation Tool, Codelist mapping votes are reused by the codelist mapping service for training. |
 
 ### Data standards
 
