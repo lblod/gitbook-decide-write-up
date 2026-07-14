@@ -62,7 +62,7 @@ The opportunity is not just about getting the data in, but doing so in a way tha
 
 The pipeline infrastructure is the answer to these prerequisites: a set of configurable, reusable tools that harvest LD\&L from all sources and normalise it to a single common representation. The European Legislation Identifier (ELI) was chosen as that representation because it provides a vocabulary specifically designed for describing legislation –structuring each decision as a Work, Expression, and Manifestation– that is source-agnostic and already adopted within European public administrations. Normalising all input to ELI at ingestion means every downstream step operates on identical data structures, regardless of which city the decision came from or in what format it was originally published.
 
-On top of this normalised base, a set of AI pipelines produce the structured annotations that the downstream use cases depend on, and that can be validated through Human Validation interfaces.
+On top of this normalised base, a set of AI pipelines produce the structured annotations that https://github.com/lblod/app-decide/tree/development/config/migrations/bestuurseenheden-and-organizations-flandersthe downstream use cases depend on, and that can be validated through Human Validation interfaces.
 
 ### Pilot partners
 
@@ -88,7 +88,12 @@ The pipeline system covers two stages. The first is ingestion and normalisation:
 
 ### Datasets available in the data space
 
-<table><thead><tr><th width="128">Dataset</th><th width="132.375">IdP/Authentication service</th><th>Country of origin</th><th>Domain</th><th>Shared within the project</th><th>Reused within the project</th></tr></thead><tbody><tr><td>ELI-normalised LD&#x26;L decisions</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Local governance</td><td>Yes</td><td>Yes, base input for all AI pipelines</td></tr><tr><td>AI enrichments (<code>oa:Annotation</code>)</td><td>Data space authentication</td><td>Belgium</td><td></td><td>Yes</td><td>Yes, base for all use cases</td></tr></tbody></table>
+<table><thead><tr><th width="128">Dataset</th><th width="132.375">IdP/Authentication service</th><th>Country of origin</th><th>Domain</th><th>Shared within the project</th><th>Reused within the project</th></tr></thead><tbody><tr><td>ELI-normalised LD&#x26;L decisions</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes, base input for all AI pipelines</td></tr><tr><td>AI enrichments (<code>oa:Annotation</code>)</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes, base for all use cases</td></tr><tr><td>Organizations</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes - used by Entity Linking, Policy Impact Report, Human Validation Tool, Smart Search</td></tr></tbody></table>
+
+The Organizations dataset is used as registry for identifying municipalities and its governing bodies. The data originates from several data sources, depending of the municipality:
+* Freiburg: organizations are retrieved through the OParl to ELI pipeline automatically
+* Bamberg: a [migration](https://github.com/lblod/app-decide/tree/development/config/migrations/add-governing-bodies-bamberg) is added to generate URIs for Bamberg and its governing bodies
+* Ghent: a [migration](https://github.com/lblod/app-decide/tree/development/config/migrations/bestuurseenheden-and-organizations-flanders) is added to reuse the existing URIs of municipalities and governing bodies in Flanders and transform them to align with the [ORG-EP](https://europarl.github.io/org-ep) data model
 
 ### Data standards
 
