@@ -122,8 +122,8 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 | Dataset                                                              | IdP/Authentication service                                                      | Country of origin | Domain     | Shared within the project | Reused within the project |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------- | ---------- | ------------------------- | ------------------------- |
-| LD\&L decisions annotated with SDG codelist mappings (oa:Annotation) | Data space authentication | Belgium / Germany | Government | X                         | X                         |
-| Human feedback on LD\&L decisions annotated with SDG codelist mappings (oa:Annotation) | Data space authentication | Belgium / Germany | Government | X                         | X                         |
+| LD\&L decisions annotated with SDG codelist mappings (`oa:Annotation`) | Data space authentication | Belgium / Germany | Government | X                         | X                         |
+| Human feedback on LD\&L decisions annotated with SDG codelist mappings (`oa:Annotation`) | Data space authentication | Belgium / Germany | Government | X                         | X                         |
 
 ### Data standards
 
