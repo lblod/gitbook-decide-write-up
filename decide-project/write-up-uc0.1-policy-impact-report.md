@@ -116,13 +116,14 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 ### Data sources
 
-<table><thead><tr><th width="190.6162109375">Data source</th><th width="196.818359375">Type/category</th><th>Brief description</th></tr></thead><tbody><tr><td><a href="https://research.un.org/en/thesaurus/downloads">SDG codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The UN Sustainable Development Goals taxonomy (17 goals and associated targets) used as the annotation target for linking local decisions to policy goals.</td></tr></tbody></table>
+<table><thead><tr><th width="190.6162109375">Data source</th><th width="196.818359375">Type/category</th><th>Brief description</th></tr></thead><tbody><tr><td><a href="https://research.un.org/en/thesaurus/downloads">SDG codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The UN Sustainable Development Goals taxonomy (17 goals and associated targets) used to generate a flattened SDG codelist.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/add-sdg-codelist/20260310123608-add-simple-sdg-codelist.ttl">SDG Flattened codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>A flattened version of the UN Sustainable Development Goals taxonomy (17 goals) used as the annotation target for linking local decisions to policy goals.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/20260407111121-create-impact.sparql">Impact codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The impact taxonomy used to indicate the impact of a decision on an SDG.</td></tr></tbody></table>
 
 ### Datasets available in the data space
 
 | Dataset                                                              | IdP/Authentication service                                                      | Country of origin | Domain     | Shared within the project | Reused within the project |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------- | ---------- | ------------------------- | ------------------------- |
-| LD\&L decisions annotated with SDG codelist mappings (oa:Annotation) | _<mark style="background-color:$warning;">(to be completed by dev team)</mark>_ | Belgium / Germany | Government | X                         | X                         |
+| LD\&L decisions annotated with SDG codelist mappings (oa:Annotation) | Data space authentication | Belgium / Germany | Government | X                         | X                         |
+| Human feedback on LD\&L decisions annotated with SDG codelist mappings (oa:Annotation) | Data space authentication | Belgium / Germany | Government | X                         | X                         |
 
 ### Data standards
 
