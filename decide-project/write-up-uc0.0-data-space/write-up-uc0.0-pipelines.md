@@ -295,7 +295,7 @@ In this way, the singleton job service is a very specialized handler of Tasks an
 
 #### Annotation job splitter
 
-For some pipelines, a great many decisions need to be processed at once. For each of these decisions, the process can fail independently. Maybe the decision is in the wrong format, maybe a service goes down, ... The annotation job splitter service splits the input of a single job into many tasks, each dedicated to the processing of a single decision. This allows the processing of faulty decisions to fail, with the rest continuing and offers a clear trace of what went wrong as the services can simply attach their error messages to this task dedicated to the decision instead of to a task that handles all of them at once.
+For all pipelines, a great many decisions need to be processed at once. For each of these decisions, the process can fail independently. Maybe the decision is in the wrong format, maybe a service goes down, ... The annotation job splitter service splits the input of a single job into many tasks, each dedicated to the processing of a single decision. This allows the processing of faulty decisions to fail independently, while the others continue processing. This also offers a clear trace of what went wrong: the services can simply attach their error messages to the task dedicated to that specific decision, rather than to a task that handles all of them at once.
 
 Like the singleton job service, the annotation job splitter service is a very specialized handler of Tasks and like any such service, it only reacts to delta messages and is not triggered by HTTP messages sent by the dispatcher service.
 
