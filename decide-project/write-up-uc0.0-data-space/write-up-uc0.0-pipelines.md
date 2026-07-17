@@ -234,7 +234,7 @@ A job or task status can take five values:
 
 The pipeline infrastructure is the foundational backbone for the ingestion and enrichment of LD\&L within the DECIDe data space.
 
-* Three **ingestion pipelines** bring LD\&L from each pilot city's source format into the data space and standardise it to a common linked-data representation (ELI): one for OSLO-Besluit data from Ghent, one for Freiburg's OParl-based council information system, and one for PDF documents –the only format available for decisions from Bamberg.
+* Initially, three **ingestion pipelines** brought LD\&L from each pilot city's source format into the data space and standardise it to a common linked-data representation (ELI): one for OSLO-Besluit data from Ghent, one for Freiburg's OParl-based council information system, and one for PDF documents –the only format available for decisions from Bamberg. Later, Bamberg offered a custom JSON-based format to describe decisions. This was used as an experiment for how easy it was to set up a new, fourth pipeline for another kind of input.
 * Working on top of this normalised input, the enrichment tasks of the **AI pipeline** generate the annotations that downstream use cases depend on.
 * Underpinning all of this is a **pipeline infrastructure** that controls when and how each pipeline runs, sequences its individual steps, tracks status in the triplestore, and surfaces failures for inspection.
 
@@ -311,13 +311,19 @@ There are many custom task execution services in the DECIDe project, a GitHub li
 
 #### Login service
 
-The login service is the only core service that we didn't describe in the core architecture. This is because it's only realy relevant in the context of managing the pipeline as this is the only place users really need to sign in. Only authenticated users are allowed to create or manage jobs. The login service allows users to authenticate with a username/password combination. When new users want to register, they need to run a `mu-cli` script on the server. For more details, have a look at [the DECIDe README](https://github.com/lblod/app-decide/#registering-an-account).
+The login service is the only core service that we didn't describe in the core architecture. This is because it's only relevant in the context of managing the pipeline as this is the only place users really need to sign in. Only authenticated users are allowed to create or manage jobs. The login service allows users to authenticate with a username/password combination. When new users want to register, they need to run a `mu-cli` script on the server. For more details, have a look at [the DECIDe README](https://github.com/lblod/app-decide/#registering-an-account).
 
 **GitHub**: [https://github.com/mu-semtech/login-service](https://github.com/mu-semtech/login-service)
 
+#### Resource Type service
+
+To provide a better overview of the inputs and outputs of the different tasks, the number of resources in the input and output containers of tasks is shown in the harvester frontend. As we don't know the types of these resources beforehand, the mu-resources service is not suited to this task and we need custom queries to retrieve these counts. The resource type service is a very simple microservice that was created to house these queries.
+
+**GitHub**: [https://github.com/lblod/resource-type-service](https://github.com/lblod/resource-type-service)
+
 ### Ingestion pipelines
 
-LD\&L arrives from three structurally different sources: OSLO-Besluit (Belgian linked data), OParl (German JSON API), and PDF. To allow every downstream processing step to work identically regardless of source city, all three are normalised to a single common representation before entering the enrichment pipeline. The ELI (European Legislation Identifier) ontology was chosen as that representation. ELI provides a linked-data-native vocabulary for describing legislation through Work, Expression, and Manifestation entities. Normalising to ELI at the ingestion stage means that the enrichment pipelines all operate on identical data structures regardless of which city the decision came from.
+LD\&L arrives from four structurally different sources: OSLO-Besluit (Belgian linked data), OParl (German JSON API) PDF and finally the custom JSON format defined in Bamberg. To allow every downstream processing step to work identically regardless of source city, all four are normalised to a single common representation before entering the enrichment pipeline. The ELI (European Legislation Identifier) ontology was chosen as that representation. ELI provides a linked-data-native vocabulary for describing legislation through Work, Expression, and Manifestation entities. Normalising to ELI at the ingestion stage means that the enrichment pipelines all operate on identical data structures regardless of which city the decision came from.
 
 For each source format, a dedicated pipeline is responsible for collecting the original data, converting it to ELI, and storing it in the data space.
 
@@ -422,6 +428,20 @@ For each PDF URL that the content extraction service receives, it will first dow
 2. The text before the very first title is copied at the top of each decision, as this contains the date of the meeting and the participants.
 
 Finally, an ELI Manifestation is created, referring to the processed PDF URL, together with an ELI Work and ELI Expression for each decision.
+
+#### JSON to ELI pipeline
+
+Later in the project, the city of Bamberg provided a new, more structured way to describe their decisions as JSON data. This was taken as an experiment to evaluate how easy it was to add another input format and slot it into the existing pipeline architecture. This turned out to be quite easy to achieve. A single additional service was needed to transform the JSON format to the ELI standard and from there on, the existing pipelines could be reused.
+
+[**JSON to ELI service**](https://github.com/lblod/decide-json-to-eli-service)
+
+The JSON to ELI service transforms decisions in the custom JSON format used by the city of Bamberg into triples according to the ELI standard used throughout the project. It's a service modelled as an 'example-task-service' in the pipeline architecture above that reacts to json-to-eli transformation tasks being created by the job-controller.
+
+So given this transformation service, the only other changes needed were:
+- the creation of a new pipeline configuration that uses this type of task and otherwise is a carbon-copy of the pdf-to-eli pipeline.
+- an update to the harvester frontend so that it can also create this type of task.
+
+Once the decisions from the JSON file were transformed into ELI compliant triples, all AI enrichment services from all use cases simply work as before, with no additional changes necessary. As such the addition of the JSON to ELI service is a demonstration case of how the DECIDe project can be extended to work on additional decision source formats.
 
 ### Other explored semantic components (and why not)
 
