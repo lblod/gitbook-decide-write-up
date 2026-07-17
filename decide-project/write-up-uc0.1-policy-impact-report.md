@@ -355,7 +355,7 @@ The fourth task, `ImpactAssessmentTask` extends the classification with a policy
    * Assess direct effects, then second-order effects
    * Weigh short-term and long-term consequences
    * Conclude with an impact direction (positive / negative / unknown) and confidence level (low / medium / high)
-4. **Store the result.** The impact direction is stored as an `ext:has_impact` predicate on the annotation in the AI graph of the triplestore.
+4. **Store the result.** The impact direction is as a separate `oa:hasBody` triple pointing to a SKOS concept from the impact codelist, see 'Data Standards'.
 
 ### Other explored AI components (and why not)
 

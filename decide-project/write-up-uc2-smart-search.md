@@ -354,13 +354,15 @@ A critical enabler for this architecture is providing the LLM with sufficient kn
 
 The proposed solution is to supply SHACL shape files and example queries as retrieval context before planning begins. SHACL shapes express constraints, properties, prefixes, and class structure in a machine-readable format that the LLM can interpret. Example queries package ready-made patterns, comments, keywords, and endpoint information. Together, they give the planner enough orientation to produce actionable steps and give the executor enough vocabulary to construct correct SPARQL.
 
+In the first prototype, the LLM is guided slightly by providing it with example queries through the use of a [VoID](https://www.w3.org/2001/sw/interest/void/) description, but SHACL would offer a much more complete description of the dataset's contents.
+
 ##### Risks and mitigations
 
 SPARQL is a very expressive language. Giving the LLM the ability to formulate and execute arbitrary SPARQL queries against the triplestore introduces several risks:
 
 - Users with malicious intent could convince the LLM to run destructive queries, inserting or deleting triples into the SPARQL endpoint. This is easily countered by leveraging the [capabilities of mu-authorization](https://github.com/mu-semtech/sparql-parser#define-access-rights-for-specific-services) Simply giving the LLM a scope that only allows read access to the public information in the triplestore is enough.
 - Other ill-meaning users could decide to have the LLM run a lot of very heavy queries, resulting in a Denial of Service attack on the system. This can be mitigated by 1) providing the LLM with patterns of such malicious queries and telling it to refuse executing them, 2) extending mu-authorization so it disallows queries matching such patterns, 3) putting limits on the execution time of queries (built in for virtuoso) or queries sent from a certain service (requires an extension of mu-authorization).
-- Because the LLM now operates as an agent that can take actions, the risk of prompt injection where malicious content in a retrieved document manipulates the model's behaviour. This becomes more consequential than in the current stateless pipeline, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
+- Because the LLM now operates as an agent that can take actions there is a risk of prompt injection where malicious content in a retrieved document manipulates the model's behaviour. This becomes more consequential than in the current stateless pipeline, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
 
 ### Possible future work LBLOD related
 
