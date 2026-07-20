@@ -91,10 +91,10 @@ The deliberate scope of the ODRL implementation covers only the subset of the OD
 
 ### Datasets available in the data space
 
-| Dataset                                          | IdP/Authentication service                         | Country of origin   | Domain                      | Shared within the project         | Reused within the project      |
-| ------------------------------------------------ | -------------------------------------------------- | ------------------- | --------------------------- | --------------------------------- | ------------------------------ |
-| Authorization policies (ODRL TTL in triplestore) | oid4vc-login service / session-based authentication (semantic.works) | Belgium / Germany | Access control / governance | Yes –used by all pilot sites– | Yes – enforced across use cases |
-
+| Dataset                                                 | IdP/Authentication service                                           | Country of origin                         | Domain                      | Shared within the project         | Reused within the project      |
+| ------------------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------- | --------------------------- | --------------------------------- | ------------------------------ |
+| Authorization policies (ODRL TTL in triplestore)        | oid4vc-login service / session-based authentication (semantic.works) | Belgium / Germany                         | Access control / governance | Yes –used by all pilot sites–     | Yes – enforced across use cases |
+| Dataset-specific usage policy (ODRL TTL in triplestore) | Not enforced                                                         | Per partner, defaults provided by project | Governance                  | Yes                               | Yes –policies available to all datasets published |
 ### Data standards
 
 | Standard                           | Link                                                                           |
