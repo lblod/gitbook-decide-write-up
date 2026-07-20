@@ -108,7 +108,7 @@ The answer is based on a set of decisions, ranked by confidence of being relevan
 
 <figure><img src="../.gitbook/assets/image (35).png" alt="" width="181"><figcaption><p>Fig. 2 Quotations are used as extension of decisions.</p></figcaption></figure>
 
-While the HVT annotates on AI annotations, in UC2 users can add a thums up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#web-annotation-model](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#web-annotation-model "mention").
+While the HVT annotates on AI annotations, in UC2 users can add a thumbs up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [write-up-uc0.0-data-space](write-up-uc0.0-data-space#web-annotation-model "mention").
 
 <figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption><p>Fig. 3: Answers can be annotated with feedback</p></figcaption></figure>
 
@@ -231,7 +231,7 @@ Answer generation is handled by an LLM invoked through LangChain's init\_chat\_m
 
 The LLM is given a custom system prompt that enforces three constraints: the answer must be grounded exclusively in the retrieved documents, the LLM must explicitly state when none of the retrieved documents are relevant to the question, and the answer must be produced in the same language as the question. This last constraint handles language switching transparently without any code-level branching between different language inputs.
 
-The same approach is taken for the LLM that generates the embeddings for the embedding service, but the two LLMs are separate models as they fulfill different roles.
+The same approach is taken for the LLM that generates the embeddings for the embedding service, but the two LLMs are separate models as they fulfil different roles.
 
 ## Final UI design (and why) (if any)
 
@@ -305,7 +305,67 @@ LD\&L in the corpus carry AI-generated annotations from the UC0.1 enrichment pip
 
 A retrieved decision may be an amendment of an earlier one, making it contextually incomplete on its own. The construction of consolidated decisions –linking an original decision with its amendment history into a single authoritative text– is a UC0.0 pipeline concern. Once consolidated versions are available in the data space, UC2 could pass the consolidated text to the LLM rather than an isolated amendment, producing answers that reflect the current regulatory state in full rather than a fragment of it.
 
+#### Allowing questions that go further than expression contents
+
+In the current version of the question answering service, users will only get a valid response when asking questions that can be answered based on the *contents* of the expressions. This is because the only input given to the LLM is the text contents and title of the expressions whose vector representation is closest to the question.
+
+However, when asking the DECIDe partners for example questions, it quickly became clear that the interest goes much further than just the contents of the decisions. Many questions we received contained questions regarding aggregate data, or related data that isn't necessarily present in the decision text. For instance:
+
+- "Which decisions were approved in Ghent **in the last month?**"
+- "Do you have any **recent** decisions about subsidies for isolating my home better?"
+
+These questions require pre-filtering of the documents compared to the question based on additional properties, their decision date in this case.
+
+- "**How many** decisions were taken by the Ghent community council that **had an impact on the environment**?"
+
+This question not only wants to pre-filter the documents, it also wants to count the number of matching decisions. This is not possible for the LLM as it only receives the top N (configurable) decisions whose embedding vector is closest to the one of the question.
+
+To expand the use case and cover this set of questions, the question answering service needs to be expanded so the LLM can use the SPARQL endpoint and the Elastic search endpoint as external tools, deciding on its own which queries to execute against which service. This is commonly referred to as giving the LLM tool-use or agentic capabilities, typically through [MCP (Model Context Protocol)](https://modelcontextprotocol.io/docs/learn/server-concepts): the model receives a description of the available endpoints and can autonomously choose to query them in order to satisfy the user's request. A very early prototype was built as an exploration of this extension in the DECIDe project, it can be found on GitHub: https://github.com/semantic-ai/entity-linking-backend/tree/research-mode
+
+##### Plan-execute architecture
+
+ To cover the class of questions described above, future work proposes a multi-step workflow architecture built on LangGraph. LangGraph models a workflow as a stateful directed graph, where each node is a focused unit of work and the graph controls which node runs next based on the current state. The service would break the work into phases –gather context, build an explicit plan, execute that plan step by step, and validate the result– rather than attempting everything in a single pass.
+
+The key advantage is inspectability. Each phase has a clear responsibility, the shared state is explicit, and control-flow decisions –such as whether to continue, re-plan, or validate– are made deterministically by the graph rather than delegated to the model. This shared state, which is passed between each node, makes the full workflow context explicit and traceable. It holds the query, retrieved context, plan steps, step results, counters, and final answer as they move through the graph. Based on what the monitor observes in this state, the graph can continue executing plan steps, return to replanning, or move to validation.
+
+
+The proposed workflow consists of six phases:
+
+
+<figure><img src="../.gitbook/assets/research_mode.png" alt=""><figcaption></figcaption></figure>
+
+
+1. **Retrieve** – The graph begins by collecting background material that will inform the planning phase. This includes SHACL shape files that describe the local data model (classes, predicates, constraints) and example SPARQL query patterns against the target endpoints. The retrieved material does not answer the user's question directly; it gives the planner and executor the schema context needed to construct better steps and better SPARQL.
+
+2. **Plan** – The plan node reads the user's question together with the retrieved documentation and asks the LLM to generate a structured execution plan. The output is a step list where each step carries a goal, the tools it should use, success criteria, a fallback strategy, and a timeout. Because the plan is structured data rather than free-form text, the graph can execute each step in isolation, limiting the context and tools to those relevant for that task. The control logic can then enforce step-specific constraints, trigger fallbacks, decide when replanning is needed, and validate whether the planned work has been completed.
+
+3. **Execute** – The execute node runs only the current plan step. Instead of trying to solve the whole problem at once, it focuses on one step at a time. The step is bounded by timeout and tool-call limits so it cannot run indefinitely. Each step is visible, individually timed, and its result is recorded in the shared state.
+
+4. **Monitor** – After execution, the monitor decides what should happen next. This node is pure deterministic logic: it does not ask the LLM to make the control-flow decision. It checks whether all steps are complete, whether the latest step looks unsuccessful, and whether the system has exceeded its configured replan budget. Based on these checks, it routes the graph to continue executing, to replan, or to validate.
+
+5. **Replan** – If the monitor determines the current direction is not working, the graph re-enters a planning phase for the remaining work. The replan node preserves completed steps and replaces the tail of the plan with a revised version. This gives the workflow a controlled recovery path instead of forcing it to continue blindly with a plan that turned out to be based on incomplete assumptions.
+
+6. **Validate** – When the graph decides the work is complete, it moves to validation. The validate node reads the accumulated step results and synthesizes the final answer. This keeps the final response grounded in the evidence collected by the graph rather than in one last ad hoc model response.
+
+
+##### Schema context through SHACL
+
+A critical enabler for this architecture is providing the LLM with sufficient knowledge of the data model. Without schema context, the LLM would waste significant effort discovering endpoint structure on every request –which classes exist, which predicates connect them, which prefixes to use or worse, produce syntactically valid but semantically incorrect SPARQL.
+
+The proposed solution is to supply SHACL shape files and example queries as retrieval context before planning begins. SHACL shapes express constraints, properties, prefixes, and class structure in a machine-readable format that the LLM can interpret. Example queries package ready-made patterns, comments, keywords, and endpoint information. Together, they give the planner enough orientation to produce actionable steps and give the executor enough vocabulary to construct correct SPARQL.
+
+In the first prototype, the LLM is guided slightly by providing it with example queries through the use of a [VoID](https://www.w3.org/2001/sw/interest/void/) description, but SHACL would offer a much more complete description of the dataset's contents.
+
+##### Risks and mitigations
+
+SPARQL is a very expressive language. Giving the LLM the ability to formulate and execute arbitrary SPARQL queries against the triplestore introduces several risks:
+
+- Users with malicious intent could convince the LLM to run destructive queries, inserting or deleting triples into the SPARQL endpoint. This is easily countered by leveraging the [capabilities of mu-authorization](https://github.com/mu-semtech/sparql-parser#define-access-rights-for-specific-services) Simply giving the LLM a scope that only allows read access to the public information in the triplestore is enough.
+- Other ill-meaning users could decide to have the LLM run a lot of very heavy queries, resulting in a Denial of Service attack on the system. This can be mitigated by 1) providing the LLM with patterns of such malicious queries and telling it to refuse executing them, 2) extending mu-authorization so it disallows queries matching such patterns, 3) putting limits on the execution time of queries (built in for virtuoso) or queries sent from a certain service (requires an extension of mu-authorization).
+- Because the LLM now operates as an agent that can take actions there is a risk of prompt injection where malicious content in a retrieved document manipulates the model's behaviour. This becomes more consequential than in the current stateless pipeline, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
+
 ### Possible future work LBLOD related
+
 
 ## Relevant links
 
