@@ -106,7 +106,8 @@ The shared data sources for all use cases are documented in the [write-up-uc0.0-
 
 | Data source                        | Type/category                 | Brief description                                                                                                                                                                                                           |
 | ---------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| LD\&L decisions via the data space | Unstructured text             | Municipal decisions published via LBLOD, ingested through the data space pipeline established in UC0.0. These form the input corpus for the UC1 extraction pipeline.                                                        |
+| ELI-normalised LD&L decisions | Unstructured text             | Municipal decisions ingested through the data space pipeline established in UC0.0. The textual content of the decision forms the input corpus for the UC1 mapping pipeline.                                                        |
+| AI enrichments (`oa:Annotation`) | Annotations             | Location and time annotations ingested through the AI pipeline in UC0.0.                                                       |
 | RMZ SKOS codelist                  | Controlled vocabulary         | A flat single-level SKOS codelist defining the Restricted Mobility Zone concept, with sub-types documented in `skos:definition`. Concept Scheme: `http://data.lblod.gift/id/conceptscheme/restricted-mobility-zone-simple`. |
 | Geopunt (Flanders)                 | Address and geometry registry | Authoritative address and geometry registry for Flanders, used to link extracted location entities from Ghent decisions to canonical geographic URIs.                                                                       |
 | OpenStreetMap / Nominatim          | Address and geometry registry | Open address and geometry registry used to link extracted location entities from German pilot city decisions (Freiburg, Bamberg) to canonical geographic URIs.                                                              |
@@ -115,8 +116,8 @@ The shared data sources for all use cases are documented in the [write-up-uc0.0-
 
 | Dataset                                     | IdP/Authentication service | Country of origin | Domain                  | Shared within the project           | Reused within the project                  |
 | ------------------------------------------- | -------------------------- | ----------------- | ----------------------- | ----------------------------------- | ------------------------------------------ |
-| UC1 RMZ annotations (oa:Annotation triples) | Data space authentication  | Belgium / Germany | Mobility                | Yes — available via SPARQL endpoint | Yes — consumed by GIS tools at pilot sites |
-| RMZ SKOS codelist                           | —                          | Belgium (ABB)     | Mobility classification | Yes                                 | Yes — by Codelist Mapping Tool             |
+| UC1 RMZ annotations (`oa:Annotation`) | Data space authentication  | Belgium / Germany | Mobility                | Yes — available via SPARQL endpoint | Yes — consumed by Human Validation Tool, and GIS tools at pilot sites |
+| Human feedback on LD&L decisions annotated with RMZ codelist mappings (`oa:Annotation`)                           | Data space authentication                          | Belgium (ABB)     | Mobility | Yes                                 | No             |
 
 ### Data standards
 

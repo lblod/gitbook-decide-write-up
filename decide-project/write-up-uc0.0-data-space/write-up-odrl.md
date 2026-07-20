@@ -68,19 +68,13 @@ The Authorization Policies Store is a set of ODRL policies –expressed as TTL a
 
 The deliberate scope of the ODRL implementation covers only the subset of the ODRL information model that fits the usecase of authorisation policies and maps to sparql-parser's capabilities.
 
-## Datasources, datasets and datastandards
-
-### Data sources
-
-| Data source | Type/category | Brief description |
-| ----------- | ------------- | ----------------- |
-|             |               |                   |
+## Datasets and datastandards
 
 ### Datasets available in the data space
 
 | Dataset                                          | IdP/Authentication service                         | Country of origin   | Domain                      | Shared within the project         | Reused within the project      |
 | ------------------------------------------------ | -------------------------------------------------- | ------------------- | --------------------------- | --------------------------------- | ------------------------------ |
-| Authorization policies (ODRL TTL in triplestore) | VC / session-based authentication (semantic.works) | Belgium (Ghent/ABB) | Access control / governance | Yes –consumed by all pilot sites– | Yes –enforced across use cases |
+| Authorization policies (ODRL TTL in triplestore) | oid4vc-login service / session-based authentication (semantic.works) | Belgium / Germany | Access control / governance | Yes –used by all pilot sites– | Yes – enforced across use cases |
 
 ### Data standards
 

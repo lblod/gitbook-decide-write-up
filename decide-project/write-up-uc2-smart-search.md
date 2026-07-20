@@ -89,8 +89,8 @@ The underlying mechanism is a Retrieval-Augmented Generation (RAG) pipeline: the
 
 | Dataset                                              | IdP/Authentication service                           | Country of origin | Domain                | Shared within the project | Reused within the project |
 | ---------------------------------------------------- | ---------------------------------------------------- | ----------------- | --------------------- | ------------------------- | ------------------------- |
-| Human validation votes on Answers (oa:Annotation)    | <mark style="color:$warning;">Sparql wrapper?</mark> | Belgium/Germany   | <p><br>Government</p> | Yes                       | No                        |
-| Human validation votes on Quotations (oa:Annotation) |                                                      | Belgium/Germany   | Government            | Yes                       | No                        |
+| Human validation votes on Answers (oa:Annotation)    | Data space authentication | Belgium/Germany   | <p><br>Government</p> | Yes                       | No                        |
+| Human validation votes on Quotations (oa:Annotation) | Data space authentication | Belgium/Germany   | Government            | Yes                       | No                        |
 
 ### Data standards
 

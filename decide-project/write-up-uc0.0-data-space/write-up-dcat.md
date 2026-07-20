@@ -75,19 +75,19 @@ Three types of endpoints can be described in the catalog: SPARQL endpoints, LDES
 
 <table><thead><tr><th width="617.6279296875">Requirement</th><th>Priority</th></tr></thead><tbody><tr><td>DCAT-AP v3 compliant catalog per pilot city</td><td>Must-have</td></tr><tr><td>LDES feed per city catalog for federation</td><td>Must-have</td></tr><tr><td>Federating Catalogue aggregating all member catalogs via LDES</td><td>Must-have</td></tr><tr><td>SPARQL endpoint on the Federating Catalogue triplestore</td><td>Must-have</td></tr><tr><td>DCAT LDES feed exposed by the Federating Catalogue</td><td>Must-have</td></tr><tr><td>SPARQL endpoints modelled as <code>dcat:DataService</code> with <code>dcat:servesDataset</code></td><td>Must-have</td></tr><tr><td>LDES distributions modelled as <code>dcat:Distribution</code> + <code>ldes:EventSource</code> with <code>dct:conformsTo</code></td><td>Must-have</td></tr><tr><td>Resource API distributions modelled as <code>dcat:Distribution</code> with JSON:API media type</td><td>Must-have</td></tr><tr><td>ODRL policy co-published per dataset via <code>odrl:hasPolicy</code></td><td>Must-have</td></tr><tr><td>SHACL shapes co-published per dataset via <code>dct:conformsTo</code></td><td>Must-have</td></tr><tr><td>ODRL and SHACL metadata federated alongside DCAT catalog entries</td><td>Must-have</td></tr><tr><td>DCAT catalog publicly accessible without authentication</td><td>Must-have</td></tr><tr><td>Minimal human-readable DCAT catalog interface</td><td>Must-have</td></tr></tbody></table>
 
-## Datasources, datasets and datastandards
-
-### Data sources
-
-| Data source | Type/category | Brief description |
-| ----------- | ------------- | ----------------- |
-|             |               |                   |
+## Datasets and datastandards
 
 ### Datasets available in the data space
 
+DCAT Datasets (with distributions) are generated using the DECIDe `[publish dataset](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset#dcat)` script.
+Currently, 4 datasets are configured:
+
 | Dataset | IdP/Authentication service | Country of origin | Domain | Shared within the project | Reused within the project |
 | ------- | -------------------------- | ----------------- | ------ | ------------------------- | ------------------------- |
-|         |                            |                   |        |                           |                           |
+| [ELI metadata](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L26C29-L26C77) (expression + work + manifestation + annotation)  | Dataspace authentication  |   Belgium / Germany | Government | Yes                    | Yes                          |
+| [Codelist annotations (SDG)](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L3) | Dataspace authentication  |   Belgium / Germany | Government | Yes                    | Yes                          |
+| [Restricted Mobility Zone (RMZ) Concept annotations + locations](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L14C29-L14C91) | Dataspace authentication  |   Belgium / Germany | Government | Yes                    | Yes                          |
+| [Human validation annotations](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L36) | Dataspace authentication  |   Belgium / Germany | Government | Yes                    | Yes                          |
 
 ### Data standards
 
