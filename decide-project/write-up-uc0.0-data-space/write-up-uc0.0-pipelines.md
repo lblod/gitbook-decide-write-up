@@ -66,7 +66,7 @@ On top of this normalised base, a set of AI pipelines produce the structured ann
 
 ### Pilot partners
 
-All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). <mark style="background-color:$warning;">The pipeline infrastructure is deployed centrally by the DECIDe team at ABB; pilot cities do not operate the pipelines directly.</mark>
+All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.</mark>
 
 ### Target audience / Personas
 
@@ -153,7 +153,7 @@ Another example, when a title is detected in the text, a statement can be made w
 * predicate = eli:title
 * object = text of the title
 
-A full list of mappings can be found on Gitbook here:
+A full list of mappings can be found as an annex here:
 
 {% file src="../../.gitbook/assets/datamodel AI annotations.pdf" %}
 
@@ -170,20 +170,6 @@ For example, the location entity with label "Theatergassen 8, 96047 Bamberg" can
 * subject = URI of the location entity given by NER
 * predicate = skos:exactMatch
 * object = <[https://www.openstreetmap.org/way/38114254](https://www.openstreetmap.org/way/38114254)>
-
-## Final architecture (and why)
-
-The pipeline infrastructure is the foundational backbone for the ingestion and enrichment of LD\&L within the DECIDe data space.
-
-* Three **ingestion pipelines** bring LD\&L from each pilot city's source format into the data space and standardise it to a common linked-data representation (ELI): one for OSLO-Besluit data from Ghent, one for Freiburg's OParl-based council information system, and one for PDF documents –the only format available for decisions from Bamberg.
-* Working on top of this normalised input, the enrichment tasks of the **AI pipeline** generate the annotations that downstream use cases depend on.
-* Underpinning all of this is a **job and task management infrastructure** that controls when and how each pipeline runs, sequences its individual steps, tracks status in the triplestore, and surfaces failures for inspection.
-
-### Pipeline infrastructure: Job controller
-
-The DECIDe data space is built entirely on linked data, so its pipelines must be too. Individual steps in a pipeline should also stay small, focused, and replaceable. Both requirements are already met by the job/task pipeline infrastructure developed by ABB, and adopted here as the DECIDe pipeline backbone. Reusing this existing system avoided building a new orchestration layer from scratch and ensured full compatibility with the semantic.works stack underpinning both the DECIDe data space and Lokaal Beslist. Originally built for linked-data harvesting, the system maps naturally to AI enrichment tasks: it makes no assumption about what a pipeline step does, only about how it signals its status and passes data to the next step.
-
-The [job controller](https://github.com/lblod/job-controller-service) is the sequencer of a pipeline. It works from a configurable JSON file in which each pipeline is defined as a job, and each job contains an ordered array of task definitions representing the steps of that pipeline. The job controller is fully data-driven: it monitors the triplestore for task status changes and, when a task reaches a terminal state, creates the next task in the sequence.
 
 #### Jobs and tasks
 
@@ -244,21 +230,41 @@ A job or task status can take five values:
 * **Success**. For a job: all tasks completed successfully. For a task: it completed successfully, which signals the job controller to schedule the next task, or mark the whole job as succeeded if this was the last one.
 * **Failed**. For a job: one of its tasks failed. For a task: it failed, which signals the job controller to skip remaining tasks and mark the whole job as failed.
 
-#### <mark style="background-color:$warning;">Delta notifier</mark>
+## Final architecture (and why)
 
-The job controller and custom services need to be notified when jobs and tasks change status in the triplestore. To avoid constant polling, the DECIDe data space uses the [delta notifier](https://github.com/mu-semtech/delta-notifier), a service that intercepts all insert and delete queries on the triplestore and, based on its configuration, forwards relevant changes, called delta messages, to the right service endpoints.
+The pipeline infrastructure is the foundational backbone for the ingestion and enrichment of LD\&L within the DECIDe data space.
+
+* Initially, three **ingestion pipelines** brought LD\&L from each pilot city's source format into the data space and standardise it to a common linked-data representation (ELI): one for OSLO-Besluit data from Ghent, one for Freiburg's OParl-based council information system, and one for PDF documents –the only format available for decisions from Bamberg. Later, Bamberg offered a custom JSON-based format to describe decisions. This was used as an experiment for how easy it was to set up a new, fourth pipeline for another kind of input.
+* Working on top of this normalised input, the enrichment tasks of the **AI pipeline** generate the annotations that downstream use cases depend on.
+* Underpinning all of this is a **pipeline infrastructure** that controls when and how each pipeline runs, sequences its individual steps, tracks status in the triplestore, and surfaces failures for inspection.
+
+### Pipeline infrastructure
+
+The DECIDe data space is built entirely on linked data, so its pipelines must be too. Individual steps in a pipeline should also stay small, focused, and replaceable. Both requirements are already met by the job/task pipeline infrastructure developed by ABB, and adopted here as the DECIDe pipeline backbone. Reusing this existing system avoided building a new orchestration layer from scratch and ensured full compatibility with the semantic.works stack underpinning both the DECIDe data space and Lokaal Beslist. Originally built for linked-data harvesting, the system maps naturally to AI enrichment tasks: it makes no assumption about what a pipeline step does, only about how it signals its status and passes data to the next step.
+
+The components in this infrastructure are shown in the figure below. 
+
+<figure><img src="../../.gitbook/assets/lokale-bron-architecture-pipelines.jpg" alt=""><figcaption></figcaption></figure>
+
+In this drawing, services are depicted as rectangles, the virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core services, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](./#core-semantic.works-components). The other components will be described below.
+
+#### Harvester frontend
+
+A simple Ember.js frontend, aimed primarily at developers and data space administrators, provides an overview of all running and completed jobs. Clicking into a job shows its individual tasks, and each task's input and results containers can be inspected. Users can also start a new job by selecting a job type and filling in the corresponding input fields. The frontend uses mu-resources to create Job and Task instances in the triplestore.
+
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+**GitHub**: [https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting](https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting)
+
+#### Job Controller
+
+The [job controller](https://github.com/lblod/job-controller-service) is the sequencer of a pipeline. It works from a configurable JSON file in which each pipeline is defined as a job, and each job contains an ordered array of task definitions representing the steps of that pipeline. The job controller is fully data-driven: it monitors the triplestore for task status changes and, when a task reaches a terminal state, creates the next task in the sequence.
 
 For pipelines, jobs and tasks that reach success or failed generate delta messages that are forwarded to the job controller, which consults its config to determine next steps. Tasks that reach scheduled are forwarded to the registered custom services, each of which checks the operation URI to decide whether the task is theirs to handle.
 
 <figure><img src="../../.gitbook/assets/jobs-tasks.svg" alt=""><figcaption></figcaption></figure>
-
-#### Task handling
-
-**Custom services**
-
-Where the job controller handles sequencing of tasks in jobs, custom microservices do the actual work to perform the tasks. Each service exposes one or more `/delta` endpoints that receive POST requests containing delta messages with changes to a task resource. Each endpoint follows the same pattern: check the operation URI of the task and ignore if it doesn't match, mark the task as busy if it does, then execute the actual logic, and finally mark the task as succeeded or failed.
-
-**Inputs and outputs**
 
 Tasks typically consume input data and produce output data. To keep that data linked to the task, each task carries an optional `http://redpencil.data.gift/vocabularies/tasks/inputContainer` and `http://redpencil.data.gift/vocabularies/tasks/resultsContainer`, both pointing to a `http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer` resource. A data container can hold:
 
@@ -269,27 +275,55 @@ Tasks typically consume input data and produce output data. To keep that data li
 
 When the job controller creates a new task, it copies the previous task's results container and sets it as the new task's input container. The original results container remains untouched, making it possible to inspect the full history of a pipeline run after the fact.
 
-#### Starting jobs
+**GitHub**: [https://github.com/lblod/job-controller-service](https://github.com/lblod/job-controller-service)
 
-**Singleton job task**
+#### Scheduled job controller
 
-To prevent multiple instances of the same pipeline from running simultaneously, every pipeline starts with a singleton job task. This triggers a [dedicated service](https://github.com/lblod/harvesting-singleton-job-service) that checks whether another job is already active for the same input, determined by the `http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url` property on the harvesting collection in the task's input container. If a match is found, the new job is immediately marked as failed and the pipeline goes no further.
+Pipelines often need to run repeatedly on a fixed schedule. This is handled by scheduled jobs and the scheduled job controller. A `http://vocab.deri.ie/cogs#ScheduledJob` looks exactly like a regular job, with one addition: a `http://redpencil.data.gift/vocabularies/tasks/schedule` property pointing to a cron expression. The scheduled job controller monitors these resources and, at the right moments, creates corresponding regular jobs in the triplestore, which are then picked up by the job controller as usual. 
 
-**Scheduled jobs**
+The scheduled job controller is notified about the creation of new scheduled jobs though delta messages and then sets timers for the next execution of a job. It does not respond to HTTP calls coming in from the dispatcher.
 
-Pipelines often need to run repeatedly on a fixed schedule. This is handled by scheduled jobs and the scheduled job controller. A `http://vocab.deri.ie/cogs#ScheduledJob` looks exactly like a regular job, with one addition: a `http://redpencil.data.gift/vocabularies/tasks/schedule` property pointing to a cron expression. The scheduled job controller monitors these resources and, at the right moments, creates corresponding regular jobs in the triplestore, which are then picked up by the job controller as usual.
+**GitHub**: [https://github.com/lblod/scheduled-job-controller-service](https://github.com/lblod/scheduled-job-controller-service)
 
-#### Harvester frontend
+#### Singleton job
 
-A simple [frontend](https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting), aimed primarily at developers and data space administrators, provides an overview of all running and completed jobs. Clicking into a job shows its individual tasks, and each task's input and results containers can be inspected. Users can also start a new job by selecting a job type and filling in the corresponding input fields.
+To prevent multiple instances of the same pipeline from running simultaneously, every pipeline starts with a singleton job task. This triggers the singleton job service that checks whether another job is already active for the same input, determined by the operation and the `http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url` property on the harvesting collection in the task's input container. If a match is found, the new job is immediately marked as failed and the pipeline goes no further.
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+In this way, the singleton job service is a very specialized handler of Tasks and like any such service, it only reacts to delta messages and is not triggered by HTTP messages sent by the dispatcher service.
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+**GitHub**: [https://github.com/lblod/harvesting-singleton-job-service](https://github.com/lblod/harvesting-singleton-job-service)
+
+#### Annotation job splitter
+
+For all pipelines, a great many decisions need to be processed at once. For each of these decisions, the process can fail independently. Maybe the decision is in the wrong format, maybe a service goes down, ... The annotation job splitter service splits the input of a single job into many tasks, each dedicated to the processing of a single decision. This allows the processing of faulty decisions to fail independently, while the others continue processing. This also offers a clear trace of what went wrong: the services can simply attach their error messages to the task dedicated to that specific decision, rather than to a task that handles all of them at once.
+
+Like the singleton job service, the annotation job splitter service is a very specialized handler of Tasks and like any such service, it only reacts to delta messages and is not triggered by HTTP messages sent by the dispatcher service.
+
+**GitHub**: [https://github.com/lblod/harvesting-singleton-job-service](https://github.com/lblod/harvesting-singleton-job-service)
+
+#### Custom Task Execution Service
+
+Where the job controller handles sequencing of tasks in jobs, custom microservices do the actual work to perform the tasks. These are shown on the diagram as `example-task-service`. Each service exposes one or more `/delta` endpoints that receive POST requests containing delta messages with changes to a task resource. Each endpoint follows the same pattern: check the operation URI of the task and ignore if it doesn't match, mark the task as busy if it does, then execute the actual logic, and finally mark the task as succeeded or failed.
+
+These services work purely based on these incoming delta messages, they do not respond to HTTP messages sent by the dispatcher like more user-interaction driven services would.
+
+There are many custom task execution services in the DECIDe project, a GitHub link will be provided in each use case where they are used.
+
+#### Login service
+
+The login service is the only core service that we didn't describe in the core architecture. This is because it's only relevant in the context of managing the pipeline as this is the only place users really need to sign in. Only authenticated users are allowed to create or manage jobs. The login service allows users to authenticate with a username/password combination. When new users want to register, they need to run a `mu-cli` script on the server. For more details, have a look at [the DECIDe README](https://github.com/lblod/app-decide/#registering-an-account).
+
+**GitHub**: [https://github.com/mu-semtech/login-service](https://github.com/mu-semtech/login-service)
+
+#### Resource Type service
+
+To provide a better overview of the inputs and outputs of the different tasks, the number of resources in the input and output containers of tasks is shown in the harvester frontend. As we don't know the types of these resources beforehand, the mu-resources service is not suited to this task and we need custom queries to retrieve these counts. The resource type service is a very simple microservice that was created to house these queries.
+
+**GitHub**: [https://github.com/lblod/resource-type-service](https://github.com/lblod/resource-type-service)
 
 ### Ingestion pipelines
 
-LD\&L arrives from three structurally different sources: OSLO-Besluit (Belgian linked data), OParl (German JSON API), and PDF. To allow every downstream processing step to work identically regardless of source city, all three are normalised to a single common representation before entering the enrichment pipeline. The ELI (European Legislation Identifier) ontology was chosen as that representation. ELI provides a linked-data-native vocabulary for describing legislation through Work, Expression, and Manifestation entities. Normalising to ELI at the ingestion stage means that the enrichment pipelines all operate on identical data structures regardless of which city the decision came from.
+LD\&L arrives from four structurally different sources: OSLO-Besluit (Belgian linked data), OParl (German JSON API) PDF and finally the custom JSON format defined in Bamberg. To allow every downstream processing step to work identically regardless of source city, all four are normalised to a single common representation before entering the enrichment pipeline. The ELI (European Legislation Identifier) ontology was chosen as that representation. ELI provides a linked-data-native vocabulary for describing legislation through Work, Expression, and Manifestation entities. Normalising to ELI at the ingestion stage means that the enrichment pipelines all operate on identical data structures regardless of which city the decision came from.
 
 For each source format, a dedicated pipeline is responsible for collecting the original data, converting it to ELI, and storing it in the data space.
 
@@ -394,6 +428,20 @@ For each PDF URL that the content extraction service receives, it will first dow
 2. The text before the very first title is copied at the top of each decision, as this contains the date of the meeting and the participants.
 
 Finally, an ELI Manifestation is created, referring to the processed PDF URL, together with an ELI Work and ELI Expression for each decision.
+
+#### JSON to ELI pipeline
+
+Later in the project, the city of Bamberg provided a new, more structured way to describe their decisions as JSON data. This was taken as an experiment to evaluate how easy it was to add another input format and slot it into the existing pipeline architecture. This turned out to be quite easy to achieve. A single additional service was needed to transform the JSON format to the ELI standard and from there on, the existing pipelines could be reused.
+
+[**JSON to ELI service**](https://github.com/lblod/decide-json-to-eli-service)
+
+The JSON to ELI service transforms decisions in the custom JSON format used by the city of Bamberg into triples according to the ELI standard used throughout the project. It's a service modelled as an 'example-task-service' in the pipeline architecture above that reacts to json-to-eli transformation tasks being created by the job-controller.
+
+So given this transformation service, the only other changes needed were:
+- the creation of a new pipeline configuration that uses this type of task and otherwise is a carbon-copy of the pdf-to-eli pipeline.
+- an update to the harvester frontend so that it can also create this type of task.
+
+Once the decisions from the JSON file were transformed into ELI compliant triples, all AI enrichment services from all use cases simply work as before, with no additional changes necessary. As such the addition of the JSON to ELI service is a demonstration case of how the DECIDe project can be extended to work on additional decision source formats.
 
 ### Other explored semantic components (and why not)
 
