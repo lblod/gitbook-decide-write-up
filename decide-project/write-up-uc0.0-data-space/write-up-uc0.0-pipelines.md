@@ -306,7 +306,7 @@ Like the singleton job service, the annotation job splitter service is a very sp
 
 Where the job controller handles sequencing of tasks in jobs, custom microservices do the actual work to perform the tasks. These are shown on the diagram as `example-task-service`. Each service exposes one or more `/delta` endpoints that receive POST requests containing delta messages with changes to a task resource.
 
-These Custom Task Execution Services all follow the same pattern. When a delta message arrives, they check the database for tasks that they should complete. They also do this on restart, in case they went down and missed delta messages. When they find a task that has an operation URI that matches the one they are looking for, they mark the task as busy. Then they execute the actual logic, and finally mark the task as succeeded or failed.
+These Custom Task Execution Services all follow the same pattern. When a delta message arrives, they check the triplestore for tasks that they should complete. They also do this on restart, in case they went down and missed delta messages. When they find a task that has an operation URI that matches the one they are looking for, they mark the task as busy. Then they execute the actual logic, and finally mark the task as succeeded or failed.
 
 These services work purely based on these incoming delta messages, they do not respond to HTTP messages sent by the dispatcher like more user-interaction driven services would.
 
@@ -537,7 +537,7 @@ The process works as follows:
 
 The extraction tasks described above identify entities as text spans, strings like "City Council" or "Gent", but do not resolve them to specific linked data resources with a fixed known URI. Two documents from different cities might both mention "City Council", yet refer to entirely different organisations. The Named Entity Linking (NEL) service closes this gap: it takes the extracted entities and attempts to find their corresponding URI in the target LOD endpoints. Currently, the service links administrative bodies and locations; support for additional entity types (e.g. mandataries, legal documents) has been investigated but is not yet implemented.
 
-The NEL service is built as a FastAPI application that integrates a [LangChain](https://www.langchain.com/)-based agent with a Model Context Protocol (MCP) server. The architecture is designed around one central insight: writing correct SPARQL queries against an unfamiliar schema requires both knowledge of the SPARQL language and understanding of the target database's class hierarchy, property names, and naming conventions. Rather than hard-coding queries for each entity type –which would be brittle and difficult to extend– the service delegates query construction to an LLM, augmented with schema context retrieved from a vector knowledge base (i.e. RAG).
+The NEL service is built as a FastAPI application that integrates a [LangChain](https://www.langchain.com/)-based agent with a Model Context Protocol (MCP) server. The architecture is designed around one central insight: writing correct SPARQL queries against an unfamiliar schema requires both knowledge of the SPARQL language and understanding of the target triplestore's class hierarchy, property names, and naming conventions. Rather than hard-coding queries for each entity type –which would be brittle and difficult to extend– the service delegates query construction to an LLM, augmented with schema context retrieved from a vector knowledge base (i.e. RAG).;
 
 * **FastAPI application:** Serves as the entry point. It exposes the `/delta` webhook endpoint through which the delta notifier triggers processing of newly scheduled entity linking tasks. When a delta arrives, the service polls the triplestore for tasks with status "scheduled", picks them up, and processes them asynchronously. The MCP server is mounted directly into the application routing (`/mcp`), making it accessible to both the internal agent and external clients.
 * **LangChain agent:** A tool-calling agent that receives a structured request (containing entity class, entity label, and location) and autonomously determines how to find the corresponding URI. The agent supports multiple LLM providers (OpenAI, Mistral, Ollama) and returns a structured `SparqlResponse` containing the matched URI, its label, and the reasoning behind the selection.
@@ -578,7 +578,7 @@ We noticed that the nominatim search sometimes could take a while, and that some
 
 **Search**
 
-The search service contains an index that links `org:Organizations` to the local authority they belong to. It is informed by the delta notifier regarding changes in the database and if an update happens to an organization, it updates this index in elastic search. It also exposes a search endpoint to find Organizations in this index using fuzzy search on the organization's name.
+The search service contains an index that links `org:Organizations` to the local authority they belong to. It is informed by the delta notifier regarding changes in the triplestore and if an update happens to an organization, it updates this index in elastic search. It also exposes a search endpoint to find Organizations in this index using fuzzy search on the organization's name.
 
 **Nominatim**
 

@@ -157,9 +157,9 @@ GitHub: [https://github.com/mu-semtech/mu-dispatcher](https://github.com/mu-semt
 
 #### Delta notifier
 
-An update to the database may have consequences elsewhere in the application. The delta notifier is used to inform services of such changes.
+An update to the data in the triplestore may have consequences elsewhere in the application. The delta notifier is used to inform services of such changes.
 
-The delta notifier is informed by the mu-authorization service of changes in the database. The delta notifier can be configured to forward certain changes, called 'deltas' or 'delta messages', to specific services. Each such delta message essentially consists of a collection of insert and delete statements representing which triples have been added to or removed from specific graphs the database. Based on its configuration the delta notifier determines for each delta message which services should be informed and sends out the appropriate notifications containing the relevant changes.
+The delta notifier is informed by the mu-authorization service of changes in the triplestore. The delta notifier can be configured to forward certain changes, called 'deltas' or 'delta messages', to specific services. Each such delta message essentially consists of a collection of insert and delete statements representing which triples have been added to or removed from specific graphs in the triplestore. Based on its configuration the delta notifier determines for each delta message which services should be informed and sends out the appropriate notifications containing the relevant changes.
 
 Github: [https://github.com/mu-semtech/delta-notifier](https://github.com/mu-semtech/delta-notifier)
 
@@ -171,7 +171,7 @@ GitHub: [https://github.com/mu-semtech/mu-cl-resources](https://github.com/mu-se
 
 #### Mu-authorization
 
-The Mu-authorization service, a.k.a. sparql-parser, a.k.a **SPARQL Endpoint Authorization Service (SEAS)** is an authorization layer that rewrites queries that are send to the database by taking the user’s permissions into account. Based on preconfigured rights, the service decides which graphs an update queries may write to, and from which graphs select queries may read.
+The Mu-authorization service, a.k.a. sparql-parser, a.k.a **SPARQL Endpoint Authorization Service (SEAS)** is an authorization layer that rewrites queries that are send to the triplestore by taking the user’s permissions into account. Based on preconfigured rights, the service decides which graphs an update queries may write to, and from which graphs select queries may read.
 
 The SEAS service recently underwent a revision that greatly increases efficiency. The way configuration is done has changed. It is strongly recommended to use only the new **“sparql-parser”** implementation.
 

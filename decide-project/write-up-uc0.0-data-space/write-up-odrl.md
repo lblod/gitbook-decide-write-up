@@ -300,7 +300,7 @@ would correspond to the following `define-graph` s in sparql-parser's Lisp-style
   ("typeTwo" -> _))
 ```
 
-Note that `sh:targetSubjectsOf` or `sh:targetObjectsOf` could also be used instead of `sh:targetClass` but would require more logic (and database calls) to determine the exact type(s) to be used.
+Note that `sh:targetSubjectsOf` or `sh:targetObjectsOf` could also be used instead of `sh:targetClass` but would require more logic (and SPARQL queries) to determine the exact type(s) to be used.
 
 We use property shapes with property paths to further specify which predicates of a resource type are accessible. Each property shape corresponds to a predicate specification in sparql-parser. So the following shape would specify that for resources of type `typeOne` only triples with predicates the `predOne` and `predTwo` are part of the node shape"
 
