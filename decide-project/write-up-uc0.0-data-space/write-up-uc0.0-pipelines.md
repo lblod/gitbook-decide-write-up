@@ -62,7 +62,7 @@ The opportunity is not just about getting the data in, but doing so in a way tha
 
 The pipeline infrastructure is the answer to these prerequisites: a set of configurable, reusable tools that harvest LD\&L from all sources and normalise it to a single common representation. The European Legislation Identifier (ELI) was chosen as that representation because it provides a vocabulary specifically designed for describing legislation –structuring each decision as a Work, Expression, and Manifestation– that is source-agnostic and already adopted within European public administrations. Normalising all input to ELI at ingestion means every downstream step operates on identical data structures, regardless of which city the decision came from or in what format it was originally published.
 
-On top of this normalised base, a set of AI pipelines produce the structured annotations that https://github.com/lblod/app-decide/tree/development/config/migrations/bestuurseenheden-and-organizations-flandersthe downstream use cases depend on, and that can be validated through Human Validation interfaces.
+On top of this normalised base, a set of AI pipelines produce the structured annotations that the downstream use cases depend on, and that can be validated through Human Validation interfaces.
 
 ### Pilot partners
 
