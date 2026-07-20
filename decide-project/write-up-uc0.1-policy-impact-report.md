@@ -59,7 +59,7 @@ UC1 uses the same codelist mapping and human validation patterns established in 
 ## Glossary
 
 {% hint style="info" %}
-See the [UC0.0 Data space glossary](write-up-uc0.0-data-space#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`, and Triplestore.
+See the [UC0.0 Data space glossary](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`, and Triplestore.
 
 See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#glossary) for definitions of Context window, Fine-tuning, LangChain, LLM, NER, and Ollama.
 {% endhint %}
@@ -116,13 +116,14 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 ### Data sources
 
-<table><thead><tr><th width="190.6162109375">Data source</th><th width="196.818359375">Type/category</th><th>Brief description</th></tr></thead><tbody><tr><td><a href="https://research.un.org/en/thesaurus/downloads">SDG codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The UN Sustainable Development Goals taxonomy (17 goals and associated targets) used as the annotation target for linking local decisions to policy goals.</td></tr></tbody></table>
+<table><thead><tr><th width="190.6162109375">Data source</th><th width="196.818359375">Type/category</th><th>Brief description</th></tr></thead><tbody><tr><td>ELI-normalised LD&L decisions</td><td>Internal (triple store)</td><td>The ELI data from the pipeline</td></tr><tr><td><a href="https://research.un.org/en/thesaurus/downloads">SDG codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The UN Sustainable Development Goals taxonomy (17 goals and associated targets) used to generate a flattened SDG codelist.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/add-sdg-codelist/20260310123608-add-simple-sdg-codelist.ttl">SDG Flattened codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>A flattened version of the UN Sustainable Development Goals taxonomy (17 goals) used as the annotation target for linking local decisions to policy goals.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/20260407111121-create-impact.sparql">Impact codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The impact taxonomy used to indicate the impact of a decision on an SDG.</td></tr></tbody></table>
 
 ### Datasets available in the data space
 
 | Dataset                                                              | IdP/Authentication service                                                      | Country of origin | Domain     | Shared within the project | Reused within the project |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------- | ---------- | ------------------------- | ------------------------- |
-| LD\&L decisions annotated with SDG codelist mappings (oa:Annotation) | _<mark style="background-color:$warning;">(to be completed by dev team)</mark>_ | Belgium / Germany | Government | X                         | X                         |
+| LD\&L decisions annotated with SDG codelist mappings (`oa:Annotation`) | Data space authentication | Belgium / Germany | Government | Yes                         | Yes - consumed by Human Validation Tool and Policy Impact Report                        |
+| Human feedback on LD\&L decisions annotated with SDG codelist mappings (`oa:Annotation`) | Data space authentication | Belgium / Germany | Government | Yes                         | Yes - consumed by codelist labeling service for training                         |
 
 ### Data standards
 
@@ -173,7 +174,7 @@ The components involved in UC0.1 are shown in the diagram below:
 
 <figure><img src="../.gitbook/assets/lokale-bron-architecture-UC0.1.jpg" alt=""><figcaption></figcaption></figure>
 
-In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core components, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](write-up-uc0.0-data-space#core-semantic.works-components), whereas the job-controller and the singleton task, marked with a **J**, are described in [UC0.0 Pipelines writeup](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md).
+In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core components, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space#core-semantic.works-components), whereas the job-controller and the singleton task, marked with a **J**, are described in [UC0.0 Pipelines writeup](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md).
 
 From this diagram, it becomes clear that on a microservice level, UC0.1 is fairly simplistic. The main challenges lie in the AI models used (see later).
 

@@ -9,7 +9,7 @@ This page is under construction
 {% endhint %}
 
 {% hint style="info" %}
-The project proposal does not mention the Dataspace Protocol by name. The team has interpreted DSP alongside DCAT as part of the Federation Layer commitment. This interpretation aligns with the DS4SSCC Reference Architecture, which positions DSP as the interoperability protocol layer sitting above the federation catalogue.
+The project proposal does not mention the Dataspace Protocol by name. The team has interpreted DSP alongside DCAT as part of the Federation Layer commitment. This interpretation aligns with the DS4SSCC Reference Architecture, which positions DSP as the interoperability protocol layer sitting above the Federating Catalogue.
 {% endhint %}
 
 ## Description UC/wanted deliverable
@@ -18,7 +18,7 @@ Sharing data between organisations across national borders requires not only a c
 
 DECIDe investigated whether DSP could fulfil this role within the project. The team conducted a thorough technical analysis of the DSP specification (version 2025-1) and began a partial implementation of the Catalog Protocol. Following that analysis and implementation experience, the decision was made not to adopt DSP in the DECIDe pilot. The specification, in its current form, does not sufficiently specify the lower bound of what participants must support to achieve actual interoperability –leaving too many critical implementation decisions open. This write-up documents the analysis, the conclusions that led to the decision, and the reasoning behind it.
 
-The Dataspace Protocol is part of the same Federation Layer deliverable as the DCAT Federation Catalogue. Within the project proposal, this maps to the following deliverables and tasks:
+The Dataspace Protocol is part of the same Federation Layer deliverable as the DCAT Federating Catalogue. Within the project proposal, this maps to the following deliverables and tasks:
 
 | Deliverable                                                              | Activities                                                               |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
@@ -27,9 +27,9 @@ The Dataspace Protocol is part of the same Federation Layer deliverable as the D
 
 ### Link to other deliverables
 
-#### Federation Catalogue (DCAT)
+#### Federating Catalogue (DCAT)
 
-DSP's Catalog Protocol was designed to sit on top of a DCAT catalogue, providing a standardised programmatic interface for discovering datasets and their access terms. Because DECIDe chose not to implement DSP, the DCAT Federation Catalogue remains the primary discovery mechanism –accessible directly via its SPARQL endpoint, LDES feed, and human-readable interface.
+DSP's Catalog Protocol was designed to sit on top of a DCAT catalogue, providing a standardised programmatic interface for discovering datasets and their access terms. Because DECIDe chose not to implement DSP, the DCAT Federating Catalogue remains the primary discovery mechanism –accessible directly via its SPARQL endpoint, LDES feed, and human-readable interface.
 
 [write-up-dcat.md](write-up-dcat.md "mention")
 
@@ -76,7 +76,7 @@ The result is that for a new participant wishing to join an existing dataspace, 
 
 #### What this means for DECIDe
 
-Data sharing within DECIDe does not rely on DSP. Datasets are discoverable via the DCAT Federation Catalogue, access conditions are described via ODRL policies attached to DCAT entries, and access itself is controlled via the VC-based authorisation layer. Consumers access data directly through the endpoints described in DCAT, rather than through a DSP negotiation flow.
+Data sharing within DECIDe does not rely on DSP. Datasets are discoverable via the DCAT Federating Catalogue, access conditions are described via ODRL policies attached to DCAT entries, and access itself is controlled via the VC-based authorisation layer. Consumers access data directly through the endpoints described in DCAT, rather than through a DSP negotiation flow.
 
 ### Pilot partners
 
@@ -108,7 +108,7 @@ n/a
 
 ## Final architecture (and why)
 
-No DSP architecture was deployed. Following the analysis, the decision was made not to implement DSP in the DECIDe pilot. Data sharing is handled through the DCAT Federation Catalogue, ODRL policies, and the VC-based access control layer –each documented in their own write-ups.
+No DSP architecture was deployed. Following the analysis, the decision was made not to implement DSP in the DECIDe pilot. Data sharing is handled through the DCAT Federating Catalogue, ODRL policies, and the VC-based access control layer –each documented in their own write-ups.
 
 A partial implementation of the Catalog Protocol was developed during the analysis phase but was not merged. This implementation demonstrated that the Catalog Protocol can be built on top of the DCAT layer –reusing existing Catalog, Dataset, and Distribution resources– but also confirmed that without the Contract Negotiation and Transfer Process protocols, the Catalog Protocol alone does not provide meaningful added value over direct DCAT access.
 

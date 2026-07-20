@@ -88,7 +88,12 @@ The pipeline system covers two stages. The first is ingestion and normalisation:
 
 ### Datasets available in the data space
 
-<table><thead><tr><th width="128">Dataset</th><th width="132.375">IdP/Authentication service</th><th>Country of origin</th><th>Domain</th><th>Shared within the project</th><th>Reused within the project</th></tr></thead><tbody><tr><td>ELI-normalised LD&#x26;L decisions</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Local governance</td><td>Yes</td><td>Yes, base input for all AI pipelines</td></tr><tr><td>AI enrichments (<code>oa:Annotation</code>)</td><td>Data space authentication</td><td>Belgium</td><td></td><td>Yes</td><td>Yes, base for all use cases</td></tr></tbody></table>
+<table><thead><tr><th width="128">Dataset</th><th width="132.375">IdP/Authentication service</th><th>Country of origin</th><th>Domain</th><th>Shared within the project</th><th>Reused within the project</th></tr></thead><tbody><tr><td>ELI-normalised LD&#x26;L decisions</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes, base input for all AI pipelines</td></tr><tr><td>AI enrichments (<code>oa:Annotation</code>)</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes, base for all use cases</td></tr><tr><td>Organizations</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes - used by Entity Linking, Policy Impact Report, Human Validation Tool, Smart Search</td></tr></tbody></table>
+
+The Organizations dataset is used as registry for identifying municipalities and its governing bodies. The data originates from several data sources, depending of the municipality:
+* Freiburg: organizations are retrieved through the OParl to ELI pipeline automatically
+* Bamberg: a [migration](https://github.com/lblod/app-decide/tree/development/config/migrations/add-governing-bodies-bamberg) is added to generate URIs for Bamberg and its governing bodies
+* Ghent: a [migration](https://github.com/lblod/app-decide/tree/development/config/migrations/bestuurseenheden-and-organizations-flanders) is added to reuse the existing URIs of municipalities and governing bodies in Flanders and transform them to align with the [ORG-EP](https://europarl.github.io/org-ep) data model
 
 ### Data standards
 
@@ -582,6 +587,10 @@ The PDF pipeline currently segments the meeting minutes text twice: once to dete
 #### Processing private data
 
 While data space supports publishing private data, the pipeline is currently configured to handle public data only. The pipeline can be configured to store its data in private graphs, that are only readable by users with the correct access rights, but this requires turning off the processing services, configuring them with this new graph and restarting them. This is not very user-friendly. To get around this problem, we could move the target graph from the configuration of the service into the definition of the task, so it can be controlled in the UI. As we didn't have any private data to be processed by the pipeline in the pilots, we didn't cater for this scenario yet.
+
+#### PDF storage: per-administrative-unit graphs
+
+The PDF to ELI pipeline currently writes all extracted decisions into a single, shared PDF graph, regardless of which administrative unit the source PDF belongs to. In practice this means that PDF-derived data from Ghent, Freiburg, and Bamberg all lands in the same graph. The data is still correctly linked to the corresponding local authority so downstream queries relying on that link remain accurate but the storage graph itself does not reflect the administrative unit of origin. A future extension would make the target graph depend on the administrative unit selected when the pipeline is run, so that each local authority's PDF-derived decisions are stored in their own graph.
 
 ### Possible future work LBLOD related
 
