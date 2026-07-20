@@ -66,7 +66,7 @@ On top of this normalised base, a set of AI pipelines produce the structured ann
 
 ### Pilot partners
 
-All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.</mark>
+All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.
 
 ### Target audience / Personas
 
@@ -91,6 +91,7 @@ The pipeline system covers two stages. The first is ingestion and normalisation:
 <table><thead><tr><th width="128">Dataset</th><th width="132.375">IdP/Authentication service</th><th>Country of origin</th><th>Domain</th><th>Shared within the project</th><th>Reused within the project</th></tr></thead><tbody><tr><td>ELI-normalised LD&#x26;L decisions</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes, base input for all AI pipelines</td></tr><tr><td>AI enrichments (<code>oa:Annotation</code>)</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes, base for all use cases</td></tr><tr><td>Organizations</td><td>Data space authentication</td><td>Belgium / Germany</td><td>Government</td><td>Yes</td><td>Yes - used by Entity Linking, Policy Impact Report, Human Validation Tool, Smart Search</td></tr></tbody></table>
 
 The Organizations dataset is used as registry for identifying municipalities and its governing bodies. The data originates from several data sources, depending of the municipality:
+
 * Freiburg: organizations are retrieved through the OParl to ELI pipeline automatically
 * Bamberg: a [migration](https://github.com/lblod/app-decide/tree/development/config/migrations/add-governing-bodies-bamberg) is added to generate URIs for Bamberg and its governing bodies
 * Ghent: a [migration](https://github.com/lblod/app-decide/tree/development/config/migrations/bestuurseenheden-and-organizations-flanders) is added to reuse the existing URIs of municipalities and governing bodies in Flanders and transform them to align with the [ORG-EP](https://europarl.github.io/org-ep) data model
@@ -242,7 +243,7 @@ The pipeline infrastructure is the foundational backbone for the ingestion and e
 
 The DECIDe data space is built entirely on linked data, so its pipelines must be too. Individual steps in a pipeline should also stay small, focused, and replaceable. Both requirements are already met by the job/task pipeline infrastructure developed by ABB, and adopted here as the DECIDe pipeline backbone. Reusing this existing system avoided building a new orchestration layer from scratch and ensured full compatibility with the semantic.works stack underpinning both the DECIDe data space and Lokaal Beslist. Originally built for linked-data harvesting, the system maps naturally to AI enrichment tasks: it makes no assumption about what a pipeline step does, only about how it signals its status and passes data to the next step.
 
-The components in this infrastructure are shown in the figure below. 
+The components in this infrastructure are shown in the figure below.
 
 <figure><img src="../../.gitbook/assets/lokale-bron-architecture-pipelines.jpg" alt=""><figcaption></figcaption></figure>
 
@@ -279,7 +280,7 @@ When the job controller creates a new task, it copies the previous task's result
 
 #### Scheduled job controller
 
-Pipelines often need to run repeatedly on a fixed schedule. This is handled by scheduled jobs and the scheduled job controller. A `http://vocab.deri.ie/cogs#ScheduledJob` looks exactly like a regular job, with one addition: a `http://redpencil.data.gift/vocabularies/tasks/schedule` property pointing to a cron expression. The scheduled job controller monitors these resources and, at the right moments, creates corresponding regular jobs in the triplestore, which are then picked up by the job controller as usual. 
+Pipelines often need to run repeatedly on a fixed schedule. This is handled by scheduled jobs and the scheduled job controller. A `http://vocab.deri.ie/cogs#ScheduledJob` looks exactly like a regular job, with one addition: a `http://redpencil.data.gift/vocabularies/tasks/schedule` property pointing to a cron expression. The scheduled job controller monitors these resources and, at the right moments, creates corresponding regular jobs in the triplestore, which are then picked up by the job controller as usual.
 
 The scheduled job controller is notified about the creation of new scheduled jobs though delta messages and then sets timers for the next execution of a job. It does not respond to HTTP calls coming in from the dispatcher.
 
@@ -303,7 +304,7 @@ Like the singleton job service, the annotation job splitter service is a very sp
 
 #### Custom Task Execution Service
 
-Where the job controller handles sequencing of tasks in jobs, custom microservices do the actual work to perform the tasks. These are shown on the diagram as `example-task-service`. Each service exposes one or more `/delta` endpoints that receive POST requests containing delta messages with changes to a task resource. 
+Where the job controller handles sequencing of tasks in jobs, custom microservices do the actual work to perform the tasks. These are shown on the diagram as `example-task-service`. Each service exposes one or more `/delta` endpoints that receive POST requests containing delta messages with changes to a task resource.
 
 These Custom Task Execution Services all follow the same pattern. When a delta message arrives, they check the database for tasks that they should complete. They also do this on restart, in case they went down and missed delta messages. When they find a task that has an operation URI that matches the one they are looking for, they mark the task as busy. Then they execute the actual logic, and finally mark the task as succeeded or failed.
 
@@ -440,8 +441,9 @@ Later in the project, the city of Bamberg provided a new, more structured way to
 The JSON to ELI service transforms decisions in the custom JSON format used by the city of Bamberg into triples according to the ELI standard used throughout the project. It's a service modelled as an 'example-task-service' in the pipeline architecture above that reacts to json-to-eli transformation tasks being created by the job-controller.
 
 So given this transformation service, the only other changes needed were:
-- the creation of a new pipeline configuration that uses this type of task and otherwise is a carbon-copy of the pdf-to-eli pipeline.
-- an update to the harvester frontend so that it can also create this type of task.
+
+* the creation of a new pipeline configuration that uses this type of task and otherwise is a carbon-copy of the pdf-to-eli pipeline.
+* an update to the harvester frontend so that it can also create this type of task.
 
 Once the decisions from the JSON file were transformed into ELI compliant triples, all AI enrichment services from all use cases simply work as before, with no additional changes necessary. As such the addition of the JSON to ELI service is a demonstration case of how the DECIDe project can be extended to work on additional decision source formats.
 
@@ -459,6 +461,8 @@ A general overview of the AI pipeline is given in the <mark style="background-co
 
 All outputs of the AI pipeline are stored as `oa:Annotation` triples in the triplestore, following the W3C Web Annotation data model. Source ELI data is never modified; enrichment results are always additive.
 
+Calls to LLMs were implemented using the langchain framework, meaning through configuration users can swap to other providers (from local to cloud-based).&#x20;
+
 #### Translation Task
 
 The first step translates the decision text into English to allow all subsequent AI processing to operate in a single language to address many of the multilinguality requirements of the project, regardless of whether the original document was in Dutch or German. This avoids the need for retraining models on different datasets every time the DECIDe system would be used on LD\&L in another language in the future.
@@ -475,7 +479,9 @@ Finally, the translated text is stored in the annotation format, as a suggested 
 
 The segmentation task follows the translation task and operates on the English translation of the decision. The table below lists the output of the text segmentation model, which partitions the text in basic blocks. Each entry in the table is a type of entity which can be detected in a text, and is emitted in a span format: (`start_position`, `end_position`, `label`). E.g.: (35, 72, TITLE) means the text substring between character 35 and 72 was recognised as a TITLE.
 
-The discovered entities from the segmentation task are saved in the triplestore as annotations. The segmentation step relies on Mistral Large 3, a proprietary LLM hosted externally within the European Union.
+The discovered entities from the segmentation task are saved in the triplestore as annotations. The segmentation step relies on Mistral Medium 3.5, a proprietary LLM hosted externally within the European Union.
+
+As a general approach, the text is broken down into sentences and a line number is added. Next the LLM is asked create the sections (e.g., motivation line 6 to 10) which is reconstructed into tags on the original text. Such approach saves output tokens and is a lot faster in comparison to a naive approach where e.g., the entire corpus is replicated by the LLM.&#x20;
 
 <table><thead><tr><th width="212.326171875">Entity</th><th>Description</th></tr></thead><tbody><tr><td>TITLE</td><td>The official title of the municipal decision or document.</td></tr><tr><td>PARTICIPANTS</td><td>A metadata block listing the individuals involved in the meeting or decision. This often includes lists of who was present (nl: <em>Aanwezig</em>), excused/absent (nl: <em>Verontschuldigd</em>), the responsible official (nl: <em>Verantwoordelijk</em>), the secretary (nl: <em>Secretaris</em>), etc.</td></tr><tr><td>MOTIVATION</td><td>The contextual background, reasoning, and justification for the decision. This includes the direct cause or trigger (nl: <em>aanleiding</em>)</td></tr><tr><td>PREVIOUS_DECISIONS</td><td>Specific references, citations, or summaries of prior decisions that are directly linked to the current document and provide legal or historical context for the resolution being passed.</td></tr><tr><td>LEGAL_FRAMEWORK</td><td>Citations of the specific laws, regulations, or legal precedents. This includes both the general regulations that give the municipality the authority to act (nl: <em>regelgeving waaruit blijkt dat het orgaan bevoegd is/Regelgeving bevoegdheid</em>) and the specific legal grounds on which this particular decision is based (nl: <em>op basis van welke regels (rechtsgronden) wordt deze beslissing genomen/Wetgeving</em>).</td></tr><tr><td>DECISION</td><td>The core, binding content of the decision; the text that outlines what is being formally enacted, ruled, or established.</td></tr><tr><td>VOTING</td><td>The specific record of votes. This can range from a simple statement (e.g., "unanimously adopted", "20 votes for, 5 against") to a detailed breakdown including the names of proponents (nl: <em>voorstanders</em>), opponents (nl: <em>tegenstanders</em>), and abstentions (nl: <em>onthouding(en)</em>).</td></tr><tr><td>ARTICLE</td><td>The specific, numbered provisions, rules, or regulations that make up the operative part of the decision (e.g., "Article 1," "Article 2").</td></tr></tbody></table>
 
@@ -531,7 +537,7 @@ The process works as follows:
 
 The extraction tasks described above identify entities as text spans, strings like "City Council" or "Gent", but do not resolve them to specific linked data resources with a fixed known URI. Two documents from different cities might both mention "City Council", yet refer to entirely different organisations. The Named Entity Linking (NEL) service closes this gap: it takes the extracted entities and attempts to find their corresponding URI in the target LOD endpoints. Currently, the service links administrative bodies and locations; support for additional entity types (e.g. mandataries, legal documents) has been investigated but is not yet implemented.
 
-The NEL service is built as a FastAPI application that integrates a [LangChain](https://www.langchain.com/)-based agent with a Model Context Protocol (MCP) server. The architecture is designed around one central insight: writing correct SPARQL queries against an unfamiliar schema requires both knowledge of the SPARQL language and understanding of the target database's class hierarchy, property names, and naming conventions. Rather than hard-coding queries for each entity type –which would be brittle and difficult to extend– the service delegates query construction to an LLM, augmented with schema context retrieved from a vector knowledge base (i.e. RAG).&#x20;
+The NEL service is built as a FastAPI application that integrates a [LangChain](https://www.langchain.com/)-based agent with a Model Context Protocol (MCP) server. The architecture is designed around one central insight: writing correct SPARQL queries against an unfamiliar schema requires both knowledge of the SPARQL language and understanding of the target database's class hierarchy, property names, and naming conventions. Rather than hard-coding queries for each entity type –which would be brittle and difficult to extend– the service delegates query construction to an LLM, augmented with schema context retrieved from a vector knowledge base (i.e. RAG).
 
 * **FastAPI application:** Serves as the entry point. It exposes the `/delta` webhook endpoint through which the delta notifier triggers processing of newly scheduled entity linking tasks. When a delta arrives, the service polls the triplestore for tasks with status "scheduled", picks them up, and processes them asynchronously. The MCP server is mounted directly into the application routing (`/mcp`), making it accessible to both the internal agent and external clients.
 * **LangChain agent:** A tool-calling agent that receives a structured request (containing entity class, entity label, and location) and autonomously determines how to find the corresponding URI. The agent supports multiple LLM providers (OpenAI, Mistral, Ollama) and returns a structured `SparqlResponse` containing the matched URI, its label, and the reasoning behind the selection.
