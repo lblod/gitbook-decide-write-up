@@ -1,6 +1,6 @@
 ---
 description: >-
-  Policy Impact Report visualising how LD&L across the pilot cities relate to
+  Policy Impact Report visualizing how LD&L across the pilot cities relate to
   SDGs, based on AI-generated and human-validated codelist annotations.
 ---
 
@@ -9,34 +9,34 @@ description: >-
 {% hint style="info" %}
 **Note:** In the original project proposal, this use case is embedded within Use Case 0.
 
-UC0.1 was scoped out from UC0 by the DECIDe team as a distinct use case. While UC0.0 establishes the data space infrastructure and the pipelines to ingest LD\&L in standardised form, UC0.1 is the first concrete, end-user-facing application built on top of it. The separation allows each write-up to focus clearly on its scope: infrastructure versus application.
+UC0.1 was scoped out from UC0 by the DECIDe team as a distinct use case. While UC0.0 establishes the data space infrastructure and the pipelines to ingest LD\&L in standardized form, UC0.1 is the first concrete, end-user-facing application built on top of it. The separation allows each write-up to focus clearly on its scope: infrastructure versus application.
 {% endhint %}
 
 ## Description UC/wanted deliverable
 
 The DECIDe project proposal outlines an ambition to go beyond making local decisions available as structured linked data: it also foresees tools that can make the _policy relevance_ of those decisions legible. Specifically, the proposal describes the integration of AI-supported semantic enrichment as a mechanism for linking local decisions to strategic policy frameworks, such as the UN Sustainable Development Goals (SDGs).
 
-The underlying hypothesis is that local governments already produce formal decisions (LD\&L) that are consequential for achieving broader policy goals, but that the relationship between individual decisions and those goals is rarely made explicit in a structured, machine-readable way. The proposal envisions demonstrating that, given a standardised corpus of local decisions and an AI-assisted annotation pipeline, it becomes possible to generate meaningful policy insights at scale, without requiring manual review of every document.
+The underlying hypothesis is that local governments already produce formal decisions (LD\&L) that are consequential for achieving broader policy goals, but that the relationship between individual decisions and those goals is rarely made explicit in a structured, machine-readable way. The proposal envisions demonstrating that, given a standardized corpus of local decisions and an AI-assisted annotation pipeline, it becomes possible to generate meaningful policy insights at scale, without requiring manual review of every document.
 
-The envisioned deliverable is an interactive Policy Impact Report: a tool built on top of the DECIDe data space infrastructure that visualises, in aggregated form, how local legislative and decision-making activity across the pilot cities relates to a chosen policy framework.
+The envisioned deliverable is an interactive Policy Impact Report: a tool built on top of the DECIDe data space infrastructure that visualizes, in aggregated form, how local legislative and decision-making activity across the pilot cities relates to a chosen policy framework.
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
 | Deliverable                                                                                                                 | Activities                                                                                                                                                                                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **D1.2.2** Data ready for decentralised ingestion into the data space — scope of data plan for UC0.1 (Policy Impact Report) | **T1.1-T1.7** Analyse available data sets and standards, develop and execute data plan for the use case                                                                                                                                                                                                                  |
+| **D1.2.2** Data ready for decentralized ingestion into the data space — scope of data plan for UC0.1 (Policy Impact Report) | **T1.1-T1.7** Analyze available data sets and standards, develop and execute data plan for the use case                                                                                                                                                                                                                  |
 | **D2.1.2** In-depth technical analysis of current architecture UC0.1                                                        | **T2.1** In-depth analysis of current technical architecture at pilot sites & gap analysis                                                                                                                                                                                                                               |
 | **D2.8** Thesauri and registries available for AI assisted enrichment                                                       | **T2.12** Define and set up thesauri and registries as input for labeling and matching                                                                                                                                                                                                                                   |
 | **D2.11** AI tool for matching LD\&L to relevant policies and legislation ready                                             | **T2.15** Define, develop, train and test open source semantic AI tool for matching LD\&L to relevant policies and legislation, including interface for human review                                                                                                                                                     |
 | **D2.12** AI tool for matching LD\&L implemented at relevant pilot sites                                                    | <p><strong>T2.16</strong> Implement AI tool for matching LD&#x26;L to relevant policies and legislation, including interface for human review at lead<br>pilot and at least one following pilot site</p>                                                                                                                 |
-| **D3.1** Policy Impact Reporting implemented by Flanders as lead pilot site                                                 | <p><strong>T3.1</strong> User centred design of Policy Impact Report</p><p><strong>T3.2</strong> Build and test Policy Impact Report (incl. user testing)<br><strong>T3.3</strong> Setup and/or configure connection to data space (via federated catalogue) to show data of lead pilot site in Policy Impact Report</p> |
+| **D3.1** Policy Impact Reporting implemented by Flanders as lead pilot site                                                 | <p><strong>T3.1</strong> User centred design of Policy Impact Report</p><p><strong>T3.2</strong> Build and test Policy Impact Report (incl. user testing)<br><strong>T3.3</strong> Setup and/or configure connection to data space (via federated catalog) to show data of lead pilot site in Policy Impact Report</p> |
 | **D3.2** Policy Impact Reporting implemented by at least one following pilot site                                           | **T3.4** Setup and/or configure connection to data space to show data of following pilot site(s) in Policy Impact Report                                                                                                                                                                                                 |
 
 ### Link to other deliverables
 
 #### UC0.0 Pipelines
 
-UC0.1 builds directly on top of the data and infrastructure established in UC0.0. The data ingestion pipelines, LD\&L standardisation, and AI enrichment established in UC0.0 produce the corpus of linked decisions and annotations that the Policy Impact Report queries.
+UC0.1 builds directly on top of the data and infrastructure established in UC0.0. The data ingestion pipelines, LD\&L standardization, and AI enrichment established in UC0.0 produce the corpus of linked decisions and annotations that the Policy Impact Report queries.
 
 [write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md "mention")
 
@@ -48,7 +48,7 @@ The Human Validation interfaces provide the human-in-the-loop validation layer f
 
 #### UC1 Restrictive Mobility Zones
 
-UC1 uses the same codelist mapping and human validation patterns established in UC0.1, as well as similar AI enrichment tooling as LD\&L standardisation of UC0.0, making the data model and interface approach directly reusable across use cases.
+UC1 uses the same codelist mapping and human validation patterns established in UC0.1, as well as similar AI enrichment tooling as LD\&L standardization of UC0.0, making the data model and interface approach directly reusable across use cases.
 
 [write-up-uc1-restricted-mobility-zones.md](write-up-uc1-restricted-mobility-zones.md "mention")<br>
 
@@ -60,7 +60,7 @@ See the [UC0.0 Data space glossary](https://github.com/lblod/gitbook-decide-writ
 See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#glossary) for definitions of Context window, Fine-tuning, LangChain, LLM, NER, and Ollama.
 {% endhint %}
 
-<table><thead><tr><th width="202.6376953125">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>AIRO</td><td><a href="https://delaramglp.github.io/airo/">AI Risk Ontology</a>. An ontology for describing AI models, their training provenance, evaluation metrics, and deployment context. Clear link with AI Risk Assessments (EU AI Act). Used to store information related to the systems, services and components using AI in the triplestore. The URIs of these components are used to store the provenance of annotations.</td></tr><tr><td>Class imbalance</td><td>A situation where some labels appear far more often than others in the training data. For example, most decisions are <em>not</em> about a given SDG, so the "no SDG X" class dominates. Imbalance can mislead simple metrics: a classifier that always predicts "no SDG X" can achieve high accuracy while being useless. Weighted F1 and similar metrics correct for this.</td></tr><tr><td>Codelist</td><td>A controlled vocabulary or taxonomy; in UC0.1 context, the SDG goals and targets used to categorise local decisions.</td></tr><tr><td>Codelist Mapping Tool</td><td>The AI component that maps a decision to one or more concepts in a SKOS codelist, producing an <code>oa:Annotation</code> linking the decision to matched codelist concept(s). Developed in UC0.1 for the SDG codelist, reused in UC1 for the RMZ codelist.</td></tr><tr><td>Cold start</td><td>The scenario where no labelled training data exists and the system must produce useful predictions from the codelist definition alone.</td></tr><tr><td><a href="https://huggingface.co/distilbert/distilbert-base-uncased">DistilBERT</a></td><td>A smaller, faster version of BERT (~66M parameters, ~40% smaller than BERT-base). Used in DECIDe as the base model for the supervised classifier trained on validated codelist annotations. Note: standard <code>distilbert-base-uncased</code> is English-only.</td></tr><tr><td>F1 score</td><td>The harmonic mean of precision and recall, balancing both metrics into a single number between 0 and 1, where 1 represents perfect and near zero is no better than coinflip.</td></tr><tr><td>Impact</td><td>In the context of UC0.1 SDG annotations: whether a given local decision has a positive, negative, or no discernible impact on the linked SDG goal.</td></tr><tr><td>Multi-label classification</td><td>A classification task where each item can belong to more than one class simultaneously. A decision about housing with solar panels can be both SDG 7 and SDG 11. Distinct from <em>single-label classification</em>, where each item gets exactly one class.</td></tr><tr><td>Policy framework</td><td>A structured set of strategic goals or objectives (e.g. SDGs, the European Green Deal, etc.) against which LD&#x26;L can be assessed for relevance or impact.</td></tr><tr><td>Policy Impact Report</td><td>The interactive data product delivered in UC0.1. Visualises aggregated insights on how local decisions across the pilot cities relate to SDGs, based on AI-generated and human-validated codelist annotations.</td></tr><tr><td><a href="https://sdgs.un.org/goals">SDGs (Sustainable Development Goals)</a></td><td>The 17 UN goals adopted in 2015 as part of the 2030 Agenda for Sustainable Development. Used in UC0.1 as the target policy framework for annotation.</td></tr><tr><td>Single-label classification</td><td>A classification task where each item belongs to exactly one of the candidate classes, as opposed to <em>multi-label classification</em>.</td></tr><tr><td><a href="https://www.w3.org/TR/skos-reference/">SKOS (Simple Knowledge Organization System)</a></td><td>W3C standard for representing knowledge organisation systems (e.g. thesauri, classification schemes, codelists) as RDF. Used in UC0.1 to model the SDG codelist that decisions are mapped against.</td></tr><tr><td><a href="skos:prefLabelhttps://www.w3.org/TR/skos-reference/"><code>skos:prefLabel</code></a></td><td>SKOS property, used to surface the human-readable label of a codelist concept (e.g. the name of an SDG) in the HVT interface.</td></tr><tr><td>Stratified splitting</td><td>When dividing data into training and evaluation sets, stratified splitting preserves the proportion of each class in both halves. For example, if 10% of decisions are tagged SDG 13 in the full dataset, both train and test sets will contain ~10% SDG 13. Avoids the failure mode where a small class ends up entirely in one half.</td></tr><tr><td>System prompt</td><td>The fixed instructions given to an LLM, setting its role and behaviour, as opposed to the <em>user prompt</em>, which contains the specific request and data. The system prompt is normally fixed across calls; the user prompt changes per request. In DECIDe, system prompts constrain what the model is allowed to do.</td></tr><tr><td>Weighted precision / Weighted recall / Weighted F1</td><td>Variants of precision, recall, and F1 used when there are many classes of unequal size. The metric is computed per class and then averaged with each class weighted by how many examples it has. This stops a small class with a poor score from being washed out by larger, easier classes — and conversely stops a tiny class from dominating the average.</td></tr><tr><td>Zero-shot classification</td><td>Classifying text without any task-specific training data. The model uses only the names and descriptions of the candidate classes (e.g. SDG titles and definitions) plus its general pre-trained understanding of language to assign labels. Useful for <em>cold start</em> approach: getting started before any human-labelled examples exist.</td></tr></tbody></table>
+<table><thead><tr><th width="202.6376953125">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>AIRO</td><td><a href="https://delaramglp.github.io/airo/">AI Risk Ontology</a>. An ontology for describing AI models, their training provenance, evaluation metrics, and deployment context. Clear link with AI Risk Assessments (EU AI Act). Used to store information related to the systems, services and components using AI in the triplestore. The URIs of these components are used to store the provenance of annotations.</td></tr><tr><td>Class imbalance</td><td>A situation where some labels appear far more often than others in the training data. For example, most decisions are <em>not</em> about a given SDG, so the "no SDG X" class dominates. Imbalance can mislead simple metrics: a classifier that always predicts "no SDG X" can achieve high accuracy while being useless. Weighted F1 and similar metrics correct for this.</td></tr><tr><td>Codelist</td><td>A controlled vocabulary or taxonomy; in UC0.1 context, the SDG goals and targets used to categorize local decisions.</td></tr><tr><td>Codelist Mapping Tool</td><td>The AI component that maps a decision to one or more concepts in a SKOS codelist, producing an <code>oa:Annotation</code> linking the decision to matched codelist concept(s). Developed in UC0.1 for the SDG codelist, reused in UC1 for the RMZ codelist.</td></tr><tr><td>Cold start</td><td>The scenario where no labelled training data exists and the system must produce useful predictions from the codelist definition alone.</td></tr><tr><td><a href="https://huggingface.co/distilbert/distilbert-base-uncased">DistilBERT</a></td><td>A smaller, faster version of BERT (~66M parameters, ~40% smaller than BERT-base). Used in DECIDe as the base model for the supervised classifier trained on validated codelist annotations. Note: standard <code>distilbert-base-uncased</code> is English-only.</td></tr><tr><td>F1 score</td><td>The harmonic mean of precision and recall, balancing both metrics into a single number between 0 and 1, where 1 represents perfect and near zero is no better than coin flip.</td></tr><tr><td>Impact</td><td>In the context of UC0.1 SDG annotations: whether a given local decision has a positive, negative, or no discernible impact on the linked SDG goal.</td></tr><tr><td>Multi-label classification</td><td>A classification task where each item can belong to more than one class simultaneously. A decision about housing with solar panels can be both SDG 7 and SDG 11. Distinct from <em>single-label classification</em>, where each item gets exactly one class.</td></tr><tr><td>Policy framework</td><td>A structured set of strategic goals or objectives (e.g. SDGs, the European Green Deal, etc.) against which LD&#x26;L can be assessed for relevance or impact.</td></tr><tr><td>Policy Impact Report</td><td>The interactive data product delivered in UC0.1. Visualizes aggregated insights on how local decisions across the pilot cities relate to SDGs, based on AI-generated and human-validated codelist annotations.</td></tr><tr><td><a href="https://sdgs.un.org/goals">SDGs (Sustainable Development Goals)</a></td><td>The 17 UN goals adopted in 2015 as part of the 2030 Agenda for Sustainable Development. Used in UC0.1 as the target policy framework for annotation.</td></tr><tr><td>Single-label classification</td><td>A classification task where each item belongs to exactly one of the candidate classes, as opposed to <em>multi-label classification</em>.</td></tr><tr><td><a href="https://www.w3.org/TR/skos-reference/">SKOS (Simple Knowledge Organization System)</a></td><td>W3C standard for representing knowledge organization systems (e.g. thesauri, classification schemes, codelists) as RDF. Used in UC0.1 to model the SDG codelist that decisions are mapped against.</td></tr><tr><td><a href="skos:prefLabelhttps://www.w3.org/TR/skos-reference/"><code>skos:prefLabel</code></a></td><td>SKOS property, used to surface the human-readable label of a codelist concept (e.g. the name of an SDG) in the HVT interface.</td></tr><tr><td>Stratified splitting</td><td>When dividing data into training and evaluation sets, stratified splitting preserves the proportion of each class in both halves. For example, if 10% of decisions are tagged SDG 13 in the full dataset, both train and test sets will contain ~10% SDG 13. Avoids the failure mode where a small class ends up entirely in one half.</td></tr><tr><td>System prompt</td><td>The fixed instructions given to an LLM, setting its role and behavior, as opposed to the <em>user prompt</em>, which contains the specific request and data. The system prompt is normally fixed across calls; the user prompt changes per request. In DECIDe, system prompts constrain what the model is allowed to do.</td></tr><tr><td>Weighted precision / Weighted recall / Weighted F1</td><td>Variants of precision, recall, and F1 used when there are many classes of unequal size. The metric is computed per class and then averaged with each class weighted by how many examples it has. This stops a small class with a poor score from being washed out by larger, easier classes — and conversely stops a tiny class from dominating the average.</td></tr><tr><td>Zero-shot classification</td><td>Classifying text without any task-specific training data. The model uses only the names and descriptions of the candidate classes (e.g. SDG titles and definitions) plus its general pre-trained understanding of language to assign labels. Useful for <em>cold start</em> approach: getting started before any human-labelled examples exist.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -82,7 +82,7 @@ All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany),
 
 The Policy Impact Report is intended for non-technical users in local government, e.g. policy officers, sustainability coordinators, and decision-makers who need to understand the policy footprint of their city's formal decisions without querying raw data or interpreting linked data structures.
 
-<table><thead><tr><th width="291.431640625">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P2</strong> Semantic framework owner</td><td>Defines and maintains the SDG concept scheme used as the codelist, ensuring the hierarchy is correctly modelled and labelled in linked data form.</td></tr><tr><td><strong>P3</strong> Enrichment provider</td><td>Runs the AI annotation pipeline that generates the SDG-annotated dataset; produces the <code>oa:Annotation</code> objects that feed the report.</td></tr><tr><td><strong>P4</strong> Domain validator</td><td>Reviews AI-generated codelist mappings via the HV interface and votes on their accuracy, e.g. a sustainability officer with knowledge of the SDG framework.</td></tr><tr><td><strong>P5</strong> Non-technical application user</td><td>Primary audience for the Policy Impact Report, who interacts with the report as a consumer –filtering, exploring, and drawing conclusions– without needing to understand the underlying linked data or AI pipeline.</td></tr></tbody></table>
+<table><thead><tr><th width="291.431640625">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P2</strong> Semantic framework owner</td><td>Defines and maintains the SDG concept scheme used as the codelist, ensuring the hierarchy is correctly modeled and labeled in linked data form.</td></tr><tr><td><strong>P3</strong> Enrichment provider</td><td>Runs the AI annotation pipeline that generates the SDG-annotated dataset; produces the <code>oa:Annotation</code> objects that feed the report.</td></tr><tr><td><strong>P4</strong> Domain validator</td><td>Reviews AI-generated codelist mappings via the HV interface and votes on their accuracy, e.g. a sustainability officer with knowledge of the SDG framework.</td></tr><tr><td><strong>P5</strong> Non-technical application user</td><td>Primary audience for the Policy Impact Report, who interacts with the report as a consumer –filtering, exploring, and drawing conclusions– without needing to understand the underlying linked data or AI pipeline.</td></tr></tbody></table>
 
 ### Functionality (Requirements)
 
@@ -98,7 +98,7 @@ The Policy Impact Report builds on two shared components described in their resp
 
 #### Codelist Mapping Tool
 
-<table><thead><tr><th width="499.8416748046875">Feature</th><th>Priority</th></tr></thead><tbody><tr><td>Classify decisions against any SKOS codelist (framework-agnostic, not SDG-specific)</td><td>Must-have</td></tr><tr><td>Operate in zero-shot LLM mode without labelled training data (cold start capability)</td><td>Must-have</td></tr><tr><td>Assess impact direction per annotation (positive / negative / neutral / unknown)</td><td>Must-have</td></tr><tr><td>Store codelist mapping results as <code>oa:Annotation</code> triples without modifying source data</td><td>Must-have</td></tr><tr><td>Record AI model at time of annotation</td><td>Must-have</td></tr><tr><td>Train a supervised classifier on validated annotations and replace LLM for future runs</td><td>Nice-to-have</td></tr></tbody></table>
+<table><thead><tr><th width="499.8416748046875">Feature</th><th>Priority</th></tr></thead><tbody><tr><td>Classify decisions against any SKOS codelist (framework-agnostic, not SDG-specific)</td><td>Must-have</td></tr><tr><td>Operate in zero-shot LLM mode without labeled training data (cold start capability)</td><td>Must-have</td></tr><tr><td>Assess impact direction per annotation (positive / negative / neutral / unknown)</td><td>Must-have</td></tr><tr><td>Store codelist mapping results as <code>oa:Annotation</code> triples without modifying source data</td><td>Must-have</td></tr><tr><td>Record AI model at time of annotation</td><td>Must-have</td></tr><tr><td>Train a supervised classifier on validated annotations and replace LLM for future runs</td><td>Nice-to-have</td></tr></tbody></table>
 
 #### Human Validation
 
@@ -112,7 +112,7 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 ### Data sources
 
-<table><thead><tr><th width="190.6162109375">Data source</th><th width="196.818359375">Type/category</th><th>Brief description</th></tr></thead><tbody><tr><td>ELI-normalised LD&L decisions</td><td>Internal (triple store)</td><td>The ELI data from the pipeline</td></tr><tr><td><a href="https://research.un.org/en/thesaurus/downloads">SDG codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The UN Sustainable Development Goals taxonomy (17 goals and associated targets) used to generate a flattened SDG codelist.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/add-sdg-codelist/20260310123608-add-simple-sdg-codelist.ttl">SDG Flattened codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>A flattened version of the UN Sustainable Development Goals taxonomy (17 goals) used as the annotation target for linking local decisions to policy goals.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/20260407111121-create-impact.sparql">Impact codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The impact taxonomy used to indicate the impact of a decision on an SDG.</td></tr></tbody></table>
+<table><thead><tr><th width="190.6162109375">Data source</th><th width="196.818359375">Type/category</th><th>Brief description</th></tr></thead><tbody><tr><td>ELI-normalized LD&L decisions</td><td>Internal (triple store)</td><td>The ELI data from the pipeline</td></tr><tr><td><a href="https://research.un.org/en/thesaurus/downloads">SDG codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The UN Sustainable Development Goals taxonomy (17 goals and associated targets) used to generate a flattened SDG codelist.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/add-sdg-codelist/20260310123608-add-simple-sdg-codelist.ttl">SDG Flattened codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>A flattened version of the UN Sustainable Development Goals taxonomy (17 goals) used as the annotation target for linking local decisions to policy goals.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/20260407111121-create-impact.sparql">Impact codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The impact taxonomy used to indicate the impact of a decision on an SDG.</td></tr></tbody></table>
 
 ### Datasets available in the data space
 
@@ -127,7 +127,7 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 As with all annotations used in the DECIDe project, the annotations created for UC0.1 are expressed using the Web Annotation Vocabulary and are, as such, instances of the type `oa:Annotation`.
 
-To ensure reusability, the codelist labelling service is designed to map decisions to any `skos:Concept` from any codelist (`skos:ConceptScheme`), as defined by the Simple Knowledge Organization System. This makes the component reusable beyond the SDG mapping required for UC0.1; e.g. the same service is reused in UC1 for Restricted Mobility Zone classification.
+To ensure reusability, the codelist labeling service is designed to map decisions to any `skos:Concept` from any codelist (`skos:ConceptScheme`), as defined by the Simple Knowledge Organization System. This makes the component reusable beyond the SDG mapping required for UC0.1; e.g. the same service is reused in UC1 for Restricted Mobility Zone classification.
 
 Below is an example of an annotation that links a decision (`eli:Expression`) to a `skos:Concept` it has an impact on.
 
@@ -197,7 +197,7 @@ TODO
 
 Initially, the creation of custom codelist management tools was considered. These tools would allow the user to create their own codelist or import a csv file with the labels and descriptions of the concepts and turn that into a linked data codelist for them. However, there are already many tools on the market that do just that. [SEMIC even published a nice list of tools to manage codelists](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/toolkit). All of the tools there work on SKOS codelists. These can then easily be imported into the DECIDe triplestore as a migration (see the [migrations service](../README.md#migrations) in the Core Components section of UC0.0).
 
-Since the creation of codelists is a solved problem and not the core of the DECIDe project, we decided against creating our own solution. 
+Since the creation of codelists is a solved problem and not the core of the DECIDe project, we decided against creating our own solution.
 
 ### Final AI components (and why) (if any)
 
@@ -232,13 +232,13 @@ This lifecycle is implemented as the Codelist Mapping Tool, a standalone microse
 
 The architecture is intentionally codelist-agnostic. The same service, data model, and processing pipeline can be reused across any SKOS codelist. While the primary use case in UC0.1 is mapping LD\&L to the UN Sustainable Development Goals (SDGs), the same infrastructure is reused in [UC1 for classification against a Restricted Mobility Zone codelist](write-up-uc1-restricted-mobility-zones.md#q1-is-this-decision-about-a-restricted-mobility-zone).
 
-The classification problem itself is multi-label: a single decision can map to zero, one, or several concepts simultaneously. For example, a decision about expanding social housing with solar panels might map to both SDG 7 (Affordable and Clean Energy) and SDG 11 (Sustainable Cities and Communities). The tool must also operate across multiple languages (Dutch, German, French, English), varying codelist granularities (17 broad SDG goals vs. a single binary RMZ concept), and across municipalities with different administrative traditions.
+The classification problem itself is multi-label: a single decision can map to zero, one, or several concepts simultaneously. For example, a decision about expanding social housing with solar panels might map to both SDG 7 (Affordable and Clean Energy) and SDG 11 (Sustainable Cities and Communities). The tool must also operate across multiple languages (Dutch, German, French, English), varying codelist granularity (17 broad SDG goals vs. a single binary RMZ concept), and across municipalities with different administrative traditions.
 
 The current deployment operates in the Cold Start phase, gathering validated annotations to eventually transition to a Gold Standard model. The sections below detail the technical implementation of each strategy.
 
 #### Phase 1: Cold Start classification (Zero-shot LLM)
 
-The primary classification strategy uses a Large Language Model in a zero-shot configuration, requiring no labelled training dataset.
+The primary classification strategy uses a Large Language Model in a zero-shot configuration, requiring no labeled training dataset.
 
 The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a single decision:
 
@@ -289,7 +289,7 @@ The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a s
 
 The zero-shot approach was chosen as the primary strategy because it offers several advantages during the cold-start phase:
 
-1. **No labelled data required.** Creating a high-quality, expert-labelled training dataset for municipal decisions is costly and domain-specific. With zero-shot classification, the codelist definition itself serves as the only "training" signal need to start the classification process.
+1. **No labelled data required.** Creating a high-quality, expert-labeled training dataset for municipal decisions is costly and domain-specific. With zero-shot classification, the codelist definition itself serves as the only "training" signal need to start the classification process.
 2. **Language-agnostic.** The LLM operates on the English translation of the decision, but the approach does not require language-specific keyword lists or language-specific training data. Adding a new source language only requires a translation step upstream.
 3. **Codelist-agnostic.** The same task code classifies SDGs, RMZ types, or any other SKOS codelist. The codelist is resolved dynamically from the job at runtime; no code changes are needed to switch codelists.
 4. **Adaptable through codelist enrichment.** Classification quality can be improved by enriching the codelist's `skos:definition` and `skos:prefLabel` values, without retraining any model. The richer the concept descriptions, the more context the LLM has for classification.
@@ -306,7 +306,7 @@ The `ClassifierTrainingTask` implements this training pipeline. To illustrate, s
 
 The pipeline consists of following steps:
 
-1. **Fetch labelled decisions.** The task queries the triplestore for all decisions with validated `oa:classifying` annotations in the AI graph, where the annotation body is a `skos:Concept` in the task's codelist. For each decision, it concatenates the available text fields (`eli:title`, `eli:description`, `eli-dl:decision_basis`, `epvoc:expressionContent`) into a single training text. In the example, this yields 500 labelled text-label pairs.
+1. **Fetch labeled decisions.** The task queries the triplestore for all decisions with validated `oa:classifying` annotations in the AI graph, where the annotation body is a `skos:Concept` in the task's codelist. For each decision, it concatenates the available text fields (`eli:title`, `eli:description`, `eli-dl:decision_basis`, `epvoc:expressionContent`) into a single training text. In the example, this yields 500 labeled text-label pairs.
 2. **Determine problem type.** The task inspects the training data to determine whether it is a single-label or multi-label classification problem. If any decision has more than one assigned concept, the problem is treated as multi-label classification; otherwise, single-label classification.
 3. **Prepare the dataset.** The training data is formatted into a Hugging Face dataset:
    * For single-label classification: each example has a text field and a label field (integer index). The dataset is split 90/10 into train/test sets, stratified by label when class sizes permit.
@@ -363,7 +363,7 @@ Before building the Codelist Mapping Tool, existing SDG classification tools and
 
 However, the first step was to survey existing, publicly available SDG classification tools to assess whether any could be reused or adapted. The following two tools were evaluated in depth:
 
-[**OSDG**](https://osdg.ai/) is a two-stage pipeline that combines ML screening (16 one-vs-rest classifiers, one per SDG) with a keyword-ontology verification step. A label is only assigned when both the ML model and the ontology agree, which reduces false positives but increases false negatives. OSDG supports 15 languages via neural machine translation to English, and its reported accuracy on its own benchmark dataset reaches around 80%. However, OSDG is not open source and cannot be customised or retrained, making it unsuitable for domain-specific fine-tuning on municipal decision text.
+[**OSDG**](https://osdg.ai/) is a two-stage pipeline that combines ML screening (16 one-vs-rest classifiers, one per SDG) with a keyword-ontology verification step. A label is only assigned when both the ML model and the ontology agree, which reduces false positives but increases false negatives. OSDG supports 15 languages via neural machine translation to English, and its reported accuracy on its own benchmark dataset reaches around 80%. However, OSDG is not open source and cannot be customized or retrained, making it unsuitable for domain-specific fine-tuning on municipal decision text.
 
 [**text2sdg**](https://cran.r-project.org/package=text2sdg) is an open-source R package that integrates six independently developed query-based labelling systems: Aurora, Elsevier, SIRIS, Auckland, SDGO, and SDSN. Each system is a curated set of keyword and phrase queries per SDG goal. The package also incorporates OSDG as a seventh source and offers an ensemble approach that combines all systems using a random-forest meta-classifier trained on top of their individual outputs. On a dataset of news articles, the best individual system (Elsevier) achieved an accuracy of 0.82 and F1 of 0.46; the ensemble improved this to accuracy 0.83 and F1 of 0.54. text2sdg is English-only, written in R, and all underlying systems are query-based; meaning they do not use any neural models or trainable components. The ensemble adds a random forest on top, but the base signals are all keyword lookups.
 
@@ -386,15 +386,15 @@ Second, existing tools focus on detecting whether a text mentions or overlaps wi
 
 Third, and most critically, these tools cannot be fine-tuned to legislative language. Municipal decisions follow a highly specific style: formal, domain-specific, and often indirect in how actions are described (e.g. approvals, amendments, budget allocations, regulatory changes). Models trained on news articles, scientific papers, or generic corpora do not capture these patterns well. Without fine-tuning on annotated legislative text, systems struggle to:
 
-* recognise implicit policy actions,
+* recognize implicit policy actions,
 * distinguish procedural text from substantive decisions,
 * and correctly interpret domain-specific terminology.
 
 OSDG cannot be retrained, and text2sdg’s underlying systems are not trainable at all. Its ensemble layer is trained on news data, not on legislative or administrative text. None of the surveyed tools support a human-in-the-loop feedback loop to iteratively adapt the model to this domain.
 
-Finally, existing tools are SDG specific by design. Extending them to other policy frameworks (e.g. local mobility taxonomies or thematic codelists) would require rebuilding the system from scratch. Even if one of these tools could be made to work for SDGs, the project requires classification across different frameworks (e.g. SDGs in UC0.1, Restricted Mobility Zone types in UC1, and future codelists). Maintaining separate specialised tools per framework would lead to a fragmented and operationally unsustainable setup, with duplicated pipelines, and more complex validation workflows.
+Finally, existing tools are SDG specific by design. Extending them to other policy frameworks (e.g. local mobility taxonomies or thematic codelists) would require rebuilding the system from scratch. Even if one of these tools could be made to work for SDGs, the project requires classification across different frameworks (e.g. SDGs in UC0.1, Restricted Mobility Zone types in UC1, and future codelists). Maintaining separate specialized tools per framework would lead to a fragmented and operationally unsustainable setup, with duplicated pipelines, and more complex validation workflows.
 
-This motivated a purpose-built solution: a system capable of classifying decisions against any SKOS codelist out of the box, without prior labelled data, while also providing the infrastructure to build a validated dataset over time and train custom models with known, measurable performance on this specific domain.
+This motivated a purpose-built solution: a system capable of classifying decisions against any SKOS codelist out of the box, without prior labeled data, while also providing the infrastructure to build a validated dataset over time and train custom models with known, measurable performance on this specific domain.
 
 ## Final UI design (and why) (if any)
 
@@ -406,7 +406,7 @@ The report works as follows:
 
 A user opens the Policy Impact Report. Once the user selects a local authority from a dropdown menu, the report dashboard loads.
 
-The user can also filter the report by SDGs. These are colour-coded based on the SDG colours decided by the UN on the [SDG website](https://sdgs.un.org/goals).
+The user can also filter the report by SDGs. These are color-coded based on the SDG colors decided by the UN on the [SDG website](https://sdgs.un.org/goals).
 
 The tool aims to demonstrate the reporting possibilities; the following statistics were chosen as a starting point:
 
@@ -414,9 +414,9 @@ The tool aims to demonstrate the reporting possibilities; the following statisti
 * **Decisions with positive impact**: The proportion of all decisions from that local authority linked to the selected SDGs, where the impact is found to be positive.
 * **Decisions with negative impact**: The proportion of all decisions from that local authority linked to the selected SDGs, where the impact is found to be negative.
 * **Top three decisions**: For each of the previously mentioned statistics, we also offer a top three SDG.
-* **Decisions split per SDG**: A pie chart visualisation of all selected SDGs where the total of decisions with an SDG equals 100%, showing the user which SDGs are more prevalent for this local authority. The user can also choose to view this as a bar chart.
+* **Decisions split per SDG**: A pie chart visualization of all selected SDGs where the total of decisions with an SDG equals 100%, showing the user which SDGs are more prevalent for this local authority. The user can also choose to view this as a bar chart.
 * **Impact per SDG**: a horizontal bar chart showing the positive-vs-negative impact split per SDG for decisions where an impact has been assessed.
-* **Decision impact over time**: a line chart (one line per SDG, colour-coded) showing trends across years.
+* **Decision impact over time**: a line chart (one line per SDG, color-coded) showing trends across years.
 
 For the last three, users can hover over or click on a segment of a chart to view more numerical information about that segment.
 
@@ -432,11 +432,11 @@ The user can also navigate back to the report by using the back button on the to
 
 ### Other explored UI design (and why not)
 
-#### Report visualisation
+#### Report visualization
 
 {% embed url="https://www.figma.com/design/NjruUlbybDlI3qyqjDhnbG/DECIDe?node-id=7-8879&t=zqjcFM5xMeAoifyy-4" %}
 
-Different visualisations were explored, including side-by-side comparison of local authorities. This feature was not considered relevant for this phase: cities differ in size, country, and administrative context, making unweighted comparison potentially misleading –and the higher-value outcome for each city is a detailed view of its own decisions rather than inter-city rankings.
+Different visualizations were explored, including side-by-side comparison of local authorities. This feature was not considered relevant for this phase: cities differ in size, country, and administrative context, making unweighted comparison potentially misleading –and the higher-value outcome for each city is a detailed view of its own decisions rather than inter-city rankings.
 
 #### SDG linking validation
 
@@ -458,7 +458,7 @@ The main report dashboard does not offer date range filtering on its aggregate K
 
 #### Multi-city and cohort comparison
 
-The report allows filtering by local authority but does not support side-by-side comparison of cities. The underlying datasets come from widely varying types of cities, and to create reliable comparisons, one has to normalise the data (e.g. per capita). Once data from more cities becomes available, enabling side-by-side comparison or comparison against a cohort (eg. province, country, EU) aggregate, could increase the report's value for inter-city learning and benchmarking.
+The report allows filtering by local authority but does not support side-by-side comparison of cities. The underlying datasets come from widely varying types of cities, and to create reliable comparisons, one has to normalize the data (e.g. per capita). Once data from more cities becomes available, enabling side-by-side comparison or comparison against a cohort (eg. province, country, EU) aggregate, could increase the report's value for inter-city learning and benchmarking.
 
 #### Additional policy frameworks
 
@@ -466,7 +466,7 @@ The underlying codelist mapping architecture is framework-agnostic: any well-str
 
 #### Article level codelist mapping
 
-The current Codelist Mapping Tool operates at the whole-decision level: an entire decision is mapped to one or more codelist concepts. Decisions that contain multiple distinct measures –e.g. a Reglement in Flanders– could in principle be mapped at the article level, with each part linked to the most relevant concept. The pipeline's text segmentation step already produces article-level structure as a by-product of the title detection process, making this technically feasible without requiring architectural redesign. For the DECIDe pilot scope, whole-decision mapping is sufficient; whether article-level granularity is needed for any new use case should be evaluated before investing in implementation.
+The current Codelist Mapping Tool operates at the whole-decision level: an entire decision is mapped to one or more codelist concepts. Decisions that contain multiple distinct measures –e.g. a 'Reglement' in Flanders– could in principle be mapped at the article level, with each part linked to the most relevant concept. The pipeline's text segmentation step already produces article-level structure as a by-product of the title detection process, making this technically feasible without requiring architectural redesign. For the DECIDe pilot scope, whole-decision mapping is sufficient; whether article-level granularity is needed for any new use case should be evaluated before investing in implementation.
 
 #### Transition to supervised classifier for production
 
@@ -474,11 +474,11 @@ The current deployment operates in cold start mode: the LLM (Mistral Large 3) ge
 
 #### Classifier that is able to distinguish neutral impact and unknown
 
-The current classifier cannot distinguish between genuinely neutral impact –a decision that has no effect on a given concept– and unknown impact, where the model is not confident enough to assign a direction. Retraining with better-labelled data that preserves this distinction would yield higher-quality impact assessments and make the report more precise for end users.
+The current classifier cannot distinguish between genuinely neutral impact –a decision that has no effect on a given concept– and unknown impact, where the model is not confident enough to assign a direction. Retraining with better-labeled data that preserves this distinction would yield higher-quality impact assessments and make the report more precise for end users.
 
 #### Active learning to reduce annotation effort
 
-The current validation workflow presents AI-generated annotations without prioritisation. A next step is to introduce active learning, where the system selects the most informative annotations for human review.
+The current validation workflow presents AI-generated annotations without prioritization. A next step is to introduce active learning, where the system selects the most informative annotations for human review.
 
 This can be based on signals such as low confidence scores, ambiguity, or disagreement between models. By focusing validation effort on these high-value cases, the system can improve model performance more efficiently while reducing the total annotation burden.
 
@@ -494,7 +494,7 @@ Future iterations could provide lightweight explainability, such as:
 
 #### Production monitoring and drift detection
 
-As the system moves into operational use, monitoring model behaviour over time becomes essential. Legislative language, administrative practices, and policy priorities evolve, which may lead to performance degradation if not detected.
+As the system moves into operational use, monitoring model behavior over time becomes essential. Legislative language, administrative practices, and policy priorities evolve, which may lead to performance degradation if not detected.
 
 Future work could introduce a monitoring layer that tracks both model outputs and human validation patterns. This includes observing label distributions and confidence trends over time, as well as tracking validator agreement and correction rates as indicators of model quality. In addition, the supervised classifier can be periodically evaluated against validated datasets to ensure stable and measurable performance.
 

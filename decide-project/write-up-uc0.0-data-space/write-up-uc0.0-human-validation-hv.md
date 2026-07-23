@@ -14,9 +14,9 @@ This page is under construction
 **Note:** Human Validation (HV) is a horizontal component shared across all DECIDe use cases. It is documented at UC0.0 level because its shared logic, data model, and governing design decisions apply equally to UC0.0, UC0.1, UC1, and UC2. Each use case write-up documents the UC-specific validation interface; this write-up covers the general pattern, the data model, and the decisions that govern all interfaces as well as the interface for UC0.0.
 {% endhint %}
 
-The DECIDe project builds an AI enrichment layer that generates structured semantic annotations on local decisions and legislation (LD\&L) –recognising named entities, linking them to authoritative concept URIs, mapping decisions to policy frameworks, and extracting dates and temporal scope. The quality of these AI-generated enrichments directly affects their downstream utility: annotations that are incorrect or unreliable erode the value of the data space for the cities and organisations that consume it.
+The DECIDe project builds an AI enrichment layer that generates structured semantic annotations on local decisions and legislation (LD\&L) –recognizing named entities, linking them to authoritative concept URIs, mapping decisions to policy frameworks, and extracting dates and temporal scope. The quality of these AI-generated enrichments directly affects their downstream utility: annotations that are incorrect or unreliable erode the value of the data space for the cities and organizations that consume it.
 
-The wanted deliverable is a human-in-the-loop validation layer: a set of lightweight interfaces through which domain experts and local government staff can work through AI annotation outputs, recording their judgements and enabling downstream consumers to filter or weight results based on a certain level of human endorsement
+The wanted deliverable is a human-in-the-loop validation layer: a set of lightweight interfaces through which domain experts and local government staff can work through AI annotation outputs, recording their judgments and enabling downstream consumers to filter or weight results based on a certain level of human endorsement
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
@@ -43,13 +43,13 @@ UC0.1 includes a dedicated HV interface for validating AI-generated SDG codelist
 
 #### UC1 Restrictive Mobility Zones
 
-UC1 reuses two of the HV interface components documented here: the codelist mapping interface (for validating whether a decision concerns a restricted mobility zone) and the entity linking interface (for validating the location entities recognised in the decision text). UC1-specific interface details are in the UC1 write-up.
+UC1 reuses two of the HV interface components documented here: the codelist mapping interface (for validating whether a decision concerns a restricted mobility zone) and the entity linking interface (for validating the location entities recognized in the decision text). UC1-specific interface details are in the UC1 write-up.
 
 [write-up-uc1-restricted-mobility-zones.md](../write-up-uc1-restricted-mobility-zones.md "mention")
 
 #### UC2 Smart Search
 
-The HV for UC2 is embedded in the interface for the usecase itself: validating AI-generated answers to user queries as well as the source decisions used to construct those answers. The UC2 write-up covers the specifics of this interface.
+The HV for UC2 is embedded in the interface for the use case itself: validating AI-generated answers to user queries as well as the source decisions used to construct those answers. The UC2 write-up covers the specifics of this interface.
 
 [write-up-uc2-smart-search.md](../write-up-uc2-smart-search.md "mention")
 
@@ -59,13 +59,13 @@ The HV for UC2 is embedded in the interface for the usecase itself: validating A
 See the [UC0.0 Data space glossary](./#glossary) for definitions of Human-in-the-loop, HV (Human Validation), and `oa:Annotation`, and Triplestore
 {% endhint %}
 
-<table><thead><tr><th width="153.2138671875">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>Domain validator</td><td>A human expert with domain knowledge relevant to a specific annotation type, for example a sustainability officer validating SDG mappings (UC0.1) or a mobility expert validating RMZ classifications (UC1). Corresponds to persona P4.</td></tr><tr><td>NEL</td><td>Named Entity Linking. The AI step that links a recognised named entity (e.g. a bestuursorgaan mentioned in a decision text) to an authoritative concept URI in a reference registry. The output of NEL is one of the annotation types validated via the UC0.0 HV interface.</td></tr><tr><td>Session</td><td>The browser session in which a user interacts with the HVT. Votes are persisted per session; there is no user login, so cross-session vote history is not tracked per individual user.</td></tr><tr><td>Vote</td><td>The binary validation action available to a user in any HV interface. A thumbs-up indicates the annotation is correct; a thumbs-down indicates it is incorrect. Votes are stored as linked data and aggregated across interfaces.</td></tr></tbody></table>
+<table><thead><tr><th width="153.2138671875">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>Domain validator</td><td>A human expert with domain knowledge relevant to a specific annotation type, for example a sustainability officer validating SDG mappings (UC0.1) or a mobility expert validating RMZ classifications (UC1). Corresponds to persona P4.</td></tr><tr><td>NEL</td><td>Named Entity Linking. The AI step that links a recognized named entity (e.g. a bestuursorgaan mentioned in a decision text) to an authoritative concept URI in a reference registry. The output of NEL is one of the annotation types validated via the UC0.0 HV interface.</td></tr><tr><td>Session</td><td>The browser session in which a user interacts with the HVT. Votes are persisted per session; there is no user login, so cross-session vote history is not tracked per individual user.</td></tr><tr><td>Vote</td><td>The binary validation action available to a user in any HV interface. A thumbs-up indicates the annotation is correct; a thumbs-down indicates it is incorrect. Votes are stored as linked data and aggregated across interfaces.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
 #### Opportunity (problem, need, desire)
 
-Across DECIDe use cases, AI generates several types of structured annotations on local decisions and legislation: named entity recognition and linking (extracting and matching organisations, dates and locations) and codelist mapping (linking a decision to SDG goals or RMZ classifications and assigning an impact score where relevant). These annotations are valuable –they make LD\&L machine-queryable in ways not possible with unstructured text– but they are not fully reliable. Model errors, ambiguous decision language, and domain-specific edge cases mean that any given annotation may be incorrect. Without a structured mechanism for human feedback, two problems follow: there is no way for domain experts to flag errors or endorse correct outputs in a form that persists in the data space, and there is no feedback loop for improving the AI pipelines over time through observed expert assessments.
+Across DECIDe use cases, AI generates several types of structured annotations on local decisions and legislation: named entity recognition and linking (extracting and matching organizations, dates and locations) and codelist mapping (linking a decision to SDG goals or RMZ classifications and assigning an impact score where relevant). These annotations are valuable –they make LD\&L machine-queryable in ways not possible with unstructured text– but they are not fully reliable. Model errors, ambiguous decision language, and domain-specific edge cases mean that any given annotation may be incorrect. Without a structured mechanism for human feedback, two problems follow: there is no way for domain experts to flag errors or endorse correct outputs in a form that persists in the data space, and there is no feedback loop for improving the AI pipelines over time through observed expert assessments.
 
 The Human Validation Tooling (HVT) addresses both problems. It provides a low-friction mechanism for domain experts to work through AI annotation outputs, record assessments as linked data, and thereby create a growing layer of human-endorsed signal that downstream consumers can query directly, subject to their own quality thresholds. Crucially, this signal doesn't modify the AI-generated annotations or the source LD\&L data –it exists as a separate, independently queryable layer.
 
@@ -301,7 +301,7 @@ The HV interfaces only surface annotations that the AI models have produced. The
 
 #### Threshold-based validation
 
-Neither the HV interfaces nor any downstream usecase application currently apply a threshold for treating an annotation as validated or invalidated: votes are collected indefinitely, and what constitutes sufficient endorsement is left open. This is appropriate for the pilot. A future iteration could introduce a configurable threshold layer: e.g. surfacing a visual confidence indicator when an annotation has reached a defined vote count, or automatically filtering low-confidence annotations from certain views and downstream applications.
+Neither the HV interfaces nor any downstream use case application currently apply a threshold for treating an annotation as validated or invalidated: votes are collected indefinitely, and what constitutes sufficient endorsement is left open. This is appropriate for the pilot. A future iteration could introduce a configurable threshold layer: e.g. surfacing a visual confidence indicator when an annotation has reached a defined vote count, or automatically filtering low-confidence annotations from certain views and downstream applications.
 
 #### Automatic handling of new agent version
 

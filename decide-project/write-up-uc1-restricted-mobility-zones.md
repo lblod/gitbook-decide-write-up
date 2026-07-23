@@ -12,17 +12,17 @@ This page is under construction
 
 UC1 builds on the data space infrastructure established in UC0.0 to address a specific category of local government decisions: those that establish or modify a **Restricted Mobility Zone** (RMZ). Municipal decisions of this type –e.g. creating a low-emission zone, designating a pedestrian area, or regulating a school street– are published as unstructured pieces of text within decisions. UC1 creates the extraction and linking layer that bridges that text to structured, spatially referenced output: whether an RMZ is established, which location it covers, and when it applies.
 
-The wanted deliverable is a solution that extracts this structured information from decision text, links the resulting data to authoritative address and geometry registries, and exposes it through a machine-readable endpoint that GIS tools can consume for visualisation. The solution should include a human validation step to ensure annotation quality, and should make the structured output available in a GIS-compatible format through a SPARQL endpoint.
+The wanted deliverable is a solution that extracts this structured information from decision text, links the resulting data to authoritative address and geometry registries, and exposes it through a machine-readable endpoint that GIS tools can consume for visualization. The solution should include a human validation step to ensure annotation quality, and should make the structured output available in a GIS-compatible format through a SPARQL endpoint.
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
 | Deliverable                                                                              | Activities                                                                                                                           |
 | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **D1.3** Data ready for decentralised ingestion into data space — scope of data plan UC1 | **T1.1-T1.7** Analyse available data sets and standards, develop and execute data plan for UC1                                       |
-| **D2.1.3** In-depth technical analyses of current architecture UC1                       | **T2.1** In-depth analysis of current technical architecture at pilot sites & gap analysis                                           |
-| **D2.8** Thesauri and registries available for AI assisted enrichment                    | **T2.12** Define and set up thesauri and registries as input for labelling and matching                                              |
-| **D2.9** AI tool for labelling LD\&L available for UC1 ready                             | **T2.13** Define, develop, train and test open source semantic AI tool for labelling LD\&L, including interface for human review UC1 |
-| **D2.10** AI tool for labelling implemented at relevant pilot sites                      | **T2.14** Implement AI tool for labelling LD\&L at lead pilot and at least one following pilot site                                  |
+| **D1.3** Data ready for decentralized ingestion into data space — scope of data plan UC1 | **T1.1-T1.7** Analyze available data sets and standards, develop and execute data plan for UC1                                       |
+| **D2.1.3** In-depth technical analyzes of current architecture UC1                       | **T2.1** In-depth analysis of current technical architecture at pilot sites & gap analysis                                           |
+| **D2.8** Thesauri and registries available for AI assisted enrichment                    | **T2.12** Define and set up thesauri and registries as input for labeling and matching                                              |
+| **D2.9** AI tool for labeling LD\&L available for UC1 ready                             | **T2.13** Define, develop, train and test open source semantic AI tool for labeling LD\&L, including interface for human review UC1 |
+| **D2.10** AI tool for labeling implemented at relevant pilot sites                      | **T2.14** Implement AI tool for labeling LD\&L at lead pilot and at least one following pilot site                                  |
 | **D3.3** Use case 1 implemented by Freiburg as lead pilot site                           | **T3.5–T3.7** UC1 implementation at Freiburg                                                                                         |
 | **D3.4** Use case 1 implemented by Ghent and/or Bamberg                                  | **T3.8** UC1 implementation at Ghent and/or Bamberg                                                                                  |
 
@@ -30,11 +30,11 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 #### UC0.0 Pipelines
 
-UC1 builds directly on top of the data and infrastructure established in UC0.0. The data ingestion pipelines, LD\&L standardisation, and AI enrichment established in UC0.0 produce the corpus of linked decisions and annotations that the RMZ tool queries. Specifically, UC1 relies on:
+UC1 builds directly on top of the data and infrastructure established in UC0.0. The data ingestion pipelines, LD\&L standardization, and AI enrichment established in UC0.0 produce the corpus of linked decisions and annotations that the RMZ tool queries. Specifically, UC1 relies on:
 
 * The **Named Entity Recognition** model to detect location and date entities in decision text.
 * The **Named Entity Refinement** model to distinguish between impact locations and contextual locations, and between entry dates, expiry dates, validity periods, and other date sub-types.
-* The **Entity Formatting** step to parse raw location spans into structured address components and raw date spans into standardised start/end date pairs.
+* The **Entity Formatting** step to parse raw location spans into structured address components and raw date spans into standardized start/end date pairs.
 
 [write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md "mention")
 
@@ -60,7 +60,7 @@ See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipe
 See the [UC0.1 Policy Impact Report glossary](write-up-uc0.1-policy-impact-report.md#glossary) for definitions of Codelist Mapping Tool, SKOS, Zero-shot classification, and [UC2 Smart Search glossary](write-up-uc2-smart-search.md#glossary) for the definition of Inference.
 {% endhint %}
 
-<table><thead><tr><th width="221.3876953125">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>BIO labels / BIO tagging</td><td>A standard labelling scheme for sequence tasks like NER. Each token in the text gets one of three tag prefixes: <strong>B</strong> (beginning of an entity), <strong>I</strong> (inside / continuation of an entity), or <strong>O</strong> (outside any entity). Combined with an entity type, this gives labels like <code>B-LOCATION</code> (start of a location) and <code>I-LOCATION</code> (continuation of the same location). The scheme makes it possible to detect where one entity ends and the next begins.</td></tr><tr><td>Geocoding</td><td>Converting addresses into map coordinates.</td></tr><tr><td><a href="https://www.geopunt.be/">Geopunt</a></td><td>Authoritative address and geometry registry for Flanders. Used in UC1 to link extracted location entities from Ghent decisions to canonical geographic URIs.</td></tr><tr><td>GIS (Geographic Information System)</td><td>A system for capturing, storing, and analysing spatial and geographic data. UC1 outputs are designed for direct consumption by GIS tools via SPARQL.</td></tr><tr><td>RMZ (Restricted Mobility Zone)</td><td>An area defined by a local authority in which movement of certain vehicle types, or of all traffic, is restricted. Encompasses zone types including low-emission zones, pedestrian zones, car-free zones, cycling streets, school streets, and zones established for works or events.</td></tr></tbody></table>
+<table><thead><tr><th width="221.3876953125">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>BIO labels / BIO tagging</td><td>A standard labeling scheme for sequence tasks like NER. Each token in the text gets one of three tag prefixes: <strong>B</strong> (beginning of an entity), <strong>I</strong> (inside / continuation of an entity), or <strong>O</strong> (outside any entity). Combined with an entity type, this gives labels like <code>B-LOCATION</code> (start of a location) and <code>I-LOCATION</code> (continuation of the same location). The scheme makes it possible to detect where one entity ends and the next begins.</td></tr><tr><td>Geocoding</td><td>Converting addresses into map coordinates.</td></tr><tr><td><a href="https://www.geopunt.be/">Geopunt</a></td><td>Authoritative address and geometry registry for Flanders. Used in UC1 to link extracted location entities from Ghent decisions to canonical geographic URIs.</td></tr><tr><td>GIS (Geographic Information System)</td><td>A system for capturing, storing, and analyzing spatial and geographic data. UC1 outputs are designed for direct consumption by GIS tools via SPARQL.</td></tr><tr><td>RMZ (Restricted Mobility Zone)</td><td>An area defined by a local authority in which movement of certain vehicle types, or of all traffic, is restricted. Encompasses zone types including low-emission zones, pedestrian zones, car-free zones, cycling streets, school streets, and zones established for works or events.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -68,9 +68,9 @@ See the [UC0.1 Policy Impact Report glossary](write-up-uc0.1-policy-impact-repor
 
 Local authorities regularly establish, modify, and lift mobility restrictions through formal decisions. These decisions are published as PDFs or sometimes as linked data. However, even where linked data is available, the RMZ-relevant content is not extracted or structured: the decision text describing which zones are affected, where, and when remains buried in unstructured prose.
 
-The gap UC1 addresses is the absence of automatic extraction between authoritative decision text and the GIS layer where mobility restrictions are managed and visualised. Without this extraction, staff must manually read decisions and re-enter geographic and temporal information into GIS systems –a process that is slow, error-prone, and dependent on individual follow-through. This is particularly acute for cities which generate a large volume of mobility-related decisions and maintain public-facing GIS services that are expected to reflect the current regulatory situation.
+The gap UC1 addresses is the absence of automatic extraction between authoritative decision text and the GIS layer where mobility restrictions are managed and visualized. Without this extraction, staff must manually read decisions and re-enter geographic and temporal information into GIS systems –a process that is slow, error-prone, and dependent on individual follow-through. This is particularly acute for cities which generate a large volume of mobility-related decisions and maintain public-facing GIS services that are expected to reflect the current regulatory situation.
 
-UC1 proposes to close that gap by automatically classifying RMZ decisions, extracting locations and dates, linking locations to geometry registries, and exposing the resulting structured data through a SPARQL endpoint that GIS tools can query directly. The value is twofold: reduced manual effort for individual cities maintaining spatial databases, and a demonstration that AI-extracted annotations on LD\&L data can produce structured, queryable outputs suitable for downstream applications beyond document search –a pattern that generalises to other classes of decisions and to UC2.
+UC1 proposes to close that gap by automatically classifying RMZ decisions, extracting locations and dates, linking locations to geometry registries, and exposing the resulting structured data through a SPARQL endpoint that GIS tools can query directly. The value is twofold: reduced manual effort for individual cities maintaining spatial databases, and a demonstration that AI-extracted annotations on LD\&L data can produce structured, queryable outputs suitable for downstream applications beyond document search –a pattern that generalizes to other classes of decisions and to UC2.
 
 ### Pilot partners
 
@@ -78,7 +78,7 @@ Freiburg is the lead pilot partner for UC1 implementation, and Ghent participate
 
 ### Target audience / Personas
 
-The primary audience for UC1 output is municipal staff responsible for maintaining geographic information and mobility policy data, as well as the GIS specialists and urban planners who use that data in spatial analyses and public communications. A secondary audience is the technical team responsible for configuring and monitoring the extraction pipeline and managing the connection between the data space and GIS systems.
+The primary audience for UC1 output is municipal staff responsible for maintaining geographic information and mobility policy data, as well as the GIS specialists and urban planners who use that data in spatial analyzes and public communications. A secondary audience is the technical team responsible for configuring and monitoring the extraction pipeline and managing the connection between the data space and GIS systems.
 
 <table><thead><tr><th width="219.161865234375">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P4</strong> Domain validator</td><td>Validates AI-extracted annotations via the HV interface. May also query the SPARQL endpoint indirectly through a GIS tool to check that validated data is correctly represented.</td></tr><tr><td><strong>P6</strong> Data engineer</td><td>Configures the UC1 pipeline: sets up the connection to the RMZ codelist, configures address registry linking for the relevant pilot city, monitors extraction quality, and manages the SPARQL endpoint.</td></tr><tr><td><strong>P7</strong> Data space consumer</td><td>Queries the SPARQL endpoint to retrieve validated RMZ annotations for use in downstream applications, such as route planning services, public mobility dashboards, or regulatory compliance checks.</td></tr></tbody></table>
 
@@ -91,7 +91,7 @@ Human validation of AI-extracted annotations is handled through two HV interface
 {% hint style="info" %}
 UC1 builds on three shared components, documented elsewhere:
 
-* The **data ingestion pipelines, LD\&L standardisation, and AI enrichment** established in [UC0.0 Pipelines](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md) produce the corpus of linked decisions and annotations that the RMZ tool queries.
+* The **data ingestion pipelines, LD\&L standardization, and AI enrichment** established in [UC0.0 Pipelines](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md) produce the corpus of linked decisions and annotations that the RMZ tool queries.
 * The **HV** is a shared component across DECIDe use cases. Its general architecture, shared validation logic, and data model are described in the [UC0.0 HV write-up](write-up-uc0.0-data-space/write-up-uc0.0-human-validation-hv.md).
 * UC1 uses the same **codelist mapping tool** established in [UC0.1](write-up-uc0.1-policy-impact-report.md), making the data model and interface approach directly reusable across use cases.
 {% endhint %}
@@ -106,7 +106,7 @@ The shared data sources for all use cases are documented in the [write-up-uc0.0-
 
 | Data source                        | Type/category                 | Brief description                                                                                                                                                                                                           |
 | ---------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ELI-normalised LD&L decisions | Unstructured text             | Municipal decisions ingested through the data space pipeline established in UC0.0. The textual content of the decision forms the input corpus for the UC1 mapping pipeline.                                                        |
+| ELI-normalized LD&L decisions | Unstructured text             | Municipal decisions ingested through the data space pipeline established in UC0.0. The textual content of the decision forms the input corpus for the UC1 mapping pipeline.                                                        |
 | AI enrichments (`oa:Annotation`) | Annotations             | Location and time annotations ingested through the AI pipeline in UC0.0.                                                       |
 | RMZ SKOS codelist                  | Controlled vocabulary         | A flat single-level SKOS codelist defining the Restricted Mobility Zone concept, with sub-types documented in `skos:definition`. Concept Scheme: `http://data.lblod.gift/id/conceptscheme/restricted-mobility-zone-simple`. |
 | Geopunt (Flanders)                 | Address and geometry registry | Authoritative address and geometry registry for Flanders, used to link extracted location entities from Ghent decisions to canonical geographic URIs.                                                                       |
@@ -149,13 +149,13 @@ ELI provides one starting date to indicate when legislation becomes applicable: 
 
 ## Final architecture
 
-UC1 reuses, rather than rebuilds, the components developed in UC0.0 (the NER and date extraction pipelines) and UC0.1 (the Codelist Mapping Tool). The UC1-specific contribution is the configuration of those components against RMZ-specific codelists and address registries. 
+UC1 reuses, rather than rebuilds, the components developed in UC0.0 (the NER and date extraction pipelines) and UC0.1 (the Codelist Mapping Tool). The UC1-specific contribution is the configuration of those components against RMZ-specific codelists and address registries.
 
-The core challenge of UC1 is to extract structured mobility information from unstructured decision text. A municipal decision that establishes a restricted mobility zone typically contains all the relevant information (what kind of restriction, where, and when) but buries it in free-text prose across different sections of the document. For the RMZ tool to surface this information, each decision needs to be analysed along three axes:
+The core challenge of UC1 is to extract structured mobility information from unstructured decision text. A municipal decision that establishes a restricted mobility zone typically contains all the relevant information (what kind of restriction, where, and when) but buries it in free-text prose across different sections of the document. For the RMZ tool to surface this information, each decision needs to be analyzed along three axes:
 
 1. **Is this decision about a Restricted Mobility Zone?** Not every decision is relevant. The tool needs a way to filter the corpus down to decisions that actually describe a mobility restriction. This is a classification problem.
 2. **Which locations or regions are impacted by this RMZ decision?** A relevant decision mentions streets, addresses, and zones, but not all of them are affected by the restriction. Some are mentioned for context only. The tool needs to identify the specific locations that are impacted. This is an extraction and disambiguation problem.
-3. **When are these locations impacted by this decision?** Decisions mention many dates (session dates, publication dates, legal references), but only some define the temporal scope of the restriction. The tool needs to extract and normalise the relevant dates into machine-readable start/end pairs. This is again an extraction and normalisation problem.
+3. **When are these locations impacted by this decision?** Decisions mention many dates (session dates, publication dates, legal references), but only some define the temporal scope of the restriction. The tool needs to extract and normalize the relevant dates into machine-readable start/end pairs. This is again an extraction and normalization problem.
 
 Each question is addressed by a specific subset of the UC0.0/UC0.1 AI pipeline:
 
@@ -163,7 +163,7 @@ Each question is addressed by a specific subset of the UC0.0/UC0.1 AI pipeline:
 
 ### Component overview
 
-<table><thead><tr><th width="149.39990234375">Component</th><th width="97.8017578125">Source</th><th width="147.1510009765625">Pipeline task</th><th width="155.0670166015625">Model / Tool</th><th>Role in UC1</th></tr></thead><tbody><tr><td>Codelist Mapping</td><td>UC0.1</td><td>Named Entity Linking Service</td><td>mistral-nemo (Mistral API)</td><td>Classify decisions as RMZ-related or not</td></tr><tr><td>Named Entity Recognition</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/PedroDKE/multilingual-ner-abb">PedroDKE/multilingual-ner-abb</a> (XLM-RoBERTa)</td><td>Detect <code>LOCATION</code> and <code>DATE</code> entity spans in decision text</td></tr><tr><td>Named Entity Refinement</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/longformer-classifier-refinement-abb">svercoutere/longformer-classifier-refinement-abb</a> (Longformer)</td><td>Refine <code>LOCATION</code> into <code>impact_location</code> / <code>context_location</code>; refine <code>DATE</code> into <code>entry_date</code> / <code>expiry_date</code> / <code>validity_period</code> / etc.</td></tr><tr><td>Entity Formatting (dates)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><p><a href="https://github.com/semantic-ai/decide-dateperiod-parser">github.com/semantic-ai/decide-dateperiod-parser</a></p><p>dateperiodparser (rule-based)</p></td><td>Parse date/period text spans into standardised <code>xsd:Date</code> or <code>time:ProperInterval</code></td></tr><tr><td>Entity Formatting (locations)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/abb-dual-location-component-ner">svercoutere/abb-dual-location-component-ner</a> (XLM-RoBERTa dual-head NER)</td><td>Parse location text spans into structured address components</td></tr><tr><td>Human Validation</td><td>UC0.0 / UC0.1</td><td>n/a</td><td>n/a</td><td>Human-in-the-loop review and correction of all AI-generated annotations</td></tr></tbody></table>
+<table><thead><tr><th width="149.39990234375">Component</th><th width="97.8017578125">Source</th><th width="147.1510009765625">Pipeline task</th><th width="155.0670166015625">Model / Tool</th><th>Role in UC1</th></tr></thead><tbody><tr><td>Codelist Mapping</td><td>UC0.1</td><td>Named Entity Linking Service</td><td>mistral-nemo (Mistral API)</td><td>Classify decisions as RMZ-related or not</td></tr><tr><td>Named Entity Recognition</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/PedroDKE/multilingual-ner-abb">PedroDKE/multilingual-ner-abb</a> (XLM-RoBERTa)</td><td>Detect <code>LOCATION</code> and <code>DATE</code> entity spans in decision text</td></tr><tr><td>Named Entity Refinement</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/longformer-classifier-refinement-abb">svercoutere/longformer-classifier-refinement-abb</a> (Longformer)</td><td>Refine <code>LOCATION</code> into <code>impact_location</code> / <code>context_location</code>; refine <code>DATE</code> into <code>entry_date</code> / <code>expiry_date</code> / <code>validity_period</code> / etc.</td></tr><tr><td>Entity Formatting (dates)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><p><a href="https://github.com/semantic-ai/decide-dateperiod-parser">github.com/semantic-ai/decide-dateperiod-parser</a></p><p>dateperiodparser (rule-based)</p></td><td>Parse date/period text spans into standardized <code>xsd:Date</code> or <code>time:ProperInterval</code></td></tr><tr><td>Entity Formatting (locations)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/abb-dual-location-component-ner">svercoutere/abb-dual-location-component-ner</a> (XLM-RoBERTa dual-head NER)</td><td>Parse location text spans into structured address components</td></tr><tr><td>Human Validation</td><td>UC0.0 / UC0.1</td><td>n/a</td><td>n/a</td><td>Human-in-the-loop review and correction of all AI-generated annotations</td></tr></tbody></table>
 
 ### Q1: Is this decision about a Restricted Mobility Zone?
 
@@ -181,9 +181,9 @@ The RMZ codelist uses a flat (single-level) structure rather than a hierarchical
 
 The `skos:definition` of this single concept provides a non-exhaustive enumeration of the sub-types, expressed in both English and Dutch:
 
-<table><thead><tr><th>Sub-type (EN)</th><th width="249">Description</th><th>Source (eg. definition authority)</th></tr></thead><tbody><tr><td>Low Emission Zone (LEZ)<br>Zero Emission Zone (ZEZ)</td><td>A geographically defined area where access is restricted based on vehicle emission standards.</td><td><a href="https://www.wikidata.org/wiki/Q647266">https://www.wikidata.org/wiki/Q647266</a><br><a href="https://urbanaccessregulations.eu/">Urban Access Regulations (UVAR)</a></td></tr><tr><td>Car-Free Zone<br>Pedestrian Zone</td><td>A zone prioritised for pedestrians where motorised traffic is prohibited or heavily restricted (eg. only access to permit holders between certain hours)</td><td><a href="https://www.wikidata.org/wiki/Q369730">https://www.wikidata.org/wiki/Q369730</a></td></tr><tr><td>Cycling Street/Zone</td><td>A street where cyclists have priority</td><td><a href="https://www.wikidata.org/wiki/Q1249483">https://www.wikidata.org/wiki/Q1249483</a><br><a href="https://www.vlaanderen.be/datavindplaats/catalogus/afgeleide-zones-fietsstraatzone">https://www.vlaanderen.be/datavindplaats/catalogus/afgeleide-zones-fietsstraatzone</a></td></tr><tr><td>Home/Pedestrian zone</td><td>A street/zone designed as a social space for pedestrians and cyclists; motorised transport is permitted, but limited</td><td><a href="https://www.wikidata.org/wiki/Q8034016">https://www.wikidata.org/wiki/Q8034016</a><br><a href="https://www.wikidata.org/wiki/Q1628979">https://www.wikidata.org/wiki/Q1628979</a></td></tr><tr><td>School Street</td><td>A street closed to motorised traffic on certain days/hours, creating a pedestrian zone allowing children to play on the street.</td><td><a href="https://www.wikidata.org/wiki/Q3097917">https://www.wikidata.org/wiki/Q3097917</a></td></tr><tr><td>Work</td><td>Occupancy of public domain for works (eg. scaffolding, construction crane, etc.)</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Werk">https://data.vlaanderen.be/ns/mobiliteit/#Werk</a></td></tr><tr><td>Groundwork</td><td>Occupancy of public domain for construction or infrastructure works</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Grondwerk">https://data.vlaanderen.be/ns/mobiliteit/#Grondwerk</a></td></tr><tr><td>Events</td><td>Occupancy of public domain by a temporary event (sports, markets, festivals)</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Evenement">https://data.vlaanderen.be/ns/mobiliteit/#Evenement</a></td></tr></tbody></table>
+<table><thead><tr><th>Sub-type (EN)</th><th width="249">Description</th><th>Source (eg. definition authority)</th></tr></thead><tbody><tr><td>Low Emission Zone (LEZ)<br>Zero Emission Zone (ZEZ)</td><td>A geographically defined area where access is restricted based on vehicle emission standards.</td><td><a href="https://www.wikidata.org/wiki/Q647266">https://www.wikidata.org/wiki/Q647266</a><br><a href="https://urbanaccessregulations.eu/">Urban Access Regulations (UVAR)</a></td></tr><tr><td>Car-Free Zone<br>Pedestrian Zone</td><td>A zone prioritized for pedestrians where motorized traffic is prohibited or heavily restricted (eg. only access to permit holders between certain hours)</td><td><a href="https://www.wikidata.org/wiki/Q369730">https://www.wikidata.org/wiki/Q369730</a></td></tr><tr><td>Cycling Street/Zone</td><td>A street where cyclists have priority</td><td><a href="https://www.wikidata.org/wiki/Q1249483">https://www.wikidata.org/wiki/Q1249483</a><br><a href="https://www.vlaanderen.be/datavindplaats/catalogus/afgeleide-zones-fietsstraatzone">https://www.vlaanderen.be/datavindplaats/catalogus/afgeleide-zones-fietsstraatzone</a></td></tr><tr><td>Home/Pedestrian zone</td><td>A street/zone designed as a social space for pedestrians and cyclists; motorized transport is permitted, but limited</td><td><a href="https://www.wikidata.org/wiki/Q8034016">https://www.wikidata.org/wiki/Q8034016</a><br><a href="https://www.wikidata.org/wiki/Q1628979">https://www.wikidata.org/wiki/Q1628979</a></td></tr><tr><td>School Street</td><td>A street closed to motorized traffic on certain days/hours, creating a pedestrian zone allowing children to play on the street.</td><td><a href="https://www.wikidata.org/wiki/Q3097917">https://www.wikidata.org/wiki/Q3097917</a></td></tr><tr><td>Work</td><td>Occupancy of public domain for works (eg. scaffolding, construction crane, etc.)</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Werk">https://data.vlaanderen.be/ns/mobiliteit/#Werk</a></td></tr><tr><td>Groundwork</td><td>Occupancy of public domain for construction or infrastructure works</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Grondwerk">https://data.vlaanderen.be/ns/mobiliteit/#Grondwerk</a></td></tr><tr><td>Events</td><td>Occupancy of public domain by a temporary event (sports, markets, festivals)</td><td><a href="https://data.vlaanderen.be/ns/mobiliteit/#Evenement">https://data.vlaanderen.be/ns/mobiliteit/#Evenement</a></td></tr></tbody></table>
 
-By including these sub-type descriptions in the concept definition, the LLM has sufficient context to recognise a broad range of mobility-restricting decisions, from permanent zone establishments to temporary road closures for events or construction. The flat codelist design effectively turns the classification into a binary question (is this decision about an RMZ or not?) while still covering the full breadth of RMZ sub-types through the descriptive definition. Expanding the codelist to a hierarchical taxonomy where each sub-type becomes its own concept is identified as a possible future iteration.
+By including these sub-type descriptions in the concept definition, the LLM has sufficient context to recognize a broad range of mobility-restricting decisions, from permanent zone establishments to temporary road closures for events or construction. The flat codelist design effectively turns the classification into a binary question (is this decision about an RMZ or not?) while still covering the full breadth of RMZ sub-types through the descriptive definition. Expanding the codelist to a hierarchical taxonomy where each sub-type becomes its own concept is identified as a possible future iteration.
 
 #### Why this component
 
@@ -195,7 +195,7 @@ The codelist mapping approach was chosen over alternatives (such as keyword-base
 
 #### Interaction with other components
 
-The codelist mapping runs as an independent classification step within the Named Entity Linking Service. Its output (whether a decision is RMZ-related or not) is stored as a codelist mapping annotation in the triplestore. This annotation does not directly feed into the NER or entity formatting steps; rather, it acts as a **filter**. The RMZ tool queries the triplestore for decisions annotated as RMZ-related, and for those decisions, it retrieves the location and date annotations produced by the NER pipeline (see secions below on Q2 and Q3).
+The codelist mapping runs as an independent classification step within the Named Entity Linking Service. Its output (whether a decision is RMZ-related or not) is stored as a codelist mapping annotation in the triplestore. This annotation does not directly feed into the NER or entity formatting steps; rather, it acts as a **filter**. The RMZ tool queries the triplestore for decisions annotated as RMZ-related, and for those decisions, it retrieves the location and date annotations produced by the NER pipeline (see sections below on Q2 and Q3).
 
 ### Q2: Which locations are impacted by this RMZ decision?
 
@@ -234,12 +234,12 @@ In the context of UC1, **only `impact_location` entities are retained**. Context
 
 The `LocationFormatter` performs several sub-steps:
 
-1. **Text cleaning** normalises whitespace, removes newlines, and applies Unicode normalisation.
+1. **Text cleaning** normalizes whitespace, removes newlines, and applies Unicode normalization.
 2. **Dual-head NER inference** runs the text through the XLM-RoBERTa encoder with two classification heads:
    * The **Component head** (25 BIO labels) identifies fine-grained address components: `STREET`, `HOUSENUMBER`, `POSTCODE`, `CITY`, `PROVINCE`, `BUILDING`, `INTERSECTION`, `PARCEL`, `DISTRICT`, `GRAVE_LOCATION`, `DOMAIN_ZONE_AREA`, `ROAD`.
    * The **Location head** (3 BIO labels: `O`, `B-LOCATION`, `I-LOCATION`) identifies the boundaries of individual location spans within a multi-address string.
 3. **Span assembly** maps component tags to their enclosing location spans, producing a structured dictionary per location.
-4. **Conjunction merging** detects conjunction gaps in strings like `"Dorpstraat 23 en 25, 9000 Ghent"` and propagates shared fields (street, postcode, city) between neighbours.
+4. **Conjunction merging** detects conjunction gaps in strings like `"Dorpstraat 23 en 25, 9000 Ghent"` and propagates shared fields (street, postcode, city) between neighbors.
 5. **House number expansion** expands ranges like `"12-28"` into individual addresses following Belgian odd/even numbering rules, and splits bus/apartment numbers (e.g., `"5 bus 3"` into housenumber: `5`, bus: `3`).
 6. **Address string assembly** builds a Nominatim-compatible address string using a priority chain: street > building > road > intersection > district > domain\_zone\_area > grave\_location > parcel, appended with postcode, city, and province.
 
@@ -276,7 +276,7 @@ Output step 5 (simplified):
         "city": "Ghent",
         "formatted_text": "Dorpstraat 25, 9000 Ghent"
      },
-     
+
   ]
 ```
 
@@ -284,7 +284,7 @@ Output step 5 (simplified):
 
 * **NER** is necessary because locations appear as free text embedded in natural-language decision documents. There is no structured field containing the impacted address.
 * **Refinement** is necessary because a single decision typically mentions multiple locations for different purposes. Without distinguishing `impact_location` from `context_location`, the RMZ tool would display irrelevant addresses (e.g., the contact address of a contractor, a reference to a different municipality).
-* **Location Formatting** is necessary because the raw text span (`"Scaldisstraat 23-25, 2000 Antwerpen"`) is not directly usable for geocoding, database queries, or structured display. The formatting step produces normalised, component-level address data that downstream tools (geocoders, map visualisations, SPARQL queries) can consume.
+* **Location Formatting** is necessary because the raw text span (`"Scaldisstraat 23-25, 2000 Antwerpen"`) is not directly usable for geocoding, database queries, or structured display. The formatting step produces normalized, component-level address data that downstream tools (geocoders, map visualizations, SPARQL queries) can consume.
 
 ### Q3: When are these locations impacted by this decision?
 
@@ -294,7 +294,7 @@ Answering this question requires the same first two components as Q2, plus the d
 
 1. **Named Entity Recognition (NER)** detects `DATE` spans in the decision text.
 2. **Named Entity Refinement** classifies each `DATE` span into a temporal sub-type.
-3. **Entity Formatting (dates)** parses each date/period span into standardised start/end date pairs and serialises them as linked data.
+3. **Entity Formatting (dates)** parses each date/period span into standardized start/end date pairs and serializes them as linked data.
 
 **How they work together**
 
@@ -308,7 +308,7 @@ Other date sub-types exist in the pipeline but are **not relevant to the tempora
 
 <table><thead><tr><th width="170.7236328125">Sub-type</th><th>Why not relevant to UC1</th></tr></thead><tbody><tr><td><code>context_date</code></td><td>A date mentioned for background context, not tied to the RMZ's temporal scope.</td></tr><tr><td><code>session_date</code></td><td>The date of the council meeting, which is administrative metadata rather than the RMZ period.</td></tr><tr><td><code>publication_date</code></td><td>When the decision was formally published, not when the RMZ is active.</td></tr><tr><td><code>context_period</code></td><td>A period mentioned for context, not the RMZ's validity window.</td></tr></tbody></table>
 
-**Step 3: Entity Formatting (DatePeriodParser).** Each relevant date span is routed by the `EntityFormatter` to the `DatePeriodParser`, a rule-based parser that converts free-text temporal expressions into standardised `(start, end)` date pairs. For full details, see <mark style="background-color:$warning;">Formatting of Date & Period Entities.</mark>
+**Step 3: Entity Formatting (DatePeriodParser).** Each relevant date span is routed by the `EntityFormatter` to the `DatePeriodParser`, a rule-based parser that converts free-text temporal expressions into standardized `(start, end)` date pairs. For full details, see <mark style="background-color:$warning;">Formatting of Date & Period Entities.</mark>
 
 The `DatePeriodParser` works by passing the raw text through an ordered chain of 21 regex-based matchers. For the types of dates commonly found in RMZ decisions, the most relevant matchers are:
 
@@ -320,7 +320,7 @@ The `DatePeriodParser` works by passing the raw text through an ordered chain of
 | DD/MM range               | `ddmm_range`            | `"25/01-02/02/2026"`        | 2026-01-25 to 2026-02-02 |
 | Month range               | `month_range_same_year` | `"januari-maart 2026"`      | 2026-01-01 to 2026-03-31 |
 
-After parsing, the `EntityFormatter` serialises the result into the appropriate linked-data representation based on the entity's refined label:
+After parsing, the `EntityFormatter` serializes the result into the appropriate linked-data representation based on the entity's refined label:
 
 *   **`entry_date`** and **`expiry_date`** (single dates) become `xsd:Date` literals:
 
@@ -348,8 +348,8 @@ This distinction between `xsd:Date` and `time:ProperInterval` is determined by t
 
 * **NER** is necessary because temporal information is embedded in free-text prose, not in structured metadata fields.
 * **Refinement** is necessary because a single decision mentions many dates for different purposes. The `session_date` (when the council met) and the `publication_date` (when the decision was published) are both irrelevant to the actual period during which the RMZ is active. Only `entry_date`, `expiry_date`, and `validity_period` define the RMZ's temporal scope.
-* **Date Period Parsing** is necessary because the raw text spans come in highly inconsistent formats. A single corpus may contain `"25 januari 2026"`, `"25/01/2026 - 02/02/2026"`, `"from January 25 until February 2"`, or `"Q1 2026"`. Standard date parsers (like `dateparser` or `dateutil`) can resolve a single date string but cannot handle ranges, periods, seasons, or multi-year sequences. The `DatePeriodParser` was designed specifically to normalise this variety into uniform `(start, end)` pairs.
-* **Linked-data serialisation** is necessary because the triplestore expects temporal entities in a specific RDF format. The `EntityFormatter`'s mapping from refined labels to either `xsd:Date` or `time:ProperInterval` ensures the correct ontology representation is used.
+* **Date Period Parsing** is necessary because the raw text spans come in highly inconsistent formats. A single corpus may contain `"25 januari 2026"`, `"25/01/2026 - 02/02/2026"`, `"from January 25 until February 2"`, or `"Q1 2026"`. Standard date parsers (like `dateparser` or `dateutil`) can resolve a single date string but cannot handle ranges, periods, seasons, or multi-year sequences. The `DatePeriodParser` was designed specifically to normalize this variety into uniform `(start, end)` pairs.
+* **Linked-data serialization** is necessary because the triplestore expects temporal entities in a specific RDF format. The `EntityFormatter`'s mapping from refined labels to either `xsd:Date` or `time:ProperInterval` ensures the correct ontology representation is used.
 
 #### How the components interact: end-to-end flow
 
@@ -392,7 +392,7 @@ Once the filters have been applied, the user can validate the different decision
 
 #### Location scope expansion
 
-The current UC1 pipeline extracts street-level location references and links them to address registries. Many RMZ decisions, however, define zones by reference to areas –neighbourhoods, districts, or cadastral parcels– rather than individual streets. Extending the Entity Linking component to handle area-level geographic references would require additional reference datasets (such as cadastral parcel registries or neighbourhood boundary datasets) and a different linking strategy than the current address-component approach.
+The current UC1 pipeline extracts street-level location references and links them to address registries. Many RMZ decisions, however, define zones by reference to areas –neighborhoods, districts, or cadastral parcels– rather than individual streets. Extending the Entity Linking component to handle area-level geographic references would require additional reference datasets (such as cadastral parcel registries or neighborhood boundary datasets) and a different linking strategy than the current address-component approach.
 
 #### Hierarchical RMZ taxonomy
 
@@ -400,7 +400,7 @@ The current RMZ codelist is flat and contains a single primary concept, with sub
 
 #### Cross-city GIS interface
 
-Validated RMZ annotations from Ghent, Freiburg, and Bamberg are queryable individually via SPARQL, but there is no unified visualisation layer showing mobility restrictions across all pilot cities.
+Validated RMZ annotations from Ghent, Freiburg, and Bamberg are queryable individually via SPARQL, but there is no unified visualization layer showing mobility restrictions across all pilot cities.
 
 #### Mobility mode filtering
 

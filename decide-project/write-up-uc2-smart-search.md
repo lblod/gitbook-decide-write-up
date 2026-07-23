@@ -10,7 +10,7 @@ This page is under construction
 
 ## Description UC/wanted deliverable
 
-Local governments publish subsidy information as formal decisions and regulatory documents. For property owners considering climate-friendly renovations, e.g. insulation upgrades, green façades, or the installation of electric vehicle charging infrastructure, this information is publicly available but practically hard and time-consuming to find.
+Local governments publish subsidy information as formal decisions and regulatory documents. For property owners considering climate-friendly renovations, e.g. insulation upgrades, green facades, or the installation of electric vehicle charging infrastructure, this information is publicly available but practically hard and time-consuming to find.
 
 UC2 was set out to close this gap. By publishing subsidy-related LD\&L in the DECIDe data space and making it searchable through a purpose-built solution, citizens and businesses should be able to easily access all relevant information, understand their eligibility, and take action –contributing in the process to broader sustainability and Green Deal goals. The intended deliverable is a widget or application, embedded in the data space, through which property owners can query subsidy data across the pilot cities.
 
@@ -22,7 +22,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 | Deliverable                                                                              | Activities                                                                                    |
 | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| **D1.4** Data ready for decentralised ingestion into data space — scope of data plan UC2 | **T1.1-T1.7** Analyse available datasets and standards, develop and execute data plan for UC2 |
+| **D1.4** Data ready for decentralized ingestion into data space — scope of data plan UC2 | **T1.1-T1.7** Analyze available datasets and standards, develop and execute data plan for UC2 |
 | **D2.1.4** In-depth technical analysis of current architecture UC2                       | **T2.1** In-depth analysis of current technical architecture at pilot sites & gap analysis    |
 | **D3.5** Use case 2 implemented by Ghent as lead pilot site                              | **T3.9–T3.11** UC2 implementation at Ghent                                                    |
 | **D3.6** Use case 2 implemented by Freiburg and/or Bamberg                               | **T3.12** UC2 implementation at Freiburg and/or Bamberg                                       |
@@ -31,7 +31,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 #### UC0.0 Pipelines
 
-UC2 depends on the data infrastructure established in UC0.0. The LD\&L documents that UC2 retrieves and serves are ingested, standardised, and stored as linked data through the UC0.0 pipelines. The Virtuoso SPARQL endpoint that UC2 queries for document metadata is part of the [semantic.works](https://semantic.works/) stack set up in UC0.0. Without the ingestion pipelines and the triplestore, UC2 has no corpus to search over.
+UC2 depends on the data infrastructure established in UC0.0. The LD\&L documents that UC2 retrieves and serves are ingested, standardized, and stored as linked data through the UC0.0 pipelines. The Virtuoso SPARQL endpoint that UC2 queries for document metadata is part of the [semantic.works](https://semantic.works/) stack set up in UC0.0. Without the ingestion pipelines and the triplestore, UC2 has no corpus to search over.
 
 [write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md "mention")
 
@@ -49,7 +49,7 @@ See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipe
 See the [UC0.1 Policy Impact Report glossary](write-up-uc0.1-policy-impact-report.md#glossary) for definitions of System prompt
 {% endhint %}
 
-<table><thead><tr><th width="172.3984375">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>ANN (Approximate Nearest-Neighbour) search</td><td>The technique a vector database uses to find similar vectors efficiently. <em>Approximate</em> means it sacrifices a small amount of precision in exchange for searching millions of vectors in milliseconds instead of seconds. Used by UC2's search service to find document vectors close to the embedded question.</td></tr><tr><td>Grounding</td><td>The constraint that an LLM's answer must be derived from specific provided source documents, rather than from its general training knowledge. In UC2, grounding is enforced through the system prompt, which instructs the LLM to answer only from the retrieved documents and to acknowledge when none are relevant.</td></tr><tr><td>Inference</td><td>Running a trained model on new data to produce an output –distinct from training. <em>Local inference</em> means running the model on a self-hosted server (e.g. via Ollama) rather than calling an external API; this avoids per-token costs and external data egress but may have higher latency. Hosted APIs (Mistral, OpenAI) typically offer lower latency but incur per-token costs.</td></tr><tr><td>Latency</td><td>The delay between sending a request to an AI model and receiving its response. In DECIDe, latency is a key factor when choosing between self-hosted models (e.g. via Ollama) and external hosted APIs: hosted APIs tend to respond faster but involve external data transfer and per-call or per-token costs, while self-hosted models keep data local but may increase latency.</td></tr><tr><td>Provider-agnostic / Vendor lock-in</td><td><p>A design in which the LLM provider can be swapped –Mistral, OpenAI, Ollama– without code changes. UC2 achieves this through LangChain's unified interface; switching providers is a configuration change, not a development effort.</p><p>The opposite is <em>vendor lock-in</em>, where the application is tied to one provider's specific API.</p></td></tr><tr><td>Relevance score / Relevance threshold</td><td>When a vector search returns documents, each result usually comes with a similarity score indicating how closely it matches the query. A <em>relevance threshold</em> is a minimum score below which results are discarded as too weak to be useful.</td></tr><tr><td>Semantic search</td><td>A search approach that finds documents based on meaning rather than exact keyword overlap. Implemented in UC2 via vector similarity between the embedded question and pre-embedded document content.</td></tr><tr><td>Stateless service</td><td>A service that keeps no memory of past requests between calls. Each request is handled independently, making the service easy to scale and easy to replace, but meaning every question is treated in isolation. UC2 is deliberately stateless, which is why follow-up questions within the same conversation are not supported in the current implementation.</td></tr><tr><td>Top-N</td><td>The number of documents to retrieve from the vector search and pass to the LLM as context. UC2 defaults to 3. Higher values give the LLM more context but also introduce weaker matches that may dilute or mislead the answer.</td></tr><tr><td>Embedding Vector</td><td>An embedding vector is like a <strong>mathematical fingerprint</strong> for a word, sentence, or image. It turns complex information into a format that computers can easily compare, analyze, and use to find patterns or similarities. Pieces of text that are similar in meaning also have similar embedding vectors, so it's easy to compare them mathematically.</td></tr></tbody></table>
+<table><thead><tr><th width="172.3984375">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>ANN (Approximate Nearest-Neighbor) search</td><td>The technique a vector database uses to find similar vectors efficiently. <em>Approximate</em> means it sacrifices a small amount of precision in exchange for searching millions of vectors in milliseconds instead of seconds. Used by UC2's search service to find document vectors close to the embedded question.</td></tr><tr><td>Grounding</td><td>The constraint that an LLM's answer must be derived from specific provided source documents, rather than from its general training knowledge. In UC2, grounding is enforced through the system prompt, which instructs the LLM to answer only from the retrieved documents and to acknowledge when none are relevant.</td></tr><tr><td>Inference</td><td>Running a trained model on new data to produce an output –distinct from training. <em>Local inference</em> means running the model on a self-hosted server (e.g. via Ollama) rather than calling an external API; this avoids per-token costs and external data egress but may have higher latency. Hosted APIs (Mistral, OpenAI) typically offer lower latency but incur per-token costs.</td></tr><tr><td>Latency</td><td>The delay between sending a request to an AI model and receiving its response. In DECIDe, latency is a key factor when choosing between self-hosted models (e.g. via Ollama) and external hosted APIs: hosted APIs tend to respond faster but involve external data transfer and per-call or per-token costs, while self-hosted models keep data local but may increase latency.</td></tr><tr><td>Provider-agnostic / Vendor lock-in</td><td><p>A design in which the LLM provider can be swapped –Mistral, OpenAI, Ollama– without code changes. UC2 achieves this through LangChain's unified interface; switching providers is a configuration change, not a development effort.</p><p>The opposite is <em>vendor lock-in</em>, where the application is tied to one provider's specific API.</p></td></tr><tr><td>Relevance score / Relevance threshold</td><td>When a vector search returns documents, each result usually comes with a similarity score indicating how closely it matches the query. A <em>relevance threshold</em> is a minimum score below which results are discarded as too weak to be useful.</td></tr><tr><td>Semantic search</td><td>A search approach that finds documents based on meaning rather than exact keyword overlap. Implemented in UC2 via vector similarity between the embedded question and pre-embedded document content.</td></tr><tr><td>Stateless service</td><td>A service that keeps no memory of past requests between calls. Each request is handled independently, making the service easy to scale and easy to replace, but meaning every question is treated in isolation. UC2 is deliberately stateless, which is why follow-up questions within the same conversation are not supported in the current implementation.</td></tr><tr><td>Top-N</td><td>The number of documents to retrieve from the vector search and pass to the LLM as context. UC2 defaults to 3. Higher values give the LLM more context but also introduce weaker matches that may dilute or mislead the answer.</td></tr><tr><td>Embedding Vector</td><td>An embedding vector is like a <strong>mathematical fingerprint</strong> for a word, sentence, or image. It turns complex information into a format that computers can easily compare, analyze, and use to find patterns or similarities. Pieces of text that are similar in meaning also have similar embedding vectors, so it's easy to compare them mathematically.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -71,7 +71,7 @@ The primary audience for UC2 is citizens seeking to understand which decisions, 
 
 ### Functionality (requirements)
 
-UC2 is a question-answering microservice with a chat-style front-end. The back-end exposes a single endpoint that accepts a free-text question and an optional top-N parameter, and returns a generated answer together with a list of source documents. The front-end guides the user to select a local authority and pose a question, presents the response alongside the source decisions, and provides a Human Validation (HV) mechanism for signalling whether the answer and individual sources are correct. Each question, response, source set, and validation result is saved to a persistent store for data quality and model improvement use; this store is not exposed to end users.
+UC2 is a question-answering microservice with a chat-style front-end. The back-end exposes a single endpoint that accepts a free-text question and an optional top-N parameter, and returns a generated answer together with a list of source documents. The front-end guides the user to select a local authority and pose a question, presents the response alongside the source decisions, and provides a Human Validation (HV) mechanism for signaling whether the answer and individual sources are correct. Each question, response, source set, and validation result is saved to a persistent store for data quality and model improvement use; this store is not exposed to end users.
 
 The underlying mechanism is a Retrieval-Augmented Generation (RAG) pipeline: the question is embedded into a vector, semantically similar subsidy documents are retrieved, their metadata is enriched via SPARQL, and a Large-Language Model (LLM) generates an answer strictly grounded in the retrieved context. The service is stateless, language-aware, and provider-agnostic with respect to the LLM backend.
 
@@ -102,7 +102,7 @@ The underlying mechanism is a Retrieval-Augmented Generation (RAG) pipeline: the
 
 The core of UC2 are questions of users about LD\&L and answers that are generated by LLMs based on decisions. We based the data model on schema.org with `schema:Question` and `schema:Answer` . Next to the text (`schema:text`) of the question and answer, we also capture the full prompt to the LLM using `dct:description`. Another specific property is `ext:owningBody` to capture the municipality that is relevant for the user. This is used to filter decisions per municipality.
 
-<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>Fig. 1 Questions and Answers are modelled using Schema.org</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>Fig. 1 Questions and Answers are modeled using Schema.org</p></figcaption></figure>
 
 The answer is based on a set of decisions, ranked by confidence of being relevant. `schema:Quotation` is used to add confidence to the decision that was used. Currently, the quotation reflects the complete decision that is used as source (`oa:hasSource` ). However, this could later be extended with `oa:hasSelector` to reference a specific part of the decision that contributed to the answer. `schema:citation` is used to link the answer with the quotations.
 
@@ -190,10 +190,10 @@ Request:
 
 {% code overflow="wrap" %}
 ```json
-{ 
-    "question": "Welke subsidies bestaan er voor renovatie?", 
-    "top_n": 3, 
-    "localAuthority": "http://data.lblod.info/id/bestuurseenheden/353234a365664e581db5c2f7cc07add2534b47b8e1ab87c821fc6e6365e6bef5" 
+{
+    "question": "Welke subsidies bestaan er voor renovatie?",
+    "top_n": 3,
+    "localAuthority": "http://data.lblod.info/id/bestuurseenheden/353234a365664e581db5c2f7cc07add2534b47b8e1ab87c821fc6e6365e6bef5"
 }
 ```
 {% endcode %}
@@ -231,7 +231,7 @@ Answer generation is handled by an LLM invoked through LangChain's init\_chat\_m
 
 The LLM is given a custom system prompt that enforces three constraints: the answer must be grounded exclusively in the retrieved documents, the LLM must explicitly state when none of the retrieved documents are relevant to the question, and the answer must be produced in the same language as the question. This last constraint handles language switching transparently without any code-level branching between different language inputs.
 
-The same approach is taken for the LLM that generates the embeddings for the embedding service, but the two LLMs are separate models as they fulfil different roles.
+The same approach is taken for the LLM that generates the embeddings for the embedding service, but the two LLMs are separate models as they fulfill different roles.
 
 ## Final UI design (and why) (if any)
 
@@ -267,7 +267,7 @@ UC2 deliberately does not support multi-turn conversational interaction. Each re
 
 #### <mark style="background-color:$warning;">What to do when no relevant answer is found</mark>
 
-An LLM will always generate a response, even when the retrieved documents are not relevant to the question. <mark style="background-color:$warning;">We can numerically gauge the relevance rate</mark> and decided on a threshold of relevance. If this threshold is not met, the user will get an error message (9th UX Heuristic: Help Users Recognise, Diagnose, and Recover from Errors):
+An LLM will always generate a response, even when the retrieved documents are not relevant to the question. <mark style="background-color:$warning;">We can numerically gauge the relevance rate</mark> and decided on a threshold of relevance. If this threshold is not met, the user will get an error message (9th UX Heuristic: Help Users Recognize, Diagnose, and Recover from Errors):
 
 > Sorry, we were unable to find any relevant information in any decision. Try rewording your question or giving more details to help us find the relevant information for you.
 
@@ -275,7 +275,7 @@ The user can then restart with a fresh question or refine their existing one via
 
 #### Language of the interface
 
-The interface is in English, avoiding the overhead of maintaining three separate localised versions within the project timescale. The LLM handles questions and generates responses in Dutch, German and English. Users are informed on the first screen that asking in the language of the source decisions –Dutch for Ghent, German for Freiburg and Bamberg– produces the most accurate results, though <mark style="background-color:$warning;">English questions</mark> are also accepted and will produce a response.
+The interface is in English, avoiding the overhead of maintaining three separate localized versions within the project timescale. The LLM handles questions and generates responses in Dutch, German and English. Users are informed on the first screen that asking in the language of the source decisions –Dutch for Ghent, German for Freiburg and Bamberg– produces the most accurate results, though <mark style="background-color:$warning;">English questions</mark> are also accepted and will produce a response.
 
 ### Other explored UI design (and why not)
 
@@ -362,7 +362,7 @@ SPARQL is a very expressive language. Giving the LLM the ability to formulate an
 
 - Users with malicious intent could convince the LLM to run destructive queries, inserting or deleting triples into the SPARQL endpoint. This is easily countered by leveraging the [capabilities of mu-authorization](https://github.com/mu-semtech/sparql-parser#define-access-rights-for-specific-services) Simply giving the LLM a scope that only allows read access to the public information in the triplestore is enough.
 - Other ill-meaning users could decide to have the LLM run a lot of very heavy queries, resulting in a Denial of Service attack on the system. This can be mitigated by 1) providing the LLM with patterns of such malicious queries and telling it to refuse executing them, 2) extending mu-authorization so it disallows queries matching such patterns, 3) putting limits on the execution time of queries (built in for virtuoso) or queries sent from a certain service (requires an extension of mu-authorization).
-- Because the LLM now operates as an agent that can take actions there is a risk of prompt injection where malicious content in a retrieved document manipulates the model's behaviour. This becomes more consequential than in the current stateless pipeline, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
+- Because the LLM now operates as an agent that can take actions there is a risk of prompt injection where malicious content in a retrieved document manipulates the model's behavior. This becomes more consequential than in the current stateless pipeline, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
 
 ### Possible future work LBLOD related
 

@@ -59,7 +59,7 @@ The primary audience for the SHACL validation output is the DECIDe development a
 
 The SHACL validation component is designed as a periodically automated process rather than an interactive interface. Because the triplestore may contain thousands of decisions and related entities, validation must operate in batches rather than loading everything into memory at once. The component must also be generically configurable.
 
-<table><thead><tr><th width="611.919921875" valign="top">Requirement</th><th valign="top">Priority</th></tr></thead><tbody><tr><td valign="top">SHACL validation runs periodically via cron job</td><td valign="top">Must-have</td></tr><tr><td valign="top">Configurable using SHACL</td><td valign="top">Must-have</td></tr><tr><td valign="top">SHACL shapes cover ELI Work, ELI Expression, and Organisation core entities</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation processes resources in batches to handle large datasets without memory issues</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation results stored as a report in the triplestore</td><td valign="top">Must-have</td></tr><tr><td valign="top">REST API endpoint exposes the latest validation report in JSON format</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Extensions placed in the shared loket-report-generation-service for ecosystem reusability</td><td valign="top">Must-have</td></tr><tr><td valign="top">SPARQL-based SHACL shapes supported alongside standard SHACL shapes</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">HTTP 404 returned by the API when no report is found</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Previous report deleted on each run to preserve only the latest report</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">A limited set (sample) of decisions can be validated</td><td valign="top">Nice-to-have</td></tr></tbody></table>
+<table><thead><tr><th width="611.919921875" valign="top">Requirement</th><th valign="top">Priority</th></tr></thead><tbody><tr><td valign="top">SHACL validation runs periodically via cron job</td><td valign="top">Must-have</td></tr><tr><td valign="top">Configurable using SHACL</td><td valign="top">Must-have</td></tr><tr><td valign="top">SHACL shapes cover ELI Work, ELI Expression, and Organization core entities</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation processes resources in batches to handle large datasets without memory issues</td><td valign="top">Must-have</td></tr><tr><td valign="top">Validation results stored as a report in the triplestore</td><td valign="top">Must-have</td></tr><tr><td valign="top">REST API endpoint exposes the latest validation report in JSON format</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Extensions placed in the shared loket-report-generation-service for ecosystem reusability</td><td valign="top">Must-have</td></tr><tr><td valign="top">SPARQL-based SHACL shapes supported alongside standard SHACL shapes</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">HTTP 404 returned by the API when no report is found</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">Previous report deleted on each run to preserve only the latest report</td><td valign="top">Nice-to-have</td></tr><tr><td valign="top">A limited set (sample) of decisions can be validated</td><td valign="top">Nice-to-have</td></tr></tbody></table>
 
 ## Datasources, datasets and datastandards
 
@@ -67,11 +67,11 @@ The foundational data sources and ELI data model for DECIDe are documented in th
 
 ### Data sources
 
-DECIDe triplestore (Virtuoso) Internal. The SHACL validation service reads ELI and Organisation resources directly from the triplestore and writes validation results back to it.
+DECIDe triplestore (Virtuoso) Internal. The SHACL validation service reads ELI and Organization resources directly from the triplestore and writes validation results back to it.
 
 | Data source                                      | Type/category                           | Brief description                                                                                        |
 | ------------------------------------------------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| ELI-normalised LD\&L decisions                   | LD\&L as structured linked data         | The output of UC0.0 ingestion pipelines (decisions) is used as data source for the validation layer.     |
+| ELI-normalized LD\&L decisions                   | LD\&L as structured linked data         | The output of UC0.0 ingestion pipelines (decisions) is used as data source for the validation layer.     |
 | Organizations (governing bodies, municipalities) | Organizations as structured linked data | The output of UC0.0 ingestion pipelines (organizations) is used as data source for the validation layer. |
 
 ### Datasets available in the data space
@@ -82,7 +82,7 @@ DECIDe triplestore (Virtuoso) Internal. The SHACL validation service reads ELI a
 
 ### Data standards
 
-<table><thead><tr><th width="454.4248046875">Standard</th><th>Link</th></tr></thead><tbody><tr><td>SHACL</td><td><a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a></td></tr><tr><td>ELI (European Legislation Identifier)</td><td><a href="https://eur-lex.europa.eu/eli-register/about.html">https://eur-lex.europa.eu/eli-register/about.html</a></td></tr><tr><td>W3C Organization Ontology</td><td><a href="https://www.w3.org/TR/vocab-org/">https://www.w3.org/TR/vocab-org/</a></td></tr><tr><td>ELI-EP (ELI-EP is an application profile of the <a href="https://op.europa.eu/en/web/eu-vocabularies/eli">ELI</a> and <a href="https://joinup.ec.europa.eu/collection/eli-european-legislation-identifier/solution/eli-ontology-draft-legislation-eli-dl/">ELI-DL</a> ontologies, designed and used for data of the European Parliament.)</td><td><a href="https://europarl.github.io/eli-ep/">https://europarl.github.io/eli-ep/</a></td></tr><tr><td>ORG-EP (ORG-EP is an application profile of the W3C Organization Ontology, specifically designed to describe the organisational components of the European Parliament (MEPs, Parliamentary Groups, Committees, etc.).)</td><td><a href="https://europarl.github.io/org-ep">https://europarl.github.io/org-ep</a></td></tr></tbody></table>
+<table><thead><tr><th width="454.4248046875">Standard</th><th>Link</th></tr></thead><tbody><tr><td>SHACL</td><td><a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a></td></tr><tr><td>ELI (European Legislation Identifier)</td><td><a href="https://eur-lex.europa.eu/eli-register/about.html">https://eur-lex.europa.eu/eli-register/about.html</a></td></tr><tr><td>W3C Organization Ontology</td><td><a href="https://www.w3.org/TR/vocab-org/">https://www.w3.org/TR/vocab-org/</a></td></tr><tr><td>ELI-EP (ELI-EP is an application profile of the <a href="https://op.europa.eu/en/web/eu-vocabularies/eli">ELI</a> and <a href="https://joinup.ec.europa.eu/collection/eli-european-legislation-identifier/solution/eli-ontology-draft-legislation-eli-dl/">ELI-DL</a> ontologies, designed and used for data of the European Parliament.)</td><td><a href="https://europarl.github.io/eli-ep/">https://europarl.github.io/eli-ep/</a></td></tr><tr><td>ORG-EP (ORG-EP is an application profile of the W3C Organization Ontology, specifically designed to describe the organizational components of the European Parliament (MEPs, Parliamentary Groups, Committees, etc.).)</td><td><a href="https://europarl.github.io/org-ep">https://europarl.github.io/org-ep</a></td></tr></tbody></table>
 
 <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
@@ -121,34 +121,34 @@ A REST API (Extension 5) exposing the latest validation report is added to the s
 
 ```json
 {
-	"data": [{
-		"type": "validationresult",
-		"id": "6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
-		"attributes": {
-			"result": "http://data.lblod.info/id/validationresults/6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
-			"resultId": "6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
-			"focusNode": "https://data.gent.be/id/besluiten/23.1214.2233.0071",
-			"focusNodeId": "cb1dacb9-a979-5d97-9a17-5057cb20fe8b",
-			"resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-			"sourceConstraintComponent": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
-			"resultMessage": "Less than 1 values",
-			"resultPath": "http://data.europa.eu/eli/ontology#language",
-			"targetClassOfFocusNode": "http://data.europa.eu/eli/ontology#Expression,http://data.europa.eu/eli/ontology#LegalExpression,http://data.vlaanderen.be/ns/besluit#Besluit"
-		}
-	}],
-	"meta": {
-		"total": "2565",
-		"page": 1,
-		"pageSize": 10,
-		"totalPages": 257
-	},
-	"links": {
-		"self": "/shacl-reports/latest/issues?page[number]=1&page[size]=10",
-		"first": "/shacl-reports/latest/issues?page[number]=1&page[size]=10",
-		"last": "/shacl-reports/latest/issues?page[number]=257&page[size]=10",
-		"prev": null,
-		"next": "/shacl-reports/latest/issues?page[number]=2&page[size]=10"
-	}
+    "data": [{
+        "type": "validationresult",
+        "id": "6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
+        "attributes": {
+            "result": "http://data.lblod.info/id/validationresults/6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
+            "resultId": "6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
+            "focusNode": "https://data.gent.be/id/besluiten/23.1214.2233.0071",
+            "focusNodeId": "cb1dacb9-a979-5d97-9a17-5057cb20fe8b",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+            "resultMessage": "Less than 1 values",
+            "resultPath": "http://data.europa.eu/eli/ontology#language",
+            "targetClassOfFocusNode": "http://data.europa.eu/eli/ontology#Expression,http://data.europa.eu/eli/ontology#LegalExpression,http://data.vlaanderen.be/ns/besluit#Besluit"
+        }
+    }],
+    "meta": {
+        "total": "2565",
+        "page": 1,
+        "pageSize": 10,
+        "totalPages": 257
+    },
+    "links": {
+        "self": "/shacl-reports/latest/issues?page[number]=1&page[size]=10",
+        "first": "/shacl-reports/latest/issues?page[number]=1&page[size]=10",
+        "last": "/shacl-reports/latest/issues?page[number]=257&page[size]=10",
+        "prev": null,
+        "next": "/shacl-reports/latest/issues?page[number]=2&page[size]=10"
+    }
 }
 ```
 
@@ -156,7 +156,7 @@ Three standard SHACL shape files and one SPARQL-based shape file are included in
 
 * Shapes for ELI Work entities: config/reports/shacl/work.ttl
 * Shapes for ELI Expression entities: config/reports/shacl/expression.ttl
-* Shapes for Organisation entities: config/reports/shacl/organization.ttl
+* Shapes for Organization entities: config/reports/shacl/organization.ttl
 * SPARQL-based constraint demonstrating sh:SPARQLConstraint usage for ELI Expressions: config/reports/sparql/expression.sparql
 
 ### Other explored semantic components (and why not)
@@ -175,7 +175,7 @@ n/a
 
 n/a
 
-The SHACL validation layer has no end-user interface. Validation results are consumed programmatically via the REST API or by querying the triplestore directly. Visualisation of validation results is noted as possible future work.
+The SHACL validation layer has no end-user interface. Validation results are consumed programmatically via the REST API or by querying the triplestore directly. Visualization of validation results is noted as possible future work.
 
 ### Other explored UI design (and why not)
 
@@ -203,7 +203,7 @@ During DECIDe, we will monitor the validation results and analyze what their roo
 
 #### Batch size tuning
 
-The choice of batch size is a trade-off between memory usage and the overhead of repeated triplestore round trips. If the average resource has many linked properties, a given batch size may still be too large. This risk is accepted for the pilot; the batch size is configurable and can be adjusted based on observed memory behaviour.
+The choice of batch size is a trade-off between memory usage and the overhead of repeated triplestore round trips. If the average resource has many linked properties, a given batch size may still be too large. This risk is accepted for the pilot; the batch size is configurable and can be adjusted based on observed memory behavior.
 
 ## Possible future work
 
@@ -211,11 +211,11 @@ The choice of batch size is a trade-off between memory usage and the overhead of
 
 #### No validation errors
 
-In DECIDe, we focus on analyzing the validation results and fix them when they are critical for the use cases. Some validation errors still need to be resolved at the source or in the pipelines. However, some of the errors are more subtle. For example, the PDF pipeline generates basic ELI data, but not all required fields of ELI-EP can be extracted at this stage. The validation rules should therefore be adapated to take into account these edge cases.
+In DECIDe, we focus on analyzing the validation results and fix them when they are critical for the use cases. Some validation errors still need to be resolved at the source or in the pipelines. However, some of the errors are more subtle. For example, the PDF pipeline generates basic ELI data, but not all required fields of ELI-EP can be extracted at this stage. The validation rules should therefore be adapted to take into account these edge cases.
 
 #### Extended shape coverage
 
-The current shapes cover ELI Work, ELI Expression, and Organisation. Additional shapes could be defined for AI annotation objects (`oa:Annotation`), human validation votes, and other entity types used in the DECIDe use cases.
+The current shapes cover ELI Work, ELI Expression, and Organization. Additional shapes could be defined for AI annotation objects (`oa:Annotation`), human validation votes, and other entity types used in the DECIDe use cases.
 
 #### Validation dashboard
 
@@ -225,7 +225,7 @@ A lightweight UI that surfaces the latest validation report in a human-readable 
 
 ## Relevant links
 
-A [demo video of the data quality manager](https://www.youtube.com/watch?v=0R8QUt8Fp84\&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App\&index=2). The video goes step-by-step through the validation process: what are shapes, how does it fetch data, what does the validation service output (logs and REST API). As described above, the service will run automatically using a cron mechnanism and will validate all the decisions in batches, but this can take a while. For demonstration purposes, we loaded a sample set to show end-to-end the results.
+A [demo video of the data quality manager](https://www.youtube.com/watch?v=0R8QUt8Fp84\&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App\&index=2). The video goes step-by-step through the validation process: what are shapes, how does it fetch data, what does the validation service output (logs and REST API). As described above, the service will run automatically using a cron mechanism and will validate all the decisions in batches, but this can take a while. For demonstration purposes, we loaded a sample set to show end-to-end the results.
 
 The validation results of the DECIDe server are available through this REST API: [http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues](http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues) <mark style="color:$warning;">Service will be back online after review here:</mark> [<mark style="color:$warning;">https://github.com/lblod/loket-report-generation-service/pull/17</mark>](https://github.com/lblod/loket-report-generation-service/pull/17)
 
