@@ -33,7 +33,7 @@ The Authorization Policies Store and the Universal Trust Data Registry form a si
 
 #### Federation Layer (DCAT / DSP)
 
-The proposal aims for DCAT distributions to be extended with machine-readable access rights information –specifically investigating `dcterms:accessRights` or a similar mechanism. ODRL policies governing access to a distribution are therefore linked to how that distribution is described and discoverable in the DCAT catalogue. The Data Space Protocol (DSP) governs how data exchange requests are initiated and negotiated; ODRL policies describe what access is ultimately permitted and what data consumers can or should do with their dataset. It should be noted that the ODRL policies that describe the broad access and use of distributions is only loosely and manually connected with the ODRL policies that govern deeper data access inside the triplestore.  \
+The proposal aims for DCAT distributions to be extended with machine-readable access rights information –specifically investigating `dcterms:accessRights` or a similar mechanism. ODRL policies governing access to a distribution are therefore linked to how that distribution is described and discoverable in the DCAT catalog. The Data Space Protocol (DSP) governs how data exchange requests are initiated and negotiated; ODRL policies describe what access is ultimately permitted and what data consumers can or should do with their dataset. It should be noted that the ODRL policies that describe the broad access and use of distributions is only loosely and manually connected with the ODRL policies that govern deeper data access inside the triplestore.  \
 [write-up-dcat.md](write-up-dcat.md "mention") [write-up-dsp.md](write-up-dsp.md "mention")
 
 ## Glossary

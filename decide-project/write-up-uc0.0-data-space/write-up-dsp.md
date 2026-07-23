@@ -14,7 +14,7 @@ The project proposal does not mention the Dataspace Protocol by name. The team h
 
 ## Description UC/wanted deliverable
 
-Sharing data between organizations across national borders requires not only a catalogue of what is available but also a standardized protocol for how participants formally request access, agree on usage terms, and initiate transfers. The DS4SSCC Reference Architecture identifies the Dataspace Protocol (DSP) as the standard mechanism for this layer.
+Sharing data between organizations across national borders requires not only a catalog of what is available but also a standardized protocol for how participants formally request access, agree on usage terms, and initiate transfers. The DS4SSCC Reference Architecture identifies the Dataspace Protocol (DSP) as the standard mechanism for this layer.
 
 DECIDe investigated whether DSP could fulfil this role within the project. The team conducted a thorough technical analysis of the DSP specification (version 2025-1) and began a partial implementation of the Catalog Protocol. Following that analysis and implementation experience, the decision was made not to adopt DSP in the DECIDe pilot. The specification, in its current form, does not sufficiently specify the lower bound of what participants must support to achieve actual interoperability –leaving too many critical implementation decisions open. This write-up documents the analysis, the conclusions that led to the decision, and the reasoning behind it.
 
@@ -29,13 +29,13 @@ The Dataspace Protocol is part of the same Federation Layer deliverable as the D
 
 #### Federating Catalogue (DCAT)
 
-DSP's Catalog Protocol was designed to sit on top of a DCAT catalogue, providing a standardized programmatic interface for discovering datasets and their access terms. Because DECIDe chose not to implement DSP, the DCAT Federating Catalogue remains the primary discovery mechanism –accessible directly via its SPARQL endpoint, LDES feed, and human-readable interface.
+DSP's Catalog Protocol was designed to sit on top of a DCAT catalog, providing a standardized programmatic interface for discovering datasets and their access terms. Because DECIDe chose not to implement DSP, the DCAT Federating Catalogue remains the primary discovery mechanism –accessible directly via its SPARQL endpoint, LDES feed, and human-readable interface.
 
 [write-up-dcat.md](write-up-dcat.md "mention")
 
 #### Authorization Policies Store (ODRL)
 
-DSP's Contract Negotiation Protocol is designed around ODRL Offers as the mechanism for communicating usage conditions and reaching binding Agreements. The ODRL write-up documents the policy approach DECIDe adopted and how policies are attached to datasets in the DCAT catalogue.
+DSP's Contract Negotiation Protocol is designed around ODRL Offers as the mechanism for communicating usage conditions and reaching binding Agreements. The ODRL write-up documents the policy approach DECIDe adopted and how policies are attached to datasets in the DCAT catalog.
 
 [write-up-odrl.md](write-up-odrl.md "mention")
 
@@ -57,7 +57,7 @@ See the [UC0.0 Data space glossary](./#glossary) for definitions of ODRL and SPA
 
 ### Opportunity (problem, need, desire)
 
-When datasets are published and discoverable via DCAT, a data consumer still needs a standardized way to formally request access, agree on usage terms, and retrieve data (without relying on custom integration agreements per partner). DSP was the obvious candidate for this protocol layer: it is the standard referenced in the DS4SSCC Reference Architecture, and it aims to provide exactly this kind of machine-readable interaction layer on top of a DCAT catalogue.
+When datasets are published and discoverable via DCAT, a data consumer still needs a standardized way to formally request access, agree on usage terms, and retrieve data (without relying on custom integration agreements per partner). DSP was the obvious candidate for this protocol layer: it is the standard referenced in the DS4SSCC Reference Architecture, and it aims to provide exactly this kind of machine-readable interaction layer on top of a DCAT catalog.
 
 #### Analysis and decision
 
@@ -80,11 +80,11 @@ Data sharing within DECIDe does not rely on DSP. Datasets are discoverable via t
 
 ### Pilot partners
 
-All three pilot cities –Ghent, Freiburg, and Bamberg– are affected by this decision in the same way: none of their datasets are exposed via a DSP endpoint. Their data remains accessible via the DCAT catalogue and its associated endpoints.
+All three pilot cities –Ghent, Freiburg, and Bamberg– are affected by this decision in the same way: none of their datasets are exposed via a DSP endpoint. Their data remains accessible via the DCAT catalog and its associated endpoints.
 
 ### Target audience / Personas
 
-<table><thead><tr><th width="216.7880859375">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P6</strong> Data engineer</td><td>Reviews the DSP analysis conclusions; understands why data sharing is handled via DCAT rather than DSP; monitors data access via DCAT endpoints.</td></tr><tr><td><strong>P7</strong> Dataspace consumer</td><td>Discovers and accesses DECIDe datasets via the DCAT catalogue and its endpoints, rather than through a DSP negotiation flow.</td></tr></tbody></table>
+<table><thead><tr><th width="216.7880859375">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P6</strong> Data engineer</td><td>Reviews the DSP analysis conclusions; understands why data sharing is handled via DCAT rather than DSP; monitors data access via DCAT endpoints.</td></tr><tr><td><strong>P7</strong> Dataspace consumer</td><td>Discovers and accesses DECIDe datasets via the DCAT catalog and its endpoints, rather than through a DSP negotiation flow.</td></tr></tbody></table>
 
 ### Functionality (requirements)
 
@@ -181,9 +181,9 @@ ext:decideParty a odrl:Party ;
 
 This sub-protocol defines an API supporting two requests with two possible responses that members of a dataspace should support. These requests allow external `Consumer`s –other members of the dataspace– to ask what DCAT `Catalogue`s and `Dataset`s a member can provide. The message contents reuse concepts from DCAT (`Catalogue`, `Dataset`, `DataService`, `Distribution`) and ODRL (`Offer`, `Permission`, `Constraint`). For example, a response listing available `Dataset`s uses ODRL `Offer`s to specify what rights are associated with the data.
 
-The underlying data overlaps entirely with what is published via DCAT –specifically the `Catalog`, `Dataset`, and `Distribution`. DSP does assume that there is a single root catalogue, which is not a requirement in plain DCAT. The [`CatalogRequestMessage`](https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1/#catalog-request-message) allows optionally specifying implementation-specific filters. For a pilot application such as DECIDe, not supporting filters at all was considered acceptable, meaning any request containing a filter would receive an HTTP 400 (Bad Request) response as the specification instructs for unsupported filters.
+The underlying data overlaps entirely with what is published via DCAT –specifically the `Catalog`, `Dataset`, and `Distribution`. DSP does assume that there is a single root catalog, which is not a requirement in plain DCAT. The [`CatalogRequestMessage`](https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1/#catalog-request-message) allows optionally specifying implementation-specific filters. For a pilot application such as DECIDe, not supporting filters at all was considered acceptable, meaning any request containing a filter would receive an HTTP 400 (Bad Request) response as the specification instructs for unsupported filters.
 
-The API primarily defines what DECIDe as `Provider` should support. To be fully compliant, DECIDe would also need to act as `Consumer` –sending requests for catalogues and datasets to other dataspace members.
+The API primarily defines what DECIDe as `Provider` should support. To be fully compliant, DECIDe would also need to act as `Consumer` –sending requests for catalogs and datasets to other dataspace members.
 
 #### Contract Negotiation Protocol
 
@@ -234,7 +234,7 @@ n/a
 
 No DSP implementation was deployed, so no testing was performed.
 
-The DS4SSCC-recommended test suite for DSP compliance is the [DSP-TCK](https://github.com/eclipse-dataspacetck/dsp-tck). The team reviewed DSP-TCK in autumn/winter 2025. At the time, the catalogue portion was relatively lightweight –it checked that a response is non-empty and that datasets have the correct id. This by itself does not confirm full functional correctness of a DSP implementation, but this shortcoming may have been resolved with recent developments to DSP-TCK.
+The DS4SSCC-recommended test suite for DSP compliance is the [DSP-TCK](https://github.com/eclipse-dataspacetck/dsp-tck). The team reviewed DSP-TCK in autumn/winter 2025. At the time, the catalog portion was relatively lightweight –it checked that a response is non-empty and that datasets have the correct id. This by itself does not confirm full functional correctness of a DSP implementation, but this shortcoming may have been resolved with recent developments to DSP-TCK.
 
 ### Risks & mitigations
 

@@ -10,9 +10,9 @@ This page is under construction
 
 ## Description UC/wanted deliverable
 
-Any data space needs a mechanism for discoverability: participating entities must have a reliable, standards-based way to publish what data they make available, so that both human users and automated agents can find and assess it. The goal is for a DCAT catalogue to sit at the highest-level entry point of the DECIDe data space, linking to the DCAT catalogues of all participating pilot partners. Each city hosts at least one catalogue describing its own datasets; an overarching Federating Catalogue then aggregates those local catalogues and signals which sources can be trusted within the data space.
+Any data space needs a mechanism for discoverability: participating entities must have a reliable, standards-based way to publish what data they make available, so that both human users and automated agents can find and assess it. The goal is for a DCAT catalog to sit at the highest-level entry point of the DECIDe data space, linking to the DCAT catalogs of all participating pilot partners. Each city hosts at least one catalog describing its own datasets; an overarching Federating Catalogue then aggregates those local catalogs and signals which sources can be trusted within the data space.
 
-The DCAT catalogue contains the essential information required for dataset discovery: access endpoints, licensing conditions, provenance, and metadata about content and structure. A human interface on top of the DCAT layer allows non-technical users to browse and understand what is available without needing to query a SPARQL endpoint or parse RDF directly.
+The DCAT catalog contains the essential information required for dataset discovery: access endpoints, licensing conditions, provenance, and metadata about content and structure. A human interface on top of the DCAT layer allows non-technical users to browse and understand what is available without needing to query a SPARQL endpoint or parse RDF directly.
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
@@ -31,13 +31,13 @@ DCAT data services are targeted by ODRL rules for expressing machine-readable ac
 
 #### Universal Trust Data Registry (VC)
 
-The Universal Trust Data Registry is conceived as an augmentation of the Federating Catalogue: initially, inclusion in the DCAT catalogue serves as the proxy for source trustworthiness; the VC-based registry strengthens this, by adding W3C DID and W3C Verifiable Credential-based identity verification on top of the DCAT discovery layer.
+The Universal Trust Data Registry is conceived as an augmentation of the Federating Catalogue: initially, inclusion in the DCAT catalog serves as the proxy for source trustworthiness; the VC-based registry strengthens this, by adding W3C DID and W3C Verifiable Credential-based identity verification on top of the DCAT discovery layer.
 
 [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md "mention")
 
 #### Data Space Protocol (DSP)
 
-The Data Space Protocol governs how data exchange requests between participants are initiated and negotiated; it complements DCAT as the discovery layer by providing the protocol through which a consumer acts on what they find in the catalogue.
+The Data Space Protocol governs how data exchange requests between participants are initiated and negotiated; it complements DCAT as the discovery layer by providing the protocol through which a consumer acts on what they find in the catalog.
 
 [write-up-dsp.md](write-up-dsp.md "mention")
 
@@ -55,7 +55,7 @@ See the [UC0.0 Data space glossary](./#glossary) for definitions of DCAT, ELI, O
 
 When a local source publishes data, it is important that interested third parties can actually find it. This is the core problem DCAT addresses: it provides a standardized way to describe datasets –their content, access endpoints, licensing conditions, and provenance– and to publish those descriptions somewhere they can be reliably discovered.
 
-In DECIDe, each data source has a DCAT description for each of its datasets and distributions. An overarching Federating Catalogue aggregates those descriptions making all data space sources discoverable from a single entry point, and automatically picks up updates via LDES feeds. The DCAT catalogue itself is public; authentication is applied at the level of individual endpoints rather than at the catalogue level, keeping discovery open while access remains controlled. Being listed in the Federating Catalogue is an implicit trust signal: it means the source has been accepted as a trustworthy participant in the data space.
+In DECIDe, each data source has a DCAT description for each of its datasets and distributions. An overarching Federating Catalogue aggregates those descriptions making all data space sources discoverable from a single entry point, and automatically picks up updates via LDES feeds. The DCAT catalog itself is public; authentication is applied at the level of individual endpoints rather than at the catalog level, keeping discovery open while access remains controlled. Being listed in the Federating Catalogue is an implicit trust signal: it means the source has been accepted as a trustworthy participant in the data space.
 
 ### Pilot partners
 
@@ -63,9 +63,9 @@ DCAT is relevant for all three pilot cities that participate in the data space: 
 
 #### Target audience / Personas
 
-The DCAT Federating Catalogue serves two broad audiences: the data providers and technical maintainers who publish and manage catalog metadata, and the consumers who use the catalogue to discover and access data. Data engineers configure catalog entries and monitor federation; application developers and end users rely on the catalogue to find data and understand what they can do with it.
+The DCAT Federating Catalogue serves two broad audiences: the data providers and technical maintainers who publish and manage catalog metadata, and the consumers who use the catalog to discover and access data. Data engineers configure catalog entries and monitor federation; application developers and end users rely on the catalog to find data and understand what they can do with it.
 
-<table><thead><tr><th width="176.63671875">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P1</strong> Original decision data provider</td><td>Publishes decision data from their local system; their datasets and distributions must be accurately described and registered in the DCAT catalogue so they are discoverable within the data space.</td></tr><tr><td><strong>P2</strong> Semantic framework owner</td><td>Defines the SHACL shapes and controlled vocabularies that describe dataset structure; ensures DCAT metadata accurately reflects these modelling choices and that dataset descriptions remain aligned with the semantic layer.</td></tr><tr><td><strong>P6</strong> Data engineer</td><td>Configures DCAT catalog entries for each dataset and distribution; monitors LDES feeds; ensures the Federating Catalogue stays in sync with member catalogs as data sources evolve.</td></tr><tr><td><strong>P7</strong> Data space consumer</td><td>Browses the Federating Catalogue to discover available datasets, inspect their distributions and access conditions, and retrieve data for use in an application or analysis.</td></tr></tbody></table>
+<table><thead><tr><th width="176.63671875">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P1</strong> Original decision data provider</td><td>Publishes decision data from their local system; their datasets and distributions must be accurately described and registered in the DCAT catalog so they are discoverable within the data space.</td></tr><tr><td><strong>P2</strong> Semantic framework owner</td><td>Defines the SHACL shapes and controlled vocabularies that describe dataset structure; ensures DCAT metadata accurately reflects these modelling choices and that dataset descriptions remain aligned with the semantic layer.</td></tr><tr><td><strong>P6</strong> Data engineer</td><td>Configures DCAT catalog entries for each dataset and distribution; monitors LDES feeds; ensures the Federating Catalogue stays in sync with member catalogs as data sources evolve.</td></tr><tr><td><strong>P7</strong> Data space consumer</td><td>Browses the Federating Catalogue to discover available datasets, inspect their distributions and access conditions, and retrieve data for use in an application or analysis.</td></tr></tbody></table>
 
 ### Functionality (requirements)
 

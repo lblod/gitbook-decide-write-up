@@ -39,7 +39,7 @@ The Universal Trust Data Registry is one of three inter-dependent components of 
 
 #### Federating Catalogue (DCAT)
 
-The Federating Catalogue is the primary entry point for discovering trusted data in the data space. The DECIDe project aims to explore the Universal Trust Data Registry as an augmentation of the Federating Catalogue — adding W3C DID and W3C VC-based identity verification on top of the DCAT-based discovery layer. Non-public dataset distributions published in the DCAT catalogue are protected by the Universal Trust Data Registry and Authorization Policies Store stack. The user discovers a distribution, reads its policy, and then acquires the necessary credential.\
+The Federating Catalogue is the primary entry point for discovering trusted data in the data space. The DECIDe project aims to explore the Universal Trust Data Registry as an augmentation of the Federating Catalogue — adding W3C DID and W3C VC-based identity verification on top of the DCAT-based discovery layer. Non-public dataset distributions published in the DCAT catalog are protected by the Universal Trust Data Registry and Authorization Policies Store stack. The user discovers a distribution, reads its policy, and then acquires the necessary credential.\
 [write-up-dcat.md](write-up-dcat.md "mention") [write-up-dsp.md](write-up-dsp.md "mention")
 
 #### Authorization Policies Store (ODRL)
