@@ -547,7 +547,7 @@ The NEL service is built as a FastAPI application that integrates a [LangChain](
   * `search_location`**:** resolves a location string to structured geographic information via a Nominatim lookup, returning precise coordinates along with contextual details such as the municipality, region, and neighborhood.
 * **Knowledge base:** A vector database ([Qdrant](https://qdrant.tech/) in production, in-memory for development) storing VOID shapes (schema definitions describing available classes and properties) and example SPARQL queries for the target endpoints. Loaded from configuration files at initialization, embedded using embeddinggemma via Ollama, and indexed. When the agent calls `search_sparql_docs`, the knowledge base returns the most relevant documents by cosine similarity, giving the LLM the precise schema context it needs to write a correct query for the entity type at hand.
 
-1. A delta notification arrives, signallng that a new entity linking task has been scheduled in the triplestore.
+1. A delta notification arrives, signaling that a new entity linking task has been scheduled in the triplestore.
 2. The service picks up the task and transitions its status from "scheduled" to "busy".
 3. The task's input is fetched from the triplestore: the NER annotation containing the entity class, label, and optionally a spatial reference (`dct:spatial`).
 4. The entity class, label, and location are passed to the LangChain agent as a structured request.

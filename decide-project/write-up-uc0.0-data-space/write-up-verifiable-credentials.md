@@ -329,7 +329,7 @@ A demo of this flow is shown in the first part of our [recording on the use of V
 
 #### 'Buying' access to a data space
 
-DECIDe primarily targets public data, so restricted access and monetisation are not the core focus. However, this was an important pillar of the DS4SSCC project and the team wanted to demonstrate a solution for this process.
+DECIDe primarily targets public data, so restricted access and monetization are not the core focus. However, this was an important pillar of the DS4SSCC project and the team wanted to demonstrate a solution for this process.
 
 The sequence below describes the approach taken:
 
@@ -356,7 +356,7 @@ On a high-level, the following figure illustrates this flow:
 
 A demo of this flow is shown in the second part of[ our recording on the use of Verifiable Credentials in the Decide project](https://drive.google.com/file/d/1bZEzV7rvGmMHDz1ZR0jo74DnJ4U6IwVq/view?usp=sharing).
 
-Note this is, again, only demonstrated for human users that make use of a wallet app on their phone. Generalising this to machine-to-machine access would require implementing a custom wallet service acting on the consumer side, or allowing users with such a credential to obtain an API key for the non-public service.
+Note this is, again, only demonstrated for human users that make use of a wallet app on their phone. Generalizing this to machine-to-machine access would require implementing a custom wallet service acting on the consumer side, or allowing users with such a credential to obtain an API key for the non-public service.
 
 ### Conformity Assessment Scheme
 

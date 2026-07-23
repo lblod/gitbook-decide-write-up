@@ -211,7 +211,7 @@ The choice of batch size is a trade-off between memory usage and the overhead of
 
 #### No validation errors
 
-In DECIDe, we focus on analyzing the validation results and fix them when they are critical for the use cases. Some validation errors still need to be resolved at the source or in the pipelines. However, some of the errors are more subtle. For example, the PDF pipeline generates basic ELI data, but not all required fields of ELI-EP can be extracted at this stage. The validation rules should therefore be adapated to take into account these edge cases.
+In DECIDe, we focus on analyzing the validation results and fix them when they are critical for the use cases. Some validation errors still need to be resolved at the source or in the pipelines. However, some of the errors are more subtle. For example, the PDF pipeline generates basic ELI data, but not all required fields of ELI-EP can be extracted at this stage. The validation rules should therefore be adapted to take into account these edge cases.
 
 #### Extended shape coverage
 
