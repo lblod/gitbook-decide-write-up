@@ -12,7 +12,7 @@ This page is under construction
 
 The intention of the DECIDe project is to build a data space connecting multiple local authorities –with different systems, different roles, and different data, both publicly available datasets as well as non-public or sensitive information. It thus needs access policies that travel with the data: explicit, machine-readable, and understandable by anyone participating in the space, not just the team maintaining the configuration files.
 
-We therefore set out to identify a standardised policy language suited to a linked-data context, evaluate the available options –with XACML 3.0 and ODRL as the main candidates– and implement the chosen language by mapping the existing access rules to it and extending sparql-parser to enforce it natively. The wanted deliverable is an **Authorization Policies Store**: a central registry of access rights, aligned with the DS4SSCC Reference Architecture, that all data space services can consume. We also scoped in describing the path towards supporting delegation of access rights –allowing one party to transfer a subset of their access to another– as a key capability for more complex multi-organisation sharing scenarios.
+We therefore set out to identify a standardized policy language suited to a linked-data context, evaluate the available options –with XACML 3.0 and ODRL as the main candidates– and implement the chosen language by mapping the existing access rules to it and extending sparql-parser to enforce it natively. The wanted deliverable is an **Authorization Policies Store**: a central registry of access rights, aligned with the DS4SSCC Reference Architecture, that all data space services can consume. We also scoped in describing the path towards supporting delegation of access rights –allowing one party to transfer a subset of their access to another– as a key capability for more complex multi-organization sharing scenarios.
 
 The Authorization Policies Store is one of three inter-dependent Reference Architecture components that DECIDe must incorporate, alongside the Federating Catalogue and the Universal Trust Data Registry.
 
@@ -20,7 +20,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 | Deliverable                                                                               | Activities                                                                                                                                                  |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **D2.1.1** In-depth technical analyses of current architecture UC0.0                      | **T2.1** In-depth analysis of current technical architecture in use at pilot sites & gap analysis of possible solutions for the DECIDe 'to be' architecture |
+| **D2.1.1** In-depth technical analyzes of current architecture UC0.0                      | **T2.1** In-depth analysis of current technical architecture in use at pilot sites & gap analysis of possible solutions for the DECIDe 'to be' architecture |
 | **D2.6.4** Authorization policies stores available                                        | **T2.10** Define, develop and test open source semantic Authorization Policies Store                                                                        |
 | **D2.7.4** Authorization policies stores integrated in local dataspace of all pilot sites | **T2.11** Integrate Authorization Policies Store in local dataspace of all pilots                                                                           |
 
@@ -69,9 +69,9 @@ Prefixes that are used in this section:
 
 ### Opportunity (problem, need, desire)
 
-The DECIDe data space connects local governments from different countries and jurisdictions, and as it moves beyond publicly available datasets towards non-public or sensitive information, it needs a mechanism for expressing and enforcing access policies that is explicit and machine-readable, interoperable across organisational boundaries, linked-data native, and practically enforceable at the data layer.
+The DECIDe data space connects local governments from different countries and jurisdictions, and as it moves beyond publicly available datasets towards non-public or sensitive information, it needs a mechanism for expressing and enforcing access policies that is explicit and machine-readable, interoperable across organizational boundaries, linked-data native, and practically enforceable at the data layer.
 
-The existing mu-authorization/sparql-parser stack (in use in the LBLOD ecosystem) already enforces access control at the SPARQL endpoint level, meaning all data-accessing services automatically respect the same rules, but its policies are expressed in a bespoke Lisp-like configuration language with no standardised representation. This makes access rules explicit but application-specific: they cannot be understood by other systems, verified by external tooling, or reused across organisational boundaries.
+The existing mu-authorization/sparql-parser stack (in use in the LBLOD ecosystem) already enforces access control at the SPARQL endpoint level, meaning all data-accessing services automatically respect the same rules, but its policies are expressed in a bespoke Lisp-like configuration language with no standardized representation. This makes access rules explicit but application-specific: they cannot be understood by other systems, verified by external tooling, or reused across organizational boundaries.
 
 ODRL –the Open Digital Rights Language, a W3C standard already mandated by the DS4SSCC Blueprint– addresses this directly. As an RDF vocabulary, ODRL fits naturally into the linked-data architecture of DECIDe: policies can be stored in the same triplestore as the data they govern, consumed by standards-aware tooling, and shared across data space participants. **By extending sparql-parser to read and enforce ODRL policies directly from the triplestore, DECIDe gains interoperable, machine-readable access control without replacing its existing enforcement infrastructure**.
 
@@ -109,7 +109,7 @@ The deliberate scope of the ODRL implementation covers only the subset of the OD
 
 <figure><img src="../../.gitbook/assets/0DRLModel.png" alt=""><figcaption><p>ODRL Information Model (<a href="https://www.w3.org/TR/odrl-model/">source</a>)</p></figcaption></figure>
 
-[ODRL](https://www.w3.org/TR/odrl-model/) defines a standardised information model for expressing policies about the usage of content and services. Understanding the ODRL model is important to understand the implementation choices.
+[ODRL](https://www.w3.org/TR/odrl-model/) defines a standardized information model for expressing policies about the usage of content and services. Understanding the ODRL model is important to understand the implementation choices.
 
 A **`Policy`** is a collection of one or more `Rules`. ODRL supports three kinds
 

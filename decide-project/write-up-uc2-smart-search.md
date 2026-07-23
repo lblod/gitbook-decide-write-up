@@ -22,7 +22,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 | Deliverable                                                                              | Activities                                                                                    |
 | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| **D1.4** Data ready for decentralised ingestion into data space — scope of data plan UC2 | **T1.1-T1.7** Analyse available datasets and standards, develop and execute data plan for UC2 |
+| **D1.4** Data ready for decentralized ingestion into data space — scope of data plan UC2 | **T1.1-T1.7** Analyze available datasets and standards, develop and execute data plan for UC2 |
 | **D2.1.4** In-depth technical analysis of current architecture UC2                       | **T2.1** In-depth analysis of current technical architecture at pilot sites & gap analysis    |
 | **D3.5** Use case 2 implemented by Ghent as lead pilot site                              | **T3.9–T3.11** UC2 implementation at Ghent                                                    |
 | **D3.6** Use case 2 implemented by Freiburg and/or Bamberg                               | **T3.12** UC2 implementation at Freiburg and/or Bamberg                                       |
@@ -31,7 +31,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 #### UC0.0 Pipelines
 
-UC2 depends on the data infrastructure established in UC0.0. The LD\&L documents that UC2 retrieves and serves are ingested, standardised, and stored as linked data through the UC0.0 pipelines. The Virtuoso SPARQL endpoint that UC2 queries for document metadata is part of the [semantic.works](https://semantic.works/) stack set up in UC0.0. Without the ingestion pipelines and the triplestore, UC2 has no corpus to search over.
+UC2 depends on the data infrastructure established in UC0.0. The LD\&L documents that UC2 retrieves and serves are ingested, standardized, and stored as linked data through the UC0.0 pipelines. The Virtuoso SPARQL endpoint that UC2 queries for document metadata is part of the [semantic.works](https://semantic.works/) stack set up in UC0.0. Without the ingestion pipelines and the triplestore, UC2 has no corpus to search over.
 
 [write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md "mention")
 
@@ -267,7 +267,7 @@ UC2 deliberately does not support multi-turn conversational interaction. Each re
 
 #### <mark style="background-color:$warning;">What to do when no relevant answer is found</mark>
 
-An LLM will always generate a response, even when the retrieved documents are not relevant to the question. <mark style="background-color:$warning;">We can numerically gauge the relevance rate</mark> and decided on a threshold of relevance. If this threshold is not met, the user will get an error message (9th UX Heuristic: Help Users Recognise, Diagnose, and Recover from Errors):
+An LLM will always generate a response, even when the retrieved documents are not relevant to the question. <mark style="background-color:$warning;">We can numerically gauge the relevance rate</mark> and decided on a threshold of relevance. If this threshold is not met, the user will get an error message (9th UX Heuristic: Help Users Recognize, Diagnose, and Recover from Errors):
 
 > Sorry, we were unable to find any relevant information in any decision. Try rewording your question or giving more details to help us find the relevant information for you.
 

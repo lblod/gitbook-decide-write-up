@@ -12,14 +12,14 @@ This page is under construction
 
 Verifiable Credentials (VC) is a foundational component of UC0.0 – "Building up the Data Space" – within the DECIDe project. Rather than a standalone use case, VC is a horizontal enabling technology that underpins trust and access control across the entire data space.
 
-The DECIDe project aims to create a legislative and decision-making (LD\&L) data space connecting local governments in Flanders (Ghent) and Germany (Freiburg, Bamberg). A core challenge is establishing trust between participants who belong to different organisations and jurisdictions, without relying on a single central authority.
+The DECIDe project aims to create a legislative and decision-making (LD\&L) data space connecting local governments in Flanders (Ghent) and Germany (Freiburg, Bamberg). A core challenge is establishing trust between participants who belong to different organizations and jurisdictions, without relying on a single central authority.
 
-DECIDe is a brownfield data space implementation: multiple identity and authorisation solutions are already in use across the participating organisations. Initial datasets in the pilot are publicly available, which reduces the immediate urgency for authentication and authorisation components.
+DECIDe is a brownfield data space implementation: multiple identity and authorisation solutions are already in use across the participating organizations. Initial datasets in the pilot are publicly available, which reduces the immediate urgency for authentication and authorisation components.
 
-That being said, the aim is to extend this initial trust setup to handle two scenarios that require a more robust, standardised trust framework:
+That being said, the aim is to extend this initial trust setup to handle two scenarios that require a more robust, standardized trust framework:
 
 1. **Non-public information** – as the data space moves beyond open datasets, access control becomes essential and participants must be able to prove who they are and what they are entitled to access.
-2. **Dynamically accepting new actors** – organisations and individuals joining the data space must be able to demonstrate their membership in a machine-verifiable way, without requiring manual coordination every time.
+2. **Dynamically accepting new actors** – organizations and individuals joining the data space must be able to demonstrate their membership in a machine-verifiable way, without requiring manual coordination every time.
 
 To address both scenarios, the proposal commits to studying and implementing (or reusing) a solution based on W3C DID and W3C Verifiable Credentials. The GAIA-X Trust Framework is cited as the closest existing reference implementation.
 
@@ -29,7 +29,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 | Deliverable                                                                      | Activities                                                                                                                                        |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **D2.1** In depth technical analysis of current architecture                     | **T2.1** In depth analyses of current technical architecture in use in pilot sites & gap analyses possible solutions ‘to be’ architecture DECIDe. |
+| **D2.1** In depth technical analysis of current architecture                     | **T2.1** In depth analyzes of current technical architecture in use in pilot sites & gap analyzes possible solutions ‘to be’ architecture DECIDe. |
 | **D2.6.3** Universal Trust Registry available                                    | **T2.8** Define, develop and test open source semantic Universal Trust Data Registry.                                                             |
 | **D2.7.3** Universal Trust Registry integrated in local dataspace of pilot sites | **T2.9** Integrate Universal Trust Data Registry in local DS of all pilots                                                                        |
 
@@ -53,13 +53,13 @@ Whereas the credential establishes trust, the authorisation policy describes the
 See the [UC0.0 Data space glossary](./#glossary) for definitions of DCAT, LBLOD, and ODRL.
 {% endhint %}
 
-<table><thead><tr><th width="174">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td><a href="https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/veiligheidsbouwstenen/toegangsbeheer">ACM/IDM</a></td><td>Access and Identification Management system used by the Flemish government. Oauth2 based.</td></tr><tr><td><a href="https://www.w3.org/TR/did-1.1/">DID (Decentralised Identifier)</a>.</td><td>A globally unique identifier that does not require a central registration authority. Resolves to a DID Document containing public keys and service endpoints.</td></tr><tr><td><code>did:key</code></td><td>Lightweight DID method where the identifier is derived directly from a public key. No web hosting required. Used for human participants in DECIDe.</td></tr><tr><td><code>did:web</code></td><td>DID method where the identifier is bound to a web domain. Allows key rotation while keeping the DID stable. Mandated for organisations in DECIDe.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc8410">ED25519</a></td><td>A public/private key-based digital signature algorithm, supported in DECIDe</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc6979">ES256</a></td><td>ECDSA using P-256 and SHA-256. Another public/private key-based digital signature algorithm, supported in DECIDe.</td></tr><tr><td><a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU+Digital+Identity+Wallet+Home">EUDI</a></td><td>EU digital identity</td></tr><tr><td><a href="https://json-ld.org/">JSON-LD</a></td><td>JSON-based Linked Data format. Enables semantic interoperability through shared vocabularies. Preferred credential content format in the long term; currently limited by wallet support.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc7517">JWK (JSON Web Key)</a></td><td>Standard format for representing cryptographic keys.</td></tr><tr><td><a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OID4VC (Open ID For Verifiable Credential Issuance)</a>.</td><td>The protocol used in DECIDe for issuing credentials to wallet applications (pre-authorised flow only).</td></tr><tr><td><a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OID4FP (Open ID For Verifiable Presentations)</a></td><td>The protocol used in DECIDe for requesting and receiving credential presentations from wallet apps.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/">SD-JWT-VC (Selective Disclosure JWT for Verifiable Credentials)</a></td><td>Specification for a JSON based data format for verifiable credentials with selective disclosure</td></tr><tr><td><a href="https://www.w3.org/TR/vc-data-model/">VC (Verifiable Credential)</a></td><td>W3C standard for cryptographically signed digital attestations. Allows a Holder to prove claims to a Verifier without direct interaction with the Issuer at verification time.</td></tr><tr><td><a href="https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#name-verifiable-digital-credentia">VCT (Verifiable Credential Type)</a></td><td>A URL that dereferences to the JSON definition of the format of a SD-JWT-VC credential.</td></tr></tbody></table>
+<table><thead><tr><th width="174">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td><a href="https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/veiligheidsbouwstenen/toegangsbeheer">ACM/IDM</a></td><td>Access and Identification Management system used by the Flemish government. Oauth2 based.</td></tr><tr><td><a href="https://www.w3.org/TR/did-1.1/">DID (Decentralized Identifier)</a>.</td><td>A globally unique identifier that does not require a central registration authority. Resolves to a DID Document containing public keys and service endpoints.</td></tr><tr><td><code>did:key</code></td><td>Lightweight DID method where the identifier is derived directly from a public key. No web hosting required. Used for human participants in DECIDe.</td></tr><tr><td><code>did:web</code></td><td>DID method where the identifier is bound to a web domain. Allows key rotation while keeping the DID stable. Mandated for organizations in DECIDe.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc8410">ED25519</a></td><td>A public/private key-based digital signature algorithm, supported in DECIDe</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc6979">ES256</a></td><td>ECDSA using P-256 and SHA-256. Another public/private key-based digital signature algorithm, supported in DECIDe.</td></tr><tr><td><a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU+Digital+Identity+Wallet+Home">EUDI</a></td><td>EU digital identity</td></tr><tr><td><a href="https://json-ld.org/">JSON-LD</a></td><td>JSON-based Linked Data format. Enables semantic interoperability through shared vocabularies. Preferred credential content format in the long term; currently limited by wallet support.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/html/rfc7517">JWK (JSON Web Key)</a></td><td>Standard format for representing cryptographic keys.</td></tr><tr><td><a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OID4VC (Open ID For Verifiable Credential Issuance)</a>.</td><td>The protocol used in DECIDe for issuing credentials to wallet applications (pre-authorised flow only).</td></tr><tr><td><a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OID4FP (Open ID For Verifiable Presentations)</a></td><td>The protocol used in DECIDe for requesting and receiving credential presentations from wallet apps.</td></tr><tr><td><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/">SD-JWT-VC (Selective Disclosure JWT for Verifiable Credentials)</a></td><td>Specification for a JSON based data format for verifiable credentials with selective disclosure</td></tr><tr><td><a href="https://www.w3.org/TR/vc-data-model/">VC (Verifiable Credential)</a></td><td>W3C standard for cryptographically signed digital attestations. Allows a Holder to prove claims to a Verifier without direct interaction with the Issuer at verification time.</td></tr><tr><td><a href="https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#name-verifiable-digital-credentia">VCT (Verifiable Credential Type)</a></td><td>A URL that dereferences to the JSON definition of the format of a SD-JWT-VC credential.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
 ### Opportunity (problem, need, desire)
 
-A data space connecting multiple local governments requires a trust mechanism that is decentralised, interoperable, and privacy-preserving. Traditional session-based authentication (e.g. OAuth2 tokens) is siloed within a single organisation's domain and cannot be carried across organisational boundaries in a verifiable way.
+A data space connecting multiple local governments requires a trust mechanism that is decentralized, interoperable, and privacy-preserving. Traditional session-based authentication (e.g. OAuth2 tokens) is siloed within a single organization's domain and cannot be carried across organizational boundaries in a verifiable way.
 
 Verifiable Credentials address this by giving participants a portable, cryptographically signed proof of identity and membership that any participant in the data space can verify independently — without calling back to the original issuer at verification time.
 
@@ -67,7 +67,7 @@ For DECIDe specifically, the need is to allow civil servants from Ghent, Freibur
 
 * **Verifiable:** the credential cannot be forged and its issuer can be trusted.
 * **Privacy-preserving:** users can disclose only the attributes needed (selective disclosure).
-* **Decentralised:** no single authority controls all credentials.
+* **Decentralized:** no single authority controls all credentials.
 * **Standards-compliant:** aligned with W3C VC, OpenID4VC, and DSSC Blueprint.
 
 ### Target audience / Persona
@@ -79,7 +79,7 @@ The dataspace consumer is an internal or external participant that discovers and
 Typical examples include:
 
 * A consultancy
-* A research organisation
+* A research organization
 * A software company
 * Another public authority
 
@@ -249,9 +249,9 @@ Currently, we only support human-to-machine interaction for our credentials, mea
 
 ### Identity methods
 
-We require participants of the dataspace to use **decentralised identifiers** which verifiably are under control of certain data space participants.
+We require participants of the dataspace to use **decentralized identifiers** which verifiably are under control of certain data space participants.
 
-* **Organisations:** We mandate the use of `did:web`. This is slightly more demanding than `did:key` as it requires hosting a DID file, but allows rotation of cryptographic material while keeping the DID stable. Because `did:web` is bound to the domain it is hosted on, it provides reasonable assurance that the DID indeed belongs to the data space partner. The DID should still be verified through interpersonal communication between both parties.
+* **Organizations:** We mandate the use of `did:web`. This is slightly more demanding than `did:key` as it requires hosting a DID file, but allows rotation of cryptographic material while keeping the DID stable. Because `did:web` is bound to the domain it is hosted on, it provides reasonable assurance that the DID indeed belongs to the data space partner. The DID should still be verified through interpersonal communication between both parties.
 * **Human participants:** We mandate the use of `did:key` derived directly from the public key in the wallet.
 * **Key algorithms:** We support the use of ED25519 and ES256, chosen for good security and the best support in the libraries used.
 
@@ -261,7 +261,7 @@ We require participants of the dataspace to use **decentralised identifiers** wh
 
 We decided to use the [OID4VC issuance protocol](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) to issue credentials to users so that they can log into our systems (or other systems that trust us as a credential issuer).
 
-The Eclipse Decentralised Claims Protocol was researched, but the team was cautioned against using it as it was still quite new at the time and other pilot projects had run into issues implementing it. Both protocols were evaluated, and we came to the conclusion that OID4VCI/OID4VP had better support at implementation start (August 2025). OID4VCI only reached v1.0 in September 2025. Implementation of Eclipse DCP is therefor deferred. (see [#possible-future-work](write-up-verifiable-credentials.md#possible-future-work "mention"))
+The Eclipse Decentralized Claims Protocol was researched, but the team was cautioned against using it as it was still quite new at the time and other pilot projects had run into issues implementing it. Both protocols were evaluated, and we came to the conclusion that OID4VCI/OID4VP had better support at implementation start (August 2025). OID4VCI only reached v1.0 in September 2025. Implementation of Eclipse DCP is therefor deferred. (see [#possible-future-work](write-up-verifiable-credentials.md#possible-future-work "mention"))
 
 #### Pre-authorised only
 
@@ -413,7 +413,7 @@ Once the user scans the QR-code with their digital wallet successfully, they nee
 
 The success message is shown for a short amount of time, before redirecting the user to the login screen, where they can login with their newly generated credential.
 
-The error message will let the user know their credential has not been issued. Following the 8th UX heuristic (Help Users Recognise, Diagnose, and Recover from Errors), we are showing the user why the credential has not been granted, and how they can solve this.
+The error message will let the user know their credential has not been issued. Following the 8th UX heuristic (Help Users Recognize, Diagnose, and Recover from Errors), we are showing the user why the credential has not been granted, and how they can solve this.
 
 #### Journey 2: Logging in with the received credential
 
@@ -447,7 +447,7 @@ To start simple, we did not yet harmonise the authentication/authorization solut
 
 #### Machine to Machine
 
-Currently only human-to-machine credential flows are supported. Machine to machine credentials are needed for organisation-level data space membership and automated pipeline access. The Eclipse Decentralised Claims Protocol claims to provide better support for these situations, but we were cautioned not to implement it yet as other pilots had run into difficulties during their attempts. We concluded it's wise to wait until the specification and its implementations are more mature.
+Currently only human-to-machine credential flows are supported. Machine to machine credentials are needed for organization-level data space membership and automated pipeline access. The Eclipse Decentralized Claims Protocol claims to provide better support for these situations, but we were cautioned not to implement it yet as other pilots had run into difficulties during their attempts. We concluded it's wise to wait until the specification and its implementations are more mature.
 
 Supporting machine-to-machine credentials requires building a backend wallet service that can interact with our issuer and verifier services.with the existing OID4VCI/OID4VP infrastructure
 
@@ -457,17 +457,17 @@ The new [DSSC Blueprint (v3)](https://blueprint.dssc.eu/) now states regarding w
 
 > As a minimum, this includes a data space membership credential. What is needed for obtaining such a credential? This is linked to the participation management building block. The data space membership credential provides proof that the entity adheres to the data space Rulebook.
 
-We don't currently have a data space membership credential for organisations. This is because we only support awarding credentials to human participants of the data space and such a credential would have to be issued to an organization party, not a human participant.
+We don't currently have a data space membership credential for organizations. This is because we only support awarding credentials to human participants of the data space and such a credential would have to be issued to an organization party, not a human participant.
 
-Once M2M support is in place, a DECIDe Data Space Membership Credential for organisations would be a relatively straightforward extension:
+Once M2M support is in place, a DECIDe Data Space Membership Credential for organizations would be a relatively straightforward extension:
 
-* the organisation publishes their `did:web`
+* the organization publishes their `did:web`
 * set up a service to interact with the DECIDe OID4VCI issuance service signed with the private key corresponding to their their `did:web`,
 * and receive a signed verifiable credential linked to the `did:web`, thus providing proof they adhere to the data space Rulebook.
 
 #### Other issuer services
 
-One of our partners, UI, is considering adding support for DECIDe Verifiable Credentials in their platform. Enabling partners to operate their own issuer services (using the open-source issuer component) would strengthen decentralisation and federation of trust. This is something to keep an eye out for, but will likely only be possible after DECIDe concludes.
+One of our partners, UI, is considering adding support for DECIDe Verifiable Credentials in their platform. Enabling partners to operate their own issuer services (using the open-source issuer component) would strengthen decentralization and federation of trust. This is something to keep an eye out for, but will likely only be possible after DECIDe concludes.
 
 #### Arbitrary linked data (JSON-LD) credentials
 
@@ -487,7 +487,7 @@ We currently only have very simple ODRL contracts attached to our datasets. We w
 
 #### Integration with Flemish government identity infrastructure
 
-ACM/IDM is currently used only as a pre-authorisation mechanism. Deeper integration (e.g. using ACM/IDM as a trust anchor for organisational identity, or issuing VCs to civil servants tied to their official ACM/IDM identity) would strengthen the link between VC identity and the existing Flemish government identity ecosystem.
+ACM/IDM is currently used only as a pre-authorisation mechanism. Deeper integration (e.g. using ACM/IDM as a trust anchor for organizational identity, or issuing VCs to civil servants tied to their official ACM/IDM identity) would strengthen the link between VC identity and the existing Flemish government identity ecosystem.
 
 ## Relevant links
 

@@ -14,7 +14,7 @@ The project proposal does not mention the Dataspace Protocol by name. The team h
 
 ## Description UC/wanted deliverable
 
-Sharing data between organisations across national borders requires not only a catalogue of what is available but also a standardised protocol for how participants formally request access, agree on usage terms, and initiate transfers. The DS4SSCC Reference Architecture identifies the Dataspace Protocol (DSP) as the standard mechanism for this layer.
+Sharing data between organizations across national borders requires not only a catalogue of what is available but also a standardized protocol for how participants formally request access, agree on usage terms, and initiate transfers. The DS4SSCC Reference Architecture identifies the Dataspace Protocol (DSP) as the standard mechanism for this layer.
 
 DECIDe investigated whether DSP could fulfil this role within the project. The team conducted a thorough technical analysis of the DSP specification (version 2025-1) and began a partial implementation of the Catalog Protocol. Following that analysis and implementation experience, the decision was made not to adopt DSP in the DECIDe pilot. The specification, in its current form, does not sufficiently specify the lower bound of what participants must support to achieve actual interoperability –leaving too many critical implementation decisions open. This write-up documents the analysis, the conclusions that led to the decision, and the reasoning behind it.
 
@@ -29,7 +29,7 @@ The Dataspace Protocol is part of the same Federation Layer deliverable as the D
 
 #### Federating Catalogue (DCAT)
 
-DSP's Catalog Protocol was designed to sit on top of a DCAT catalogue, providing a standardised programmatic interface for discovering datasets and their access terms. Because DECIDe chose not to implement DSP, the DCAT Federating Catalogue remains the primary discovery mechanism –accessible directly via its SPARQL endpoint, LDES feed, and human-readable interface.
+DSP's Catalog Protocol was designed to sit on top of a DCAT catalogue, providing a standardized programmatic interface for discovering datasets and their access terms. Because DECIDe chose not to implement DSP, the DCAT Federating Catalogue remains the primary discovery mechanism –accessible directly via its SPARQL endpoint, LDES feed, and human-readable interface.
 
 [write-up-dcat.md](write-up-dcat.md "mention")
 
@@ -57,7 +57,7 @@ See the [UC0.0 Data space glossary](./#glossary) for definitions of ODRL and SPA
 
 ### Opportunity (problem, need, desire)
 
-When datasets are published and discoverable via DCAT, a data consumer still needs a standardised way to formally request access, agree on usage terms, and retrieve data (without relying on custom integration agreements per partner). DSP was the obvious candidate for this protocol layer: it is the standard referenced in the DS4SSCC Reference Architecture, and it aims to provide exactly this kind of machine-readable interaction layer on top of a DCAT catalogue.
+When datasets are published and discoverable via DCAT, a data consumer still needs a standardized way to formally request access, agree on usage terms, and retrieve data (without relying on custom integration agreements per partner). DSP was the obvious candidate for this protocol layer: it is the standard referenced in the DS4SSCC Reference Architecture, and it aims to provide exactly this kind of machine-readable interaction layer on top of a DCAT catalogue.
 
 #### Analysis and decision
 
@@ -68,7 +68,7 @@ Following this analysis and implementation experience, the decision was made not
 Four specific gaps drove this conclusion.
 
 * First, DSP provides no mechanism for a message sender to discover in advance which `callbackAddress` formats a recipient understands; the sender may receive an error but cannot know what format to use instead.
-* Second, the Transfer Process Protocol is explicitly agnostic about wire protocols, meaning consumers have no standardised way to learn which transfer formats a provider supports –they must rely on provider documentation or trial and error.
+* Second, the Transfer Process Protocol is explicitly agnostic about wire protocols, meaning consumers have no standardized way to learn which transfer formats a provider supports –they must rely on provider documentation or trial and error.
 * Third, the Contract Negotiation Protocol leaves the actual decision-making logic entirely out of scope: how a Provider evaluates an incoming offer, whether to accept or reject it, and crucially why. The specification makes reason-giving optional, so a terminated negotiation may leave the other party with no explanation, and left guessing what they can do differently.
 * Fourth, authentication and authorisation methods are left almost entirely open: the specification advises use of the HTTP `Authorization` header but says nothing about which token types to use or how to obtain them.
 
