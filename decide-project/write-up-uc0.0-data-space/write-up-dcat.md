@@ -256,10 +256,10 @@ As stated before, currently no create, delete or update support exists in the DC
 
 Link to automatic DCAT content generation scripts: https://github.com/lblod/app-decide/tree/development/scripts/project/publish\_dataset
 
-Link to federated DCAT catalog UI: https://ds.decide.lblod.info
+Link to federated DCAT catalog UI: https://catalog.decide.lblod.info
 
-Link to federated DCAT sparql endpoint: https://ds.decide.lblod.info/api/sparql
+Link to federated DCAT sparql endpoint: https://catalog.decide.lblod.info/sparql
 
-Link to federated DCAT LDES feed: https://ds.decide.lblod.info/ldes/public/1
+Link to federated DCAT LDES feed: https://catalog.decide.lblod.info/ldes/public/1
 
-Link to DCAT federated DCAT catalog as triples: https://ds.decide.lblod.info/dcat/catalog (use e.g. `text/turtle` as an accept header to not end up on the graphical interface)
+Link to DCAT federated DCAT catalog as triples: https://catalog.decide.lblod.info/dcat/catalog (use e.g. `text/turtle` as an accept header to not end up on the graphical interface)
