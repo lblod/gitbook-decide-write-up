@@ -25,7 +25,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 #### Authorization Policies Store (ODRL)
 
-DCAT data services are targetted by ODRL rules for expressing machine-readable access right, and are published alongside the DCAT metadata on the LDES feed. The two components are tightly coupled: DCAT describes what datasets exist and how to reach them; ODRL describes the rules that apply.
+DCAT data services are targeted by ODRL rules for expressing machine-readable access right, and are published alongside the DCAT metadata on the LDES feed. The two components are tightly coupled: DCAT describes what datasets exist and how to reach them; ODRL describes the rules that apply.
 
 [write-up-odrl.md](write-up-odrl.md "mention")
 
@@ -99,7 +99,7 @@ Three distribution types are modelled:
 * An LDES feed is modelled as a `dcat:Distribution` simultaneously typed as `ldes:EventSource`, with `dct:conformsTo` pointing to the LDES specification and supported media types listed explicitly.
 * A Resource API (JSON:API) is modelled as a `dcat:Distribution` with `dcat:mediaType` set to the JSON:API media type identifier. The Resource API option is the least interoperable of the three –the resources configuration that links its output to the semantic model is not public– and was included as a concession to project partners with limited linked data experience who prefer a JSON-based API over a SPARQL endpoint or LDES feed.
 
-ODRL policies are published per dataset using `odrl:target` on the `dcat:Dataset` asset. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. The example below shows that a Licensed dataset is targetted by `odrl:Permission` and `odrl:Prohibition` rules. Also, a shape is added to the dataset as example to express its structure.
+ODRL policies are published per dataset using `odrl:target` on the `dcat:Dataset` asset. SHACL shapes describing the expected content structure of datasets are co-published using `dct:conformsTo` at the dataset level. The example below shows that a Licensed dataset is targeted by `odrl:Permission` and `odrl:Prohibition` rules. Also, a shape is added to the dataset as example to express its structure.
 
 ```turtle
 private-ds-ex:dataset a dcat:Dataset ;  
@@ -238,9 +238,9 @@ Currently no functionality is provided for administrators of the data space to c
 
 ### Making the data space tamper-proof
 
-When obtaining (meta) data from the data space, users want to be sure they obtain the correct, unmodified (meta) data. Similarly, data space members and data providers want assurances that unauthorised changes are prevented when possible and can be detected otherwise.
+When obtaining (meta) data from the data space, users want to be sure they obtain the correct, unmodified (meta) data. Similarly, data space members and data providers want assurances that unauthorized changes are prevented when possible and can be detected otherwise.
 
-Currently, the DECIDe application relies on access control to prevent unauthorised changes to stored data and the use of secure protocols, e.g. https, to protect data in transit. But it does not provide users a way to explicitly verify the integrity of the (meta) data they receive. Note, due to the federated setup of a data space, it will finally be the responsibility of each data space member to ensure the integrity of the data they offer.
+Currently, the DECIDe application relies on access control to prevent unauthorized changes to stored data and the use of secure protocols, e.g. https, to protect data in transit. But it does not provide users a way to explicitly verify the integrity of the (meta) data they receive. Note, due to the federated setup of a data space, it will finally be the responsibility of each data space member to ensure the integrity of the data they offer.
 
 A logical initial step, would be to usie DCAT's [checksum](https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum) property for distributions. This property allows to link a DCAT `Distribution` resource to a `http://spdx.org/rdf/terms#Checksum` resource that specifies a checksum and algorithm used to compute it. For single file distributions, e.g. a Turtle file or archive of files, the recipient can calculate the the checksum of the received file and compare this to the original one. For this to be effective, this does require that the checksum can be [transmitted via a separate channel](https://www.w3.org/TR/vocab-dcat-3/#security_and_privacy) to ensure its integrity. Providing such a channel would require extending the DECIDe application. One possibility would be that data space members cryptographically sign the checksum resources for the distributions they produce. The data space member's public key required to verify such signatures could be published using the member's DID (see [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md)). Alternatively, one could cryptographically sign a Distribution file as a whole, the signature would then be transmitted along with the actual distribution contents. This would allow to leverage existing technologies such as [openpgp](https://www.openpgp.org/about/) to publish public keys and verify signatures.
 

@@ -203,7 +203,7 @@ During DECIDe, we will monitor the validation results and analyze what their roo
 
 #### Batch size tuning
 
-The choice of batch size is a trade-off between memory usage and the overhead of repeated triplestore round trips. If the average resource has many linked properties, a given batch size may still be too large. This risk is accepted for the pilot; the batch size is configurable and can be adjusted based on observed memory behaviour.
+The choice of batch size is a trade-off between memory usage and the overhead of repeated triplestore round trips. If the average resource has many linked properties, a given batch size may still be too large. This risk is accepted for the pilot; the batch size is configurable and can be adjusted based on observed memory behavior.
 
 ## Possible future work
 

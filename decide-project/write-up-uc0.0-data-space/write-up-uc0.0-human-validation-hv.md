@@ -49,7 +49,7 @@ UC1 reuses two of the HV interface components documented here: the codelist mapp
 
 #### UC2 Smart Search
 
-The HV for UC2 is embedded in the interface for the usecase itself: validating AI-generated answers to user queries as well as the source decisions used to construct those answers. The UC2 write-up covers the specifics of this interface.
+The HV for UC2 is embedded in the interface for the use case itself: validating AI-generated answers to user queries as well as the source decisions used to construct those answers. The UC2 write-up covers the specifics of this interface.
 
 [write-up-uc2-smart-search.md](../write-up-uc2-smart-search.md "mention")
 
@@ -301,7 +301,7 @@ The HV interfaces only surface annotations that the AI models have produced. The
 
 #### Threshold-based validation
 
-Neither the HV interfaces nor any downstream usecase application currently apply a threshold for treating an annotation as validated or invalidated: votes are collected indefinitely, and what constitutes sufficient endorsement is left open. This is appropriate for the pilot. A future iteration could introduce a configurable threshold layer: e.g. surfacing a visual confidence indicator when an annotation has reached a defined vote count, or automatically filtering low-confidence annotations from certain views and downstream applications.
+Neither the HV interfaces nor any downstream use case application currently apply a threshold for treating an annotation as validated or invalidated: votes are collected indefinitely, and what constitutes sufficient endorsement is left open. This is appropriate for the pilot. A future iteration could introduce a configurable threshold layer: e.g. surfacing a visual confidence indicator when an annotation has reached a defined vote count, or automatically filtering low-confidence annotations from certain views and downstream applications.
 
 #### Automatic handling of new agent version
 

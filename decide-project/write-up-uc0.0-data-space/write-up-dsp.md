@@ -41,7 +41,7 @@ DSP's Contract Negotiation Protocol is designed around ODRL Offers as the mechan
 
 #### Universal Trust Data Registry (VC)
 
-Authentication and authorisation of dataspace participants are left unspecified by DSP. In DECIDe, the VC-based Universal Trust Data Registry handles this independently of DSP: credentials govern access to DCAT endpoints directly.
+Authentication and authorization of dataspace participants are left unspecified by DSP. In DECIDe, the VC-based Universal Trust Data Registry handles this independently of DSP: credentials govern access to DCAT endpoints directly.
 
 [write-up-verifiable-credentials.md](write-up-verifiable-credentials.md "mention")
 
@@ -70,13 +70,13 @@ Four specific gaps drove this conclusion.
 * First, DSP provides no mechanism for a message sender to discover in advance which `callbackAddress` formats a recipient understands; the sender may receive an error but cannot know what format to use instead.
 * Second, the Transfer Process Protocol is explicitly agnostic about wire protocols, meaning consumers have no standardized way to learn which transfer formats a provider supports –they must rely on provider documentation or trial and error.
 * Third, the Contract Negotiation Protocol leaves the actual decision-making logic entirely out of scope: how a Provider evaluates an incoming offer, whether to accept or reject it, and crucially why. The specification makes reason-giving optional, so a terminated negotiation may leave the other party with no explanation, and left guessing what they can do differently.
-* Fourth, authentication and authorisation methods are left almost entirely open: the specification advises use of the HTTP `Authorization` header but says nothing about which token types to use or how to obtain them.
+* Fourth, authentication and authorization methods are left almost entirely open: the specification advises use of the HTTP `Authorization` header but says nothing about which token types to use or how to obtain them.
 
 The result is that for a new participant wishing to join an existing dataspace, DSP provides insufficient guidance. They would need to discover –through documentation, error messages, or experimentation– which specific technologies the existing participants have agreed to use. This is a significant barrier to open membership and undermines the interoperability promise.
 
 #### What this means for DECIDe
 
-Data sharing within DECIDe does not rely on DSP. Datasets are discoverable via the DCAT Federating Catalogue, access conditions are described via ODRL policies attached to DCAT entries, and access itself is controlled via the VC-based authorisation layer. Consumers access data directly through the endpoints described in DCAT, rather than through a DSP negotiation flow.
+Data sharing within DECIDe does not rely on DSP. Datasets are discoverable via the DCAT Federating Catalogue, access conditions are described via ODRL policies attached to DCAT entries, and access itself is controlled via the VC-based authorization layer. Consumers access data directly through the endpoints described in DCAT, rather than through a DSP negotiation flow.
 
 ### Pilot partners
 
@@ -212,7 +212,7 @@ To keep scope manageable, the team proposed limiting wire protocol support to HT
 
 The HTTPS binding states that "_\[a]ll requests SHOULD use the `Authorization` header to include an authorization token_" but adds that "_The semantics of such tokens are not part of this specification._" Further implementation decisions, such as which kind of tokens to support as well as how to obtain them, are left to the dataspace members.
 
-The `Version` message's `auth` property could be used to let connectors communicate which authorisation methods they support, but its vague wording, that it "_describes how a Dataspace Protocol endpoint is **secured**_"– leaves doubt about what exactly this covers and how it relates to the use of the HTTP `Authorisation` header. It is unclear whether, for instance, a rate-limiting policy to prevent DoS attacks would also count as "securing" an endpoint. The `auth` property also does not appear to support advertising multiple methods for a single endpoint version, for example, supporting both Basic authentication and OAuth simultaneously.
+The `Version` message's `auth` property could be used to let connectors communicate which authorization methods they support, but its vague wording, that it "_describes how a Dataspace Protocol endpoint is **secured**_"– leaves doubt about what exactly this covers and how it relates to the use of the HTTP `Authorization` header. It is unclear whether, for instance, a rate-limiting policy to prevent DoS attacks would also count as "securing" an endpoint. The `auth` property also does not appear to support advertising multiple methods for a single endpoint version, for example, supporting both Basic authentication and OAuth simultaneously.
 
 ### Final AI components (and why) (if any)
 
