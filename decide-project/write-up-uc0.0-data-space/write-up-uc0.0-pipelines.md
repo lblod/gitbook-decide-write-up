@@ -544,7 +544,7 @@ The NEL service is built as a FastAPI application that integrates a [LangChain](
 * **MCP server:** Exposes a standardized set of tools to the agent following the Model Context Protocol. Three tools are central to the linking flow:
   * `search_sparql_docs`: retrieves relevant SPARQL examples and schema definitions from the vector knowledge base, giving the LLM the context it needs to construct a syntactically and semantically correct query.
   * `execute_sparql_query`: validates the LLM-generated SPARQL query against the known schema (using the [sparql\_llm](https://pypi.org/project/sparql-llm/) library), fixes minor issues automatically, and executes the query against the target LOD endpoint. If validation fails, the error is returned to the agent so it can refine and retry. After three retries the agent stops and the entity remains unlinked.
-  * `search_location`**:** resolves a location string to structured geographic information via a Nominatim lookup, returning precise coordinates along with contextual details such as the municipality, region, and neighbourhood.
+  * `search_location`**:** resolves a location string to structured geographic information via a Nominatim lookup, returning precise coordinates along with contextual details such as the municipality, region, and neighborhood.
 * **Knowledge base:** A vector database ([Qdrant](https://qdrant.tech/) in production, in-memory for development) storing VOID shapes (schema definitions describing available classes and properties) and example SPARQL queries for the target endpoints. Loaded from configuration files at initialization, embedded using embeddinggemma via Ollama, and indexed. When the agent calls `search_sparql_docs`, the knowledge base returns the most relevant documents by cosine similarity, giving the LLM the precise schema context it needs to write a correct query for the entity type at hand.
 
 1. A delta notification arrives, signalling that a new entity linking task has been scheduled in the triplestore.
@@ -592,7 +592,7 @@ We explored the idea of using an Agentic AI approach for named entity linking. I
 
 * `search_sparql_docs`: retrieves relevant SPARQL examples and schema definitions from the vector knowledge base, giving the LLM the context it needs to construct a syntactically and semantically correct query.
 * `execute_sparql_query`: validates the LLM-generated SPARQL query against the known schema (using the sparql\_llm library), fixes minor issues automatically, and executes the query against the target LOD endpoint. If validation fails, the error is returned to the agent so it can refine and retry. After three retries the agent stops and the entity remains unlinked.
-* `search_location`: resolves a location string to structured geographic information via a Nominatim lookup, returning precise coordinates along with contextual details such as the municipality, region, and neighbourhood.
+* `search_location`: resolves a location string to structured geographic information via a Nominatim lookup, returning precise coordinates along with contextual details such as the municipality, region, and neighborhood.
 
 Schematically, this is represented in the following figure:
 
