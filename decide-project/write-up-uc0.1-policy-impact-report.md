@@ -232,7 +232,7 @@ This lifecycle is implemented as the Codelist Mapping Tool, a standalone microse
 
 The architecture is intentionally codelist-agnostic. The same service, data model, and processing pipeline can be reused across any SKOS codelist. While the primary use case in UC0.1 is mapping LD\&L to the UN Sustainable Development Goals (SDGs), the same infrastructure is reused in [UC1 for classification against a Restricted Mobility Zone codelist](write-up-uc1-restricted-mobility-zones.md#q1-is-this-decision-about-a-restricted-mobility-zone).
 
-The classification problem itself is multi-label: a single decision can map to zero, one, or several concepts simultaneously. For example, a decision about expanding social housing with solar panels might map to both SDG 7 (Affordable and Clean Energy) and SDG 11 (Sustainable Cities and Communities). The tool must also operate across multiple languages (Dutch, German, French, English), varying codelist granularities (17 broad SDG goals vs. a single binary RMZ concept), and across municipalities with different administrative traditions.
+The classification problem itself is multi-label: a single decision can map to zero, one, or several concepts simultaneously. For example, a decision about expanding social housing with solar panels might map to both SDG 7 (Affordable and Clean Energy) and SDG 11 (Sustainable Cities and Communities). The tool must also operate across multiple languages (Dutch, German, French, English), varying codelist granularity (17 broad SDG goals vs. a single binary RMZ concept), and across municipalities with different administrative traditions.
 
 The current deployment operates in the Cold Start phase, gathering validated annotations to eventually transition to a Gold Standard model. The sections below detail the technical implementation of each strategy.
 
@@ -466,7 +466,7 @@ The underlying codelist mapping architecture is framework-agnostic: any well-str
 
 #### Article level codelist mapping
 
-The current Codelist Mapping Tool operates at the whole-decision level: an entire decision is mapped to one or more codelist concepts. Decisions that contain multiple distinct measures –e.g. a Reglement in Flanders– could in principle be mapped at the article level, with each part linked to the most relevant concept. The pipeline's text segmentation step already produces article-level structure as a by-product of the title detection process, making this technically feasible without requiring architectural redesign. For the DECIDe pilot scope, whole-decision mapping is sufficient; whether article-level granularity is needed for any new use case should be evaluated before investing in implementation.
+The current Codelist Mapping Tool operates at the whole-decision level: an entire decision is mapped to one or more codelist concepts. Decisions that contain multiple distinct measures –e.g. a 'Reglement' in Flanders– could in principle be mapped at the article level, with each part linked to the most relevant concept. The pipeline's text segmentation step already produces article-level structure as a by-product of the title detection process, making this technically feasible without requiring architectural redesign. For the DECIDe pilot scope, whole-decision mapping is sufficient; whether article-level granularity is needed for any new use case should be evaluated before investing in implementation.
 
 #### Transition to supervised classifier for production
 

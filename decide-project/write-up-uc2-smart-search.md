@@ -10,7 +10,7 @@ This page is under construction
 
 ## Description UC/wanted deliverable
 
-Local governments publish subsidy information as formal decisions and regulatory documents. For property owners considering climate-friendly renovations, e.g. insulation upgrades, green façades, or the installation of electric vehicle charging infrastructure, this information is publicly available but practically hard and time-consuming to find.
+Local governments publish subsidy information as formal decisions and regulatory documents. For property owners considering climate-friendly renovations, e.g. insulation upgrades, green facades, or the installation of electric vehicle charging infrastructure, this information is publicly available but practically hard and time-consuming to find.
 
 UC2 was set out to close this gap. By publishing subsidy-related LD\&L in the DECIDe data space and making it searchable through a purpose-built solution, citizens and businesses should be able to easily access all relevant information, understand their eligibility, and take action –contributing in the process to broader sustainability and Green Deal goals. The intended deliverable is a widget or application, embedded in the data space, through which property owners can query subsidy data across the pilot cities.
 
@@ -275,7 +275,7 @@ The user can then restart with a fresh question or refine their existing one via
 
 #### Language of the interface
 
-The interface is in English, avoiding the overhead of maintaining three separate localised versions within the project timescale. The LLM handles questions and generates responses in Dutch, German and English. Users are informed on the first screen that asking in the language of the source decisions –Dutch for Ghent, German for Freiburg and Bamberg– produces the most accurate results, though <mark style="background-color:$warning;">English questions</mark> are also accepted and will produce a response.
+The interface is in English, avoiding the overhead of maintaining three separate localized versions within the project timescale. The LLM handles questions and generates responses in Dutch, German and English. Users are informed on the first screen that asking in the language of the source decisions –Dutch for Ghent, German for Freiburg and Bamberg– produces the most accurate results, though <mark style="background-color:$warning;">English questions</mark> are also accepted and will produce a response.
 
 ### Other explored UI design (and why not)
 

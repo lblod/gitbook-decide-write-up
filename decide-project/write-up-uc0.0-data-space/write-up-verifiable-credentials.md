@@ -35,7 +35,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 ### Link to other deliverables
 
-The Universal Trust Data Registry is one of three inter-dependent components of the Reference Architecture of the DS4SSCC blueprint. It therefor is deeply linked to the following:
+The Universal Trust Data Registry is one of three inter-dependent components of the Reference Architecture of the DS4SSCC blueprint. It therefore is deeply linked to the following:
 
 #### Federating Catalog (DCAT)
 
@@ -261,7 +261,7 @@ We require participants of the dataspace to use **decentralized identifiers** wh
 
 We decided to use the [OID4VC issuance protocol](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) to issue credentials to users so that they can log into our systems (or other systems that trust us as a credential issuer).
 
-The Eclipse Decentralized Claims Protocol was researched, but the team was cautioned against using it as it was still quite new at the time and other pilot projects had run into issues implementing it. Both protocols were evaluated, and we came to the conclusion that OID4VCI/OID4VP had better support at implementation start (August 2025). OID4VCI only reached v1.0 in September 2025. Implementation of Eclipse DCP is therefor deferred. (see [#possible-future-work](write-up-verifiable-credentials.md#possible-future-work "mention"))
+The Eclipse Decentralized Claims Protocol was researched, but the team was cautioned against using it as it was still quite new at the time and other pilot projects had run into issues implementing it. Both protocols were evaluated, and we came to the conclusion that OID4VCI/OID4VP had better support at implementation start (August 2025). OID4VCI only reached v1.0 in September 2025. Implementation of Eclipse DCP is therefore deferred. (see [#possible-future-work](write-up-verifiable-credentials.md#possible-future-work "mention"))
 
 #### Pre-authorized only
 
@@ -441,7 +441,7 @@ As an extra safety precaution, We can add an extra step to the first (Request a 
 
 The following items were identified during implementation as out-of-scope for the current DECIDe project but relevant for the longer-term evolution of the DECIDe data space and beyond. Whether and when these will be tackled will depend on timing, scope, and budget.
 
-To start simple, we did not yet harmonise the authentication/authorization solutions across all partners, but stuck to a demonstration case using the ABB implementation (i.e. ACM/IDM).
+To start simple, we did not yet harmonize the authentication/authorization solutions across all partners, but stuck to a demonstration case using the ABB implementation (i.e. ACM/IDM).
 
 ### Possible future work DECIDe data space related
 
