@@ -20,9 +20,9 @@ Within the project proposal, this maps to the following deliverables and tasks:
 | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | **D1.3** Data ready for decentralized ingestion into data space — scope of data plan UC1 | **T1.1-T1.7** Analyze available data sets and standards, develop and execute data plan for UC1                                       |
 | **D2.1.3** In-depth technical analyzes of current architecture UC1                       | **T2.1** In-depth analysis of current technical architecture at pilot sites & gap analysis                                           |
-| **D2.8** Thesauri and registries available for AI assisted enrichment                    | **T2.12** Define and set up thesauri and registries as input for labelling and matching                                              |
-| **D2.9** AI tool for labelling LD\&L available for UC1 ready                             | **T2.13** Define, develop, train and test open source semantic AI tool for labelling LD\&L, including interface for human review UC1 |
-| **D2.10** AI tool for labelling implemented at relevant pilot sites                      | **T2.14** Implement AI tool for labelling LD\&L at lead pilot and at least one following pilot site                                  |
+| **D2.8** Thesauri and registries available for AI assisted enrichment                    | **T2.12** Define and set up thesauri and registries as input for labeling and matching                                              |
+| **D2.9** AI tool for labeling LD\&L available for UC1 ready                             | **T2.13** Define, develop, train and test open source semantic AI tool for labeling LD\&L, including interface for human review UC1 |
+| **D2.10** AI tool for labeling implemented at relevant pilot sites                      | **T2.14** Implement AI tool for labeling LD\&L at lead pilot and at least one following pilot site                                  |
 | **D3.3** Use case 1 implemented by Freiburg as lead pilot site                           | **T3.5–T3.7** UC1 implementation at Freiburg                                                                                         |
 | **D3.4** Use case 1 implemented by Ghent and/or Bamberg                                  | **T3.8** UC1 implementation at Ghent and/or Bamberg                                                                                  |
 
@@ -60,7 +60,7 @@ See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipe
 See the [UC0.1 Policy Impact Report glossary](write-up-uc0.1-policy-impact-report.md#glossary) for definitions of Codelist Mapping Tool, SKOS, Zero-shot classification, and [UC2 Smart Search glossary](write-up-uc2-smart-search.md#glossary) for the definition of Inference.
 {% endhint %}
 
-<table><thead><tr><th width="221.3876953125">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>BIO labels / BIO tagging</td><td>A standard labelling scheme for sequence tasks like NER. Each token in the text gets one of three tag prefixes: <strong>B</strong> (beginning of an entity), <strong>I</strong> (inside / continuation of an entity), or <strong>O</strong> (outside any entity). Combined with an entity type, this gives labels like <code>B-LOCATION</code> (start of a location) and <code>I-LOCATION</code> (continuation of the same location). The scheme makes it possible to detect where one entity ends and the next begins.</td></tr><tr><td>Geocoding</td><td>Converting addresses into map coordinates.</td></tr><tr><td><a href="https://www.geopunt.be/">Geopunt</a></td><td>Authoritative address and geometry registry for Flanders. Used in UC1 to link extracted location entities from Ghent decisions to canonical geographic URIs.</td></tr><tr><td>GIS (Geographic Information System)</td><td>A system for capturing, storing, and analyzing spatial and geographic data. UC1 outputs are designed for direct consumption by GIS tools via SPARQL.</td></tr><tr><td>RMZ (Restricted Mobility Zone)</td><td>An area defined by a local authority in which movement of certain vehicle types, or of all traffic, is restricted. Encompasses zone types including low-emission zones, pedestrian zones, car-free zones, cycling streets, school streets, and zones established for works or events.</td></tr></tbody></table>
+<table><thead><tr><th width="221.3876953125">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>BIO labels / BIO tagging</td><td>A standard labeling scheme for sequence tasks like NER. Each token in the text gets one of three tag prefixes: <strong>B</strong> (beginning of an entity), <strong>I</strong> (inside / continuation of an entity), or <strong>O</strong> (outside any entity). Combined with an entity type, this gives labels like <code>B-LOCATION</code> (start of a location) and <code>I-LOCATION</code> (continuation of the same location). The scheme makes it possible to detect where one entity ends and the next begins.</td></tr><tr><td>Geocoding</td><td>Converting addresses into map coordinates.</td></tr><tr><td><a href="https://www.geopunt.be/">Geopunt</a></td><td>Authoritative address and geometry registry for Flanders. Used in UC1 to link extracted location entities from Ghent decisions to canonical geographic URIs.</td></tr><tr><td>GIS (Geographic Information System)</td><td>A system for capturing, storing, and analyzing spatial and geographic data. UC1 outputs are designed for direct consumption by GIS tools via SPARQL.</td></tr><tr><td>RMZ (Restricted Mobility Zone)</td><td>An area defined by a local authority in which movement of certain vehicle types, or of all traffic, is restricted. Encompasses zone types including low-emission zones, pedestrian zones, car-free zones, cycling streets, school streets, and zones established for works or events.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -70,7 +70,7 @@ Local authorities regularly establish, modify, and lift mobility restrictions th
 
 The gap UC1 addresses is the absence of automatic extraction between authoritative decision text and the GIS layer where mobility restrictions are managed and visualized. Without this extraction, staff must manually read decisions and re-enter geographic and temporal information into GIS systems –a process that is slow, error-prone, and dependent on individual follow-through. This is particularly acute for cities which generate a large volume of mobility-related decisions and maintain public-facing GIS services that are expected to reflect the current regulatory situation.
 
-UC1 proposes to close that gap by automatically classifying RMZ decisions, extracting locations and dates, linking locations to geometry registries, and exposing the resulting structured data through a SPARQL endpoint that GIS tools can query directly. The value is twofold: reduced manual effort for individual cities maintaining spatial databases, and a demonstration that AI-extracted annotations on LD\&L data can produce structured, queryable outputs suitable for downstream applications beyond document search –a pattern that generalises to other classes of decisions and to UC2.
+UC1 proposes to close that gap by automatically classifying RMZ decisions, extracting locations and dates, linking locations to geometry registries, and exposing the resulting structured data through a SPARQL endpoint that GIS tools can query directly. The value is twofold: reduced manual effort for individual cities maintaining spatial databases, and a demonstration that AI-extracted annotations on LD\&L data can produce structured, queryable outputs suitable for downstream applications beyond document search –a pattern that generalizes to other classes of decisions and to UC2.
 
 ### Pilot partners
 
@@ -149,7 +149,7 @@ ELI provides one starting date to indicate when legislation becomes applicable: 
 
 ## Final architecture
 
-UC1 reuses, rather than rebuilds, the components developed in UC0.0 (the NER and date extraction pipelines) and UC0.1 (the Codelist Mapping Tool). The UC1-specific contribution is the configuration of those components against RMZ-specific codelists and address registries. 
+UC1 reuses, rather than rebuilds, the components developed in UC0.0 (the NER and date extraction pipelines) and UC0.1 (the Codelist Mapping Tool). The UC1-specific contribution is the configuration of those components against RMZ-specific codelists and address registries.
 
 The core challenge of UC1 is to extract structured mobility information from unstructured decision text. A municipal decision that establishes a restricted mobility zone typically contains all the relevant information (what kind of restriction, where, and when) but buries it in free-text prose across different sections of the document. For the RMZ tool to surface this information, each decision needs to be analyzed along three axes:
 
@@ -239,7 +239,7 @@ The `LocationFormatter` performs several sub-steps:
    * The **Component head** (25 BIO labels) identifies fine-grained address components: `STREET`, `HOUSENUMBER`, `POSTCODE`, `CITY`, `PROVINCE`, `BUILDING`, `INTERSECTION`, `PARCEL`, `DISTRICT`, `GRAVE_LOCATION`, `DOMAIN_ZONE_AREA`, `ROAD`.
    * The **Location head** (3 BIO labels: `O`, `B-LOCATION`, `I-LOCATION`) identifies the boundaries of individual location spans within a multi-address string.
 3. **Span assembly** maps component tags to their enclosing location spans, producing a structured dictionary per location.
-4. **Conjunction merging** detects conjunction gaps in strings like `"Dorpstraat 23 en 25, 9000 Ghent"` and propagates shared fields (street, postcode, city) between neighbours.
+4. **Conjunction merging** detects conjunction gaps in strings like `"Dorpstraat 23 en 25, 9000 Ghent"` and propagates shared fields (street, postcode, city) between neighbors.
 5. **House number expansion** expands ranges like `"12-28"` into individual addresses following Belgian odd/even numbering rules, and splits bus/apartment numbers (e.g., `"5 bus 3"` into housenumber: `5`, bus: `3`).
 6. **Address string assembly** builds a Nominatim-compatible address string using a priority chain: street > building > road > intersection > district > domain\_zone\_area > grave\_location > parcel, appended with postcode, city, and province.
 
@@ -276,7 +276,7 @@ Output step 5 (simplified):
         "city": "Ghent",
         "formatted_text": "Dorpstraat 25, 9000 Ghent"
      },
-     
+
   ]
 ```
 

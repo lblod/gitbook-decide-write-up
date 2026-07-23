@@ -112,7 +112,7 @@ The DECIDe data space is organized around four layers that build on one another.
 
 **Access and federation** is the outermost layer: it governs how the data space is discovered, how participants are identified, and what they are permitted to do. The DCAT catalog makes datasets and distributions findable and the Authorization Policies Store (ODRL) defines access rules in machine-readable format. Specifically for the DECIDe project, a DSP connector was developed to provide support for the Data Space Protocol and a Verifiable credentials login service with built in Trusted Issuer Registry was built to provide additional ways to authenticate users. The Repeatable Data Plan sits alongside these components, covering data management and planning at the data space level.
 
-**Data ingestion** is where raw LD\&L from the three pilot cities enters the system and is brought to a common representation. The Pipelines infrastructure harvests decisions from LBLOD/OSLO (Ghent), OParl (Freiburg), and PDF documents (Bamberg, and supplementarily the other cities), and normalizes each to the European Legislation Identifier (ELI) standard. The result is a shared corpus of formal decisions in the triplestore.
+**Data ingestion** is where raw LD\&L from the three pilot cities enters the system and is brought to a common representation. The Pipelines infrastructure harvests decisions from LBLOD/OSLO (Ghent), OParl (Freiburg), and PDF documents (Bamberg, and supplementary the other cities), and normalizes each to the European Legislation Identifier (ELI) standard. The result is a shared corpus of formal decisions in the triplestore.
 
 **Data enrichment** operates on top of the normalized corpus to produce structured, queryable annotations. The AI enrichment pipelines generate `oa:Annotation` triples linking decisions to policy concepts, geographic entities, and temporal periods. The Human Validation (HV) layer provides users with per-use-case interfaces to review and vote on these annotations, adding a human-endorsed signal layer without modifying the underlying data.
 
@@ -127,7 +127,7 @@ The DECIDe application is built as a [semantic.works application](https://semant
 1. core services that provide functionality that is required in many different application; and
 2. custom services that provide application-specific functionality.
 
-The core services are shown in the diagram below. Boxes are services and arrows are HTTP messages being sent, the arrows point from the sender of the HTTP message to its receiver. The virtuoso triplestore is shown as a cylinder. 
+The core services are shown in the diagram below. Boxes are services and arrows are HTTP messages being sent, the arrows point from the sender of the HTTP message to its receiver. The virtuoso triplestore is shown as a cylinder.
 
 The image also shows a `custom-service`, this is because any other service added in the context of a semantic.works project (like in DECIDe) works in the same way: it may receive HTTP calls dispatched from the dispatcher, performs SPARQL queries through mu-authorization and/or be informed of changes through delta notifications from the delta-notifier.
 

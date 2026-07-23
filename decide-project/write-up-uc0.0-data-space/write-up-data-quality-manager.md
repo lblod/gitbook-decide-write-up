@@ -121,34 +121,34 @@ A REST API (Extension 5) exposing the latest validation report is added to the s
 
 ```json
 {
-	"data": [{
-		"type": "validationresult",
-		"id": "6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
-		"attributes": {
-			"result": "http://data.lblod.info/id/validationresults/6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
-			"resultId": "6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
-			"focusNode": "https://data.gent.be/id/besluiten/23.1214.2233.0071",
-			"focusNodeId": "cb1dacb9-a979-5d97-9a17-5057cb20fe8b",
-			"resultSeverity": "http://www.w3.org/ns/shacl#Violation",
-			"sourceConstraintComponent": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
-			"resultMessage": "Less than 1 values",
-			"resultPath": "http://data.europa.eu/eli/ontology#language",
-			"targetClassOfFocusNode": "http://data.europa.eu/eli/ontology#Expression,http://data.europa.eu/eli/ontology#LegalExpression,http://data.vlaanderen.be/ns/besluit#Besluit"
-		}
-	}],
-	"meta": {
-		"total": "2565",
-		"page": 1,
-		"pageSize": 10,
-		"totalPages": 257
-	},
-	"links": {
-		"self": "/shacl-reports/latest/issues?page[number]=1&page[size]=10",
-		"first": "/shacl-reports/latest/issues?page[number]=1&page[size]=10",
-		"last": "/shacl-reports/latest/issues?page[number]=257&page[size]=10",
-		"prev": null,
-		"next": "/shacl-reports/latest/issues?page[number]=2&page[size]=10"
-	}
+    "data": [{
+        "type": "validationresult",
+        "id": "6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
+        "attributes": {
+            "result": "http://data.lblod.info/id/validationresults/6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
+            "resultId": "6e6d25d0-4eb5-11f1-b8a7-7d1643d2e013",
+            "focusNode": "https://data.gent.be/id/besluiten/23.1214.2233.0071",
+            "focusNodeId": "cb1dacb9-a979-5d97-9a17-5057cb20fe8b",
+            "resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+            "sourceConstraintComponent": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+            "resultMessage": "Less than 1 values",
+            "resultPath": "http://data.europa.eu/eli/ontology#language",
+            "targetClassOfFocusNode": "http://data.europa.eu/eli/ontology#Expression,http://data.europa.eu/eli/ontology#LegalExpression,http://data.vlaanderen.be/ns/besluit#Besluit"
+        }
+    }],
+    "meta": {
+        "total": "2565",
+        "page": 1,
+        "pageSize": 10,
+        "totalPages": 257
+    },
+    "links": {
+        "self": "/shacl-reports/latest/issues?page[number]=1&page[size]=10",
+        "first": "/shacl-reports/latest/issues?page[number]=1&page[size]=10",
+        "last": "/shacl-reports/latest/issues?page[number]=257&page[size]=10",
+        "prev": null,
+        "next": "/shacl-reports/latest/issues?page[number]=2&page[size]=10"
+    }
 }
 ```
 
@@ -225,7 +225,7 @@ A lightweight UI that surfaces the latest validation report in a human-readable 
 
 ## Relevant links
 
-A [demo video of the data quality manager](https://www.youtube.com/watch?v=0R8QUt8Fp84\&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App\&index=2). The video goes step-by-step through the validation process: what are shapes, how does it fetch data, what does the validation service output (logs and REST API). As described above, the service will run automatically using a cron mechnanism and will validate all the decisions in batches, but this can take a while. For demonstration purposes, we loaded a sample set to show end-to-end the results.
+A [demo video of the data quality manager](https://www.youtube.com/watch?v=0R8QUt8Fp84\&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App\&index=2). The video goes step-by-step through the validation process: what are shapes, how does it fetch data, what does the validation service output (logs and REST API). As described above, the service will run automatically using a cron mechanism and will validate all the decisions in batches, but this can take a while. For demonstration purposes, we loaded a sample set to show end-to-end the results.
 
 The validation results of the DECIDe server are available through this REST API: [http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues](http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues) <mark style="color:$warning;">Service will be back online after review here:</mark> [<mark style="color:$warning;">https://github.com/lblod/loket-report-generation-service/pull/17</mark>](https://github.com/lblod/loket-report-generation-service/pull/17)
 

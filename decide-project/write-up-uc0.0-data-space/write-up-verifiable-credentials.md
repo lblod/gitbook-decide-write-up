@@ -23,7 +23,7 @@ That being said, the aim is to extend this initial trust setup to handle two sce
 
 To address both scenarios, the proposal commits to studying and implementing (or reusing) a solution based on W3C DID and W3C Verifiable Credentials. The GAIA-X Trust Framework is cited as the closest existing reference implementation.
 
-The Universal Trust Data Registry is one of three inter-dependent Reference Architecture components that DECIDe commits to incorporating, alongside the Federating Catalogue and the Authorization Policies Store.
+The Universal Trust Data Registry is one of three inter-dependent Reference Architecture components that DECIDe commits to incorporating, alongside the Federating Catalog and the Authorization Policies Store.
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
@@ -37,9 +37,9 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 The Universal Trust Data Registry is one of three inter-dependent components of the Reference Architecture of the DS4SSCC blueprint. It therefor is deeply linked to the following:
 
-#### Federating Catalogue (DCAT)
+#### Federating Catalog (DCAT)
 
-The Federating Catalogue is the primary entry point for discovering trusted data in the data space. The DECIDe project aims to explore the Universal Trust Data Registry as an augmentation of the Federating Catalogue — adding W3C DID and W3C VC-based identity verification on top of the DCAT-based discovery layer. Non-public dataset distributions published in the DCAT catalog are protected by the Universal Trust Data Registry and Authorization Policies Store stack. The user discovers a distribution, reads its policy, and then acquires the necessary credential.\
+The Federating Catalog is the primary entry point for discovering trusted data in the data space. The DECIDe project aims to explore the Universal Trust Data Registry as an augmentation of the Federating Catalog — adding W3C DID and W3C VC-based identity verification on top of the DCAT-based discovery layer. Non-public dataset distributions published in the DCAT catalog are protected by the Universal Trust Data Registry and Authorization Policies Store stack. The user discovers a distribution, reads its policy, and then acquires the necessary credential.\
 [write-up-dcat.md](write-up-dcat.md "mention") [write-up-dsp.md](write-up-dsp.md "mention")
 
 #### Authorization Policies Store (ODRL)
@@ -145,14 +145,14 @@ In DECIDe, the VC Verifier uses the VC to create a session in the triple store p
     ext:sessionGroup <http://mu.semte.ch/graphs/organizations/353234a365664e581db5c2f7cc07add2534b47b8e1ab87c821fc6e6365e6bef5> ;
     ext:sessionRole "Decide-gebruiker" ;
     session:account <http://data.lblod.info/id/account/9bdfbcff-11e2-423c-8ba5-657bb71839ac> .
-    
+
 <http://mu.semte.ch/graphs/organizations/353234a365664e581db5c2f7cc07add2534b47b8e1ab87c821fc6e6365e6bef5> mu:uuid "353234a365664e581db5c2f7cc07add2534b47b8e1ab87c821fc6e6365e6bef5" .
 
 <http://data.lblod.info/id/gebruiker/02eebd6d-c7cc-40fe-a7b7-c5c193131126> a foaf:Person ;
     foaf:firstName "Foo" ;
     foaf:familyName "Bar" ;
     foaf:account <http://data.lblod.info/id/account/9bdfbcff-11e2-423c-8ba5-657bb71839ac> .
-    
+
 ```
 
 When this session data is available in the triple store, the authorization layer with ODRL is able to verify that the user is part of the `ext:organizationMemberParty` :
@@ -378,7 +378,7 @@ Any participant wanting to **verify** DECIDe credentials must:
 * Set up their own verifier service (the [DECIDe open-source verifier service](https://github.com/lblod/oid4vc-login-service) can be reused and configured).
 * Configure how the credential attributes (groups/roles) are mapped to access rights in their own system. Note: this mapping is highly custom and specific to each implementation.
 
-Once this is done, a participant can use any of our supported wallets to confirm that the OID4VCI and OID4VP interaction works as expected. Paradym wallet is recommended as it builds on the DID specificiation and has a great debug support to understand what exactly is going wrong when building the issuer or verifier. The EUDI Wallet reference implementation requires additional configuration effort on the participant's end (see earlier).
+Once this is done, a participant can use any of our supported wallets to confirm that the OID4VCI and OID4VP interaction works as expected. Paradym wallet is recommended as it builds on the DID specification and has a great debug support to understand what exactly is going wrong when building the issuer or verifier. The EUDI Wallet reference implementation requires additional configuration effort on the participant's end (see earlier).
 
 ## Final UI design (and why) (if any)
 

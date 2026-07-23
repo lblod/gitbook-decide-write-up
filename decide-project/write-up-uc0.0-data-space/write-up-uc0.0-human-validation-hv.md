@@ -14,9 +14,9 @@ This page is under construction
 **Note:** Human Validation (HV) is a horizontal component shared across all DECIDe use cases. It is documented at UC0.0 level because its shared logic, data model, and governing design decisions apply equally to UC0.0, UC0.1, UC1, and UC2. Each use case write-up documents the UC-specific validation interface; this write-up covers the general pattern, the data model, and the decisions that govern all interfaces as well as the interface for UC0.0.
 {% endhint %}
 
-The DECIDe project builds an AI enrichment layer that generates structured semantic annotations on local decisions and legislation (LD\&L) –recognising named entities, linking them to authoritative concept URIs, mapping decisions to policy frameworks, and extracting dates and temporal scope. The quality of these AI-generated enrichments directly affects their downstream utility: annotations that are incorrect or unreliable erode the value of the data space for the cities and organizations that consume it.
+The DECIDe project builds an AI enrichment layer that generates structured semantic annotations on local decisions and legislation (LD\&L) –recognizing named entities, linking them to authoritative concept URIs, mapping decisions to policy frameworks, and extracting dates and temporal scope. The quality of these AI-generated enrichments directly affects their downstream utility: annotations that are incorrect or unreliable erode the value of the data space for the cities and organizations that consume it.
 
-The wanted deliverable is a human-in-the-loop validation layer: a set of lightweight interfaces through which domain experts and local government staff can work through AI annotation outputs, recording their judgements and enabling downstream consumers to filter or weight results based on a certain level of human endorsement
+The wanted deliverable is a human-in-the-loop validation layer: a set of lightweight interfaces through which domain experts and local government staff can work through AI annotation outputs, recording their judgments and enabling downstream consumers to filter or weight results based on a certain level of human endorsement
 
 Within the project proposal, this maps to the following deliverables and tasks:
 

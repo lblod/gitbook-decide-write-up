@@ -29,7 +29,7 @@ The Dataspace Protocol is part of the same Federation Layer deliverable as the D
 
 #### Federating Catalogue (DCAT)
 
-DSP's Catalog Protocol was designed to sit on top of a DCAT catalog, providing a standardized programmatic interface for discovering datasets and their access terms. Because DECIDe chose not to implement DSP, the DCAT Federating Catalogue remains the primary discovery mechanism –accessible directly via its SPARQL endpoint, LDES feed, and human-readable interface.
+DSP's Catalog Protocol was designed to sit on top of a DCAT catalog, providing a standardized programmatic interface for discovering datasets and their access terms. Because DECIDe chose not to implement DSP, the DCAT Federating Catalog remains the primary discovery mechanism –accessible directly via its SPARQL endpoint, LDES feed, and human-readable interface.
 
 [write-up-dcat.md](write-up-dcat.md "mention")
 
@@ -51,7 +51,7 @@ Authentication and authorization of dataspace participants are left unspecified 
 See the [UC0.0 Data space glossary](./#glossary) for definitions of ODRL and SPARQL.
 {% endhint %}
 
-<table><thead><tr><th width="254.966796875">Term / Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td><code>Agreement</code> (ODRL)</td><td>An ODRL Agreement: an Offer accepted by both Consumer and Provider during a Contract Negotiation. Would serve as the basis for a Transfer Process request in a full DSP implementation.</td></tr><tr><td><code>callbackAddress</code></td><td>A URI provided by a message sender to which the receiving party must send follow-up messages.</td></tr><tr><td>Catalog Protocol</td><td>The DSP sub-protocol through which a Consumer queries a Provider for available DCAT Catalogues and Datasets, together with the ODRL Offers associated with them.</td></tr><tr><td>Consumer</td><td>A dataspace participant that requests data from a Provider.</td></tr><tr><td>Contract Negotiation Protocol</td><td>The DSP sub-protocol through which a Consumer and Provider exchange ODRL Offers and reach an Agreement.</td></tr><tr><td><a href="https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1">DSP (Dataspace Protocol)</a></td><td>A protocol specification (version 2025-1) by the Eclipse Dataspace Protocol working group, aiming to facilitate interoperable data sharing between dataspace participants.</td></tr><tr><td><a href="https://github.com/eclipse-dataspacetck/dsp-tck">DSP-TCK (Dataspace Protocol Technology Compatibility Kit)</a></td><td>An open-source test suite for verifying DSP compliance, recommended by DS4SSCC.</td></tr><tr><td><code>MessageOffer</code></td><td>A DSP-specific wrapper used within a Contract Request Message. Links to an existing ODRL <code>Offer</code> by id and carries the Consumer's proposed permission and obligation terms.</td></tr><tr><td><code>Offer</code> (ODRL)</td><td>An ODRL Policy that publicises data availability and usage conditions without granting rights. In DSP, Offers must reference DCAT Datasets or Distributions as their targets rather than ODRL Assets.</td></tr><tr><td>Provider</td><td>A dataspace participant that makes data available for others to discover, negotiate with, and retrieve.</td></tr><tr><td>Transfer Process Protocol</td><td>The DSP sub-protocol through which a Consumer and Provider coordinate the transfer of a dataset distribution.</td></tr></tbody></table>
+<table><thead><tr><th width="254.966796875">Term / Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td><code>Agreement</code> (ODRL)</td><td>An ODRL Agreement: an Offer accepted by both Consumer and Provider during a Contract Negotiation. Would serve as the basis for a Transfer Process request in a full DSP implementation.</td></tr><tr><td><code>callbackAddress</code></td><td>A URI provided by a message sender to which the receiving party must send follow-up messages.</td></tr><tr><td>Catalog Protocol</td><td>The DSP sub-protocol through which a Consumer queries a Provider for available DCAT Catalogs and Datasets, together with the ODRL Offers associated with them.</td></tr><tr><td>Consumer</td><td>A dataspace participant that requests data from a Provider.</td></tr><tr><td>Contract Negotiation Protocol</td><td>The DSP sub-protocol through which a Consumer and Provider exchange ODRL Offers and reach an Agreement.</td></tr><tr><td><a href="https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1">DSP (Dataspace Protocol)</a></td><td>A protocol specification (version 2025-1) by the Eclipse Dataspace Protocol working group, aiming to facilitate interoperable data sharing between dataspace participants.</td></tr><tr><td><a href="https://github.com/eclipse-dataspacetck/dsp-tck">DSP-TCK (Dataspace Protocol Technology Compatibility Kit)</a></td><td>An open-source test suite for verifying DSP compliance, recommended by DS4SSCC.</td></tr><tr><td><code>MessageOffer</code></td><td>A DSP-specific wrapper used within a Contract Request Message. Links to an existing ODRL <code>Offer</code> by id and carries the Consumer's proposed permission and obligation terms.</td></tr><tr><td><code>Offer</code> (ODRL)</td><td>An ODRL Policy that publicizes data availability and usage conditions without granting rights. In DSP, Offers must reference DCAT Datasets or Distributions as their targets rather than ODRL Assets.</td></tr><tr><td>Provider</td><td>A dataspace participant that makes data available for others to discover, negotiate with, and retrieve.</td></tr><tr><td>Transfer Process Protocol</td><td>The DSP sub-protocol through which a Consumer and Provider coordinate the transfer of a dataset distribution.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -76,7 +76,7 @@ The result is that for a new participant wishing to join an existing dataspace, 
 
 #### What this means for DECIDe
 
-Data sharing within DECIDe does not rely on DSP. Datasets are discoverable via the DCAT Federating Catalogue, access conditions are described via ODRL policies attached to DCAT entries, and access itself is controlled via the VC-based authorization layer. Consumers access data directly through the endpoints described in DCAT, rather than through a DSP negotiation flow.
+Data sharing within DECIDe does not rely on DSP. Datasets are discoverable via the DCAT Federating Catalog, access conditions are described via ODRL policies attached to DCAT entries, and access itself is controlled via the VC-based authorization layer. Consumers access data directly through the endpoints described in DCAT, rather than through a DSP negotiation flow.
 
 ### Pilot partners
 
@@ -108,7 +108,7 @@ n/a
 
 ## Final architecture (and why)
 
-No DSP architecture was deployed. Following the analysis, the decision was made not to implement DSP in the DECIDe pilot. Data sharing is handled through the DCAT Federating Catalogue, ODRL policies, and the VC-based access control layer –each documented in their own write-ups.
+No DSP architecture was deployed. Following the analysis, the decision was made not to implement DSP in the DECIDe pilot. Data sharing is handled through the DCAT Federating Catalog, ODRL policies, and the VC-based access control layer –each documented in their own write-ups.
 
 A partial implementation of the Catalog Protocol was developed during the analysis phase but was not merged. This implementation demonstrated that the Catalog Protocol can be built on top of the DCAT layer –reusing existing Catalog, Dataset, and Distribution resources– but also confirmed that without the Contract Negotiation and Transfer Process protocols, the Catalog Protocol alone does not provide meaningful added value over direct DCAT access.
 
@@ -124,7 +124,7 @@ The team conducted a detailed technical analysis of all three DSP sub-protocols,
 
 #### ODRL Offers for DECIDe
 
-DSP relies on members using ODRL `Offer`s to exchange information on the datasets they offer and under which conditions. In ODRL, an `Offer` is a specific kind of `Policy` that does not itself grant any rights, but can be used to publicise which data an entity can provide and under which conditions. An `Offer` consists of three main parts:
+DSP relies on members using ODRL `Offer`s to exchange information on the datasets they offer and under which conditions. In ODRL, an `Offer` is a specific kind of `Policy` that does not itself grant any rights, but can be used to publicize which data an entity can provide and under which conditions. An `Offer` consists of three main parts:
 
 * a description of the data it concerns (typically as `Asset`s or `Asset Collection`s),
 * the conditions under which that data would be made available (defined as `Rule`s), and

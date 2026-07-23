@@ -82,7 +82,7 @@ All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany),
 
 The Policy Impact Report is intended for non-technical users in local government, e.g. policy officers, sustainability coordinators, and decision-makers who need to understand the policy footprint of their city's formal decisions without querying raw data or interpreting linked data structures.
 
-<table><thead><tr><th width="291.431640625">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P2</strong> Semantic framework owner</td><td>Defines and maintains the SDG concept scheme used as the codelist, ensuring the hierarchy is correctly modelled and labelled in linked data form.</td></tr><tr><td><strong>P3</strong> Enrichment provider</td><td>Runs the AI annotation pipeline that generates the SDG-annotated dataset; produces the <code>oa:Annotation</code> objects that feed the report.</td></tr><tr><td><strong>P4</strong> Domain validator</td><td>Reviews AI-generated codelist mappings via the HV interface and votes on their accuracy, e.g. a sustainability officer with knowledge of the SDG framework.</td></tr><tr><td><strong>P5</strong> Non-technical application user</td><td>Primary audience for the Policy Impact Report, who interacts with the report as a consumer –filtering, exploring, and drawing conclusions– without needing to understand the underlying linked data or AI pipeline.</td></tr></tbody></table>
+<table><thead><tr><th width="291.431640625">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P2</strong> Semantic framework owner</td><td>Defines and maintains the SDG concept scheme used as the codelist, ensuring the hierarchy is correctly modeled and labeled in linked data form.</td></tr><tr><td><strong>P3</strong> Enrichment provider</td><td>Runs the AI annotation pipeline that generates the SDG-annotated dataset; produces the <code>oa:Annotation</code> objects that feed the report.</td></tr><tr><td><strong>P4</strong> Domain validator</td><td>Reviews AI-generated codelist mappings via the HV interface and votes on their accuracy, e.g. a sustainability officer with knowledge of the SDG framework.</td></tr><tr><td><strong>P5</strong> Non-technical application user</td><td>Primary audience for the Policy Impact Report, who interacts with the report as a consumer –filtering, exploring, and drawing conclusions– without needing to understand the underlying linked data or AI pipeline.</td></tr></tbody></table>
 
 ### Functionality (Requirements)
 
@@ -98,7 +98,7 @@ The Policy Impact Report builds on two shared components described in their resp
 
 #### Codelist Mapping Tool
 
-<table><thead><tr><th width="499.8416748046875">Feature</th><th>Priority</th></tr></thead><tbody><tr><td>Classify decisions against any SKOS codelist (framework-agnostic, not SDG-specific)</td><td>Must-have</td></tr><tr><td>Operate in zero-shot LLM mode without labelled training data (cold start capability)</td><td>Must-have</td></tr><tr><td>Assess impact direction per annotation (positive / negative / neutral / unknown)</td><td>Must-have</td></tr><tr><td>Store codelist mapping results as <code>oa:Annotation</code> triples without modifying source data</td><td>Must-have</td></tr><tr><td>Record AI model at time of annotation</td><td>Must-have</td></tr><tr><td>Train a supervised classifier on validated annotations and replace LLM for future runs</td><td>Nice-to-have</td></tr></tbody></table>
+<table><thead><tr><th width="499.8416748046875">Feature</th><th>Priority</th></tr></thead><tbody><tr><td>Classify decisions against any SKOS codelist (framework-agnostic, not SDG-specific)</td><td>Must-have</td></tr><tr><td>Operate in zero-shot LLM mode without labeled training data (cold start capability)</td><td>Must-have</td></tr><tr><td>Assess impact direction per annotation (positive / negative / neutral / unknown)</td><td>Must-have</td></tr><tr><td>Store codelist mapping results as <code>oa:Annotation</code> triples without modifying source data</td><td>Must-have</td></tr><tr><td>Record AI model at time of annotation</td><td>Must-have</td></tr><tr><td>Train a supervised classifier on validated annotations and replace LLM for future runs</td><td>Nice-to-have</td></tr></tbody></table>
 
 #### Human Validation
 
@@ -127,7 +127,7 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 As with all annotations used in the DECIDe project, the annotations created for UC0.1 are expressed using the Web Annotation Vocabulary and are, as such, instances of the type `oa:Annotation`.
 
-To ensure reusability, the codelist labelling service is designed to map decisions to any `skos:Concept` from any codelist (`skos:ConceptScheme`), as defined by the Simple Knowledge Organization System. This makes the component reusable beyond the SDG mapping required for UC0.1; e.g. the same service is reused in UC1 for Restricted Mobility Zone classification.
+To ensure reusability, the codelist labeling service is designed to map decisions to any `skos:Concept` from any codelist (`skos:ConceptScheme`), as defined by the Simple Knowledge Organization System. This makes the component reusable beyond the SDG mapping required for UC0.1; e.g. the same service is reused in UC1 for Restricted Mobility Zone classification.
 
 Below is an example of an annotation that links a decision (`eli:Expression`) to a `skos:Concept` it has an impact on.
 
@@ -197,7 +197,7 @@ TODO
 
 Initially, the creation of custom codelist management tools was considered. These tools would allow the user to create their own codelist or import a csv file with the labels and descriptions of the concepts and turn that into a linked data codelist for them. However, there are already many tools on the market that do just that. [SEMIC even published a nice list of tools to manage codelists](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/toolkit). All of the tools there work on SKOS codelists. These can then easily be imported into the DECIDe triplestore as a migration (see the [migrations service](../README.md#migrations) in the Core Components section of UC0.0).
 
-Since the creation of codelists is a solved problem and not the core of the DECIDe project, we decided against creating our own solution. 
+Since the creation of codelists is a solved problem and not the core of the DECIDe project, we decided against creating our own solution.
 
 ### Final AI components (and why) (if any)
 
@@ -238,7 +238,7 @@ The current deployment operates in the Cold Start phase, gathering validated ann
 
 #### Phase 1: Cold Start classification (Zero-shot LLM)
 
-The primary classification strategy uses a Large Language Model in a zero-shot configuration, requiring no labelled training dataset.
+The primary classification strategy uses a Large Language Model in a zero-shot configuration, requiring no labeled training dataset.
 
 The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a single decision:
 
@@ -289,7 +289,7 @@ The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a s
 
 The zero-shot approach was chosen as the primary strategy because it offers several advantages during the cold-start phase:
 
-1. **No labelled data required.** Creating a high-quality, expert-labelled training dataset for municipal decisions is costly and domain-specific. With zero-shot classification, the codelist definition itself serves as the only "training" signal need to start the classification process.
+1. **No labelled data required.** Creating a high-quality, expert-labeled training dataset for municipal decisions is costly and domain-specific. With zero-shot classification, the codelist definition itself serves as the only "training" signal need to start the classification process.
 2. **Language-agnostic.** The LLM operates on the English translation of the decision, but the approach does not require language-specific keyword lists or language-specific training data. Adding a new source language only requires a translation step upstream.
 3. **Codelist-agnostic.** The same task code classifies SDGs, RMZ types, or any other SKOS codelist. The codelist is resolved dynamically from the job at runtime; no code changes are needed to switch codelists.
 4. **Adaptable through codelist enrichment.** Classification quality can be improved by enriching the codelist's `skos:definition` and `skos:prefLabel` values, without retraining any model. The richer the concept descriptions, the more context the LLM has for classification.
@@ -306,7 +306,7 @@ The `ClassifierTrainingTask` implements this training pipeline. To illustrate, s
 
 The pipeline consists of following steps:
 
-1. **Fetch labelled decisions.** The task queries the triplestore for all decisions with validated `oa:classifying` annotations in the AI graph, where the annotation body is a `skos:Concept` in the task's codelist. For each decision, it concatenates the available text fields (`eli:title`, `eli:description`, `eli-dl:decision_basis`, `epvoc:expressionContent`) into a single training text. In the example, this yields 500 labelled text-label pairs.
+1. **Fetch labeled decisions.** The task queries the triplestore for all decisions with validated `oa:classifying` annotations in the AI graph, where the annotation body is a `skos:Concept` in the task's codelist. For each decision, it concatenates the available text fields (`eli:title`, `eli:description`, `eli-dl:decision_basis`, `epvoc:expressionContent`) into a single training text. In the example, this yields 500 labeled text-label pairs.
 2. **Determine problem type.** The task inspects the training data to determine whether it is a single-label or multi-label classification problem. If any decision has more than one assigned concept, the problem is treated as multi-label classification; otherwise, single-label classification.
 3. **Prepare the dataset.** The training data is formatted into a Hugging Face dataset:
    * For single-label classification: each example has a text field and a label field (integer index). The dataset is split 90/10 into train/test sets, stratified by label when class sizes permit.
@@ -394,7 +394,7 @@ OSDG cannot be retrained, and text2sdg’s underlying systems are not trainable 
 
 Finally, existing tools are SDG specific by design. Extending them to other policy frameworks (e.g. local mobility taxonomies or thematic codelists) would require rebuilding the system from scratch. Even if one of these tools could be made to work for SDGs, the project requires classification across different frameworks (e.g. SDGs in UC0.1, Restricted Mobility Zone types in UC1, and future codelists). Maintaining separate specialized tools per framework would lead to a fragmented and operationally unsustainable setup, with duplicated pipelines, and more complex validation workflows.
 
-This motivated a purpose-built solution: a system capable of classifying decisions against any SKOS codelist out of the box, without prior labelled data, while also providing the infrastructure to build a validated dataset over time and train custom models with known, measurable performance on this specific domain.
+This motivated a purpose-built solution: a system capable of classifying decisions against any SKOS codelist out of the box, without prior labeled data, while also providing the infrastructure to build a validated dataset over time and train custom models with known, measurable performance on this specific domain.
 
 ## Final UI design (and why) (if any)
 
@@ -474,7 +474,7 @@ The current deployment operates in cold start mode: the LLM (Mistral Large 3) ge
 
 #### Classifier that is able to distinguish neutral impact and unknown
 
-The current classifier cannot distinguish between genuinely neutral impact –a decision that has no effect on a given concept– and unknown impact, where the model is not confident enough to assign a direction. Retraining with better-labelled data that preserves this distinction would yield higher-quality impact assessments and make the report more precise for end users.
+The current classifier cannot distinguish between genuinely neutral impact –a decision that has no effect on a given concept– and unknown impact, where the model is not confident enough to assign a direction. Retraining with better-labeled data that preserves this distinction would yield higher-quality impact assessments and make the report more precise for end users.
 
 #### Active learning to reduce annotation effort
 
