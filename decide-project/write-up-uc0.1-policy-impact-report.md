@@ -181,15 +181,43 @@ The codelist labeling service is the main component handling the work for UC0.1.
 **GitHub:** [https://github.com/semantic-ai/codelist-labeling-service](https://github.com/semantic-ai/codelist-labeling-service)
 
 
-#### Frontend policy impact
+#### Policy Impact Report frontend
 
-TODO
+The [`frontend-decide-policy-impact-report`](https://github.com/lblod/frontend-decide-policy-impact-report) is an Ember.js application built with the Appuniversum component library, in line with the other DECIDe and LBLOD frontends. It has two main routes:
 
-#### Policy impact service
+* **Landing (`/`)** – the user picks a local authority from a dropdown and clicks through to the report. The authority list is loaded from the data space via mu-cl-resources, reusing the same query the HV tool uses: organisations carrying the Flemish "Gemeente" classification and the `show-in-hvt` flag.
+* **Report (`/report`)** – the dashboard. The selected authority and any SDG filter are held as query parameters, making a particular report view shareable by URL. On entering the route, the app loads the SDG codelist and fires the service's aggregation endpoints in parallel; the selected SDG filter is passed through to the endpoints that support it.
 
-TODO
+State is centralised in two Ember services. `local-authority-data` loads and tracks the selectable authorities (via an `organization` mu-cl-resources model); `chart-data` holds the SDG list, fetches the aggregate figures, and derives every statistic, top-three list, and chart series shown on screen. Charts are rendered with [ECharts](https://echarts.apache.org/): a decisions-per-SDG chart (togglable between a donut and a bar view), a horizontal positive-vs-negative impact bar chart, and a decision-impact-over-time line chart. The time chart plots per-year positive/negative/unknown counts returned by the service; decisions whose year cannot be resolved are grouped into a separate "Unknown" bucket rather than being attributed to an arbitrary year.
 
-<mark style="background-color:$warning;">missing: PIR (frontend) itself, not just the component also what, how, why</mark>
+Validation is reached by deep-linking out to the standalone Human Validation tool. Every clickable figure –a percentage, a top-three SDG, an impact segment– builds a filtered `validate-expression-labels` URL (pre-setting the SDG concept scheme, the specific concept, the impact, and the municipality) and opens it in a new tab. The report and the HV tool therefore share a data model and filter vocabulary but remain separate applications.
+
+#### Policy Impact Report service
+
+The [`policy-impact-report-service`](https://github.com/lblod/policy-impact-report-service) is a lightweight, read-only microservice built on the `mu-javascript-template`. Its job is to turn the codelist annotations in the triplestore into the aggregate figures the report needs, so that the frontend never has to run analytical SPARQL itself. It exposes the following HTTP endpoints. All require a `governingBody` query parameter identifying the selected local authority; the two marked below also accept an optional, repeatable `sdg` parameter that restricts the figures to the selected SDG concept(s):
+
+| Endpoint                        | Returns                                                                                                                                                                                                                                        |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GET /total-decisions`          | The number of distinct decisions of the authority that have passed through the SDG classification job, counted via task provenance (`?task prov:generated ?annotation` for a job whose `ext:codelist` is the SDG scheme).                          |
+| `GET /linked-decisions-per-sdg` | The number of distinct decisions of the authority that are actually linked to at least one SDG concept. Accepts the optional `sdg` filter.                                                                                                        |
+| `GET /impact-by-sdg`            | Per-`(SDG, impact)` counts of distinct decisions. Annotations without an impact body are defaulted to `unknown`.                                                                                                                                 |
+| `GET /decisions-by-impact`      | Distinct-decision counts split by impact direction (`positive` / `negative`) across the authority's SDG-linked decisions. Accepts the optional `sdg` filter.                                                                                      |
+
+Together these back the report's headline statistics: "Decisions about SDGs" is the ratio of linked decisions (`linked-decisions-per-sdg`) to classified decisions (`total-decisions`), the positive/negative percentages come from `decisions-by-impact`, and the per-SDG charts are derived from the `impact-by-sdg` breakdown.
+
+The queries deliberately run as `mu-auth-sudo` requests. The aggregate figures join across graphs that no single unauthenticated session is granted to read together –the AI annotation graph, the jobs/tasks graph, and the ELI expression graph– so the service sends its SPARQL straight to the triplestore with the sudo header rather than going through mu-authorization. Because the published `@lblod/mu-auth-sudo` package targets a newer Node runtime and module system than the template provides, a minimal sudo client was implemented in-house on top of the built-in `fetch` (see `helpers/sudo-query.js`).
+
+The service is mounted behind the DECIDe dispatcher at `/policy-impact-report/`, where the frontend consumes it.
+
+{% hint style="info" %}
+The service's `README` still documents an earlier "annotation review" shape (a generic `/targets/:type` endpoint) that the service was scaffolded from. The endpoints described above reflect the service as actually built.
+{% endhint %}
+
+#### Known issues and compromises
+
+* **Authority roster tied to the Flemish classification.** The authority dropdown filters on the Flemish "Gemeente" classification (reused from the HV tool). Authorities that do not carry that classification will not appear in the list without adjusting the query.
+* **SDG concepts matched by position.** `chart-data` aligns its hard-coded SDG colour list with the codelist concepts fetched from the store by array index (sorted by notation). This is compact but brittle: it assumes the codelist returns exactly the 17 goals in notation order.
+* **Validation votes do not yet feed the report.** Annotations validated through the HV tool are not yet reflected in the report's underlying figures; the report currently visualises the AI-generated annotation set (see [Future work](#feeding-validated-annotations-back-into-the-report)).
 
 ### Other explored semantic components (and why not)
 
@@ -455,6 +483,10 @@ The validation journey explored approaches where users validate the SDG link and
 #### Date-based filtering on the main dashboard
 
 The main report dashboard does not offer date range filtering on its aggregate KPIs and charts –pilot data volume and temporal coverage were insufficient to make dashboard-level date filtering meaningful at the time of development. The dedicated "Decision impact over time" view does include start/end year filters. Adding date range filters to the top-level dashboard view would increase the report's utility for periodic reviews and annual reporting cycles, and becomes more viable as the data space matures.
+
+#### Feeding validated annotations back into the report
+
+The report currently visualises the AI-generated annotation set. Human Validation votes are stored as separate annotations but do not yet influence the figures shown in the report. Closing this loop –so that confirmed, corrected, and rejected annotations are reflected in the report's counts and impact splits– would make the report reflect human-validated ground truth rather than raw AI output. This is a natural next step now that both the report and the HV interface are in place, and would also make the "Decisions about SDGs" and impact statistics trustworthy enough for external reporting.
 
 #### Multi-city and cohort comparison
 
