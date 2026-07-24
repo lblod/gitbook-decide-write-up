@@ -140,7 +140,7 @@ The Virtuoso triplestore is great for SPARQL queries, but it doesn't have great 
 
 #### Search
 
-The search service ensures that data we want to perform fuzzy or vector searches on is replicated from the Virtuoso triplestore into the elastic search instance. It does this by watching for delta messages (see base architecture) and updating the elastic indexes as needed. The data to be indexed this way in configured in a configuration file. That way any `rdf:Type` and any property path starting from such a type can be indexed in elastic search.
+The search service ensures that data we want to perform fuzzy or vector searches on is replicated from the Virtuoso triplestore into the elastic search instance. It does this by watching for delta messages (see base architecture) and updating the elastic indexes as needed. The data to be indexed this way is configured in a configuration file. That way any `rdf:Type` and any property path starting from such a type can be indexed in elastic search.
 
 **GitHub:** [https://github.com/mu-semtech/mu-search](https://github.com/mu-semtech/mu-search)
 
@@ -156,7 +156,7 @@ To generate the embedding vectors, the embedding service uses an LLM model. By d
 
 #### Municipality linker service
 
-In this use case, the user may only be interested in questions regarding a specify local authority. E.g. the user will want to know which subsidies are available in Gent, subsidies in Freiburg are not helpful for the user. That means our `eli:Expressions` always need to be linked to the local authority that they belong to. This path can be different depending on where the data originates from. For structured data coming from OSLO or OPARL, this is easy, the link is provided to us in a structured manner. For expressions resulting from PDFs, this is not as straight forward, because the link may be provided by an unverified, AI-generated annotation or the AI service may even have failed to generate such a link at all as it couldn't find any. This is why for PDF processing, we ask the user to already provide us with the local authority owning the decision(s) in the PDF when starting the harvesting pipeline in UC0.
+In this use case, the user may only be interested in questions regarding a specifyic local authority. E.g. the user will want to know which subsidies are available in Gent, subsidies in Freiburg are not helpful for the user. That means our `eli:Expressions` always need to be linked to the local authority that they belong to. This path can be different depending on where the data originates from. For structured data coming from OSLO or OPARL, this is easy, the link is provided to us in a structured manner. For expressions resulting from PDFs, this is not as straight forward, because the link may be provided by an unverified, AI-generated annotation or the AI service may even have failed to generate such a link at all as it couldn't find any. This is why for PDF processing, we ask the user to already provide us with the local authority owning the decision(s) in the PDF when starting the harvesting pipeline in UC0.
 
 The municipality linker service, then provides a single, local predicate `ext:owningBody`, that can be indexed in elastic search to restrict the vector searches for expressions. Again, the municipality linker service is informed about changes to expressions, generates this link between the expression and the local authority that it belongs to. This again also generates a delta message, which is picked up by the search service to update its expression indexes.
 

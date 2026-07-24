@@ -312,7 +312,7 @@ The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a s
 
 The zero-shot approach was chosen as the primary strategy because it offers several advantages during the cold-start phase:
 
-1. **No labelled data required.** Creating a high-quality, expert-labeled training dataset for municipal decisions is costly and domain-specific. With zero-shot classification, the codelist definition itself serves as the only "training" signal need to start the classification process.
+1. **No labelled data required.** Creating a high-quality, expert-labeled training dataset for municipal decisions is costly and domain-specific. With zero-shot classification, the codelist definition itself serves as the only "training" signal needed to start the classification process.
 2. **Language-agnostic.** The LLM operates on the English translation of the decision, but the approach does not require language-specific keyword lists or language-specific training data. Adding a new source language only requires a translation step upstream.
 3. **Codelist-agnostic.** The same task code classifies SDGs, RMZ types, or any other SKOS codelist. The codelist is resolved dynamically from the job at runtime; no code changes are needed to switch codelists.
 4. **Adaptable through codelist enrichment.** Classification quality can be improved by enriching the codelist's `skos:definition` and `skos:prefLabel` values, without retraining any model. The richer the concept descriptions, the more context the LLM has for classification.
@@ -321,7 +321,7 @@ The zero-shot approach was chosen as the primary strategy because it offers seve
 
 The second phase relies on a traditional supervised classifier trained on validated annotations.
 
-The intended lifecycle is iterative: zero-shot predictions are reviewed by human validators, corrected where necessary, and accumulated into a curated reference dataset. This validated corpus then becomes the basis to train a smaller, more efficient model. This model can then classify new decisions, and its outputs can be reviewed and fed back into the system, creating a continuous improvement loop as illustrated bellow:
+The intended lifecycle is iterative: zero-shot predictions are reviewed by human validators, corrected where necessary, and accumulated into a curated reference dataset. This validated corpus then becomes the basis to train a smaller, more efficient model. This model can then classify new decisions, and its outputs can be reviewed and fed back into the system, creating a continuous improvement loop as illustrated below:
 
 <figure><img src="../.gitbook/assets/uc0.1-writeup-Page-3.drawio (1).png" alt=""><figcaption></figcaption></figure>
 

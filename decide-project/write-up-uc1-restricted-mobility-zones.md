@@ -16,15 +16,15 @@ The wanted deliverable is a solution that extracts this structured information f
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
-| Deliverable                                                                              | Activities                                                                                                                           |
-| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **D1.3** Data ready for decentralized ingestion into data space — scope of data plan UC1 | **T1.1-T1.7** Analyze available data sets and standards, develop and execute data plan for UC1                                       |
-| **D2.1.3** In-depth technical analyzes of current architecture UC1                       | **T2.1** In-depth analysis of current technical architecture at pilot sites & gap analysis                                           |
+| Deliverable                                                                              | Activities                                                                                                                          |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **D1.3** Data ready for decentralized ingestion into data space — scope of data plan UC1 | **T1.1-T1.7** Analyze available data sets and standards, develop and execute data plan for UC1                                      |
+| **D2.1.3** In-depth technical analyzes of current architecture UC1                       | **T2.1** In-depth analysis of current technical architecture at pilot sites & gap analysis                                          |
 | **D2.8** Thesauri and registries available for AI assisted enrichment                    | **T2.12** Define and set up thesauri and registries as input for labeling and matching                                              |
-| **D2.9** AI tool for labeling LD\&L available for UC1 ready                             | **T2.13** Define, develop, train and test open source semantic AI tool for labeling LD\&L, including interface for human review UC1 |
-| **D2.10** AI tool for labeling implemented at relevant pilot sites                      | **T2.14** Implement AI tool for labeling LD\&L at lead pilot and at least one following pilot site                                  |
-| **D3.3** Use case 1 implemented by Freiburg as lead pilot site                           | **T3.5–T3.7** UC1 implementation at Freiburg                                                                                         |
-| **D3.4** Use case 1 implemented by Ghent and/or Bamberg                                  | **T3.8** UC1 implementation at Ghent and/or Bamberg                                                                                  |
+| **D2.9** AI tool for labeling LD\&L available for UC1 ready                              | **T2.13** Define, develop, train and test open source semantic AI tool for labeling LD\&L, including interface for human review UC1 |
+| **D2.10** AI tool for labeling implemented at relevant pilot sites                       | **T2.14** Implement AI tool for labeling LD\&L at lead pilot and at least one following pilot site                                  |
+| **D3.3** Use case 1 implemented by Freiburg as lead pilot site                           | **T3.5–T3.7** UC1 implementation at Freiburg                                                                                        |
+| **D3.4** Use case 1 implemented by Ghent and/or Bamberg                                  | **T3.8** UC1 implementation at Ghent and/or Bamberg                                                                                 |
 
 ### Link to other deliverables
 
@@ -53,7 +53,7 @@ UC1 uses the same codelist mapping established in UC0.1, making the data model a
 ## Glossary
 
 {% hint style="info" %}
-See the [UC0.0 Data space glossary](write-up-uc0.0-data-space#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`,and Triplestore.
+See the [UC0.0 Data space glossary](write-up-uc0.0-data-space/#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`,and Triplestore.
 
 See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#glossary) for definitions of Context window, Dual-head NER model, (BERT) Encoder, Fine-tuning, LLM, NER, NEL, Ollama, Regex, Span, and Token.
 
@@ -100,24 +100,24 @@ UC1 builds on three shared components, documented elsewhere:
 
 ## Datasources, datasets and datastandards
 
-The shared data sources for all use cases are documented in the [write-up-uc0.0-data-space](write-up-uc0.0-data-space "mention"). This section covers the data sources and standards specific to UC1.
+The shared data sources for all use cases are documented in the [write-up-uc0.0-data-space](write-up-uc0.0-data-space/ "mention"). This section covers the data sources and standards specific to UC1.
 
 ### Data sources
 
-| Data source                        | Type/category                 | Brief description                                                                                                                                                                                                           |
-| ---------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ELI-normalized LD&L decisions | Unstructured text             | Municipal decisions ingested through the data space pipeline established in UC0.0. The textual content of the decision forms the input corpus for the UC1 mapping pipeline.                                                        |
-| AI enrichments (`oa:Annotation`) | Annotations             | Location and time annotations ingested through the AI pipeline in UC0.0.                                                       |
-| RMZ SKOS codelist                  | Controlled vocabulary         | A flat single-level SKOS codelist defining the Restricted Mobility Zone concept, with sub-types documented in `skos:definition`. Concept Scheme: `http://data.lblod.gift/id/conceptscheme/restricted-mobility-zone-simple`. |
-| Geopunt (Flanders)                 | Address and geometry registry | Authoritative address and geometry registry for Flanders, used to link extracted location entities from Ghent decisions to canonical geographic URIs.                                                                       |
-| OpenStreetMap / Nominatim          | Address and geometry registry | Open address and geometry registry used to link extracted location entities from German pilot city decisions (Freiburg, Bamberg) to canonical geographic URIs.                                                              |
+| Data source                      | Type/category                 | Brief description                                                                                                                                                                                                           |
+| -------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ELI-normalized LD\&L decisions   | Unstructured text             | Municipal decisions ingested through the data space pipeline established in UC0.0. The textual content of the decision forms the input corpus for the UC1 mapping pipeline.                                                 |
+| AI enrichments (`oa:Annotation`) | Annotations                   | Location and time annotations ingested through the AI pipeline in UC0.0.                                                                                                                                                    |
+| RMZ SKOS codelist                | Controlled vocabulary         | A flat single-level SKOS codelist defining the Restricted Mobility Zone concept, with sub-types documented in `skos:definition`. Concept Scheme: `http://data.lblod.gift/id/conceptscheme/restricted-mobility-zone-simple`. |
+| Geopunt (Flanders)               | Address and geometry registry | Authoritative address and geometry registry for Flanders, used to link extracted location entities from Ghent decisions to canonical geographic URIs.                                                                       |
+| OpenStreetMap / Nominatim        | Address and geometry registry | Open address and geometry registry used to link extracted location entities from German pilot city decisions (Freiburg, Bamberg) to canonical geographic URIs.                                                              |
 
 ### Datasets available in the data space
 
-| Dataset                                     | IdP/Authentication service | Country of origin | Domain                  | Shared within the project           | Reused within the project                  |
-| ------------------------------------------- | -------------------------- | ----------------- | ----------------------- | ----------------------------------- | ------------------------------------------ |
-| UC1 RMZ annotations (`oa:Annotation`) | Data space authentication  | Belgium / Germany | Mobility                | Yes — available via SPARQL endpoint | Yes — consumed by Human Validation Tool, and GIS tools at pilot sites |
-| Human feedback on LD&L decisions annotated with RMZ codelist mappings (`oa:Annotation`)                           | Data space authentication                          | Belgium (ABB)     | Mobility | Yes                                 | No             |
+| Dataset                                                                                  | IdP/Authentication service | Country of origin | Domain   | Shared within the project           | Reused within the project                                             |
+| ---------------------------------------------------------------------------------------- | -------------------------- | ----------------- | -------- | ----------------------------------- | --------------------------------------------------------------------- |
+| UC1 RMZ annotations (`oa:Annotation`)                                                    | Data space authentication  | Belgium / Germany | Mobility | Yes — available via SPARQL endpoint | Yes — consumed by Human Validation Tool, and GIS tools at pilot sites |
+| Human feedback on LD\&L decisions annotated with RMZ codelist mappings (`oa:Annotation`) | Data space authentication  | Belgium (ABB)     | Mobility | Yes                                 | No                                                                    |
 
 ### Data standards
 
@@ -246,6 +246,7 @@ The `LocationFormatter` performs several sub-steps:
 The result is a list of structured location entries, each with a `formatted_text` field containing the assembled address string, ready for display or geocoding.
 
 #### Example:
+
 Input span: `"At the level of Dorpstraat 23 and 25, 9000 Ghent"`\
 Output step 2 (simplified):
 
@@ -361,7 +362,7 @@ Steps 2 through 4 are part of the same UC0.0 AI pipeline execution. They run as 
 
 ## Final UI design
 
-UC1 does not have a purpose-built standalone user interface. The pipeline outputs are exposed through a SPARQL endpoint for GIS consumption and a downloadable distribution that can be generated periodically. Both can be found in our DCAT catalog, read more about this in our [write-up on DCAT](./write-up-uc0.0-data-space/write-up-dcat.md) .
+UC1 does not have a purpose-built standalone user interface. The pipeline outputs are exposed through a SPARQL endpoint for GIS consumption and a downloadable distribution that can be generated periodically. Both can be found in our DCAT catalog, read more about this in our [write-up on DCAT](write-up-uc0.0-data-space/write-up-dcat.md) .
 
 That said, this use case has 2 relevant interfaces, related to the Human Validation of AI-produced annotations:
 
@@ -380,7 +381,7 @@ Once the user selects the local authority and the codelist (within DECIDe i.e. t
 
 In addition to selecting the codelist, the user can also select sub-elements in the codelist. This is not relevant in this use case, as we work with a flat, single-level codelist. This is, however, relevant in UC0.1, and is explained in more details in the [design section of the write-up for UC0.1.](write-up-uc0.1-policy-impact-report.md#final-ui-design-and-why-if-any)
 
-Once the filters have been applied, the user can validate the different decisions the same way they validate the discovered entities in UC0.0, namely with a thumbs up/down. Once small difference is, that in UC0.0, the user can read the decision in a split-screen to get enough context to validate the discovered entity. Because the entity the user is validating in this use case is about the whole decision, and there is no need to highlight specific parts of the text, the team has decided to only provide an external link to the decision, where the user can read the whole decision as it is published, in a different tab.
+Once the filters have been applied, the user can validate the different decisions the same way they validate the discovered entities in UC0.0, namely with a thumbs up/down. One small difference is, that in UC0.0, the user can read the decision in a split-screen to get enough context to validate the discovered entity. Because the entity the user is validating in this use case is about the whole decision, and there is no need to highlight specific parts of the text, the team has decided to only provide an external link to the decision, where the user can read the whole decision as it is published, in a different tab.
 
 ## Testing approach
 

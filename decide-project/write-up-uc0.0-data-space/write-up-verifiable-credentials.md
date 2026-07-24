@@ -92,7 +92,7 @@ There are two ways we demonstrate the value of Verifiable Credentials in DECIDe:
 * Data Space Membership Credential
 * 'Buying' a credential to access to a non-public distribution
 
-See below [#credential-use cases](write-up-verifiable-credentials.md#credential-use cases "mention") for more detail.
+See below \[#credential-use cases]\(write-up-verifiable-credentials.md#credential-use cases "mention") for more detail.
 
 ## Datasources, datasets and datastandards
 
@@ -245,7 +245,7 @@ For more information on the implementation choices made, see the readme on [our 
 
 ### Human-to-machine only
 
-Currently, we only support human-to-machine interaction for our credentials, meaning that only humans using supported wallet applications can interact with our issuer and verifier service. Human-to-machine interactions using wallet applications had the best support. We didn't find plug-and-play solutions for machine-to-machine interaction that matched our the issuer/verifier architecture. We decided to keep machine-to-machine credentials as possible future work. (see [#possible-future-work](write-up-verifiable-credentials.md#possible-future-work "mention"))
+Currently, we only support human-to-machine interaction for our credentials, meaning that only humans using supported wallet applications can interact with our issuer and verifier service. Human-to-machine interactions using wallet applications had the best support. We didn't find plug-and-play solutions for machine-to-machine interaction that matched the issuer/verifier architecture. We decided to keep machine-to-machine credentials as possible future work. (see [#possible-future-work](write-up-verifiable-credentials.md#possible-future-work "mention"))
 
 ### Identity methods
 
@@ -462,7 +462,7 @@ We don't currently have a data space membership credential for organizations. Th
 Once M2M support is in place, a DECIDe Data Space Membership Credential for organizations would be a relatively straightforward extension:
 
 * the organization publishes their `did:web`
-* set up a service to interact with the DECIDe OID4VCI issuance service signed with the private key corresponding to their their `did:web`,
+* set up a service to interact with the DECIDe OID4VCI issuance service signed with the private key corresponding to their `did:web`,
 * and receive a signed verifiable credential linked to the `did:web`, thus providing proof they adhere to the data space Rulebook.
 
 #### Other issuer services

@@ -282,7 +282,7 @@ When the job controller creates a new task, it copies the previous task's result
 
 Pipelines often need to run repeatedly on a fixed schedule. This is handled by scheduled jobs and the scheduled job controller. A `http://vocab.deri.ie/cogs#ScheduledJob` looks exactly like a regular job, with one addition: a `http://redpencil.data.gift/vocabularies/tasks/schedule` property pointing to a cron expression. The scheduled job controller monitors these resources and, at the right moments, creates corresponding regular jobs in the triplestore, which are then picked up by the job controller as usual.
 
-The scheduled job controller is notified about the creation of new scheduled jobs though delta messages and then sets timers for the next execution of a job. It does not respond to HTTP calls coming in from the dispatcher.
+The scheduled job controller is notified about the creation of new scheduled jobs through delta messages and then sets timers for the next execution of a job. It does not respond to HTTP calls coming in from the dispatcher.
 
 **GitHub**: [https://github.com/lblod/scheduled-job-controller-service](https://github.com/lblod/scheduled-job-controller-service)
 
@@ -461,7 +461,7 @@ A general overview of the AI pipeline is given in the <mark style="background-co
 
 All outputs of the AI pipeline are stored as `oa:Annotation` triples in the triplestore, following the W3C Web Annotation data model. Source ELI data is never modified; enrichment results are always additive.
 
-Calls to LLMs were implemented using the langchain framework, meaning through configuration users can swap to other providers (from local to cloud-based).&#x20;
+Calls to LLMs were implemented using the langchain framework, meaning through configuration users can swap to other providers (from local to cloud-based).
 
 #### Translation Task
 
@@ -481,7 +481,7 @@ The segmentation task follows the translation task and operates on the English t
 
 The discovered entities from the segmentation task are saved in the triplestore as annotations. The segmentation step relies on Mistral Medium 3.5, a proprietary LLM hosted externally within the European Union.
 
-As a general approach, the text is broken down into sentences and a line number is added. Next the LLM is asked create the sections (e.g., motivation line 6 to 10) which is reconstructed into tags on the original text. Such approach saves output tokens and is a lot faster in comparison to a naive approach where e.g., the entire corpus is replicated by the LLM.&#x20;
+As a general approach, the text is broken down into sentences and a line number is added. Next the LLM is asked create the sections (e.g., motivation line 6 to 10) which is reconstructed into tags on the original text. Such approach saves output tokens and is a lot faster in comparison to a naive approach where e.g., the entire corpus is replicated by the LLM.
 
 <table><thead><tr><th width="212.326171875">Entity</th><th>Description</th></tr></thead><tbody><tr><td>TITLE</td><td>The official title of the municipal decision or document.</td></tr><tr><td>PARTICIPANTS</td><td>A metadata block listing the individuals involved in the meeting or decision. This often includes lists of who was present (nl: <em>Aanwezig</em>), excused/absent (nl: <em>Verontschuldigd</em>), the responsible official (nl: <em>Verantwoordelijk</em>), the secretary (nl: <em>Secretaris</em>), etc.</td></tr><tr><td>MOTIVATION</td><td>The contextual background, reasoning, and justification for the decision. This includes the direct cause or trigger (nl: <em>aanleiding</em>)</td></tr><tr><td>PREVIOUS_DECISIONS</td><td>Specific references, citations, or summaries of prior decisions that are directly linked to the current document and provide legal or historical context for the resolution being passed.</td></tr><tr><td>LEGAL_FRAMEWORK</td><td>Citations of the specific laws, regulations, or legal precedents. This includes both the general regulations that give the municipality the authority to act (nl: <em>regelgeving waaruit blijkt dat het orgaan bevoegd is/Regelgeving bevoegdheid</em>) and the specific legal grounds on which this particular decision is based (nl: <em>op basis van welke regels (rechtsgronden) wordt deze beslissing genomen/Wetgeving</em>).</td></tr><tr><td>DECISION</td><td>The core, binding content of the decision; the text that outlines what is being formally enacted, ruled, or established.</td></tr><tr><td>VOTING</td><td>The specific record of votes. This can range from a simple statement (e.g., "unanimously adopted", "20 votes for, 5 against") to a detailed breakdown including the names of proponents (nl: <em>voorstanders</em>), opponents (nl: <em>tegenstanders</em>), and abstentions (nl: <em>onthouding(en)</em>).</td></tr><tr><td>ARTICLE</td><td>The specific, numbered provisions, rules, or regulations that make up the operative part of the decision (e.g., "Article 1," "Article 2").</td></tr></tbody></table>
 
@@ -604,7 +604,7 @@ This may reduce the number of entities that we can find true URIs for in the nam
 
 ## Final UI design (and why) (if any)
 
-The pipelines' only user-facing interface is thee [harvester frontend](write-up-uc0.0-pipelines.md#harvester-frontend) described in the Job Controller section of Final architecture above. It provides an overview of all running and completed jobs, allows users to trigger new job runs manually, and exposes each task's input and results containers for inspection. Because the frontend extends an existing ABB interface for job/task management rather than introducing new interaction patterns, no new design work was required.
+The pipelines' only user-facing interface is the [harvester frontend](write-up-uc0.0-pipelines.md#harvester-frontend) described in the Job Controller section of Final architecture above. It provides an overview of all running and completed jobs, allows users to trigger new job runs manually, and exposes each task's input and results containers for inspection. Because the frontend extends an existing ABB interface for job/task management rather than introducing new interaction patterns, no new design work was required.
 
 ### Other explored UI design (and why not)
 
