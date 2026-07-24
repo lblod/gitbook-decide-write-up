@@ -209,10 +209,6 @@ The queries deliberately run as `mu-auth-sudo` requests, because the aggregate f
 
 The service is mounted behind the DECIDe dispatcher at `/policy-impact-report/`, where the frontend consumes it.
 
-{% hint style="info" %}
-The service's `README` still documents an earlier "annotation review" shape (a generic `/targets/:type` endpoint) that the service was scaffolded from. The endpoints described above reflect the service as actually built.
-{% endhint %}
-
 #### Known issues and compromises
 
 * **Authority roster tied to the Flemish classification.** The authority dropdown filters on the Flemish "Gemeente" classification (reused from the HV tool). Authorities that do not carry that classification will not appear in the list without adjusting the query.
