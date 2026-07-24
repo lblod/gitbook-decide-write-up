@@ -137,7 +137,7 @@ private-ds-ex:policy a odrl:Offer, ext:RestrictedPolicy ;
         a odrl:Prohibition ;
         odrl:assigner <http://ds.decide.lblod.info> ;
         odrl:target private-ds-ex:dataset ;
-        odrl:action odrl:read, odrl:write ;
+        odrl:action odrl:read, odrl:modify ;
     ] .
 ```
 
