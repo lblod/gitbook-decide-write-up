@@ -71,11 +71,13 @@ The primary audience for UC2 is citizens seeking to understand which decisions, 
 
 ### Functionality (requirements)
 
-UC2 is a question-answering microservice with a chat-style front-end. The back-end exposes a single endpoint that accepts a free-text question and an optional top-N parameter, and returns a generated answer together with a list of source documents. The front-end guides the user to select a local authority and pose a question, presents the response alongside the source decisions, and provides a Human Validation (HV) mechanism for signaling whether the answer and individual sources are correct. Each question, response, source set, and validation result is saved to a persistent store for data quality and model improvement use; this store is not exposed to end users.
+UC2 is a question-answering microservice with a chat-style front-end. The back-end exposes a single endpoint that accepts a local authority, a free-text question and an optional top-N parameter, and returns a generated answer together with a list of source documents.&#x20;
+
+The front-end guides the user to select a local authority and pose a question, presents the response alongside the source decisions, and provides a Human Validation (HV) mechanism for signaling whether the answer and individual sources are correct. Each question, response, source set, and validation result is saved to a persistent store for data quality and model improvement use; this store is not exposed to end users.
 
 The underlying mechanism is a Retrieval-Augmented Generation (RAG) pipeline: the question is embedded into a vector, semantically similar subsidy documents are retrieved, their metadata is enriched via SPARQL, and a Large-Language Model (LLM) generates an answer strictly grounded in the retrieved context. The service is stateless, language-aware, and provider-agnostic with respect to the LLM backend.
 
-<table><thead><tr><th width="620.93359375">Requirement</th><th>Priority</th></tr></thead><tbody><tr><td>LD&#x26;L sourced from the data space</td><td>Must-have</td></tr><tr><td>Natural-language question input</td><td>Must-have</td></tr><tr><td>LLM-generated answer grounded in retrieved source decisions</td><td>Must-have</td></tr><tr><td>Trace the response back to the source decisions, with clickable links</td><td>Must-have</td></tr><tr><td>Questions and responses supported in Dutch and German</td><td>Must-have</td></tr><tr><td>Human validation of the generated response and its source decisions</td><td>Must-have</td></tr><tr><td>Each question, response, source set, and validation saved for data quality use; not exposed to users</td><td>Must-have</td></tr><tr><td>Filter to limit search to a specific local authority</td><td>Nice to have</td></tr><tr><td>Suggested example questions sourced from partner input</td><td>Nice to have</td></tr><tr><td>Follow-up question support within an existing conversation context</td><td>Nice to have</td></tr><tr><td>Widget embeddable in a local authority's website or platform</td><td>Nice to have</td></tr></tbody></table>
+<table><thead><tr><th width="620.93359375">Requirement</th><th>Priority</th></tr></thead><tbody><tr><td>LD&#x26;L sourced from the data space</td><td>Must-have</td></tr><tr><td>Natural-language question input</td><td>Must-have</td></tr><tr><td>LLM-generated answer grounded in retrieved source decisions</td><td>Must-have</td></tr><tr><td>Trace the response back to the source decisions, with clickable links</td><td>Must-have</td></tr><tr><td>Questions and responses supported in Dutch and German</td><td>Must-have</td></tr><tr><td>Human validation of the generated response and its source decisions</td><td>Must-have</td></tr><tr><td>Each question, response, source set, and validation saved for data quality use; not exposed to users</td><td>Must-have</td></tr><tr><td>Filter to limit search to a specific local authority</td><td>Must-have</td></tr><tr><td>Suggested example questions sourced from partner input</td><td>Nice to have</td></tr><tr><td>Follow-up question support within an existing conversation context</td><td>Nice to have</td></tr><tr><td>Widget embeddable in a local authority's website or platform</td><td>Nice to have</td></tr></tbody></table>
 
 ## Datasources, datasets and datastandards
 
@@ -282,6 +284,20 @@ The interface is in English, avoiding the overhead of maintaining three separate
 N/A
 
 ## Testing approach
+
+### Deployed Test Instance
+
+The implemented application is accessible at [https://smart-search.decide.lblod.info](https://smart-search.decide.lblod.info)
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+On the start screen, the user must select a local authority, after which they may ask a free-text question, or select one of the categorized example questions below the "Send" button.
+
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+
+When a question is asked, the user is presented with an answer, accompanied by top\_n (3) sources as quotations. The answer as a whole can be evaluated by providing a thumbs up/down. Additionally, each source document quotation can also be evaluated in the same manner.
+
+<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 ### Risks & mitigations
 
