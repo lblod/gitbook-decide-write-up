@@ -244,7 +244,7 @@ For example, to define a `PartyCollection` containing users with administrator r
                   ext:sessionRole ?session_role .
     FILTER( ?session_role = \"admin\" )
   }""" ;
-  ext:queryParameters ("session_group", "session_role") ;
+  ext:queryParameters ("session_group" "session_role") ;
   dct:description "An optional description of this party collection" .
 ```
 
