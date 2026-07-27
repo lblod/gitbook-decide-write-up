@@ -300,7 +300,7 @@ For all pipelines, a great many decisions need to be processed at once. For each
 
 Like the singleton job service, the annotation job splitter service is a very specialized handler of Tasks and like any such service, it only reacts to delta messages and is not triggered by HTTP messages sent by the dispatcher service.
 
-**GitHub**: [https://github.com/lblod/harvesting-singleton-job-service](https://github.com/lblod/harvesting-singleton-job-service)
+**GitHub**: [https://github.com/lblod/annotation-job-splitter-service](https://github.com/lblod/annotation-job-splitter-service)
 
 #### Custom Task Execution Service
 
