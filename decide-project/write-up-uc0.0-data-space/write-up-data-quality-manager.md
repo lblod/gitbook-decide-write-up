@@ -43,7 +43,7 @@ See the [UC0.0 Data space glossary](./#glossary) for definitions of ELI, SHACL a
 
 ### Opportunity (problem, need, desire)
 
-The DECIDe data space ingests local decisions and legislation from multiple cities and enriches them with AI-generated annotations. As the volume of data in the triplestore grows and pipelines evolve, there is no systematic mechanism to verify that data continues to conform to the expected ELI structure. Data quality problems – missing required predicates, resources of the wrong type, malformed literals – can go undetected until they cause unexpected results in downstream services or applications. For example, decisions that are not compliant with ELI result in less or none AI enrichments. The need is for an automated, recurring validation layer that checks all core entities against a defined set of SHACL constraints and makes the results visible to the team without requiring manual SPARQL queries.
+The DECIDe data space ingests local decisions and legislation from multiple cities and enriches them with AI-generated annotations. As the volume of data in the triplestore grows and pipelines evolve, there is no systematic mechanism to verify that data continues to conform to the expected ELI structure. Data quality problems – missing required predicates, resources of the wrong type, malformed literals – can go undetected until they cause unexpected results in downstream services or applications. For example, decisions that are not compliant with ELI result in less or no AI enrichments. The need is for an automated, recurring validation layer that checks all core entities against a defined set of SHACL constraints and makes the results visible to the team without requiring manual SPARQL queries.
 
 ### Pilot partners
 
@@ -109,7 +109,7 @@ In this drawing, services are depicted as rectangles, the virtuoso triplestore i
 
 The data quality manager is a SHACL validation layer and is implemented by extending the existing shared LBLOD microservice `loket-report-generation-service`, which already contains a SHACL engine and a scheduling mechanism for periodic script execution. Rather than building a standalone validation service from scratch, the DECIDe team extended this service with the capabilities needed for the project and contributed those extensions back to the shared service, making them available to the broader LBLOD ecosystem.
 
-The validation script runs periodically via a cron job. It loads the target classes defined in the SHACL files, then iterates over all resources of each target class (Extension 1). Sampling can be enabled to iterate over a limited number of resources per target class (Extension 2). The resources are processed in batches, because the volume of decisions in the triplestore makes loading all resources into memory at once impractical. Processing in bounded batches keeps memory usage stable regardless of dataset size. For each batch, resources are loaded into a temporary in-memory store, validated against the relevant SHACL and SPARQL-based shapes, and the results are appended to the validation report in the triplestore.&#x20;
+The validation script runs periodically via a cron job. It loads the target classes defined in the SHACL files, then iterates over all resources of each target class (Extension 1). Sampling can be enabled to iterate over a limited number of resources per target class (Extension 2). The resources are processed in batches, because the volume of decisions in the triplestore makes loading all resources into memory at once impractical. Processing in bounded batches keeps memory usage stable regardless of dataset size. For each batch, resources are loaded into a temporary in-memory store, validated against the relevant SHACL and SPARQL-based shapes, and the results are appended to the validation report in the triplestore.
 
 At the end of each run, the previous report(s) are deleted so only the latest report is retained. This deletion process also deletes the report and its results in batches.
 
@@ -191,9 +191,9 @@ The validation service is part of the guidelines of the cities of deploying thei
 
 This way, the service is integrated and tested on the server of each city. By default, the application runs the service. No specific configuration is required by the city.
 
-The service uses a cron mechanism to periodically run the validations ([https://github.com/lblod/loket-report-generation-service/tree/master#reports](https://github.com/lblod/loket-report-generation-service/tree/master#reports)). By default, the SHACL validations will run every day at 03:00 ([https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35](https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35)).&#x20;
+The service uses a cron mechanism to periodically run the validations ([https://github.com/lblod/loket-report-generation-service/tree/master#reports](https://github.com/lblod/loket-report-generation-service/tree/master#reports)). By default, the SHACL validations will run every day at 03:00 ([https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35](https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35)).
 
-During testing, we discovered that validating all decisions causes a high load on the triple store: a validation issue in one municipality typically recurs for every decision. Therefore, we added sampling  to validate a limited set of 100 decisions in each validation run by default.
+During testing, we discovered that validating all decisions causes a high load on the triple store: a validation issue in one municipality typically recurs for every decision. Therefore, we added sampling to validate a limited set of 100 decisions in each validation run by default.
 
 Testing can be done by navigating to the provided REST API `/shacl-reports/latest/issues` .
 

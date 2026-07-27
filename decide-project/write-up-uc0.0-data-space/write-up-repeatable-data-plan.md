@@ -71,5 +71,3 @@ This page is under construction
 ### Possible future work LBLOD related
 
 ## Relevant links
-
-*
