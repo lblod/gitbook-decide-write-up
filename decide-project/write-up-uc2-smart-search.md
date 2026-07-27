@@ -89,10 +89,7 @@ The underlying mechanism is a Retrieval-Augmented Generation (RAG) pipeline: the
 
 ### Datasets available in the data space
 
-| Dataset                                              | IdP/Authentication service | Country of origin | Domain                | Shared within the project | Reused within the project |
-| ---------------------------------------------------- | -------------------------- | ----------------- | --------------------- | ------------------------- | ------------------------- |
-| Human validation votes on Answers (oa:Annotation)    | Data space authentication  | Belgium/Germany   | <p><br>Government</p> | Yes                       | No                        |
-| Human validation votes on Quotations (oa:Annotation) | Data space authentication  | Belgium/Germany   | Government            | Yes                       | No                        |
+The triple store stores the user's question, the returned answer, and its quotations, along with human validation votes on the answers and quotations. Because this data is highly sensitive (GDPR), we do not publish it using the [publish dataset script](https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-dcat#datasets-available-in-the-data-space).
 
 ### Data standards
 
