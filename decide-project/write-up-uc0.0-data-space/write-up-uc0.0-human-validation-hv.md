@@ -346,6 +346,6 @@ Embedding annotation validation directly within the local decision-publishing pl
 
 GitHub for human validation frontend: [https://github.com/lblod/frontend-decide-human-validator](https://github.com/lblod/frontend-decide-human-validator)
 
-GitHub for annotation-review service: [http://github.com/lblod/annotation-review-service](http://github.com/lblod/annotation-review-service)
+GitHub for annotation-review service: [https://github.com/lblod/annotation-review-service](https://github.com/lblod/annotation-review-service)
 
 Test environment for human validation tool: [https://human-validator.decide.lblod.info](https://human-validator.decide.lblod.info)
