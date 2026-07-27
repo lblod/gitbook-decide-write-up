@@ -121,7 +121,7 @@ private-ds-ex:dataservice a dcat:DataService ;
 
 private-ds-ex:policy a odrl:Offer, ext:RestrictedPolicy ;
     mu:uuid "1d8e1e34-ac8c-4fb8-845a-a9e8ca0e9f6b" ;
-    dct: "Only licensed users may access this content" ;
+    dct:description "Only licensed users may access this content" ;
     odrl:conflict odrl:perm ;
     odrl:permission [
         a odrl:Permission ;
