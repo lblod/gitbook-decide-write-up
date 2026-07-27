@@ -266,7 +266,7 @@ The primary classification strategy uses a Large Language Model in a zero-shot c
 The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a single decision:
 
 1. **Fetch the codelist.** The task resolves the SKOS `ConceptScheme` URI from the job that triggered it. It queries the triplestore for all `skos:Concept` entries in that scheme, retrieving their English `skos:prefLabel` values. This produces a list of concepts, each holding a concept URI and its label. The SDG codelist, for instance, can be viewed [here](https://github.com/lblod/app-decide/blob/203764139125744df4ff55757f645a8849837e02/config/migrations/add-sdg-codelist/20260310123607-add-simple-sdg-codelist.ttl).
-2. **Fetch the decision text.** The task retrieves the `epvoc:expressionContent` of the target `eli:Expression` from the triplestore. This is the full text of the decision, typically the English translation produced by the upstream Translation Task in the[ AI pipeline of UC0.0](write-up-uc0.1-policy-impact-report.md#uc0.0-pipelines-incl-codelist-mapping-tool).
+2. **Fetch the decision text.** The task retrieves the `epvoc:expressionContent` of the target `eli:Expression` from the triplestore. This is the full text of the decision, typically the English translation produced by the upstream Translation Task in the[ AI pipeline of UC0.0](./write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#translation-task).
 3.  **Construct the LLM prompt.** The task builds a prompt with two parts:
 
     * A **system prompt** that sets the role: _"You are a juridical and administrative assistant that must determine the best matching codes from a list with a given text."_

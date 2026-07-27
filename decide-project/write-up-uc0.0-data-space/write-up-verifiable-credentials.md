@@ -92,7 +92,7 @@ There are two ways we demonstrate the value of Verifiable Credentials in DECIDe:
 * Data Space Membership Credential
 * 'Buying' a credential to access to a non-public distribution
 
-See below \[#credential-use cases]\(write-up-verifiable-credentials.md#credential-use cases "mention") for more detail.
+See below [#credential-user-journeys](./write-up-verifiable-credentials.md#credential-user-journeys "mention") for more detail.
 
 ## Datasources, datasets and datastandards
 

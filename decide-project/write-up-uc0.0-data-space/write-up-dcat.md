@@ -166,7 +166,7 @@ The services used to realize the DCAT federation layer are shown in the image be
 
 <figure><img src="../../.gitbook/assets/lokale-bron-architecture-DCAT-components.jpg" alt=""><figcaption></figcaption></figure>
 
-In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core services, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](https://github.com/lblod/gitbook-decide-write-up/blob/master/decide-project/write-up-uc0.0-data-space/write-up-uc0.0-data-space#core-semantic.works-components). Services specific to the DCAT federation layer are described below.
+In this drawing, services are depicted as rectangles, the Virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core services, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](./README.md#core-semanticworks-components). Services specific to the DCAT federation layer are described below.
 
 #### Frontend DCAT
 
