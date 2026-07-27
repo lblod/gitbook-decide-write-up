@@ -191,7 +191,7 @@ This defines the ODRL subset appropriate for defining authorization policies. Th
 
 #### Mapping ODRL to semantic.works
 
-Now that we have identified the subset of ODRL concepts relevant for authorization policies, we have to examine what's needed to use it in DECIDe's linked data context. Therefore, the next sections describe how we map the identified ODRL subset broadly to semantic.works and specifically to its authorization component, [sparql-parser](https://github.com/mirdono/sparql-parser).
+Now that we have identified the subset of ODRL concepts relevant for authorization policies, we have to examine what's needed to use it in DECIDe's linked data context. Therefore, the next sections describe how we map the identified ODRL subset broadly to semantic.works and specifically to its authorization component, [sparql-parser](https://github.com/mu-semtech/sparql-parser).
 
 In a linked-data context, the objects an authorization rule applies to are not high-level entities like movies, but the RDF triples that constitute those entities. The mapping from generic ODRL to semantic.works therefore works as follows.
 
@@ -208,7 +208,7 @@ Expanding our table above, and applying it to an example within the context of D
 #### Detailed mapping: ODRL to sparql-parser's Lisp-style configuration
 
 {% hint style="warning" %}
-This section requires technical knowledge of how to write authorization policies for sparql-parser using its Lisp-style configuration interface. If you are looking for an explanation to simply configure sparql-parser using ODRL instead please consult its [README](https://github.com/mirdono/sparql-parser/blob/upstream/feature/odrl-configuration/README.md#L400).
+This section requires technical knowledge of how to write authorization policies for sparql-parser using its Lisp-style configuration interface. If you are looking for an explanation to simply configure sparql-parser using ODRL instead please consult its [README](https://github.com/mu-semtech/sparql-parser/tree/feature/odrl-configuration#defining-an-authorization-policy-in-odrl).
 {% endhint %}
 
 This section documents the precise mapping between sparql-parser's Lisp-style configuration macros and the corresponding resource types and predicates used in an ODRL configuration. The following table summarizes this mapping:
