@@ -150,7 +150,7 @@ These conditions are respectively a `Permission`, a `Duty`, and a `Prohibition`.
 
 ext:exampleOffer a odrl:Offer ;
   # The `target` and `assigner` will be shared for all contained rules, see <https://www.w3.org/TR/odrl-model/#composition-compact>
-  odrl:target ext:exampleDcatDataset ; # Fictious dataset for example purposes
+  odrl:target ext:exampleDcatDataset ; # Fictitious dataset for example purposes
   odrl:assigner ext:decideParty ;
   # Rules
   odrl:permission ext:readPermission ;
