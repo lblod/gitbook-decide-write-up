@@ -142,7 +142,7 @@ The Virtuoso triplestore is great for SPARQL queries, but it doesn't have great 
 
 #### Search
 
-The search service ensures that data we want to perform fuzzy or vector searches on is replicated from the Virtuoso triplestore into the elastic search instance. It does this by watching for delta messages (see base architecture) and updating the elastic indexes as needed. The data to be indexed this way is configured in a configuration file. That way any `rdf:Type` and any property path starting from such a type can be indexed in elastic search.
+The search service ensures that data we want to perform fuzzy or vector searches on is replicated from the Virtuoso triplestore into the elastic search instance. It does this by watching for delta messages (see base architecture) and updating the elastic indexes as needed. The data to be indexed this way is configured in a configuration file. That way any `rdf:type` and any property path starting from such a type can be indexed in elastic search.
 
 **GitHub:** [https://github.com/mu-semtech/mu-search](https://github.com/mu-semtech/mu-search)
 
@@ -152,7 +152,7 @@ The core idea in this use case is to generate embedding vectors for decisions an
 
 The embedding service also has an endpoint that can be used to generate the embedding for an arbitrary string. The question answering service uses this endpoint to generate the embedding for the user's question.
 
-To generate the embedding vectors, the embedding service uses an LLM model. By default this is done locally using Ollama and the `embeddinggemma:300m` model.
+To generate the embedding vectors, the embedding service uses an embedding model. By default this is done locally using Ollama and the `embeddinggemma:300m` model. 
 
 **GitHub:** [https://github.com/semantic-ai/embedding-service](https://github.com/semantic-ai/embedding-service)
 
@@ -233,7 +233,7 @@ Answer generation is handled by an LLM invoked through LangChain's init\_chat\_m
 
 The LLM is given a custom system prompt that enforces three constraints: the answer must be grounded exclusively in the retrieved documents, the LLM must explicitly state when none of the retrieved documents are relevant to the question, and the answer must be produced in the same language as the question. This last constraint handles language switching transparently without any code-level branching between different language inputs.
 
-The same approach is taken for the LLM that generates the embeddings for the embedding service, but the two LLMs are separate models as they fulfill different roles.
+A similar provider-agnostic approach is taken for the embedding model used by the embedding service, though it is a distinct model serving a different purpose.
 
 ## Final UI design (and why) (if any)
 
