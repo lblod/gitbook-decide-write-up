@@ -6,6 +6,10 @@ description: >-
 
 # Write-up UC0.0 Data space
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
+
+
 {% hint style="warning" %}
 This page is under construction
 {% endhint %}
@@ -118,7 +122,7 @@ The DECIDe data space is organized around four layers that build on one another.
 
 **Concrete applications** are built on top of the enriched decisions. UC0.1 delivers a Policy Impact Report visualizing how local decisions across the three cities relate to the UN Sustainable Development Goals. UC1 uses the NER pipeline and codelist mapping to identify and classify decisions concerning restricted mobility zones. UC2 provides an AI-powered smart search interface over the full LD\&L corpus.
 
-The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each use case  write-up documents the architecture of its own layer in detail, adding specialized services to the base architecture; this section will continue to describe the core micro-services that will be reused across all use cases.
+The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each use case write-up documents the architecture of its own layer in detail, adding specialized services to the base architecture; this section will continue to describe the core micro-services that will be reused across all use cases.
 
 ### Core semantic.works components
 

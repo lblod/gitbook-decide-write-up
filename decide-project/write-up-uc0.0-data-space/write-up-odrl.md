@@ -4,6 +4,8 @@ description: Authorization Policies Store
 
 # Write-up ODRL
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
 ## Description UC/wanted deliverable
 
 The intention of the DECIDe project is to build a data space connecting multiple local authorities –with different systems, different roles, and different data, both publicly available datasets as well as non-public or sensitive information. It thus needs access policies that travel with the data: explicit, machine-readable, and understandable by anyone participating in the space, not just the team maintaining the configuration files.

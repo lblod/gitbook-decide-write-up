@@ -4,6 +4,8 @@ description: Human Validation
 
 # Write-up UC0.0 Human Validation (HV)
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
 {% hint style="warning" %}
 This page is under construction
 {% endhint %}
@@ -102,19 +104,18 @@ In this write-up, we are focusing on the shared logic, data model, and governing
 
 ### Data sources
 
-| Name of data source                             | Type/category          | Brief description                                                                               |
-| ----------------------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------- |
-| Named Entity Recognition enrichments (`oa:Annotation`) | Internal (triplestore) | The enrichment outputs produced by the NER service. |
-| Named Entity Linking enrichments (`oa:Annotation`) | Internal (triplestore) | The enrichment outputs produced by the NEL service. |
-| Codelist mapping enrichments (`oa:Annotation`) | Internal (triplestore) | The enrichment outputs produced by the codelist mapping service. |
-| Smart search response (`schema:Answer` and `schema:Quotation`) | Internal (triplestore) | The answer produced by the question answering service. |
-
+| Name of data source                                            | Type/category          | Brief description                                                |
+| -------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------- |
+| Named Entity Recognition enrichments (`oa:Annotation`)         | Internal (triplestore) | The enrichment outputs produced by the NER service.              |
+| Named Entity Linking enrichments (`oa:Annotation`)             | Internal (triplestore) | The enrichment outputs produced by the NEL service.              |
+| Codelist mapping enrichments (`oa:Annotation`)                 | Internal (triplestore) | The enrichment outputs produced by the codelist mapping service. |
+| Smart search response (`schema:Answer` and `schema:Quotation`) | Internal (triplestore) | The answer produced by the question answering service.           |
 
 ### Datasets available in the data space
 
-| Dataset                                  | IdP/Authentication service | Country of origin                                                        | Domain     | Shared within the project | Reused within the project      |
-| ---------------------------------------- | -------------------------- | ------------------------------------------------------------------------ | ---------- | ------------------------- | ------------------------------ |
-| Human validation feedback (`oa:Annotation`) | Data space authentication                        | Belgium / Germany | Government | Yes                       | Yes - shown as aggregate number in Human Validation Tool, Codelist mapping votes are reused by the codelist mapping service for training. |
+| Dataset                                     | IdP/Authentication service | Country of origin | Domain     | Shared within the project | Reused within the project                                                                                                                 |
+| ------------------------------------------- | -------------------------- | ----------------- | ---------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Human validation feedback (`oa:Annotation`) | Data space authentication  | Belgium / Germany | Government | Yes                       | Yes - shown as aggregate number in Human Validation Tool, Codelist mapping votes are reused by the codelist mapping service for training. |
 
 ### Data standards
 

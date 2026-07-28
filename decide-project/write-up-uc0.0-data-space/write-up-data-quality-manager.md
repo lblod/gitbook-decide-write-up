@@ -4,6 +4,8 @@ description: Data Validation & Monitoring
 
 # Write-up Data Quality Manager
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
 ## Description UC/wanted deliverable
 
 The DECIDe project builds a data space for local decisions and legislation (LD\&L) across participating pilot cities. As AI enrichment pipelines and data ingestion processes populate the triplestore with ELI-structured data, it becomes essential to verify that the data conforms to the expected shapes and constraints. Without systematic validation, data quality issues –missing required properties, incorrect types, broken links– can accumulate silently and undermine the reliability of the data space.

@@ -4,6 +4,8 @@ description: Universal Trust Registry
 
 # Write-up Verifiable Credentials
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
 ## Description UC/wanted deliverable
 
 Verifiable Credentials (VC) is a foundational component of UC0.0 – "Building up the Data Space" – within the DECIDe project. Rather than a standalone use case, VC is a horizontal enabling technology that underpins trust and access control across the entire data space.

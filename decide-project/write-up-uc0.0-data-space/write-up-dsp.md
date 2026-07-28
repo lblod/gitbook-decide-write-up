@@ -4,6 +4,8 @@ description: Dataspace Protocol
 
 # Write-up DSP
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
 {% hint style="info" %}
 The project proposal does not mention the Dataspace Protocol by name. The team has interpreted DSP alongside DCAT as part of the Federation Layer commitment. This interpretation aligns with the DS4SSCC Reference Architecture, which positions DSP as the interoperability protocol layer sitting above the Federating Catalogue.
 {% endhint %}

@@ -4,6 +4,8 @@ description: Smart Search
 
 # Write-up UC2 Smart Search
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
 {% hint style="warning" %}
 This page is under construction
 {% endhint %}
@@ -71,7 +73,7 @@ The primary audience for UC2 is citizens seeking to understand which decisions, 
 
 ### Functionality (requirements)
 
-UC2 is a question-answering microservice with a chat-style front-end. The back-end exposes a single endpoint that accepts a local authority, a free-text question and an optional top-N parameter, and returns a generated answer together with a list of source documents.&#x20;
+UC2 is a question-answering microservice with a chat-style front-end. The back-end exposes a single endpoint that accepts a local authority, a free-text question and an optional top-N parameter, and returns a generated answer together with a list of source documents.
 
 The front-end guides the user to select a local authority and pose a question, presents the response alongside the source decisions, and provides a Human Validation (HV) mechanism for signaling whether the answer and individual sources are correct. Each question, response, source set, and validation result is saved to a persistent store for data quality and model improvement use; this store is not exposed to end users.
 
@@ -110,7 +112,7 @@ The answer is based on a set of decisions, ranked by confidence of being relevan
 
 <figure><img src="../.gitbook/assets/image (35).png" alt="" width="181"><figcaption><p>Fig. 2 Quotations are used as extension of decisions.</p></figcaption></figure>
 
-While the HVT annotates on AI annotations, in UC2 users can add a thumbs up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [#web-annotation-model](write-up-uc0.0-data-space/README.md#web-annotation-model "mention").
+While the HVT annotates on AI annotations, in UC2 users can add a thumbs up (approve) or down (reject) on the answer of the LLM. They can also review the related quotations separately: was this decision a good datasource for answering my question? A `skos:Concept` representing the feedback is linked through an annotation with the `schema:Answer` (Fig. 3) or `schema:Quotation` (Fig. 4). UC2 is thus an implementation of the annotation model described in [#web-annotation-model](write-up-uc0.0-data-space/#web-annotation-model "mention").
 
 <figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption><p>Fig. 3: Answers can be annotated with feedback</p></figcaption></figure>
 
@@ -152,7 +154,7 @@ The core idea in this use case is to generate embedding vectors for decisions an
 
 The embedding service also has an endpoint that can be used to generate the embedding for an arbitrary string. The question answering service uses this endpoint to generate the embedding for the user's question.
 
-To generate the embedding vectors, the embedding service uses an embedding model. By default this is done locally using Ollama and the `embeddinggemma:300m` model. 
+To generate the embedding vectors, the embedding service uses an embedding model. By default this is done locally using Ollama and the `embeddinggemma:300m` model.
 
 **GitHub:** [https://github.com/semantic-ai/embedding-service](https://github.com/semantic-ai/embedding-service)
 

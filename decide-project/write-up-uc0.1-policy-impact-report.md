@@ -6,6 +6,8 @@ description: >-
 
 # Write-up UC0.1 Policy Impact Report
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
 {% hint style="info" %}
 **Note:** In the original project proposal, this use case is embedded within Use Case 0.
 
@@ -14,11 +16,11 @@ UC0.1 was scoped out from UC0 by the DECIDe team as a distinct use case. While U
 
 ## Description UC/wanted deliverable
 
-The DECIDe project proposal outlines an ambition to go beyond making local decisions available as structured linked data: it also foresees tools that can make the _policy relevance_ of those decisions legible. Specifically, the proposal describes the integration of AI-supported semantic enrichment as a mechanism for linking local decisions to strategic policy frameworks, such as the UN Sustainable Development Goals (SDGs).
+The DECIDe project proposal outlines an ambition to go beyond making local decisions available as structured linked data: it also foresees tools that can make the _**policy relevance**_ of those decisions legible. Specifically, the proposal describes the integration of AI-supported semantic enrichment as a mechanism for linking local decisions to strategic policy frameworks, such as the UN Sustainable Development Goals (SDGs).
 
 The underlying hypothesis is that local governments already produce formal decisions (LD\&L) that are consequential for achieving broader policy goals, but that the relationship between individual decisions and those goals is rarely made explicit in a structured, machine-readable way. The proposal envisions demonstrating that, given a standardized corpus of local decisions and an AI-assisted annotation pipeline, it becomes possible to generate meaningful policy insights at scale, without requiring manual review of every document.
 
-The envisioned deliverable is an interactive Policy Impact Report: a tool built on top of the DECIDe data space infrastructure that visualizes, in aggregated form, how local legislative and decision-making activity across the pilot cities relates to a chosen policy framework.
+The envisioned deliverable is an interactive **Policy Impact Report**: a tool built on top of the DECIDe data space infrastructure that visualizes, in aggregated form, how local legislative and decision-making activity across the pilot cities relates to a chosen policy framework.
 
 Within the project proposal, this maps to the following deliverables and tasks:
 
@@ -266,7 +268,7 @@ The primary classification strategy uses a Large Language Model in a zero-shot c
 The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a single decision:
 
 1. **Fetch the codelist.** The task resolves the SKOS `ConceptScheme` URI from the job that triggered it. It queries the triplestore for all `skos:Concept` entries in that scheme, retrieving their English `skos:prefLabel` values. This produces a list of concepts, each holding a concept URI and its label. The SDG codelist, for instance, can be viewed [here](https://github.com/lblod/app-decide/blob/203764139125744df4ff55757f645a8849837e02/config/migrations/add-sdg-codelist/20260310123607-add-simple-sdg-codelist.ttl).
-2. **Fetch the decision text.** The task retrieves the `epvoc:expressionContent` of the target `eli:Expression` from the triplestore. This is the full text of the decision, typically the English translation produced by the upstream Translation Task in the[ AI pipeline of UC0.0](./write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#translation-task).
+2. **Fetch the decision text.** The task retrieves the `epvoc:expressionContent` of the target `eli:Expression` from the triplestore. This is the full text of the decision, typically the English translation produced by the upstream Translation Task in the[ AI pipeline of UC0.0](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#translation-task).
 3.  **Construct the LLM prompt.** The task builds a prompt with two parts:
 
     * A **system prompt** that sets the role: _"You are a juridical and administrative assistant that must determine the best matching codes from a list with a given text."_

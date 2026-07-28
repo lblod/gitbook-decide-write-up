@@ -4,6 +4,8 @@ description: Federation Layer
 
 # Write-up DCAT
 
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+
 ## Description UC/wanted deliverable
 
 Any data space needs a mechanism for discoverability: participating entities must have a reliable, standards-based way to publish what data they make available, so that both human users and automated agents can find and assess it. The goal is for a DCAT catalog to sit at the highest-level entry point of the DECIDe data space, linking to the DCAT catalogs of all participating pilot partners. Each city hosts at least one catalog describing its own datasets; an overarching Federating Catalog then aggregates those local catalogs and signals which sources can be trusted within the data space.
