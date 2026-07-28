@@ -77,7 +77,7 @@ Three types of endpoints can be described in the catalog: SPARQL endpoints, LDES
 
 ### Datasets available in the data space
 
-DCAT Datasets (with distributions) are generated using the DECIDe `[publish dataset](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset#dcat)` script. Currently, 4 datasets are configured:
+DCAT Datasets (with distributions) are generated using the DECIDe [`publish dataset`](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset#dcat) script. Currently, 4 datasets are configured:
 
 | Dataset                                                                                                                                                                          | IdP/Authentication service | Country of origin | Domain     | Shared within the project | Reused within the project |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------------- | ---------- | ------------------------- | ------------------------- |
