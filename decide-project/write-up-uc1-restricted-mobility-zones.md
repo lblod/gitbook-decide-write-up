@@ -139,7 +139,7 @@ This requires an implementation of the datamodel described in the [write-up-uc0.
 
 * rdf:subject: refers to the ELI work
 * rdf:predicate: `prov:atLocation` is used to express that the location is where the decision has impact on (impact\_location by the refinement step - described below)
-* rdf:object: refers to an `rdf:Resource` with type `dct:Location` is used as body. The resource has a `rdfs:label` containing the location text in the decision and links to a `locn:Geometry` containing its coordinates in WKT format.
+* rdf:object: refers to an `rdfs:Resource` with type `dct:Location` is used as body. The resource has a `rdfs:label` containing the location text in the decision and links to a `locn:Geometry` containing its coordinates in WKT format.
 
 <figure><img src="../.gitbook/assets/image (30).png" alt="" width="375"><figcaption><p>Fig. 2</p></figcaption></figure>
 
