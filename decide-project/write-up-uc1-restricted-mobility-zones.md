@@ -278,8 +278,7 @@ Output step 5 (simplified):
         "postcode": "9000",
         "city": "Ghent",
         "formatted_text": "Dorpstraat 25, 9000 Ghent"
-     },
-
+     }
   ]
 ```
 
