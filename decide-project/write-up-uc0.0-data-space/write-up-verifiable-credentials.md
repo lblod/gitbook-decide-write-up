@@ -4,10 +4,6 @@ description: Universal Trust Registry
 
 # Write-up Verifiable Credentials
 
-{% hint style="warning" %}
-This page is under construction
-{% endhint %}
-
 ## Description UC/wanted deliverable
 
 Verifiable Credentials (VC) is a foundational component of UC0.0 – "Building up the Data Space" – within the DECIDe project. Rather than a standalone use case, VC is a horizontal enabling technology that underpins trust and access control across the entire data space.
@@ -92,7 +88,7 @@ There are two ways we demonstrate the value of Verifiable Credentials in DECIDe:
 * Data Space Membership Credential
 * 'Buying' a credential to access to a non-public distribution
 
-See below [#credential-user-journeys](./write-up-verifiable-credentials.md#credential-user-journeys "mention") for more detail.
+See below [#credential-user-journeys](write-up-verifiable-credentials.md#credential-user-journeys "mention") for more detail.
 
 ## Datasources, datasets and datastandards
 

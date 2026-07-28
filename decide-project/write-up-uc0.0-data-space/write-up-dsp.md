@@ -4,10 +4,6 @@ description: Dataspace Protocol
 
 # Write-up DSP
 
-{% hint style="warning" %}
-This page is under construction
-{% endhint %}
-
 {% hint style="info" %}
 The project proposal does not mention the Dataspace Protocol by name. The team has interpreted DSP alongside DCAT as part of the Federation Layer commitment. This interpretation aligns with the DS4SSCC Reference Architecture, which positions DSP as the interoperability protocol layer sitting above the Federating Catalogue.
 {% endhint %}
