@@ -17,6 +17,10 @@ Within the project proposal, this maps to the following deliverables and tasks:
 | <p><br><strong>D2.4</strong> (Adjusted) Data Quality Manager available</p>  | <p><strong>T2.6</strong> Adjust and test open source semantic Data Quality Manager,<br>implemented in Flanders (if needed).</p> |
 | **D2.5** (Adjusted) Data Quality Manager integrated at relevant pilot sites | **T2.7** Integrate Data Quality Manager in local DS German pilots.                                                              |
 
+{% hint style="info" %}
+This document contains all information for both deliverables/tasks. For D2.5/T2.7 specifically we point towards Pilot Partners and Testing approach specifically.&#x20;
+{% endhint %}
+
 ### Link to other deliverables
 
 #### UC0.0 Pipelines
