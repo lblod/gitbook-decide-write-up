@@ -34,20 +34,20 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 The HV is the human-in-the-loop counterpart to the AI pipelines. Once the pipelines produce AI-generated annotations those annotations are surfaced in the HV interfaces for domain expert review and voting.
 
-[write-up-uc0.0-human-validation-hv.md](write-up-uc0.0-human-validation-hv.md "mention")
+[write-up-uc0.0-human-validation-hv.md](../write-up-uc0.0-human-validation-hv.md "mention")
 
 #### Downstream use cases (UC0.1, UC1, UC2)
 
 The pipeline infrastructure is the foundational prerequisite for all downstream use cases in DECIDe. Without the ingestion and normalization layer, there is no common corpus of LD\&L decisions to work with; without the AI enrichment pipelines, there are no structured annotations for downstream applications to consume. UC0.1 Policy Impact Report, UC1 Restrictive Mobility Zones, and UC2 Smart Search all operate on ELI-normalized decisions and annotation outputs produced by these pipelines; none of them function without a working pipeline layer beneath them.
 
-[write-up-uc0.1-policy-impact-report.md](../write-up-uc0.1-policy-impact-report.md "mention")\
-[write-up-uc1-restricted-mobility-zones.md](../write-up-uc1-restricted-mobility-zones.md "mention")\
-[write-up-uc2-smart-search.md](../write-up-uc2-smart-search.md "mention")
+[write-up-uc0.1-policy-impact-report.md](../../write-up-uc0.1-policy-impact-report.md "mention")\
+[write-up-uc1-restricted-mobility-zones.md](../../write-up-uc1-restricted-mobility-zones.md "mention")\
+[write-up-uc2-smart-search.md](../../write-up-uc2-smart-search.md "mention")
 
 ## Glossary
 
 {% hint style="info" %}
-See the [UC0.0 Data space glossary](./#glossary) for definitions of ELI, LBLOD, `oa:Annotation`, and Triplestore. For Codelist Mapping Tool, see the [UC0.1 glossary](../write-up-uc0.1-policy-impact-report.md#glossary).
+See the [UC0.0 Data space glossary](../#glossary) for definitions of ELI, LBLOD, `oa:Annotation`, and Triplestore. For Codelist Mapping Tool, see the [UC0.1 glossary](../../write-up-uc0.1-policy-impact-report.md#glossary).
 {% endhint %}
 
 <table><thead><tr><th width="189.3759765625">Term/Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>Agent / Agentic LLM</td><td>An LLM given a set of tools (e.g. search, query, lookup) that it can call itself. Instead of producing one answer in one go, the agent decides which tool to use, looks at the result, and decides what to do next –possibly calling more tools– until it has an answer. Used in DECIDe for instance for Named Entity Linking, where the agent constructs SPARQL queries iteratively against a knowledge graph.</td></tr><tr><td><a href="https://tika.apache.org/">(Apache) Tika</a></td><td>An open-source framework that allows to detect and extract metadata and text from PDFs (and over a thousand other file types). Used in DECIDe as a separate service running in a Docker container to extract text from PDF decision documents.</td></tr><tr><td><a href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT / Transformer encoder</a></td><td>Bidirectional Encoder Representations from Transformers. A type of neural network that converts text into rich numerical representations. "Encoder" means it reads text and produces a representation; it does not generate text. BERT and its variants (DistilBERT, RoBERTa, XLM-RoBERTa, Longformer) are the workhorses behind modern NER and classification.</td></tr><tr><td>Context window</td><td>The maximum amount of text (measured in tokens) a model can read at once. Standard BERT sees 512 tokens (~400 words); Longformer extends this to 4,096 tokens (~3,000 words), enough to fit a whole decision document.</td></tr><tr><td>Cosine similarity</td><td>A standard way to measure how similar two embeddings are. Values close to 1 mean "very similar in meaning"; values close to 0 mean "unrelated". Used in DECIDe to find the most relevant SPARQL examples in the NEL knowledge base for a given entity.</td></tr><tr><td>Crawler / Crawling</td><td>Automatically browsing a website by following links from page to page. The DECIDe PDF scraper does not crawl — it stays on the single page provided and does not follow links to other pages.</td></tr><tr><td><a href="https://en.wikipedia.org/wiki/Cron">Cron expression</a></td><td>A notation for defining recurring time schedules (e.g. "every day at 03:00"). Used in DECIDe's scheduled job controller to trigger recurring pipeline runs automatically.</td></tr><tr><td>Cross-lingual span alignment</td><td>A technique to map a piece of text identified in one language (e.g. an entity span detected in the English translation) back to its position in the original-language text (e.g. Dutch or German).</td></tr><tr><td><a href="https://github.com/mu-semtech/delta-notifier">Delta notifier</a></td><td>A service that intercepts all insert and delete queries on the triplestore and forwards relevant changes to registered service endpoints. Used in DECIDe to notify pipeline services of state changes without constant polling.</td></tr><tr><td>Dual-head NER model</td><td>A NER model with one shared text encoder feeding into two parallel classifiers ("heads"), each predicting a different kind of label. In DECIDe's Location Formatter, one head identifies fine-grained components (street, house number, postcode), the other identifies which components belong to the same address.</td></tr><tr><td>Embedding / Embedding model</td><td>A numerical vector representation of a piece of text, produced by an embedding model. Texts with similar meaning produce vectors that are close together in vector space, enabling semantic similarity search. Used in DECIDe to power semantic search over SPARQL examples (NEL) and over decision documents (UC2).</td></tr><tr><td>embeddinggemma</td><td>A small open-source embedding model from Google, used in DECIDe to embed SPARQL example queries and schema definitions for the NEL knowledge base. Run locally via Ollama.</td></tr><tr><td>Fine-tuning</td><td>Taking an already-trained AI model and training it further on a smaller, task-specific dataset to specialize it for that task. Cheaper and faster than training from scratch. In DECIDe, used for example to specialize XLM-RoBERTa for legal/administrative entity recognition.</td></tr><tr><td>Hallucination</td><td>When an LLM produces a fluent but factually wrong or fabricated answer. The main mitigation in DECIDe is RAG: the LLM is constrained to answer only from retrieved documents, and outputs are reviewed via the HV.</td></tr><tr><td>Job controller</td><td>The sequencing service for DECIDe pipelines. Reads a configuration file describing pipelines as ordered jobs and tasks, and advances through each step as the previous one completes.</td></tr><tr><td><a href="https://www.langchain.com/">LangChain</a></td><td>An open-source framework for building LLM-powered applications, particularly agentic pipelines in which a model calls external tools in sequence. Allows switching between Ollama, Mistral AI, OpenAI, and others by changing environment variables rather than code.</td></tr><tr><td><a href="https://en.wikipedia.org/wiki/Large_language_model">LLM (Large Language Model)</a></td><td>A neural network model trained on very large text corpora, capable of generating, translating, summarizing, and reasoning over natural-language input.</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/en/model_doc/longformer">Longformer</a></td><td>A transformer encoder model designed for long documents. Standard BERT processes up to 512 tokens at once; Longformer extends this to 4,096 tokens using a combination of local windowed attention and global attention. Used in DECIDe for Named Entity Refinement, where understanding the context of an entity requires seeing whole paragraphs.</td></tr><tr><td><a href="https://modelcontextprotocol.io/">MCP (Model Context Protocol)</a></td><td>A standard way of exposing tools to an LLM agent. The agent sees a list of tools with names, inputs, and outputs, and can call them when useful. Used in DECIDe to give the NEL agent access to schema lookup, query execution, and location resolution.</td></tr><tr><td><a href="https://en.wikipedia.org/wiki/Named-entity_recognition">NER (Named Entity Recognition)</a></td><td>An AI technique for identifying and classifying named entities within unstructured text. In DECIDe, used to extract entities (e.g. persons, organizations, locations, dates) from decision text as part of the NER pipeline.</td></tr><tr><td>NEL (Named Entity Linking)</td><td>An AI technique for linking identified named entities to specific linked data resources with known URIs. In DECIDe, NEL is performed by an agentic LLM service that constructs SPARQL queries against the triplestore.</td></tr><tr><td><a href="https://ollama.com/">Ollama</a></td><td>A tool for running open-source LLMs on a local server, without depending on external paid APIs. Used in DECIDe development to host models like Mistral Nemo and embeddinggemma.</td></tr><tr><td><a href="https://oparl.org/">OParl</a></td><td>OParl is an initiative to standardize open access to parliamentary information systems in Germany. The goal of OParl is to create a standard API for accessing public content in municipal council information systems, so that this content can be used for as many different purposes as possible, in line with the principles of open data. In DECIDe, Freiburg pilot data is harvested from an OParl-based system.</td></tr><tr><td><a href="https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/oslo">OSLO (Open Standards for Linked Organizations)</a></td><td>The Flemish government's framework for linked data standards. The <a href="https://data.vlaanderen.be/ns/besluit/">OSLO-Besluit</a> (Decision) model is used by Belgian municipalities publishing LD&#x26;L through LBLOD.</td></tr><tr><td><a href="https://qdrant.tech/">Qdrant</a></td><td>An open-source vector database that stores embeddings and supports fast similarity search over them. Used in DECIDe as the production knowledge base for the NEL service.</td></tr><tr><td>RAG (Retrieval Augmented Generation)</td><td>A technique in which an LLM is provided with retrieved context documents before generating an answer, reducing hallucination by grounding model output in sourced material rather than relying on parametric memory alone. This limits hallucination and keeps answers traceable to source documents.</td></tr><tr><td>Regex (Regular expression)</td><td>A pattern used to match specific text formats.</td></tr><tr><td>Scraper / scraping</td><td>A tool or program that automatically collects information from websites. In DECIDe, used to collect PDF download URLs from local government web pages.</td></tr><tr><td>Span / span format</td><td>A representation of a detected text region as a tuple of (<code>start offset</code>, <code>end offset</code>, <code>label</code>), where offsets are character positions in the source text. Used in DECIDe by the segmentation and NER tasks to record entity and structural boundaries within decision text.</td></tr><tr><td>Text segmentation</td><td>Splitting a piece of text into smaller parts. In DECIDe, identifying title boundaries in meeting minutes to split the document into individual decisions.</td></tr><tr><td>Token</td><td>The smallest unit of text a model processes. Tokens are usually short pieces of words rather than whole words: for example "subsidies" might be split into "subsid" + "ies". A typical English document of 1,000 words is roughly 1,300 tokens; languages like Dutch and German tend to produce more tokens per word.</td></tr><tr><td><a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning)">Transformer</a></td><td>The neural-network architecture underlying virtually all modern NLP models –both encoders (BERT-family) and generative LLMs. The defining feature is the "attention" mechanism, which lets the model weigh how relevant each word is to every other word when interpreting text.</td></tr><tr><td><a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID (Universally Unique IDentifier)</a></td><td>A 128-bit number used to identify information in computer systems.</td></tr><tr><td>Vector / Vector index / Vector database</td><td>A vector is the numerical embedding of a piece of text. A vector index (or vector database) stores many such vectors and supports fast searches for "the most similar vectors to this one", which is how semantic search works.</td></tr><tr><td><a href="https://www.w3.org/TR/void/">VOID (Vocabulary of Interlinked Datasets)</a></td><td>An RDF vocabulary for describing metadata about datasets and SPARQL endpoints, including their structure, properties, and example queries. Used in DECIDe to populate the knowledge base that the NEL agent consults when constructing SPARQL queries.</td></tr></tbody></table>
@@ -102,13 +102,13 @@ The Organizations dataset is used as registry for identifying municipalities and
 
 #### PDF to ELI
 
-The PDF to ELI pipeline extracts content from PDFs and initializes the [three levels of ELI](./#european-legislation-identifier-eli) in the triple store:
+The PDF to ELI pipeline extracts content from PDFs and initializes the [three levels of ELI](../#european-legislation-identifier-eli) in the triple store:
 
 * [eli:Work](http://data.europa.eu/eli/ontology#Work): is still an empty class with only a UUID provided, but it is important for compliance with ELI, and for later steps in the pipeline that the work level is initialized
 * [eli:Expression](http://data.europa.eu/eli/ontology#Expression): is set with the content of the PDF in its original language
 * [eli:Manifestation](http://data.europa.eu/eli/ontology#Manifestation): contains metadata of the PDF: media type, URL, and byte size
 
-<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption><p>Fig. 1: PDF to ELI pipeline sets the three ELI levels</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (20).png" alt=""><figcaption><p>Fig. 1: PDF to ELI pipeline sets the three ELI levels</p></figcaption></figure>
 
 #### OSLO to ELI
 
@@ -118,13 +118,13 @@ Instead of mapping to a new `eli:Expression` resource, we could reuse the URI of
 
 Agents, such as governing bodies and mandatees, are also mapped with `dct:creator` and `dct:contributor` to align with ELI-EP.
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt="" width="375"><figcaption><p>Fig. 2: OSLO Besluit is an extension of ELI Expression</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (23).png" alt="" width="375"><figcaption><p>Fig. 2: OSLO Besluit is an extension of ELI Expression</p></figcaption></figure>
 
 #### OParl to ELI
 
 OParl uses Paper and File entities to describe LD\&L (see [OParl specification](https://oparl.org/spezifikation/online-ansicht/#schema)). Paper matches with `eli:Work` , while File is split into `eli:Expression` , and `eli:Manifestation` (Fig. 3). The expression focuses on the content in a certain language, while the manifestation holds the URL of the document online. For the city of Freiburg, the expression is the German text of the LD\&L, and the manifestation links to its PDF. In OParl, next to main files, there are also auxiliary files. These are mapped to `foaf:Document` and linked with the work using `eli:related_to`.
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt="" width="375"><figcaption><p>Fig. 3: Mapping of Oparl to ELI</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (24).png" alt="" width="375"><figcaption><p>Fig. 3: Mapping of Oparl to ELI</p></figcaption></figure>
 
 The other OParl entity types (Body, System, Location, Organization...) are also mapped aligned with ELI-EP. The mappings can be found in the Github repository: [https://github.com/lblod/oparl-to-eli-service/blob/main/constants.ts](https://github.com/lblod/oparl-to-eli-service/blob/main/constants.ts)
 
@@ -132,15 +132,15 @@ The other OParl entity types (Body, System, Location, Organization...) are also 
 
 Entity extraction
 
-NER uses the [Web Annotation Model](./#web-annotation-model) for describing entities discovered in the text of an `eli:Expression` . Fig. 4 depicts how a `rdf:Resource` is about a `oa:SpecificResource`. This specific resource represents a part (start and end position) in the text of a `eli:Expression`. The `rdf:Resource` can be further specified using `rdf:type` : `locn:Address` for an address, `org:Organization` for an organization etc. Optionally, a geometry can be linked containing coordinates when the NER service has geocoding capabilities.
+NER uses the [Web Annotation Model](../#web-annotation-model) for describing entities discovered in the text of an `eli:Expression` . Fig. 4 depicts how a `rdf:Resource` is about a `oa:SpecificResource`. This specific resource represents a part (start and end position) in the text of a `eli:Expression`. The `rdf:Resource` can be further specified using `rdf:type` : `locn:Address` for an address, `org:Organization` for an organization etc. Optionally, a geometry can be linked containing coordinates when the NER service has geocoding capabilities.
 
-<figure><img src="../../.gitbook/assets/image (28).png" alt="" width="563"><figcaption><p>Fig. 4: Annotation of an entity extracted by NER</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (28).png" alt="" width="563"><figcaption><p>Fig. 4: Annotation of an entity extracted by NER</p></figcaption></figure>
 
 Relation extraction
 
 NER also goes a step further by expressing how the discovered entity relate to the LD\&L data. This is called "relation extraction" and makes use of RDF statements as body of an annotation. A statement refers to a subject, predicate, and object resource, which resembles a triple statement.
 
-<figure><img src="../../.gitbook/assets/image (29).png" alt="" width="563"><figcaption><p>Fig. 5: Annotation of a relation extracted by NER</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (29).png" alt="" width="563"><figcaption><p>Fig. 5: Annotation of a relation extracted by NER</p></figcaption></figure>
 
 The object of the statement can a resource or a literal. For example, when an administrative body is detected in the text, a statement can be made where:
 
@@ -156,7 +156,7 @@ Another example, when a title is detected in the text, a statement can be made w
 
 A full list of mappings can be found as an annex here:
 
-{% file src="../../.gitbook/assets/datamodel AI annotations.pdf" %}
+{% file src="../../../.gitbook/assets/datamodel AI annotations.pdf" %}
 
 #### NEL
 
@@ -245,17 +245,17 @@ The DECIDe data space is built entirely on linked data, so its pipelines must be
 
 The components in this infrastructure are shown in the figure below.
 
-<figure><img src="../../.gitbook/assets/lokale-bron-architecture-pipelines.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/lokale-bron-architecture-pipelines.jpg" alt=""><figcaption></figcaption></figure>
 
-In this drawing, services are depicted as rectangles, the virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core services, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](./#core-semantic.works-components). The other components will be described below.
+In this drawing, services are depicted as rectangles, the virtuoso triplestore is shown as a cylinder and HTTP requests are shown as arrows pointing from the origin of the request to the receiver of the request. Core services, marked with a **C**, are described in the core semantic.works components section of the [UC0.0 Data space write-up](../#core-semantic.works-components). The other components will be described below.
 
 #### Harvester frontend
 
 A simple Ember.js frontend, aimed primarily at developers and data space administrators, provides an overview of all running and completed jobs. Clicking into a job shows its individual tasks, and each task's input and results containers can be inspected. Users can also start a new job by selecting a job type and filling in the corresponding input fields. The frontend uses mu-resources to create Job and Task instances in the triplestore.
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 **GitHub**: [https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting](https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting)
 
@@ -265,7 +265,7 @@ The [job controller](https://github.com/lblod/job-controller-service) is the seq
 
 For pipelines, jobs and tasks that reach success or failed generate delta messages that are forwarded to the job controller, which consults its config to determine next steps. Tasks that reach scheduled are forwarded to the registered custom services, each of which checks the operation URI to decide whether the task is theirs to handle.
 
-<figure><img src="../../.gitbook/assets/jobs-tasks.svg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/jobs-tasks.svg" alt=""><figcaption></figcaption></figure>
 
 Tasks typically consume input data and produce output data. To keep that data linked to the task, each task carries an optional `http://redpencil.data.gift/vocabularies/tasks/inputContainer` and `http://redpencil.data.gift/vocabularies/tasks/resultsContainer`, both pointing to a `http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer` resource. A data container can hold:
 
@@ -457,7 +457,7 @@ The AI pipeline operates on the normalized ELI data produced by the previously m
 
 A general overview of the AI pipeline is given in the <mark style="background-color:$warning;">following figure</mark>. The tasks are organized in 2 services: the Named Entity Recognition (NER) service which houses three tasks, and the Named Entity Linking (NEL) which has one.
 
-<figure><img src="../../.gitbook/assets/models-UC0.0.drawio(3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/models-UC0.0.drawio(3).png" alt=""><figcaption></figcaption></figure>
 
 All outputs of the AI pipeline are stored as `oa:Annotation` triples in the triplestore, following the W3C Web Annotation data model. Source ELI data is never modified; enrichment results are always additive.
 
@@ -473,7 +473,7 @@ Another downside is translation error, which is why two translation backends are
 
 Finally, the translated text is stored in the annotation format, as a suggested eli:Expression
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2).png" alt="" width="375"><figcaption></figcaption></figure>
 
 #### Segmentation Task
 
@@ -558,7 +558,7 @@ The NEL service is built as a FastAPI application that integrates a [LangChain](
 
 The services used to realize Named Entity Linking are shown in the figure below:
 
-<figure><img src="../../.gitbook/assets/lokale-bron-architecture-NEL.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/lokale-bron-architecture-NEL.jpg" alt=""><figcaption></figcaption></figure>
 
 In this image, services are shown as rectangles, where core services are marked with a bold C. Communication between services happens through HTTP requests and are shown as arrows from the sender to the recipient. Delta messages are also such HTTP requests, but those are shown as dashed arrows. Databases are shown as cylinders.
 
@@ -594,7 +594,7 @@ We explored the idea of using an Agentic AI approach for named entity linking. I
 
 Schematically, this is represented in the following figure:
 
-<figure><img src="../../.gitbook/assets/entity-linking-service.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/entity-linking-service.png" alt=""><figcaption></figcaption></figure>
 
 However, we noticed that this resulted in quite non-deterministic behavior of the NEL service. The queries performed by the service were quite erratic and the LLM even consulted SPARQL endpoints that didn't have anything to do with the project (e.g. the [dbpedia](https://www.dbpedia.org/) SPARQL endpoint). As a result, the service took much longer than anticipated to find the links for entities. We scrapped this approach and replaced it by the non-AI approach above to make the service more deterministic and faster.
 
@@ -602,7 +602,7 @@ This may reduce the number of entities that we can find true URIs for in the nam
 
 ## Final UI design (and why) (if any)
 
-The pipelines' only user-facing interface is the [harvester frontend](write-up-uc0.0-pipelines.md#harvester-frontend) described in the Job Controller section of Final architecture above. It provides an overview of all running and completed jobs, allows users to trigger new job runs manually, and exposes each task's input and results containers for inspection. Because the frontend extends an existing ABB interface for job/task management rather than introducing new interaction patterns, no new design work was required.
+The pipelines' only user-facing interface is the [harvester frontend](./#harvester-frontend) described in the Job Controller section of Final architecture above. It provides an overview of all running and completed jobs, allows users to trigger new job runs manually, and exposes each task's input and results containers for inspection. Because the frontend extends an existing ABB interface for job/task management rather than introducing new interaction patterns, no new design work was required.
 
 ### Other explored UI design (and why not)
 
@@ -648,7 +648,7 @@ The PDF to ELI pipeline currently writes all extracted decisions into a single, 
 
 ### Possible future work LBLOD related
 
-The [harvester frontend](write-up-uc0.0-pipelines.md#harvester-frontend) has been extended for the DECIDe project, but is not yet merged in the main branch on GitHub.
+The [harvester frontend](./#harvester-frontend) has been extended for the DECIDe project, but is not yet merged in the main branch on GitHub.
 
 ## <mark style="background-color:$warning;">Relevant links</mark>
 

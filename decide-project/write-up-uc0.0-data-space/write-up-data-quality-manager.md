@@ -29,7 +29,7 @@ This document contains all information for both deliverables/tasks. For D2.5/T2.
 
 The pipelines write-up documents the AI enrichment and ingestion pipelines whose outputs the SHACL validation layer assesses. Core ELI entities validated by the SHACL shapes are produced and structured by those pipelines.
 
-[write-up-uc0.0-pipelines.md](write-up-uc0.0-pipelines.md "mention")
+[write-up-uc0.0-pipelines](write-up-uc0.0-pipelines/ "mention")
 
 #### UC0.0 Human Validation (HV)
 
@@ -69,7 +69,7 @@ The SHACL validation component is designed as a periodically automated process r
 
 ## Datasources, datasets and datastandards
 
-The foundational data sources and ELI data model for DECIDe are documented in the [UC0.0 Pipelines write-up](write-up-uc0.0-pipelines.md). The SHACL validation layer does not introduce new external data sources; it operates entirely over data already present in the triplestore.
+The foundational data sources and ELI data model for DECIDe are documented in the [UC0.0 Pipelines write-up](write-up-uc0.0-pipelines/). The SHACL validation layer does not introduce new external data sources; it operates entirely over data already present in the triplestore.
 
 ### Data sources
 

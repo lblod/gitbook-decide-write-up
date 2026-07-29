@@ -6,7 +6,8 @@
 
 * [What is the DECIDE-project about?](decide-project/what-is-the-decide-project-about.md)
 * [Write-up UC0.0 Data space](decide-project/write-up-uc0.0-data-space/README.md)
-  * [Write-up UC0.0 Pipelines](decide-project/write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md)
+  * [Write-up UC0.0 Pipelines](decide-project/write-up-uc0.0-data-space/write-up-uc0.0-pipelines/README.md)
+    * [write-up Provenance](decide-project/write-up-uc0.0-data-space/write-up-uc0.0-pipelines/write-up-provenance.md)
   * [Write-up UC0.0 Human Validation (HV)](decide-project/write-up-uc0.0-data-space/write-up-uc0.0-human-validation-hv.md)
   * [Write-up DCAT](decide-project/write-up-uc0.0-data-space/write-up-dcat.md)
   * [Write-up DSP](decide-project/write-up-uc0.0-data-space/write-up-dsp.md)

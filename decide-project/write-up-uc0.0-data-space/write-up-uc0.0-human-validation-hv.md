@@ -35,7 +35,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 The pipelines write-up documents the AI enrichment pipelines whose outputs the HV validates: the Named Entity Recognition and Linking pipeline (UC0.0) and the Codelist Mapping Tool (UC0.1, UC1). The `oa:Annotation` objects produced by these pipelines are the primary input to every HVT interface.
 
-[write-up-uc0.0-pipelines.md](write-up-uc0.0-pipelines.md "mention")
+[write-up-uc0.0-pipelines](write-up-uc0.0-pipelines/ "mention")
 
 #### UC0.1 Policy Impact Report
 
@@ -173,7 +173,7 @@ More information can be found in the service's [GitHub repo](https://github.com/
 
 n/a
 
-The HV is not itself an AI component –it provides the interface through which human validators assess AI-generated outputs. The AI components whose outputs the HV interfaces validate are documented in the [UC0.0 Pipelines write-up](write-up-uc0.0-pipelines.md#ai-pipeline).
+The HV is not itself an AI component –it provides the interface through which human validators assess AI-generated outputs. The AI components whose outputs the HV interfaces validate are documented in the [UC0.0 Pipelines write-up](write-up-uc0.0-pipelines/#ai-pipeline).
 
 ### Other explored AI components (and why not)
 

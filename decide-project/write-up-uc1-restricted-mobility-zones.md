@@ -38,7 +38,7 @@ UC1 builds directly on top of the data and infrastructure established in UC0.0. 
 * The **Named Entity Refinement** model to distinguish between impact locations and contextual locations, and between entry dates, expiry dates, validity periods, and other date sub-types.
 * The **Entity Formatting** step to parse raw location spans into structured address components and raw date spans into standardized start/end date pairs.
 
-[write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md "mention")
+[write-up-uc0.0-pipelines](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/ "mention")
 
 #### UC0.0 Human Validation
 
@@ -57,7 +57,7 @@ UC1 uses the same codelist mapping established in UC0.1, making the data model a
 {% hint style="info" %}
 See the [UC0.0 Data space glossary](write-up-uc0.0-data-space/#glossary) for definitions of ELI, HV (Human Validation), Human-in-the-loop, LBLOD, LD\&L, `oa:Annotation`,and Triplestore.
 
-See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#glossary) for definitions of Context window, Dual-head NER model, (BERT) Encoder, Fine-tuning, LLM, NER, NEL, Ollama, Regex, Span, and Token.
+See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/#glossary) for definitions of Context window, Dual-head NER model, (BERT) Encoder, Fine-tuning, LLM, NER, NEL, Ollama, Regex, Span, and Token.
 
 See the [UC0.1 Policy Impact Report glossary](write-up-uc0.1-policy-impact-report.md#glossary) for definitions of Codelist Mapping Tool, SKOS, Zero-shot classification, and [UC2 Smart Search glossary](write-up-uc2-smart-search.md#glossary) for the definition of Inference.
 {% endhint %}
@@ -93,7 +93,7 @@ Human validation of AI-extracted annotations is handled through two HV interface
 {% hint style="info" %}
 UC1 builds on three shared components, documented elsewhere:
 
-* The **data ingestion pipelines, LD\&L standardization, and AI enrichment** established in [UC0.0 Pipelines](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md) produce the corpus of linked decisions and annotations that the RMZ tool queries.
+* The **data ingestion pipelines, LD\&L standardization, and AI enrichment** established in [UC0.0 Pipelines](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/) produce the corpus of linked decisions and annotations that the RMZ tool queries.
 * The **HV** is a shared component across DECIDe use cases. Its general architecture, shared validation logic, and data model are described in the [UC0.0 HV write-up](write-up-uc0.0-data-space/write-up-uc0.0-human-validation-hv.md).
 * UC1 uses the same **codelist mapping tool** established in [UC0.1](write-up-uc0.1-policy-impact-report.md), making the data model and interface approach directly reusable across use cases.
 {% endhint %}
@@ -135,7 +135,7 @@ Solving this question requires a simple data model (Fig. 1): an `oa:Annotation` 
 
 Q2: Which locations or regions are impacted by this RMZ decision?
 
-This requires an implementation of the datamodel described in the [write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md "mention") for the [NER pipeline](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#named-entity-recognition-ner). Parts of text in the `eli:Expression` that refer to a location are marked as Specific resources (Fig. 2). As body of the annotation, a statement with following predicates is used:
+This requires an implementation of the datamodel described in the [write-up-uc0.0-pipelines](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/ "mention") for the [NER pipeline](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/#named-entity-recognition-ner). Parts of text in the `eli:Expression` that refer to a location are marked as Specific resources (Fig. 2). As body of the annotation, a statement with following predicates is used:
 
 * rdf:subject: refers to the ELI work
 * rdf:predicate: `prov:atLocation` is used to express that the location is where the decision has impact on (impact\_location by the refinement step - described below)
@@ -203,7 +203,7 @@ The codelist mapping runs as an independent classification step within the Named
 
 #### Which components
 
-Answering this question requires three components working in sequence. All three are part of the Entity Extraction Task within the UC0.0 NER Service (see [AI Pipeline UC0.0](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#ai-pipeline)):
+Answering this question requires three components working in sequence. All three are part of the Entity Extraction Task within the UC0.0 NER Service (see [AI Pipeline UC0.0](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/#ai-pipeline)):
 
 1. **Named Entity Recognition (NER)** detects `LOCATION` spans in the decision text.
 2. **Named Entity Refinement** classifies each `LOCATION` span as `impact_location` or `context_location`.
@@ -292,7 +292,7 @@ Output step 5 (simplified):
 
 #### Which components
 
-Answering this question requires the same first two components as Q2, plus the date-specific formatting. All three are again part of the Entity Extraction Task within the [UC0.0 NER Service](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#entity-recognition-task):
+Answering this question requires the same first two components as Q2, plus the date-specific formatting. All three are again part of the Entity Extraction Task within the [UC0.0 NER Service](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/#entity-recognition-task):
 
 1. **Named Entity Recognition (NER)** detects `DATE` spans in the decision text.
 2. **Named Entity Refinement** classifies each `DATE` span into a temporal sub-type.

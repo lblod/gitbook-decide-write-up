@@ -35,7 +35,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 
 UC2 depends on the data infrastructure established in UC0.0. The LD\&L documents that UC2 retrieves and serves are ingested, standardized, and stored as linked data through the UC0.0 pipelines. The Virtuoso SPARQL endpoint that UC2 queries for document metadata is part of the [semantic.works](https://semantic.works/) stack set up in UC0.0. Without the ingestion pipelines and the triplestore, UC2 has no corpus to search over.
 
-[write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md "mention")
+[write-up-uc0.0-pipelines](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/ "mention")
 
 #### UC0.0 Human Validation
 
@@ -46,7 +46,7 @@ The Human Validation interfaces provides the human-in-the-loop validation layer 
 ## Glossary
 
 {% hint style="info" %}
-See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#glossary) for definitions of Embedding, LangChain, LLM, Ollama, RAG, and Token.
+See the [UC0.0 Pipelines glossary](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/#glossary) for definitions of Embedding, LangChain, LLM, Ollama, RAG, and Token.
 
 See the [UC0.1 Policy Impact Report glossary](write-up-uc0.1-policy-impact-report.md#glossary) for definitions of System prompt
 {% endhint %}
