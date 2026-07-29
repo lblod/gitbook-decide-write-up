@@ -121,7 +121,7 @@ n/a
 
 ### Final AI components (and why) (if any)
 
-n/a
+Provenance is not an AI component by itself. It records how the AI components used elsewhere in DECIDe produced their output.
 
 ### Other explored AI components (and why not)
 
@@ -129,11 +129,16 @@ n/a
 
 ## Final UI design (and why) (if any)
 
-n/a
+There is no standalone provenance user interface. The information is surfaced through the interfaces that need it:
+
+* the pipeline/harvester interface exposes jobs, task status and input/result containers;
+* the Human Validation Tool lets a reviewer inspect an annotation and its source context before voting;
+* Smart Search displays answers and source quotations; and
+* SPARQL and exported RDF support technical inspection across source, activity, agent, annotation and review.
 
 ### Other explored UI design (and why not)
 
-n/a
+A dedicated provenance browser was not implemented during the pilot. A future browser could render a complete source-to-review chain and make configuration differences, evidence spans and export scope inspectable without SPARQL knowledge. The existing interfaces prioritise the context specific to their user journey.
 
 ## Testing approach
 
