@@ -199,13 +199,16 @@ This way, the service is integrated and tested on the server of each city. By de
 
 The service uses a cron mechanism to periodically run the validations ([https://github.com/lblod/loket-report-generation-service/tree/master#reports](https://github.com/lblod/loket-report-generation-service/tree/master#reports)). By default, the SHACL validations will run every day at 03:00 ([https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35](https://github.com/lblod/app-decide/blob/development/config/reports/shacl-report.js#L35)).
 
-During testing, we discovered that validating all decisions causes a high load on the triple store: a validation issue in one municipality typically recurs for every decision. Therefore, we added sampling to validate a limited set of 100 decisions in each validation run by default.
+By navigating to the provided REST API `/shacl-reports/latest/issues`, cities see the results of the latest generated report.
 
-Testing can be done by navigating to the provided REST API `/shacl-reports/latest/issues` .
-
-During DECIDe, we will monitor the validation results and analyze what their root causes are.
+ABB uses the API to monitor the validation results and analyze what their root causes are.
 
 ### Risks & mitigations
+
+#### High load on triple store
+
+During testing, we discovered that validating all decisions causes a high load on the triple store: a validation issue in one municipality typically recurs for every decision. 
+Therefore, we added sampling to validate a limited set of decisions in each validation run. By default, 100 decisions are validated.
 
 #### Batch size tuning
 
