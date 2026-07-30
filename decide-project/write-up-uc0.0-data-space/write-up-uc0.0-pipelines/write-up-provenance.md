@@ -105,9 +105,23 @@ n/a
 
 ### Data standards
 
-<table><thead><tr><th width="285.30859375">Standard</th><th>Link</th></tr></thead><tbody><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
+
 
 ## Final architecture (and why)
+
+The architecture uses a combination of existing standards, with each one covering a distinct part of provenance and traceability.
+
+
+
+#### ELI: source and legal-document model
+
+ELI uses three levels, as explained in the [UC0.0 Pipelines](./#pdf-to-eli):
+
+1. `eli:Work` identifies the abstract decision.
+2. `eli:Expression` identifies a language or version and contains the decision text used by enrichment services.
+3. `eli:Manifestation` identifies a concrete representation such as a PDF.
+
+DECIDe supplements this structure with source-lineage information. The OSLO transformation preserves `prov:wasDerivedFrom` links from source decisions for the data. OParl also records source derivation with `prov:wasDerivedFrom` and uses ELI manifestations for concrete files. PDF conversion creates an `eli:Manifestation` and links it to the original PDF URL through `eli:is_exemplified_by`.
 
 
 
