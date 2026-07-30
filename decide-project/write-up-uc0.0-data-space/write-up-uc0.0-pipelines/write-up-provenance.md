@@ -123,6 +123,14 @@ ELI uses three levels, as explained in the [UC0.0 Pipelines](./#pdf-to-eli):
 
 DECIDe supplements this structure with source-lineage information. The OSLO transformation preserves `prov:wasDerivedFrom` links from source decisions for the data. OParl also records source derivation with `prov:wasDerivedFrom` and uses ELI manifestations for concrete files. PDF conversion creates an `eli:Manifestation` and links it to the original PDF URL through `eli:is_exemplified_by`.
 
+#### Jobs, tasks and data containers
+
+#### PROV-based generation and responsibility
+
+#### Configured agents and configuration snapshots
+
+#### AI model registration with AIRO
+
 
 
 ### Final semantic components (and why) (if any)
