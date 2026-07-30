@@ -471,7 +471,13 @@ The validation journey explored approaches where users validate the SDG link and
 
 ## Testing approach
 
+Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Policy Impact Report. 
+The process described in the [Validating the decision-SDG linking](write-up-uc0.0-data-space/write-up-uc0.1-policy-impact-report.md#validating-the-decision-sdg-linking "mention") section is followed.
+
 ### Risks & mitigations
+
+There was the risk that the Policy Impact Report would have its own validation visualization, separate from the human validation tool, which would increase the maintenance effort.
+This is mitigated by showing a link to the Human Validation Tool and making sure the same filters are applied. For example, when the Policy Impact Report shows 17 decisions for the city of Freiburg with a positive impact on SDG 1, a user can review these exact 17 decisions for Freiburg in the Human Validation Tool.
 
 ## Possible future work
 
