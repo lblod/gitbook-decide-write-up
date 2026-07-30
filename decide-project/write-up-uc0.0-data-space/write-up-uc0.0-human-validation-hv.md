@@ -282,7 +282,18 @@ Neither of these has been designed or implemented due to time constraints.
 
 ## Testing approach
 
+Testing of the Human Validation Tool (HVT) focused on the functional side: verifying that the AI-generated enrichments align with the data standards and expected results of a domain validator.
+
+Each pilot city carried out manual testing on the enriched decisions delivered by ABB, working through the HVT interface as intended end users. 
+Pilot cities reviewed the AI-generated annotations on their own decisions and provided feedback on a number of decisions, covering SDG mapping, codelist mapping (RMZ), and text annotations (NER and NEL).
+
 ### Risks & mitigations
+
+There is a risk that it is unclear for the reviewer what a certain link means. For example, `eli:no_longer_in_force`.
+
+This risk is mitigated by adding a tooltip with the Linked Data definition of the link. For the example above, following tooltip now appears: The last date any part of the legislation is in force, if the date is known (can be seen as the end date of a dc:valid range for this resource).
+
+Also, ABB created guidelines (slides and video) for each city that lists all possible links and demonstrates with an example decision what the enrichment should be.
 
 ## Possible future work
 
