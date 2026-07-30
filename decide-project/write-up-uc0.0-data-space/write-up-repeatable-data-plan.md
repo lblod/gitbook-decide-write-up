@@ -64,11 +64,17 @@ Basic information on the DECIDE project can be found on the [website ](https://w
 
 ## Test approach
 
+The repeatable data plan has been tested when adding a fourth data ingestion pipeline: [JSON data](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#final-architecture-and-why "mention") from the city of Bamberg. 
+This pipeline was introduced at the end of the project and thus a good candidate for evaluating the repeatable data plan whether all steps are mentioned to integrate a new dataset.
+
 ### Risks & mitigations
 
 ## Possible future work
 
 ### Possible future work DECIDe data space related
+
+The Flanders Environment Agency (VMM) is interested in reusing the codelist mapping tooling for mapping policies of local government to their more high-level policies.
+In the future, VMM can try out the steps of the plan for their deployment.
 
 ### Possible future work LBLOD related
 
