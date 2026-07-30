@@ -367,7 +367,7 @@ UC1 does not have a purpose-built standalone user interface. The pipeline output
 
 That said, this use case has 2 relevant interfaces, related to the Human Validation of AI-produced annotations:
 
-1. Validation of discovered entities within a decision: the validation of an address/location within a decision
+1. Validation of discovered entities within a decision: the validation of an address/location within a decision, and validation of the dates when the decision is applicable
 2. Validation of AI annotations about a decision: i.e. What is this decision about? (Restricted Mobility Zones)
 
 The first interface is explained in the [Design section of Write-up UC 0.0: Human Validation](write-up-uc0.0-data-space/write-up-uc0.0-human-validation-hv.md#validation-of-ai-annotations-within-a-decision). In this section, we will be focusing about this second interface.
@@ -386,7 +386,12 @@ Once the filters have been applied, the user can validate the different decision
 
 ## Testing approach
 
+Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Human Validation Tool.
+The process described in the [Validating AI annotations about a decision](write-up-uc0.0-data-space/write-up-uc1-restricted-mobility-zones.md#validating-ai-annotations-about-a-decision "mention") is followed.
+
 ### Risks & mitigations
+
+No risks have been identified.
 
 ## Possible future work
 
