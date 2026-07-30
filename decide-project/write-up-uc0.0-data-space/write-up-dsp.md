@@ -230,15 +230,13 @@ n/a
 
 ## Testing approach
 
-No DSP implementation was deployed, so no testing was performed.
-
 The DS4SSCC-recommended test suite for DSP compliance is the [DSP-TCK](https://github.com/eclipse-dataspacetck/dsp-tck). The team reviewed DSP-TCK in autumn/winter 2025. At the time, the catalog portion was relatively lightweight –it checked that a response is non-empty and that datasets have the correct id. This by itself does not confirm full functional correctness of a DSP implementation, but this shortcoming may have been resolved with recent developments to DSP-TCK.
+
+Separately, consortium partner [ui!] built a standalone DSP connector on top of DECIDe's SPARQL endpoint, without involvement in designing the underlying DCAT/ODRL data model. This served to validate the hypothesis that, given DCAT, ODRL, and SPARQL, all the information required for a DSP-compliant Catalog layer is already available –Datasets, Distributions, and their associated ODRL Offers could be derived directly from the published data by a separate implementation team.
 
 ### Risks & mitigations
 
-The primary risk of not implementing DSP is that DECIDe datasets are not accessible via the standard DS4SSCC protocol layer. Consumers who expect DSP-compliant endpoints will not find them. This risk is accepted on the grounds that DSP itself does not currently guarantee the interoperability it promises, and that within the DECIDe pilot the set of data consumers is small and known, i.e. limited to the pilot partners. This makes direct DCAT-based access a sufficient and more reliable alternative.
-
-A secondary risk is that DSP matures after the project concludes and becomes the de facto standard, at which point DECIDe's lack of DSP support may be seen as a gap. This risk is accepted for the pilot phase and addressed in the future work section.
+The primary risk identified during the analysis was that DECIDe datasets would not be accessible via the standard DS4SSCC protocol layer, leaving consumers who expect DSP-compliant endpoints unable to find them. The connector built by [ui!] mitigates this in practice: it demonstrates that a DSP-compliant layer can be built on top of DECIDe's existing DCAT/ODRL/SPARQL setup by a separate team, without requiring the core DECIDe team to build or maintain DSP-specific infrastructure. Within the DECIDe pilot, where the set of data consumers is small and known –limited to the pilot partners– this arrangement is considered sufficient.
 
 ## Possible future work
 
