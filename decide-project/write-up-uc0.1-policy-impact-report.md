@@ -474,6 +474,8 @@ The validation journey explored approaches where users validate the SDG link and
 Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Policy Impact Report. 
 The process described in the [Validating the decision-SDG linking](write-up-uc0.0-data-space/write-up-uc0.1-policy-impact-report.md#validating-the-decision-sdg-linking "mention") section is followed.
 
+The Policy Impact Reporting was subsequently used in a survey led by consortium partner Kehl to assess its usefulness.
+
 ### Risks & mitigations
 
 There was the risk that the Policy Impact Report would have its own validation visualization, separate from the human validation tool, which would increase the maintenance effort.
