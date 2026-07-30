@@ -287,8 +287,8 @@ N/A
 
 ## Testing approach
 
-Each pilot city carried out manual testing on the [deployed test instance](write-up-uc0.0-data-space/write-up-uc2-smart-search.md#deployed-test-instance "mention").
-Answers and corresponding sources were validated using the process described in [Validating responses (HV)](write-up-uc0.0-data-space/write-up-uc2-smart-search.md#validating-responses-hv "mention").
+Each pilot city carried out manual testing on the [deployed test instance](./write-up-uc2-smart-search.md#deployed-test-instance "mention").
+Answers and corresponding sources were validated using the process described in [Validating responses (HV)](./write-up-uc2-smart-search.md#validating-responses-hv "mention").
 
 Each pilot city provided a list of example questions, which is used to test the accuracy of the question answering service.
 
