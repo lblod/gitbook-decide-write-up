@@ -179,7 +179,7 @@ The RMZ codelist uses a flat (single-level) structure rather than a hierarchical
 
 * **Concept Scheme:** [`http://data.lblod.gift/id/conceptscheme/restricted-mobility-zone-simple`](https://github.com/lblod/app-decide/blob/203764139125744df4ff55757f645a8849837e02/config/migrations/add-restricted-mobility-zone-codelist/20260310103527-add-simple-restricted-mobility-zones-codelist.ttl)
 * **Concept URI:** `https://data.vlaanderen.be/id/concept/ZoneType/fc17fa1b-9b61-4396-a609-845643b3b865`
-* **Labels:** "Restrictive mobility zone" (EN), "Beperkte mobiliteitszone" (NL)
+* **Labels:** "Restricted mobility zone" (EN), "Beperkte mobiliteitszone" (NL)
 
 The `skos:definition` of this single concept provides a non-exhaustive enumeration of the sub-types, expressed in both English and Dutch:
 
