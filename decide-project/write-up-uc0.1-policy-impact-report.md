@@ -48,7 +48,7 @@ The Human Validation interfaces provide the human-in-the-loop validation layer f
 
 [write-up-uc0.0-human-validation-hv.md](write-up-uc0.0-data-space/write-up-uc0.0-human-validation-hv.md "mention")
 
-#### UC1 Restrictive Mobility Zones
+#### UC1 Restricted Mobility Zones
 
 UC1 uses the same codelist mapping and human validation patterns established in UC0.1, as well as similar AI enrichment tooling as LD\&L standardization of UC0.0, making the data model and interface approach directly reusable across use cases.
 
