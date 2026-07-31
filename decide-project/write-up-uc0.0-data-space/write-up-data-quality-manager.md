@@ -179,8 +179,6 @@ n/a
 
 ## Final UI design (and why) (if any)
 
-n/a
-
 The SHACL validation layer has no end-user interface. Validation results are consumed programmatically via the REST API or by querying the triplestore directly. Visualization of validation results is noted as possible future work.
 
 ### Other explored UI design (and why not)
