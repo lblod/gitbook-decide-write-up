@@ -92,7 +92,7 @@ DECIDe triplestore (Virtuoso) Internal. The SHACL validation service reads ELI a
 
 <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
-In this drawing, rdf classes are represented by rounded rectangles. Predicates are shown as arrows connecting their origin as the predicate subject to their target as a predicate object. The circles are concrete entities. In the drawing, one validation result is shown explaining that the decision `https://data.gent.be/id/besluiten/23.1214.2233.007` from the city of Ghent does not have a language property in the triplestore.
+In this drawing, rdf classes are represented by rounded rectangles. Predicates are shown as arrows connecting their origin as the predicate subject to their target as a predicate object. The circles are concrete entities. In the drawing, one validation result is shown explaining that the decision `https://data.gent.be/id/besluiten/23.1214.2233.0071` from the city of Ghent does not have a language property in the triplestore.
 
 The prefixes used in this section are:
 
