@@ -143,7 +143,7 @@ A REST API (Extension 5) exposing the latest validation report is added to the s
         }
     }],
     "meta": {
-        "total": "2565",
+        "total": 2565,
         "page": 1,
         "pageSize": 10,
         "totalPages": 257
