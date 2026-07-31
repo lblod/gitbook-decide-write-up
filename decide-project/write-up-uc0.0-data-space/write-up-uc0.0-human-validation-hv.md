@@ -43,7 +43,7 @@ UC0.1 includes a dedicated HV interface for validating AI-generated SDG codelist
 
 [write-up-uc0.1-policy-impact-report.md](../write-up-uc0.1-policy-impact-report.md "mention")
 
-#### UC1 Restrictive Mobility Zones
+#### UC1 Restricted Mobility Zones
 
 UC1 reuses two of the HV interface components documented here: the codelist mapping interface (for validating whether a decision concerns a restricted mobility zone) and the entity linking interface (for validating the location entities recognized in the decision text). UC1-specific interface details are in the UC1 write-up.
 
