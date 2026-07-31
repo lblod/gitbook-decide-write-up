@@ -30,7 +30,7 @@ The wanted deliverable is a functioning LD\&L data space grounded in the DS4SSCC
 
 As the umbrella document for UC0.0, this write-up is linked to all eight component write-ups that together make up the foundational data space layer: [UC0.0 Pipelines](write-up-uc0.0-pipelines/), [UC0.0 Human Validation (HV)](write-up-uc0.0-human-validation-hv.md), [UC0.0 DCAT](write-up-dcat.md), [UC0.0 Authorization Policies Store (ODRL)](write-up-odrl.md), [UC0.0 Universal Trust Data Registry (VC)](write-up-verifiable-credentials.md), [UC0.0 Data Space Protocol (DSP)](write-up-dsp.md), [UC0.0 Data Quality Manager](write-up-data-quality-manager.md), and [UC0.0 Repeatable Data Plan](write-up-repeatable-data-plan.md).
 
-Each of the concrete use cases –[UC0.1 Policy Impact Report](../write-up-uc0.1-policy-impact-report.md), [UC1 Restrictive Mobility Zones](../write-up-uc1-restricted-mobility-zones.md), and [UC2 Smart Search](../write-up-uc2-smart-search.md)– also builds on the infrastructure documented here and in the component write-ups above.
+Each of the concrete use cases –[UC0.1 Policy Impact Report](../write-up-uc0.1-policy-impact-report.md), [UC1 Restricted Mobility Zones](../write-up-uc1-restricted-mobility-zones.md), and [UC2 Smart Search](../write-up-uc2-smart-search.md)– also builds on the infrastructure documented here and in the component write-ups above.
 
 ## Glossary
 
