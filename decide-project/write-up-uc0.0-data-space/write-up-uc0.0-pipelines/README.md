@@ -4,7 +4,7 @@ description: Data ingestion & (AI) enrichment pipelines
 
 # Write-up UC0.0 Pipelines
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 {% hint style="warning" %}
 This page is under construction
@@ -38,7 +38,7 @@ The HV is the human-in-the-loop counterpart to the AI pipelines. Once the pipeli
 
 #### Downstream use cases (UC0.1, UC1, UC2)
 
-The pipeline infrastructure is the foundational prerequisite for all downstream use cases in DECIDe. Without the ingestion and normalization layer, there is no common corpus of LD\&L decisions to work with; without the AI enrichment pipelines, there are no structured annotations for downstream applications to consume. UC0.1 Policy Impact Report, UC1 Restrictive Mobility Zones, and UC2 Smart Search all operate on ELI-normalized decisions and annotation outputs produced by these pipelines; none of them function without a working pipeline layer beneath them.
+The pipeline infrastructure is the foundational prerequisite for all downstream use cases in DECIDe. Without the ingestion and normalization layer, there is no common corpus of LD\&L decisions to work with; without the AI enrichment pipelines, there are no structured annotations for downstream applications to consume. UC0.1 Policy Impact Report, UC1 Restricted Mobility Zones, and UC2 Smart Search all operate on ELI-normalized decisions and annotation outputs produced by these pipelines; none of them function without a working pipeline layer beneath them.
 
 [write-up-uc0.1-policy-impact-report.md](../../write-up-uc0.1-policy-impact-report.md "mention")\
 [write-up-uc1-restricted-mobility-zones.md](../../write-up-uc1-restricted-mobility-zones.md "mention")\
