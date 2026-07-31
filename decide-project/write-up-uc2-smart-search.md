@@ -4,7 +4,7 @@ description: Smart Search
 
 # Write-up UC2 Smart Search
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 {% hint style="warning" %}
 This page is under construction
@@ -91,13 +91,14 @@ The underlying mechanism is a Retrieval-Augmented Generation (RAG) pipeline: the
 
 ### Datasets available in the data space
 
-The triple store stores the user's question, the returned answer, and its quotations, along with human validation votes on the answers and quotations. Because this data is highly sensitive (GDPR), we do not publish it using the [publish dataset script](https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-dcat#datasets-available-in-the-data-space).
+The triple store stores the user's question, the returned answer, and its quotations, along with human validation votes on the answers and quotations. Because this data is highly sensitive (GDPR), we do not publish it using the [publish dataset script](write-up-uc0.0-data-space/write-up-dcat.md#datasets-available-in-the-data-space).
 
 ### Data standards
 
 | Standard                                    | Link                                                                               |
 | ------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Schema.org                                  | https://schema.org                                                                 |
+| ELI-normalized LD\&L decisions              | [http://data.europa.eu/eli/ontology#](http://data.europa.eu/eli/ontology)          |
+| Schema.org                                  | [https://schema.org](https://schema.org/)                                          |
 | Web Annotation Vocabulary (`oa:Annotation`) | [https://www.w3.org/TR/annotation-vocab/](https://www.w3.org/TR/annotation-vocab/) |
 | Simple Knowledge Organization System (SKOS) | [https://www.w3.org/TR/skos-reference/](https://www.w3.org/TR/skos-reference/)     |
 
