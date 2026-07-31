@@ -125,7 +125,7 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 ### Data standards
 
-<table><thead><tr><th width="371.2509765625">Standard</th><th>Link</th></tr></thead><tbody><tr><td>SKOS (Simple Knowledge Organization System)</td><td><a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a></td></tr><tr><td>Web Annotation Vocabulary (<code>oa:Annotation</code>)</td><td><a href="https://www.w3.org/TR/annotation-vocab/">https://www.w3.org/TR/annotation-vocab/</a></td></tr></tbody></table>
+<table><thead><tr><th width="371.2509765625">Standard</th><th>Link</th></tr></thead><tbody><tr><td>ELI-normalized LD&#x26;L decisions</td><td><a href="http://data.europa.eu/eli/ontology">http://data.europa.eu/eli/ontology#</a></td></tr><tr><td>SKOS (Simple Knowledge Organization System)</td><td><a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a></td></tr><tr><td>Web Annotation Vocabulary (<code>oa:Annotation</code>)</td><td><a href="https://www.w3.org/TR/annotation-vocab/">https://www.w3.org/TR/annotation-vocab/</a></td></tr></tbody></table>
 
 As with all annotations used in the DECIDe project, the annotations created for UC0.1 are expressed using the Web Annotation Vocabulary and are, as such, instances of the type `oa:Annotation`.
 
