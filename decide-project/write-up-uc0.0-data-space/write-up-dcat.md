@@ -297,3 +297,9 @@ Link to federated DCAT sparql endpoint: https://catalog.decide.lblod.info/sparql
 Link to federated DCAT LDES feed: https://catalog.decide.lblod.info/ldes/public/1
 
 Link to DCAT federated DCAT catalog as triples: https://catalog.decide.lblod.info/dcat/catalog (use e.g. `text/turtle` as an accept header to not end up on the graphical interface)
+
+#### DCAT Links for Bamberg
+
+Link to data platform metadata catalogue: [https://bamberg.bydata.de/?](https://bamberg.bydata.de/?)
+
+Link to Bamberg DCAT in ABB UI: [https://ds.decide.smartcitybamberg.de/dcat](https://ds.decide.smartcitybamberg.de/dcat)
