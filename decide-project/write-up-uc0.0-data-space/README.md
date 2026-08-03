@@ -59,7 +59,7 @@ The three pilot cities are Ghent (Belgium), Bamberg (Germany), and Freiburg (Ger
 Freiburg:&#x20;
 
 * by design pulished all data (public) in the Council and Citizen Information system (Ratsinformationssystem)
-* Contributes data via OParl 1.0, a standardized, open API specification for council information systems used widely across German municipalities
+* Contributes data via OParl 1.0, standardized, open API specification for council information systems used widely across German municipalities
 * Data covers council and committee meetings, agendas, and decisions&#x20;
 
 
