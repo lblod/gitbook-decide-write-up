@@ -68,6 +68,8 @@ On top of this normalized base, a set of AI pipelines produce the structured ann
 
 All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.
 
+TODO: HOW YOU GO TO IMPLEMENT THE pipelines use case&#x20;
+
 ### Target audience / Personas
 
 The pipelines are operated by technical staff; non-technical end users are not exposed to them directly. The primary audiences are data engineers who configure and monitor pipeline runs and AI enrichment providers who operate the annotation steps.
@@ -599,6 +601,10 @@ Schematically, this is represented in the following figure:
 However, we noticed that this resulted in quite non-deterministic behavior of the NEL service. The queries performed by the service were quite erratic and the LLM even consulted SPARQL endpoints that didn't have anything to do with the project (e.g. the [dbpedia](https://www.dbpedia.org/) SPARQL endpoint). As a result, the service took much longer than anticipated to find the links for entities. We scrapped this approach and replaced it by the non-AI approach above to make the service more deterministic and faster.
 
 This may reduce the number of entities that we can find true URIs for in the named entity linking phase, but we preferred predictability and performance over potentially discovering more links. Especially given that these links may not be trustworthy given that they can result from SPARQL endpoints that we didn't approve the contents of.
+
+TODO: A side-by-side mapping of how these use cases will be developed in each of the pilot sites
+
+alignment with Use Cases and local policies in these documents. From the titles this is to be expected.
 
 ## Final UI design (and why) (if any)
 
