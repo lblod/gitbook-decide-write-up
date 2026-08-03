@@ -648,10 +648,9 @@ In line with the approach also taken by the other pilot cities, Bamberg and Ghen
 
 ### Ghent
 
-Ghent will be testing:
+Ghent has been testing:
 
-* The quality of the AI annotations via the Human Validation Tool
-  * Bases on the quality Gent will decide on the local implementation of the NER and NEL services
+* The quality of the AI annotations via the Human Validation Tool. Based on the quality Gent will decide on the local implementation of the NER and NEL services
 * The local implementation of the NER and NEL services on location and the local widgets
   * On the technical aspects (configuration of the services in the container, installing and running the containerized services, querying the LOD, etc)
   * On the data quality of the AI annotations
