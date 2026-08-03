@@ -177,6 +177,14 @@ Data will be retrieved from the Ghent open data on decisions and annotations, an
 
 
 
+### Bamberg
+
+In the following the final architecture is described for the city of Bamberg at the end of the project. Relevant future work is linked when relevant.
+
+<table><thead><tr><th width="202.79998779296875">Layer</th><th>Description</th></tr></thead><tbody><tr><td>Access and Federation</td><td>Bamberg implements the DCAT system publishing an accessible catalog and the LDES API. Since only public data from the citizen information system is used, there is currently no need for ODRL and the DSP connector.</td></tr><tr><td>Data ingestion</td><td>Bamberg started out by using the PDF to ELI pipeline by providing direct website links with PDF data. Later Bamberg switched to JSON to ELI pipeline to include further metadata and combine templates with actual decision data. (see <a href="https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-uc0.0-pipelines#ingestion-pipelines">Ingestion Pipelines</a>)</td></tr><tr><td>Data enrichment</td><td>TBD</td></tr><tr><td>Concrete applications</td><td>TBD</td></tr></tbody></table>
+
+
+
 
 
 ### Core semantic.works components
