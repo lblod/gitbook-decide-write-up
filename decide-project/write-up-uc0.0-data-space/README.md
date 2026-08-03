@@ -72,9 +72,13 @@ Ghent also wants to use these data without being dependant on these vendors. The
 
 In the DECIDE project Ghent want to collaborate with ABB on these ideas. The concept of a dataspace with decentral publications, central an decentral data management, and distribution of the data is a usefull concept for these business needs.&#x20;
 
-### Bamberg:
+#### Bamberg
 
-Bamberg publishes all of its public data, including decision templates aswell as council meeting minutes in the Citizen Information System (Bürgerinformationssystem [https://www.stadt.bamberg.de/buergerinformationssystem/si018](https://www.stadt.bamberg.de/buergerinformationssystem/si018)). The Data is provided in PDF files, which are scraped and turned into ELI via the tool provided by ABB.&#x20;
+Bamberg publishes all of its public data, including decision templates aswell as council meeting minutes in the Citizen Information System (Bürgerinformationssystem [https://www.stadt.bamberg.de/buergerinformationssystem/si018](https://www.stadt.bamberg.de/buergerinformationssystem/si018)). The Data is provided in PDF files, which are scraped and turned into ELI via the tool provided by ABB.
+
+Currently, decision templates and decisions are published in different PDF files and are not linked by machine readable means. The tool provided by ABB establishes a machine readable connection between them. For the duration of the project, Bamberg has refrained from obtaining the OParl-API for tool testing purposes.
+
+Different from the other pilots, the data can only be accessed after manually pulling the latest decisions and their templates from the Citizen Information System. In order to automate the pipeline, Bamberg will be obtaining the OParl-API.
 
 ### Target audience / Personas
 
