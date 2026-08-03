@@ -59,8 +59,10 @@ The three pilot cities are Ghent (Belgium), Bamberg (Germany), and Freiburg (Ger
 Freiburg:&#x20;
 
 * by design pulished all data (public) in the Council and Citizen Information system (Ratsinformationssystem)
-* Contributes data via OParl 1.0, standardized, open API specification for council information systems used widely across German municipalities
+* Contributes data via OParl 1.0, a standardized, open API specification for council information systems used widely across German municipalities
 * Data covers council and committee meetings, agendas, and decisions&#x20;
+
+Freiburg publishes its council and committee data by design as public information in its Council and Citizen Information system (Ratsinformationssystem). This data is made available to ABB via OParl 1.0, a standardized, open API specification for council information systems that is widely used across German municipalities. Through this interface, ABB can access structured information on council and committee meetings, agendas, and decisions, providing a consistent overview of Freiburg's local decision-making comparable to what is available for e.g., Ghent via its SPARQL-based linked open data access.
 
 
 
