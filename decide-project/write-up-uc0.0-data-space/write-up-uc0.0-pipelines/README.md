@@ -82,11 +82,11 @@ Bamberg gave itself a smart city and digitalization strategy, even if the partic
 
 The DECIDE infastructure is set up by Bamberg on a project specific Hetzner server. After the project, the infrastructure will be migrated to the servers of their data platform which is used as a core database, distribution and rights management system spanning across several projects.&#x20;
 
-Bamberg provides semi-structured data via its **CIS**: Templates and minutes are originally created in a PDF format and then automatically formatted as HTML within the city website.&#x20;
+Bamberg provides semi-structured data via its **CCIS**: Templates and minutes are originally created in a PDF format and then automatically formatted as HTML within the city website.&#x20;
 
 1. Originally the data was gathered by directly downloading and converting the PDF of each template (see **PDF to ELI pipeline**).&#x20;
 2. Then a datascraping tool was developed by Bamberg to bundle the HTML of templates and minutes into a coherent JSON format. This format is used to add relevant metadata information and also add the actual decisions to the templates. (see **JSON to ELI pipeline**)
-3. For further development the **CIS** will also enable an **OPARL API** to standardize the data alongside Freiburg. (see **OPARL to ELI pipeline**) It has to be tested if the API can provide the same metadata information as in the JSON approach. Further work might therefore add upon the features for the OPARL implementation, also providing further data for other cities using the same standard.
+3. For further development the **CCIS** will also enable an **OPARL API** to standardize the data alongside Freiburg. (see **OPARL to ELI pipeline**) It has to be tested if the API can provide the same metadata information as in the JSON approach. Further work might therefore add upon the features for the OPARL implementation, also providing further data for other cities using the same standard.
 
 Bamberg implements the NER and NEL services via an external Mistral model since the current server does not reliably support a local LLM for this task.
 
