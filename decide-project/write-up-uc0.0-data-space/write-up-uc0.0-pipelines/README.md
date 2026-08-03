@@ -78,7 +78,9 @@ Ghent will also implement the NER and NEL services on location annotation locall
 
 #### Bamberg
 
-The DECIDE infastructure is set by up by Bamberg on a project specific Hetzner server. After the project, the infrastructure will be migrated to the servers of their data platform which is used as a core database, distribution and rights management system spanning across several projects.&#x20;
+Bamberg gave itself a smart city and digitalization strategy, even if the participation in this data space is not specifically mentioned there, it still pays on it’s overall goals. So far, Bamberg’s decision data was solely stored and managed by a solution provider by implementing usecase 0.0 the administration gains a way to extract and use it's own data, which provides a stronger data governance and flexibility to use it's decision data for future usecases, and thereby more flexibility to implement new policy processes building upon decision data.
+
+The DECIDE infastructure is set up by Bamberg on a project specific Hetzner server. After the project, the infrastructure will be migrated to the servers of their data platform which is used as a core database, distribution and rights management system spanning across several projects.&#x20;
 
 Bamberg provides semi-structured data via its **CIS**: Templates and minutes are originally created in a PDF format and then automatically formatted as HTML within the city website.&#x20;
 

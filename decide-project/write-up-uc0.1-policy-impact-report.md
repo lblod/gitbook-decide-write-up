@@ -505,6 +505,10 @@ In a first phase we focus on checking the linking to the right SDG. In a second 
 
 Testing is being done at first by the project lead. When results are good enough testing shifts to the cityservice that provides guides by drafting the decisions.
 
+#### Bamberg
+
+The Policy Impact Report will be evaluated quantitatively within the frame of a survey run by the research partners. This survey is carried out below &#x20;
+
 ### Risks & mitigations
 
 ## Possible future work
