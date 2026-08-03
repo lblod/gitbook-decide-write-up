@@ -68,7 +68,7 @@ On top of this normalized base, a set of AI pipelines produce the structured ann
 
 All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.
 
-TODO: HOW YOU GO TO IMPLEMENT THE pipelines use case
+<mark style="color:$warning;">TODO: HOW YOU GO TO IMPLEMENT THE pipelines use case</mark>
 
 #### Ghent
 
@@ -76,8 +76,17 @@ Ghent publishes data on local decisions via the LBLOD/OSLO data standards and pu
 
 Ghent will also implement the NER and NEL services on location annotation locally (in august 2026). The annotation data will be published on the Ghent LOD environment.&#x20;
 
-Bamberg:\
-Although not all tools provided are being used by Bamberg, the whole infrastructure was being setup on a Bamberg specific Hetzner server to use. After the project, the infrastructure will be migrated to the servers of our data platform.&#x20;
+#### Bamberg
+
+The DECIDE infastructure is set by up by Bamberg on a project specific Hetzner server. After the project, the infrastructure will be migrated to the servers of their data platform which is used as a core database, distribution and rights management system spanning across several projects.&#x20;
+
+Bamberg provides semi-structured data via its **CIS**: Templates and minutes are originally created in a PDF format and then automatically formatted as HTML within the city website.&#x20;
+
+1. Originally the data was gathered by directly downloading and converting the PDF of each template (see **PDF to ELI pipeline**).&#x20;
+2. Then a datascraping tool was developed by Bamberg to bundle the HTML of templates and minutes into a coherent JSON format. This format is used to add relevant metadata information and also add the actual decisions to the templates. (see **JSON to ELI pipeline**)
+3. For further development the **CIS** will also enable an **OPARL API** to standardize the data alongside Freiburg. (see **OPARL to ELI pipeline**) It has to be tested if the API can provide the same metadata information as in the JSON approach. Further work might therefore add upon the features for the OPARL implementation, also providing further data for other cities using the same standard.
+
+Bamberg implements the NER and NEL services via an external Mistral model since the current server does not reliably support a local LLM for this task.
 
 ### Target audience / Personas
 
