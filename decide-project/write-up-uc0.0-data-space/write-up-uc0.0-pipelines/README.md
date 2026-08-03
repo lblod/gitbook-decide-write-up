@@ -630,6 +630,23 @@ n/a
 
 In line with the approach also taken by the other pilot cities, Bamberg and Ghent, the quality of the output data was carried out through the human validation interface, which colleagues from different departments across the city administration including DIGIT and Ratsbüro used to review and assess the quality of the enriched decisions; feedback on the results was shared directly with ABB, contributing to the ongoing refinement of the enrichment pipeline.&#x20;
 
+#### Ghent
+
+Ghent will be testing:
+
+* The quality of the AI annotations via the Human Validation Tool
+  * Bases on the quality Gent will decide on the local implementation of the NER and NEL services
+* The local implementation of the NER and NEL services on location and the local widgets
+  * On the technical aspects (configuration of the services in the container, installing and running the containerized services, querying the LOD, etc)
+  * On the data quality of the AI annotations
+
+Testing is split into two fases
+
+* Testing by the project lead (quality checks) and the technical staff (IT checks)
+* Testing by the city services that assist with the drafting of local decisions (probably after the end of the project due to the time restictions of the project)
+
+
+
 ### Risks and mitigations
 
 ## Possible future work
