@@ -620,9 +620,9 @@ alignment with Use Cases and local policies in these documents. From the titles 
 
 
 
-## Final Architecture (and why)
+### Pilot Partners
 
-### Bamberg
+#### Bamberg
 
 The DECIDE infastructure is set up by Bamberg on a project specific Hetzner server. After the project, the infrastructure will be migrated to the servers of their data platform which is used as a core database, distribution and rights management system spanning across several projects.&#x20;
 
@@ -636,11 +636,13 @@ Bamberg implements the NER and NEL services via an external Mistral model since 
 
 <mark style="color:$warning;">TODO Pascal: Will the project manage to have a machine readable repository of decision from Bamberg that can be kept up to date?</mark>
 
-### Freiburg
+#### Freiburg
 
 
 
-### Ghent
+#### Ghent
+
+
 
 ## Final UI design (and why) (if any)
 
