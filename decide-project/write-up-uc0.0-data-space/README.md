@@ -56,6 +56,19 @@ The ambition of DECIDe is not only to show that this is technically feasible, bu
 
 The three pilot cities are Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany). Ghent contributes linked data published through the LBLOD infrastructure using the OSLO-Besluit standard. Freiburg contributes data through an OParl-based council information system. Bamberg contributes meeting minutes and decisions as PDF documents. The central data space infrastructure is operated by the DECIDe team at ABB; pilot cities are the source of the data the system processes and do not operate the infrastructure themselves.
 
+
+
+
+
+Ghent:&#x20;
+
+* in the LBLOD/OSLO ecosystem
+* chooses to publish as much as open data as possbile: decisions from the city council, decisions of the mayor and alderman (college), decisions of the mayor.&#x20;
+* in the LBLOd ecosystem software vendors have built their own software solutions
+* Ghent wants also to use these data without the sw vendors -> open data. Publish the data als open data and in our own drupal widgets;
+
+
+
 ### Target audience / Personas
 
 DECIDe serves multiple distinct audiences across its components: the technical staff who operate the infrastructure, the domain experts who validate AI outputs, the non-technical users who consume the resulting applications, and the organizations that participate in the data space as data providers or consumers. The personas table below is the reference overview for all DECIDe write-ups.
