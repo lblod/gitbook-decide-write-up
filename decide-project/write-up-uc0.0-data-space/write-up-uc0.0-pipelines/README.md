@@ -674,6 +674,16 @@ TODO:
 
 TODO:
 
+### Possible future work GHENT related
+
+_Firstly Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website decision on publishing the overviews can be decided topic by topic. It will be decided as questions come from the city services._&#x20;
+
+Ghent will keep checking evolutions in the ABB development. When other use cases evolve (like the SDG solution or new developments) will check if we can connect to these pipelines.&#x20;
+
+For information that is crucial for the city Ghent wants to host the services on its own services, like it does for the NER and NEL services on locations. Setup will be based on the exaples of the ABB pipelines.&#x20;
+
+
+
 ## <mark style="background-color:$warning;">Relevant links</mark>
 
 * Harvester frontend: [https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting](https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting)
