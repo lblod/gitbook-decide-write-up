@@ -507,7 +507,8 @@ Testing is being done at first by the project lead. When results are good enough
 
 #### Bamberg
 
-The Policy Impact Report will be evaluated quantitatively within the frame of a survey run by the research partners. This survey is carried out below &#x20;
+The Policy Impact Report will be evaluated quantitatively within the frame of a survey run by the research partners. This survey is carried out below public servants, citizens and politicians to cover all interest groups. It assesses the quality, usability and usefulness of the Policy Impact Report to each group seperately. \
+Additionaly the Policy Impact Report was qualitatively tested by the climate and environmental department. These tests revealed some minor issues as 'add context why SDG assessment was taken' or 'we need to regionalize the impact categories'.&#x20;
 
 ### Risks & mitigations
 
