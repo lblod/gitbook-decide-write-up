@@ -80,17 +80,7 @@ Ghent will also implement the NER and NEL services on location annotation locall
 
 Bamberg gave itself a smart city and digitalization strategy, even if the participation in this data space is not specifically mentioned there, it still pays on it’s overall goals. So far, Bamberg’s decision data was solely stored and managed by a solution provider by implementing usecase 0.0 the administration gains a way to extract and use it's own data, which provides a stronger data governance and flexibility to use it's decision data for future usecases, and thereby more flexibility to implement new policy processes building upon decision data.
 
-The DECIDE infastructure is set up by Bamberg on a project specific Hetzner server. After the project, the infrastructure will be migrated to the servers of their data platform which is used as a core database, distribution and rights management system spanning across several projects.&#x20;
 
-Bamberg provides semi-structured data via its **CCIS**: Templates and minutes are originally created in a PDF format and then automatically formatted as HTML within the city website.&#x20;
-
-1. Originally the data was gathered by directly downloading and converting the PDF of each template (see **PDF to ELI pipeline**).&#x20;
-2. Then a datascraping tool was developed by Bamberg to bundle the HTML of templates and minutes into a coherent JSON format. This format is used to add relevant metadata information and also add the actual decisions to the templates. (see **JSON to ELI pipeline**)
-3. For further development the **CCIS** will also enable an **OPARL API** to standardize the data alongside Freiburg. (see **OPARL to ELI pipeline**) It has to be tested if the API can provide the same metadata information as in the JSON approach. Further work might therefore add upon the features for the OPARL implementation, also providing further data for other cities using the same standard.
-
-Bamberg implements the NER and NEL services via an external Mistral model since the current server does not reliably support a local LLM for this task.
-
-<mark style="color:$warning;">TODO Pascal: Will the project manage to have a machine readable repository of decision from Bamberg that can be kept up to date?</mark>
 
 ### Target audience / Personas
 
@@ -627,6 +617,30 @@ This may reduce the number of entities that we can find true URIs for in the nam
 TODO: A side-by-side mapping of how these use cases will be developed in each of the pilot sites
 
 alignment with Use Cases and local policies in these documents. From the titles this is to be expected.
+
+
+
+## Final Architecture (and why)
+
+### Bamberg
+
+The DECIDE infastructure is set up by Bamberg on a project specific Hetzner server. After the project, the infrastructure will be migrated to the servers of their data platform which is used as a core database, distribution and rights management system spanning across several projects.&#x20;
+
+Bamberg provides semi-structured data via its **CCIS**: Templates and minutes are originally created in a PDF format and then automatically formatted as HTML within the city website.&#x20;
+
+1. Originally the data was gathered by directly downloading and converting the PDF of each template (see **PDF to ELI pipeline**).&#x20;
+2. Then a datascraping tool was developed by Bamberg to bundle the HTML of templates and minutes into a coherent JSON format. This format is used to add relevant metadata information and also add the actual decisions to the templates. (see **JSON to ELI pipeline**)
+3. For further development the **CCIS** will also enable an **OPARL API** to standardize the data alongside Freiburg. (see **OPARL to ELI pipeline**) It has to be tested if the API can provide the same metadata information as in the JSON approach. Further work might therefore add upon the features for the OPARL implementation, also providing further data for other cities using the same standard.
+
+Bamberg implements the NER and NEL services via an external Mistral model since the current server does not reliably support a local LLM for this task.
+
+<mark style="color:$warning;">TODO Pascal: Will the project manage to have a machine readable repository of decision from Bamberg that can be kept up to date?</mark>
+
+### Freiburg
+
+
+
+### Ghent
 
 ## Final UI design (and why) (if any)
 
