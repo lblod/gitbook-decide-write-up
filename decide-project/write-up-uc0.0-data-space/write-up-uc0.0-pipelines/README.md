@@ -88,6 +88,8 @@ Bamberg provides semi-structured data via its **CIS**: Templates and minutes are
 
 Bamberg implements the NER and NEL services via an external Mistral model since the current server does not reliably support a local LLM for this task.
 
+<mark style="color:$warning;">TODO Pascal: Will the project manage to have a machine readable repository of decision from Bamberg that can be kept up to date?</mark>
+
 ### Target audience / Personas
 
 The pipelines are operated by technical staff; non-technical end users are not exposed to them directly. The primary audiences are data engineers who configure and monitor pipeline runs and AI enrichment providers who operate the annotation steps.
