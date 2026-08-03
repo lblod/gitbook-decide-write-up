@@ -626,6 +626,10 @@ n/a
 
 <mark style="background-color:$warning;">TO DO:</mark> We need to add here how we tested this pipeline. Each partner could/should document how you did the testing. Make a subtitle for your organization.
 
+### Freiburg
+
+In line with the approach also taken by the other pilot cities, Bamberg and Ghent, the quality of the output data was carried out through the human validation interface, which colleagues from different departments across the city administration including DIGIT and Ratsbüro used to review and assess the quality of the enriched decisions; feedback on the results was shared directly with ABB, contributing to the ongoing refinement of the enrichment pipeline.&#x20;
+
 ### Risks and mitigations
 
 ## Possible future work
