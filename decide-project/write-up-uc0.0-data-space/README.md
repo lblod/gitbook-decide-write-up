@@ -150,7 +150,9 @@ The end-to-end architecture of the DECIDe data space spans all four layers descr
 
 #### Freiburg
 
-**TODO: alignment with Use Cases and local policies in these documents. From the titles this is to be expected.**
+Freiburg's contribution to the data space is realized primarily at the data ingestion layer. Since its Council and Citizen Information system (Ratsinformationssystem) publishes decisions by design as public data, no additional open-data enablement work was required on the city's side. The OParl 1.0 API ([https://oparl.org/](https://oparl.org/)) serves as the connection point: as part of the project, the API ([https://ris.freiburg.de/oparl](https://ris.freiburg.de/oparl)) allowed access to all the council and committee meetings, agendas, and decisions from Freiburg. In addition, a DCAT catalog entry for Freiburg's data was established as part of the project — this had not existed previously and represents a further building block that Freiburg actively contributed to the data space.
+
+For data enrichment and the concrete applications, Freiburg builds directly on the data made available through the ABB pipeline. As part of the project, the installation of the ingestion pipeline was trialed and documented on Freiburg's side, confirming its feasibility and making it available for future deployment and next steps. However, since the ABB pipeline's outputs are of equivalent quality and already available, Freiburg opted to work with these outputs directly for enrichment and application development, rather than running its own instance in parallel. This allowed the city to move faster and focus its efforts on validating the use case concept itself, rather than on pipeline operations.
 
 #### **Ghent**
 
@@ -175,8 +177,6 @@ Data will be retrieved from the Ghent open data on decisions and annotations, an
 
 Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website decision on publishing the overviews can be decided topic by topic. It will be decided as questions come from the city services.
 
-
-
 #### Bamberg
 
 In the following the final architecture is described for the city of Bamberg at the end of the project. Relevant future work is linked when relevant.
@@ -184,16 +184,6 @@ In the following the final architecture is described for the city of Bamberg at 
 <table><thead><tr><th width="202.79998779296875">Layer</th><th>Description</th></tr></thead><tbody><tr><td>Access and Federation</td><td>Bamberg implements the <strong>DCAT</strong> system publishing an accessible catalog and the <strong>LDES API</strong> as configured by ABB. Since only public data from the citizen information system is used, there is currently no need for <strong>ODRL</strong> and the <strong>DSP connector</strong>.</td></tr><tr><td>Data ingestion</td><td>Bamberg started out by using the <strong>PDF to ELI pipeline</strong> by providing website URLs (which include a direct link to the PDF) of the local decision template. Later Bamberg switched to the <strong>JSON to ELI pipeline</strong> to include further metadata and combine template data with the actual decision data. (see <a href="https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-uc0.0-pipelines#ingestion-pipelines">Ingestion Pipelines</a>)</td></tr><tr><td>Data enrichment</td><td><p>No prior system for data enchrichment was used in Bamberg since the data did not exist in a structured format yet (only semi-structured PDF documents). Some metadata information were already provided by the current citizen information system e.g. scheduling information.</p><p></p><p>Bamberg uses the full implementation provided by ABB for data enchrichment notably including annotations of locations, administrations and time data. Also the classification system for codelists is used. </p></td></tr><tr><td>Concrete applications</td><td><p>Bamberg focuses on using UC0.1 (Policy Impact Report) and UC2 (Smart Search) as use cases.</p><p></p><p>UC0.1: Similar to Ghent, Bamberg also wants to check if it is feasible to link other codelists e.g. a local environment policy on which decisions could be tested against. Using this setup, the municipal department for climate &#x26; environment could integrate the software into their workflow and efficiently lower their workload. Bamberg would also be interested in classifying decisions according to a city policy - if such will be created in the future.<br><br>Depending UC2, Bamberg is interested in running the smart search internally (within the administration) and externally (by granting access to citizens). This, on the one hand creates more efficiency for staff working with decisions and more visability for decisions taken by the city council. In the future the smart search might be enhanced with project management data, to grant a better tracking of the implementation of decisions.</p></td></tr></tbody></table>
 
 
-
-Freiburg's contribution to the data space is realized primarily at the data ingestion layer. Since its Council and Citizen Information system (Ratsinformationssystem) publishes decisions by design as public data, no additional open-data enablement work was required on the city's side. The OParl 1.0 API ([https://oparl.org/](https://oparl.org/)) serves as the connection point: as part of the project, the API ([https://ris.freiburg.de/oparl](https://ris.freiburg.de/oparl)) allowed access to all the council and committee meetings, agendas, and decisions from Freiburg. In addition, a DCAT catalog entry for Freiburg's data was established as part of the project — this had not existed previously and represents a further building block that Freiburg actively contributed to the data space.
-
-For data enrichment and the concrete applications, Freiburg builds directly on the data made available through the ABB pipeline. As part of the project, the installation of the ingestion pipeline was trialed and documented on Freiburg's side, confirming its feasibility and making it available for future deployment and next steps. However, since the ABB pipeline's outputs are of equivalent quality and already available, Freiburg opted to work with these outputs directly for enrichment and application development, rather than running its own instance in parallel. This allowed the city to move faster and focus its efforts on validating the use case concept itself, rather than on pipeline operations.
-
-
-
-
-
-TODO: HOW YOU GO TO IMPLEMENT THE DATASPACE BUILDINGS BLOCK FOR EACH CITY
 
 
 
