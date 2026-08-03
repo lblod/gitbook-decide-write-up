@@ -94,6 +94,22 @@ Bamberg
 The city of Bamberg is implementing the Policy Impact Report to build climate awareness below the members of city council. The Policy Impact report should in the future not only show the macro-impact of past decisions to the politicians, but also be implemented on the microlevel by featuring the assessment of singular templates before the decisive seating. Such, politicians will build awareness for the impact of their decisions. This directly adresses a decision from 2020 - in which the city council decided that each template should be assessed by the climate and environmental office on it's potential climate impact - which was, due to staff shortage, not implemented yet. \
 Additionaly, the climate and environmental department of the city of Bamberg claimed that they will develop new decision categories and descriptions to frame the Policy Impact Report more on the local reality, to make it even more useful.
 
+#### Ghent
+
+**Considerations on the policy impact report**
+
+As stated in the section on the pipelines ([final architecture](write-up-uc0.0-data-space/#final-architecture-and-why) and [possible future work](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/#possible-future-work-ghent-related)) the matching of local decision with local strategy or regional/national/international policy is very relevant for the city of Ghent. We see this as a premium function for a future dataspace business case.&#x20;
+
+We consider that checks on regional, national or international policy should be located at the regional or national level. Therefore we test the quality of this annotations and impact assessment in the human validation tool, which is realised by ABB.&#x20;
+
+We also might consider using a tool that checks decisons on the local strategy of the city of Ghent. In that case it might be relevant to train and host this AI solution on the servers of the city of Ghent.&#x20;
+
+**Testing of the policy impact report**
+
+Ghent is testing the report via the human validation tool as well as via the policy impact dashboard the ABB has realised. In a first phase we focus on checking the linking to the right SDG. In a second phase we also look at the positive of negative impact of the decision on this SDG.&#x20;
+
+Testing is being done at first by the project lead. When results are good enough testing shifts to the cityservice that provides guides by drafting the decisions.
+
 ### Target audience / Personas
 
 The Policy Impact Report is intended for non-technical users in local government, e.g. policy officers, sustainability coordinators, and decision-makers who need to understand the policy footprint of their city's formal decisions without querying raw data or interpreting linked data structures.
