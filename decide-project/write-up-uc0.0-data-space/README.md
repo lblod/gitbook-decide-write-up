@@ -142,7 +142,7 @@ The DECIDe data space is organized around four layers that build on one another.
 
 The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each use case write-up documents the architecture of its own layer in detail, adding specialized services to the base architecture; this section will continue to describe the core micro-services that will be reused across all use cases
 
-**TODO: HOW YOU GO TO IMPLEMENT THE DATASPACE BUILDINGS BLOCK FOR EACH CITY**
+#### Freiburg
 
 **TODO: alignment with Use Cases and local policies in these documents. From the titles this is to be expected.**
 
@@ -178,6 +178,16 @@ In the following the final architecture is described for the city of Bamberg at 
 <table><thead><tr><th width="202.79998779296875">Layer</th><th>Description</th></tr></thead><tbody><tr><td>Access and Federation</td><td>Bamberg implements the DCAT system publishing an accessible catalog and the LDES API. Since only public data from the citizen information system is used, there is currently no need for ODRL and the DSP connector.</td></tr><tr><td>Data ingestion</td><td>Bamberg started out by using the PDF to ELI pipeline by providing direct website links with PDF data. Later Bamberg switched to JSON to ELI pipeline to include further metadata and combine templates with actual decision data. (see <a href="https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-uc0.0-pipelines#ingestion-pipelines">Ingestion Pipelines</a>)</td></tr><tr><td>Data enrichment</td><td>TBD</td></tr><tr><td>Concrete applications</td><td>TBD</td></tr></tbody></table>
 
 
+
+Freiburg's contribution to the data space is realized primarily at the data ingestion layer. Since its Council and Citizen Information system (Ratsinformationssystem) publishes decisions by design as public data, no additional open-data enablement work was required on the city's side. The OParl 1.0 API ([https://oparl.org/](https://oparl.org/)) serves as the connection point: as part of the project, the API ([https://ris.freiburg.de/oparl](https://ris.freiburg.de/oparl)) allowed access to all the council and committee meetings, agendas, and decisions from Freiburg. In addition, a DCAT catalog entry for Freiburg's data was established as part of the project — this had not existed previously and represents a further building block that Freiburg actively contributed to the data space.
+
+For data enrichment and the concrete applications, Freiburg builds directly on the data made available through the ABB pipeline. As part of the project, the installation of the ingestion pipeline was trialed and documented on Freiburg's side, confirming its feasibility and making it available for future deployment and next steps. However, since the ABB pipeline's outputs are of equivalent quality and already available, Freiburg opted to work with these outputs directly for enrichment and application development, rather than running its own instance in parallel. This allowed the city to move faster and focus its efforts on validating the use case concept itself, rather than on pipeline operations.
+
+
+
+
+
+TODO: HOW YOU GO TO IMPLEMENT THE DATASPACE BUILDINGS BLOCK FOR EACH CITY
 
 
 
