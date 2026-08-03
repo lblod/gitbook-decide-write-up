@@ -146,9 +146,36 @@ The DECIDe data space is organized around four layers that build on one another.
 
 The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each use case write-up documents the architecture of its own layer in detail, adding specialized services to the base architecture; this section will continue to describe the core micro-services that will be reused across all use cases
 
-TODO: HOW YOU GO TO IMPLEMENT THE DATASPACE BUILDINGS BLOCK FOR EACH CITY
+**TODO: HOW YOU GO TO IMPLEMENT THE DATASPACE BUILDINGS BLOCK FOR EACH CITY**
 
-TODO: alignment with Use Cases and local policies in these documents. From the titles this is to be expected.
+**TODO: alignment with Use Cases and local policies in these documents. From the titles this is to be expected.**
+
+#### **Ghent**
+
+Ghent alligns as much as possible to the ABB way of building the data space.  For **Access and federation layer,** the **DCAT** catalog as configured by ABB will be implemented on the servers of the city of Ghent. Data ingestion is realised by the LBLOD/OSLO data format and and the LBLOD standard for publications, as ABB transfers the data to the ELI format.
+
+**Data enrichment** is essential for the Ghent case. As result of a previous project [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government) Ghent already has a service that adds thematical annotations to local decisions. In the DECIDe project Ghent wants to add an annotation with (georeferenced) location annotations to this. This AI components are set up by ABB and may be i**mplemented on the Ghent servers** in august 2026.
+
+Ghent alos wants to test if it is feasable to link local decisions to policy guidelines like the SDG's and test the feasibilty of a smart search on local desions. These elements will be tested by  the **ABB Human Validation interface**.&#x20;
+
+The testing of the link to the SDG's is a relevant test case for:
+
+* Checking if local decision can be linked in the future to the city's local policy strategy
+* Checking if local decisions can be linked to regional of national policy. As Flemish and federal government agencies often asked data on in what way local policy is alligned with regional or central strategy document, these can be a very usefull tool for the future
+
+In the DECIDE project Ghent wants to test this features and realise some components that are directly usable for the city.&#x20;
+
+* Ghent will implement and test the **NER And NEL service for the identification of location** locally. Data will be published as open data on the Ghent LOD services.&#x20;
+* Bases on the location Ghent will link locations in the decisions to the list of the 25 city districts.
+* Ghent will implement **widgets on the city website** that shows recents decisions related to prefined topics and city districts
+
+Data will be retrieved from the Ghent open data on decisions and annotations, and will be retrieved from the ABB pipelines.&#x20;
+
+
+
+
+
+
 
 ### Core semantic.works components
 
