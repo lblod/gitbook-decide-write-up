@@ -56,7 +56,7 @@ The ambition of DECIDe is not only to show that this is technically feasible, bu
 
 The three pilot cities are Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany). Ghent contributes linked data published through the LBLOD infrastructure using the OSLO-Besluit standard. Freiburg contributes data through an OParl-based council information system. Bamberg contributes meeting minutes and decisions as PDF documents. The central data space infrastructure is operated by the DECIDe team at ABB; pilot cities are the source of the data the system processes and do not operate the infrastructure themselves.
 
-### Freiburg:&#x20;
+#### Freiburg
 
 Freiburg publishes its council and committee data by design as public information in its Council and Citizen Information system (Ratsinformationssystem [https://ris.freiburg.de/](https://ris.freiburg.de/)). This data is made available to ABB via OParl 1.0, a standardized, open API specification for council information systems that is widely used across German municipalities. Through this interface, ABB can access structured information on council and committee meetings, agendas, and decisions, providing a consistent overview of Freiburg's local decision-making comparable to what is available for e.g., Ghent via its SPARQL-based linked open data access.
 
@@ -167,11 +167,11 @@ In the DECIDE project Ghent wants to test this features and realise some compone
 
 Data will be retrieved from the Ghent open data on decisions and annotations, and will be retrieved from the ABB pipelines.&#x20;
 
+Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website decision on publishing the overviews can be decided topic by topic. It will be decided as questions come from the city services.
 
 
 
-
-### Bamberg
+#### Bamberg
 
 In the following the final architecture is described for the city of Bamberg at the end of the project. Relevant future work is linked when relevant.
 

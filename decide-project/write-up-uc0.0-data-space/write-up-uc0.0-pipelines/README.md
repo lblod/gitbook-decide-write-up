@@ -676,7 +676,7 @@ TODO:
 
 ### Possible future work GHENT related
 
-_Firstly Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website decision on publishing the overviews can be decided topic by topic. It will be decided as questions come from the city services._&#x20;
+Firstly Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website decision on publishing the overviews can be decided topic by topic. It will be decided as questions come from the city services.&#x20;
 
 Ghent will keep checking evolutions in the ABB development. When other use cases evolve (like the SDG solution or new developments) will check if we can connect to these pipelines.&#x20;
 
