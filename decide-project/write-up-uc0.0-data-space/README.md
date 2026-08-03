@@ -56,15 +56,9 @@ The ambition of DECIDe is not only to show that this is technically feasible, bu
 
 The three pilot cities are Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany). Ghent contributes linked data published through the LBLOD infrastructure using the OSLO-Besluit standard. Freiburg contributes data through an OParl-based council information system. Bamberg contributes meeting minutes and decisions as PDF documents. The central data space infrastructure is operated by the DECIDe team at ABB; pilot cities are the source of the data the system processes and do not operate the infrastructure themselves.
 
-Freiburg:&#x20;
+### Freiburg:&#x20;
 
-* by design pulished all data (public) in the Council and Citizen Information system (Ratsinformationssystem)
-* Contributes data via OParl 1.0, a standardized, open API specification for council information systems used widely across German municipalities
-* Data covers council and committee meetings, agendas, and decisions&#x20;
-
-Freiburg publishes its council and committee data by design as public information in its Council and Citizen Information system (Ratsinformationssystem). This data is made available to ABB via OParl 1.0, a standardized, open API specification for council information systems that is widely used across German municipalities. Through this interface, ABB can access structured information on council and committee meetings, agendas, and decisions, providing a consistent overview of Freiburg's local decision-making comparable to what is available for e.g., Ghent via its SPARQL-based linked open data access.
-
-
+Freiburg publishes its council and committee data by design as public information in its Council and Citizen Information system (Ratsinformationssystem [https://ris.freiburg.de/](https://ris.freiburg.de/)). This data is made available to ABB via OParl 1.0, a standardized, open API specification for council information systems that is widely used across German municipalities. Through this interface, ABB can access structured information on council and committee meetings, agendas, and decisions, providing a consistent overview of Freiburg's local decision-making comparable to what is available for e.g., Ghent via its SPARQL-based linked open data access.
 
 #### Ghent
 
