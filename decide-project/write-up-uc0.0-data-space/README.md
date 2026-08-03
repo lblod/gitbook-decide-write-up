@@ -72,7 +72,9 @@ Ghent also wants to use these data without being dependant on these vendors. The
 
 In the DECIDE project Ghent want to collaborate with ABB on these ideas. The concept of a dataspace with decentral publications, central an decentral data management, and distribution of the data is a usefull concept for these business needs.&#x20;
 
+### Bamberg:
 
+Bamberg publishes all of its public data, including decision templates aswell as council meeting minutes in the Citizen Information System (Bürgerinformationssystem [https://www.stadt.bamberg.de/buergerinformationssystem/si018](https://www.stadt.bamberg.de/buergerinformationssystem/si018)). The Data is provided in PDF files, which are scraped and turned into ELI via the tool provided by ABB.&#x20;
 
 ### Target audience / Personas
 

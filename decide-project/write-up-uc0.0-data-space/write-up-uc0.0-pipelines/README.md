@@ -68,13 +68,16 @@ On top of this normalized base, a set of AI pipelines produce the structured ann
 
 All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.
 
-TODO: HOW YOU GO TO IMPLEMENT THE pipelines use case&#x20;
+TODO: HOW YOU GO TO IMPLEMENT THE pipelines use case
 
 #### Ghent
 
 Ghent publishes data on local decisions via the LBLOD/OSLO data standards and publication schemes. ABB converts this to ELI. Most of the annotations made by ABB are tested via the ABB Human Validation interface which uses the ABB pipelines
 
 Ghent will also implement the NER and NEL services on location annotation locally (in august 2026). The annotation data will be published on the Ghent LOD environment.&#x20;
+
+Bamberg:\
+Although not all tools provided are being used by Bamberg, the whole infrastructure was being setup on a Bamberg specific Hetzner server to use. After the project, the infrastructure will be migrated to the servers of our data platform.&#x20;
 
 ### Target audience / Personas
 
@@ -654,6 +657,10 @@ Testing is split into two fases
 ### Possible future work DECIDe data space related
 
 TODO: ADD Possible future  work DECIDe data space
+
+### Bamberg:
+
+After the city of Bamberg tested mere pdf input as data source throughout the project, the municipality will change to the use of an oparl-API, to grant a smooth automated dataflow in the future. The city of Bamberg will also train their staff to create awareness of the existance of UC 0.0, to make sure that in the future new usecases which deal with decision data, needed by the administrators, can be designed upon the use of this pipeline.
 
 #### Input: Pipeline reuse for LD\&L from other local authorities
 
