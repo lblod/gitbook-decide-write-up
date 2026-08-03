@@ -74,11 +74,11 @@ In the DECIDE project Ghent want to collaborate with ABB on these ideas. The con
 
 #### Bamberg
 
-Bamberg publishes all of its public data, including decision templates aswell as council meeting minutes in the **CCIS** (Bürgerinformationssystem [https://www.stadt.bamberg.de/buergerinformationssystem/si018](https://www.stadt.bamberg.de/buergerinformationssystem/si018)). The data is provided as the orginal PDF files and HTML on the website, which is then scraped and turned into ELI via tools provided by ABB.
+Bamberg publishes all of its public data, including decision templates aswell as council meeting minutes in the **CCIS** (Bürgerinformationssystem [https://www.stadt.bamberg.de/buergerinformationssystem/si018](https://www.stadt.bamberg.de/buergerinformationssystem/si018)) as human readable data. The data is provided as the original PDF files and converted HTML on the website, which is then scraped and turned into ELI via tools provided by ABB.
 
-Currently, decision templates and decisions are published in different PDF files and are not linked by machine readable means. The tool provided by ABB establishes a machine readable connection between them. For the duration of the project, Bamberg has refrained from obtaining the OParl-API for tool testing purposes.
+Currently, decision templates and decisions are published in different PDF files and are not linked by machine readable means. The tools developed within the project establish a machine readable connection between them. For the development phase of the project, Bamberg has refrained from obtaining the OParl-API to test alternative means of data gathering.
 
-Different from the other pilots, the data can only be accessed after manually pulling the latest decisions and their templates from the **CCIS**. In order to automate the pipeline, Bamberg will be obtaining the OParl-API.
+With this data gathering approach however, the data gathering has a big overhead because of how the **CCIS** vendor set up the website. To add new decision data within the DECIDE framework, a scraper has to manually access an ordered list of all decisions until the latest processed data. In order to automate the pipeline for future integration and standardize the requests, Bamberg will be obtaining the OParl-API.
 
 ### Target audience / Personas
 
