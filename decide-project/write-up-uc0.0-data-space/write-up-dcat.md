@@ -59,6 +59,20 @@ In DECIDe, each data source has a DCAT description for each of its datasets and 
 
 DCAT is relevant for all three pilot cities that participate in the data space: Ghent (Belgium), Freiburg and Bamberg (Germany). Each city has a DCAT catalog describing its sources within the data space, whether created locally or on the city's behalf as part of the DECIDe pipeline work.
 
+#### Freiburg
+
+**Freiburg DCAT feed**
+
+Freiburg implements the DCAT feed for the DECIDE data as prepared by ABB. The feed is implemented on the servers of the city dataspace ([https://www.freiburg.de/pb/datenraum/daten\_raum\_freiburg.html](https://www.freiburg.de/pb/datenraum/daten_raum_freiburg.html))&#x20;
+
+**Later these changes should be considered**
+
+Freiburg implements a DCAT feed for the DECIDE data prepared by ABB. The feed is hosted within the Freiburg Data Space infrastructure and provides metadata for datasets published through the data space.
+
+In parallel, Freiburg has been operating a DCAT-AP endpoint for its Geospatial Data Infrastructure (GDI), which publishes geospatial metadata in DCAT-AP format. Rather than maintaining separate metadata catalogs, the current direction is to build on this existing infrastructure and explore how the GDI catalog, the DECIDE DCAT feed, and other metadata sources can be integrated into a single, coherent catalog.
+
+The long-term vision is to provide a unified, searchable entry point to the Freiburg Data Space that combines geospatial data, official statistics, and other relevant datasets. As part of this effort, additional internal and external data sources are continuously being evaluated for integration into the catalog.
+
 #### Ghent
 
 **Ghent DCAT feed**
@@ -266,6 +280,11 @@ As stated before, currently no create, delete or update support exists in the DC
 ## Relevant links
 
 Link to automatic DCAT content generation scripts: https://github.com/lblod/app-decide/tree/development/scripts/project/publish\_dataset
+
+#### DCAT Links for Freiburg
+
+[https://decide.datenraum-dev.freiburg.de/ldes/\
+https://decide.datenraum-dev.freiburg.de/datadumps/<br>](https://decide.datenraum-dev.freiburg.de/ldes/https://decide.datenraum-dev.freiburg.de/datadumps/)
 
 Link to federated DCAT catalog UI: https://catalog.decide.lblod.info
 
