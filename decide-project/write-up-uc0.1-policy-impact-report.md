@@ -574,6 +574,11 @@ Alerting mechanisms could be implemented to flag potential drift or degradation 
 
 Surfacing annotation context within source decision text –showing which parts of a decision triggered a particular SDG link– would be more natural and useful in local environments such as Lokaal Beslist (Ghent) or Freiburg's RIS than in a standalone cross-city tool.
 
+### Possible future work Bamberg related
+
+\
+The city of Bamberg is planning to introduce locally framed policy goals instead of the SDGs to the Policy Impact Report. Additionally, the city of Bamberg is thinking about expanding the goals to mirror the objectives of potentially emerging 'city strategy' to create a cross-departmental strategic goal tracking.
+
 ## Relevant links
 
 * Frontend application: [https://policy-impact-report.decide.lblod.info/](https://policy-impact-report.decide.lblod.info/)
