@@ -66,7 +66,7 @@ On top of this normalized base, a set of AI pipelines produce the structured ann
 
 ### Pilot partners
 
-All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities started to operate the pipelines directly.
+All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freiburg and Bamberg (Germany). During development, the pipeline infrastructure was deployed centrally by the DECIDe team at ABB, towards the end of the project, pilot cities Bamberg and Ghent started to operate the pipelines directly, while Freiburg continued to work with the ABB-hosted data, having separately trialed the installation process to confirm it could be deployed at a later stage if needed.
 
 <mark style="color:$warning;">TODO: HOW YOU GO TO IMPLEMENT THE pipelines use case</mark>
 
