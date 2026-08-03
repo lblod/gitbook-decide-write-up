@@ -100,15 +100,11 @@ Additionaly, the climate and environmental department of the city of Bamberg cla
 
 As stated in the section on the pipelines ([final architecture](write-up-uc0.0-data-space/#final-architecture-and-why) and [possible future work](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/#possible-future-work-ghent-related)) the matching of local decision with local strategy or regional/national/international policy is very relevant for the city of Ghent. We see this as a premium function for a future dataspace business case.&#x20;
 
-We consider that checks on regional, national or international policy should be located at the regional or national level. Therefore we test the quality of this annotations and impact assessment in the human validation tool, which is realised by ABB.&#x20;
+We consider that checks on regional, national or international policy should be located at the regional or national level. Therefore we test the quality of this annotations and impact assessment in the human validation tool, which is realised by ABB. This data might also be published on the Ghent open data platform, if the quality of the quality of the annotations is good enough.&#x20;
 
 We also might consider using a tool that checks decisons on the local strategy of the city of Ghent. In that case it might be relevant to train and host this AI solution on the servers of the city of Ghent.&#x20;
 
-**Testing of the policy impact report**
 
-Ghent is testing the report via the human validation tool as well as via the policy impact dashboard the ABB has realised. In a first phase we focus on checking the linking to the right SDG. In a second phase we also look at the positive of negative impact of the decision on this SDG.&#x20;
-
-Testing is being done at first by the project lead. When results are good enough testing shifts to the cityservice that provides guides by drafting the decisions.
 
 ### Target audience / Personas
 
@@ -500,6 +496,14 @@ Different visualizations were explored, including side-by-side comparison of loc
 The validation journey explored approaches where users validate the SDG link and the impact separately. The decision was made to merge these into a single step, so users validate both the SDG and its impact at once.<br>
 
 ## Testing approach
+
+All pilots are testing the report via the human validation tool as well as via the policy impact dashboard the ABB has realised.&#x20;
+
+#### **Ghent**
+
+In a first phase we focus on checking the linking to the right SDG. In a second phase we also look at the positive of negative impact of the decision on this SDG.&#x20;
+
+Testing is being done at first by the project lead. When results are good enough testing shifts to the cityservice that provides guides by drafting the decisions.
 
 ### Risks & mitigations
 
