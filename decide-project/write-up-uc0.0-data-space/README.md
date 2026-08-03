@@ -56,7 +56,11 @@ The ambition of DECIDe is not only to show that this is technically feasible, bu
 
 The three pilot cities are Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany). Ghent contributes linked data published through the LBLOD infrastructure using the OSLO-Besluit standard. Freiburg contributes data through an OParl-based council information system. Bamberg contributes meeting minutes and decisions as PDF documents. The central data space infrastructure is operated by the DECIDe team at ABB; pilot cities are the source of the data the system processes and do not operate the infrastructure themselves.
 
+Freiburg:&#x20;
 
+* by design pulished all data (public) in the Council and Citizen Information system (Ratsinformationssystem)
+* Contributes data via OParl 1.0, a standardized, open API specification for council information systems used widely across German municipalities
+* Data covers council and committee meetings, agendas, and decisions&#x20;
 
 
 
