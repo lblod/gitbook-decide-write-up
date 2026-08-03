@@ -156,11 +156,11 @@ For data enrichment and the concrete applications, Freiburg builds directly on t
 
 #### **Ghent**
 
-Ghent alligns as much as possible to the ABB way of building the data space.  For **Access and federation layer,** the **DCAT** catalog as configured by ABB will be implemented on the servers of the city of Ghent. Data ingestion is realised by the LBLOD/OSLO data format and and the LBLOD standard for publications, as ABB transfers the data to the ELI format.
+Ghent alligns as much as possible to the ABB way of building the data space.  For Access and federation layer, the DCAT catalog as configured by ABB will be implemented on the servers of the city of Ghent. Data ingestion is realised by the LBLOD/OSLO data format and and the LBLOD standard for publications, as ABB transfers the data to the ELI format.
 
-**Data enrichment** is essential for the Ghent case. As result of a previous project [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government) Ghent already has a service that adds thematical annotations to local decisions. In the DECIDe project Ghent wants to add an annotation with (georeferenced) location annotations to this. This AI components are set up by ABB and may be i**mplemented on the Ghent servers** in august 2026.
+Data enrichment is essential for the Ghent case. As result of a previous project [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government) Ghent already has a service that adds thematical annotations to local decisions. In the DECIDe project Ghent wants to add an annotation with (georeferenced) location annotations to this. This AI components are set up by ABB and may be implemented on the Ghent servers in august 2026.
 
-Ghent alos wants to test if it is feasable to link local decisions to policy guidelines like the SDG's and test the feasibilty of a smart search on local desions. These elements will be tested by  the **ABB Human Validation interface**.&#x20;
+Ghent alos wants to test if it is feasable to link local decisions to policy guidelines like the SDG's and test the feasibilty of a smart search on local desions. These elements will be tested by  the ABB Human Validation interface.&#x20;
 
 The testing of the link to the SDG's is a relevant test case for:
 
@@ -169,9 +169,9 @@ The testing of the link to the SDG's is a relevant test case for:
 
 In the DECIDE project Ghent wants to test this features and realise some components that are directly usable for the city.&#x20;
 
-* Ghent will implement and test the **NER And NEL service for the identification of location** locally. Data will be published as open data on the Ghent LOD services.&#x20;
+* Ghent will implement and test the NER And NEL service for the identification of location locally. Data will be published as open data on the Ghent LOD services.&#x20;
 * Bases on the location Ghent will link locations in the decisions to the list of the 25 city districts.
-* Ghent will implement **widgets on the city website** that shows recents decisions related to prefined topics and city districts
+* Ghent will implement widgets on the city website that shows recents decisions related to prefined topics and city districts
 
 Data will be retrieved from the Ghent open data on decisions and annotations, and will be retrieved from the ABB pipelines.&#x20;
 
