@@ -78,13 +78,12 @@ The underlying technical deliverable of UC0.1 is the Codelist Mapping Tool: a ge
 
 ### Pilot partners
 
-All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany).<br>
+All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany).
 
 #### &#x20;Bamberg
 
-The city o
-
-
+The city of Bamberg is implementing the Policy Impact Report to build climate awareness below the members of city council. The Policy Impact report should in the future not only show the macro-impact of past decisions to the politicians, but also be implemented on the microlevel by featuring the assessment of singular templates before the decisive seating. Such, politicians will build awareness for the impact of their decisions. This directly adresses a decision from 2020 - in which the city council decided that each template should be assessed by the climate and environmental office on it's potential climate impact - which was, due to staff shortage, not implemented yet. \
+Additionaly, the climate and environmental department of the city of Bamberg claimed that they will develop new decision categories and descriptions to frame the Policy Impact Report more on the local reality, to make it even more useful.
 
 ### Target audience / Personas
 
