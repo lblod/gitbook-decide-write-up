@@ -78,7 +78,13 @@ The underlying technical deliverable of UC0.1 is the Codelist Mapping Tool: a ge
 
 ### Pilot partners
 
-All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany).
+All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany).<br>
+
+#### &#x20;Bamberg
+
+The city o
+
+
 
 ### Target audience / Personas
 
