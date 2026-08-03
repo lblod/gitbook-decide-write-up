@@ -612,6 +612,8 @@ n/a
 
 <mark style="background-color:$warning;">TO ADD: Decisions from other Flemish cities as a check mechanism</mark>
 
+<mark style="background-color:$warning;">TO DO:</mark> We need to add here how we tested this pipeline. Each partner could/should document how you did the testing. Make a subtitle for your organization.
+
 ### Risks and mitigations
 
 ## Possible future work

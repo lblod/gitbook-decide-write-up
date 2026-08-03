@@ -135,7 +135,9 @@ The DECIDe data space is organized around four layers that build on one another.
 
 **Concrete applications** are built on top of the enriched decisions. UC0.1 delivers a Policy Impact Report visualizing how local decisions across the three cities relate to the UN Sustainable Development Goals. UC1 uses the NER pipeline and codelist mapping to identify and classify decisions concerning restricted mobility zones. UC2 provides an AI-powered smart search interface over the full LD\&L corpus.
 
-The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each use case write-up documents the architecture of its own layer in detail, adding specialized services to the base architecture; this section will continue to describe the core micro-services that will be reused across all use cases.
+The end-to-end architecture of the DECIDe data space spans all four layers described above, from the raw LD\&L sources at the pilot cities through the ingestion and enrichment pipelines to the access and federation components and the use case applications. Each use case write-up documents the architecture of its own layer in detail, adding specialized services to the base architecture; this section will continue to describe the core micro-services that will be reused across all use cases
+
+<table><thead><tr><th>Architecture steps</th><th width="143.87109375">Bamberg</th><th>Freiburg</th><th>Ghent</th></tr></thead><tbody><tr><td><strong>Access and federation</strong></td><td></td><td></td><td></td></tr><tr><td><strong>Data ingestion</strong></td><td></td><td></td><td></td></tr><tr><td><strong>Concrete applications</strong></td><td></td><td></td><td></td></tr></tbody></table>
 
 ### Core semantic.works components
 
