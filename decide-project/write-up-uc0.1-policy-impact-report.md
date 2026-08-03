@@ -80,7 +80,16 @@ The underlying technical deliverable of UC0.1 is the Codelist Mapping Tool: a ge
 
 All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany).
 
-#### &#x20;Bamberg
+#### Freiburg
+
+For Freiburg, the Policy Impact Report will be a valuable tool made available to the city, opening up new possibilities for how the impact of local desicions can be tracked and communicated.
+
+A clear outline for implementation is the following: A workshop with relevant stakeholders would be the starting point to explore the report's usefulness and jointly shape how and to what extent it should be integrated into city processes. The insights should be fed back to the city council as a periodic, evidence-based input, showing which SDG areas receive more or less legislative attention relative to strategic priorities. This should be introduced step by step, framed as a supporting tool that strengthens council decision-making, for example through a dedicated workshop with department staff to review the output together and align on how it should be interpreted.
+
+Asides from these internal processes, the report will also be published via Freiburg's open data portal, extending the city's existing transparency commitments, with the potential, once established, to complement existing processes such as sustainability or climate reporting.
+
+\
+Bamberg
 
 The city of Bamberg is implementing the Policy Impact Report to build climate awareness below the members of city council. The Policy Impact report should in the future not only show the macro-impact of past decisions to the politicians, but also be implemented on the microlevel by featuring the assessment of singular templates before the decisive seating. Such, politicians will build awareness for the impact of their decisions. This directly adresses a decision from 2020 - in which the city council decided that each template should be assessed by the climate and environmental office on it's potential climate impact - which was, due to staff shortage, not implemented yet. \
 Additionaly, the climate and environmental department of the city of Bamberg claimed that they will develop new decision categories and descriptions to frame the Policy Impact Report more on the local reality, to make it even more useful.
