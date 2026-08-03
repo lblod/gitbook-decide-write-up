@@ -72,7 +72,7 @@ All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freibu
 
 #### Ghent
 
-Ghent publishes data on local decisions via the LBLOD/OSLO data standards and publication schemes. ABB converts this to ELI. Most of the annotations made by ABB are tested via the ABB Human Validation interface which uses the ABB pipelines
+Ghent publishes data on local decisions via the LBLOD/OSLO data standards and publication schemes. ABB converts this to ELI. Most of the annotations made by ABB are tested via the ABB Human Validation interface which uses the ABB pipelines.
 
 Ghent will also implement the NER and NEL services on location annotation locally (in august 2026). The annotation data will be published on the Ghent LOD environment.&#x20;
 
