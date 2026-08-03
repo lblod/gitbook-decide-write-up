@@ -744,9 +744,12 @@ TODO:
 
 ### Possible future work GHENT related
 
-Firstly Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website decision on publishing the overviews can be decided topic by topic. It will be decided as questions come from the city services.&#x20;
+Firstly Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website,  the decision on publishing the overviews can be made topic by topic. It will be decided as questions come from the city services.&#x20;
 
-Ghent will keep checking evolutions in the ABB development. When other use cases evolve (like the SDG solution or new developments) will check if we can connect to these pipelines. A service which matches decisions with the local strategy or strategic objectives (like energy shift, rewilding, mobility targets, ...) might be very interesting. This makes the SDG use case a very relevant test case for the city of Ghent.
+Ghent will keep checking evolutions in the ABB development and possibly connect to them:
+
+* &#x20;When other use cases evolve (like the SDG solution or new developments), we will check if we can connect to these pipelines.&#x20;
+* A service which matches decisions with the local strategy or strategic objectives (like energy shift, rewilding, mobility targets, ...) might be very interesting. This makes the SDG use case a very relevant test case for the city of Ghent.
 
 For information that is crucial for the city Ghent wants to host the services on its own services, like it does for the NER and NEL services on locations. Setup will be based on the exaples of the ABB pipelines.&#x20;
 
