@@ -717,7 +717,11 @@ The [harvester frontend](./#harvester-frontend) has been extended for the DECIDe
 
 ### Possible future work FREIBURG related
 
-TODO:
+Building on the installation process already trialed during the project, Freiburg plans to install the pipeline locally in order to enrich data within its own data space, moving from consuming ABB-hosted outputs to operating the enrichment pipeline itself.&#x20;
+
+Depending on the needs identified together with relevant departments and stakeholders, Freiburg will also explore extending the pipeline with additional information, engaging with these groups to determine what further data or annotations would be most valuable for their work.&#x20;
+
+Separately, since Freiburg already operates a smart search assistant in production (not public yet, but available for city representatives), the city will closly monitor the quality of the DECIDe smart search use case (see[write-up-uc2-smart-search.md](../../write-up-uc2-smart-search.md "mention")) going forward, with the aim of eventually relying on it as part of Freiburg's own search offering.
 
 ### Possible future work BAMBERG related
 
