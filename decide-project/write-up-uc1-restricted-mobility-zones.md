@@ -90,10 +90,6 @@ Most other RMZ categories are not yet represented as structured, queryable layer
 
 Beyond the technical fit, Freiburg's participation in the UC is further reinforced by the fact that the taxonomy and standardisation work that UC1 requires would benefit Freiburg beyond the pilot itself: a shared, well-defined RMZ classification would make it easier for the city to benchmark its own mobility policies against peer cities, thus supporting evidence-based policy development rather than isolated local decision-making.
 
-
-
-
-
 #### Ghent
 
 As stated in [the data space section](write-up-uc0.0-data-space/#pilot-partners) the annotations on location are very important in the long term vision for Ghent. In UC1 of the DECIDe project this goals is incorporated in a bigger picture: how can we identify decision that establish or modify a Restricted Mobility Zone (RMZ).&#x20;
@@ -102,9 +98,9 @@ The restricted mobilityzones like the pedestrian areas, bike streets and traffic
 
 The combination of the entity recognition and linking of  RMZ decisions, extracting locations and dates, linking locations to geometry registries is very relevant for the city of Ghent. By exposing the resulting structured data through via SPARQL endpoint it is possbile that SPARQL queries and even GIS tools can query directly.&#x20;
 
-As this solution can be made in a central architecture (as part of a dataspace business model) but also can be used in a decentral architecturen (installing it on the city's own servers), Ghent is testing both scenario's. After the projects ends, Ghent is aiming to keep the decentral solution to identify locations.&#x20;
+As this solution can be made in a central architecture (as part of a dataspace business model), but also can be used in a decentral architecture (installing it on the city's own servers), Ghent is testing both scenario's. After the projects ends, Ghent is aiming to keep the decentral solution to identify locations.&#x20;
 
-In the decentral solution locations will be linked to the 25 city districts. A drupal widget will be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.&#x20;
+In the decentral solution, locations are being be linked to the 25 city districts. A drupal widget is be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.&#x20;
 
 
 
@@ -423,6 +419,8 @@ Ghent has realised a drupal widget that shows recents decisions for a specific t
 
 In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup. To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used.  For this scenario the locations are linked to the relevant city district. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.&#x20;
 
+This scenario is interesting as the city owns the solution and can develop further on this solution. In this scenario the city has the maximon autonomy (data sovereignty).&#x20;
+
 **Continuation after the DECIDe project**
 
 Ghent aims to keep the decentral setup after the end of the DECIDe project, as it is central to the needs of the city. We want to keep testing and improving the NER and NEL modules. As soon as data quality is adequate enough we will move the widget to production and will rollout the widget bases on the needs of the city services.&#x20;
@@ -460,19 +458,15 @@ Consequently, the user interface for the RMZ use case consists primarily of the 
 
 #### Design of the Ghent widget
 
-To use a widget is an important architectural and design decision 'an sich'. It makes the setup really flexible as the information can be put into the city website wherever the city services want to put it, and where citizen might need this information. This approach is also very usefull as testing can be focussed on specific terms of city districts and makes a partial rolout possible.
+To use a widget is an important architectural and design decision 'an sich'. It makes the setup really flexible as the information can be put into the city website wherever the city services want to put it, and where citizen might need this information. This approach is also very usefull as testing can be focussed on specific terms or city districts. Futhermore, this makes a partial rolout possible based on the needs of the city services.&#x20;
 
-The design is based on the Ghent styleguide. Users see a list of decisions that is perfectly integraed in the city website and can be handled as any Drupal paragraf within a webpage.
-
-In the backend the widgets can be configured in the standard drupal interface. In fact, by filling in the form users establish a SPARQL query that queries the selected SPARQL endpoint.&#x20;
-
-
+The design is based on the Ghent styleguide. Users see a list of decisions that is perfectly integrated in the city website and can be handled as any Drupal paragraf within a webpage.
 
 _Example of the front end of the widget:_
 
 <figure><img src="../.gitbook/assets/wegenregister.png" alt=""><figcaption></figcaption></figure>
 
-
+In the backend the widgets can be configured in the standard drupal interface. In fact, by filling in the form users establish a SPARQL query that queries the selected SPARQL endpoint.&#x20;
 
 _Back end of the widget:_
 
@@ -523,7 +517,9 @@ The current implementation for UC1 detects locations and periods and links them 
 
 ### Possible future work LBLOD related
 
-Ghent will focus on the rollout of the Ghent widget and therefore on the data quality of the annotations on location.&#x20;
+#### Ghent
+
+Ghent will focus on the rollout of the Ghent widget and therefore on the quality of the annotations on location. The concept of a widget is very relevant as it makes a partial but evolving rollout possible, based on the quality of the anotions and the specific needs of the city services.&#x20;
 
 ## <mark style="background-color:$warning;">Relevant links</mark>
 
