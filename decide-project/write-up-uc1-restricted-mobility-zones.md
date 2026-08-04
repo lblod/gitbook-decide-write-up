@@ -409,8 +409,6 @@ In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate t
 
 Ghent aims to keep the decentral setup after the end of the DECIDe project, as it is central to the needs of the city. We want to keep testing and improving the NER and NEL modules. As soon as data quality is adequate enough we will move the widget to production and will rollout the widget bases on the needs of the city services.&#x20;
 
-
-
 ## Final UI design
 
 UC1 does not have a purpose-built standalone user interface. The pipeline outputs are exposed through a SPARQL endpoint for GIS consumption and a downloadable distribution that can be generated periodically. Both can be found in our DCAT catalog, read more about this in our [write-up on DCAT](write-up-uc0.0-data-space/write-up-dcat.md) .
@@ -434,9 +432,24 @@ In addition to selecting the codelist, the user can also select sub-elements in 
 
 Once the filters have been applied, the user can validate the different decisions the same way they validate the discovered entities in UC0.0, namely with a thumbs up/down. One small difference is, that in UC0.0, the user can read the decision in a split-screen to get enough context to validate the discovered entity. Because the entity the user is validating in this use case is about the whole decision, and there is no need to highlight specific parts of the text, the team has decided to only provide an external link to the decision, where the user can read the whole decision as it is published, in a different tab.
 
+#### Design of the Ghent widget
 
+To use a widget is an important architectural and design decision 'an sich'. It makes the setup really flexible as the information can be put into the city website wherever the city services want to put it, and where citizen might need this information. This approach is also very usefull as testing can be focussed on specific terms of city districts and makes a partial rolout possible.
+
+The design is based on the Ghent styleguide. Users see a list of decisions that is perfectly integraed in the city website and can be handled as any Drupal paragraf within a webpage.
+
+In the backend the widgets can be configured in the standard drupal interface. In fact, by filling in the form users establish a SPARQL query that queries the selected SPARQL endpoint.&#x20;
+
+<mark style="background-color:$danger;">To Do: insert screenshots of the widget</mark>
 
 ## Testing approach
+
+#### Ghent
+
+As stated in the architecture section, Ghent is testing the central and decentral scenario.
+
+* In the central scenario Ghent is using the ABB setup. The main focus is this case is on the quality of the AI annotations with an extra focus on the NER and NEL on location
+* In the decentral scenario the focus of the test is on the Ghent infrastructure and setup of the containers, on the SPARQL queries and on the technical and usability aspects of the Ghent widget.&#x20;
 
 ### Risks & mitigations
 
@@ -471,6 +484,8 @@ The current pipeline extracts and classifies RMZ decisions but does not differen
 The current implementation for UC1 detects locations and periods and links them to a decision. If a single decision affects multiple restricted mobility zones, it will therefore not be possible to distinguish which location is restricted for which period. This simplification was deemed acceptable to keep the scope contained for now. To solve this, the NER pipeline would have to discover restricted mobility zones as an entity itself and it would have to make sure that each period and location is linked to the restricted mobility zone entity that was discovered in this way, instead of directly to the decision. In the data model, this would mean an extension of the `Normative provision` with an activity indicating the RMZ.
 
 ### Possible future work LBLOD related
+
+Ghent will focus on the rollout of the Ghent widget and therefore on the data quality of the annotations on location.&#x20;
 
 ## <mark style="background-color:$warning;">Relevant links</mark>
 
