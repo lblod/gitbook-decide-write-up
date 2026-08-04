@@ -63,7 +63,7 @@ For local authorities, UC2 provides a high-visibility demonstration that LD\&L l
 
 ### Pilot partners
 
-Ghent leads the UC2 implementation (D3.5), with Freiburg and/or Bamberg participating as a second pilot site (D3.6).
+Ghent and Bamberg are the project partners taking part in UC2.
 
 #### Bamberg
 
@@ -75,9 +75,11 @@ With the Smart Search, this search process can be made significantly more effici
 
 #### Ghent
 
-Local decisions and legislation might be the most important data set in the city, but as it is complex and time consuming to search this data this data is barely used. The main obstacles are the long and ofter difficult text, but also the hastle to search into this big data set.&#x20;
+Local decisions and legislation might be the most important data set in the city, but as it is complex and time consuming to search this data, it is barely used. The main obstacles are the long and ofter difficult text, but also the hastle to search into this big data set.&#x20;
 
-Already in 2018 Ghent was considering using a semantic search solution on local decisions, but the market solutions were not mature enough to work on a specific context like local decisions without extensive training. So Ghent is very interested weather this can be realized with current AI tooling within the short project period of DECIDe. Ghent will test the ABB solutions in a centrally organised design and via a query via an API call.&#x20;
+Already in 2018 Ghent was considering using a semantic search solution on local decisions, but the market solutions were not mature enough to work on a specific context like local decisions without extensive training. So Ghent is very interested if this can be realized with current AI tooling within the short project period of DECIDe.
+
+Ghent will test the ABB solutions in a centrally organised architecture and via a query via an API call.&#x20;
 
 
 
@@ -253,7 +255,7 @@ A similar provider-agnostic approach is taken for the embedding model used by th
 
 #### Ghent
 
-Ghent wil mostly use this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent will also conduct some tests using the API.&#x20;
+Ghent wil mostly use this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent will also conduct tests using the API.&#x20;
 
 
 
@@ -313,7 +315,7 @@ For the UI the open-source solution Parla from Berlin is also under consideratio
 
 #### Ghent
 
-As Ghent will only build a simple interface to test the API with, concerns about design won't be taken into account.&#x20;
+As Ghent will only build a simple interface to test the API, concerns about design won't be taken into account.&#x20;
 
 ## Testing approach
 
@@ -434,6 +436,10 @@ SPARQL is a very expressive language. Giving the LLM the ability to formulate an
 In the future, additional data sources could be integrated into Smart Search. For example, in addition to decisions, motions submitted by political parties that have not yet been brought to a vote could also be entered. This would enable the city council caucuses and the administration to monitor which of these motions still need to be processed or which motions or ideas have already been proposed regarding a specific policy issue.
 
 A second potential future data source is data from a municipal project management tool that tracks the current status of projects. If the projects entered there are linked to City Council decisions, Smart Search can be used to retrieve not only the decisions themselves but also the current status of their processing by the administration. This would both shorten purely informational administrative processes within the administration (reporting) — including those involving the City Council — and create transparency for citizens regarding the decision-making and implementation processes of administrative projects. The latter could not only build trust in the administration but also allow for citizen participation early in the process, thereby preventing implementation bottlenecks later on.
+
+#### Possible future work Ghent
+
+There are no short term plans yet. Gent will first focus on quality of the annotations on themes (as result of the Probe project) and locations (al result of the DECIDe project) and realise the step by step rollout of these results.&#x20;
 
 
 
