@@ -458,9 +458,17 @@ The design is based on the Ghent styleguide. Users see a list of decisions that 
 
 In the backend the widgets can be configured in the standard drupal interface. In fact, by filling in the form users establish a SPARQL query that queries the selected SPARQL endpoint.&#x20;
 
-<mark style="background-color:$danger;">To Do: insert screenshots of the widget</mark>
 
 
+_Example of the front end of the widget:_
+
+<figure><img src="../.gitbook/assets/wegenregister.png" alt=""><figcaption></figcaption></figure>
+
+
+
+_Back end of the widget:_
+
+<figure><img src="../.gitbook/assets/besluitenwidget- back.png" alt=""><figcaption></figcaption></figure>
 
 ## Testing approach
 
