@@ -474,6 +474,26 @@ _Back end of the widget:_
 
 ## Testing approach
 
+#### Freiburg
+
+Testing UC1 for Freiburg spans three distinct steps, reflecting the fact that the tool's value depends on getting AI extraction right, making sure that extraction actually lands correctly in the city's spatial infrastructure, and confirming that the resulting interface is genuinely usable for the people who'll rely on it day to day.
+
+**Quality of the annotations**
+
+The first and most fundamental question is whether the AI components are extracting the right information from decision text in the first place. This is tested using standard classification and extraction metrics: precision and recall for the RMZ-relevance classification step (is the tool correctly separating decisions that describe a mobility restriction from those that don't), and accuracy metrics for the location and date extraction steps (are the correct streets/zones being identified, and are the correct start/end dates being resolved from among the many dates that typically appear in a decision).
+
+Rather than relying on these metrics in isolation, annotation quality is validated by comparing the AI-generated output against human annotations gathered through the project's validation interface. This gives a direct, decision-by-decision check: for a sample of decisions, human annotators independently mark what the correct classification, locations, and dates should be, and the AI output is scored against this reference.&#x20;
+
+**Technical integration**
+
+The second layer of testing checks that correctly extracted information is passed through to Freiburg's spatial infrastructure without errors. This covers geolayer validation: confirming that the geometry linking step resolves extracted locations to the correct streets and zones in FreiGIS, and that the daily update into the GDI runs correctly — without data loss, duplication, or outdated entries remaining after a decision has been superseded. This step is more about verifying correct data handling than about the AI's extraction quality itself, since the underlying update mechanism is straightforward; the main risk is entries not being written, overwritten, or removed correctly.
+
+**Visual feedback of the interface**
+
+The third layer concerns how well the interface actually serves the people using it — city staff and other stakeholders viewing RMZ data spatially. This builds on prior work already done in this direction: a preliminary version of the UC1 interface was included as part of a survey conducted by Hochschule Kehl in July 2026, which gathered initial feedback on how understandable and useful the spatial presentation of RMZ data was to respondents.
+
+Building on that, planned user tests with stakeholders will provide a more direct and structured round of feedback, once the Freiburg-specific filtering and geolayer structure (see architecture section) are stable enough to test against. These sessions are intended to validate not just whether the interface displays information correctly, but whether it displays the right information, at the right level of geographic detail, in a way that's actually usable in city departments' day-to-day workflows.
+
 #### Ghent
 
 As stated in the architecture section, Ghent is testing the central and decentral scenario.
