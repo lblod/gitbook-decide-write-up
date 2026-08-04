@@ -73,6 +73,16 @@ Currently, if anyone wanted to look for a specific decision made within a counci
 
 With the new data space, this knowledge is not necessary anymore. The wanted the decision can be entered into the search mask and will be given in natural language as well as with all necessary files attached.
 
+
+
+#### Ghent
+
+Local decisions and legislation might be the most important data set in the city, but as it is complex and time consuming to search this data this data is barely used. The mail obstacles are the long and ofter difficult text, but also the hastle to search into this big data set.&#x20;
+
+Already in 2018 Ghent was considering using a semantic search solution on local decisions, but the market solutions were not mature enough to work on a specific context like local decisions without extensive training. So Ghent is very interested weather this can be realized with current AI tooling within the short project period of DECIDe. Ghent will test the ABB solutions in a centrally organised design and via a query via an API call.&#x20;
+
+
+
 ### Target audience / Personas
 
 The primary audience for UC2 is citizens seeking to understand which decisions, subsidies, or regulations apply to their situation, and municipal staff –administrative officers, policy makers, and smart city teams– who need rapid access to decision content without navigating full document archives. A secondary audience is the technical team responsible for deploying and monitoring the microservice and its integration with the data space.
@@ -243,6 +253,12 @@ The LLM is given a custom system prompt that enforces three constraints: the ans
 
 A similar provider-agnostic approach is taken for the embedding model used by the embedding service, though it is a distinct model serving a different purpose.
 
+#### Ghent
+
+Ghent wil mostly use this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent will also conduct some tests using the API.&#x20;
+
+
+
 ## Final UI design (and why) (if any)
 
 The UC2 interface is designed around the familiar pattern of AI-powered chat interfaces. Inspiration was drawn from general-purpose chatbots (Gemini, Claude) as well as domain-specific tools such as Medwise AI, a chatbot that answers medical questions and closely mirrors the DECIDe use case of providing accurate answers within a defined, structured knowledge domain.
@@ -298,6 +314,10 @@ There are no firm plans yet regarding the UI, though several options are being c
 If we do decide on a standalone solution, we will consider basing the UI on the open-source solution Parla from Berlin, which serves a similar purpose.\
 However, it must be emphasized that both of these solutions are still under review.
 
+#### Ghent
+
+As Ghent will only build a simple interface to test the API with, concerns about design won't be taken into account.&#x20;
+
 ## Testing approach
 
 ### Deployed Test Instance
@@ -328,6 +348,16 @@ The goal of the test is to answer the following questions:
 To achieve this, testers will be asked various search questions, and the workflows will then be evaluated based on different metrics (success rate; average time to completion; perceived difficulty).
 
 The test group will primarily consist of administrative staff and members of the Bamberg City Council, as they are the ones who work with the council information system most frequently.
+
+
+
+#### Ghent
+
+Ghent has tested this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent also conducts some tests using the API.&#x20;
+
+Test focusses on the quality of the provided links and of the answers it formulates to the quesion. The main focus of Ghent was on checking weather the most relevant decisions are found.&#x20;
+
+In a first phase testing was being done by the project lead. In a second phase by the city service that assist on drafting the council decisions.&#x20;
 
 ### Risks & mitigations
 
