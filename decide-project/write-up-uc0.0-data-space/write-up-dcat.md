@@ -267,23 +267,14 @@ As stated before, currently no create, delete or update support exists in the DC
 
 ## Relevant links
 
-Link to automatic DCAT content generation scripts: https://github.com/lblod/app-decide/tree/development/scripts/project/publish\_dataset
-
-#### DCAT Links for Freiburg
-
-[https://decide.datenraum-dev.freiburg.de/ldes/\
-https://decide.datenraum-dev.freiburg.de/datadumps/<br>](https://decide.datenraum-dev.freiburg.de/ldes/https://decide.datenraum-dev.freiburg.de/datadumps/)
-
-Link to federated DCAT catalog UI: https://catalog.decide.lblod.info
-
-Link to federated DCAT sparql endpoint: https://catalog.decide.lblod.info/sparql
-
-Link to federated DCAT LDES feed: https://catalog.decide.lblod.info/ldes/public/1
-
-Link to DCAT federated DCAT catalog as triples: https://catalog.decide.lblod.info/dcat/catalog (use e.g. `text/turtle` as an accept header to not end up on the graphical interface)
-
-#### DCAT Links for Bamberg
-
-Link to data platform metadata catalogue: [https://bamberg.bydata.de](https://bamberg.bydata.de/?)
-
-Link to Bamberg DCAT in ABB UI: [https://ds.decide.smartcitybamberg.de/dcat](https://ds.decide.smartcitybamberg.de/dcat)
+| TITLE                                                                                                                                         | LINK                                                                                                                                                                          |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Link to automatic DCAT content generation scripts **ABB**                                                                                     | [https://github.com/lblod/app-decide/tree/development/scripts/project/publish\_dataset](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset) |
+| Link to federated DCAT sparql endpoint **ABB**                                                                                                | [https://catalog.decide.lblod.info/sparql](https://catalog.decide.lblod.info/sparql)                                                                                          |
+| Link to federated DCAT LDES feed **ABB**                                                                                                      | [https://catalog.decide.lblod.info/ldes/public/1](https://catalog.decide.lblod.info/ldes/public/1)                                                                            |
+| Link to DCAT federated DCAT catalog as triples **ABB**  (use e.g. `text/turtle` as an accept header to not end up on the graphical interface) | [https://catalog.decide.lblod.info/dcat/catalog](https://catalog.decide.lblod.info/dcat/catalog)                                                                              |
+| Link to federated DCAT catalog UI **ABB**                                                                                                     | [https://catalog.decide.lblod.info](https://catalog.decide.lblod.info/)                                                                                                       |
+| Link to data platform metadata catalogue **Bamberg**                                                                                          | [https://bamberg.bydata.de](https://bamberg.bydata.de/?)                                                                                                                      |
+| Link to **Bamberg** DCAT in ABB UI                                                                                                            |  [https://ds.decide.smartcitybamberg.de/dcat](https://ds.decide.smartcitybamberg.de/dcat)                                                                                     |
+| DCAT **Freiburg** LDES link                                                                                                                   | [https://decide.datenraum-dev.freiburg.de/ldes/](https://decide.datenraum-dev.freiburg.de/ldes/https://decide.datenraum-dev.freiburg.de/datadumps/)                           |
+| DCAT **Freiburg** Databumps link                                                                                                              | [https://decide.datenraum-dev.freiburg.de/datadumps/](https://decide.datenraum-dev.freiburg.de/ldes/https://decide.datenraum-dev.freiburg.de/datadumps/)                      |
