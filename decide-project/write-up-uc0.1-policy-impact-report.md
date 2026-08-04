@@ -78,33 +78,17 @@ The underlying technical deliverable of UC0.1 is the Codelist Mapping Tool: a ge
 
 ### Pilot partners
 
-All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany).
+All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany). Their motivations differ, but the cities converge on a shared implementation approach.
 
-#### Freiburg
+In each city, the starting point is a workshop with the relevant stakeholders, to explore the usefulness of the report and to jointly shape how and to what extent it should be integrated into city processes. This approach was first outlined by Freiburg and subsequently taken up by the other pilot cities. The report is best introduced step by step and framed as a supporting tool that strengthens decision-making rather than as an assessment imposed on it, for example through a dedicated session with department staff to review the output together and align on how it should be interpreted. All three cities also consider publishing the results through their open data platform, provided the quality of the annotations proves sufficient.
 
-For Freiburg, the Policy Impact Report will be a valuable tool made available to the city, opening up new possibilities for how the impact of local desicions can be tracked and communicated.
+Equally shared is the ambition to look beyond the SDGs. While the SDGs serve as the common frame for the pilot, each city sees the same underlying value in testing local decisions against its own strategic priorities, which raises the question of how such a local policy framework could be encoded and maintained.
 
-A clear outline for implementation is the following: A workshop with relevant stakeholders would be the starting point to explore the report's usefulness and jointly shape how and to what extent it should be integrated into city processes. The insights should be fed back to the city council as a periodic, evidence-based input, showing which SDG areas receive more or less legislative attention relative to strategic priorities. This should be introduced step by step, framed as a supporting tool that strengthens council decision-making, for example through a dedicated workshop with department staff to review the output together and align on how it should be interpreted.
+**Bamberg** approaches the report from a climate perspective and applies it at two levels. At the macro level, it illustrates the overall climate impact of past political decisions. At the micro level, the intention is to include a climate impact assessment for individual policy templates before they are discussed and decided upon, thereby increasing councillors' awareness of the climate implications of their decisions at the moment it matters. This directly addresses a 2020 city council decision requiring every council template to be assessed by the Climate and Environmental Office on its potential climate impact, a requirement that has not been implemented so far due to staff shortages. The Climate and Environmental Department will additionally develop new decision categories and assessment criteria to better align the report with local conditions.
 
-Asides from these internal processes, the report will also be published via Freiburg's open data portal, extending the city's existing transparency commitments, with the potential, once established, to complement existing processes such as sustainability or climate reporting.
+**Freiburg** sees the Policy Impact Report primarily as a tool for the city council. The insights are intended to be fed back as a periodic, evidence-based input, showing which SDG areas receive more or less legislative attention relative to strategic priorities. Publication via the open data portal extends the city's existing transparency commitments, and once established, the report has the potential to complement existing processes such as sustainability or climate reporting.
 
-#### Bamberg
-
-Bamberg is implementing the Policy Impact Report to strengthen climate awareness among the members of city council. In the future, the report is intended not only to illustrate the overall climate impacts of past political decisions (macro level) but also to be applied at the micro level by including climate impact assessments for individual policy templates before they are discussed and decided upon. This approach is expected to increase politicians' awareness of the climate implications of their decisions.
-
-The initiative directly addresses a city council decision of Bamberg from 2020, which required every council template to be assessed by the Climate and Environmental Office on its potential climate impact. However, due to staff shortages, this requirement has not yet been implemented.
-
-Additionally, the Climate and Environmental Department stated that it will develop new decision categories and assessment criteria to better align the Policy Impact Report with local conditions, making it an even more useful tool for decision-making.
-
-#### Ghent
-
-**Considerations on the policy impact report**
-
-As stated in the section on the pipelines ([final architecture](write-up-uc0.0-data-space/#final-architecture-and-why) and [possible future work](write-up-uc0.0-data-space/write-up-uc0.0-pipelines/#possible-future-work-ghent-related)) the matching of local decision with local strategy or regional/national/international policy is very relevant for the city of Ghent. We see this as a premium function for a future dataspace business case.&#x20;
-
-We consider that checks on regional, national or international policy should be located at the regional or national level. Therefore we test the quality of this annotations and impact assessment in the human validation tool, which is realised by ABB. This data might also be published on the Ghent open data platform, if the quality of the quality of the annotations is good enough.&#x20;
-
-We also might consider using a tool that checks decisons on the local strategy of the city of Ghent. In that case it might be relevant to train and host this AI solution on the servers of the city of Ghent.&#x20;
+**Ghent** frames the matching of local decisions with regional, national or international policy as a premium function for a future data space business case (see final architecture and possible future work). Checks against regional, national or international policy are considered best located at the regional or national level, which is why Ghent tests the quality of these annotations and impact assessments in the human validation tool realised by ABB. For checks against the local strategy of the city itself, a different setup may be required, in which the AI solution is trained and hosted on the servers of the City of Ghent.
 
 
 
