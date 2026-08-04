@@ -299,6 +299,21 @@ When a question is asked, the user is presented with an answer, accompanied by t
 
 <figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
+### Bamberg
+
+In addition to the quantitative evaluation conducted through the survey by the research partners mentioned earlier in [#testing-approach](write-up-uc0.1-policy-impact-report.md#testing-approach "mention"), the City of Bamberg also wants to test what specific efficiency gains we will achieve by introducing Smart Search. To this end, it is using an experimental design. Four to eight people will compare the AI-supported workflow with their traditional workflow.\
+The goal of the test is to answer the following questions:
+
+```
+    ◦ Is it possible to find content more efficiently compared to the City Council information system?
+    ◦ Are relevant pieces of information overlooked when using natural language queries?
+    ◦ How trustworthy is the generated response to users?
+```
+
+To achieve this, testers will be asked various search questions, and the workflows will then be evaluated based on different metrics (success rate; average time to completion; perceived difficulty).
+
+The test group will primarily consist of administrative staff and members of the Bamberg City Council, as they are the ones who work with the council information system most frequently.
+
 ### Risks & mitigations
 
 #### Retrieval quality determines answer quality
@@ -372,6 +387,16 @@ SPARQL is a very expressive language. Giving the LLM the ability to formulate an
 * Because the LLM now operates as an agent that can take actions there is a risk of prompt injection where malicious content in a retrieved document manipulates the model's behavior. This becomes more consequential than in the current stateless pipeline, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
 
 ### Possible future work LBLOD related
+
+
+
+### Possible future work Bamberg
+
+In the future, additional data sources could be integrated into Smart Search. For example, in addition to decisions, motions submitted by political parties that have not yet been brought to a vote could also be entered. This would enable the city council caucuses and the administration to monitor which of these motions still need to be processed or which motions or ideas have already been proposed regarding a specific policy issue.
+
+A second potential future data source is data from a municipal project management tool that tracks the current status of projects. If the projects entered there are linked to City Council decisions, Smart Search can be used to retrieve not only the decisions themselves but also the current status of their processing by the administration. This would both shorten purely informational administrative processes within the administration (reporting) — including those involving the City Council — and create transparency for citizens regarding the decision-making and implementation processes of administrative projects. The latter could not only build trust in the administration but also allow for citizen participation early in the process, thereby preventing implementation bottlenecks later on.
+
+
 
 ## Relevant links
 
