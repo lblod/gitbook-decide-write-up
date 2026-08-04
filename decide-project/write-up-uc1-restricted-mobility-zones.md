@@ -391,6 +391,24 @@ The full flow for a single decision through the UC1-relevant parts of the pipeli
 
 Steps 2 through 4 are part of the same UC0.0 AI pipeline execution. They run as consecutive sub-steps within the Entity Extraction Task of the NER Service for every decision, regardless of whether it is RMZ-related or not. The codelist mapping (step 1) runs separately within the Named Entity Linking Service, and its result is what the RMZ tool uses to filter which decisions to display. For the filtered decisions, the tool retrieves the location and date annotations produced by steps 2 through 4.
 
+### Pilot Partners Architecture
+
+#### Setup of the pilot within the city of Freiburg
+
+**Data Source**
+
+The data used for UC1 is the enriched data from the pipeline as outlined in the chapter above. However, the enriched decisions produced by the core pipeline are generic in the sense that they capture everything the AI components can extract, regardless of whether a given city needs all of it. For Freiburg, we therefore introduce an additional processing step that filters this output down to what is specifically relevant for the city's applications. What exactly this filter should retain is still to be determined in cooperation with the relevant city departments; we plan to hold a dedicated workshop to define which fields and RMZ types are actually needed for Freiburg's downstream use, rather than assuming this upfront.
+
+As part of this filtering step, we also need to determine the geographic unit of reference. In project discussions so far, streets will be used for sure, specific enough to be actionable, general enough to be extractable reliably. It remains open whether we additionally resolve to smaller units such as districts or neighborhoods, or whether this risks over-aggregating and diluting the spatial precision that makes the tool useful. What is already clear is that we will not display RMZ information at the level of full districts or larger areas: the value of showing restricted mobility zones spatially lies precisely in being able to point to a well-defined, specific place, and referencing broad areas would undermine that.
+
+**Geolayer structure**
+
+From the filtered, geographically resolved output, we extract separate geolayers for each type of restricted mobility zone (as outlined in [#q1-is-this-decision-about-a-restricted-mobility-zone](write-up-uc1-restricted-mobility-zones.md#q1-is-this-decision-about-a-restricted-mobility-zone "mention")), so that each RMZ category can be queried, styled, and toggled independently. In addition to these individual layers, we create one overarching folder within the geoportal that aggregates all RMZ types together, giving users a single entry point to view the full picture when needed while preserving the ability to drill into a specific zone type.
+
+**Update cycle and integration**
+
+These layers are updated periodically (the current plan is a daily cadence) and pushed to the city's geographic database ([GDI](https://geodaten.freiburg.de/geonetwork/srv/ger/catalog.search#/home)). This is the point of integration with Freiburg's existing infrastructure: both the dataspace (DATEN:RAUM:FREIBURG) and FreiGIS access the GDI directly, meaning that once a layer is written there, it becomes available through the city's existing public-facing and internal channels without requiring a separate publication step.
+
 #### Setup of the pilot within the city of Ghent
 
 **Central scenario during the project phases**
