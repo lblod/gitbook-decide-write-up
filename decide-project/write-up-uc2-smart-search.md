@@ -331,22 +331,19 @@ When a question is asked, the user is presented with an answer, accompanied by t
 
 <figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
-### Bamberg
+#### Bamberg
 
-In addition to the quantitative evaluation conducted through the survey by the research partners mentioned earlier in [#testing-approach](write-up-uc0.1-policy-impact-report.md#testing-approach "mention"), the City of Bamberg also wants to test what specific efficiency gains we will achieve by introducing Smart Search. To this end, it is using an experimental design. Four to eight people will compare the AI-supported workflow with their traditional workflow.\
+In addition to the quantitative evaluation conducted through the survey by the research partners mentioned earlier in [#testing-approach](write-up-uc0.1-policy-impact-report.md#testing-approach "mention"), the City of Bamberg also wants to test what specific efficiency gains we will achieve by introducing Smart Search.&#x20;
+
+To this end, it is using an experimental design: Four to eight people will compare the AI-supported workflow with the traditional workflow and be prompted to seek for specific information. The test group will primarily consist of administrative staff and members of the Bamberg City Council, as they are the ones who work with the council information system most frequently.
+
 The goal of the test is to answer the following questions:
 
-```
-    ◦ Is it possible to find content more efficiently compared to the City Council information system?
-    ◦ Are relevant pieces of information overlooked when using natural language queries?
-    ◦ How trustworthy is the generated response to users?
-```
+* Is it possible to find content more efficiently compared to the CCIS?
+* Are relevant pieces of information overlooked when using natural language queries?
+* How trustworthy is the generated response to users?
 
 To achieve this, testers will be asked various search questions, and the workflows will then be evaluated based on different metrics (success rate; average time to completion; perceived difficulty).
-
-The test group will primarily consist of administrative staff and members of the Bamberg City Council, as they are the ones who work with the council information system most frequently.
-
-
 
 #### Ghent
 
