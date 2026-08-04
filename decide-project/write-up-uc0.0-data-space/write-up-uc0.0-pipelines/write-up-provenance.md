@@ -156,7 +156,11 @@ example:myAIEnrichmentService a prov:Agent, example:AIThemeEnricher ;
 
 #### AI model registration with AIRO
 
+The AI agent assocatied with an activity, can me modeled as a `prov:Agent`. This allows to keep track of very detailed information regarding the AI *component* being used. To model this all, we rely on [the AIRO ontology](https://delaramglp.github.io/airo/):
 
+<figure><img src="../../.gitbook/assets/ai-model-registration-airo.jpg" alt=""></figure>
+
+Most importantly, this allows to not only indicate which AI model was used, but also state the exact version of the model. This setup is very powerful in a system where models are being retrained with the help of e.g. user feedback, leading to new and improved model versions.
 
 ### Final semantic components (and why) (if any)
 
