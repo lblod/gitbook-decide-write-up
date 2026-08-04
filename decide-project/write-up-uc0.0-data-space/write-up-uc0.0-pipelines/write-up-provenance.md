@@ -111,8 +111,6 @@ n/a
 
 The architecture uses a combination of existing standards, with each one covering a distinct part of provenance and traceability.
 
-
-
 #### ELI: source and legal-document model
 
 ELI uses three levels, as explained in the [UC0.0 Pipelines](./#pdf-to-eli):
@@ -162,6 +160,28 @@ The AI agent assocatied with an activity, can me modeled as a `prov:Agent`. This
 
 Most importantly, this allows to not only indicate which AI model was used, but also state the exact version of the model. This setup is very powerful in a system where models are being retrained with the help of e.g. user feedback, leading to new and improved model versions.
 
+#### AI calls provenance
+
+Alongside the activity- and annotation-level provenance, DECIDe also records the individual AI calls performed within a task. For every call, the number of input and output tokens is stored, together with the optional call duration and cost. This is tracked at a much finer granularity than a monthly provider invoice, making it possible to pinpoint exactly which tasks, configurations or AI models are responsible for the bulk of the token usage or cost, rather than only observing an aggregated total after the fact.
+
+```ttl
+@prefix example: <http://www.example.org/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+example:myTask ext:performedAICall example:myAICall .
+
+example:myAICall a ext:AICall ;
+  mu:uuid "3f1e6ea1-2b2a-4c1c-8e5b-4a6f6f9d9b21" ;
+  ext:endpoint "https://api.openai.com/v1/chat/completions" ;
+  ext:aiModel <http://example.org/models/gpt-4o-2024-08-06> ;
+  ext:tokenIn 1234 ;
+  ext:tokenOut 567 ;
+  ext:duration 2.5 ;      # optional, float seconds
+  ext:cost 0.012 .        # optional, float USD
+```
+
 ### Final semantic components (and why) (if any)
 
 #### Configured agents and configuration snapshots
@@ -172,7 +192,18 @@ Most importantly, this allows to not only indicate which AI model was used, but 
 
 ### Final AI components (and why) (if any)
 
-Provenance is not an AI component by itself. It records how the AI components used elsewhere in DECIDe produced their output.
+Provenance is not an AI component by itself, but all AI services within the DECIDe project rely on a shared context manager, `record_ai_call_cm`, exposed by the [shared AI service base](https://github.com/semantic-ai/decide-ai-service-base), to record the AI-calls provenance described above. Wrapping an actual AI call in this context manager inserts the `ext:AICall` triples into the triplestore (see [example](./#ai-calls-provenance)) using the given endpoint, model URI and token counts:
+
+```python
+with task.record_ai_call_cm(
+    endpoint="https://api.openai.com/v1/chat/completions",
+    model_uri="http://data.lblod.info/id/models/gpt-4o",
+    tokens_in=1000, tokens_out=500
+):
+    response = openai_client.chat(...)
+```
+
+Besides timing the call to derive `ext:duration`, the context manager also estimates `ext:cost` for the call based on the given model URI and token counts, using pricing data from [OpenRouter](https://openrouter.ai/). Centralizing this in one shared utility keeps cost and usage tracking consistent across the different AI services and model providers used within DECIDe, without every service having to maintain its own pricing table.
 
 ### Other explored AI components (and why not)
 
