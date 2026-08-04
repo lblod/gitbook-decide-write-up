@@ -88,11 +88,13 @@ A clear outline for implementation is the following: A workshop with relevant st
 
 Asides from these internal processes, the report will also be published via Freiburg's open data portal, extending the city's existing transparency commitments, with the potential, once established, to complement existing processes such as sustainability or climate reporting.
 
-\
-Bamberg
+#### Bamberg
 
-The city of Bamberg is implementing the Policy Impact Report to build climate awareness below the members of city council. The Policy Impact report should in the future not only show the macro-impact of past decisions to the politicians, but also be implemented on the microlevel by featuring the assessment of singular templates before the decisive seating. Such, politicians will build awareness for the impact of their decisions. This directly adresses a decision from 2020 - in which the city council decided that each template should be assessed by the climate and environmental office on it's potential climate impact - which was, due to staff shortage, not implemented yet. \
-Additionaly, the climate and environmental department of the city of Bamberg claimed that they will develop new decision categories and descriptions to frame the Policy Impact Report more on the local reality, to make it even more useful.
+Bamberg is implementing the Policy Impact Report to strengthen climate awareness among the members of city council. In the future, the report is intended not only to illustrate the overall climate impacts of past political decisions (macro level) but also to be applied at the micro level by including climate impact assessments for individual policy templates before they are discussed and decided upon. This approach is expected to increase politicians' awareness of the climate implications of their decisions.
+
+The initiative directly addresses a city council decision of Bamberg from 2020, which required every council template to be assessed by the Climate and Environmental Office on its potential climate impact. However, due to staff shortages, this requirement has not yet been implemented.
+
+Additionally, the Climate and Environmental Department stated that it will develop new decision categories and assessment criteria to better align the Policy Impact Report with local conditions, making it an even more useful tool for decision-making.
 
 #### Ghent
 
