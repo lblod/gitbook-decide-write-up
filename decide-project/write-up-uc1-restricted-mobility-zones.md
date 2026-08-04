@@ -90,6 +90,24 @@ Most other RMZ categories are not yet represented as structured, queryable layer
 
 Beyond the technical fit, Freiburg's participation in the UC is further reinforced by the fact that the taxonomy and standardisation work that UC1 requires would benefit Freiburg beyond the pilot itself: a shared, well-defined RMZ classification would make it easier for the city to benchmark its own mobility policies against peer cities, thus supporting evidence-based policy development rather than isolated local decision-making.
 
+
+
+
+
+#### Ghent
+
+As stated in [the data space section](write-up-uc0.0-data-space/#pilot-partners) the annotations on location are very important in the long term vision for Ghent. In UC1 of the DECIDe project this goals is incorporated in a bigger picture: how can we identify decision that establish or modify a Restricted Mobility Zone (RMZ).&#x20;
+
+The restricted mobilityzones like the pedestrian areas, bike streets and traffic blocks are very important within the Ghent mobility plan, and can sometimes be temperarily altered due to circumstances. Moreover Ghent is working in other projects on establishing on overview of all elements that have an impact on the traffic within the city.&#x20;
+
+The combination of the entity recognition and linking of  RMZ decisions, extracting locations and dates, linking locations to geometry registries is very relevant for the city of Ghent. By exposing the resulting structured data through via SPARQL endpoint it is possbile that SPARQL queries and even GIS tools can query directly.&#x20;
+
+As this solution can be made in a central architecture (as part of a dataspace business model) but also can be used in a decentral architecturen (installing it on the city's own servers), Ghent is testing both scenario's. After the projects ends, Ghent is aiming to keep the decentral solution to identify locations.&#x20;
+
+In the decentral solution locations will be linked to the 25 city districts. A drupal widget will be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.&#x20;
+
+
+
 ### Target audience / Personas
 
 The primary audience for UC1 output is municipal staff responsible for maintaining geographic information and mobility policy data, as well as the GIS specialists and urban planners who use that data in spatial analyzes and public communications. A secondary audience is the technical team responsible for configuring and monitoring the extraction pipeline and managing the connection between the data space and GIS systems.
@@ -372,6 +390,37 @@ The full flow for a single decision through the UC1-relevant parts of the pipeli
 <figure><img src="../.gitbook/assets/UC1_writeup.drawio (1).png" alt=""><figcaption></figcaption></figure>
 
 Steps 2 through 4 are part of the same UC0.0 AI pipeline execution. They run as consecutive sub-steps within the Entity Extraction Task of the NER Service for every decision, regardless of whether it is RMZ-related or not. The codelist mapping (step 1) runs separately within the Named Entity Linking Service, and its result is what the RMZ tool uses to filter which decisions to display. For the filtered decisions, the tool retrieves the location and date annotations produced by steps 2 through 4.
+
+#### Setup of the pilot within the city of Ghent
+
+**Central scenario during the project phases**
+
+To test this scenario Ghent is using the pipelines as setup by ABB. In the first phase Ghent has tested the results using the human validation tool. In the way we are using the ABB tools to the maximum extent. In a second phase Ghent has tested if the result can be used from the Ghent infrastructure querying the results via SPARQL.
+
+This scenario might be interesting for further business cases for the dataspace as everything runs centrally and could be a payd feature within the dataspace.&#x20;
+
+**Decentral scenario during the project phases**
+
+Ghent has realised a drupal widget that shows recents decisions for a specific topic within a specific city district.&#x20;
+
+In
+
+To test this scenario Ghent is setting up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup.&#x20;
+
+To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used.&#x20;
+
+Setup NER and NEL locally
+
+* Query the Ghent endpoint purely for locations
+* Linking the locations to the relevant city district
+* Using a drupal widget that shows recent decisions on a specific topid in a specific city distict
+
+**Continuation after the DECIDe project**
+
+* continuing the NER and NEL locally
+* Linking the locations to the relevant city district
+* Using a drupal widget that shows recent decisions on a specific topid in a specific city distict
+* Getting all of this to production and rollout based on the needs of city services.
 
 ## Final UI design
 
