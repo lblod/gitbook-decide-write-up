@@ -78,9 +78,11 @@ Ghent will also implement the NER and NEL services on location annotation locall
 
 #### Bamberg
 
-Bamberg has adopted a Smart City and digitalization strategy. Although participation in this data space is not explicitly mentioned in the strategy, it nevertheless contributes to achieving its overall goals of digitizing administration processes. So far, Bamberg’s decision data was solely stored and managed by a solution provider by implementing usecase 0.0 the administration gains a way to extract and use it's own data, which provides a stronger data governance and flexibility to use it's decision data for future usecases, and thereby more flexibility to implement new policy processes building upon decision data.
+Bamberg has adopted a Smart City and digitalization strategy. Although participation in this data space is not explicitly mentioned in the strategy, it contributes to achieving its overall goals of digitizing administration processes.&#x20;
 
+So far, Bamberg’s decision data was solely stored and managed by an external solution provider. By implementing usecase 0.0 the administration gains a way to extract and use it's own data, which provides a stronger data governance and flexibility to use it's decision data for future usecases, and thereby more flexibility to implement new policy processes building upon decision data.
 
+Bamberg provides semi-structured data through its CCIS: Templates and minutes are initially created as PDF documents and are then automatically converted into HTML for publication on the city's website.
 
 ### Target audience / Personas
 
@@ -624,17 +626,13 @@ alignment with Use Cases and local policies in these documents. From the titles 
 
 #### Bamberg
 
-The DECIDE infastructure is set up by Bamberg on a project specific Hetzner server. After the project, the infrastructure will be migrated to the servers of their data platform which is used as a core database, distribution and rights management system spanning across several projects.&#x20;
+The DECIDE infastructure is currently deployed on a project specific Hetzner server. After the project concludes, it will be migrated to the servers of Bamberg's data platform, which serves as the city's core database, distribution and rights management system across multiple projects.
 
-Bamberg provides semi-structured data via its **CCIS**: Templates and minutes are originally created in a PDF format and then automatically formatted as HTML within the city website.&#x20;
+Initially, decision data was collected by downloading and converting each PDF individually (see **PDF to ELI pipeline**). Subsequently, Bamberg developed a data scraping tool that extracts the HTML versions of templates and minutes and consolidates them into a structured JSON format. This JSON representation enriches the data with relevant metadata and links the decisions to their corresponding templates (see **JSON to ELI pipeline**). With this approach, the data can be provided and automated more efficiently, so that Bamberg can provide an up-to-date machine readable repository of decisions.
 
-1. Originally the data was gathered by directly downloading and converting the PDF of each template (see **PDF to ELI pipeline**).&#x20;
-2. Then a datascraping tool was developed by Bamberg to bundle the HTML of templates and minutes into a coherent JSON format. This format is used to add relevant metadata information and also add the actual decisions to the templates. (see **JSON to ELI pipeline**)
-3. For further development the **CCIS** will also enable an **OPARL API** to standardize the data alongside Freiburg. (see **OPARL to ELI pipeline**) It has to be tested if the API can provide the same metadata information as in the JSON approach. Further work might therefore add upon the features for the OPARL implementation, also providing further data for other cities using the same standard.
+As a next development step, the CCIS will provide an OPARL API to standardize data exchange in collaboration with Freiburg (see **OPARL to ELI pipeline**). It remains to be evaluated whether the API can provide the same level of metadata as the current JSON-based approach. Future work may therefore extend the OPARL implementation to achieve feature parity while also enabling broader interoperability with other municipalities that use the same standard.
 
-Bamberg implements the NER and NEL services via an external Mistral model since the current server does not reliably support a local LLM for this task.
-
-<mark style="color:$warning;">TODO Pascal: Will the project manage to have a machine readable repository of decision from Bamberg that can be kept up to date?</mark>
+For Named Entity Recognition (NER) and Named Entity Linking (NEL), Bamberg uses an external Mistral model, as the current server infrastructure does not reliably support running a local large language model for these tasks.
 
 #### Freiburg
 
