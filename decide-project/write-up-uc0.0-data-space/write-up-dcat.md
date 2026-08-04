@@ -284,6 +284,6 @@ Link to DCAT federated DCAT catalog as triples: https://catalog.decide.lblod.inf
 
 #### DCAT Links for Bamberg
 
-Link to data platform metadata catalogue: [https://bamberg.bydata.de/?](https://bamberg.bydata.de/?)
+Link to data platform metadata catalogue: [https://bamberg.bydata.de](https://bamberg.bydata.de/?)
 
 Link to Bamberg DCAT in ABB UI: [https://ds.decide.smartcitybamberg.de/dcat](https://ds.decide.smartcitybamberg.de/dcat)
