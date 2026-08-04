@@ -509,12 +509,6 @@ Testing is being done by the Ghent project lead and in a second phase by the cit
 
 ### Possible future work DECIDe data space related
 
-#### Extend the pipeline using other sources of data (beyond core LD\&E)
-
-LD
-
-<table data-search="false"><thead><tr><th>What</th><th>Information</th><th>Potential Source System</th><th>Tool / Link</th><th>Relevance</th><th>Example</th></tr></thead><tbody><tr><td><strong>Council decisions</strong></td><td>Fundamental decisions on municipal land use and transport planning (e.g. environmental zones, traffic calming measures, etc.)</td><td>Council Information System</td><td>DECIDe Data Space; Council Information System: <a href="https://ris.freiburg.de/">https://ris.freiburg.de/</a></td><td><strong>High</strong></td><td><a href="https://ris.freiburg.de/search?suchbegriffe=G-01/107.1&#x26;datum_von=1993-01-04&#x26;datum_bis=2026-12-10&#x26;kriterium=si">https://ris.freiburg.de/search?suchbegriffe=G-01/107.1&#x26;datum_von=1993-01-04&#x26;datum_bis=2026-12-10&#x26;kriterium=si</a></td></tr><tr><td><strong>City Press Releases &#x26; News</strong></td><td>Updates of City Departments such as the Department of Parks and Civil Engineering "Garten und Tiefbauamt")</td><td>Municipal departments</td><td><a href="https://www.freiburg.de/pb/221057.html">https://www.freiburg.de/pb/221057.html</a></td><td><strong>High</strong></td><td><p><a href="https://www.freiburg.de/pb/2618797.html">https://www.freiburg.de/pb/2618797.html</a> </p><p><em>"B31 tunnel closed overnight"</em></p></td></tr><tr><td><strong>Internal roadworks management system</strong></td><td>Roadworks / Construction Information</td><td>KommRegie</td><td>internal software</td><td>High</td><td></td></tr><tr><td><strong>Event planning</strong></td><td>Major events (e.g. public viewing, large festivals) </td><td>RESIST?</td><td>–</td><td>Medium</td><td>–</td></tr></tbody></table>
-
 #### Location scope expansion
 
 The current UC1 pipeline extracts street-level location references and links them to address registries. Many RMZ decisions, however, define zones by reference to areas –neighborhoods, districts, or cadastral parcels– rather than individual streets. Extending the Entity Linking component to handle area-level geographic references would require additional reference datasets (such as cadastral parcel registries or neighborhood boundary datasets) and a different linking strategy than the current address-component approach.
@@ -540,6 +534,14 @@ The current implementation for UC1 detects locations and periods and links them 
 #### Ghent
 
 Ghent will focus on the rollout of the Ghent widget and therefore on the quality of the annotations on location. The concept of a widget is very relevant as it makes a partial but evolving rollout possible, based on the quality of the anotions and the specific needs of the city services.&#x20;
+
+### Possible future work Freiburg related
+
+Beyond the more general future work activities outlined in this section that will improve the quality of the data, Freiburg has specific additional avenues for future work.&#x20;
+
+At first, we would like to extend the current database of LD\&E desicions since they cover only parts of relevant RMZ desicions.&#x20;
+
+TODO Freiburg: add content here, (I) Lukas did not have enough time to work on it, might need around 1h more
 
 ## <mark style="background-color:$warning;">Relevant links</mark>
 
