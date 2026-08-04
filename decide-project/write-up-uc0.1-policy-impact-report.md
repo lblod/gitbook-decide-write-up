@@ -305,7 +305,7 @@ The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a s
     truly matching and only from the given list! If none of the codes match,
     return an empty list.
     ```
-4. **Call the LLM.** The prompt is sent to the configured LLM via [LangChain's ](https://www.langchain.com/)unified chat interface. The service supports multiple providers (including Mistral, OpenAI, Anthropic, and Ollama) permitting configurability later on. Within DECIDe, Mistral Large 3, an external proprietary model, is used to generate an initial qualitative annotation set. Tests using smaller LLMs (used locally) were not considered to be sufficiently performant.
+4. **Call the LLM.** The prompt is sent to the configured LLM via [LangChain's ](https://www.langchain.com/)unified chat interface. The service supports multiple providers (including Mistral, OpenAI, Anthropic, and Ollama) permitting configurability later on. Within DECIDe, Mistral Medium 3.5, an external proprietary model, is used to generate an initial qualitative annotation set. Tests using smaller LLMs (used locally) were not considered to be sufficiently performant.
 5. **Resolve labels to URIs.** Each returned label is mapped back to its SKOS concept URI.
 6. **Store the annotation.** For each resolved concept URI, an annotation is created and inserted into the triplestore. The annotation follows the Web Annotation Data Model (`oa:Annotation`) with:
    * `oa:hasTarget` → the decision's `eli:Expression` URI
