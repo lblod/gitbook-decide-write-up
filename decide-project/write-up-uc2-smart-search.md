@@ -253,6 +253,12 @@ The LLM is given a custom system prompt that enforces three constraints: the ans
 
 A similar provider-agnostic approach is taken for the embedding model used by the embedding service, though it is a distinct model serving a different purpose.
 
+### Pilot cities
+
+#### Bamberg
+
+Bamberg deployed the Smart Search as implemented by ABB. As the processing LLM for creating prompts an external Mistral API is used.
+
 #### Ghent
 
 Ghent wil mostly use this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent will also conduct tests using the API.&#x20;
