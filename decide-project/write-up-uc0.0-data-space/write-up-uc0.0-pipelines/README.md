@@ -78,7 +78,7 @@ Ghent will also implement the NER and NEL services on location annotation locall
 
 #### Bamberg
 
-Bamberg gave itself a smart city and digitalization strategy, even if the participation in this data space is not specifically mentioned there, it still pays on it’s overall goals. So far, Bamberg’s decision data was solely stored and managed by a solution provider by implementing usecase 0.0 the administration gains a way to extract and use it's own data, which provides a stronger data governance and flexibility to use it's decision data for future usecases, and thereby more flexibility to implement new policy processes building upon decision data.
+Bamberg has adopted a Smart City and digitalization strategy. Although participation in this data space is not explicitly mentioned in the strategy, it nevertheless contributes to achieving its overall goals of digitizing administration processes. So far, Bamberg’s decision data was solely stored and managed by a solution provider by implementing usecase 0.0 the administration gains a way to extract and use it's own data, which provides a stronger data governance and flexibility to use it's decision data for future usecases, and thereby more flexibility to implement new policy processes building upon decision data.
 
 
 
@@ -694,9 +694,7 @@ Bamberg will be testing NER / NEL:
 
 TODO: ADD Possible future  work DECIDe data space
 
-### Bamberg:
 
-After the city of Bamberg tested mere pdf input as data source throughout the project, the municipality will change to the use of an oparl-API, to grant a smooth automated dataflow in the future. The city of Bamberg will also train their staff to create awareness of the existance of UC 0.0, to make sure that in the future new usecases which deal with decision data, needed by the administrators, can be designed upon the use of this pipeline.
 
 #### Input: Pipeline reuse for LD\&L from other local authorities
 
@@ -740,7 +738,7 @@ Separately, since Freiburg already operates a smart search assistant in producti
 
 ### Possible future work BAMBERG related
 
-TODO:
+After the city of Bamberg tested mere pdf input as data source throughout the project, the municipality will change to the use of an Oparl-API, to grant a smooth automated dataflow in the future. The city of Bamberg will also train their staff to create awareness of the existance of UC 0.0 to make sure that in the future new usecases which deal with decision data - needed by the administrators - can be designed upon the use of this pipeline.
 
 ### Possible future work GHENT related
 
