@@ -460,6 +460,8 @@ In the backend the widgets can be configured in the standard drupal interface. I
 
 <mark style="background-color:$danger;">To Do: insert screenshots of the widget</mark>
 
+
+
 ## Testing approach
 
 #### Ghent
@@ -468,6 +470,8 @@ As stated in the architecture section, Ghent is testing the central and decentra
 
 * In the central scenario Ghent is using the ABB setup. The main focus is this case is on the quality of the AI annotations with an extra focus on the NER and NEL on location
 * In the decentral scenario the focus of the test is on the Ghent infrastructure and setup of the containers, on the SPARQL queries and on the technical and usability aspects of the Ghent widget.&#x20;
+
+Testing is being done by the Ghent project lead and in a second phase by the city service that assist on drafting decisions.
 
 ### Risks & mitigations
 
