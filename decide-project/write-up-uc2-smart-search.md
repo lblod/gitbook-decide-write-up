@@ -65,6 +65,14 @@ For local authorities, UC2 provides a high-visibility demonstration that LD\&L l
 
 Ghent leads the UC2 implementation (D3.5), with Freiburg and/or Bamberg participating as a second pilot site (D3.6).
 
+#### Bamberg
+
+As mentioned before, Bamberg provides its decision templates and council meeting minutes as unlinked PDF files, making the search for specific topics difficult. Within the shared data space, the provided data is made machine readable. Adding the natural-language search layer provided by ABB, Bamberg’s data is made more accessible.
+
+Currently, if anyone wanted to look for a specific decision made within a council meeting, they have to open the CCIS and under “Suchkriterien”, which only has “Gremium” as criterion, they have to choose “Stadtrat der Stadt Bamberg” from the dropdown menu. Then every meeting within the specified time frame would appear in a table. Afterwards, they would have to click through every row of the table in order to get to the meeting minutes, which are named after the topic that was discussed. To efficiently look for a specific decision, one would have to know when it was discussed.
+
+With the new data space, this knowledge is not necessary anymore. The wanted the decision can be entered into the search mask and will be given in natural language as well as with all necessary files attached.
+
 ### Target audience / Personas
 
 The primary audience for UC2 is citizens seeking to understand which decisions, subsidies, or regulations apply to their situation, and municipal staff –administrative officers, policy makers, and smart city teams– who need rapid access to decision content without navigating full document archives. A secondary audience is the technical team responsible for deploying and monitoring the microservice and its integration with the data space.
