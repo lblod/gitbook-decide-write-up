@@ -450,6 +450,14 @@ In addition to selecting the codelist, the user can also select sub-elements in 
 
 Once the filters have been applied, the user can validate the different decisions the same way they validate the discovered entities in UC0.0, namely with a thumbs up/down. One small difference is, that in UC0.0, the user can read the decision in a split-screen to get enough context to validate the discovered entity. Because the entity the user is validating in this use case is about the whole decision, and there is no need to highlight specific parts of the text, the team has decided to only provide an external link to the decision, where the user can read the whole decision as it is published, in a different tab.
 
+#### Design of the Freiburg interface
+
+For Freiburg, the RMZ output is integrated into the FreiGIS portal rather than being presented through a standalone interface. FreiGIS ([https://geoportal.freiburg.de/freigis](https://geoportal.freiburg.de/freigis/)) is the City of Freiburg's central geospatial portal and the core component of its municipal Spatial Data Infrastructure (GDI-FR). It provides access to a wide range of maps and geospatial information from the city administration and partner organizations, supports searches for addresses, cadastral parcels, public transport stops, thematic maps, and development plans, and offers additional GIS functionality such as measurements, printing, and access to metadata through the Freiburg geodata catalog. The portal is based on the open-source Masterportal software.
+
+Consequently, the user interface for the RMZ use case consists primarily of the visualization of the generated layer within the existing geoportal. The screenshot below illustrates how UC1 is displayed in the current testing environment. Please note that this version is not yet publicly available.
+
+<figure><img src="../.gitbook/assets/screenshot_ui.png" alt=""><figcaption></figcaption></figure>
+
 #### Design of the Ghent widget
 
 To use a widget is an important architectural and design decision 'an sich'. It makes the setup really flexible as the information can be put into the city website wherever the city services want to put it, and where citizen might need this information. This approach is also very usefull as testing can be focussed on specific terms of city districts and makes a partial rolout possible.
