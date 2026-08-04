@@ -585,6 +585,7 @@ The city of Bamberg is planning to introduce locally framed policy goals instead
 ## Relevant links
 
 * Frontend application: [https://policy-impact-report.decide.lblod.info/](https://policy-impact-report.decide.lblod.info/)
+* Link to Policy Impact Report (Bamberg): [https://policy-impact-report.decide.smartcitybamberg.de/](https://policy-impact-report.decide.smartcitybamberg.de/)
 
 {% embed url="https://github.com/lblod/app-decide" %}
 
