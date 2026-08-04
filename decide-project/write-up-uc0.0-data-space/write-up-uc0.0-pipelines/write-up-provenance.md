@@ -1,4 +1,4 @@
-# write-up Provenance
+# Write-up Provenance
 
 This write-up describes the provenance and traceability pattern shared by the DECIDe data-space components. It is not a separate pipeline or a separate data store. It explains how source data, processing steps, AI output, human feedback and published data remain connected as Linked Data.
 
@@ -123,11 +123,36 @@ ELI uses three levels, as explained in the [UC0.0 Pipelines](./#pdf-to-eli):
 
 DECIDe supplements this structure with source-lineage information. The OSLO transformation preserves `prov:wasDerivedFrom` links from source decisions for the data. OParl also records source derivation with `prov:wasDerivedFrom` and uses ELI manifestations for concrete files. PDF conversion creates an `eli:Manifestation` and links it to the original PDF URL through `eli:is_exemplified_by`.
 
-#### Jobs, tasks and data containers
+#### Annotation provenance
 
-#### PROV-based generation and responsibility
+The [Web Annotation Model](./#web-annotation-model) was already briefly introduced. However, the AI services used within the DECIDe project go one step further by generating a `prov:Activity` alongside every `oa:Annotation`. As shown in the example blow, this allows for keeping track of timestamps, the service that generated the annotation, as well as the AI agent leading to the annotation.
 
-#### Configured agents and configuration snapshots
+```ttl
+@prefix example: <http://www.example.org/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+example:myAIAnnotation a oa:Annotation, example:AIThemeEnrichment ;
+  mu:uuid "0ab45594-9909-4aea-a7d9-63476ffe6e97" ;
+  oa:hasBody example:InstallatieVergaderingThema ;
+  nif:confidence 0.87 ;
+  oa:hasTarget <https://data.arendonk.be/id/besluiten/24.1125.2636.6731>  .
+
+example:myAIAnnotationRun a prov:Activity, example:AIThemeEnrichmentActivity ;
+  mu:uuid "7dab6aa5-6a30-4ccc-86b7-dcd0c867a916" ;
+  prov:startedAtTime "2025-06-20T08:09:51.032Z"^^xsd:dateTime ;
+  prov:endedAtTime "2025-06-20T08:10:46.355Z"^^xsd:dateTime ;
+  prov:generated example:myAIAnnotation ;
+  prov:wasAssociatedWith example:myAIEnrichmentService ;
+  prov:used <https://data.arendonk.be/id/besluiten/24.1125.2636.6731>, <https://data.arendonk.be/id/besluiten/24.1125.2636.6732>.
+
+example:myAIEnrichmentService a prov:Agent, example:AIThemeEnricher ;
+  mu:uuid "029f5390-531e-41f9-abcc-d75a416f9816" ;
+  foaf:name "My Decision Theme Enricher" .
+```
 
 #### AI model registration with AIRO
 
@@ -135,7 +160,7 @@ DECIDe supplements this structure with source-lineage information. The OSLO tran
 
 ### Final semantic components (and why) (if any)
 
-
+#### Configured agents and configuration snapshots
 
 ### Other explored semantic components (and why not)
 
@@ -172,13 +197,33 @@ A dedicated provenance browser was not implemented during the pilot. A future br
 
 ## Possible future work
 
-### Possible future work DECIDe data space related
+As discussed, the AI components used within the DECIDe project generate a `prov:Activity` for every `oa:Annotation`, essentially storing provenance for AI-generated data. We could expand on this by also generating activities for annotations that are the result of user-related actions.
 
+E.g. when a user validates AI-generated data, an *accept* annotation would be created, alongside an activity linking to the person as a `prov:Agent`. This new annotation would also link to the *original* AI annotation via `oa:hasTarget`. This way a chain of annotation could be created, very extensively showcasing the provenance of **all** (human- and AI-generated) affiliated data.
 
+```ttl
+@prefix example: <http://www.example.org/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
 
+example:myHumanReviewAnnotation a oa:Annotation, as:Accept ;
+  mu:uuid "161325e8-4302-4331-a7ba-67743e02ea8d" ;
+  oa:hasTarget example:myAIAnnotation .
 
+example:humanReview a prov:Activity, example:HumanReview ;
+  mu:uuid "5f8779f1-5ad0-4403-a757-b43535afe73d" ;
+  prov:startedAtTime "2025-06-20T08:45:06.853Z" ;
+  prov:generated example:myHumanReviewAnnotation ;
+  prov:wasAssociatedWith example:myReviewerHuman.
 
-### Possible future work LBLOD related
+example:myReviewerHuman a prov:Agent, prov:Person ;
+  mu:uuid "8694b5dd-5a98-4a2b-9de3-cb360d0a5ea1" ;
+  foaf:name "Jos Test" .
+```
 
 ## Relevant links
 
