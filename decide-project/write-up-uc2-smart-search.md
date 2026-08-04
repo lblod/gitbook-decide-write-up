@@ -444,3 +444,7 @@ Link to github: [https://github.com/semantic-ai/decide-question-answering](https
 Link to front-end QA: [https://smart-search.decide.lblod.info/](https://smart-search.decide.lblod.info/)\
 \
 Link to Parla (Berlin): [https://www.parla.berlin/](https://www.parla.berlin/)
+
+Link to Smart Search (Bamberg): [https://smart-search.decide.smartcitybamberg.de/](https://smart-search.decide.smartcitybamberg.de/)
+
+Link to CCIS search tool (Bamberg): [https://www.stadt.bamberg.de/buergerinformationssystem/tr010](https://www.stadt.bamberg.de/buergerinformationssystem/tr010)
