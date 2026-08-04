@@ -630,8 +630,6 @@ The DECIDE infastructure is currently deployed on a project specific Hetzner ser
 
 Initially, decision data was collected by downloading and converting each PDF individually (see **PDF to ELI pipeline**). Subsequently, Bamberg developed a data scraping tool that extracts the HTML versions of templates and minutes and consolidates them into a structured JSON format. This JSON representation enriches the data with relevant metadata and links the decisions to their corresponding templates (see **JSON to ELI pipeline**). With this approach, the data can be provided and automated more efficiently, so that Bamberg can provide an up-to-date machine readable repository of decisions.
 
-As a next development step, the CCIS will provide an OPARL API to standardize data exchange in collaboration with Freiburg (see **OPARL to ELI pipeline**). It remains to be evaluated whether the API can provide the same level of metadata as the current JSON-based approach. Future work may therefore extend the OPARL implementation to achieve feature parity while also enabling broader interoperability with other municipalities that use the same standard.
-
 For Named Entity Recognition (NER) and Named Entity Linking (NEL), Bamberg uses an external Mistral model, as the current server infrastructure does not reliably support running a local large language model for these tasks.
 
 #### Freiburg
@@ -736,7 +734,7 @@ Separately, since Freiburg already operates a smart search assistant in producti
 
 ### Possible future work BAMBERG related
 
-After the city of Bamberg tested mere pdf input as data source throughout the project, the municipality will change to the use of an Oparl-API, to grant a smooth automated dataflow in the future. The city of Bamberg will also train their staff to create awareness of the existance of UC 0.0 to make sure that in the future new usecases which deal with decision data - needed by the administrators - can be designed upon the use of this pipeline.
+As a next development step, the City of Bamberg will transition from JSON-based data exchange to an OPARL API provided by the CCIS similar to Freiburg (see **OPARL to ELI pipeline**), enabling a standardized and automated data flow. Future work will evaluate whether the API achieves feature parity with the current JSON-based approach, particularly regarding metadata, while improving interoperability with other municipalities. The city of Bamberg will also train their staff to create awareness of the existance of UC 0.0 to make sure that in the future new usecases which deal with decision data - needed by the administrators - can be designed upon the use of this pipeline.
 
 ### Possible future work GHENT related
 
