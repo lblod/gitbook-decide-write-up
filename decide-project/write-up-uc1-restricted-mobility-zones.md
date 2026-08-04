@@ -403,24 +403,13 @@ This scenario might be interesting for further business cases for the dataspace 
 
 Ghent has realised a drupal widget that shows recents decisions for a specific topic within a specific city district.&#x20;
 
-In
-
-To test this scenario Ghent is setting up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup.&#x20;
-
-To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used.&#x20;
-
-Setup NER and NEL locally
-
-* Query the Ghent endpoint purely for locations
-* Linking the locations to the relevant city district
-* Using a drupal widget that shows recent decisions on a specific topid in a specific city distict
+In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup. To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used.  For this scenario the locations are linked to the relevant city district. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.&#x20;
 
 **Continuation after the DECIDe project**
 
-* continuing the NER and NEL locally
-* Linking the locations to the relevant city district
-* Using a drupal widget that shows recent decisions on a specific topid in a specific city distict
-* Getting all of this to production and rollout based on the needs of city services.
+Ghent aims to keep the decentral setup after the end of the DECIDe project, as it is central to the needs of the city. We want to keep testing and improving the NER and NEL modules. As soon as data quality is adequate enough we will move the widget to production and will rollout the widget bases on the needs of the city services.&#x20;
+
+
 
 ## Final UI design
 
@@ -444,6 +433,8 @@ Once the user selects the local authority and the codelist (within DECIDe i.e. t
 In addition to selecting the codelist, the user can also select sub-elements in the codelist. This is not relevant in this use case, as we work with a flat, single-level codelist. This is, however, relevant in UC0.1, and is explained in more details in the [design section of the write-up for UC0.1.](write-up-uc0.1-policy-impact-report.md#final-ui-design-and-why-if-any)
 
 Once the filters have been applied, the user can validate the different decisions the same way they validate the discovered entities in UC0.0, namely with a thumbs up/down. One small difference is, that in UC0.0, the user can read the decision in a split-screen to get enough context to validate the discovered entity. Because the entity the user is validating in this use case is about the whole decision, and there is no need to highlight specific parts of the text, the team has decided to only provide an external link to the decision, where the user can read the whole decision as it is published, in a different tab.
+
+
 
 ## Testing approach
 
