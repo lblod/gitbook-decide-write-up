@@ -71,7 +71,7 @@ As mentioned before, Bamberg provides its decision templates and council meeting
 
 Currently, if anyone wanted to look for a specific decision made within a council meeting, they have to open the CCIS and under “Suchkriterien”, which only has “Gremium” as criterion, they have to choose “Stadtrat der Stadt Bamberg” from the dropdown menu. Then every meeting within the specified time frame would appear in a table. Afterwards, they would have to click through every row of the table in order to get to the meeting minutes, which are named after the topic that was discussed. To efficiently look for a specific decision, one would have to know when it was discussed.
 
-With the new data space, this knowledge is not necessary anymore. The wanted the decision can be entered into the search mask and will be given in natural language as well as with all necessary files attached.
+With the new data space, this knowledge is not necessary anymore. The wanted the decision can be entered into the search mask and will be given in natural language as well as with all necessary files attached. Thus, this improved search process not only enhances internal administrative efficiency but also enables city council members to better prepare for meetings and provides citizens with greater visibility and clarity regarding decisions as they prepare to engage in city politics.
 
 
 
