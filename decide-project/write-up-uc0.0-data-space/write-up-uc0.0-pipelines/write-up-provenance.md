@@ -184,15 +184,19 @@ example:myAICall a ext:AICall ;
 
 ### Final semantic components (and why) (if any)
 
-#### Configured agents and configuration snapshots
+n/a
 
 ### Other explored semantic components (and why not)
 
-
+n/a
 
 ### Final AI components (and why) (if any)
 
-Provenance is not an AI component by itself, but all AI services within the DECIDe project rely on a shared context manager, `record_ai_call_cm`, exposed by the [shared AI service base](https://github.com/semantic-ai/decide-ai-service-base), to record the AI-calls provenance described above. Wrapping an actual AI call in this context manager inserts the `ext:AICall` triples into the triplestore (see [example](./#ai-calls-provenance)) using the given endpoint, model URI and token counts:
+Provenance is not an AI component by itself, but two shared building blocks from the [shared AI service base](https://github.com/semantic-ai/decide-ai-service-base) are used by all AI services to make their output traceable.
+
+#### AI-call tracking
+
+All AI services rely on a shared context manager, `record_ai_call_cm`, to record [the AI-calls provenance described above](./#ai-calls-provenance). Wrapping an actual AI call in this context manager inserts the `ext:AICall` triples into the triplestore using the given endpoint, model URI and token counts:
 
 ```python
 with task.record_ai_call_cm(
@@ -204,6 +208,12 @@ with task.record_ai_call_cm(
 ```
 
 Besides timing the call to derive `ext:duration`, the context manager also estimates `ext:cost` for the call based on the given model URI and token counts, using pricing data from [OpenRouter](https://openrouter.ai/). Centralizing this in one shared utility keeps cost and usage tracking consistent across the different AI services and model providers used within DECIDe, without every service having to maintain its own pricing table.
+
+#### Agent and configuration registration
+
+The same shared base package also registers each AI service as a `prov:Agent` in the triplestore at startup, based on its Docker Compose configuration. This is necessary because the exact same code or model can produce different output depending on how it is configured, e.g. a different prompt, a different environment variable or a different mounted model file, and provenance needs to be able to say "this configuration produced this result", not just "this service produced this result".
+
+At startup, the service's Compose definition and mounted configuration files are hashed. An existing configuration and agent are reused if nothing changed, or a new versioned agent is created automatically if something did. This removes the need for services to manage their own versioning, while still making it possible to trace any AI-generated result back to the precise configuration that produced it.
 
 ### Other explored AI components (and why not)
 
