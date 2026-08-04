@@ -76,7 +76,19 @@ UC1 proposes to close that gap by automatically classifying RMZ decisions, extra
 
 ### Pilot partners
 
-Freiburg is the lead pilot partner for UC1 implementation, and Ghent participates as a second pilot site. Also Ui! is using the data that results from this use case.
+Both Freiburg and Ghent are pilot sites for UC1. Also Ui! is using the data that results from this use case.
+
+#### Freiburg
+
+For the City of Freiburg, UC1 addresses a use case of direct strategic relevance. As part of its ongoing efforts to position itself as a smart city, Freiburg has already invested in the digital infrastructure that UC1's outputs would plug into directly: the city's open dataspace initiative ([DATEN:RAUM:FREIBURG](https://www.freiburg.de/pb/datenraum/daten_raum_freiburg.html)) and its geoportal, [FreiGIS](https://geoportal.freiburg.de/freigis/), which already serves as the public-facing platform for spatial data in the city. UC1's automatic extraction pipeline would integrate naturally into this existing ecosystem rather than requiring a parallel system, lowering the barrier to adoption and giving the city a concrete, visible example of what AI-supported LD\&L processing can deliver operationally.
+
+For now, live or continuously updated data on RMZ is currently only available for select zone types in the geoportal — for example, construction sites ("Baustellen", see Screenshot).
+
+<figure><img src="../.gitbook/assets/baustellen.png" alt=""><figcaption></figcaption></figure>
+
+Most other RMZ categories are not yet represented as structured, queryable layers, meaning that the underlying decisions still exist primarily as unstructured text. This is precisely the gap UC1 is positioned to close: rather than starting from scratch, Freiburg offers a partial live-data baseline to build from and expand, alongside a clear, visible model of what a fully populated RMZ layer could look like across zone types.
+
+Beyond the technical fit, Freiburg's participation in the UC is further reinforced by the fact that the taxonomy and standardisation work that UC1 requires would benefit Freiburg beyond the pilot itself: a shared, well-defined RMZ classification would make it easier for the city to benchmark its own mobility policies against peer cities, thus supporting evidence-based policy development rather than isolated local decision-making.
 
 ### Target audience / Personas
 
