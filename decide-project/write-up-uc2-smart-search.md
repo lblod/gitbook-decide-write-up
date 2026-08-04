@@ -305,12 +305,11 @@ The interface is in English, avoiding the overhead of maintaining three separate
 
 N/A
 
-### Bamberg
+#### Bamberg
 
 There are no firm plans yet regarding the UI, though several options are being considered. During a previous software test and public consultation process on the further development of the Bamberg app, citizens expressed a desire for more information on city council resolutions and council updates in the local city app. Instead of listing pages of database entries, the Smart Search feature could be integrated into the app to meet citizens’ needs.
 
-If we do decide on a standalone solution, we will consider basing the UI on the open-source solution Parla from Berlin, which serves a similar purpose.\
-However, it must be emphasized that both of these solutions are still under review.
+For the UI the open-source solution Parla from Berlin is also under consideration which serves a similar purpose and has already been under longer development. At this stage, both approaches remain under evaluation, and no final decision has been made regarding the preferred solution. In either case, a responsive design that provides a user-friendly mobile view will be an essential requirement to ensure accessibility and usability across different devices.
 
 #### Ghent
 
