@@ -1,4 +1,4 @@
-# Write-up Provenance
+# write-up Provenance
 
 This write-up describes the provenance and traceability pattern shared by the DECIDe data-space components. It is not a separate pipeline or a separate data store. It explains how source data, processing steps, AI output, human feedback and published data remain connected as Linked Data.
 
@@ -14,8 +14,6 @@ The wanted deliverable is an inspectable and queryable provenance chain for ever
 4. Which source resource or text span supports that enrichment?
 5. Has a person approved, rejected or corrected it?
 6. Which retrieved decisions and prompt support a Smart Search answer?
-
-
 
 For a machine-generated annotation, a consumer should be able to trace:
 
@@ -53,16 +51,14 @@ Each component contributes part of the overall provenance trail. Ingestion pipel
 | [Shared AI service base](https://github.com/semantic-ai/decide-ai-service-base)                                                                                                                                                   | Common AI provenance library                               | Creates configuration snapshots, configuration-specific agents, annotation activities and task/result-container patterns used by the AI enrichment services.                                             |
 | [Geocoding / NER service](https://github.com/semantic-ai/decide-geocoding-service)                                                                                                                                                | Translation, segmentation and entity extraction            | Produces source- and span-based AI annotations using the shared provenance pattern. This connects extracted information to the relevant ELI expression or exact text span.                               |
 | [Entity-linking backend](https://github.com/semantic-ai/entity-linking-backend)                                                                                                                                                   | Named Entity Linking                                       | Links detected entities to authoritative URIs and records the associated activity, configured agent and linking annotation.                                                                              |
-| [Codelist labeling service](https://github.com/semantic-ai/codelist-labeling-service)                                                                                                                                            | Codelist and impact annotation                             | Produces whole-expression classification annotations and records the activity and configured software agent responsible for them.                                                                        |
+| [Codelist labeling service](https://github.com/semantic-ai/codelist-labeling-service)                                                                                                                                             | Codelist and impact annotation                             | Produces whole-expression classification annotations and records the activity and configured software agent responsible for them.                                                                        |
 | [Human Validation Tool](https://github.com/lblod/frontend-decide-human-validator) and [annotation-review service](https://github.com/lblod/annotation-review-service)                                                             | Inspection, review and correction of generated annotations | Present the source context and machine annotation to a reviewer and store approval, rejection or correction separately from the original machine output.                                                 |
 | [Smart Search frontend](https://github.com/lblod/frontend-decide-question-answering) and [question-answering service](https://github.com/semantic-ai/decide-question-answering)                                                   | Smart Search and retrieval-augmented question answering    | Retain the question, complete prompt, model identifier, generated answer, citations, retrieved quotations and retrieval scores. Reviews of answers and quotations extend this trace with human feedback. |
 | [OSLO-to-ELI](https://github.com/lblod/decide-harvester-transformation-service), [OParl-to-ELI](https://github.com/lblod/oparl-to-eli-service) and [PDF extraction](https://github.com/semantic-ai/decide-pdf-content-extraction) | Source ingestion and normalization                         | Preserve source-specific relationships while converting heterogeneous input data into shared ELI resources used by downstream enrichment and search components.                                          |
 
-
-
 ## Glossary
 
-<table><thead><tr><th width="254.966796875">Term / Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>LD&#x26;L</td><td>Local Decisions &#x26; Legislation, the decision and legislative documents collected and processed by DECIDe.</td></tr><tr><td>ELI</td><td>European Legislation Identifier, the vocabulary used to model legal resources as a Work, Expression and Manifestation.</td></tr><tr><td>PROV / PROV-O</td><td>W3C provenance ontology used to model activities, agents and the entities they generate or use (<code>prov:</code> namespace).</td></tr><tr><td>OA / Web Annotation</td><td>W3C Web Annotation Data Model, used to represent AI-generated and human-generated annotations on decisions and text spans (<code>oa:</code> namespace).</td></tr><tr><td>AIRO</td><td>AI Risk Ontology, used to model AI models, versions and related metadata as <code>foaf:Agent</code> instances.</td></tr><tr><td>NER</td><td>Named Entity Recognition, the process of detecting entities such as people, organizations or locations in text.</td></tr><tr><td>RDF</td><td>Resource Description Framework, the data model used to represent all DECIDe data, including provenance, as triples.</td></tr><tr><td>Turtle / TTL</td><td>A compact, human-readable text format for writing RDF triples, used for the examples in this write-up.</td></tr><tr><td>SPARQL</td><td>The query language used to retrieve and inspect RDF data, including provenance chains, from the triplestore.</td></tr></tbody></table>
+<table><thead><tr><th width="254.966796875">Term / Acronym</th><th>Explanation</th></tr></thead><tbody><tr><td>LD&#x26;L</td><td>Local Decisions &#x26; Legislation, the decision and legislative documents collected and processed by DECIDe.</td></tr><tr><td>ELI</td><td>European Legislation Identifier, the vocabulary used to model legal resources as a Work, Expression and Manifestation.</td></tr><tr><td>PROV / PROV-O</td><td>W3C provenance ontology used to model activities, agents and the entities they generate or use (<code>prov:</code> namespace).</td></tr><tr><td>OA / Web Annotation</td><td>W3C Web Annotation Data Model, used to represent AI-generated and human-generated annotations on decisions and text spans (<code>oa:</code> namespace).</td></tr><tr><td>AIRO</td><td>AI Risk Ontology, used to model AI models, versions and related metadata.</td></tr><tr><td>NER</td><td>Named Entity Recognition, the process of detecting entities such as people, organizations or locations in text.</td></tr><tr><td>RDF</td><td>Resource Description Framework, the data model used to represent all DECIDe data, including provenance, as triples.</td></tr><tr><td>Turtle / TTL</td><td>A compact, human-readable text format for writing RDF triples, used for the examples in this write-up.</td></tr><tr><td>SPARQL</td><td>The query language used to retrieve and inspect RDF data, including provenance chains, from the triplestore.</td></tr></tbody></table>
 
 ## Business analysis + final feature passport (incl. functional analysis)
 
@@ -87,8 +83,6 @@ Provenance is implemented across the DECIDe services and therefore applies to da
 
 ### Functionality (requirements)
 
-
-
 <table><thead><tr><th width="302.056640625">Area assessed</th><th>Conclusion</th></tr></thead><tbody><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
 
 ## Datasources, datasets and datastandards
@@ -110,8 +104,6 @@ Provenance and traceability rely entirely on existing Linked Data standards rath
 * **Web Annotation Model (OA)** for AI- and human-generated annotations on decisions and text spans.
 * **AIRO** for registering the specific AI model and version behind an agent.
 * **RDF/Turtle and SPARQL** as the underlying data model and query language tying all of the above together.
-
-
 
 ## Final architecture (and why)
 
@@ -167,9 +159,7 @@ Here, the `prov:Activity` records when the annotation was generated and links it
 
 #### AI model registration with AIRO (is this actually implemented? Cant find anything related to airo except 'http://www.example.org/entity-extraction')
 
-The AI agent associated with an activity can also be modeled as a `foaf:Agent`. This allows very detailed information about the AI *component* being used to be tracked. To model this, we rely on [the AIRO ontology](https://delaramglp.github.io/airo/):
-
-<figure><img src="../../.gitbook/assets/ai-model-registration-airo.jpg" alt=""></figure>
+The AI agent associated with an activity can also be modeled as a `foaf:Agent`. This allows very detailed information about the AI _component_ being used to be tracked. To model this, we rely on [the AIRO ontology](https://delaramglp.github.io/airo/):
 
 Most importantly, this allows to not only indicate which AI model was used, but also state the exact version of the model. This setup is very powerful in a system where models are being retrained with the help of e.g. user feedback, leading to new and improved model versions.
 
@@ -301,17 +291,13 @@ A dedicated provenance browser was not implemented during the pilot. A future br
 
 ## Testing approach
 
-
-
 ### Risks & mitigations
-
-
 
 ## Possible future work
 
 As discussed, the AI components used within the DECIDe project generate a `prov:Activity` for every `oa:Annotation`, essentially storing provenance for AI-generated data. We could expand on this by also generating activities for annotations that are the result of user-related actions.
 
-E.g. when a user validates AI-generated data, an *accept* annotation would be created, alongside an activity linking to the person as a `foaf:Agent`. This new annotation would also link to the *original* AI annotation via `oa:hasTarget`. This way a chain of annotation could be created, very extensively showcasing the provenance of **all** (human- and AI-generated) affiliated data.
+E.g. when a user validates AI-generated data, an _accept_ annotation would be created, alongside an activity linking to the person as a `foaf:Agent`. This new annotation would also link to the _original_ AI annotation via `oa:hasTarget`. This way a chain of annotation could be created, very extensively showcasing the provenance of **all** (human- and AI-generated) affiliated data.
 
 ```ttl
 @prefix example: <http://www.example.org/> .
@@ -337,14 +323,11 @@ example:myReviewerHuman a foaf:Agent, prov:Person ;
   foaf:name "Jos Test" .
 ```
 
-
 ### Monitoring model performance and data drift
 
-The provenance information collected throughout the pipeline also provides a foundation for continuous monitoring of AI services over time. Because every annotation, AI call and configuration is linked to a specific model, version and activity, it becomes possible to compare performance across different models and configurations rather than only tracking operational metrics such as token usage or cost. 
+The provenance information collected throughout the pipeline also provides a foundation for continuous monitoring of AI services over time. Because every annotation, AI call and configuration is linked to a specific model, version and activity, it becomes possible to compare performance across different models and configurations rather than only tracking operational metrics such as token usage or cost.
 
 By combining provenance with human validation outcomes, future work could focus on automatically detecting performance degradation, data drift and changing error patterns. For example, increasing rejection rates for a particular model version, reduced confidence on specific document types or deteriorating performance for certain municipalities could indicate that retraining, prompt refinement or configuration changes are required. Such monitoring would make it possible to identify pain points early, compare alternative models under identical conditions and prioritize improvements based on observed real-world performance rather than anecdotal feedback.
-
-
 
 ## Relevant links
 
