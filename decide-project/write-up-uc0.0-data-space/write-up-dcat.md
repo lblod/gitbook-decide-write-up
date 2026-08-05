@@ -247,6 +247,10 @@ Viewing a distribution:
 
 Currently no functionality is provided for administrators of the dataspace to create, delete or edit DCAT instances. This should be done by creating such descriptions as triplestore migrations in the application configuration or by running the [scripts included with the DECIDe project's GitHub repository](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset) that generate DCAT descriptions and downloads for the standard datasets in the data space.
 
+## Testing approach
+
+### Risks & mitigations
+
 ## Possible future work
 
 ### Making the data space tamper-proof
