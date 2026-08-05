@@ -78,11 +78,11 @@ Ghent will also implement the NER and NEL services on location annotation locall
 
 #### Bamberg
 
-Bamberg has adopted a Smart City and digitalization strategy. Although participation in this data space is not explicitly mentioned in the strategy, it contributes to achieving its overall goals of digitizing administration processes.&#x20;
+Bamberg provides semi-structured data through its CCIS: Templates and minutes are initially created as PDF documents and are then automatically converted into HTML for publication on the city's website. Templates and minutes are not linked by standardized machine readable means. The tools developed within the project establish a machine readable connection between them.&#x20;
 
-So far, Bamberg’s decision data was solely stored and managed by an external solution provider. By implementing usecase 0.0 the administration gains a way to extract and use it's own data, which provides a stronger data governance and flexibility to use it's decision data for future usecases, and thereby more flexibility to implement new policy processes building upon decision data.
+For the development phase of the project, Bamberg has refrained from obtaining the OParl-API to test alternative means of data gathering. In the first phase only the PDF data was scraped, later a web scraper was developed to gather meaningful metadata and links within as JSON format. Both formats were tested and could then be turned into ELI via tools provided by ABB
 
-Bamberg provides semi-structured data through its CCIS: Templates and minutes are initially created as PDF documents and are then automatically converted into HTML for publication on the city's website.
+With this approach however, the data gathering has a big overhead because of how the **CCIS** vendor set up the website: Adding new decision data within the DECIDE framework, requires a scraper that has to manually access sequentially the full list of all decisions until all are collected. In order to automate the pipeline for future integration and standardize the requests, Bamberg is planning to obtain the OParl-API.
 
 ### Target audience / Personas
 

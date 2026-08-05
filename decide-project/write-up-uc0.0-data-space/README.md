@@ -58,11 +58,11 @@ The three pilot cities are Ghent (Belgium), Bamberg (Germany), and Freiburg (Ger
 
 #### Bamberg
 
-Bamberg publishes all of its public data, including decision templates aswell as council meeting minutes in the **CCIS** (Bürgerinformationssystem [https://www.stadt.bamberg.de/buergerinformationssystem/si018](https://www.stadt.bamberg.de/buergerinformationssystem/si018)) as human readable data. The data is provided as the original PDF files and converted HTML on the website, which is then scraped and turned into ELI via tools provided by ABB.
+Bamberg has adopted a Smart City and digitalization strategy. Although participation in this data space is not explicitly mentioned in the strategy, it contributes to achieving its overall goals of digitizing administration processes.&#x20;
 
-Currently, decision templates and decisions are published in different PDF files and are not linked by machine readable means. The tools developed within the project establish a machine readable connection between them. For the development phase of the project, Bamberg has refrained from obtaining the OParl-API to test alternative means of data gathering.
+Bamberg publishes all of its public data, including decision templates aswell as council meeting minutes in the **CCIS** (Bürgerinformationssystem [https://www.stadt.bamberg.de/buergerinformationssystem/si018](https://www.stadt.bamberg.de/buergerinformationssystem/si018)) as human readable data. The data is provided as the original PDF files and converted HTML on the website.
 
-With this approach however, the data gathering has a big overhead because of how the **CCIS** vendor set up the website: Adding new decision data within the DECIDE framework, requires a scraper that has to manually access sequentially the full list of all decisions until all are collected (see [write-up-uc0.0-pipelines](write-up-uc0.0-pipelines/ "mention")). In order to automate the pipeline for future integration and standardize the requests, Bamberg is planning to obtain the OParl-API.
+So far, Bamberg’s decision data was solely stored and managed by an external solution provider. By implementing usecase 0.0 the administration gains a way to extract and use it's own data, which provides a stronger data governance and flexibility to use it's decision data for future usecases, and thereby more flexibility to implement new policy processes building upon decision data. In current planning for future work, decisions could be made monitorable: With the Policy Impact Report (see [write-up-uc0.1-policy-impact-report.md](../write-up-uc0.1-policy-impact-report.md "mention")) city decisions can be automatically reviewed for e.g. local sustainability goals and associated monitoring of city plans could be linked, making this searchable via Smart Search (see [write-up-uc2-smart-search.md](../write-up-uc2-smart-search.md "mention")).
 
 #### Freiburg
 
