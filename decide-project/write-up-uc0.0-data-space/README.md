@@ -62,7 +62,7 @@ Bamberg publishes all of its public data, including decision templates aswell as
 
 Currently, decision templates and decisions are published in different PDF files and are not linked by machine readable means. The tools developed within the project establish a machine readable connection between them. For the development phase of the project, Bamberg has refrained from obtaining the OParl-API to test alternative means of data gathering.
 
-With this data gathering approach however, the data gathering has a big overhead because of how the **CCIS** vendor set up the website. To add new decision data within the DECIDE framework, a scraper has to manually access an ordered list of all decisions until the latest processed data. In order to automate the pipeline for future integration and standardize the requests, Bamberg will be obtaining the OParl-API.
+With this approach however, the data gathering has a big overhead because of how the **CCIS** vendor set up the website: Adding new decision data within the DECIDE framework, requires a scraper that has to manually access sequentially the full list of all decisions until all are collected (see [write-up-uc0.0-pipelines](write-up-uc0.0-pipelines/ "mention")). In order to automate the pipeline for future integration and standardize the requests, Bamberg is planning to obtain the OParl-API.
 
 #### Freiburg
 
