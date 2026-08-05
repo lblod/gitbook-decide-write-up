@@ -628,7 +628,7 @@ alignment with Use Cases and local policies in these documents. From the titles 
 
 The DECIDE infastructure is currently deployed on a project specific Hetzner server. After the project concludes, it will be migrated to the servers of Bamberg's data platform, which serves as the city's core database, distribution and rights management system across multiple projects.
 
-Initially, decision data was collected by downloading and converting each PDF individually (see **PDF to ELI pipeline**). Subsequently, Bamberg developed a data scraping tool that extracts the HTML versions of templates and minutes and consolidates them into a structured JSON format. This JSON representation enriches the data with relevant metadata and links the decisions to their corresponding templates (see **JSON to ELI pipeline**). With this approach, the data can be provided and automated more efficiently, so that Bamberg can provide an up-to-date machine readable repository of decisions.
+Initially, decision data was collected by downloading and converting each PDF individually (see **PDF to ELI pipeline**). Subsequently, Bamberg developed a data scraping tool that extracts the HTML versions of templates and minutes and consolidates them into a structured JSON format. This JSON representation enriches the data with relevant metadata and links the decisions to their corresponding templates (see **JSON to ELI pipeline**). The metadata includes e.g. the dates of the template creation and associated council session, the title of the document and the associated council itself. With this approach, the data can be provided and automated more efficiently, so that Bamberg can provide an up-to-date machine readable repository of decisions.
 
 For Named Entity Recognition (NER) and Named Entity Linking (NEL), Bamberg uses an external Mistral model, as the current server infrastructure does not reliably support running a local large language model for these tasks.
 
@@ -674,13 +674,18 @@ Testing is split into two fases
 
 ### Bamberg
 
-Bamberg will be testing NER / NEL:
+During the project, the City of Bamberg evaluated both the quality of the AI-generated annotations and the technical deployment of the pipeline. Testing responsibilities were divided between the project lead, who assessed annotation quality and usability, and the technical staff, who evaluated the IT infrastructure and system operation.
 
-* The quality of the AI annotations via the Human Validation Tool
-* Checking integration into other city projects
-* Checking integration of NER and NEL enchrichment within Smart Search
-* Checking the feasibility of integrating the workflow for the city service administration
-* -> based on that decide upon keeping NER / NEL implementation
+Using the Human Validation Tool, project staff reviewed the NER and NEL annotations, rated correct and incorrect results, and provided feedback to improve the annotation quality and support further development of the pipeline. The technical evaluation focused on the deployment and operation of the containerized services, including service configuration, installation, execution, interoperability, and querying the Linked Open Data (LOD) infrastructure.
+
+After the project, Bamberg plans to further assess:
+
+* whether the quality and reliability of the AI annotations are sufficient for integration with other municipal applications, such as Construction Site Management, Traffic Planning, or monitoring tools;
+* the applicability of the pipeline to additional document types, such as City Council motions;
+* the integration of NER/NEL enrichment into the Smart Search system;
+* the feasibility of embedding the annotation workflow into administrative authoring processes, providing annotations already during document creation.
+
+These evaluations will inform the decision on the long-term adoption of the NER/NEL pipeline within the city's digital infrastructure.
 
 ### Risks and mitigations
 
@@ -754,3 +759,4 @@ For information that is crucial for the city Ghent wants to host the services on
 * Harvester frontend: [https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting](https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting)
 * PDF scraper service: [https://github.com/semantic-ai/decide-pdf-scraper](https://github.com/semantic-ai/decide-pdf-scraper)
 * PDF content extraction service: [https://github.com/semantic-ai/decide-pdf-content-extraction](https://github.com/semantic-ai/decide-pdf-content-extraction)
+* Webscraper for ALLRIS (Bamberg): [https://gitlab.com/DarkSirath/linkinallris](https://gitlab.com/DarkSirath/linkinallris)
