@@ -473,7 +473,7 @@ The AI pipeline operates on the normalized ELI data produced by the previously m
 
 A general overview of the AI pipeline is given in the <mark style="background-color:$warning;">following figure</mark>. The tasks are organized in 2 services: the Named Entity Recognition (NER) service which houses three tasks, and the Named Entity Linking (NEL) which has one.
 
-<figure><img src="../../../.gitbook/assets/models-UC0.0.drawio(3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/models-Copy of UC0.0.drawio.png" alt=""><figcaption></figcaption></figure>
 
 All outputs of the AI pipeline are stored as `oa:Annotation` triples in the triplestore, following the W3C Web Annotation data model. Source ELI data is never modified; enrichment results are always additive.
 
