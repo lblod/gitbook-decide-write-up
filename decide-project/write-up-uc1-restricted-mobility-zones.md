@@ -391,7 +391,8 @@ The process described in the [Validating AI annotations about a decision](write-
 
 ### Risks & mitigations
 
-No risks have been identified.
+There was the same risk as the Policy Impact Report that we would have to build a Restricted Mobility Zone validation visualization, separate from the human validation tool, which would increase the maintenance effort. Albeit, putting it in the Human Validation Tool was the logical decision here as there is no separate frontend for Restricted Mobility Zones.
+This is mitigated by developing the Restricted Mobility Zone validation inside the Human Validation Tool, along with the other validations. This allows to build it on the same principles, UI, UX...
 
 ## Possible future work
 
