@@ -221,4 +221,4 @@ All environments use the same docker-compose based deployment, so testing at eve
 
 ### Pilot-specific testing
 
-Each pilot has only a single environment, configured through its own docker-compose override capturing its specific setup (data sources, pilot-specific services). Rather than automated tests, pilots validate their environment manually — for example by running a pipeline or sharing datasets.
+Each pilot has only a single environment, configured through its own docker-compose override capturing its specific setup (data sources, pilot-specific services). Pilots can decide their own test approach, such as: running a pipeline in the dashboard, running the [publish dataset](./write-up-dcat.md#datasets-and-datastandards) script to share a dataset, experiment with SPARQL queries, and visual inspect the different frontends.
