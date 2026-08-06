@@ -494,6 +494,13 @@ n/a
 n/a
 
 ## Testing approach
+The extension to sparql-parser to support configuration via ODRL was testing in two ways.
+First, the service itself contains some [scenario tests](https://github.com/mu-semtech/sparql-parser/tree/feature/odrl-configuration/test) which test whether different policies are correctly loaded and enforced.
+These scenario tests were extended to also cover authorization policies specified in ODRL.
+
+Second, the DECIDe application has been configured to use an authorization policy described in ODRL as early as possible, middle of December 2025.
+Meaning that since then each instance of the application actively used an ODRL authorization policy.
+Since sparql-parser is crucial to an application's correct functioning, issues should reveal themselves, be it mistakes in the policy itself or bugs in its conversion or enforcement.
 
 ### Risks & mitigations
 
