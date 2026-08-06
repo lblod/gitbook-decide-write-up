@@ -440,7 +440,7 @@ Consortium partner UI! built its own Verifiable Credential issuer so the trusted
 
 ### Risks & mitigations
 
-VC standards and wallet applications are still in flux, leading to the risk that our implementation will not be out-of-date after the project.
+VC standards and wallet applications are still in flux, leading to the risk that our implementation will not be up to date after the project.
 We tried to mitigate this by supporting two distinct wallets, and having a clear audit trail of logs for debugging later.
 
 ## Possible future work
