@@ -201,7 +201,7 @@ The service uses a cron mechanism to periodically run the validations ([https://
 
 By navigating to the provided REST API `/shacl-reports/latest/issues`, cities see the results of the latest generated report.
 
-ABB uses the API to monitor the validation results and analyze what their root causes are.
+ABB uses the REST API (available on https://ds.decide.lblod.info/shacl-reports/latest/issues) to monitor the validation results and analyze what their root causes are.
 
 ### Risks & mitigations
 
