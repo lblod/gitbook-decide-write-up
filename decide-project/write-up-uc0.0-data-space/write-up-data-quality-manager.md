@@ -205,9 +205,9 @@ ABB uses the API to monitor the validation results and analyze what their root c
 
 ### Risks & mitigations
 
-#### High load on triple store
+#### High load on triplestore
 
-During testing, we discovered that validating all decisions causes a high load on the triple store: a validation issue in one municipality typically recurs for every decision. 
+During testing, we discovered that validating all decisions causes a high load on the triplestore: a validation issue in one municipality typically recurs for every decision. 
 Therefore, we added sampling to validate a limited set of decisions in each validation run. By default, 100 decisions are validated.
 
 #### Batch size tuning

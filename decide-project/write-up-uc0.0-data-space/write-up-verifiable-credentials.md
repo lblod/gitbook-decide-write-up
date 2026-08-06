@@ -136,7 +136,7 @@ Below, we can see an example of claims in JSON format conform with the Decide ro
 
 These claims are encrypted with the private key of the issuer. By retrieving the public key from the issuer's [DID endpoint](https://ds.decide.lblod.info/assets/decide-keys/decide-issuer/did.json) on the Web, others, such as verifiers, can verify that the issuer made these claims.
 
-In DECIDe, the VC Verifier uses the VC to create a session in the triple store providing access to data. This looks as follows:
+In DECIDe, the VC Verifier uses the VC to create a session in the triplestore providing access to data. This looks as follows:
 
 ```
 :Session a mu:Session ;

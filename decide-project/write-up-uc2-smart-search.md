@@ -138,7 +138,7 @@ The data regarding the `eli:Expressions` is stored and served by the Virtuoso tr
 
 #### Elastic Search
 
-The Virtuoso triplestore is great for SPARQL queries, but it doesn't have great support for fuzzy searches and no support at all for performing vector searches. This is why the data we want to perform such searches on is duplicated into an [elastic search](https://www.elastic.co/) instance. The elastic search is always interfaced with through the search service, that forms the mapping between the master data in the triple store and the elastic search's derived content.
+The Virtuoso triplestore is great for SPARQL queries, but it doesn't have great support for fuzzy searches and no support at all for performing vector searches. This is why the data we want to perform such searches on is duplicated into an [elastic search](https://www.elastic.co/) instance. The elastic search is always interfaced with through the search service, that forms the mapping between the master data in the triplestore and the elastic search's derived content.
 
 **GitHub:** [https://github.com/mu-semtech/mu-search-elastic-backend](https://github.com/mu-semtech/mu-search-elastic-backend)
 
