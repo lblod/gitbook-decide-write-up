@@ -227,7 +227,7 @@ Below is a snippet of the validation result:
 #### High load on triplestore
 
 During testing, we discovered that validating all decisions causes a high load on the triplestore: a validation issue in one municipality typically recurs for every decision. 
-Therefore, we added sampling to validate a limited set of decisions in each validation run. By default, 100 decisions are validated.
+Therefore, we added sampling to validate a limited set of decisions in each validation run. By default, 100 decisions are validated. Also, by default, the service only keeps the latest report (ONLY_KEEP_LATEST_REPORT: true). In combination with sampling, this may cause a validation issue to be removed when a next report is generated. Alternatively, we could remove the environment variable so it defaults back to false.
 
 #### Batch size tuning
 
