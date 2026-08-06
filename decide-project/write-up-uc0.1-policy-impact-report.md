@@ -479,7 +479,7 @@ The Policy Impact Reporting was subsequently used in a survey led by consortium 
 ### Risks & mitigations
 
 There was the risk that the Policy Impact Report would have its own validation visualization, separate from the human validation tool, which would increase the maintenance effort.
-This is mitigated by showing a link to the Human Validation Tool and making sure the same filters are applied. For example, when the Policy Impact Report shows 17 decisions for the city of Freiburg with a positive impact on SDG 1, a user can review these exact 17 decisions for Freiburg in the Human Validation Tool.
+This is mitigated by developing the Policy Impact Report validation inside the Human Validation Tool, along with the other validations. This allows to build it on the same principles, UI, UX...
 
 ## Possible future work
 
