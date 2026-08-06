@@ -258,7 +258,7 @@ The refinement model assigns one of two sub-types:
 
 In the context of UC1, **only `impact_location` entities are retained**. Context locations are stored in the triplestore (they are still valid annotations) but are not surfaced by the RMZ tool.
 
-**Step 3: Entity Formatting (LocationFormatter).** Each `impact_location` span is still a raw text string at this point (e.g., `"Veldstraat between housenumber 12 and 28"`). The Entity Formatting step, implemented by the `EntityFormatter` class, routes it to the `LocationFormatter`, a dual-head NER model ([svercoutere/abb-dual-location-component-ner](https://huggingface.co/svercoutere/abb-dual-location-component-ner)) that decomposes the text into structured address components. For full details, see <mark style="background-color:$warning;">Formatting of Location Entities</mark>.
+**Step 3: Entity Formatting (LocationFormatter).** Each `impact_location` span is still a raw text string at this point (e.g., `"Veldstraat between housenumber 12 and 28"`). The Entity Formatting step, implemented by the `EntityFormatter` class, routes it to the `LocationFormatter`, a dual-head NER model ([svercoutere/abb-dual-location-component-ner](https://huggingface.co/svercoutere/abb-dual-location-component-ner)) that decomposes the text into structured address components.
 
 The `LocationFormatter` performs several sub-steps:
 
@@ -336,7 +336,7 @@ Other date sub-types exist in the pipeline but are **not relevant to the tempora
 
 <table><thead><tr><th width="170.7236328125">Sub-type</th><th>Why not relevant to UC1</th></tr></thead><tbody><tr><td><code>context_date</code></td><td>A date mentioned for background context, not tied to the RMZ's temporal scope.</td></tr><tr><td><code>session_date</code></td><td>The date of the council meeting, which is administrative metadata rather than the RMZ period.</td></tr><tr><td><code>publication_date</code></td><td>When the decision was formally published, not when the RMZ is active.</td></tr><tr><td><code>context_period</code></td><td>A period mentioned for context, not the RMZ's validity window.</td></tr></tbody></table>
 
-**Step 3: Entity Formatting (DatePeriodParser).** Each relevant date span is routed by the `EntityFormatter` to the `DatePeriodParser`, a rule-based parser that converts free-text temporal expressions into standardized `(start, end)` date pairs. For full details, see <mark style="background-color:$warning;">Formatting of Date & Period Entities.</mark>
+**Step 3: Entity Formatting (DatePeriodParser).** Each relevant date span is routed by the `EntityFormatter` to the `DatePeriodParser`, a rule-based parser that converts free-text temporal expressions into standardized `(start, end)` date pairs.
 
 The `DatePeriodParser` works by passing the raw text through an ordered chain of 21 regex-based matchers. For the types of dates commonly found in RMZ decisions, the most relevant matchers are:
 
