@@ -293,7 +293,7 @@ There is a risk that it is unclear for the reviewer what a certain link means. F
 
 This risk is mitigated by adding a tooltip with the Linked Data definition of the link. For the example above, following tooltip now appears: The last date any part of the legislation is in force, if the date is known (can be seen as the end date of a dc:valid range for this resource).
 
-Also, ABB created guidelines (slides and video) for each city that lists all possible links and demonstrates with an example decision what the enrichment should be.
+Also, ABB created guidelines for each city that lists all possible links and demonstrates with an example decision what the enrichment should be. The videos are available on [Youtube](https://www.youtube.com/playlist?list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App). The guidelines are available [here](../../assets/DECIDe_guideline_compare_hvt.pptx).
 
 ## Possible future work
 
