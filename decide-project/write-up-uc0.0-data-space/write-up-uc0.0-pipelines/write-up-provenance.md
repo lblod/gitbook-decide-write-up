@@ -1,4 +1,4 @@
-# write-up Provenance
+# Write-up Provenance
 
 This write-up describes the provenance and traceability pattern shared by the DECIDe data-space components. It is not a separate pipeline or a separate data store. It explains how source data, processing steps, AI output, human feedback and published data remain connected as Linked Data.
 
@@ -160,6 +160,8 @@ Here, the `prov:Activity` records when the annotation was generated and links it
 #### AI model registration with AIRO (is this actually implemented? Cant find anything related to airo except 'http://www.example.org/entity-extraction')
 
 The AI agent associated with an activity can also be modeled as a `foaf:Agent`. This allows very detailed information about the AI _component_ being used to be tracked. To model this, we rely on [the AIRO ontology](https://delaramglp.github.io/airo/):
+
+<figure><img src="../../.gitbook/assets/ai-model-registration-airo.jpg" alt=""></figure>
 
 Most importantly, this allows to not only indicate which AI model was used, but also state the exact version of the model. This setup is very powerful in a system where models are being retrained with the help of e.g. user feedback, leading to new and improved model versions.
 
