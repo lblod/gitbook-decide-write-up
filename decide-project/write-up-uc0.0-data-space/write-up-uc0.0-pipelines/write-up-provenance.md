@@ -1,4 +1,4 @@
-# Write-up Provenance
+# write-up Provenance
 
 This write-up describes the provenance and traceability pattern shared by the DECIDe data-space components. It is not a separate pipeline or a separate data store. It explains how source data, processing steps, AI output, human feedback and published data remain connected as Linked Data.
 
@@ -123,7 +123,7 @@ DECIDe supplements this structure with source-lineage information. The OSLO tran
 
 The [Web Annotation Model](./#web-annotation-model) was already briefly introduced. However, the AI services used within the DECIDe project go one step further by generating a `prov:Activity` alongside every `oa:Annotation`. As shown in the example below, this makes it possible to track timestamps, the service that generated the annotation, and the AI agent responsible for it.
 
-```ttl
+```turtle
 @prefix example: <http://www.example.org/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
@@ -157,11 +157,11 @@ example:myAIEnrichmentService a foaf:Agent, tcs:InstancePipelineComponent  ;
 
 Here, the `prov:Activity` records when the annotation was generated and links it to both the annotation it produced (`prov:generated`) and the source resources it consumed (`prov:used`). The activity is in turn associated with the responsible `foaf:Agent`, which is a specialization of a generic pipeline component and points to the specific configuration that was active at the time.
 
-#### AI model registration with AIRO (is this actually implemented? Cant find anything related to airo except 'http://www.example.org/entity-extraction')
+#### AI model registration with AIRO
 
 The AI agent associated with an activity can also be modeled as a `foaf:Agent`. This allows very detailed information about the AI _component_ being used to be tracked. To model this, we rely on [the AIRO ontology](https://delaramglp.github.io/airo/):
 
-<figure><img src="../../.gitbook/assets/ai-model-registration-airo.jpg" alt=""></figure>
+<figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
 
 Most importantly, this allows to not only indicate which AI model was used, but also state the exact version of the model. This setup is very powerful in a system where models are being retrained with the help of e.g. user feedback, leading to new and improved model versions.
 
@@ -169,7 +169,7 @@ Most importantly, this allows to not only indicate which AI model was used, but 
 
 Alongside the activity- and annotation-level provenance, DECIDe also records the individual AI calls performed within a task. For every call, the number of input and output tokens is stored, together with the optional call duration and cost. This is tracked at a much finer granularity than a monthly provider invoice, making it possible to pinpoint exactly which tasks, configurations or AI models are responsible for the bulk of the token usage or cost, rather than only observing an aggregated total after the fact.
 
-```ttl
+```turtle
 @prefix example: <http://www.example.org/> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
@@ -222,7 +222,7 @@ The same shared base package also registers each AI service as a `foaf:Agent` in
 
 At startup, the service's Compose definition and mounted configuration files are hashed. An existing configuration and agent are reused if nothing changed, or a new versioned agent is created automatically if something did. This removes the need for services to manage their own versioning, while still making it possible to trace any AI-generated result back to the precise configuration that produced it.
 
-```ttl
+```turtle
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -301,7 +301,7 @@ As discussed, the AI components used within the DECIDe project generate a `prov:
 
 E.g. when a user validates AI-generated data, an _accept_ annotation would be created, alongside an activity linking to the person as a `foaf:Agent`. This new annotation would also link to the _original_ AI annotation via `oa:hasTarget`. This way a chain of annotation could be created, very extensively showcasing the provenance of **all** (human- and AI-generated) affiliated data.
 
-```ttl
+```turtle
 @prefix example: <http://www.example.org/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
