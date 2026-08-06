@@ -201,7 +201,26 @@ The service uses a cron mechanism to periodically run the validations ([https://
 
 By navigating to the provided REST API `/shacl-reports/latest/issues`, cities see the results of the latest generated report.
 
-ABB uses the REST API (available on https://ds.decide.lblod.info/shacl-reports/latest/issues) to monitor the validation results and analyze what their root causes are.
+ABB uses the REST API (available on https://ds.decide.lblod.info/shacl-reports/latest/issues) to monitor the validation results and analyze what their root causes are. For example, we found that there are expressions where the content (`epvoc:expressionContent`) does not have a language attached. By analyzing the focus node in the validation result, we found that the focus node is an English translated expression, which quickly led us to pinpoint the problem in the [source code](https://github.com/semantic-ai/decide-geocoding-service/blob/5554eb86ab788bb0db342805ffbb2acbefa973c5/src/task/translation.py#L192).
+
+Below is a snippet of the validation result:
+```
+{
+"type": "validationresult",
+"id": "5a92a5d3-666b-11f1-97c6-f1aa773c146e",
+"attributes": {
+"result": "http://data.lblod.info/id/validationresults/5a92a5d3-666b-11f1-97c6-f1aa773c146e",
+"resultId": "5a92a5d3-666b-11f1-97c6-f1aa773c146e",
+"focusNode": "http://data.lblod.info/id/expressions/042de8f1-a72a-485a-8d02-6c1c9127ddfb",
+"focusNodeId": "16cc831a-b4d5-4f60-adb8-3669fbca9e28",
+"resultSeverity": "http://www.w3.org/ns/shacl#Violation",
+"sourceConstraintComponent": "http://www.w3.org/ns/shacl#DatatypeConstraintComponent",
+"resultMessage": "Value does not have datatype <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>",
+"resultPath": "https://data.europarl.europa.eu/def/epvoc#expressionContent",
+"value": "**NOTULEN – OCMW-RAAD**\n\n**SITTING OF 22 DECEMBER 2025**\n\nPRESENT:\nTom Simaeys, Mayor-Chairman;\nFlor",
+"targetClassOfFocusNode": "http://data.europa.eu/eli/ontology#Expression"
+}
+```
 
 ### Risks & mitigations
 
