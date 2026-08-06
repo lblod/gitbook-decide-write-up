@@ -289,11 +289,11 @@ Pilot cities reviewed the AI-generated annotations on their own decisions and pr
 
 ### Risks & mitigations
 
-There is a risk that it is unclear for the reviewer what a certain link means. For example, `eli:no_longer_in_force`.
+There is a risk that that users may not know what exactly it means to give a thumbs up or down for a row. The meaning of a link may be unclear, for example, `eli:no_longer_in_force`.  Users might also not (fully) understand what the mentioned type means or what they have to do when a row is only partially correct.
 
-This risk is mitigated by adding a tooltip with the Linked Data definition of the link. For the example above, following tooltip now appears: The last date any part of the legislation is in force, if the date is known (can be seen as the end date of a dc:valid range for this resource).
+This risk is mitigated by adding a tooltip to explain what the link and type mean. For the example link above, following tooltip now appears: The last date any part of the legislation is in force, if the date is known (can be seen as the end date of a dc:valid range for this resource).
 
-Also, ABB created guidelines for each city that lists all possible links and demonstrates with an example decision what the enrichment should be. The videos are available on [Youtube](https://www.youtube.com/playlist?list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App). The guidelines are available [here](../../assets/DECIDe_guideline_compare_hvt.pptx).
+Also, to mitigate the above mentioned risk, ABB created guidelines for each city that lists all possible links and demonstrates with an example decision what the enrichment should be. The videos are available on [Youtube](https://www.youtube.com/playlist?list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App). The guidelines are available [here](../../assets/DECIDe_guideline_compare_hvt.pptx).
 
 ## Possible future work
 
