@@ -6,10 +6,6 @@ description: Smart Search
 
 Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
-{% hint style="warning" %}
-This page is under construction
-{% endhint %}
-
 ## Description UC/wanted deliverable
 
 Local governments publish subsidy information as formal decisions and regulatory documents. For property owners considering climate-friendly renovations, e.g. insulation upgrades, green facades, or the installation of electric vehicle charging infrastructure, this information is publicly available but practically hard and time-consuming to find.
@@ -297,9 +293,9 @@ The UC2 interface deliberately does not support multi-turn conversational intera
 * **Ask another question**: The user can use this to navigate back to the first screen, and type a new question; their local authority remains selected.
 * **Update question**: This can be used if the user wished to update their previously typed question with more detail to get a more relevant answer, as a compromise for not allowing follow-up and clarification questions. It takes the user back to the previous page, but this time with their question visible inside the text field.
 
-#### <mark style="background-color:$warning;">What to do when no relevant answer is found</mark>
+#### What to do when no relevant answer is found
 
-An LLM will always generate a response, even when the retrieved documents are not relevant to the question. <mark style="background-color:$warning;">We can numerically gauge the relevance rate</mark> and decided on a threshold of relevance. If this threshold is not met, the user will get an error message (9th UX Heuristic: Help Users Recognize, Diagnose, and Recover from Errors):
+An LLM will always generate a response, even when the retrieved documents are not relevant to the question. We can numerically gauge the relevance rate and decided on a threshold of relevance. If this threshold is not met, the user will get an error message (9th UX Heuristic: Help Users Recognize, Diagnose, and Recover from Errors):
 
 > Sorry, we were unable to find any relevant information in any decision. Try rewording your question or giving more details to help us find the relevant information for you.
 
@@ -307,7 +303,7 @@ The user can then restart with a fresh question or refine their existing one via
 
 #### Language of the interface
 
-The interface is in English, avoiding the overhead of maintaining three separate localized versions within the project timescale. The LLM handles questions and generates responses in Dutch, German and English. Users are informed on the first screen that asking in the language of the source decisions –Dutch for Ghent, German for Freiburg and Bamberg– produces the most accurate results, though <mark style="background-color:$warning;">English questions</mark> are also accepted and will produce a response.
+The interface is in English, avoiding the overhead of maintaining three separate localized versions within the project timescale. The LLM handles questions and generates responses in Dutch, German and English. Users are informed on the first screen that asking in the language of the source decisions –Dutch for Ghent, German for Freiburg and Bamberg– produces the most accurate results, though English questions are also accepted and will produce a response.
 
 ### Other explored UI design (and why not)
 
