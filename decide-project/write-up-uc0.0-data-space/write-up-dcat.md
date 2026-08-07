@@ -247,6 +247,17 @@ Currently no functionality is provided for administrators of the dataspace to cr
 
 ## Testing approach
 
+The components used for DCAT federation are primarily pre-existing services, whose functioning has been assessed and tested throughout their development and usage in other applications.
+In DECIDe we focused on them working functionally correct with respect to DECIDe's specific setup, which mainly concerns ensuring each service is correctly configured.
+This was manually tested when adding these services to the DECIDe application.
+
+The actual federation was tested in two stages.
+First, let the Federating catalog application consume only the LDES feed from the main DECIDe application and ensure it correctly republishes the data.
+Second, the Federating catalog was further to consume the LDES feeds for each partner city, after which it is re-assessed that all data is correctly republished.
+
+The script to generate publish datasets was manually testing during its development.
+Furthermore, this is used by each pilot partner to publish their datasets on their individual LDES feeds.
+
 ### Risks & mitigations
 
 ## Possible future work
