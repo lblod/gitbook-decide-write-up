@@ -159,11 +159,13 @@ Here, the `prov:Activity` records when the annotation was generated and links it
 
 #### AI model registration with AIRO
 
-The AI agent associated with an activity can also be modeled as a `foaf:Agent`. This allows very detailed information about the AI _component_ being used to be tracked. To model this, we rely on [the AIRO ontology](https://delaramglp.github.io/airo/):
+The AI agent associated with an activity can also be modeled as a `foaf:Agent`. This allows very detailed information about the AI _component_ being used to be tracked. To model the Agent in our diverse landscape of services containing a mix of (foundation) models both local and external, we rely on [the AIRO ontology](https://delaramglp.github.io/airo/). Doing so, we have described our AI Systems, Components and Models following the structure used within the EU AI Act.
 
-<figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/diagram-foaf-agent_1.drawio.png" alt=""><figcaption></figcaption></figure>
 
-Most importantly, this allows to not only indicate which AI model was used, but also state the exact version of the model. This setup is very powerful in a system where models are being retrained with the help of e.g. user feedback, leading to new and improved model versions.
+Most importantly, this allows to not only indicate which AI model was used, but also state the exact version of the model and, in case of trained models, all information required to replicate the training: a very powerful approach in a context where models are being retrained with the help of e.g. user feedback, leading to new and improved model versions.
+
+In combination with the annotations and the activities, this approach allows to follow the entire chain: it can be derived which task created an annotation, which system / component / model was involved in the creation, which code and version were used, and how models were trained. &#x20;
 
 #### AI calls provenance
 
@@ -189,17 +191,9 @@ example:myAICall a ext:AICall ;
 
 Each `ext:AICall` is linked to the `task` that performed it, so token, duration and cost figures can be aggregated per task, per configuration or per model, rather than only as a single monthly total.
 
-### Final semantic components (and why) (if any)
-
-n/a
-
-### Other explored semantic components (and why not)
-
-n/a
-
 ### Final AI components (and why) (if any)
 
-Provenance is not an AI component by itself, but two shared building blocks from the [shared AI service base](https://github.com/semantic-ai/decide-ai-service-base) are used by all AI services to make their output traceable.
+Provenance is not an AI component by itself, but two shared building blocks from the [shared AI service base](https://github.com/semantic-ai/decide-ai-service-base) are used by all AI services to make their output traceable. By implementing the injection of provenance from a fixed set of annotation types in the base package, it was automatically in all AI Services throughout DECIDe.
 
 #### AI-call tracking
 
@@ -217,6 +211,8 @@ with task.record_ai_call_cm(
 Besides timing the call to derive `ext:duration`, the context manager also estimates `ext:cost` for the call based on the given model URI and token counts, using pricing data from [OpenRouter](https://openrouter.ai/). Centralizing this in one shared utility keeps cost and usage tracking consistent across the different AI services and model providers used within DECIDe, without every service having to maintain its own pricing table.
 
 #### Agent and configuration registration
+
+Even though we register all models in the triple store and how they were created, AI Components and AI Systems which wrap and call the models are also parametrized by code version and configuration. Our approach also covers this aspect.&#x20;
 
 The same shared base package also registers each AI service as a `foaf:Agent` in the triplestore at startup, based on its Docker Compose configuration. This is necessary because the exact same code or model can produce different output depending on how it is configured, e.g. a different prompt, a different environment variable or a different mounted model file, and provenance needs to be able to say "this configuration produced this result", not just "this service produced this result".
 
