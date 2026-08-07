@@ -136,7 +136,7 @@ Below, we can see an example of claims in JSON format conform with the Decide ro
 
 These claims are encrypted with the private key of the issuer. By retrieving the public key from the issuer's [DID endpoint](https://ds.decide.lblod.info/assets/decide-keys/decide-issuer/did.json) on the Web, others, such as verifiers, can verify that the issuer made these claims.
 
-In DECIDe, the VC Verifier uses the VC to create a session in the triple store providing access to data. This looks as follows:
+In DECIDe, the VC Verifier uses the VC to create a session in the triplestore providing access to data. This looks as follows:
 
 ```
 :Session a mu:Session ;
@@ -433,7 +433,15 @@ As an extra safety precaution, We can add an extra step to the first (Request a 
 
 ## Testing approach
 
+The Credential user journeys described above were used for testing the Verifiable Credential interaction with users using a Paradym or EUDI wallet application.
+We created a separate graph in the triple store to monitor the interaction with users: each step in the issuance or verification process is logged with an event.
+
+Consortium partner UI! built its own Verifiable Credential issuer so the trusted issuers list implementation can be tested.
+
 ### Risks & mitigations
+
+VC standards and wallet applications are still in flux, leading to the risk that our implementation will not be up to date after the project.
+We tried to mitigate this by supporting two distinct wallets, and having a clear audit trail of logs for debugging later.
 
 ## Possible future work
 

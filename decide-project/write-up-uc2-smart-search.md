@@ -154,7 +154,7 @@ The data regarding the `eli:Expressions` is stored and served by the Virtuoso tr
 
 #### Elastic Search
 
-The Virtuoso triplestore is great for SPARQL queries, but it doesn't have great support for fuzzy searches and no support at all for performing vector searches. This is why the data we want to perform such searches on is duplicated into an [elastic search](https://www.elastic.co/) instance. The elastic search is always interfaced with through the search service, that forms the mapping between the master data in the triple store and the elastic search's derived content.
+The Virtuoso triplestore is great for SPARQL queries, but it doesn't have great support for fuzzy searches and no support at all for performing vector searches. This is why the data we want to perform such searches on is duplicated into an [elastic search](https://www.elastic.co/) instance. The elastic search is always interfaced with through the search service, that forms the mapping between the master data in the triplestore and the elastic search's derived content.
 
 **GitHub:** [https://github.com/mu-semtech/mu-search-elastic-backend](https://github.com/mu-semtech/mu-search-elastic-backend)
 
@@ -324,6 +324,11 @@ For the UI the open-source solution Parla from Berlin is also under consideratio
 As Ghent will only build a simple interface to test the API, concerns about design won't be taken into account.&#x20;
 
 ## Testing approach
+
+Each pilot city carried out manual testing on the [deployed test instance](./write-up-uc2-smart-search.md#deployed-test-instance "mention").
+Answers and corresponding sources were validated using the process described in [Validating responses (HV)](./write-up-uc2-smart-search.md#validating-responses-hv "mention").
+
+Each pilot city provided a list of example questions, which is used to test the accuracy of the question answering service.
 
 ### Deployed Test Instance
 

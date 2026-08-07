@@ -431,7 +431,7 @@ UC1 does not have a purpose-built standalone user interface. The pipeline output
 
 That said, this use case has 2 relevant interfaces, related to the Human Validation of AI-produced annotations:
 
-1. Validation of discovered entities within a decision: the validation of an address/location within a decision
+1. Validation of discovered entities within a decision: the validation of an address/location within a decision, and validation of the dates when the decision is applicable
 2. Validation of AI annotations about a decision: i.e. What is this decision about? (Restricted Mobility Zones)
 
 The first interface is explained in the [Design section of Write-up UC 0.0: Human Validation](write-up-uc0.0-data-space/write-up-uc0.0-human-validation-hv.md#validation-of-ai-annotations-within-a-decision). In this section, we will be focusing about this second interface.
@@ -474,6 +474,9 @@ _Back end of the widget:_
 
 ## Testing approach
 
+Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Human Validation Tool.
+The process described in the [Validating AI annotations about a decision](write-up-uc0.0-data-space/write-up-uc1-restricted-mobility-zones.md#validating-ai-annotations-about-a-decision "mention") is followed.
+
 #### Freiburg
 
 Testing UC1 for Freiburg spans three distinct steps, reflecting the fact that the tool's value depends on getting AI extraction right, making sure that extraction actually lands correctly in the city's spatial infrastructure, and confirming that the resulting interface is genuinely usable for the people who'll rely on it day to day.
@@ -482,7 +485,7 @@ Testing UC1 for Freiburg spans three distinct steps, reflecting the fact that th
 
 The first and most fundamental question is whether the AI components are extracting the right information from decision text in the first place. This is tested using standard classification and extraction metrics: precision and recall for the RMZ-relevance classification step (is the tool correctly separating decisions that describe a mobility restriction from those that don't), and accuracy metrics for the location and date extraction steps (are the correct streets/zones being identified, and are the correct start/end dates being resolved from among the many dates that typically appear in a decision).
 
-Rather than relying on these metrics in isolation, annotation quality is validated by comparing the AI-generated output against human annotations gathered through the project's validation interface. This gives a direct, decision-by-decision check: for a sample of decisions, human annotators independently mark what the correct classification, locations, and dates should be, and the AI output is scored against this reference.&#x20;
+Rather than relying on these metrics in isolation, annotation quality is validated by comparing the AI-generated output against human annotations gathered through the project's validation interface. This gives a direct, decision-by-decision check: for a sample of decisions, human annotators independently mark what the correct classification, locations, and dates should be, and the AI output is scored against this reference.
 
 **Technical integration**
 
@@ -504,6 +507,9 @@ As stated in the architecture section, Ghent is testing the central and decentra
 Testing is being done by the Ghent project lead and in a second phase by the city service that assist on drafting decisions.
 
 ### Risks & mitigations
+
+There was the same risk as the Policy Impact Report that we would have to build a Restricted Mobility Zone validation visualization, separate from the human validation tool, which would increase the maintenance effort. Albeit, putting it in the Human Validation Tool was the logical decision here as there is no separate frontend for Restricted Mobility Zones.
+This is mitigated by developing the Restricted Mobility Zone validation inside the Human Validation Tool, along with the other validations. This allows to build it on the same principles, UI, UX...
 
 ## Possible future work
 

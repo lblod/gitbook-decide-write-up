@@ -273,3 +273,26 @@ In general, the open-source edition of virtuoso is the triplestore of choice for
 The migrations service allows the definition of migration files to modify the contents of the triplestore. This can be done using either SPARQL queries or by directly inserting turtle files into specified graphs. The migrations service is the only service that writes directly to the triplestore, mostly because mu-authorization only supports SPARQL queries and lacks support for inserting turtle files.
 
 **GitHub:** [https://github.com/mu-semtech/mu-migrations-service](https://github.com/mu-semtech/mu-migrations-service)
+
+## Testing approach
+
+The data space provides a shared infrastructure layer covering data ingestion and normalization, AI-assisted semantic enrichment, human oversight and validation, federated discovery... Testing this infrastructure follows the same layered structure as its deployment: local, ABB-side, and pilot-specific.
+
+### Local environment (developers)
+
+Developers run the full stack locally via docker-compose to develop and validate changes before pushing them further down the pipeline. This allows quick iteration — rebuilding or restarting individual services and verifying behavior within the full running stack — before handing off for further testing.
+
+### Stack testing (ABB side)
+
+Once validated locally, the stack is tested on ABB's own infrastructure:
+
+The development environment validates new functionality and the integration between services as the application evolves.
+The test environment mirrors the intended production setup and serves as the final check of the application end-to-end — from data ingestion, through semantic enrichment and validation, to federated discovery and access-controlled exposure — before release to pilots.
+
+The ABB side is also where federation of metadata across pilot sites is tested, verifying that datasets published at one pilot are correctly discoverable and accessible from another, in line with the data space's federated discovery mechanism.
+
+All environments use the same docker-compose based deployment, so testing at every stage reflects how the application actually runs.
+
+### Pilot-specific testing
+
+Each pilot has only a single environment, configured through its own docker-compose override capturing its specific setup (data sources, pilot-specific services). Pilots can decide their own test approach, such as: running a pipeline in the dashboard, running the [publish dataset](./write-up-dcat.md#datasets-and-datastandards) script to share a dataset, experiment with SPARQL queries, and visual inspect the different frontends.

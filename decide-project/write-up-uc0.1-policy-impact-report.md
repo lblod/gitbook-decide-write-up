@@ -126,7 +126,7 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 ### Data sources
 
-<table><thead><tr><th width="190.6162109375">Data source</th><th width="196.818359375">Type/category</th><th>Brief description</th></tr></thead><tbody><tr><td>ELI-normalized LD&#x26;L decisions</td><td>Internal (triple store)</td><td>The ELI data from the pipeline</td></tr><tr><td><a href="https://research.un.org/en/thesaurus/downloads">SDG codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The UN Sustainable Development Goals taxonomy (17 goals and associated targets) used to generate a flattened SDG codelist.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/add-sdg-codelist/20260310123608-add-simple-sdg-codelist.ttl">SDG Flattened codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>A flattened version of the UN Sustainable Development Goals taxonomy (17 goals) used as the annotation target for linking local decisions to policy goals.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/20260407111121-create-impact.sparql">Impact codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The impact taxonomy used to indicate the impact of a decision on an SDG.</td></tr></tbody></table>
+<table><thead><tr><th width="190.6162109375">Data source</th><th width="196.818359375">Type/category</th><th>Brief description</th></tr></thead><tbody><tr><td>ELI-normalized LD&#x26;L decisions</td><td>Internal (triplestore)</td><td>The ELI data from the pipeline</td></tr><tr><td><a href="https://research.un.org/en/thesaurus/downloads">SDG codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The UN Sustainable Development Goals taxonomy (17 goals and associated targets) used to generate a flattened SDG codelist.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/add-sdg-codelist/20260310123608-add-simple-sdg-codelist.ttl">SDG Flattened codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>A flattened version of the UN Sustainable Development Goals taxonomy (17 goals) used as the annotation target for linking local decisions to policy goals.</td></tr><tr><td><a href="https://github.com/lblod/app-decide/blob/development/config/migrations/20260407111121-create-impact.sparql">Impact codelist</a></td><td>Controlled vocabulary–RDF/SKOS</td><td>The impact taxonomy used to indicate the impact of a decision on an SDG.</td></tr></tbody></table>
 
 ### Datasets available in the data space
 
@@ -483,13 +483,17 @@ The validation journey explored approaches where users validate the SDG link and
 
 ## Testing approach
 
-All pilots are testing the report via the human validation tool as well as via the policy impact dashboard the ABB has realised.&#x20;
+Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Policy Impact Report. 
+The process described in the [Validating the decision-SDG linking](write-up-uc0.0-data-space/write-up-uc0.1-policy-impact-report.md#validating-the-decision-sdg-linking "mention") section is followed.
+
+The Policy Impact Reporting was subsequently used in a survey led by consortium partner Kehl to assess its usefulness.
+All pilots are testing the report via the human validation tool as well as via the policy impact dashboard the ABB has realised.
 
 #### **Ghent**
 
-In a first phase we focus on checking the linking to the right SDG. In a second phase we also look at the positive of negative impact of the decision on this SDG.&#x20;
+In a first phase, we focus on checking the linking to the right SDG. In a second phase, we also look at the positive of negative impact of the decision on this SDG.
 
-Testing is being done at first by the project lead. When results are good enough testing shifts to the cityservice that provides guides by drafting the decisions.
+Testing is being done at first by the project lead. When results are good enough testing shifts to the city service that provides guides by drafting the decisions.
 
 #### Bamberg
 
@@ -498,6 +502,9 @@ The Policy Impact Report will be evaluated quantitatively through a survey condu
 In addition, the Policy Impact Report has been qualitatively tested by the Climate and Environmental Office. These tests identified several minor issues, including the need to provide additional context on why the SDG assessment was selected and the need to further regionalize the impact categories.
 
 ### Risks & mitigations
+
+There was the risk that the Policy Impact Report would have its own validation visualization, separate from the human validation tool, which would increase the maintenance effort.
+This is mitigated by developing the Policy Impact Report validation inside the Human Validation Tool, along with the other validations. This allows to build it on the same principles, UI, UX...
 
 ## Possible future work
 
