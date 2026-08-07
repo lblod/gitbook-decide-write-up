@@ -530,6 +530,10 @@ The current implementation for UC1 detects locations and periods and links them 
 
 ### Possible future work LBLOD related
 
+#### Flemish building and address register
+Originally, the goal was to use the "Vlaamse gebouwen- en adressenregister" (Flemish building and address register: https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/gebouwen-en-adressenregister) to link locations to. However this register only covered locations in Flanders, and therefore was unfit for use with the German partner cities. Nominatim was used as a general purpose solution. As a future work, we would still like to link to the Flemish register as well.
+
+
 #### Ghent
 
 Ghent will focus on the rollout of the Ghent widget and therefore on the quality of the annotations on location. The concept of a widget is very relevant as it makes a partial but evolving rollout possible, based on the quality of the anotions and the specific needs of the city services.&#x20;
