@@ -55,27 +55,25 @@ When a local source publishes data, it is important that interested third partie
 
 In DECIDe, each data source has a DCAT description for each of its datasets and distributions. An overarching Federating Catalog aggregates those descriptions making all data space sources discoverable from a single entry point, and automatically picks up updates via LDES feeds. The DCAT catalog itself is public; authentication is applied at the level of individual endpoints rather than at the catalog level, keeping discovery open while access remains controlled. Being listed in the Federating Catalog is an implicit trust signal: it means the source has been accepted as a trustworthy participant in the data space.
 
-### **Pilot partners**
+### Pilot partners
 
 DCAT is relevant for all three pilot cities that participate in the data space: Ghent (Belgium), Freiburg and Bamberg (Germany). All three implement the same DCAT feed for the DECIDe data as prepared by ABB, so that each city has a catalog describing its sources within the data space.
 
 The difference between the cities lies in where that feed is hosted and how it relates to the metadata infrastructure the city already operates. In each case a pre-existing catalog is present, and in each case the direction is the same: moving from several parallel catalogs towards a single coherent entry point.
 
-#### **Bamberg**&#x20;
+#### Bamberg
 
 Bamberg uses the ABB feed for the DECIDe project, while the city data platform itself runs on the Bavarian metadata catalogue (bamberg.bydata.de). Since DECIDe is set to be integrated into the data platform, it is expected that Civitas Core 2.0+, the basis of that platform, will then be able to provide the DECIDe data to other catalogues as well.
 
-#### **Freiburg**&#x20;
+#### Freiburg
 
 Freiburg hosts the feed within the Freiburg Data Space infrastructure. In parallel, the city operates a DCAT-AP endpoint for its Geospatial Data Infrastructure (GDI), which publishes geospatial metadata in DCAT-AP format. Rather than maintaining separate catalogs, the current direction is to build on this existing infrastructure and explore how the GDI catalog, the DECIDe feed and other metadata sources can be integrated into one catalog. The long-term vision is a unified, searchable entry point to the Freiburg Data Space combining geospatial data, official statistics and other relevant datasets, with additional internal and external sources continuously being evaluated for integration.
 
-#### **Ghent**&#x20;
+#### Ghent
 
 Ghent hosts the feed on the servers of the City of Ghent. Alongside it, the city already publishes a DCAT feed on its open data platform and is working on a third feed on its linked open data server. From a user perspective it would be logical for these feeds to reference each other, or for a central DCAT catalog to be established. Once the NER and NEL services for locations are in production, the resulting local datasets with location annotations should be added to the feed as well.
 
-
-
-#### Target audience / Personas
+### Target audience / Personas
 
 The DCAT Federating Catalog serves two broad audiences: the data providers and technical maintainers who publish and manage catalog metadata, and the consumers who use the catalog to discover and access data. Data engineers configure catalog entries and monitor federation; application developers and end users rely on the catalog to find data and understand what they can do with it.
 
