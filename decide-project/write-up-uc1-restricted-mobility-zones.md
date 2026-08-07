@@ -547,5 +547,5 @@ TODO Freiburg: add content here, (I) Lukas did not have enough time to work on i
 Lblod Hugging Face organization: [https://huggingface.co/lblod](https://huggingface.co/lblod)
 AI generated location and RMZ data can be viewed in the HVT: [https://human-validator.decide.lblod.info](https://human-validator.decide.lblod.info)
 DATEN:RAUM:FREIBURG: [https://www.freiburg.de/pb/datenraum/daten_raum_freiburg.html](https://www.freiburg.de/pb/datenraum/daten_raum_freiburg.html)
-Frieburg geoportal FreiGIS: [https://geoportal.freiburg.de/freigis/](https://geoportal.freiburg.de/freigis/)
-
+Freiburg geoportal FreiGIS: [https://geoportal.freiburg.de/freigis/](https://geoportal.freiburg.de/freigis/)
+TODO bamberg and Ghent links?
