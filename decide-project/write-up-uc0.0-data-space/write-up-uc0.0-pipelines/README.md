@@ -683,8 +683,6 @@ These evaluations will inform the decision on the long-term adoption of the NER/
 
 ### Possible future work DECIDe data space related
 
-TODO: ADD Possible future work DECIDe data space
-
 #### Input: Pipeline reuse for LD\&L from other local authorities
 
 The job/task backbone is source-agnostic: any new LD\&L input that can be expressed as ELI can be ingested through the same infrastructure. Future extensions could include additional OParl instances, OSLO-based sources from other Flemish municipalities, or non-Belgian/non-German sources as DECIDe expands. Extending the ingestion pipelines to new sources follows the same pattern as the existing OSLO, OParl, and PDF pipelines, and does not require redesigning the downstream enrichment steps.
