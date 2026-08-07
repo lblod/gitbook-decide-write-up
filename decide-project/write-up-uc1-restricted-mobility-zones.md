@@ -76,7 +76,33 @@ UC1 proposes to close that gap by automatically classifying RMZ decisions, extra
 
 ### Pilot partners
 
-Freiburg is the lead pilot partner for UC1 implementation, and Ghent participates as a second pilot site. Also Ui! is using the data that results from this use case.
+Both Freiburg and Ghent are pilot sites for UC1. Also Ui! is using the data that results from this use case.
+
+#### Freiburg
+
+For the City of Freiburg, UC1 addresses a use case of direct strategic relevance. As part of its ongoing efforts to position itself as a smart city, Freiburg has already invested in the digital infrastructure that UC1's outputs would plug into directly: the city's open dataspace initiative ([DATEN:RAUM:FREIBURG](https://www.freiburg.de/pb/datenraum/daten_raum_freiburg.html)) and its geoportal, [FreiGIS](https://geoportal.freiburg.de/freigis/), which already serves as the public-facing platform for spatial data in the city. UC1's automatic extraction pipeline would integrate naturally into this existing ecosystem rather than requiring a parallel system, lowering the barrier to adoption and giving the city a concrete, visible example of what AI-supported LD\&L processing can deliver operationally.
+
+For now, live or continuously updated data on RMZ is currently only available for select zone types in the geoportal — for example, construction sites ("Baustellen", see Screenshot).
+
+<figure><img src="../.gitbook/assets/baustellen.png" alt=""><figcaption></figcaption></figure>
+
+Most other RMZ categories are not yet represented as structured, queryable layers, meaning that the underlying decisions still exist primarily as unstructured text. This is precisely the gap UC1 is positioned to close: rather than starting from scratch, Freiburg offers a partial live-data baseline to build from and expand, alongside a clear, visible model of what a fully populated RMZ layer could look like across zone types.
+
+Beyond the technical fit, Freiburg's participation in the UC is further reinforced by the fact that the taxonomy and standardisation work that UC1 requires would benefit Freiburg beyond the pilot itself: a shared, well-defined RMZ classification would make it easier for the city to benchmark its own mobility policies against peer cities, thus supporting evidence-based policy development rather than isolated local decision-making.
+
+#### Ghent
+
+As stated in [the data space section](write-up-uc0.0-data-space/#pilot-partners) the annotations on location are very important in the long term vision for Ghent. In UC1 of the DECIDe project this goals is incorporated in a bigger picture: how can we identify decision that establish or modify a Restricted Mobility Zone (RMZ).&#x20;
+
+The restricted mobilityzones like the pedestrian areas, bike streets and traffic blocks are very important within the Ghent mobility plan, and can sometimes be temperarily altered due to circumstances. Moreover Ghent is working in other projects on establishing on overview of all elements that have an impact on the traffic within the city.&#x20;
+
+The combination of the entity recognition and linking of  RMZ decisions, extracting locations and dates, linking locations to geometry registries is very relevant for the city of Ghent. By exposing the resulting structured data through via SPARQL endpoint it is possbile that SPARQL queries and even GIS tools can query directly.&#x20;
+
+As this solution can be made in a central architecture (as part of a dataspace business model), but also can be used in a decentral architecture (installing it on the city's own servers), Ghent is testing both scenario's. After the projects ends, Ghent is aiming to keep the decentral solution to identify locations.&#x20;
+
+In the decentral solution, locations are being be linked to the 25 city districts. A drupal widget is be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.&#x20;
+
+
 
 ### Target audience / Personas
 
@@ -165,7 +191,7 @@ Each question is addressed by a specific subset of the UC0.0/UC0.1 AI pipeline:
 
 ### Component overview
 
-<table><thead><tr><th width="149.39990234375">Component</th><th width="97.8017578125">Source</th><th width="147.1510009765625">Pipeline task</th><th width="155.0670166015625">Model / Tool</th><th>Role in UC1</th></tr></thead><tbody><tr><td>Codelist Mapping</td><td>UC0.1</td><td>Named Entity Linking Service</td><td>mistral-nemo (Mistral API)</td><td>Classify decisions as RMZ-related or not</td></tr><tr><td>Named Entity Recognition</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/PedroDKE/multilingual-ner-abb">PedroDKE/multilingual-ner-abb</a> (XLM-RoBERTa)</td><td>Detect <code>LOCATION</code> and <code>DATE</code> entity spans in decision text</td></tr><tr><td>Named Entity Refinement</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/longformer-classifier-refinement-abb">svercoutere/longformer-classifier-refinement-abb</a> (Longformer)</td><td>Refine <code>LOCATION</code> into <code>impact_location</code> / <code>context_location</code>; refine <code>DATE</code> into <code>entry_date</code> / <code>expiry_date</code> / <code>validity_period</code> / etc.</td></tr><tr><td>Entity Formatting (dates)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><p><a href="https://github.com/semantic-ai/decide-dateperiod-parser">github.com/semantic-ai/decide-dateperiod-parser</a></p><p>dateperiodparser (rule-based)</p></td><td>Parse date/period text spans into standardized <code>xsd:Date</code> or <code>time:ProperInterval</code></td></tr><tr><td>Entity Formatting (locations)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/abb-dual-location-component-ner">svercoutere/abb-dual-location-component-ner</a> (XLM-RoBERTa dual-head NER)</td><td>Parse location text spans into structured address components</td></tr><tr><td>Human Validation</td><td>UC0.0 / UC0.1</td><td>n/a</td><td>n/a</td><td>Human-in-the-loop review and correction of all AI-generated annotations</td></tr></tbody></table>
+<table><thead><tr><th width="149.39990234375">Component</th><th width="97.8017578125">Source</th><th width="147.1510009765625">Pipeline task</th><th width="155.0670166015625">Model / Tool</th><th>Role in UC1</th></tr></thead><tbody><tr><td>Codelist Mapping</td><td>UC0.1</td><td>Named Entity Linking Service</td><td>Mistral Medium 3.5 (Mistral API)</td><td>Classify decisions as RMZ-related or not</td></tr><tr><td>Named Entity Recognition</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/PedroDKE/multilingual-ner-abb">PedroDKE/multilingual-ner-abb</a> (XLM-RoBERTa)</td><td>Detect <code>LOCATION</code> and <code>DATE</code> entity spans in decision text</td></tr><tr><td>Named Entity Refinement</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/longformer-classifier-refinement-abb">svercoutere/longformer-classifier-refinement-abb</a> (Longformer)</td><td>Refine <code>LOCATION</code> into <code>impact_location</code> / <code>context_location</code>; refine <code>DATE</code> into <code>entry_date</code> / <code>expiry_date</code> / <code>validity_period</code> / etc.</td></tr><tr><td>Entity Formatting (dates)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><p><a href="https://github.com/semantic-ai/decide-dateperiod-parser">github.com/semantic-ai/decide-dateperiod-parser</a></p><p>dateperiodparser (rule-based)</p></td><td>Parse date/period text spans into standardized <code>xsd:Date</code> or <code>time:ProperInterval</code></td></tr><tr><td>Entity Formatting (locations)</td><td>UC0.0</td><td>Entity Extraction Task (NER Service)</td><td><a href="https://huggingface.co/svercoutere/abb-dual-location-component-ner">svercoutere/abb-dual-location-component-ner</a> (XLM-RoBERTa dual-head NER)</td><td>Parse location text spans into structured address components</td></tr><tr><td>Human Validation</td><td>UC0.0 / UC0.1</td><td>n/a</td><td>n/a</td><td>Human-in-the-loop review and correction of all AI-generated annotations</td></tr></tbody></table>
 
 ### Q1: Is this decision about a Restricted Mobility Zone?
 
@@ -179,7 +205,7 @@ The RMZ codelist uses a flat (single-level) structure rather than a hierarchical
 
 * **Concept Scheme:** [`http://data.lblod.gift/id/conceptscheme/restricted-mobility-zone-simple`](https://github.com/lblod/app-decide/blob/203764139125744df4ff55757f645a8849837e02/config/migrations/add-restricted-mobility-zone-codelist/20260310103527-add-simple-restricted-mobility-zones-codelist.ttl)
 * **Concept URI:** `https://data.vlaanderen.be/id/concept/ZoneType/fc17fa1b-9b61-4396-a609-845643b3b865`
-* **Labels:** "Restrictive mobility zone" (EN), "Beperkte mobiliteitszone" (NL)
+* **Labels:** "Restricted mobility zone" (EN), "Beperkte mobiliteitszone" (NL)
 
 The `skos:definition` of this single concept provides a non-exhaustive enumeration of the sub-types, expressed in both English and Dutch:
 
@@ -361,6 +387,44 @@ The full flow for a single decision through the UC1-relevant parts of the pipeli
 
 Steps 2 through 4 are part of the same UC0.0 AI pipeline execution. They run as consecutive sub-steps within the Entity Extraction Task of the NER Service for every decision, regardless of whether it is RMZ-related or not. The codelist mapping (step 1) runs separately within the Named Entity Linking Service, and its result is what the RMZ tool uses to filter which decisions to display. For the filtered decisions, the tool retrieves the location and date annotations produced by steps 2 through 4.
 
+### Pilot Partners Architecture
+
+#### Setup of the pilot within the city of Freiburg
+
+**Data Source**
+
+The data used for UC1 is the enriched data from the pipeline as outlined in the chapter above. However, the enriched decisions produced by the core pipeline are generic in the sense that they capture everything the AI components can extract, regardless of whether a given city needs all of it. For Freiburg, we therefore introduce an additional processing step that filters this output down to what is specifically relevant for the city's applications. What exactly this filter should retain is still to be determined in cooperation with the relevant city departments; we plan to hold a dedicated workshop to define which fields and RMZ types are actually needed for Freiburg's downstream use, rather than assuming this upfront.
+
+As part of this filtering step, we also need to determine the geographic unit of reference. In project discussions so far, streets will be used for sure, specific enough to be actionable, general enough to be extractable reliably. It remains open whether we additionally resolve to smaller units such as districts or neighborhoods, or whether this risks over-aggregating and diluting the spatial precision that makes the tool useful. What is already clear is that we will not display RMZ information at the level of full districts or larger areas: the value of showing restricted mobility zones spatially lies precisely in being able to point to a well-defined, specific place, and referencing broad areas would undermine that.
+
+**Geolayer structure**
+
+From the filtered, geographically resolved output, we extract separate geolayers for each type of restricted mobility zone (as outlined in [#q1-is-this-decision-about-a-restricted-mobility-zone](write-up-uc1-restricted-mobility-zones.md#q1-is-this-decision-about-a-restricted-mobility-zone "mention")), so that each RMZ category can be queried, styled, and toggled independently. In addition to these individual layers, we create one overarching folder within the geoportal that aggregates all RMZ types together, giving users a single entry point to view the full picture when needed while preserving the ability to drill into a specific zone type.
+
+**Update cycle and integration**
+
+These layers are updated periodically (the current plan is a daily cadence) and pushed to the city's geographic database ([GDI](https://geodaten.freiburg.de/geonetwork/srv/ger/catalog.search#/home)). This is the point of integration with Freiburg's existing infrastructure: both the dataspace (DATEN:RAUM:FREIBURG) and FreiGIS access the GDI directly, meaning that once a layer is written there, it becomes available through the city's existing public-facing and internal channels without requiring a separate publication step.
+
+#### Setup of the pilot within the city of Ghent
+
+**Central scenario during the project phases**
+
+To test this scenario Ghent is using the pipelines as setup by ABB. In the first phase Ghent has tested the results using the human validation tool. In the way we are using the ABB tools to the maximum extent. In a second phase Ghent has tested if the result can be used from the Ghent infrastructure querying the results via SPARQL.
+
+This scenario might be interesting for further business cases for the dataspace as everything runs centrally and could be a payd feature within the dataspace.&#x20;
+
+**Decentral scenario during the project phases**
+
+Ghent has realised a drupal widget that shows recents decisions for a specific topic within a specific city district.&#x20;
+
+In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup. To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used.  For this scenario the locations are linked to the relevant city district. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.&#x20;
+
+This scenario is interesting as the city owns the solution and can develop further on this solution. In this scenario the city has the maximon autonomy (data sovereignty).&#x20;
+
+**Continuation after the DECIDe project**
+
+Ghent aims to keep the decentral setup after the end of the DECIDe project, as it is central to the needs of the city. We want to keep testing and improving the NER and NEL modules. As soon as data quality is adequate enough we will move the widget to production and will rollout the widget bases on the needs of the city services.&#x20;
+
 ## Final UI design
 
 UC1 does not have a purpose-built standalone user interface. The pipeline outputs are exposed through a SPARQL endpoint for GIS consumption and a downloadable distribution that can be generated periodically. Both can be found in our DCAT catalog, read more about this in our [write-up on DCAT](write-up-uc0.0-data-space/write-up-dcat.md) .
@@ -384,10 +448,63 @@ In addition to selecting the codelist, the user can also select sub-elements in 
 
 Once the filters have been applied, the user can validate the different decisions the same way they validate the discovered entities in UC0.0, namely with a thumbs up/down. One small difference is, that in UC0.0, the user can read the decision in a split-screen to get enough context to validate the discovered entity. Because the entity the user is validating in this use case is about the whole decision, and there is no need to highlight specific parts of the text, the team has decided to only provide an external link to the decision, where the user can read the whole decision as it is published, in a different tab.
 
+#### Design of the Freiburg interface
+
+For Freiburg, the RMZ output is integrated into the FreiGIS portal rather than being presented through a standalone interface. FreiGIS ([https://geoportal.freiburg.de/freigis](https://geoportal.freiburg.de/freigis/)) is the City of Freiburg's central geospatial portal and the core component of its municipal Spatial Data Infrastructure (GDI-FR). It provides access to a wide range of maps and geospatial information from the city administration and partner organizations, supports searches for addresses, cadastral parcels, public transport stops, thematic maps, and development plans, and offers additional GIS functionality such as measurements, printing, and access to metadata through the Freiburg geodata catalog. The portal is based on the open-source Masterportal software.
+
+Consequently, the user interface for the RMZ use case consists primarily of the visualization of the generated layer within the existing geoportal. The screenshot below illustrates how UC1 is displayed in the current testing environment. Please note that this version is not yet publicly available.
+
+<figure><img src="../.gitbook/assets/screenshot_ui.png" alt=""><figcaption></figcaption></figure>
+
+#### Design of the Ghent widget
+
+To use a widget is an important architectural and design decision 'an sich'. It makes the setup really flexible as the information can be put into the city website wherever the city services want to put it, and where citizen might need this information. This approach is also very usefull as testing can be focussed on specific terms or city districts. Futhermore, this makes a partial rolout possible based on the needs of the city services.&#x20;
+
+The design is based on the Ghent styleguide. Users see a list of decisions that is perfectly integrated in the city website and can be handled as any Drupal paragraf within a webpage.
+
+_Example of the front end of the widget:_
+
+<figure><img src="../.gitbook/assets/wegenregister.png" alt=""><figcaption></figcaption></figure>
+
+In the backend the widgets can be configured in the standard drupal interface. In fact, by filling in the form users establish a SPARQL query that queries the selected SPARQL endpoint.&#x20;
+
+_Back end of the widget:_
+
+<figure><img src="../.gitbook/assets/besluitenwidget- back.png" alt=""><figcaption></figcaption></figure>
+
 ## Testing approach
 
 Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Human Validation Tool.
 The process described in the [Validating AI annotations about a decision](write-up-uc0.0-data-space/write-up-uc1-restricted-mobility-zones.md#validating-ai-annotations-about-a-decision "mention") is followed.
+
+#### Freiburg
+
+Testing UC1 for Freiburg spans three distinct steps, reflecting the fact that the tool's value depends on getting AI extraction right, making sure that extraction actually lands correctly in the city's spatial infrastructure, and confirming that the resulting interface is genuinely usable for the people who'll rely on it day to day.
+
+**Quality of the annotations**
+
+The first and most fundamental question is whether the AI components are extracting the right information from decision text in the first place. This is tested using standard classification and extraction metrics: precision and recall for the RMZ-relevance classification step (is the tool correctly separating decisions that describe a mobility restriction from those that don't), and accuracy metrics for the location and date extraction steps (are the correct streets/zones being identified, and are the correct start/end dates being resolved from among the many dates that typically appear in a decision).
+
+Rather than relying on these metrics in isolation, annotation quality is validated by comparing the AI-generated output against human annotations gathered through the project's validation interface. This gives a direct, decision-by-decision check: for a sample of decisions, human annotators independently mark what the correct classification, locations, and dates should be, and the AI output is scored against this reference.
+
+**Technical integration**
+
+The second layer of testing checks that correctly extracted information is passed through to Freiburg's spatial infrastructure without errors. This covers geolayer validation: confirming that the geometry linking step resolves extracted locations to the correct streets and zones in FreiGIS, and that the daily update into the GDI runs correctly — without data loss, duplication, or outdated entries remaining after a decision has been superseded. This step is more about verifying correct data handling than about the AI's extraction quality itself, since the underlying update mechanism is straightforward; the main risk is entries not being written, overwritten, or removed correctly.
+
+**Visual feedback of the interface**
+
+The third layer concerns how well the interface actually serves the people using it — city staff and other stakeholders viewing RMZ data spatially. This builds on prior work already done in this direction: a preliminary version of the UC1 interface was included as part of a survey conducted by Hochschule Kehl in July 2026, which gathered initial feedback on how understandable and useful the spatial presentation of RMZ data was to respondents.
+
+Building on that, planned user tests with stakeholders will provide a more direct and structured round of feedback, once the Freiburg-specific filtering and geolayer structure (see architecture section) are stable enough to test against. These sessions are intended to validate not just whether the interface displays information correctly, but whether it displays the right information, at the right level of geographic detail, in a way that's actually usable in city departments' day-to-day workflows.
+
+#### Ghent
+
+As stated in the architecture section, Ghent is testing the central and decentral scenario.
+
+* In the central scenario Ghent is using the ABB setup. The main focus is this case is on the quality of the AI annotations with an extra focus on the NER and NEL on location
+* In the decentral scenario the focus of the test is on the Ghent infrastructure and setup of the containers, on the SPARQL queries and on the technical and usability aspects of the Ghent widget.&#x20;
+
+Testing is being done by the Ghent project lead and in a second phase by the city service that assist on drafting decisions.
 
 ### Risks & mitigations
 
@@ -419,6 +536,18 @@ The current pipeline extracts and classifies RMZ decisions but does not differen
 The current implementation for UC1 detects locations and periods and links them to a decision. If a single decision affects multiple restricted mobility zones, it will therefore not be possible to distinguish which location is restricted for which period. This simplification was deemed acceptable to keep the scope contained for now. To solve this, the NER pipeline would have to discover restricted mobility zones as an entity itself and it would have to make sure that each period and location is linked to the restricted mobility zone entity that was discovered in this way, instead of directly to the decision. In the data model, this would mean an extension of the `Normative provision` with an activity indicating the RMZ.
 
 ### Possible future work LBLOD related
+
+#### Ghent
+
+Ghent will focus on the rollout of the Ghent widget and therefore on the quality of the annotations on location. The concept of a widget is very relevant as it makes a partial but evolving rollout possible, based on the quality of the anotions and the specific needs of the city services.&#x20;
+
+### Possible future work Freiburg related
+
+Beyond the more general future work activities outlined in this section that will improve the quality of the data, Freiburg has specific additional avenues for future work.&#x20;
+
+At first, we would like to extend the current database of LD\&E desicions since they cover only parts of relevant RMZ desicions.&#x20;
+
+TODO Freiburg: add content here, (I) Lukas did not have enough time to work on it, might need around 1h more
 
 ## <mark style="background-color:$warning;">Relevant links</mark>
 

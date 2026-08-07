@@ -48,7 +48,7 @@ The Human Validation interfaces provide the human-in-the-loop validation layer f
 
 [write-up-uc0.0-human-validation-hv.md](write-up-uc0.0-data-space/write-up-uc0.0-human-validation-hv.md "mention")
 
-#### UC1 Restrictive Mobility Zones
+#### UC1 Restricted Mobility Zones
 
 UC1 uses the same codelist mapping and human validation patterns established in UC0.1, as well as similar AI enrichment tooling as LD\&L standardization of UC0.0, making the data model and interface approach directly reusable across use cases.
 
@@ -78,7 +78,19 @@ The underlying technical deliverable of UC0.1 is the Codelist Mapping Tool: a ge
 
 ### Pilot partners
 
-All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany).
+All three pilot cities participate in UC0.1: Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany). Their motivations differ, but the cities converge on a shared implementation approach.
+
+In each city, the starting point is a workshop with the relevant stakeholders, to explore the usefulness of the report and to jointly shape how and to what extent it should be integrated into city processes. This approach was first outlined by Freiburg and subsequently taken up by the other pilot cities. The report is best introduced step by step and framed as a supporting tool that strengthens decision-making rather than as an assessment imposed on it, for example through a dedicated session with department staff to review the output together and align on how it should be interpreted. All three cities also consider publishing the results through their open data platform, provided the quality of the annotations proves sufficient.
+
+Equally shared is the ambition to look beyond the SDGs. While the SDGs serve as the common frame for the pilot, each city sees the same underlying value in testing local decisions against its own strategic priorities, which raises the question of how such a local policy framework could be encoded and maintained.
+
+**Bamberg** approaches the report from a climate perspective and applies it at two levels. At the macro level, it illustrates the overall climate impact of past political decisions. At the micro level, the intention is to include a climate impact assessment for individual policy templates before they are discussed and decided upon, thereby increasing councillors' awareness of the climate implications of their decisions at the moment it matters. This directly addresses a 2020 city council decision requiring every council template to be assessed by the Climate and Environmental Office on its potential climate impact, a requirement that has not been implemented so far due to staff shortages. The Climate and Environmental Department will additionally develop new decision categories and assessment criteria to better align the report with local conditions.
+
+**Freiburg** sees the Policy Impact Report primarily as a tool for the city council. The insights are intended to be fed back as a periodic, evidence-based input, showing which SDG areas receive more or less legislative attention relative to strategic priorities. Publication via the open data portal extends the city's existing transparency commitments, and once established, the report has the potential to complement existing processes such as sustainability or climate reporting.
+
+**Ghent** frames the matching of local decisions with regional, national or international policy as a premium function for a future data space business case (see final architecture and possible future work). Checks against regional, national or international policy are considered best located at the regional or national level, which is why Ghent tests the quality of these annotations and impact assessments in the human validation tool realised by ABB. For checks against the local strategy of the city itself, a different setup may be required, in which the AI solution is trained and hosted on the servers of the City of Ghent.
+
+
 
 ### Target audience / Personas
 
@@ -125,7 +137,7 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 ### Data standards
 
-<table><thead><tr><th width="371.2509765625">Standard</th><th>Link</th></tr></thead><tbody><tr><td>SKOS (Simple Knowledge Organization System)</td><td><a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a></td></tr><tr><td>Web Annotation Vocabulary (<code>oa:Annotation</code>)</td><td><a href="https://www.w3.org/TR/annotation-vocab/">https://www.w3.org/TR/annotation-vocab/</a></td></tr></tbody></table>
+<table><thead><tr><th width="371.2509765625">Standard</th><th>Link</th></tr></thead><tbody><tr><td>ELI-normalized LD&#x26;L decisions</td><td><a href="http://data.europa.eu/eli/ontology">http://data.europa.eu/eli/ontology#</a></td></tr><tr><td>SKOS (Simple Knowledge Organization System)</td><td><a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a></td></tr><tr><td>Web Annotation Vocabulary (<code>oa:Annotation</code>)</td><td><a href="https://www.w3.org/TR/annotation-vocab/">https://www.w3.org/TR/annotation-vocab/</a></td></tr></tbody></table>
 
 As with all annotations used in the DECIDe project, the annotations created for UC0.1 are expressed using the Web Annotation Vocabulary and are, as such, instances of the type `oa:Annotation`.
 
@@ -293,7 +305,7 @@ The `ModelAnnotatingTask` implements the end-to-end workflow for classifying a s
     truly matching and only from the given list! If none of the codes match,
     return an empty list.
     ```
-4. **Call the LLM.** The prompt is sent to the configured LLM via [LangChain's ](https://www.langchain.com/)unified chat interface. The service supports multiple providers (including Mistral, OpenAI, Anthropic, and Ollama) permitting configurability later on. Within DECIDe, Mistral Large 3, an external proprietary model, is used to generate an initial qualitative annotation set. Tests using smaller LLMs (used locally) were not considered to be sufficiently performant.
+4. **Call the LLM.** The prompt is sent to the configured LLM via [LangChain's ](https://www.langchain.com/)unified chat interface. The service supports multiple providers (including Mistral, OpenAI, Anthropic, and Ollama) permitting configurability later on. Within DECIDe, Mistral Medium 3.5, an external proprietary model, is used to generate an initial qualitative annotation set. Tests using smaller LLMs (used locally) were not considered to be sufficiently performant.
 5. **Resolve labels to URIs.** Each returned label is mapped back to its SKOS concept URI.
 6. **Store the annotation.** For each resolved concept URI, an annotation is created and inserted into the triplestore. The annotation follows the Web Annotation Data Model (`oa:Annotation`) with:
    * `oa:hasTarget` → the decision's `eli:Expression` URI
@@ -475,6 +487,19 @@ Each pilot city carried out manual testing on the enriched decisions delivered b
 The process described in the [Validating the decision-SDG linking](write-up-uc0.0-data-space/write-up-uc0.1-policy-impact-report.md#validating-the-decision-sdg-linking "mention") section is followed.
 
 The Policy Impact Reporting was subsequently used in a survey led by consortium partner Kehl to assess its usefulness.
+All pilots are testing the report via the human validation tool as well as via the policy impact dashboard the ABB has realised.
+
+#### **Ghent**
+
+In a first phase, we focus on checking the linking to the right SDG. In a second phase, we also look at the positive of negative impact of the decision on this SDG.
+
+Testing is being done at first by the project lead. When results are good enough testing shifts to the city service that provides guides by drafting the decisions.
+
+#### Bamberg
+
+The Policy Impact Report will be evaluated quantitatively through a survey conducted by the research partners. The survey targets public servants, citizens, and politicians to ensure that all relevant stakeholder groups are represented. It assesses the perceived quality, usability, and usefulness of the Policy Impact Report from the perspective of each group separately.
+
+In addition, the Policy Impact Report has been qualitatively tested by the Climate and Environmental Office. These tests identified several minor issues, including the need to provide additional context on why the SDG assessment was selected and the need to further regionalize the impact categories.
 
 ### Risks & mitigations
 
@@ -543,9 +568,15 @@ Alerting mechanisms could be implemented to flag potential drift or degradation 
 
 Surfacing annotation context within source decision text –showing which parts of a decision triggered a particular SDG link– would be more natural and useful in local environments such as Lokaal Beslist (Ghent) or Freiburg's RIS than in a standalone cross-city tool.
 
+### Possible future work Bamberg related
+
+\
+The city of Bamberg is planning to introduce locally framed policy goals instead of the SDGs to the Policy Impact Report. Additionally, the city of Bamberg is thinking about expanding the goals to mirror the objectives of potentially emerging 'city strategy' to create a cross-departmental strategic goal tracking.
+
 ## Relevant links
 
 * Frontend application: [https://policy-impact-report.decide.lblod.info/](https://policy-impact-report.decide.lblod.info/)
+* Link to Policy Impact Report (Bamberg): [https://policy-impact-report.decide.smartcitybamberg.de/](https://policy-impact-report.decide.smartcitybamberg.de/)
 
 {% embed url="https://github.com/lblod/app-decide" %}
 

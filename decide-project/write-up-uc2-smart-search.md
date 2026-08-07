@@ -4,7 +4,7 @@ description: Smart Search
 
 # Write-up UC2 Smart Search
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 {% hint style="warning" %}
 This page is under construction
@@ -63,7 +63,25 @@ For local authorities, UC2 provides a high-visibility demonstration that LD\&L l
 
 ### Pilot partners
 
-Ghent leads the UC2 implementation (D3.5), with Freiburg and/or Bamberg participating as a second pilot site (D3.6).
+Ghent and Bamberg are the project partners taking part in UC2.
+
+#### Bamberg
+
+As mentioned before, Bamberg provides its decision templates and council meeting minutes as unlinked PDF files, making the search for specific information difficult. Within the shared data space, the provided data is made machine readable. Adding the natural-language search layer provided by ABB, Bamberg’s data is made more accessible.
+
+Currently, if anyone wanted to look for a specific decision made within a council meeting, they would have to open the CCIS and under “Suchkriterien”, which only provides a selection for a council (“Gremium”) and keyword search. There one would have to select “Stadtrat der Stadt Bamberg” from the dropdown menu. Then every meeting within the specified time frame would appear in a table ordered by matching to the keyword provided. Afterwards, they would have to click through every row of the table in order to get to the meeting minutes, which are named after the topic that was discussed. To efficiently look for a specific decision, one would have to know when it was discussed and provide relevant search keywords.
+
+With the Smart Search, this search process can be made significantly more efficient. Users can request information about the desired decision or topic directly into the search mask and receive a natural-language summary of the relevant decision, along with all associated documents and files. This improved search process reduces the time required to locate specific information and lowers the dependency on prior knowledge of meeting dates or exact keywords. In addition to increasing internal administrative efficiency, the Smart Search supports city council members in preparing for meetings more effectively and provides citizens with improved access to council decisions, thereby promoting greater transparency and informed participation in local politics.
+
+#### Ghent
+
+Local decisions and legislation might be the most important data set in the city, but as it is complex and time consuming to search this data, it is barely used. The main obstacles are the long and ofter difficult text, but also the hastle to search into this big data set.&#x20;
+
+Already in 2018 Ghent was considering using a semantic search solution on local decisions, but the market solutions were not mature enough to work on a specific context like local decisions without extensive training. So Ghent is very interested if this can be realized with current AI tooling within the short project period of DECIDe.
+
+Ghent will test the ABB solutions in a centrally organised architecture and via a query via an API call.&#x20;
+
+
 
 ### Target audience / Personas
 
@@ -91,16 +109,14 @@ The underlying mechanism is a Retrieval-Augmented Generation (RAG) pipeline: the
 
 ### Datasets available in the data space
 
-| Dataset                                              | IdP/Authentication service | Country of origin | Domain                | Shared within the project | Reused within the project |
-| ---------------------------------------------------- | -------------------------- | ----------------- | --------------------- | ------------------------- | ------------------------- |
-| Human validation votes on Answers (oa:Annotation)    | Data space authentication  | Belgium/Germany   | <p><br>Government</p> | Yes                       | No                        |
-| Human validation votes on Quotations (oa:Annotation) | Data space authentication  | Belgium/Germany   | Government            | Yes                       | No                        |
+The triple store stores the user's question, the returned answer, and its quotations, along with human validation votes on the answers and quotations. Because this data is highly sensitive (GDPR), we do not publish it using the [publish dataset script](write-up-uc0.0-data-space/write-up-dcat.md#datasets-available-in-the-data-space).
 
 ### Data standards
 
 | Standard                                    | Link                                                                               |
 | ------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Schema.org                                  | https://schema.org                                                                 |
+| ELI-normalized LD\&L decisions              | [http://data.europa.eu/eli/ontology#](http://data.europa.eu/eli/ontology)          |
+| Schema.org                                  | [https://schema.org](https://schema.org/)                                          |
 | Web Annotation Vocabulary (`oa:Annotation`) | [https://www.w3.org/TR/annotation-vocab/](https://www.w3.org/TR/annotation-vocab/) |
 | Simple Knowledge Organization System (SKOS) | [https://www.w3.org/TR/skos-reference/](https://www.w3.org/TR/skos-reference/)     |
 
@@ -237,6 +253,18 @@ The LLM is given a custom system prompt that enforces three constraints: the ans
 
 A similar provider-agnostic approach is taken for the embedding model used by the embedding service, though it is a distinct model serving a different purpose.
 
+### Pilot cities
+
+#### Bamberg
+
+Bamberg deployed the Smart Search as implemented by ABB. As the processing LLM for creating prompts an external Mistral API is used.
+
+#### Ghent
+
+Ghent wil mostly use this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent will also conduct tests using the API.&#x20;
+
+
+
 ## Final UI design (and why) (if any)
 
 The UC2 interface is designed around the familiar pattern of AI-powered chat interfaces. Inspiration was drawn from general-purpose chatbots (Gemini, Claude) as well as domain-specific tools such as Medwise AI, a chatbot that answers medical questions and closely mirrors the DECIDe use case of providing accurate answers within a defined, structured knowledge domain.
@@ -285,6 +313,16 @@ The interface is in English, avoiding the overhead of maintaining three separate
 
 N/A
 
+#### Bamberg
+
+There are no firm plans yet regarding the UI, though several options are being considered. During a previous software test and public consultation process on the further development of the Bamberg app, citizens expressed a desire for more information on city council resolutions and council updates in the local city app. Instead of listing pages of database entries, the Smart Search feature could be integrated into the app to meet citizens’ needs.
+
+For the UI the open-source solution Parla from Berlin is also under consideration which serves a similar purpose and has already been under longer development. At this stage, both approaches remain under evaluation, and no final decision has been made regarding the preferred solution. In either case, a responsive design that provides a user-friendly mobile view will be an essential requirement to ensure accessibility and usability across different devices.
+
+#### Ghent
+
+As Ghent will only build a simple interface to test the API, concerns about design won't be taken into account.&#x20;
+
 ## Testing approach
 
 Each pilot city carried out manual testing on the [deployed test instance](./write-up-uc2-smart-search.md#deployed-test-instance "mention").
@@ -305,6 +343,28 @@ On the start screen, the user must select a local authority, after which they ma
 When a question is asked, the user is presented with an answer, accompanied by top\_n (3) sources as quotations. The answer as a whole can be evaluated by providing a thumbs up/down. Additionally, each source document quotation can also be evaluated in the same manner.
 
 <figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+
+#### Bamberg
+
+In addition to the quantitative evaluation conducted through the survey by the research partners mentioned earlier in [#testing-approach](write-up-uc0.1-policy-impact-report.md#testing-approach "mention"), the City of Bamberg also wants to test what specific efficiency gains we will achieve by introducing Smart Search.&#x20;
+
+To this end, it is using an experimental design: Four to eight people will compare the AI-supported workflow with the traditional workflow and be prompted to seek for specific information. The test group will primarily consist of administrative staff and members of the Bamberg City Council, as they are the ones who work with the council information system most frequently.
+
+The goal of the test is to answer the following questions:
+
+* Is it possible to find content more efficiently compared to the CCIS?
+* Are relevant pieces of information overlooked when using natural language queries?
+* How trustworthy is the generated response to users?
+
+To achieve this, testers will be asked various search questions, and the workflows will then be evaluated based on different metrics (success rate; average time to completion; perceived difficulty).
+
+#### Ghent
+
+Ghent has tested this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent also conducts some tests using the API.&#x20;
+
+Test focusses on the quality of the provided links and of the answers it formulates to the quesion. The main focus of Ghent was on checking weather the most relevant decisions are found.&#x20;
+
+In a first phase testing was being done by the project lead. In a second phase by the city service that assist on drafting the council decisions.&#x20;
 
 ### Risks & mitigations
 
@@ -380,8 +440,28 @@ SPARQL is a very expressive language. Giving the LLM the ability to formulate an
 
 ### Possible future work LBLOD related
 
+
+
+### Possible future work Bamberg
+
+In the future, additional data sources could be integrated into Smart Search. For example, in addition to decisions, motions submitted by political parties that have not yet been brought to a vote could also be entered. This would enable the city council caucuses and the administration to monitor which of these motions still need to be processed or which motions or ideas have already been proposed regarding a specific policy issue.
+
+A second potential future data source is data from a municipal project management tool that tracks the current status of projects. If the projects entered there are linked to City Council decisions, Smart Search can be used to retrieve not only the decisions themselves but also the current status of their processing by the administration. This would both shorten purely informational administrative processes within the administration (reporting) — including those involving the City Council — and create transparency for citizens regarding the decision-making and implementation processes of administrative projects. The latter could not only build trust in the administration but also allow for citizen participation early in the process, thereby preventing implementation bottlenecks later on.
+
+#### Possible future work Ghent
+
+There are no short term plans yet. Gent will first focus on quality of the annotations on themes (as result of the Probe project) and locations (al result of the DECIDe project) and realise the step by step rollout of these results.&#x20;
+
+
+
 ## Relevant links
 
 Link to github: [https://github.com/semantic-ai/decide-question-answering](https://github.com/semantic-ai/decide-question-answering)
 
-Link to front-end QA: [https://smart-search.decide.lblod.info/](https://smart-search.decide.lblod.info/)
+Link to front-end QA: [https://smart-search.decide.lblod.info/](https://smart-search.decide.lblod.info/)\
+\
+Link to Parla (Berlin): [https://www.parla.berlin/](https://www.parla.berlin/)
+
+Link to Smart Search (Bamberg): [https://smart-search.decide.smartcitybamberg.de/](https://smart-search.decide.smartcitybamberg.de/)
+
+Link to CCIS search tool (Bamberg): [https://www.stadt.bamberg.de/buergerinformationssystem/tr010](https://www.stadt.bamberg.de/buergerinformationssystem/tr010)

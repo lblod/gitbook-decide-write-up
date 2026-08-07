@@ -4,7 +4,7 @@ description: Federation Layer
 
 # Write-up DCAT
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 ## Description UC/wanted deliverable
 
@@ -55,9 +55,25 @@ When a local source publishes data, it is important that interested third partie
 
 In DECIDe, each data source has a DCAT description for each of its datasets and distributions. An overarching Federating Catalog aggregates those descriptions making all data space sources discoverable from a single entry point, and automatically picks up updates via LDES feeds. The DCAT catalog itself is public; authentication is applied at the level of individual endpoints rather than at the catalog level, keeping discovery open while access remains controlled. Being listed in the Federating Catalog is an implicit trust signal: it means the source has been accepted as a trustworthy participant in the data space.
 
-### Pilot partners
+### **Pilot partners**
 
-DCAT is relevant for all three pilot cities that participate in the data space: Ghent (Belgium), Freiburg and Bamberg (Germany). Each city has a DCAT catalog describing its sources within the data space, whether created locally or on the city's behalf as part of the DECIDe pipeline work.
+DCAT is relevant for all three pilot cities that participate in the data space: Ghent (Belgium), Freiburg and Bamberg (Germany). All three implement the same DCAT feed for the DECIDe data as prepared by ABB, so that each city has a catalog describing its sources within the data space.
+
+The difference between the cities lies in where that feed is hosted and how it relates to the metadata infrastructure the city already operates. In each case a pre-existing catalog is present, and in each case the direction is the same: moving from several parallel catalogs towards a single coherent entry point.
+
+#### **Bamberg**&#x20;
+
+Bamberg uses the ABB feed for the DECIDe project, while the city data platform itself runs on the Bavarian metadata catalogue (bamberg.bydata.de). Since DECIDe is set to be integrated into the data platform, it is expected that Civitas Core 2.0+, the basis of that platform, will then be able to provide the DECIDe data to other catalogues as well.
+
+#### **Freiburg**&#x20;
+
+Freiburg hosts the feed within the Freiburg Data Space infrastructure. In parallel, the city operates a DCAT-AP endpoint for its Geospatial Data Infrastructure (GDI), which publishes geospatial metadata in DCAT-AP format. Rather than maintaining separate catalogs, the current direction is to build on this existing infrastructure and explore how the GDI catalog, the DECIDe feed and other metadata sources can be integrated into one catalog. The long-term vision is a unified, searchable entry point to the Freiburg Data Space combining geospatial data, official statistics and other relevant datasets, with additional internal and external sources continuously being evaluated for integration.
+
+#### **Ghent**&#x20;
+
+Ghent hosts the feed on the servers of the City of Ghent. Alongside it, the city already publishes a DCAT feed on its open data platform and is working on a third feed on its linked open data server. From a user perspective it would be logical for these feeds to reference each other, or for a central DCAT catalog to be established. Once the NER and NEL services for locations are in production, the resulting local datasets with location annotations should be added to the feed as well.
+
+
 
 #### Target audience / Personas
 
@@ -251,12 +267,14 @@ As stated before, currently no create, delete or update support exists in the DC
 
 ## Relevant links
 
-Link to automatic DCAT content generation scripts: https://github.com/lblod/app-decide/tree/development/scripts/project/publish\_dataset
-
-Link to federated DCAT catalog UI: https://catalog.decide.lblod.info
-
-Link to federated DCAT sparql endpoint: https://catalog.decide.lblod.info/sparql
-
-Link to federated DCAT LDES feed: https://catalog.decide.lblod.info/ldes/public/1
-
-Link to DCAT federated DCAT catalog as triples: https://catalog.decide.lblod.info/dcat/catalog (use e.g. `text/turtle` as an accept header to not end up on the graphical interface)
+| TITLE                                                                                                                                         | LINK                                                                                                                                                                          |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Link to automatic DCAT content generation scripts **ABB**                                                                                     | [https://github.com/lblod/app-decide/tree/development/scripts/project/publish\_dataset](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset) |
+| Link to federated DCAT sparql endpoint **ABB**                                                                                                | [https://catalog.decide.lblod.info/sparql](https://catalog.decide.lblod.info/sparql)                                                                                          |
+| Link to federated DCAT LDES feed **ABB**                                                                                                      | [https://catalog.decide.lblod.info/ldes/public/1](https://catalog.decide.lblod.info/ldes/public/1)                                                                            |
+| Link to DCAT federated DCAT catalog as triples **ABB**  (use e.g. `text/turtle` as an accept header to not end up on the graphical interface) | [https://catalog.decide.lblod.info/dcat/catalog](https://catalog.decide.lblod.info/dcat/catalog)                                                                              |
+| Link to federated DCAT catalog UI **ABB**                                                                                                     | [https://catalog.decide.lblod.info](https://catalog.decide.lblod.info/)                                                                                                       |
+| Link to data platform metadata catalogue **Bamberg**                                                                                          | [https://bamberg.bydata.de](https://bamberg.bydata.de/?)                                                                                                                      |
+| Link to **Bamberg** DCAT in ABB UI                                                                                                            |  [https://ds.decide.smartcitybamberg.de/dcat](https://ds.decide.smartcitybamberg.de/dcat)                                                                                     |
+| DCAT **Freiburg** LDES link                                                                                                                   | [https://decide.datenraum-dev.freiburg.de/ldes/](https://decide.datenraum-dev.freiburg.de/ldes/https://decide.datenraum-dev.freiburg.de/datadumps/)                           |
+| DCAT **Freiburg** Databumps link                                                                                                              | [https://decide.datenraum-dev.freiburg.de/datadumps/](https://decide.datenraum-dev.freiburg.de/ldes/https://decide.datenraum-dev.freiburg.de/datadumps/)                      |

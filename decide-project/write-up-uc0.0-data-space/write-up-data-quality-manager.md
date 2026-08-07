@@ -88,11 +88,11 @@ DECIDe triplestore (Virtuoso) Internal. The SHACL validation service reads ELI a
 
 ### Data standards
 
-<table><thead><tr><th width="454.4248046875">Standard</th><th>Link</th></tr></thead><tbody><tr><td>SHACL</td><td><a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a></td></tr><tr><td>ELI (European Legislation Identifier)</td><td><a href="https://eur-lex.europa.eu/eli-register/about.html">https://eur-lex.europa.eu/eli-register/about.html</a></td></tr><tr><td>W3C Organization Ontology</td><td><a href="https://www.w3.org/TR/vocab-org/">https://www.w3.org/TR/vocab-org/</a></td></tr><tr><td>ELI-EP (ELI-EP is an application profile of the <a href="https://op.europa.eu/en/web/eu-vocabularies/eli">ELI</a> and <a href="https://joinup.ec.europa.eu/collection/eli-european-legislation-identifier/solution/eli-ontology-draft-legislation-eli-dl/">ELI-DL</a> ontologies, designed and used for data of the European Parliament.)</td><td><a href="https://europarl.github.io/eli-ep/">https://europarl.github.io/eli-ep/</a></td></tr><tr><td>ORG-EP (ORG-EP is an application profile of the W3C Organization Ontology, specifically designed to describe the organizational components of the European Parliament (MEPs, Parliamentary Groups, Committees, etc.).)</td><td><a href="https://europarl.github.io/org-ep">https://europarl.github.io/org-ep</a></td></tr></tbody></table>
+<table><thead><tr><th width="454.4248046875">Standard</th><th>Link</th></tr></thead><tbody><tr><td>SHACL</td><td><a href="https://www.w3.org/TR/shacl/">https://www.w3.org/TR/shacl/</a></td></tr><tr><td>SPARQL</td><td><a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></td></tr><tr><td>ELI (European Legislation Identifier)</td><td><a href="https://eur-lex.europa.eu/eli-register/about.html">https://eur-lex.europa.eu/eli-register/about.html</a></td></tr><tr><td>W3C Organization Ontology</td><td><a href="https://www.w3.org/TR/vocab-org/">https://www.w3.org/TR/vocab-org/</a></td></tr><tr><td>ELI-EP (ELI-EP is an application profile of the <a href="https://op.europa.eu/en/web/eu-vocabularies/eli">ELI</a> and <a href="https://joinup.ec.europa.eu/collection/eli-european-legislation-identifier/solution/eli-ontology-draft-legislation-eli-dl/">ELI-DL</a> ontologies, designed and used for data of the European Parliament.)</td><td><a href="https://europarl.github.io/eli-ep/">https://europarl.github.io/eli-ep/</a></td></tr><tr><td>ORG-EP (ORG-EP is an application profile of the W3C Organization Ontology, specifically designed to describe the organizational components of the European Parliament (MEPs, Parliamentary Groups, Committees, etc.).)</td><td><a href="https://europarl.github.io/org-ep">https://europarl.github.io/org-ep</a></td></tr></tbody></table>
 
 <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
-In this drawing, rdf classes are represented by rounded rectangles. Predicates are shown as arrows connecting their origin as the predicate subject to their target as a predicate object. The circles are concrete entities. In the drawing, one validation result is shown explaining that the decision `https://data.gent.be/id/besluiten/23.1214.2233.007` from the city of Ghent does not have a language property in the triplestore.
+In this drawing, rdf classes are represented by rounded rectangles. Predicates are shown as arrows connecting their origin as the predicate subject to their target as a predicate object. The circles are concrete entities. In the drawing, one validation result is shown explaining that the decision `https://data.gent.be/id/besluiten/23.1214.2233.0071` from the city of Ghent does not have a language property in the triplestore.
 
 The prefixes used in this section are:
 
@@ -143,7 +143,7 @@ A REST API (Extension 5) exposing the latest validation report is added to the s
         }
     }],
     "meta": {
-        "total": "2565",
+        "total": 2565,
         "page": 1,
         "pageSize": 10,
         "totalPages": 257
@@ -178,8 +178,6 @@ n/a
 n/a
 
 ## Final UI design (and why) (if any)
-
-n/a
 
 The SHACL validation layer has no end-user interface. Validation results are consumed programmatically via the REST API or by querying the triplestore directly. Visualization of validation results is noted as possible future work.
 
