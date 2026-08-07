@@ -116,7 +116,7 @@ The Organizations dataset is used as registry for identifying municipalities and
 
 #### PDF to ELI
 
-The PDF to ELI pipeline extracts content from PDFs and initializes the [three levels of ELI](../#european-legislation-identifier-eli) in the triple store:
+The PDF to ELI pipeline extracts content from PDFs and initializes the [three levels of ELI](../#european-legislation-identifier-eli) in the triplestore:
 
 * [eli:Work](http://data.europa.eu/eli/ontology#Work): is still an empty class with only a UUID provided, but it is important for compliance with ELI, and for later steps in the pipeline that the work level is initialized
 * [eli:Expression](http://data.europa.eu/eli/ontology#Expression): is set with the content of the PDF in its original language

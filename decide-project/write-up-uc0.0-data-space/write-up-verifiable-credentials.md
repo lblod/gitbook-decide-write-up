@@ -153,7 +153,7 @@ In DECIDe, the VC Verifier uses the VC to create a session in the triplestore pr
 
 ```
 
-When this session data is available in the triple store, the authorization layer with ODRL is able to verify that the user is part of the `ext:organizationMemberParty` :
+When this session data is available in the triplestore, the authorization layer with ODRL is able to verify that the user is part of the `ext:organizationMemberParty` :
 
 ```
 ext:organizationMemberParty a odrl:PartyCollection ;
@@ -434,7 +434,7 @@ As an extra safety precaution, We can add an extra step to the first (Request a 
 ## Testing approach
 
 The Credential user journeys described above were used for testing the Verifiable Credential interaction with users using a Paradym or EUDI wallet application.
-We created a separate graph in the triple store to monitor the interaction with users: each step in the issuance or verification process is logged with an event.
+We created a separate graph in the triplestore to monitor the interaction with users: each step in the issuance or verification process is logged with an event.
 
 Consortium partner UI! built its own Verifiable Credential issuer so the trusted issuers list implementation can be tested.
 

@@ -142,7 +142,7 @@ Node shapes allow to target certain nodes in the graph. Nodes that have a certai
     sh:targetClass eli:Expression .
 ```
 
-When we have data in the triple store as shown below, the shape targets `:decisionInEnglish`:
+When we have data in the triplestore as shown below, the shape targets `:decisionInEnglish`:
 
 ```turtle
 :decisionInEnglish a eli:Expression ;

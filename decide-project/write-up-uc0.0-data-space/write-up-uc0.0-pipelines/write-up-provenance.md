@@ -212,7 +212,7 @@ Besides timing the call to derive `ext:duration`, the context manager also estim
 
 #### Agent and configuration registration
 
-Even though we register all models in the triple store and how they were created, AI Components and AI Systems which wrap and call the models are also parametrized by code version and configuration. Our approach also covers this aspect.&#x20;
+Even though we register all models in the triplestore and how they were created, AI Components and AI Systems which wrap and call the models are also parametrized by code version and configuration. Our approach also covers this aspect.&#x20;
 
 The same shared base package also registers each AI service as a `foaf:Agent` in the triplestore at startup, based on its Docker Compose configuration. This is necessary because the exact same code or model can produce different output depending on how it is configured, e.g. a different prompt, a different environment variable or a different mounted model file, and provenance needs to be able to say "this configuration produced this result", not just "this service produced this result".
 
