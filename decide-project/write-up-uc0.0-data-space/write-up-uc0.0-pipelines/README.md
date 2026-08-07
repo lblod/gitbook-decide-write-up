@@ -508,7 +508,7 @@ The Entity Recognition task takes the English translation of a decision and prod
 
 **Initial entity detection**
 
-An initial detection pass is performed using [PedroDKE/multilingual-ner-abb](https://huggingface.co/PedroDKE/multilingual-ner-abb) (based on [XLM-RoBERTa](https://huggingface.co/FacebookAI/xlm-roberta-base)) to detect entities of the following types:
+An initial detection pass is performed using [lblod/multilingual-ner-abb-improved](https://huggingface.co/lblod/multilingual-ner-abb-improved) (based on [XLM-RoBERTa](https://huggingface.co/FacebookAI/xlm-roberta-base)) to detect entities of the following types:
 
 | Entity               | Description                                                                                                                                  | Example                                                                                                                                                 |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -520,7 +520,7 @@ An initial detection pass is performed using [PedroDKE/multilingual-ner-abb](htt
 
 **Entity refinement**
 
-A second pass refines coarser entity types into specific sub-types using [svercoutere/longformer-classifier-refinement-abb](https://huggingface.co/svercoutere/longformer-classifier-refinement-abb) (based on [Longformer](https://huggingface.co/allenai/longformer-base-4096)): DATE, for instance, is mapped into either context\_date, entry\_date, expiry\_date, legal\_basis\_date, publication\_date, or session\_date. Longformer is used for this refinement step because sub-type classification often requires reading beyond the immediate sentence –whether a date is an entry date or a session date can depend on context several paragraphs away. Longformer's 4,096-token context window (versus standard BERT's 512 tokens) makes this document-level contextual reading feasible.
+A second pass refines coarser entity types into specific sub-types using [lblod/longformer-classifier-refinement-abb](https://huggingface.co/lblod/longformer-classifier-refinement-abb) (based on [Longformer](https://huggingface.co/allenai/longformer-base-4096)): DATE, for instance, is mapped into either context\_date, entry\_date, expiry\_date, legal\_basis\_date, publication\_date, or session\_date. Longformer is used for this refinement step because sub-type classification often requires reading beyond the immediate sentence –whether a date is an entry date or a session date can depend on context several paragraphs away. Longformer's 4,096-token context window (versus standard BERT's 512 tokens) makes this document-level contextual reading feasible.
 
 The output remains a span, meaning the refinement model might modify for example (35, 48, LOCATION) into (35, 48, context\_location).
 
