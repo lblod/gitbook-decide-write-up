@@ -71,7 +71,7 @@ The DECIDe data space connects local governments from different countries and ju
 
 The existing mu-authorization/sparql-parser stack (in use in the LBLOD ecosystem) already enforces access control at the SPARQL endpoint level, meaning all data-accessing services automatically respect the same rules, but its policies are expressed in a bespoke Lisp-like configuration language with no standardized representation. This makes access rules explicit but application-specific: they cannot be understood by other systems, verified by external tooling, or reused across organizational boundaries.
 
-ODRL –the Open Digital Rights Language, a W3C standard already mandated by the DS4SSCC Blueprint– addresses this directly. As an RDF vocabulary, ODRL fits naturally into the linked-data architecture of DECIDe: policies can be stored in the same triplestore as the data they govern, consumed by standards-aware tooling, and shared across data space participants. **By extending sparql-parser to read and enforce ODRL policies directly from the triplestore, DECIDe gains interoperable, machine-readable access control without replacing its existing enforcement infrastructure**.
+ODRL –the Open Digital Rights Language, a W3C standard already mandated by the DS4SSCC Blueprint– addresses this directly. As an RDF vocabulary, ODRL fits naturally into the linked-data architecture of DECIDe: policies can be stored in the same triplestore as the data they govern, consumed by standards-aware tooling, and shared across data space participants. **By extending sparql-parser to read and enforce ODRL policies, DECIDe gains interoperable, machine-readable access control without replacing its existing enforcement infrastructure**.
 
 ### Target audience / Personas
 
