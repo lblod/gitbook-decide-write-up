@@ -499,13 +499,17 @@ As a general approach, the text is broken down into sentences and a line number 
 
 <table><thead><tr><th width="212.326171875">Entity</th><th>Description</th></tr></thead><tbody><tr><td>TITLE</td><td>The official title of the municipal decision or document.</td></tr><tr><td>PARTICIPANTS</td><td>A metadata block listing the individuals involved in the meeting or decision. This often includes lists of who was present (nl: <em>Aanwezig</em>), excused/absent (nl: <em>Verontschuldigd</em>), the responsible official (nl: <em>Verantwoordelijk</em>), the secretary (nl: <em>Secretaris</em>), etc.</td></tr><tr><td>MOTIVATION</td><td>The contextual background, reasoning, and justification for the decision. This includes the direct cause or trigger (nl: <em>aanleiding</em>)</td></tr><tr><td>PREVIOUS_DECISIONS</td><td>Specific references, citations, or summaries of prior decisions that are directly linked to the current document and provide legal or historical context for the resolution being passed.</td></tr><tr><td>LEGAL_FRAMEWORK</td><td>Citations of the specific laws, regulations, or legal precedents. This includes both the general regulations that give the municipality the authority to act (nl: <em>regelgeving waaruit blijkt dat het orgaan bevoegd is/Regelgeving bevoegdheid</em>) and the specific legal grounds on which this particular decision is based (nl: <em>op basis van welke regels (rechtsgronden) wordt deze beslissing genomen/Wetgeving</em>).</td></tr><tr><td>DECISION</td><td>The core, binding content of the decision; the text that outlines what is being formally enacted, ruled, or established.</td></tr><tr><td>VOTING</td><td>The specific record of votes. This can range from a simple statement (e.g., "unanimously adopted", "20 votes for, 5 against") to a detailed breakdown including the names of proponents (nl: <em>voorstanders</em>), opponents (nl: <em>tegenstanders</em>), and abstentions (nl: <em>onthouding(en)</em>).</td></tr><tr><td>ARTICLE</td><td>The specific, numbered provisions, rules, or regulations that make up the operative part of the decision (e.g., "Article 1," "Article 2").</td></tr></tbody></table>
 
+These are stored with following predicates:
+
+<table data-search="false"><thead><tr><th>Segment label</th><th>Predicate</th></tr></thead><tbody><tr><td><code>PARTICIPANTS</code></td><td><code>ext:participants</code></td></tr><tr><td><code>MOTIVATION</code></td><td><code>ext:motivation</code></td></tr><tr><td><code>PREVIOUS_DECISIONS</code></td><td><code>ext:previous_decisions</code></td></tr><tr><td><code>LEGAL_FRAMEWORK</code></td><td><code>ext:legal_framework</code></td></tr><tr><td><code>DECISION</code></td><td><code>ext:decision</code></td></tr><tr><td><code>VOTING</code></td><td><code>ext:voting</code></td></tr><tr><td><code>ARTICLE</code></td><td><code>ext:article</code></td></tr></tbody></table>
+
 #### Entity Recognition Task
 
 The Entity Recognition task takes the English translation of a decision and produces structured, language-linked annotations for named entities found within it. It works in four steps: an initial detection pass identifies entity spans and their coarse type; a refinement pass classifies those into specific sub-types; a formatting pass converts the raw text spans into structured linked-data representations; and finally, an entity projection step maps all annotations back from the English translation to the original source-language text. The output is a set of `oa:Annotation` triples in the triplestore, linked to both the English and source-language expressions of the decision.
 
 **Initial entity detection**
 
-An initial detection pass is performed using [PedroDKE/multilingual-ner-abb](https://huggingface.co/PedroDKE/multilingual-ner-abb) (based on [XLM-RoBERTa](https://huggingface.co/FacebookAI/xlm-roberta-base)) to detect entities of the following types:
+An initial detection pass is performed using [lblod/multilingual-ner-abb-improved](https://huggingface.co/lblod/multilingual-ner-abb-improved) (based on [XLM-RoBERTa](https://huggingface.co/FacebookAI/xlm-roberta-base)) to detect entities of the following types:
 
 | Entity               | Description                                                                                                                                  | Example                                                                                                                                                 |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -517,7 +521,7 @@ An initial detection pass is performed using [PedroDKE/multilingual-ner-abb](htt
 
 **Entity refinement**
 
-A second pass refines coarser entity types into specific sub-types using [svercoutere/longformer-classifier-refinement-abb](https://huggingface.co/svercoutere/longformer-classifier-refinement-abb) (based on [Longformer](https://huggingface.co/allenai/longformer-base-4096)): DATE, for instance, is mapped into either context\_date, entry\_date, expiry\_date, legal\_basis\_date, publication\_date, or session\_date. Longformer is used for this refinement step because sub-type classification often requires reading beyond the immediate sentence –whether a date is an entry date or a session date can depend on context several paragraphs away. Longformer's 4,096-token context window (versus standard BERT's 512 tokens) makes this document-level contextual reading feasible.
+A second pass refines coarser entity types into specific sub-types using [lblod/longformer-classifier-refinement-abb](https://huggingface.co/lblod/longformer-classifier-refinement-abb) (based on [Longformer](https://huggingface.co/allenai/longformer-base-4096)): DATE, for instance, is mapped into either context\_date, entry\_date, expiry\_date, legal\_basis\_date, publication\_date, or session\_date. Longformer is used for this refinement step because sub-type classification often requires reading beyond the immediate sentence –whether a date is an entry date or a session date can depend on context several paragraphs away. Longformer's 4,096-token context window (versus standard BERT's 512 tokens) makes this document-level contextual reading feasible.
 
 The output remains a span, meaning the refinement model might modify for example (35, 48, LOCATION) into (35, 48, context\_location).
 
@@ -530,6 +534,15 @@ After extraction, the raw text spans must be parsed into structured, machine-rea
 Location entities are routed to a dual-head NER model implemented in the [decide-location-formatter](https://github.com/semantic-ai/decide-location-formatter) (based on [xlm-roberta-base](https://huggingface.co/FacebookAI/xlm-roberta-base)) that decomposes the free text span into structured address components (street, house number, postcode, city, etc.) and produces Nominatim-compatible address strings for later geocoding as part of the Named Entity Linking service.
 
 At the end of this step, the span-based detections are translated into linked data, where possible based on the ELI and LOCN ontologies. They are then saved as `oa:Annotation`, linked to the English Expression in the triplestore.
+
+The predicates for the detected entities are as follows:\
+NER label → RDF predicate mapping
+
+All mapping is done in `map_entity_to_annotations()` in `src/entity_mappers.py`.
+
+`DATE` and `LOCATION` are never mapped directly: they are refined into the fine-grained labels below by `EntityRefiner.refine` before mapping. Every label in this table is work-bound — if no `eli:Work` URI can be resolved for the expression, the mapping is skipped and no RDF is emitted.
+
+<table data-search="false"><thead><tr><th>Label</th><th>Predicate</th></tr></thead><tbody><tr><td><code>publication_date</code></td><td><code>eli:date_publication</code></td></tr><tr><td><code>context_date</code></td><td><code>dct:date</code></td></tr><tr><td><code>entry_date</code></td><td><code>eli:first_date_entry_in_force</code></td></tr><tr><td><code>entry_date</code></td><td><code>eli:date_applicability</code></td></tr><tr><td><code>expiry_date</code></td><td><code>eli:date_no_longer_in_force</code></td></tr><tr><td><code>expiry_date</code></td><td><code>eli:date_applicability</code></td></tr><tr><td><code>context_period</code></td><td><code>dct:date</code></td></tr><tr><td><code>validity_period</code></td><td><code>dct:extent</code></td></tr><tr><td><code>validity_period</code></td><td><code>eli:realizes</code></td></tr><tr><td><code>validity_period</code></td><td><code>eli:date_applicability</code></td></tr><tr><td><code>session_date</code></td><td><code>eli-dl:activity_date</code></td></tr><tr><td><code>context_location</code></td><td><code>dct:spatial</code></td></tr><tr><td><code>impact_location</code></td><td><code>prov:atLocation</code></td></tr><tr><td><code>MANDATARY</code></td><td><code>eli-dl:had_participant_person</code></td></tr><tr><td><code>ADMINISTRATIVE_BODY</code></td><td><code>eli:passed_by</code></td></tr><tr><td><code>LEGAL_GROUND</code></td><td><code>eli:cites</code></td></tr></tbody></table>
 
 **Entity Projection**
 
@@ -642,7 +655,13 @@ n/a
 
 ## Testing approach
 
-<mark style="background-color:$warning;">TO ADD: Decisions from other Flemish cities as a check mechanism</mark>
+In DECIDe, we focussed on practical use, hence the evaluation was not performed from an academic perspective but focussed on introducing models and algorithms that could get reliably extract the right information from decisions to enrich the decisions in the data space. This means we did not perform massive benchmarks comparing many different approaches through standardized testing approaches. Specifically for UC0.0, we chose NER algorithms along with LLM for text segmentation. In addition, we also used LLMs for translating to support the multilingual setting.&#x20;
+
+Our choice of models was guided mainly by practical considerations:&#x20;
+
+* Among the best available at the time. We selected models that were widely recognised as strong performers at the moment we made the decision, rather than constantly switching to every newer version that appeared.&#x20;
+* The right size to run on our own systems. For the language models we looked for a sensible balance in size. A model needed to be big enough to read a meaningful amount of text at once, so that we did not have to cut every document into tiny pieces just to fit within the limited amount of text a model can consider in one go. At the same time it could not be so big that running it became impractical. We deliberately wanted to run these models on our own infrastructure rather than depending on an outside paid service.&#x20;
+* Open and possible to run ourselves. Following from the point above, we favoured openly available models that we could install and control on our own systems. When relying on external providers, we chose European providers and technology.&#x20;
 
 ### Freiburg
 
@@ -676,6 +695,12 @@ After the project, Bamberg plans to further assess:
 * the feasibility of embedding the annotation workflow into administrative authoring processes, providing annotations already during document creation.
 
 These evaluations will inform the decision on the long-term adoption of the NER/NEL pipeline within the city's digital infrastructure.
+
+### Testing generalization performance
+
+A model that has only ever seen documents from a single municipality runs the risk of learning the appearance of that municipality’s documents instead of understanding what the documents actually say. Since a large part of our early material came from Ghent, there was a genuine risk that the models would become too focused on the specific layout and wording used there.&#x20;
+
+To prevent this, we deliberately broadened the material that we trained and tested on so that it covered a wide range of cities. We used the meeting minutes of local governments from several other Flemish cities, and we added documents from the German cities of Bamberg and Freiburg as well. By bringing together this variety of sources, each with its own templates, phrasing and structure, we help the models focus on the meaning of a decision rather than on the particular style of any single publisher.&#x20;
 
 ### Risks and mitigations
 
