@@ -253,7 +253,7 @@ A lightweight UI that surfaces the latest validation report in a human-readable 
 
 A [demo video of the data quality manager](https://www.youtube.com/watch?v=0R8QUt8Fp84\&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App\&index=2). The video goes step-by-step through the validation process: what are shapes, how does it fetch data, what does the validation service output (logs and REST API). As described above, the service will run automatically using a cron mechanism and will validate all the decisions in batches, but this can take a while. For demonstration purposes, we loaded a sample set to show end-to-end the results.
 
-The validation results of the DECIDe server are available through this REST API: [http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues](http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues) <mark style="color:$warning;">Service will be back online after review here:</mark> [<mark style="color:$warning;">https://github.com/lblod/loket-report-generation-service/pull/17</mark>](https://github.com/lblod/loket-report-generation-service/pull/17)
+The validation results of the DECIDe server are available through this REST API: [http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues](http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues) 
 
 {% embed url="https://github.com/lblod/app-decide/blob/development/config/reports/shacl/work.ttl" %}
 
