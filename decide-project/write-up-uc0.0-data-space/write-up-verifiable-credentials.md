@@ -4,7 +4,7 @@ description: Universal Trust Registry
 
 # Write-up Verifiable Credentials
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 ## Description UC/wanted deliverable
 
@@ -96,11 +96,15 @@ See below [#credential-user-journeys](write-up-verifiable-credentials.md#credent
 
 ### Data sources
 
+Verifiable Credentials do not integrate data sources.
+
 | Data source | Type/category | Brief description |
 | ----------- | ------------- | ----------------- |
 |             |               |                   |
 
 ### Datasets available in the data space
+
+Verifiable Credentials are not exposed as datasets in the data space.
 
 | Dataset | IdP/Authentication service | Country of origin | Domain | Shared within the project | Reused within the project |
 | ------- | -------------------------- | ----------------- | ------ | ------------------------- | ------------------------- |
@@ -433,15 +437,13 @@ As an extra safety precaution, We can add an extra step to the first (Request a 
 
 ## Testing approach
 
-The Credential user journeys described above were used for testing the Verifiable Credential interaction with users using a Paradym or EUDI wallet application.
-We created a separate graph in the triplestore to monitor the interaction with users: each step in the issuance or verification process is logged with an event.
+The Credential user journeys described above were used for testing the Verifiable Credential interaction with users using a Paradym or EUDI wallet application. We created a separate graph in the triplestore to monitor the interaction with users: each step in the issuance or verification process is logged with an event.
 
 Consortium partner UI! built its own Verifiable Credential issuer so the trusted issuers list implementation can be tested.
 
 ### Risks & mitigations
 
-VC standards and wallet applications are still in flux, leading to the risk that our implementation will not be up to date after the project.
-We tried to mitigate this by supporting two distinct wallets, and having a clear audit trail of logs for debugging later.
+VC standards and wallet applications are still in flux, leading to the risk that our implementation will not be up to date after the project. We tried to mitigate this by supporting two distinct wallets, and having a clear audit trail of logs for debugging later.
 
 ## Possible future work
 
