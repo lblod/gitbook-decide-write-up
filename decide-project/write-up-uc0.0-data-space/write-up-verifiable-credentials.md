@@ -98,17 +98,9 @@ See below [#credential-user-journeys](write-up-verifiable-credentials.md#credent
 
 Verifiable Credentials do not integrate data sources.
 
-| Data source | Type/category | Brief description |
-| ----------- | ------------- | ----------------- |
-|             |               |                   |
-
 ### Datasets available in the data space
 
 Verifiable Credentials are not exposed as datasets in the data space.
-
-| Dataset | IdP/Authentication service | Country of origin | Domain | Shared within the project | Reused within the project |
-| ------- | -------------------------- | ----------------- | ------ | ------------------------- | ------------------------- |
-|         |                            |                   |        |                           |                           |
 
 ### Data standards
 
