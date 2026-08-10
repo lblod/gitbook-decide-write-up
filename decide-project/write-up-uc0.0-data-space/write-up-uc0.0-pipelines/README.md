@@ -628,9 +628,7 @@ However, we noticed that this resulted in quite non-deterministic behavior of th
 
 This may reduce the number of entities that we can find true URIs for in the named entity linking phase, but we preferred predictability and performance over potentially discovering more links. Especially given that these links may not be trustworthy given that they can result from SPARQL endpoints that we didn't approve the contents of.
 
-TODO: A side-by-side mapping of how these use cases will be developed in each of the pilot sites
-
-alignment with Use Cases and local policies in these documents. From the titles this is to be expected.
+**TODO**: A side-by-side mapping of how these use cases will be developed in each of the pilot sites. alignment with Use Cases and local policies in these documents. From the titles this is to be expected.
 
 ### Pilot Partners
 
