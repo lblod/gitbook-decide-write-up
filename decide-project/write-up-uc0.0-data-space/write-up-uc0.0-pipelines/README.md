@@ -86,8 +86,9 @@ With this approach however, the data gathering has a big overhead because of how
 
 The pipelines are operated by technical staff; non-technical end users are not exposed to them directly. The primary audiences are data engineers who configure and monitor pipeline runs and AI enrichment providers who operate the annotation steps.
 
-<table><thead><tr><th width="284.6591796875">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P1</strong> Original decision data provider</td><td>Publishes LD&#x26;L online. <mark style="background-color:$warning;">The pipeline harvests their data automatically; they are not active pipeline users but they are the source.</mark></td></tr><tr><td><strong>P3</strong> Enrichment provider</td><td>Operates and monitors the AI annotation pipelines, and verifies that annotation results are correctly written to the triplestore.</td></tr><tr><td><strong>P6</strong> Data engineer</td><td>Configures the pipeline system: defines new jobs, updates cron schedules, connects new data sources, diagnoses failed tasks via the job dashboard, and manages delta notifier configuration</td></tr></tbody></table>
+<table><thead><tr><th width="284.6591796875">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P1</strong> Original decision data provider</td><td>Publishes LD&#x26;L online; they are not active pipeline users but they are the source. The pipeline harvests their data automatically, either by a scheduled process or as a one-time process.</td></tr><tr><td><strong>P3</strong> Enrichment provider</td><td>Operates and monitors the AI annotation pipelines, and verifies that annotation results are correctly written to the triplestore.</td></tr><tr><td><strong>P6</strong> Data engineer</td><td>Configures the pipeline system: defines new jobs, updates cron schedules, connects new data sources, diagnoses failed tasks via the job dashboard, and manages delta notifier configuration</td></tr></tbody></table>
 
+Note that sometimes a single organization can fill multiple of these roles. For instance, Bamberg can provide data as P1, but then also operate its own enrichment as P3 and have its own Data engineers as P6 configure the pipelines.
 ### Functionality (requirements)
 
 The pipeline system covers two stages. The first is ingestion and normalization: harvesting LD\&L from OSLO, OParl, and PDF sources, converting each to ELI, and writing the result to the triplestore. The second is AI enrichment: running AI pipelines over normalized decisions and storing results as `oa:Annotation` triples.
@@ -627,9 +628,7 @@ However, we noticed that this resulted in quite non-deterministic behavior of th
 
 This may reduce the number of entities that we can find true URIs for in the named entity linking phase, but we preferred predictability and performance over potentially discovering more links. Especially given that these links may not be trustworthy given that they can result from SPARQL endpoints that we didn't approve the contents of.
 
-TODO: A side-by-side mapping of how these use cases will be developed in each of the pilot sites
-
-alignment with Use Cases and local policies in these documents. From the titles this is to be expected.
+**TODO**: A side-by-side mapping of how these use cases will be developed in each of the pilot sites. alignment with Use Cases and local policies in these documents. From the titles this is to be expected.
 
 ### Pilot Partners
 
@@ -754,18 +753,17 @@ As a next development step, the City of Bamberg will transition from JSON-based 
 
 ### Possible future work GHENT related
 
-Firstly Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website, the decision on publishing the overviews can be made topic by topic. It will be decided as questions come from the city services.
+Firstly Ghent will test and implement the NER and NEL services that are realized in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website, the decision on publishing the overviews can be made topic by topic. It will be decided as questions come from the city services.
 
 Ghent will keep checking evolutions in the ABB development and possibly connect to them:
 
 * When other use cases evolve (like the SDG solution or new developments), we will check if we can connect to these pipelines.
-* A service which matches decisions with the local strategy or strategic objectives (like energy shift, rewilding, mobility targets, ...) might be very interesting. This makes the SDG use case a very relevant test case for the city of Ghent.
+* A service which matches decisions with the local strategy or strategic objectives (like energy shift, re-wilding, mobility targets, ...) might be very interesting. This makes the SDG use case a very relevant test case for the city of Ghent.
 
-For information that is crucial for the city Ghent wants to host the services on its own services, like it does for the NER and NEL services on locations. Setup will be based on the exaples of the ABB pipelines.
+For information that is crucial for the city Ghent, it wants to host the services on its own infrastructure, like it does for the NER and NEL services on locations. Setup will be based on the examples of the ABB pipelines.
 
-## <mark style="background-color:$warning;">Relevant links</mark>
 
-* Harvester frontend: [https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting](https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting)
-* PDF scraper service: [https://github.com/semantic-ai/decide-pdf-scraper](https://github.com/semantic-ai/decide-pdf-scraper)
-* PDF content extraction service: [https://github.com/semantic-ai/decide-pdf-content-extraction](https://github.com/semantic-ai/decide-pdf-content-extraction)
+## Relevant links
+
+* Pipeline management dashboard (requires login): [https://dashboard.decide.lblod.info](https://dashboard.decide.lblod.info)
 * Webscraper for ALLRIS (Bamberg): [https://gitlab.com/DarkSirath/linkinallris](https://gitlab.com/DarkSirath/linkinallris)
