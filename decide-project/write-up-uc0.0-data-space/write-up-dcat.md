@@ -91,14 +91,15 @@ Three types of endpoints can be described in the catalog: SPARQL endpoints, LDES
 
 ### Datasets available in the data space
 
-DCAT Datasets (with distributions) are generated using the DECIDe [`publish dataset`](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset#dcat) script. Currently, 4 datasets are configured:
+DCAT Datasets (with distributions) are generated using the DECIDe [`publish dataset`](https://github.com/lblod/app-decide/tree/development/scripts/project/publish_dataset#dcat) script. Currently, 5 datasets are configured:
 
-| Dataset                                                                                                                                                                          | IdP/Authentication service | Country of origin | Domain     | Shared within the project | Reused within the project |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------------- | ---------- | ------------------------- | ------------------------- |
-| [ELI metadata](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L26C29-L26C77) (expression + work + manifestation + annotation)  | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
-| [Codelist annotations (SDG)](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L3)                                                | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
-| [Restricted Mobility Zone (RMZ) Concept annotations + locations](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L14C29-L14C91) | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
-| [Human validation annotations](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L36)                                             | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
+| Dataset                                                                                                                                                                | IdP/Authentication service | Country of origin | Domain     | Shared within the project | Reused within the project |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------------- | ---------- | ------------------------- | ------------------------- |
+| [ELI metadata](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L50) (expression + work + manifestation)               | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
+| [Entities](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L3) (NER and NEL annotations)                              | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
+| [Codelist annotations (SDG)](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L3)                                      | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
+| [Restricted Mobility Zone (RMZ) Concept annotations + locations](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L21) | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
+| [Human validation annotations](https://github.com/lblod/app-decide/blob/development/scripts/project/publish_dataset/config.json#L36)                                   | Dataspace authentication   | Belgium / Germany | Government | Yes                       | Yes                       |
 
 ### Data standards
 
