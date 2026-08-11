@@ -463,6 +463,104 @@ So given this transformation service, the only other changes needed were:
 
 Once the decisions from the JSON file were transformed into ELI compliant triples, all AI enrichment services from all use cases simply work as before, with no additional changes necessary. As such the addition of the JSON to ELI service is a demonstration case of how the DECIDe project can be extended to work on additional decision source formats.
 
+#### Vlaamse Codex consumption pipeline
+
+References:
+
+- https://codex.vlaanderen.be/
+- https://codex.opendata.api.vlaanderen.be/docs/
+
+The "Vlaamse Codex" contains the complete consolidated body of Flemish legislation from January 1, 1959, to the present. This Codex does not constitute an official publication within the meaning of the Constitution. Only publication in the Belgian Official Gazette has official status.
+
+[**SPARQL endpoint**](https://codex.opendata.api.vlaanderen.be:8888/sparql)
+
+When going over the codex we found some interesting types that could be useful for adding to our dataset:
+
+| Class                                                       | Predicates                                                   |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| http://data.europa.eu/eli/ontology#LegalResource            | http://www.w3.org/1999/02/22-rdf-syntax-ns#type              |
+|                                                             | http://data.europa.eu/eli/ontology#date_document             |
+|                                                             | http://data.europa.eu/eli/ontology#has_part                  |
+|                                                             | http://data.europa.eu/eli/ontology#is_realized_by            |
+|                                                             | http://data.europa.eu/eli/ontology#related_to                |
+|                                                             | http://data.europa.eu/eli/ontology#type_document             |
+| http://data.europa.eu/eli/ontology#LegalResourceSubdivision | http://www.w3.org/1999/02/22-rdf-syntax-ns#type              |
+|                                                             | http://www.w3.org/ns/prov#value                              |
+|                                                             | http://data.europa.eu/eli/ontology#first_date_entry_in_force |
+|                                                             | http://data.europa.eu/eli/ontology#id_local                  |
+|                                                             | http://data.europa.eu/eli/ontology#language                  |
+|                                                             | http://data.europa.eu/eli/ontology#number                    |
+|                                                             | http://data.europa.eu/eli/ontology#realizes                  |
+| http://data.europa.eu/eli/ontology#LegalResourceSubdivision | http://www.w3.org/1999/02/22-rdf-syntax-ns#type              |
+|                                                             | http://www.w3.org/1999/02/22-rdf-syntax-ns#type              |
+|                                                             | http://data.europa.eu/eli/ontology#is_part_of                |
+|                                                             | http://purl.org/dc/terms/type                                |
+|                                                             | http://data.europa.eu/eli/ontology#is_realized_by            |
+
+As always their are some issues we run into when consuming this data. 
+
+- While querying the sparql endpoint we are currently limit to consume with a batch size of 5 resources at a time. The error we are receiving from their end is `Virtuoso 42000 Error D1CTX: Hash dictionary is full, exceeded 10000 entries`
+- There are no modified we can filter on so check what information we already received
+- Not every resource has text content so defining the `epvoc:expressionContent` will end up in text that is appended from multiple resources/predicates 
+- Some have predicates linking to html or xml pages, those can possibly be web-scraped
+  - [html page example](https://www.ejustice.just.fgov.be/eli/besluit/2003/7/28/2003022831)
+  - [xml example](https://codex.opendata.api.vlaanderen.be/api/WetgevingHoofdstukVersie/58771)
+
+[**JSON-LD API**](https://codex.opendata.api.vlaanderen.be:443/api/)
+
+Fetching specific resources are possible through the API endpoints which can return the requested information as `application/ld+json`.
+
+**"Wegeving Document"**
+```json
+{
+  "@type": "http://data.europa.eu/eli/ontology#LegalExpression",
+  "Opschrift": "betreffende het Vlaams Fonds voor de promotie van de produkten van de landbouw, tuinbouw en zeevisserij",
+  "Datum": "1994-03-16T00:00:00",
+  "WetgevingDocumentType": "Besluit van de Vlaamse Regering",
+  "BSDatum": "1994-05-25T00:00:00",
+  "StartDatum": null,
+  "EindDatum": null,
+  "Numac": 1994035606,
+  "Commentaar": "",
+  "Errata": "https://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/1000003/Errata",
+  "Trefwoord": "https://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/1000003/Trefwoorden",
+  "@context": {
+    "Commentaar": "http://purl.org/dc/terms/description",
+    "Datum": "http://data.europa.eu/eli/ontology#date_document",
+    "BSDatum": "http://data.europa.eu/eli/ontology#date_publication",
+    "StartDatum": "http://data.europa.eu/eli/ontology#first_date_entry_in_force",
+    "EindDatum": "http://data.europa.eu/eli/ontology#date_no_longer_in_force",
+    "Numac": "http://data.europa.eu/eli/ontology#id_local",
+    "Opschrift": "http://data.europa.eu/eli/ontology#title",
+    "WetgevingDocumentType": "http://data.europa.eu/eli/ontology#type_document",
+    "Thema": "http://data.europa.eu/eli/ontology#is_about",
+    "Trefwoord": "http://purl.org/dc/terms/subject",
+    "Errata": "http://data.europa.eu/eli/ontology#corrected_by"
+  },
+  "@id": "https://codex.vlaanderen.be/doc/document/1000003"
+}
+```
+
+**"Wetgeving Artikel"**
+```json
+{
+  "@type": "http://data.europa.eu/eli/ontology#LegalResourceSubdivision",
+  "ArtikelNummer": null,
+  "StartDatum": null,
+  "EindDatum": null,
+  "Tekst": null,
+  "Commentaar": null,
+  "@context": {
+    "ArtikelNummer": "http://data.europa.eu/eli/ontology#number",
+    "StartDatum": "http://data.europa.eu/eli/ontology#first_date_entry_in_force",
+    "EindDatum": "http://data.europa.eu/eli/ontology#date_no_longer_in_force",
+    "Tekst": "http://www.w3.org/ns/prov#value",
+    "Commentaar": "http://purl.org/dc/terms/description"
+  },
+  "@id": "https://codex.vlaanderen.be/doc/artikel/1000003"
+}
+```
+
 ### Other explored semantic components (and why not)
 
 n/a
