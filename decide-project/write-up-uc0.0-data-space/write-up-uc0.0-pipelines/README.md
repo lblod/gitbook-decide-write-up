@@ -72,7 +72,7 @@ All three pilot cities contribute data to the pipelines: Ghent (Belgium), Freibu
 
 Ghent publishes data on local decisions via the LBLOD/OSLO data standards and publication schemes. ABB converts this to ELI. Most of the annotations made by ABB are tested via the ABB Human Validation interface which uses the ABB pipelines.
 
-Ghent will also implement the NER and NEL services on location annotation locally (in august 2026). The annotation data will be published on the Ghent LOD environment. Within the Ghent LOD environment locations will be annotated by a link to the city districts as linked open data. This will be tested via the Ghent widget on the QA environment.
+Ghent will also implement the NER and NEL services on location annotation locally (in august 2026). The annotation data will be published on the Ghent LOD environment. **Within the Ghent LOD environment locations will be annotated by a link to the city districts as linked open data. This will be tested via the Ghent widget on the QA environment.**
 
 #### Bamberg
 
@@ -674,7 +674,7 @@ Ghent has been testing:
 * The quality of the AI annotations via the Human Validation Tool. Based on the quality Gent will decide on the local implementation of the NER and NEL services
 * The local implementation of the NER and NEL services on location and the local widgets
   * On the technical aspects (configuration of the services in the container, installing and running the containerized services, querying the LOD, etc)
-  * On the data quality of the AI annotations
+  * On the data quality of the AI annotations and the link to the city district
 
 Testing is split into two fases
 
