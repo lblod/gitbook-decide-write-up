@@ -180,8 +180,8 @@ The testing of the link to the SDG's is a relevant test case for:
 In the DECIDE project Ghent wants to test this features and realise some components that are directly usable for the city.
 
 * Ghent will implement and test the NER And NEL service for the identification of location locally. Data will be published as open data on the Ghent LOD services.
-* Bases on the location Ghent will link locations in the decisions to the list of the [25 city districts](https://stad.gent/nl/over-gent-stadsbestuur/over-gent/gent-25-wijken).
-* Ghent will implement widgets on the city website that shows recents decisions related to prefined topics and city districts
+* Bases on the location Ghent will link locations in the decisions to the list of the [25 city districts](https://stad.gent/nl/over-gent-stadsbestuur/over-gent/gent-25-wijken). To make this possible Ghent will publish the 25 city district as linked open data. In this way the link to to the district can be added as an annotation based on the location that's determined by the NEL service.&#x20;
+* Ghent will implement widgets on the city website that shows recents decisions related to prefined topics and city districts. The widget essentially is a view on the results of the relevant SPARQL query on the linked open data set.&#x20;
 
 Data will be retrieved from the Ghent open data on decisions and annotations, and will be retrieved from the ABB pipelines.
 
