@@ -89,6 +89,7 @@ The pipelines are operated by technical staff; non-technical end users are not e
 <table><thead><tr><th width="284.6591796875">Persona</th><th>Journey</th></tr></thead><tbody><tr><td><strong>P1</strong> Original decision data provider</td><td>Publishes LD&#x26;L online; they are not active pipeline users but they are the source. The pipeline harvests their data automatically, either by a scheduled process or as a one-time process.</td></tr><tr><td><strong>P3</strong> Enrichment provider</td><td>Operates and monitors the AI annotation pipelines, and verifies that annotation results are correctly written to the triplestore.</td></tr><tr><td><strong>P6</strong> Data engineer</td><td>Configures the pipeline system: defines new jobs, updates cron schedules, connects new data sources, diagnoses failed tasks via the job dashboard, and manages delta notifier configuration</td></tr></tbody></table>
 
 Note that sometimes a single organization can fill multiple of these roles. For instance, Bamberg can provide data as P1, but then also operate its own enrichment as P3 and have its own Data engineers as P6 configure the pipelines.
+
 ### Functionality (requirements)
 
 The pipeline system covers two stages. The first is ingestion and normalization: harvesting LD\&L from OSLO, OParl, and PDF sources, converting each to ELI, and writing the result to the triplestore. The second is AI enrichment: running AI pipelines over normalized decisions and storing results as `oa:Annotation` triples.
@@ -654,13 +655,13 @@ n/a
 
 ## Testing approach
 
-In DECIDe, we focussed on practical use, hence the evaluation was not performed from an academic perspective but focussed on introducing models and algorithms that could get reliably extract the right information from decisions to enrich the decisions in the data space. This means we did not perform massive benchmarks comparing many different approaches through standardized testing approaches. Specifically for UC0.0, we chose NER algorithms along with LLM for text segmentation. In addition, we also used LLMs for translating to support the multilingual setting.&#x20;
+In DECIDe, we focussed on practical use, hence the evaluation was not performed from an academic perspective but focussed on introducing models and algorithms that could get reliably extract the right information from decisions to enrich the decisions in the data space. This means we did not perform massive benchmarks comparing many different approaches through standardized testing approaches. Specifically for UC0.0, we chose NER algorithms along with LLM for text segmentation. In addition, we also used LLMs for translating to support the multilingual setting.
 
-Our choice of models was guided mainly by practical considerations:&#x20;
+Our choice of models was guided mainly by practical considerations:
 
-* Among the best available at the time. We selected models that were widely recognised as strong performers at the moment we made the decision, rather than constantly switching to every newer version that appeared.&#x20;
-* The right size to run on our own systems. For the language models we looked for a sensible balance in size. A model needed to be big enough to read a meaningful amount of text at once, so that we did not have to cut every document into tiny pieces just to fit within the limited amount of text a model can consider in one go. At the same time it could not be so big that running it became impractical. We deliberately wanted to run these models on our own infrastructure rather than depending on an outside paid service.&#x20;
-* Open and possible to run ourselves. Following from the point above, we favoured openly available models that we could install and control on our own systems. When relying on external providers, we chose European providers and technology.&#x20;
+* Among the best available at the time. We selected models that were widely recognised as strong performers at the moment we made the decision, rather than constantly switching to every newer version that appeared.
+* The right size to run on our own systems. For the language models we looked for a sensible balance in size. A model needed to be big enough to read a meaningful amount of text at once, so that we did not have to cut every document into tiny pieces just to fit within the limited amount of text a model can consider in one go. At the same time it could not be so big that running it became impractical. We deliberately wanted to run these models on our own infrastructure rather than depending on an outside paid service.
+* Open and possible to run ourselves. Following from the point above, we favoured openly available models that we could install and control on our own systems. When relying on external providers, we chose European providers and technology.
 
 ### Freiburg
 
@@ -697,9 +698,19 @@ These evaluations will inform the decision on the long-term adoption of the NER/
 
 ### Testing generalization performance
 
-A model that has only ever seen documents from a single municipality runs the risk of learning the appearance of that municipality’s documents instead of understanding what the documents actually say. Since a large part of our early material came from Ghent, there was a genuine risk that the models would become too focused on the specific layout and wording used there.&#x20;
+A model that has only ever seen documents from a single municipality runs the risk of learning the appearance of that municipality’s documents instead of understanding what the documents actually say. Since a large part of our early material came from Ghent, there was a genuine risk that the models would become too focused on the specific layout and wording used there.
 
-To prevent this, we deliberately broadened the material that we trained and tested on so that it covered a wide range of cities. We used the meeting minutes of local governments from several other Flemish cities, and we added documents from the German cities of Bamberg and Freiburg as well. By bringing together this variety of sources, each with its own templates, phrasing and structure, we help the models focus on the meaning of a decision rather than on the particular style of any single publisher.&#x20;
+To prevent this, we deliberately broadened the material that we trained and tested on so that it covered a wide range of cities. We used the meeting minutes of local governments from several other Flemish cities, and we added documents from the German cities of Bamberg and Freiburg as well. By bringing together this variety of sources, each with its own templates, phrasing and structure, we help the models focus on the meaning of a decision rather than on the particular style of any single publisher.
+
+### **Ui! partner-side validation of pipeline outputs**
+
+Ui! validated the usability of DECIDe pipeline outputs from the perspective of an external partner-side application. Rather than operating the ingestion or enrichment pipeline locally, Ui! connected its live demo application to the DECIDe data-space endpoints and consumed data that had already passed through the DECIDe pipeline stack.
+
+<figure><img src="../../../.gitbook/assets/image (47).png" alt=""><figcaption><p>UI! Dataspace connector showing results from the DECIDe private SPARQL endpoint</p></figcaption></figure>
+
+The test focused on whether pipeline-generated and data-space-published results could be consumed by a partner component through the access layer. Ui!’s DSP connector accessed the hosted DECIDe private SPARQL endpoint using Bearer authentication and the agreed `dsp-role` header pattern. This confirmed that data made available through the DECIDe pipeline and publication stack can be queried by an external partner-side application once the required access conditions are fulfilled.
+
+This provides an application-layer validation complementing the technical pipeline tests: the pipeline does not only produce ELI-normalized and enriched data internally, but its outputs can also be discovered, accessed and reused by partner-side components in a realistic integration scenario.
 
 ### Risks and mitigations
 
@@ -763,7 +774,20 @@ Ghent will keep checking evolutions in the ABB development and possibly connect 
 For information that is crucial for the city Ghent, it wants to host the services on its own infrastructure, like it does for the NER and NEL services on locations. Setup will be based on the examples of the ABB pipelines.
 
 
+
+### **UI! Partner-side reuse of pipeline-generated datasets**
+
+A possible future extension is to further document and standardize how partner-side applications can consume pipeline-generated datasets without operating the full pipeline locally. Ui!’s implementation shows that a partner application can connect to the DECIDe data-space endpoints and consume protected data through the agreed access mechanism.
+
+For future actors, this could be turned into a repeatable integration pattern: the DECIDe pipeline stack remains responsible for ingestion, conversion and enrichment, while partner-side applications consume the resulting ELI-normalized and enriched data through published endpoints. This would lower the threshold for partners that want to build applications on top of DECIDe data but do not have the resources to operate the complete pipeline infrastructure themselves.
+
+Documentation should clarify which endpoint metadata, access roles, credential requirements and query patterns are needed for such partner-side reuse.
+
 ## Relevant links
 
-* Pipeline management dashboard (requires login): [https://dashboard.decide.lblod.info](https://dashboard.decide.lblod.info)
+* Harvester frontend: [https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting](https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting)
+* PDF scraper service: [https://github.com/semantic-ai/decide-pdf-scraper](https://github.com/semantic-ai/decide-pdf-scraper)
+* PDF content extraction service: [https://github.com/semantic-ai/decide-pdf-content-extraction](https://github.com/semantic-ai/decide-pdf-content-extraction)
 * Webscraper for ALLRIS (Bamberg): [https://gitlab.com/DarkSirath/linkinallris](https://gitlab.com/DarkSirath/linkinallris)
+* Ui! DECIDe demo application consuming DECIDe data-space outputs: [Ui! DECIDe demo application](https://app.decide.ai-native-ri.eu)
+* DECIDe private SPARQL endpoint used for partner-side consumption tests: [DECIDe private SPARQL endpoint](https://ds.decide.lblod.info/api/private/sparql)

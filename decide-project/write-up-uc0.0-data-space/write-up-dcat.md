@@ -175,6 +175,12 @@ A typical client flow is shown below. The client queries the well-known location
 
 <figure><img src="../../.gitbook/assets/lokale-bron-architecture-Dataspace high level architecture(1).jpg" alt=""><figcaption></figcaption></figure>
 
+**Ui! consumption of DECIDe catalogue metadata**
+
+Ui! consumed DECIDe data-space metadata and access information from the existing DCAT/ODRL/SPARQL setup in order to implement a partner-side DSP connector. This demonstrates that the federated catalogue layer can support external partner components: dataset discovery, endpoint information and access conditions can be derived from the catalogue and associated policy metadata, while data access itself remains handled by the participant endpoints described in DCAT.
+
+This confirms the practical value of publishing DCAT metadata together with access-policy information. It allows partner-side tools to discover relevant datasets and connect to the appropriate endpoints without requiring data replication into the consuming application.
+
 ### Final semantic components
 
 The services used to realize the DCAT federation layer are shown in the image below.
@@ -290,3 +296,5 @@ As stated before, currently no create, delete or update support exists in the DC
 | Link to **Bamberg** DCAT LDES in ABB UI                                                                                                      | [https://ds.decide.smartcitybamberg.de/dcat](https://ds.decide.smartcitybamberg.de/ldes/public/1)                                                                             |
 | DCAT **Freiburg** LDES link                                                                                                                  | [https://decide.datenraum-dev.freiburg.de/ldes/public/1](https://decide.datenraum-dev.freiburg.de/ldes/public/1)                                                              |
 | DCAT **Freiburg** Databumps link                                                                                                             | [https://decide.datenraum-dev.freiburg.de/datadumps/](https://decide.datenraum-dev.freiburg.de/datadumps/)                                                                    |
+| Ui! live demo application consuming DECIDe data-space endpoints                                                                              | [Ui! DECIDe demo application](https://app.decide.ai-native-ri.eu)                                                                                                             |
+| DECIDe private SPARQL endpoint used for the license-gated dataset test                                                                       |  [DECIDe private SPARQL endpoint](https://ds.decide.lblod.info/api/private/sparql)                                                                                            |

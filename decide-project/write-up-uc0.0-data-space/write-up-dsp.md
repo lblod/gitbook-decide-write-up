@@ -4,7 +4,7 @@ description: Dataspace Protocol
 
 # Write-up DSP
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 {% hint style="info" %}
 The project proposal does not mention the Dataspace Protocol by name. The team has interpreted DSP alongside DCAT as part of the Federation Layer commitment. This interpretation aligns with the DS4SSCC Reference Architecture, which positions DSP as the interoperability protocol layer sitting above the Federating Catalogue.
@@ -232,11 +232,19 @@ n/a
 
 The DS4SSCC-recommended test suite for DSP compliance is the [DSP-TCK](https://github.com/eclipse-dataspacetck/dsp-tck). The team reviewed DSP-TCK in autumn/winter 2025. At the time, the catalog portion was relatively lightweight –it checked that a response is non-empty and that datasets have the correct id. This by itself does not confirm full functional correctness of a DSP implementation, but this shortcoming may have been resolved with recent developments to DSP-TCK.
 
-Separately, consortium partner [ui!] built a standalone DSP connector on top of DECIDe's SPARQL endpoint, without involvement in designing the underlying DCAT/ODRL data model. This served to validate the hypothesis that, given DCAT, ODRL, and SPARQL, all the information required for a DSP-compliant Catalog layer is already available –Datasets, Distributions, and their associated ODRL Offers could be derived directly from the published data by a separate implementation team.
+Separately, consortium partner \[ui!] built a standalone DSP connector on top of DECIDe's SPARQL endpoint, without involvement in designing the underlying DCAT/ODRL data model. This served to validate the hypothesis that, given DCAT, ODRL, and SPARQL, all the information required for a DSP-compliant Catalog layer is already available –Datasets, Distributions, and their associated ODRL Offers could be derived directly from the published data by a separate implementation team.
+
+**Partner-side DSP connector validation by Ui!**
+
+Consortium partner Ui! implemented a standalone DSP connector on top of the existing DECIDe SPARQL/DCAT/ODRL setup. The connector was connected to the hosted DECIDe private SPARQL endpoint and used Bearer authentication together with a `dsp-role` header to access a license-gated dataset.
+
+This implementation validates an important architectural assumption of the DECIDe DSP analysis: given the existing DCAT, ODRL and SPARQL setup, a DSP-compatible catalogue layer can be implemented by a partner-side component without requiring the DECIDe core team to operate a full DSP stack. Dataset discovery and access information can be derived from the published DCAT/ODRL metadata, while the actual data access can continue to happen through the endpoints described in DCAT.
+
+The Ui! connector therefore serves as a practical mitigation for the risk that consumers expecting a DSP-compatible entry point would otherwise not be able to interact with DECIDe data. For the DECIDe pilot, where the number of consumers is limited and the participants are known, this partner-side connector approach demonstrates sufficient practical interoperability.
 
 ### Risks & mitigations
 
-The primary risk identified during the analysis was that DECIDe datasets would not be accessible via the standard DS4SSCC protocol layer, leaving consumers who expect DSP-compliant endpoints unable to find them. The connector built by [ui!] mitigates this in practice: it demonstrates that a DSP-compliant layer can be built on top of DECIDe's existing DCAT/ODRL/SPARQL setup by a separate team, without requiring the core DECIDe team to build or maintain DSP-specific infrastructure. Within the DECIDe pilot, where the set of data consumers is small and known –limited to the pilot partners– this arrangement is considered sufficient.
+The primary risk identified during the analysis was that DECIDe datasets would not be accessible via the standard DS4SSCC protocol layer, leaving consumers who expect DSP-compliant endpoints unable to find them. The connector built by \[ui!] mitigates this in practice: it demonstrates that a DSP-compliant layer can be built on top of DECIDe's existing DCAT/ODRL/SPARQL setup by a separate team, without requiring the core DECIDe team to build or maintain DSP-specific infrastructure. Within the DECIDe pilot, where the set of data consumers is small and known –limited to the pilot partners– this arrangement is considered sufficient.
 
 ## Possible future work
 
@@ -250,4 +258,4 @@ Should DSP reach a maturity level where interoperability can be reliably achieve
 
 ## Relevant links
 
-<table><thead><tr><th width="226.5830078125">Resource</th><th>Link</th></tr></thead><tbody><tr><td>DSP specification 2025-1</td><td><a href="https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1">https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1</a></td></tr><tr><td>DSP-TCK test suite</td><td><a href="https://github.com/eclipse-dataspacetck/dsp-tck">https://github.com/eclipse-dataspacetck/dsp-tck</a></td></tr></tbody></table>
+<table><thead><tr><th width="226.5830078125">Resource</th><th>Link</th></tr></thead><tbody><tr><td>DSP specification 2025-1</td><td><a href="https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1">https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1</a></td></tr><tr><td>DSP-TCK test suite</td><td><a href="https://github.com/eclipse-dataspacetck/dsp-tck">https://github.com/eclipse-dataspacetck/dsp-tck</a></td></tr><tr><td>Ui! live demo application using the DSP connector: </td><td><a href="https://app.decide.ai-native-ri.eu">Ui! DECIDe demo application</a></td></tr><tr><td>DECIDe private SPARQL endpoint used by the DSP connector</td><td><a href="https://ds.decide.lblod.info/api/private/sparql">DECIDe private SPARQL endpoint</a></td></tr></tbody></table>

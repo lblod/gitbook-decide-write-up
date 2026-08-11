@@ -267,6 +267,12 @@ Our authorization codes are 16 bytes large and have a 1 minute TTL, our authoriz
 
 We choose not to use a transaction code in the DECIDe PoC, in order to avoid additional requirements such as setting up a secondary channel to share the transaction code for the credential (mail, text message, ...).
 
+#### **German partner city issuer implemented by Ui!**
+
+Ui! implemented a Verifiable Credentials issuer for the German partner cities. The issuer was exposed through a `did:web`, with a DID document, issuer metadata and VCT/type metadata. It issues `sd-jwt-vc` credentials and supports the binding and proof mechanisms needed for the DECIDe flow, including `did:key`, `did:web`, `jwk`, JWT proofs with ES256 and a nonce endpoint.
+
+The issuer was tested with the Paradym wallet on iOS and Android using the pre-authorized OID4VCI flow. After the issuer was added to the [DECIDe trusted issuers list](https://github.com/lblod/oid4vc-login-service/blob/9f4a688e2bead99bbaff25e05490ac4a08b223f0/README.md#optional-environment-variables), the generated German city credential could be tested against the DECIDe verifier.
+
 ### Credential Presentation
 
 #### Protocol
@@ -433,6 +439,12 @@ The Credential user journeys described above were used for testing the Verifiabl
 
 Consortium partner UI! built its own Verifiable Credential issuer so the trusted issuers list implementation can be tested.
 
+### **Cross-issuer test with German partner city credential**
+
+The cross-issuer flow was tested with a credential issued by the Ui!/German partner city issuer and presented to the DECIDe verifier. After verifier-side adjustments, the automated test returned accepted, confirming that the German city credential could be verified by the DECIDe verifier.
+
+A manual human round trip was also completed: a fresh credential from the Ui!/German issuer was stored in a Paradym wallet on Android and then used for QR login on the DECIDe verifier at [DECIDe YASGUI authorization interface](https://yasgui.decide.lblod.info/authorization). The flow ended with a successful presentation and sign-in. This confirms the complete issuance, presentation and cross-issuer trust chain from an external trusted issuer to the DECIDe verifier.
+
 ### Risks & mitigations
 
 VC standards and wallet applications are still in flux, leading to the risk that our implementation will not be up to date after the project. We tried to mitigate this by supporting two distinct wallets, and having a clear audit trail of logs for debugging later.
@@ -465,9 +477,9 @@ Once M2M support is in place, a DECIDe Data Space Membership Credential for orga
 * set up a service to interact with the DECIDe OID4VCI issuance service signed with the private key corresponding to their `did:web`,
 * and receive a signed verifiable credential linked to the `did:web`, thus providing proof they adhere to the data space Rulebook.
 
-#### Other issuer services
+#### **Documentation and partner-facing handover**
 
-One of our partners, UI, is considering adding support for DECIDe Verifiable Credentials in their platform. Enabling partners to operate their own issuer services (using the open-source issuer component) would strengthen decentralization and federation of trust. This is something to keep an eye out for, but will likely only be possible after DECIDe concludes.
+Ui! documented its VC issuer, DSP connector and test harness in its project repository during implementation. For broader reuse by project partners and future data-space participants, the shared and partner-facing parts of this documentation should be consolidated in the DECIDe GitBook. This is especially relevant for documenting the expected issuer metadata, trusted-issuer onboarding, wallet test flow, verifier behaviour and the interaction between VC-based login and role-based access to protected datasets.
 
 #### Arbitrary linked data (JSON-LD) credentials
 
