@@ -4,7 +4,7 @@ description: Restricted Mobility Zones
 
 # Write-up UC1 Restricted Mobility Zones
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 {% hint style="warning" %}
 This page is under construction
@@ -92,17 +92,17 @@ Beyond the technical fit, Freiburg's participation in the UC is further reinforc
 
 #### Ghent
 
-As stated in [the data space section](write-up-uc0.0-data-space/#pilot-partners) the annotations on location are very important in the long term vision for Ghent. In UC1 of the DECIDe project this goals is incorporated in a bigger picture: how can we identify decision that establish or modify a Restricted Mobility Zone (RMZ).&#x20;
+As stated in [the data space section](write-up-uc0.0-data-space/#pilot-partners) the annotations on location are very important in the long term vision for Ghent. In UC1 of the DECIDe project this goals is incorporated in a bigger picture: how can we identify decision that establish or modify a Restricted Mobility Zone (RMZ).
 
-The restricted mobilityzones like the pedestrian areas, bike streets and traffic blocks are very important within the Ghent mobility plan, and can sometimes be temperarily altered due to circumstances. Moreover Ghent is working in other projects on establishing on overview of all elements that have an impact on the traffic within the city.&#x20;
+The restricted mobilityzones like the pedestrian areas, bike streets and traffic blocks are very important within the Ghent mobility plan, and can sometimes be temperarily altered due to circumstances. Moreover Ghent is working in other projects on establishing on overview of all elements that have an impact on the traffic within the city.
 
-The combination of the entity recognition and linking of  RMZ decisions, extracting locations and dates, linking locations to geometry registries is very relevant for the city of Ghent. By exposing the resulting structured data through via SPARQL endpoint it is possbile that SPARQL queries and even GIS tools can query directly.&#x20;
+The combination of the entity recognition and linking of RMZ decisions, extracting locations and dates, linking locations to geometry registries is very relevant for the city of Ghent. By exposing the resulting structured data through via SPARQL endpoint it is possbile that SPARQL queries and even GIS tools can query directly.&#x20;
 
 As this solution can be made in a central architecture (as part of a dataspace business model), but also can be used in a decentral architecture (installing it on the city's own servers), Ghent is testing both scenario's. After the projects ends, Ghent is aiming to keep the decentral solution to identify locations.&#x20;
 
-In the decentral solution, locations are being be linked to the 25 city districts. A drupal widget is be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.&#x20;
+In the decentral solution, locations are being be linked to the 25 city districts. A drupal widget is be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.
 
-
+At this moment a seperate GIS layer is not set up. Ghent waits to do this until enough decisions with location annotations are availlable and until data quality is good enough.&#x20;
 
 ### Target audience / Personas
 
@@ -410,19 +410,19 @@ These layers are updated periodically (the current plan is a daily cadence) and 
 
 To test this scenario Ghent is using the pipelines as setup by ABB. In the first phase Ghent has tested the results using the human validation tool. In the way we are using the ABB tools to the maximum extent. In a second phase Ghent has tested if the result can be used from the Ghent infrastructure querying the results via SPARQL.
 
-This scenario might be interesting for further business cases for the dataspace as everything runs centrally and could be a payd feature within the dataspace.&#x20;
+This scenario might be interesting for further business cases for the dataspace as everything runs centrally and could be a payd feature within the dataspace.
 
 **Decentral scenario during the project phases**
 
-Ghent has realised a drupal widget that shows recents decisions for a specific topic within a specific city district.&#x20;
+Ghent has realised a drupal widget that shows recents decisions for a specific topic within a specific city district.
 
-In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup. To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used.  For this scenario the locations are linked to the relevant city district. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.&#x20;
+In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup. To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used. For this scenario the locations are linked to the relevant city district. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.
 
-This scenario is interesting as the city owns the solution and can develop further on this solution. In this scenario the city has the maximon autonomy (data sovereignty).&#x20;
+This scenario is interesting as the city owns the solution and can develop further on this solution. In this scenario the city has the maximon autonomy (data sovereignty).
 
 **Continuation after the DECIDe project**
 
-Ghent aims to keep the decentral setup after the end of the DECIDe project, as it is central to the needs of the city. We want to keep testing and improving the NER and NEL modules. As soon as data quality is adequate enough we will move the widget to production and will rollout the widget bases on the needs of the city services.&#x20;
+Ghent aims to keep the decentral setup after the end of the DECIDe project, as it is central to the needs of the city. We want to keep testing and improving the NER and NEL modules. As soon as data quality is adequate enough we will move the widget to production and will rollout the widget bases on the needs of the city services.
 
 ## Final UI design
 
@@ -457,7 +457,7 @@ Consequently, the user interface for the RMZ use case consists primarily of the 
 
 #### Design of the Ghent widget
 
-To use a widget is an important architectural and design decision 'an sich'. It makes the setup really flexible as the information can be put into the city website wherever the city services want to put it, and where citizen might need this information. This approach is also very usefull as testing can be focussed on specific terms or city districts. Futhermore, this makes a partial rolout possible based on the needs of the city services.&#x20;
+To use a widget is an important architectural and design decision 'an sich'. It makes the setup really flexible as the information can be put into the city website wherever the city services want to put it, and where citizen might need this information. This approach is also very usefull as testing can be focussed on specific terms or city districts. Futhermore, this makes a partial rolout possible based on the needs of the city services.
 
 The design is based on the Ghent styleguide. Users see a list of decisions that is perfectly integrated in the city website and can be handled as any Drupal paragraf within a webpage.
 
@@ -465,7 +465,7 @@ _Example of the front end of the widget:_
 
 <figure><img src="../.gitbook/assets/wegenregister.png" alt=""><figcaption></figcaption></figure>
 
-In the backend the widgets can be configured in the standard drupal interface. In fact, by filling in the form users establish a SPARQL query that queries the selected SPARQL endpoint.&#x20;
+In the backend the widgets can be configured in the standard drupal interface. In fact, by filling in the form users establish a SPARQL query that queries the selected SPARQL endpoint.
 
 _Back end of the widget:_
 
@@ -473,8 +473,7 @@ _Back end of the widget:_
 
 ## Testing approach
 
-Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Human Validation Tool.
-The process described in the [Validating AI annotations about a decision](write-up-uc0.0-data-space/write-up-uc1-restricted-mobility-zones.md#validating-ai-annotations-about-a-decision "mention") is followed.
+Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Human Validation Tool. The process described in the [write-up-uc1-restricted-mobility-zones.md](write-up-uc0.0-data-space/write-up-uc1-restricted-mobility-zones.md#validating-ai-annotations-about-a-decision "mention") is followed.
 
 #### Freiburg
 
@@ -501,14 +500,13 @@ Building on that, planned user tests with stakeholders will provide a more direc
 As stated in the architecture section, Ghent is testing the central and decentral scenario.
 
 * In the central scenario Ghent is using the ABB setup. The main focus is this case is on the quality of the AI annotations with an extra focus on the NER and NEL on location
-* In the decentral scenario the focus of the test is on the Ghent infrastructure and setup of the containers, on the SPARQL queries and on the technical and usability aspects of the Ghent widget.&#x20;
+* In the decentral scenario the focus of the test is on the Ghent infrastructure and setup of the containers, on the SPARQL queries and on the technical and usability aspects of the Ghent widget. The Ghent widget will be the main instrument for these tests.&#x20;
 
 Testing is being done by the Ghent project lead and in a second phase by the city service that assist on drafting decisions.
 
 ### Risks & mitigations
 
-There was the same risk as the Policy Impact Report that we would have to build a Restricted Mobility Zone validation visualization, separate from the human validation tool, which would increase the maintenance effort. Albeit, putting it in the Human Validation Tool was the logical decision here as there is no separate frontend for Restricted Mobility Zones.
-This is mitigated by developing the Restricted Mobility Zone validation inside the Human Validation Tool, along with the other validations. This allows to build it on the same principles, UI, UX...
+There was the same risk as the Policy Impact Report that we would have to build a Restricted Mobility Zone validation visualization, separate from the human validation tool, which would increase the maintenance effort. Albeit, putting it in the Human Validation Tool was the logical decision here as there is no separate frontend for Restricted Mobility Zones. This is mitigated by developing the Restricted Mobility Zone validation inside the Human Validation Tool, along with the other validations. This allows to build it on the same principles, UI, UX...
 
 ## Possible future work
 
@@ -537,25 +535,21 @@ The current implementation for UC1 detects locations and periods and links them 
 ### Possible future work LBLOD related
 
 #### Flemish building and address register
-Originally, the goal was to use the "Vlaamse gebouwen- en adressenregister" (Flemish building and address register: https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/gebouwen-en-adressenregister) to link locations to. However this register only covered locations in Flanders, and therefore was unfit for use with the German partner cities. Nominatim was used as a general purpose solution. As a future work, we would still like to link to the Flemish register as well.
 
+Originally, the goal was to use the "Vlaamse gebouwen- en adressenregister" (Flemish building and address register: https://www.vlaanderen.be/digitaal-vlaanderen/onze-diensten-en-platformen/gebouwen-en-adressenregister) to link locations to. However this register only covered locations in Flanders, and therefore was unfit for use with the German partner cities. Nominatim was used as a general purpose solution. As a future work, we would still like to link to the Flemish register as well.
 
 #### Ghent
 
-Ghent will focus on the rollout of the Ghent widget and therefore on the quality of the annotations on location. The concept of a widget is very relevant as it makes a partial but evolving rollout possible, based on the quality of the anotions and the specific needs of the city services.&#x20;
+Ghent will focus on the rollout of the Ghent widget and therefore on the quality of the annotations on location. The concept of a widget is very relevant as it makes a partial but evolving rollout possible, based on the quality of the anotions and the specific needs of the city services.
 
 ### Possible future work Freiburg related
 
-Beyond the more general future work activities outlined in this section that will improve the quality of the data, Freiburg has specific additional avenues for future work.&#x20;
+Beyond the more general future work activities outlined in this section that will improve the quality of the data, Freiburg has specific additional avenues for future work.
 
-At first, we would like to extend the current database of LD\&E desicions since they cover only parts of relevant RMZ desicions.&#x20;
+At first, we would like to extend the current database of LD\&E desicions since they cover only parts of relevant RMZ desicions.
 
 TODO Freiburg: add content here, (I) Lukas did not have enough time to work on it, might need around 1h more
 
 ## <mark style="background-color:$warning;">Relevant links</mark>
 
-Lblod Hugging Face organization: [https://huggingface.co/lblod](https://huggingface.co/lblod)
-AI generated location and RMZ data can be viewed in the HVT: [https://human-validator.decide.lblod.info](https://human-validator.decide.lblod.info)
-DATEN:RAUM:FREIBURG: [https://www.freiburg.de/pb/datenraum/daten_raum_freiburg.html](https://www.freiburg.de/pb/datenraum/daten_raum_freiburg.html)
-Freiburg geoportal FreiGIS: [https://geoportal.freiburg.de/freigis/](https://geoportal.freiburg.de/freigis/)
-TODO bamberg and Ghent links?
+Lblod Hugging Face organization: [https://huggingface.co/lblod](https://huggingface.co/lblod) AI generated location and RMZ data can be viewed in the HVT: [https://human-validator.decide.lblod.info](https://human-validator.decide.lblod.info) DATEN:RAUM:FREIBURG: [https://www.freiburg.de/pb/datenraum/daten\_raum\_freiburg.html](https://www.freiburg.de/pb/datenraum/daten_raum_freiburg.html) Freiburg geoportal FreiGIS: [https://geoportal.freiburg.de/freigis/](https://geoportal.freiburg.de/freigis/) TODO bamberg and Ghent links?
