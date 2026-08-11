@@ -6,9 +6,7 @@ description: >-
 
 # Write-up UC0.0 Data space
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
-
-
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 {% hint style="warning" %}
 This page is under construction
@@ -58,7 +56,7 @@ The three pilot cities are Ghent (Belgium), Bamberg (Germany), and Freiburg (Ger
 
 #### Bamberg
 
-Bamberg has adopted a Smart City and digitalization strategy. Although participation in this data space is not explicitly mentioned in the strategy, it contributes to achieving its overall goals of digitizing administration processes.&#x20;
+Bamberg has adopted a Smart City and digitalization strategy. Although participation in this data space is not explicitly mentioned in the strategy, it contributes to achieving its overall goals of digitizing administration processes.
 
 Bamberg publishes all of its public data, including decision templates aswell as council meeting minutes in the **CCIS** (Bürgerinformationssystem [https://www.stadt.bamberg.de/buergerinformationssystem/si018](https://www.stadt.bamberg.de/buergerinformationssystem/si018)) as human readable data. The data is provided as the original PDF files and converted HTML on the website.
 
@@ -70,15 +68,15 @@ Freiburg publishes its council and committee data by design as public informatio
 
 #### Ghent
 
-As the City of Ghent is already in the LBLOD/OSLO ecosystem the basic information is already published as linked open data. ABB can access this information via a SPARQL crawler. In this way an overview of local decisions is availlable for ABB.&#x20;
+As the City of Ghent is already in the LBLOD/OSLO ecosystem the basic information is already published as linked open data. ABB can access this information via a SPARQL crawler. In this way an overview of local decisions is availlable for ABB.
 
 Ghent chooses to publish as much decisions as open data as possible. In this manner all decisions that don't contain personal data or other sensible data are published as open data. This includes data from the council (gemeenteraad) and commissions of het council (gemeenteraadscommissies), decisions by the board of mayor and aldermen (college van burgemeester en schepenen) and decisions of the mayor (burgemeesterbesluiten). These decisions can be found in the ['raadpleegomgeving'](https://ebesluitvorming.gent.be/) and in the open data.
 
-In the LBLOD/OSLO ecosystem software vendors have built their own software solutions to write and decide on local decisions and the publish them in a human readable format and as open data.&#x20;
+In the LBLOD/OSLO ecosystem software vendors have built their own software solutions to write and decide on local decisions and the publish them in a human readable format and as open data.
 
-Ghent also wants to use these data without being dependant on these vendors. Therefore Ghent wants to use the linked open data and annotate the data with extra data like thematical medatadata and (georeferenced) location data. This enriched data should also be publised as open data and used in Ghents own drupal widgets. By this widgets Ghent can add the information on the relevant pages of the city website, where people are looking for this information.&#x20;
+Ghent also wants to use these data without being dependant on these vendors. Therefore Ghent wants to use the linked open data and annotate the data with extra data like thematical medatadata and (georeferenced) location data. This enriched data should also be publised as open data and used in Ghents own drupal widgets. By this widgets Ghent can add the information on the relevant pages of the city website, where people are looking for this information.
 
-In the DECIDE project Ghent want to collaborate with ABB on these ideas. The concept of a dataspace with decentral publications, central an decentral data management, and distribution of the data is a usefull concept for these business needs.&#x20;
+In the DECIDE project Ghent want to collaborate with ABB on these ideas. The concept of a dataspace with decentral publications, central an decentral data management, and distribution of the data is a usefull concept for these business needs.
 
 ### Target audience / Personas
 
@@ -154,7 +152,7 @@ The following describes the final architecture for the city of Bamberg at the en
 
 For access and federation, Bamberg implements the DCAT system, publishing an accessible catalog, together with the LDES API as configured by ABB. Because only public data from the CCIS is used, there is currently no need for ODRL or the DSP connector.
 
-Data ingestion initially relied on the PDF to ELI pipeline, for which Bamberg provided website URLs of the local decision template. These URLs include a direct link to the PDF. Later on, Bamberg switched to the JSON to ELI pipeline in order to include additional metadata and to combine the template data with the actual decision data (see [Ingestion Pipelines](https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-uc0.0-pipelines#ingestion-pipelines)).
+Data ingestion initially relied on the PDF to ELI pipeline, for which Bamberg provided website URLs of the local decision template. These URLs include a direct link to the PDF. Later on, Bamberg switched to the JSON to ELI pipeline in order to include additional metadata and to combine the template data with the actual decision data (see [Ingestion Pipelines](write-up-uc0.0-pipelines/#ingestion-pipelines)).
 
 No prior system for data enrichment was in place in Bamberg, since the data did not yet exist in a structured format, but only as semi-structured PDF documents. Some metadata, such as scheduling information, was already provided by the current CCIS. Bamberg now uses the full enrichment implementation provided by ABB, which notably includes annotations of locations, administrations and time data, as well as the classification system for codelists.
 
@@ -168,24 +166,24 @@ For data enrichment and the concrete applications, Freiburg builds directly on t
 
 #### **Ghent**
 
-Ghent alligns as much as possible to the ABB way of building the data space.  For the access and federation layer, the DCAT catalog as configured by ABB is implemented on the servers of the city of Ghent. Data ingestion is realised by the LBLOD/OSLO data format and and the LBLOD standard for publications, as ABB transfers the data to the ELI format.
+Ghent alligns as much as possible to the ABB way of building the data space. For the access and federation layer, the DCAT catalog as configured by ABB is implemented on the servers of the city of Ghent. Data ingestion is realised by the LBLOD/OSLO data format and and the LBLOD standard for publications, as ABB transfers the data to the ELI format.
 
 Data enrichment is essential for the Ghent case. As result of a previous project [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government), Ghent already has a service that adds thematical annotations to local decisions. In the DECIDe project Ghent wants to add an annotation with (georeferenced) location annotations to this. This AI component is set up by ABB and will be implemented on the Ghent servers in august 2026.
 
-Ghent also wants to test if it is feasable to link local decisions to policy guidelines like the SDG's and test the feasibilty of a smart search on local desions. These elements will be tested by  the ABB Human Validation interface.&#x20;
+Ghent also wants to test if it is feasable to link local decisions to policy guidelines like the SDG's and test the feasibilty of a smart search on local desions. These elements will be tested by the ABB Human Validation interface.
 
 The testing of the link to the SDG's is a relevant test case for:
 
 * Checking if local decision can be linked in the future to the city's local policy strategy
 * Checking if local decisions can be linked to regional of national policy. As Flemish and federal government agencies often asked data on in what way local policy is alligned with regional or central strategy document, these can be a very usefull tool for the future
 
-In the DECIDE project Ghent wants to test this features and realise some components that are directly usable for the city.&#x20;
+In the DECIDE project Ghent wants to test this features and realise some components that are directly usable for the city.
 
-* Ghent will implement and test the NER And NEL service for the identification of location locally. Data will be published as open data on the Ghent LOD services.&#x20;
+* Ghent will implement and test the NER And NEL service for the identification of location locally. Data will be published as open data on the Ghent LOD services.
 * Bases on the location Ghent will link locations in the decisions to the list of the [25 city districts](https://stad.gent/nl/over-gent-stadsbestuur/over-gent/gent-25-wijken).
 * Ghent will implement widgets on the city website that shows recents decisions related to prefined topics and city districts
 
-Data will be retrieved from the Ghent open data on decisions and annotations, and will be retrieved from the ABB pipelines.&#x20;
+Data will be retrieved from the Ghent open data on decisions and annotations, and will be retrieved from the ABB pipelines.
 
 Ghent will test and implement the NER and NEL services that are realised in the DECIDE project. As soon as the necessary quality is reached the services will be put in production. By the concept of the widget on the city website decision on publishing the overviews can be decided topic by topic. It will be decided as questions come from the city services.
 
@@ -286,8 +284,7 @@ Developers run the full stack locally via docker-compose to develop and validate
 
 Once validated locally, the stack is tested on ABB's own infrastructure:
 
-The development environment validates new functionality and the integration between services as the application evolves.
-The test environment mirrors the intended production setup and serves as the final check of the application end-to-end — from data ingestion, through semantic enrichment and validation, to federated discovery and access-controlled exposure — before release to pilots.
+The development environment validates new functionality and the integration between services as the application evolves. The test environment mirrors the intended production setup and serves as the final check of the application end-to-end — from data ingestion, through semantic enrichment and validation, to federated discovery and access-controlled exposure — before release to pilots.
 
 The ABB side is also where federation of metadata across pilot sites is tested, verifying that datasets published at one pilot are correctly discoverable and accessible from another, in line with the data space's federated discovery mechanism.
 
@@ -295,4 +292,4 @@ All environments use the same docker-compose based deployment, so testing at eve
 
 ### Pilot-specific testing
 
-Each pilot has only a single environment, configured through its own docker-compose override capturing its specific setup (data sources, pilot-specific services). Pilots can decide their own test approach, such as: running a pipeline in the dashboard, running the [publish dataset](./write-up-dcat.md#datasets-and-datastandards) script to share a dataset, experiment with SPARQL queries, and visual inspect the different frontends.
+Each pilot has only a single environment, configured through its own docker-compose override capturing its specific setup (data sources, pilot-specific services). Pilots can decide their own test approach, such as: running a pipeline in the dashboard, running the [publish dataset](write-up-dcat.md#datasets-and-datastandards) script to share a dataset, experiment with SPARQL queries, and visual inspect the different frontends.

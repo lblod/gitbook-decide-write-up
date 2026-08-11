@@ -19,4 +19,5 @@
 * [Write-up UC1 Restricted Mobility Zones](decide-project/write-up-uc1-restricted-mobility-zones.md)
 * [Write-up UC2 Smart Search](decide-project/write-up-uc2-smart-search.md)
 * [Legal and governance](decide-project/legal-and-governance/README.md)
+  * [Governance proposition after the projectphase](decide-project/legal-and-governance/governance-proposition-after-the-projectphase.md)
   * [Ethical Data Sharing Agreement](decide-project/legal-and-governance/ethical-data-sharing-agreement.md)
