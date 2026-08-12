@@ -463,14 +463,11 @@ So given this transformation service, the only other changes needed were:
 
 Once the decisions from the JSON file were transformed into ELI compliant triples, all AI enrichment services from all use cases simply work as before, with no additional changes necessary. As such the addition of the JSON to ELI service is a demonstration case of how the DECIDe project can be extended to work on additional decision source formats.
 
-#### Vlaamse Codex consumption pipeline
-
-References:
-
-- https://codex.vlaanderen.be/
-- https://codex.opendata.api.vlaanderen.be/docs/
+#### Vlaamse Codex
 
 The "Vlaamse Codex" contains the complete consolidated body of Flemish legislation from January 1, 1959, to the present. This Codex does not constitute an official publication within the meaning of the Constitution. Only publication in the Belgian Official Gazette has official status.
+
+It exposes a SPARQL endpoint and an API that return `application/ld+json`. The sparql endpoint is the most versatile so we tried this one out.
 
 [**SPARQL endpoint**](https://codex.opendata.api.vlaanderen.be:8888/sparql)
 
@@ -560,6 +557,8 @@ Fetching specific resources are possible through the API endpoints which can ret
   "@id": "https://codex.vlaanderen.be/doc/artikel/1000003"
 }
 ```
+
+As the end goal of consuming this Vlaamse Codex data was that it could sit in our DCAT-catalog we ended up adding it through a migration that links to the two distributions (SPARQL + API). This way we expose the data of the codex in our catalog so users can access this ELI data as well.
 
 ### Other explored semantic components (and why not)
 
