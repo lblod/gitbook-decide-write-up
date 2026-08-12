@@ -326,6 +326,8 @@ Answers and corresponding sources were validated using the process described in 
 
 Each pilot city provided a list of example questions, which is used to test the accuracy of the question answering service.
 
+To complement this manual testing, two SPARQL queries ([TODO: link to question review query], [TODO: link to quotation review query]) and a script ([TODO: link to script]) were created to aggregate the human validation results collected so far. The script runs both queries against the triplestore and writes their results to two CSV files. The first query counts, across all generated answers, how many received a positive (thumbs up) review, a negative (thumbs down) review, or no review at all. The second query does the same for the quotations (sources) used to construct those answers. This gives a quick, aggregate view of how well the generated answers and their underlying sources are being received, without needing to inspect individual questions one by one.
+
 ### Deployed Test Instance
 
 The implemented application is accessible at [https://smart-search.decide.lblod.info](https://smart-search.decide.lblod.info)
