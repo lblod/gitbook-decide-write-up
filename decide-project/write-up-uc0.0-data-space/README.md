@@ -300,3 +300,55 @@ All environments use the same docker-compose based deployment, so testing at eve
 ### Pilot-specific testing
 
 Each pilot has only a single environment, configured through its own docker-compose override capturing its specific setup (data sources, pilot-specific services). Pilots can decide their own test approach, such as: running a pipeline in the dashboard, running the [publish dataset](write-up-dcat.md#datasets-and-datastandards) script to share a dataset, experiment with SPARQL queries, and visual inspect the different frontends.
+
+## Possible future work
+
+### Analysis of the possibility of linking FIM-based ontologies
+
+#### What is FIM?
+
+[Federal Information Management (FIM)](https://www.fimportal.de/) is a framework used in Germany by the federal government, states, and municipalities to describe public services (e.g., applying for a national ID card) in a standardized way. The three main components of FIM are:&#x20;
+
+* Service description: A description of the public service for citizens or businesses.
+* Process description: The administrative steps required to deliver the service.
+* Data fields/forms: The information that applicants must provide (e.g., name, address, income). The main advantage of FIM is that service descriptions, processes, and data fields are created once and reused by many authorities.
+
+#### Existing FIM-based ontologies for describing public services
+
+Several [ontologies](https://fusion-jena.github.io/gerps-onto-landingpage/) have been developed to describe information relevant to public services in Germany (e.g., processes and data fields) in accordance with the FIM standard. One of them is the GerPS-Process ontology, which models processes in the German public administration ([Paper](https://dl.gi.de/server/api/core/bitstreams/b183d43b-63a9-4606-b941-93d9834bf162/content)). The latter ontology is already linked to ELI by defining the legal basis as a subclass of the eli legal resource, as depicted in the following figure (red box).
+
+<figure><img src="../../.gitbook/assets/gerps-process.png" alt=""><figcaption></figcaption></figure>
+
+In FIM, each process step is not randomly defined but is always based on a legal basis (e.g., law). A legal basis can belong to one of 20 [predefined types](https://www.xrepository.de/api/xrepository/urn:xoev-de:fim:codeliste:handlungsgrundlagenart_20230301:technischerBestandteilGenericode). Some of those types are:&#x20;
+
+* EU Decision&#x20;
+* EU Regulation&#x20;
+* Act / Statute&#x20;
+* EU Directive (transposed into national law)&#x20;
+* &#x20;Statutory Ordinance / Regulation&#x20;
+* By-law (Satzung)&#x20;
+* Administrative Regulation / Administrative Guideline&#x20;
+* Rules of Procedure&#x20;
+* Resolution / Decision&#x20;
+* Standard / Norm&#x20;
+* Administrative Act
+
+#### Connection with the DECIDe project
+
+One type is “Satzung, “ which corresponds to „local ordinance“ if issued by a municipality. In addition, local ordinances are considered as local decisions in DECIDe. As a result, the connection of local decisions to public service processes can be established if we model the latter at the municipal level following FIM. This can be modeled as follows:
+
+<figure><img src="../../.gitbook/assets/gerps-process-eli.png" alt=""><figcaption></figcaption></figure>
+
+The first step is to select public services that have a local ordinance or city council decision as the corresponding legal basis. E.g, for City Jena, there exist webpages that describe specific services, also referring to the corresponding legal basis (There are, for sure, other machine-readable formats that follow standards):
+
+<figure><img src="../../.gitbook/assets/jena-parking-permit.png" alt=""><figcaption></figcaption></figure>
+
+Other examples from the pilot cities Bamberg and Freiburg:
+
+<figure><img src="../../.gitbook/assets/bamberg-freiburg-parking-permit.png" alt=""><figcaption></figcaption></figure>
+
+The next step is to create FIM-based processes for those services and use them to fill in the GerPS-Process ontology. The last step is to link the resulting knowledge graph to the semantic descriptions of the corresponding local decisions generated within the DECIDe project. Extending the current knowledge graph will allow asking more complex questions and thus generating more complex reports:
+
+* What is the impact of a decision on the delivery of a public service? Which exact process step is concerned?
+* How do these decisions affect the required application documents and the form data fields in the online application process? For example, through the addition, modification, or removal of required documents or data fields.
+* Is a new process actor involved/removed due to the decision?
