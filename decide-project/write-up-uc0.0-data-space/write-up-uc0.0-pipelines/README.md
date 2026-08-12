@@ -645,6 +645,26 @@ For Named Entity Recognition (NER) and Named Entity Linking (NEL), Bamberg uses 
 
 #### Ghent
 
+The city of Ghent has tested a centralised setup as well as a decenterlised setup. A centralised setup might be interesting for the business model of the dataspace, while a decentral setup is ideal for the (data) sovereignty of the city. Therefore Ghent has implemented the UC1 which has most relevance for the Ghent needs, on the city infrastructure, while all use cases are also adressed by the central setup by SPARQL queries or by API calls.&#x20;
+
+**Centralised setup for all use cases**
+
+* For use case 0.1, Ghent uses the ABB infrastructure. The AI services are hosted on the ABB infrastructure and are tested via the human validation tool and the SDG dashboard.
+* For use case 1, Ghent uses the ABB infrastructure. The AI services are hosted on the ABB infrastructuree. . The results are tested via the human validation tool as well as via SPARQL queries.&#x20;
+* For use case 2, Ghent uses the ABB infrastructure. The AI services ar hosted on the ABB infrastructure and are used via the ABB interface. As an extra element, use case 2 is also tested by setup a basis page on the Ghent website (QA) from wich the resulted can be queried by an API call.&#x20;
+
+**Decentral setup for UC 1**
+
+As the ABB AI services are set up in a containerized way, these services can also be implemented on the Ghent infrastructure. Ghent implements these AI services on the infrastructure that was established during a previous project called [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government). Only the NER and NEL services relevant for location annotations are effectively running.&#x20;
+
+Ghent also has started publishing the information on the city district (URI, name, GIS coördinates) as linked open data on the Ghent linked open data infrastructure during the DECIDe project. Ghent enriches the location annotation that results from the implemented AI containers with an extra annotation containing the URI of the relevant city district.&#x20;
+
+As these annotations (from the AI containers as well as the annotations on the city district) are published as linked open data, the results can be consulted by a SPARQL query on the Ghent linked open data.&#x20;
+
+The AI annotations can be consulted via a public facing interface. Ghent chose to inform the public via widget. This widget shows a list of the relevant decisions wich can be inserted on the relevant web pages. In the back end, website writers can configure the widget to query recent decisions based on annotations on topics/themes (as a result of the [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government) project) and annotations on the city district (as a result of the DECIDe project).&#x20;
+
+Working via a widget is an important choice. It empowers website writers to insert the overview of these decisions at the most appropriate place in their website. Working via a widget also makes possible to publish overviews on topical information where the data quality on themes/locations is already good enough, while still training the AI solutions on other themes of location types.&#x20;
+
 ## Final UI design (and why) (if any)
 
 The pipelines' only user-facing interface is the [harvester frontend](./#harvester-frontend) described in the Job Controller section of Final architecture above. It provides an overview of all running and completed jobs, allows users to trigger new job runs manually, and exposes each task's input and results containers for inspection. Because the frontend extends an existing ABB interface for job/task management rather than introducing new interaction patterns, no new design work was required.
