@@ -465,7 +465,7 @@ Once the decisions from the JSON file were transformed into ELI compliant triple
 
 #### Vlaamse Codex
 
-The "Vlaamse Codex" contains the complete consolidated body of Flemish legislation from January 1, 1959, to the present. This Codex does not constitute an official publication within the meaning of the Constitution. Only publication in the Belgian Official Gazette has official status.
+The "Vlaamse Codex" contains the complete consolidated body of Flemish legislation from January 1, 1959, to the present. This Codex does not constitute an official publication within the meaning of the Constitution. Only publication "het staatsblad" has official status.
 
 It exposes a SPARQL endpoint and an API that return `application/ld+json`. The sparql endpoint is the most versatile so we tried this one out.
 
@@ -494,20 +494,21 @@ When going over the codex we found some interesting types that could be useful f
 |                                                             | http://purl.org/dc/terms/type                                |
 |                                                             | http://data.europa.eu/eli/ontology#is_realized_by            |
 
-As always their are some issues we run into when consuming this data. 
+As always their where some challenges we ran into while consuming this data.
 
-- While querying the sparql endpoint we are currently limit to consume with a batch size of 5 resources at a time. The error we are receiving from their end is `Virtuoso 42000 Error D1CTX: Hash dictionary is full, exceeded 10000 entries`
-- There are no modified we can filter on so check what information we already received
-- Not every resource has text content so defining the `epvoc:expressionContent` will end up in text that is appended from multiple resources/predicates 
+- While querying the sparql endpoint we are currently limit to consume with a batch size of 5 resources at a time. The error we are receiving from their end is `Virtuoso 42000 Error D1CTX: Hash dictionary is full, exceeded 10000 entries`. This seems to be because the provider of the endpoint has made limited system resources available, which could be a deliberate choice.
+- There are no modified dates available on we can filter to check what information we already received. This forces us to either make assumptions on the completeness of data based on their publication date or fetching the entire content periodically.
+- Not every resource has text content so defining the `epvoc:expressionContent` will end up in text that is appended from multiple resources/predicates
 - Some have predicates linking to html or xml pages, those can possibly be web-scraped
   - [html page example](https://www.ejustice.just.fgov.be/eli/besluit/2003/7/28/2003022831)
   - [xml example](https://codex.opendata.api.vlaanderen.be/api/WetgevingHoofdstukVersie/58771)
 
 [**JSON-LD API**](https://codex.opendata.api.vlaanderen.be:443/api/)
 
-Fetching specific resources are possible through the API endpoints which can return the requested information as `application/ld+json`.
+Fetching specific resources is possible through the API endpoints which can return the requested information as `application/ld+json`.
 
 **"Wegeving Document"**
+
 ```json
 {
   "@type": "http://data.europa.eu/eli/ontology#LegalExpression",
@@ -539,6 +540,7 @@ Fetching specific resources are possible through the API endpoints which can ret
 ```
 
 **"Wetgeving Artikel"**
+
 ```json
 {
   "@type": "http://data.europa.eu/eli/ontology#LegalResourceSubdivision",
@@ -558,7 +560,7 @@ Fetching specific resources are possible through the API endpoints which can ret
 }
 ```
 
-As the end goal of consuming this Vlaamse Codex data was that it could sit in our DCAT-catalog we ended up adding it through a migration that links to the two distributions (SPARQL + API). This way we expose the data of the codex in our catalog so users can access this ELI data as well.
+The end goal is to run the Vlaamse Codex data through our enrichment pipelines. However, we did not have the time to start this process during the DECIDe project's timeframe. For now we have contented ourselves with adding the dataset to our DCAT service, showing our intent of processing it and informing our data space users of its location.
 
 ### Other explored semantic components (and why not)
 
