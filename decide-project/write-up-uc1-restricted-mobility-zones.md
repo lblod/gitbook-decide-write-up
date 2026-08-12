@@ -100,7 +100,7 @@ The combination of the entity recognition and linking of RMZ decisions, extracti
 
 As this solution can be made in a central architecture (as part of a dataspace business model), but also can be used in a decentral architecture (installing it on the city's own servers), Ghent is testing both scenario's. After the projects ends, Ghent is aiming to keep the decentral solution to identify locations.&#x20;
 
-In the decentral solution, locations are being be linked to the 25 city districts. A drupal widget is be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.
+In the decentral solution, locations are being be linked to the 25 city districts, which are setup during the project as linked open data. A drupal widget is be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.
 
 At this moment a seperate GIS layer is not set up. Ghent waits to do this until enough decisions with location annotations are availlable and until data quality is good enough.&#x20;
 
@@ -416,7 +416,7 @@ This scenario might be interesting for further business cases for the dataspace 
 
 Ghent has realised a drupal widget that shows recents decisions for a specific topic within a specific city district.
 
-In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup. To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used. For this scenario the locations are linked to the relevant city district. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.
+In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup. To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used. For this scenario the locations are linked to the relevant city district, which Ghents starts publishing as linked open data. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.
 
 This scenario is interesting as the city owns the solution and can develop further on this solution. In this scenario the city has the maximon autonomy (data sovereignty).
 
