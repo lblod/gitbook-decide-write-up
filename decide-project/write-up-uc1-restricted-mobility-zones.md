@@ -410,19 +410,19 @@ These layers are updated periodically (the current plan is a daily cadence) and 
 
 To test this scenario Ghent is using the pipelines as setup by ABB. In the first phase Ghent has tested the results using the human validation tool. In the way we are using the ABB tools to the maximum extent. In a second phase Ghent has tested if the result can be used from the Ghent infrastructure querying the results via SPARQL.
 
-This scenario might be interesting for further business cases for the dataspace as everything runs centrally and could be a payd feature within the dataspace.
+This scenario might be interesting for further business cases for the dataspace as everything runs centrally and could be a paid feature within the dataspace.
 
 **Decentral scenario during the project phases**
 
-Ghent has realised a drupal widget that shows recents decisions for a specific topic within a specific city district.
+Ghent has realized a drupal widget that shows recent decisions for a specific topic within a specific city district.
 
-In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developped this tools in a containerized setup. To containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used. For this scenario the locations are linked to the relevant city district, which Ghents starts publishing as linked open data. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.
+In phase 1 we queried the results on the ABB endpoint via SPARQL and integrate them into the widget. We moved fast to phase 2 in which Ghent has set up the NER and NEL modules locally. Therefore ABB has developed this tools in a containerized setup. These containers are installed on the servers of the city of Gent and used locally. For this setup only the NER and NEL functions on location are used. For this scenario the locations are linked to the relevant city district, which Ghent starts publishing as linked open data. The result are used in the Ghent SPARQL endpoint, from which they are queried and integrated in the Drupal widget.
 
-This scenario is interesting as the city owns the solution and can develop further on this solution. In this scenario the city has the maximon autonomy (data sovereignty).
+This scenario is interesting as the city owns the solution and can develop further on this solution. In this scenario the city has the maximum autonomy (data sovereignty).
 
 **Continuation after the DECIDe project**
 
-Ghent aims to keep the decentral setup after the end of the DECIDe project, as it is central to the needs of the city. We want to keep testing and improving the NER and NEL modules. As soon as data quality is adequate enough we will move the widget to production and will rollout the widget bases on the needs of the city services.
+Ghent aims to keep the decentralized setup after the end of the DECIDe project, as it is central to the needs of the city. We want to keep testing and improving the NER and NEL modules. As soon as data quality is adequate enough we will move the widget to production and will rollout the widget based on the needs of the city services.
 
 ## Final UI design
 
