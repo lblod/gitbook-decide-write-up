@@ -494,7 +494,7 @@ When going over the codex we found some interesting types that could be useful f
 |                                                             | http://purl.org/dc/terms/type                                |
 |                                                             | http://data.europa.eu/eli/ontology#is_realized_by            |
 
-As always their where some challenges we ran into while consuming this data.
+There were some challenges we ran into while consuming this data:
 
 - While querying the sparql endpoint we are currently limit to consume with a batch size of 5 resources at a time. The error we are receiving from their end is `Virtuoso 42000 Error D1CTX: Hash dictionary is full, exceeded 10000 entries`. This seems to be because the provider of the endpoint has made limited system resources available, which could be a deliberate choice.
 - There are no modified dates available on we can filter to check what information we already received. This forces us to either make assumptions on the completeness of data based on their publication date or fetching the entire content periodically.
