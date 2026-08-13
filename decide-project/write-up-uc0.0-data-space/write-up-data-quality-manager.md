@@ -4,7 +4,7 @@ description: Data Validation & Monitoring
 
 # Write-up Data Quality Manager
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 ## Description UC/wanted deliverable
 
@@ -20,7 +20,7 @@ Within the project proposal, this maps to the following deliverables and tasks:
 | **D2.5** (Adjusted) Data Quality Manager integrated at relevant pilot sites | **T2.7** Integrate Data Quality Manager in local DS German pilots.                                                              |
 
 {% hint style="info" %}
-This document contains all information for both deliverables/tasks. For D2.5/T2.7 specifically we point towards Pilot Partners and Testing approach specifically.&#x20;
+This document contains all information for both deliverables/tasks. For D2.5/T2.7 specifically we point towards Pilot Partners and Testing approach specifically.
 {% endhint %}
 
 ### Link to other deliverables
@@ -199,9 +199,10 @@ The service uses a cron mechanism to periodically run the validations ([https://
 
 By navigating to the provided REST API `/shacl-reports/latest/issues`, cities see the results of the latest generated report.
 
-ABB uses the REST API (available on https://ds.decide.lblod.info/shacl-reports/latest/issues) to monitor the validation results and analyze what their root causes are. For example, we found that there are expressions where the content (`epvoc:expressionContent`) does not have a language attached. By analyzing the focus node in the validation result, we found that the focus node is an English translated expression, which quickly led us to pinpoint the problem in the [source code](https://github.com/semantic-ai/decide-geocoding-service/blob/5554eb86ab788bb0db342805ffbb2acbefa973c5/src/task/translation.py#L192).
+ABB uses the REST API (available on [https://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues](https://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues)) to monitor the validation results and analyze what their root causes are. For example, we found that there are expressions where the content (`epvoc:expressionContent`) does not have a language attached. By analyzing the focus node in the validation result, we found that the focus node is an English translated expression, which quickly led us to pinpoint the problem in the [source code](https://github.com/semantic-ai/decide-geocoding-service/blob/5554eb86ab788bb0db342805ffbb2acbefa973c5/src/task/translation.py#L192).
 
 Below is a snippet of the validation result:
+
 ```
 {
 "type": "validationresult",
@@ -224,8 +225,7 @@ Below is a snippet of the validation result:
 
 #### High load on triplestore
 
-During testing, we discovered that validating all decisions causes a high load on the triplestore: a validation issue in one municipality typically recurs for every decision. 
-Therefore, we added sampling to validate a limited set of decisions in each validation run. By default, 100 decisions are validated. Also, by default, the service only keeps the latest report (ONLY_KEEP_LATEST_REPORT: true). In combination with sampling, this may cause a validation issue to be removed when a next report is generated. Alternatively, we could remove the environment variable so it defaults back to false.
+During testing, we discovered that validating all decisions causes a high load on the triplestore: a validation issue in one municipality typically recurs for every decision. Therefore, we added sampling to validate a limited set of decisions in each validation run. By default, 100 decisions are validated. Also, by default, the service only keeps the latest report (ONLY\_KEEP\_LATEST\_REPORT: true). In combination with sampling, this may cause a validation issue to be removed when a next report is generated. Alternatively, we could remove the environment variable so it defaults back to false.
 
 #### Batch size tuning
 
@@ -253,7 +253,7 @@ A lightweight UI that surfaces the latest validation report in a human-readable 
 
 A [demo video of the data quality manager](https://www.youtube.com/watch?v=0R8QUt8Fp84\&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App\&index=2). The video goes step-by-step through the validation process: what are shapes, how does it fetch data, what does the validation service output (logs and REST API). As described above, the service will run automatically using a cron mechanism and will validate all the decisions in batches, but this can take a while. For demonstration purposes, we loaded a sample set to show end-to-end the results.
 
-The validation results of the DECIDe server are available through this REST API: [http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues](http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues) 
+The validation results of the DECIDe server are available through this REST API: [http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues](http://ds.decide.lblod.info/shacl-reports/shacl-reports/latest/issues)
 
 {% embed url="https://github.com/lblod/app-decide/blob/development/config/reports/shacl/work.ttl" %}
 
