@@ -80,7 +80,7 @@ Bamberg provides semi-structured data through its CCIS: Templates and minutes ar
 
 For the development phase of the project, Bamberg has refrained from obtaining the OParl-API to test alternative means of data gathering. In the first phase only the PDF data was scraped, later a web scraper was developed to gather meaningful metadata and links within as JSON format. Both formats were tested and could then be turned into ELI via tools provided by ABB
 
-With this approach however, the data gathering has a big overhead because of how the **CCIS** vendor set up the website: Adding new decision data within the DECIDE framework, requires a scraper that has to manually access sequentially the full list of all decisions until all are collected. In order to automate the pipeline for future integration and standardize the requests, Bamberg is planning to obtain the OParl-API.
+With this approach however, the data gathering has a big overhead because of how the **CCIS** vendor set up the website: Adding new decision data within the DECIDE framework, requires a scraper that has to manually access sequentially the full list of all decisions until all are collected. In order to automate the pipeline for future integration and standardizing the requests, Bamberg is obtaining the OParl-API.
 
 ### Target audience / Personas
 
@@ -635,13 +635,29 @@ This may reduce the number of entities that we can find true URIs for in the nam
 
 #### Bamberg
 
-The DECIDE infastructure is currently deployed on a project specific Hetzner server. After the project concludes, it will be migrated to the servers of Bamberg's data platform, which serves as the city's core database, distribution and rights management system across multiple projects.
+The DECIDE infastructure is currently deployed on a project specific Hetzner server. The identifier service handling frontend requests is secured behind a Reverse Proxy and Threat Protection system (using [Traefik and Crowdsec](https://goneuland.de/traefik-ab-v3-6-mit-crowdsec-installieren-und-konfigurieren/)). Within the current project Bamberg runs the whole pipeline itself overriding the docker-compose, only disabling specific services that are not used:&#x20;
 
-Initially, decision data was collected by downloading and converting each PDF individually (see **PDF to ELI pipeline**). Subsequently, Bamberg developed a data scraping tool that extracts the HTML versions of templates and minutes and consolidates them into a structured JSON format. This JSON representation enriches the data with relevant metadata and links the decisions to their corresponding templates (see **JSON to ELI pipeline**). The metadata includes e.g. the dates of the template creation and associated council session, the title of the document and the associated council itself. With this approach, the data can be provided and automated more efficiently, so that Bamberg can provide an up-to-date machine readable repository of decisions.
+* OPARL: oparl-to-eli, harvest\_sameas, harvest\_diff
+* OSLO: lokaal-beslist-consumer, decisions-ghent-filter, oslo-eli-transformer
+* ACMIDM: acmidm-login
 
-For Named Entity Recognition (NER) and Named Entity Linking (NEL), Bamberg uses an external Mistral model, as the current server infrastructure does not reliably support running a local large language model for these tasks.
+After the project concludes, it will be migrated to the servers of Bamberg's data platform, which serves as the city's core database, distribution and rights management system across multiple projects.
+
+Bamberg uses an external service provider for council decisions which handles upload, distribution and publishing in a CCIS of local decision documents. Documents can be accessed as PDF or HTML data from the CCIS website.
+
+<figure><img src="../../../.gitbook/assets/Bamberg architecture.png" alt=""><figcaption><p>Data publication flow for council decisions (red: DECIDE system added additionally)</p></figcaption></figure>
+
+Initially, decision data was collected by downloading and converting each PDF individually (see **PDF to ELI pipeline**). Subsequently, Bamberg developed a data scraping tool that extracts the HTML versions of templates and topics (minutes) and restructures them within a SQL database making it feasible to provide metadata to documents.
+
+<figure><img src="../../../.gitbook/assets/Diagram Bamberg Local Decisions.png" alt=""><figcaption><p>Restructured data from Bamberg's website after using scraping tool</p></figcaption></figure>
+
+Data from this SQL database can then be served in a structured JSON format. This JSON representation enriches the data with relevant metadata and links the decisions to their corresponding templates (see **JSON to ELI pipeline**). The metadata includes e.g. the dates of the template creation and associated council session, the title of the document and the associated council itself. With this approach, the data can be provided and automated more efficiently, so that Bamberg can provide an up-to-date machine readable repository of decisions.
+
+For Named Entity Recognition (NER) and Named Entity Linking (NEL), Bamberg currently uses an external Mistral model, as the current server infrastructure does not reliably support running a local large language model for these tasks. To further test out a wide variety of open and closed models while aligning with strict GDPR-compliance, ISO-27001-certified servers and hosting within Germany, Bamberg decided to use [Ayunis](https://www.ayunis.com/) as a provider and successfully connected it to the DECIDE system.
 
 #### Freiburg
+
+<mark style="color:$warning;">To be added?</mark>
 
 #### Ghent
 
