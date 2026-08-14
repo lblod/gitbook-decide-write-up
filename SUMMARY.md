@@ -21,3 +21,4 @@
 * [Legal and governance](decide-project/legal-and-governance/README.md)
   * [Governance proposition after the projectphase](decide-project/legal-and-governance/governance-proposition-after-the-projectphase.md)
   * [Ethical Data Sharing Agreement](decide-project/legal-and-governance/ethical-data-sharing-agreement.md)
+* [Accompanying research](decide-project/accompanying-research.md)
