@@ -135,7 +135,7 @@ All basic principles on interoperability, data spaces, … and obviously all leg
 * Cost sharing (for the infrastructure)
 * Importance of openness, neutrality, transparency
 * Reliable AI (AI Advisory Board)
-* Trust and transparency (f.i. controllable and explainable AI (posibility to check and correct the annotations (work in progress)) (also see Public trust and transparency assessment)\[SK5]&#x20;
+* Trust and transparency (f.i. controllable and explainable AI (possibility to check and correct the annotations (work in progress)) (also see Public trust and transparency assessment)\[SK5]&#x20;
 
 There is a possibility that the cost sharing principle and the openness of the information might conflict. It will be important to take this into account when putting a business model for the data space in place, if any and if ever.
 

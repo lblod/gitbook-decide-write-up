@@ -139,7 +139,7 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 ```
 
-Tracking human reviews like this gives us a lot of provenance information on the human validations. We know who approved or rejected the annotation, though only with the session information, see future work for how this can be extended to great effect. We also know when the review took place. If a malicious agent would somehow automatically create millions of fake annotations, we would be able to tell from the unrealistic timestamps and filter out annotations from such a period. As discussed in the future work section, we currently don't allow corrections, but with this data model, the human review annotations could be extended to also contain a correction as an additional `oa:hasBody` without breaking the data model.
+Tracking human reviews like this gives us a lot of provenance information on the human validations. We know who approved or rejected the annotation, though only with the session information, see future work for how this can be extended to great effect. We also know when the review took place. If a malicious agent would somehow automatically create millions of fake annotations, we would be able to tell from the unrealistic timestamps and filter out annotations from such a period. For codelist annotations, we also support corrections. In that case the human review process creates a new annotation on the original target with the correct codelist concept and impact as body.
 
 ## Final architecture (and why)
 
@@ -278,7 +278,7 @@ As mentioned earlier, there are levels and depths of validation we could’ve ex
 * A feedback or correction feature, where the user could tell us what the correct validation would be if they let us know the validation is wrong.
 * A feature to validate the three elements (link, type, and discovered entity) separately
 
-Neither of these has been designed or implemented due to time constraints.
+Only adding corrections have been implemented so far, and only for codelist annotations. In this case users can add their own annotation, which has the same target as the AI generated annotation, but sets the body of the annotation to the correct codelist concept and impact.
 
 ## Testing approach
 
@@ -303,7 +303,7 @@ Also, to mitigate the above mentioned risk, ABB created guidelines for each city
 
 #### Annotation correction
 
-The HVT interfaces support binary validation only: a validator can agree or disagree with an AI annotation, but cannot modify it (e.g. reassign the SDG target or change the impact score). Tracking all possible corrections a user might make, while maintaining a usable interface and coherent data model, was considered too complex to deliver within DECIDe scope. Extending the interface to support correction would allow validators to actively improve the annotation dataset rather than merely endorse or reject it.
+The HVT interfaces support binary validation only: a validator can agree or disagree with an AI annotation, but cannot modify it (e.g. reassign the SDG target or change the impact score). Tracking all possible corrections a user might make, while maintaining a usable interface and coherent data model, was considered too complex to deliver within DECIDe scope for all annotations except for codelist annotations. Extending the interface to support correction for segmentation, named entity recognition and named entity linking would allow validators to actively improve the annotation dataset rather than merely endorse or reject it.
 
 #### Vote retraction
 
@@ -311,7 +311,9 @@ Once a vote is cast in the HVT, it is permanent. The reason is structural: becau
 
 #### Feedback on absent annotations
 
-The HV interfaces only surface annotations that the AI models have produced. The user has no way to flag an annotation the model missed entirely. For example, a sustainability officer who knows that a particular decision has environmental impact but finds no SDG mapping for it, currently has no mechanism to record that observation. A future iteration could introduce a reporting option per decision, allowing validators to indicate that an annotation of a given type should exist and optionally suggest the correct value; thereby providing a qualitatively different and richer signal for AI pipeline improvement.
+The HV interfaces only surface annotations that the AI models have produced. The user has no way to flag an annotation the model missed entirely. For example, a sustainability officer who knows that a piece of text refers to a location that was not discovered by our NER AI currently has no mechanism to record that observation. A future iteration could introduce a reporting option per decision, allowing validators to indicate that an annotation of a given type should exist and optionally suggest the correct value; thereby providing a qualitatively different and richer signal for AI pipeline improvement.
+
+Note that this IS actually possible in the codelist-labeling, as you can show the 'no-match-found' annotations here and as a user correct them. This case is much easier to handle as the set of possible annotation body concepts is much smaller and the target of the annotation is an entire expression instead of a piece of text inside an expression.
 
 #### Threshold-based validation
 
