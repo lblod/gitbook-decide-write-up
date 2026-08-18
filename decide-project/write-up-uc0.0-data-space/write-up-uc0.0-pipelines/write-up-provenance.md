@@ -140,7 +140,7 @@ The [Web Annotation Model](./#web-annotation-model) was already briefly introduc
 
 example:myAIAnnotation a oa:Annotation;
   mu:uuid "0ab45594-9909-4aea-a7d9-63476ffe6e97" ;
-  oa:hasBody <http://data.lblod.gift/id/concept/SDG-11> ;
+  oa:hasBody <http://lblod.data.gift/id/concept/SDG-11> ;
   oa:motivatedBy oa:classifying ;
   nif:confidence 0.87 ;
   oa:hasTarget <https://data.arendonk.be/id/besluiten/24.1125.2636.6731>  .
@@ -251,7 +251,7 @@ At startup, the service's Compose definition and mounted configuration files are
   },
   "codelist_prompts": {
     "default": { ... },
-    "http://data.lblod.gift/id/conceptscheme/vap-klimaatadaptatie": { ... }
+    "http://lblod.data.gift/id/conceptscheme/vap-klimaatadaptatie": { ... }
   }
 }
 """ .
