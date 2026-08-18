@@ -207,7 +207,7 @@ Expanding our table above, and applying it to an example within the context of D
 
 #### Detailed mapping: ODRL to sparql-parser's Lisp-style configuration
 
-{% hint style="warning" %}
+{% hint style="info" %}
 This section requires technical knowledge of how to write authorization policies for sparql-parser using its Lisp-style configuration interface. If you are looking for an explanation to simply configure sparql-parser using ODRL instead please consult its [README](https://github.com/mu-semtech/sparql-parser/tree/feature/odrl-configuration#defining-an-authorization-policy-in-odrl).
 {% endhint %}
 

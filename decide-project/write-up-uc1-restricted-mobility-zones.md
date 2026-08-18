@@ -6,10 +6,6 @@ description: Restricted Mobility Zones
 
 Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
-{% hint style="warning" %}
-This page is under construction
-{% endhint %}
-
 ## Description UC/wanted deliverable
 
 UC1 builds on the data space infrastructure established in UC0.0 to address a specific category of local government decisions: those that establish or modify a **Restricted Mobility Zone** (RMZ). Municipal decisions of this type –e.g. creating a low-emission zone, designating a pedestrian area, or regulating a school street– are published as unstructured pieces of text within decisions. UC1 creates the extraction and linking layer that bridges that text to structured, spatially referenced output: whether an RMZ is established, which location it covers, and when it applies.

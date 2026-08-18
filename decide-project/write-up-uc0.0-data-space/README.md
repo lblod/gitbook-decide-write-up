@@ -8,10 +8,6 @@ description: >-
 
 Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
-{% hint style="warning" %}
-This page is under construction
-{% endhint %}
-
 {% hint style="info" %}
 UC0.0 covers multiple distinct technical components, each documented in its own write-up (see linked deliverables). This write-up is the umbrella document: it describes **the DECIDe data space as a whole**, provides the shared personas reference, and situates each component within the full architecture.
 {% endhint %}
