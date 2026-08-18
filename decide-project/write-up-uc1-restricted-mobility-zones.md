@@ -96,13 +96,13 @@ As stated in [the data space section](write-up-uc0.0-data-space/#pilot-partners)
 
 The restricted mobilityzones like the pedestrian areas, bike streets and traffic blocks are very important within the Ghent mobility plan, and can sometimes be temperarily altered due to circumstances. Moreover Ghent is working in other projects on establishing on overview of all elements that have an impact on the traffic within the city.
 
-The combination of the entity recognition and linking of RMZ decisions, extracting locations and dates, linking locations to geometry registries is very relevant for the city of Ghent. By exposing the resulting structured data through via SPARQL endpoint it is possbile that SPARQL queries and even GIS tools can query directly.&#x20;
+The combination of the entity recognition and linking of RMZ decisions, extracting locations and dates, linking locations to geometry registries is very relevant for the city of Ghent. By exposing the resulting structured data through via SPARQL endpoint it is possbile that SPARQL queries and even GIS tools can query directly.
 
-As this solution can be made in a central architecture (as part of a dataspace business model), but also can be used in a decentral architecture (installing it on the city's own servers), Ghent is testing both scenario's. After the projects ends, Ghent is aiming to keep the decentral solution to identify locations.&#x20;
+As this solution can be made in a central architecture (as part of a dataspace business model), but also can be used in a decentral architecture (installing it on the city's own servers), Ghent is testing both scenario's. After the projects ends, Ghent is aiming to keep the decentral solution to identify locations.
 
 In the decentral solution, locations are being be linked to the 25 city districts, which are setup during the project as linked open data. A drupal widget is be established that shows recent decisions on a specific topic in a specific city district. This will be put into production after the project (as soon as the data quality is good enough) and will be published on the city website in a rollout based on the needs of the city services.
 
-At this moment a seperate GIS layer is not set up. Ghent waits to do this until enough decisions with location annotations are availlable and until data quality is good enough.&#x20;
+At this moment a seperate GIS layer is not set up. Ghent waits to do this until enough decisions with location annotations are availlable and until data quality is good enough.
 
 ### Target audience / Personas
 
@@ -500,7 +500,7 @@ Building on that, planned user tests with stakeholders will provide a more direc
 As stated in the architecture section, Ghent is testing the central and decentral scenario.
 
 * In the central scenario Ghent is using the ABB setup. The main focus is this case is on the quality of the AI annotations with an extra focus on the NER and NEL on location
-* In the decentral scenario the focus of the test is on the Ghent infrastructure and setup of the containers, on the SPARQL queries and on the technical and usability aspects of the Ghent widget. The Ghent widget will be the main instrument for these tests.&#x20;
+* In the decentral scenario the focus of the test is on the Ghent infrastructure and setup of the containers, on the SPARQL queries and on the technical and usability aspects of the Ghent widget. The Ghent widget will be the main instrument for these tests.
 
 Testing is being done by the Ghent project lead and in a second phase by the city service that assist on drafting decisions.
 
@@ -546,9 +546,11 @@ Ghent will focus on the rollout of the Ghent widget and therefore on the quality
 
 Beyond the more general future work activities outlined in this section that will improve the quality of the data, Freiburg has specific additional avenues for future work.
 
-At first, we would like to extend the current database of LD\&E desicions since they cover only parts of relevant RMZ desicions.
+At first, Freiburg would like to extend the current database of LD\&E desicions since they cover only parts of relevant RMZ desicions. The table below provides an overview over posssible information types, with LD\&L being the core type of information within the DECIDe project.&#x20;
 
-TODO Freiburg: add content here, (I) Lukas did not have enough time to work on it, might need around 1h more
+<table><thead><tr><th>Information Category</th><th>Where</th><th>Possible Source System</th><th>Comment</th><th width="152">Links &#x26; Practical Examples</th></tr></thead><tbody><tr><td><strong>LD&#x26;L</strong><br>(as focused on in the DECIDe project)</td><td>Council Information System (RIS) <br></td><td>RIS (<a href="https://ris.freiburg.de/">https://ris.freiburg.de/</a>) &#x26; DECIDe Pipeline</td><td>Fundamental resolutions on municipal land-use and traffic planning (e.g. environmental zones, etc.)</td><td><p><a href="https://ris.freiburg.de/pdf-viewer?name=QmVzY2hsdXNzIHZvbiBUT1AgMTUgMTUuIFNpdHp1bmcgZGVzIEdlbWVpbmRlcmF0ZXM=&#x26;watermark=0&#x26;generated=17-08-2026&#x26;document=aHR0cHM6Ly9yaXMuZnJlaWJ1cmcuZGUvYXBpLnBocD9kb2N1bWVudF90eXBlX2lkPTUmZG9jdW1lbnRfcmVsYXRpb25faWQ9bmlfMjAwNS1HUi0xNjglN0MxMjEwODA4MTAwMjkxJTdDMSZhZ2VuZGFfaXRlbV9pZD1uaV8yMDA1LUdSLTE2OCU3QzEyMTA4MDgxMDAyOTElN0MxJmlkPTY5Jmpzb249MSZwbGF0Zm9ybT13ZWImc3lzdGVtPXJpcyZhZ2VuZGFfaXRlbV9pZD1uaV8yMDA1LUdSLTE2OHwxMjEwODA4MTAwMjkxfDEmZG9jdW1lbnRhYmxlX2lkPW5pXzIwMDUtR1ItMTY4fDEyMTA4MDgxMDAyOTF8MQ=="><em>Link</em></a></p><p>Council Resolution Proposal G-01107.1 – Zoning/Land-Use Plan 'Eschmatten'"</p></td></tr><tr><td><strong>Press Releases &#x26; News</strong> </td><td>News section of the city portal</td><td>News Portal (<a href="https://www.freiburg.de/pb/221057.html">https://www.freiburg.de/pb/221057.html</a>)</td><td>Timely, short-term information (e.g. roadworks, closures); complements formal resolutions with operational implementation details</td><td><p><a href="https://www.freiburg.de/pb/2620085.html">https://www.freiburg.de/pb/2620085.html</a></p><p>"Demo Rempartstraße July 4th · Rempartstraße closed during the day"</p><p><br></p></td></tr><tr><td><strong>Events</strong></td><td>Internal resilience management &#x26; planning system (RESIST, under development, see <a href="https://www.sifo.de/sifo/de/projekte/querschnittsthemen-und-aktivitaeten/sifolife/freiburgresist-stadt-freiburg-im-breisgau/freiburgresist-stadt-freiburg-im-breisgau_node.html">https://www.sifo.de/sifo/de/projekte/querschnittsthemen-und-aktivitaeten/sifolife/freiburgresist-stadt-freiburg-im-breisgau/freiburgresist-stadt-freiburg-im-breisgau_node.html</a>)</td><td>RESIST platform</td><td>Central, systematically recorded source for large, safety-relevant events (e.g. public viewings); potentially connectable in a structured way</td><td>-</td></tr></tbody></table>
+
+Beyond the extension of data sources, Freiburg would like to...
 
 ## <mark style="background-color:$warning;">Relevant links</mark>
 
