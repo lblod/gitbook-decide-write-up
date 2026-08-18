@@ -136,7 +136,7 @@ The shared data sources for all use cases are documented in the [write-up-uc0.0-
 | -------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ELI-normalized LD\&L decisions   | Unstructured text             | Municipal decisions ingested through the data space pipeline established in UC0.0. The textual content of the decision forms the input corpus for the UC1 mapping pipeline.                                                 |
 | AI enrichments (`oa:Annotation`) | Annotations                   | Location and time annotations ingested through the AI pipeline in UC0.0.                                                                                                                                                    |
-| RMZ SKOS codelist                | Controlled vocabulary         | A flat single-level SKOS codelist defining the Restricted Mobility Zone concept, with sub-types documented in `skos:definition`. Concept Scheme: `http://data.lblod.gift/id/conceptscheme/restricted-mobility-zone-simple`. |
+| RMZ SKOS codelist                | Controlled vocabulary         | A flat single-level SKOS codelist defining the Restricted Mobility Zone concept, with sub-types documented in `skos:definition`. Concept Scheme: `http://lblod.data.gift/id/conceptscheme/restricted-mobility-zone-simple`. |
 | OpenStreetMap / Nominatim        | Address and geometry registry | Open address and geometry registry used to link extracted location entities from German pilot city decisions (Freiburg, Bamberg) to canonical geographic URIs.                                                              |
 
 ### Datasets available in the data space
@@ -202,7 +202,7 @@ UC1 relies on the Codelist Mapping tool developed in UC0.1. This is a general-pu
 
 The RMZ codelist uses a flat (single-level) structure rather than a hierarchical taxonomy. All sub-types of restricted mobility zones have been consolidated into the `skos:definition` of a single `skos:Concept`:
 
-* **Concept Scheme:** [`http://data.lblod.gift/id/conceptscheme/restricted-mobility-zone-simple`](https://github.com/lblod/app-decide/blob/203764139125744df4ff55757f645a8849837e02/config/migrations/add-restricted-mobility-zone-codelist/20260310103527-add-simple-restricted-mobility-zones-codelist.ttl)
+* **Concept Scheme:** [`http://lblod.data.gift/id/conceptscheme/restricted-mobility-zone-simple`](https://github.com/lblod/app-decide/blob/203764139125744df4ff55757f645a8849837e02/config/migrations/add-restricted-mobility-zone-codelist/20260310103527-add-simple-restricted-mobility-zones-codelist.ttl)
 * **Concept URI:** `https://data.vlaanderen.be/id/concept/ZoneType/fc17fa1b-9b61-4396-a609-845643b3b865`
 * **Labels:** "Restricted mobility zone" (EN), "Beperkte mobiliteitszone" (NL)
 
