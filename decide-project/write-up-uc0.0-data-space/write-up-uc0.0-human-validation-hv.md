@@ -115,7 +115,7 @@ In this write-up, we are focusing on the shared logic, data model, and governing
 
 | Dataset                                     | IdP/Authentication service | Country of origin | Domain     | Shared within the project | Reused within the project                                                                                                                 |
 | ------------------------------------------- | -------------------------- | ----------------- | ---------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Human validation feedback (`oa:Annotation`) | Data space authentication  | Belgium / Germany | Government | Yes                       | Yes - shown as aggregate number in Human Validation Tool, Codelist mapping votes are reused by the codelist mapping service for training. |
+| Human validation feedback (`oa:Annotation`) | Data space authentication  | Belgium (Ghent) / Germany ([Bamberg](https://catalog.decide.lblod.info/dcat/datasets/e177b2ce-a73f-5530-83d9-940b03a8e8fc), [Freiburg](https://catalog.decide.lblod.info/dcat/datasets/3ba1b22f-bb96-509b-a061-3a4e837042f2)) | Government | Yes                       | Yes - shown as aggregate number in Human Validation Tool, Codelist mapping votes are reused by the codelist mapping service for training. |
 
 ### Data standards
 

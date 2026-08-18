@@ -143,7 +143,7 @@ The shared data sources for all use cases are documented in the [write-up-uc0.0-
 
 | Dataset                                                                                  | IdP/Authentication service | Country of origin | Domain   | Shared within the project           | Reused within the project                                             |
 | ---------------------------------------------------------------------------------------- | -------------------------- | ----------------- | -------- | ----------------------------------- | --------------------------------------------------------------------- |
-| UC1 RMZ annotations (`oa:Annotation`)                                                    | Data space authentication  | Belgium / Germany | Mobility | Yes — available via SPARQL endpoint | Yes — consumed by Human Validation Tool, and GIS tools at pilot sites |
+| UC1 RMZ annotations (`oa:Annotation`)                                                    | Data space authentication  | Belgium ([Ghent]()) / Germany ([Bamberg](https://catalog.decide.lblod.info/dcat/datasets/3c6f5bea-68a8-57da-9feb-f6309b91baf5), [Freiburg](https://catalog.decide.lblod.info/dcat/datasets/34459d3e-ff3d-51e7-9431-db31a8ca5c83)) | Mobility | Yes — available via SPARQL endpoint | Yes — consumed by Human Validation Tool, and GIS tools at pilot sites |
 | Human feedback on LD\&L decisions annotated with RMZ codelist mappings (`oa:Annotation`) | Data space authentication  | Belgium (ABB)     | Mobility | Yes                                 | No                                                                    |
 
 ### Data standards
