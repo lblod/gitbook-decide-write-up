@@ -393,7 +393,11 @@ LD\&L in the corpus carry AI-generated annotations from the UC0.1 enrichment pip
 
 #### Leveraging consolidated decision versions
 
-A retrieved decision may be an amendment of an earlier one, making it contextually incomplete on its own. The construction of consolidated decisions –linking an original decision with its amendment history into a single authoritative text– is a UC0.0 pipeline concern. Once consolidated versions are available in the data space, UC2 could pass the consolidated text to the LLM rather than an isolated amendment, producing answers that reflect the current regulatory state in full rather than a fragment of it.
+A retrieved decision may be an amendment of an earlier one, making it contextually incomplete on its own. The construction of consolidated decisions –linking an original decision with its amendment history into a single authoritative text– is a UC0.0 pipeline concern. Once consolidated versions are available in the data space, UC2 could pass the consolidated text to the LLM rather than an isolated amendment, producing answers that reflect the current regulatory state in full rather than a fragment of it.'
+
+#### Better provenance tracking
+
+AI services in other use cases generate annotations and those annotations are linked to the URI of the agent that created it, including the config and version of that agent that was used in practice. UC2 doesn't generate annotations, but rather entire AI generated answers to user questions. These questions weren't linked to a URI that represents the Agent with its configuration and version yet, making it hard to compare or even distinguish answers given by different versions of the service.
 
 #### Allowing questions that go further than expression contents
 
