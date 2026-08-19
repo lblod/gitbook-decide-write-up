@@ -22,3 +22,5 @@
   * [Governance proposition after the projectphase](decide-project/legal-and-governance/governance-proposition-after-the-projectphase.md)
   * [Ethical Data Sharing Agreement](decide-project/legal-and-governance/ethical-data-sharing-agreement.md)
 * [Accompanying research](decide-project/accompanying-research.md)
+* [Addendums](decide-project/addendums/README.md)
+  * [Architecture mapping to DSSC/DS4SSCC and growth](decide-project/addendums/architecture-mapping-to-dssc-ds4sscc-and-growth.md)
