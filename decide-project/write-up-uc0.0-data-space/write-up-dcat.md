@@ -262,8 +262,6 @@ The actual federation was tested in two stages. First, let the Federating catalo
 
 The script to generate publish datasets was manually testing during its development. Furthermore, this is used by each pilot partner to publish their datasets on their individual LDES feeds.
 
-### Risks & mitigations
-
 ## Possible future work
 
 ### Making the data space tamper-proof

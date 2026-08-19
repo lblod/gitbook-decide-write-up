@@ -502,8 +502,6 @@ Second, the DECIDe application has been configured to use an authorization polic
 Meaning that since then each instance of the application actively used an ODRL authorization policy.
 Since sparql-parser is crucial to an application's correct functioning, issues should reveal themselves, be it mistakes in the policy itself or bugs in its conversion or enforcement.
 
-### Risks & mitigations
-
 ## Possible future work
 
 ### Possible future work DECIDe data space related
