@@ -473,37 +473,37 @@ It exposes a SPARQL endpoint and an API that return `application/ld+json`. The s
 
 When going over the codex we found some interesting types that could be useful for adding to our dataset:
 
-| Class                                                       | Predicates                                                   |
-| ----------------------------------------------------------- | ------------------------------------------------------------ |
-| http://data.europa.eu/eli/ontology#LegalResource            | http://www.w3.org/1999/02/22-rdf-syntax-ns#type              |
-|                                                             | http://data.europa.eu/eli/ontology#date_document             |
-|                                                             | http://data.europa.eu/eli/ontology#has_part                  |
-|                                                             | http://data.europa.eu/eli/ontology#is_realized_by            |
-|                                                             | http://data.europa.eu/eli/ontology#related_to                |
-|                                                             | http://data.europa.eu/eli/ontology#type_document             |
-| http://data.europa.eu/eli/ontology#LegalResourceSubdivision | http://www.w3.org/1999/02/22-rdf-syntax-ns#type              |
-|                                                             | http://www.w3.org/ns/prov#value                              |
-|                                                             | http://data.europa.eu/eli/ontology#first_date_entry_in_force |
-|                                                             | http://data.europa.eu/eli/ontology#id_local                  |
-|                                                             | http://data.europa.eu/eli/ontology#language                  |
-|                                                             | http://data.europa.eu/eli/ontology#number                    |
-|                                                             | http://data.europa.eu/eli/ontology#realizes                  |
-| http://data.europa.eu/eli/ontology#LegalResourceSubdivision | http://www.w3.org/1999/02/22-rdf-syntax-ns#type              |
-|                                                             | http://www.w3.org/1999/02/22-rdf-syntax-ns#type              |
-|                                                             | http://data.europa.eu/eli/ontology#is_part_of                |
-|                                                             | http://purl.org/dc/terms/type                                |
-|                                                             | http://data.europa.eu/eli/ontology#is_realized_by            |
+| Class                                                       | Predicates                                                       |
+| ----------------------------------------------------------- | ---------------------------------------------------------------- |
+| http://data.europa.eu/eli/ontology#LegalResource            | http://www.w3.org/1999/02/22-rdf-syntax-ns#type                  |
+|                                                             | http://data.europa.eu/eli/ontology#date\_document                |
+|                                                             | http://data.europa.eu/eli/ontology#has\_part                     |
+|                                                             | http://data.europa.eu/eli/ontology#is\_realized\_by              |
+|                                                             | http://data.europa.eu/eli/ontology#related\_to                   |
+|                                                             | http://data.europa.eu/eli/ontology#type\_document                |
+| http://data.europa.eu/eli/ontology#LegalResourceSubdivision | http://www.w3.org/1999/02/22-rdf-syntax-ns#type                  |
+|                                                             | http://www.w3.org/ns/prov#value                                  |
+|                                                             | http://data.europa.eu/eli/ontology#first\_date\_entry\_in\_force |
+|                                                             | http://data.europa.eu/eli/ontology#id\_local                     |
+|                                                             | http://data.europa.eu/eli/ontology#language                      |
+|                                                             | http://data.europa.eu/eli/ontology#number                        |
+|                                                             | http://data.europa.eu/eli/ontology#realizes                      |
+| http://data.europa.eu/eli/ontology#LegalResourceSubdivision | http://www.w3.org/1999/02/22-rdf-syntax-ns#type                  |
+|                                                             | http://www.w3.org/1999/02/22-rdf-syntax-ns#type                  |
+|                                                             | http://data.europa.eu/eli/ontology#is\_part\_of                  |
+|                                                             | http://purl.org/dc/terms/type                                    |
+|                                                             | http://data.europa.eu/eli/ontology#is\_realized\_by              |
 
 There were some challenges we ran into while consuming this data:
 
-- While querying the sparql endpoint we are currently limit to consume with a batch size of 5 resources at a time. The error we are receiving from their end is `Virtuoso 42000 Error D1CTX: Hash dictionary is full, exceeded 10000 entries`. This seems to be because the provider of the endpoint has made limited system resources available, which could be a deliberate choice.
-- There are no modified dates available on we can filter to check what information we already received. This forces us to either make assumptions on the completeness of data based on their publication date or fetching the entire content periodically.
-- Not every resource has text content so defining the `epvoc:expressionContent` will end up in text that is appended from multiple resources/predicates
-- Some have predicates linking to html or xml pages, those can possibly be web-scraped
-  - [html page example](https://www.ejustice.just.fgov.be/eli/besluit/2003/7/28/2003022831)
-  - [xml example](https://codex.opendata.api.vlaanderen.be/api/WetgevingHoofdstukVersie/58771)
+* While querying the sparql endpoint we are currently limit to consume with a batch size of 5 resources at a time. The error we are receiving from their end is `Virtuoso 42000 Error D1CTX: Hash dictionary is full, exceeded 10000 entries`. This seems to be because the provider of the endpoint has made limited system resources available, which could be a deliberate choice.
+* There are no modified dates available on we can filter to check what information we already received. This forces us to either make assumptions on the completeness of data based on their publication date or fetching the entire content periodically.
+* Not every resource has text content so defining the `epvoc:expressionContent` will end up in text that is appended from multiple resources/predicates
+* Some have predicates linking to html or xml pages, those can possibly be web-scraped
+  * [html page example](https://www.ejustice.just.fgov.be/eli/besluit/2003/7/28/2003022831)
+  * [xml example](https://codex.opendata.api.vlaanderen.be/api/WetgevingHoofdstukVersie/58771)
 
-[**JSON-LD API**](https://codex.opendata.api.vlaanderen.be:443/api/)
+[**JSON-LD API**](https://codex.opendata.api.vlaanderen.be/api/)
 
 Fetching specific resources is possible through the API endpoints which can return the requested information as `application/ld+json`.
 
@@ -713,7 +713,7 @@ This may reduce the number of entities that we can find true URIs for in the nam
 
 #### Bamberg
 
-The DECIDE infastructure is currently deployed on a project specific Hetzner server. The identifier service handling frontend requests is secured behind a Reverse Proxy and Threat Protection system (using [Traefik and Crowdsec](https://goneuland.de/traefik-ab-v3-6-mit-crowdsec-installieren-und-konfigurieren/)). Within the current project Bamberg runs the whole pipeline itself overriding the docker-compose, only disabling specific services that are not used:&#x20;
+The DECIDE infastructure is currently deployed on a project specific Hetzner server. The identifier service handling frontend requests is secured behind a Reverse Proxy and Threat Protection system (using [Traefik and Crowdsec](https://goneuland.de/traefik-ab-v3-6-mit-crowdsec-installieren-und-konfigurieren/)). Within the current project Bamberg runs the whole pipeline itself overriding the docker-compose, only disabling specific services that are not used:
 
 * OPARL: oparl-to-eli, harvest\_sameas, harvest\_diff
 * OSLO: lokaal-beslist-consumer, decisions-ghent-filter, oslo-eli-transformer
@@ -735,29 +735,29 @@ For Named Entity Recognition (NER) and Named Entity Linking (NEL), Bamberg curre
 
 #### Freiburg
 
-<mark style="color:$warning;">To be added?</mark>
+Freiburg relied on the central pipeline infrastructure operated by ABB rather than running its own instance. The Freiburg data is harvested and normalized directly by the ABB-hosted pipeline, and Freiburg consumed the resulting enriched outputs for its use case work. This kept the setup simple and let Freiburg focus on validating the use case itself, while the option to move to a locally operated pipeline remains open for the future.
 
 #### Ghent
 
-The city of Ghent has tested a centralised setup as well as a decenterlised setup. A centralised setup might be interesting for the business model of the dataspace, while a decentral setup is ideal for the (data) sovereignty of the city. Therefore Ghent has implemented the UC1 which has most relevance for the Ghent needs, on the city infrastructure, while all use cases are also adressed by the central setup by SPARQL queries or by API calls.&#x20;
+The city of Ghent has tested a centralised setup as well as a decenterlised setup. A centralised setup might be interesting for the business model of the dataspace, while a decentral setup is ideal for the (data) sovereignty of the city. Therefore Ghent has implemented the UC1 which has most relevance for the Ghent needs, on the city infrastructure, while all use cases are also adressed by the central setup by SPARQL queries or by API calls.
 
 **Centralised setup for all use cases**
 
 * For use case 0.1, Ghent uses the ABB infrastructure. The AI services are hosted on the ABB infrastructure and are tested via the human validation tool and the SDG dashboard.
-* For use case 1, Ghent uses the ABB infrastructure. The AI services are hosted on the ABB infrastructuree. . The results are tested via the human validation tool as well as via SPARQL queries.&#x20;
-* For use case 2, Ghent uses the ABB infrastructure. The AI services ar hosted on the ABB infrastructure and are used via the ABB interface. As an extra element, use case 2 is also tested by setup a basis page on the Ghent website (QA) from wich the resulted can be queried by an API call.&#x20;
+* For use case 1, Ghent uses the ABB infrastructure. The AI services are hosted on the ABB infrastructuree. . The results are tested via the human validation tool as well as via SPARQL queries.
+* For use case 2, Ghent uses the ABB infrastructure. The AI services ar hosted on the ABB infrastructure and are used via the ABB interface. As an extra element, use case 2 is also tested by setup a basis page on the Ghent website (QA) from wich the resulted can be queried by an API call.
 
 **Decentral setup for UC 1**
 
-As the ABB AI services are set up in a containerized way, these services can also be implemented on the Ghent infrastructure. Ghent implements these AI services on the infrastructure that was established during a previous project called [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government). Only the NER and NEL services relevant for location annotations are effectively running.&#x20;
+As the ABB AI services are set up in a containerized way, these services can also be implemented on the Ghent infrastructure. Ghent implements these AI services on the infrastructure that was established during a previous project called [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government). Only the NER and NEL services relevant for location annotations are effectively running.
 
-Ghent also has started publishing the information on the city district (URI, name, GIS coördinates) as linked open data on the Ghent linked open data infrastructure during the DECIDe project. Ghent enriches the location annotation that results from the implemented AI containers with an extra annotation containing the URI of the relevant city district.&#x20;
+Ghent also has started publishing the information on the city district (URI, name, GIS coördinates) as linked open data on the Ghent linked open data infrastructure during the DECIDe project. Ghent enriches the location annotation that results from the implemented AI containers with an extra annotation containing the URI of the relevant city district.
 
-As these annotations (from the AI containers as well as the annotations on the city district) are published as linked open data, the results can be consulted by a SPARQL query on the Ghent linked open data.&#x20;
+As these annotations (from the AI containers as well as the annotations on the city district) are published as linked open data, the results can be consulted by a SPARQL query on the Ghent linked open data.
 
-The AI annotations can be consulted via a public facing interface. Ghent chose to inform the public via widget. This widget shows a list of the relevant decisions wich can be inserted on the relevant web pages. In the back end, website writers can configure the widget to query recent decisions based on annotations on topics/themes (as a result of the [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government) project) and annotations on the city district (as a result of the DECIDe project).&#x20;
+The AI annotations can be consulted via a public facing interface. Ghent chose to inform the public via widget. This widget shows a list of the relevant decisions wich can be inserted on the relevant web pages. In the back end, website writers can configure the widget to query recent decisions based on annotations on topics/themes (as a result of the [Probe](https://stad.gent/en/city-governance-organisation/city-policy/ghent-international/funded-projects/probe-proactive-public-access-government) project) and annotations on the city district (as a result of the DECIDe project).
 
-Working via a widget is an important choice. It empowers website writers to insert the overview of these decisions at the most appropriate place in their website. Working via a widget also makes possible to publish overviews on topical information where the data quality on themes/locations is already good enough, while still training the AI solutions on other themes of location types.&#x20;
+Working via a widget is an important choice. It empowers website writers to insert the overview of these decisions at the most appropriate place in their website. Working via a widget also makes possible to publish overviews on topical information where the data quality on themes/locations is already good enough, while still training the AI solutions on other themes of location types.
 
 ## Final UI design (and why) (if any)
 
@@ -886,8 +886,6 @@ Ghent will keep checking evolutions in the ABB development and possibly connect 
 * A service which matches decisions with the local strategy or strategic objectives (like energy shift, re-wilding, mobility targets, ...) might be very interesting. This makes the SDG use case a very relevant test case for the city of Ghent.
 
 For information that is crucial for the city Ghent, it wants to host the services on its own infrastructure, like it does for the NER and NEL services on locations. Setup will be based on the examples of the ABB pipelines.
-
-
 
 ### **UI! Partner-side reuse of pipeline-generated datasets**
 
