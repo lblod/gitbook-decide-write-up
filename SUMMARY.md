@@ -24,3 +24,4 @@
 * [Accompanying research](decide-project/accompanying-research.md)
 * [Addendums](decide-project/addendums/README.md)
   * [Architecture mapping to DSSC/DS4SSCC and growth](decide-project/addendums/architecture-mapping-to-dssc-ds4sscc-and-growth.md)
+  * [Pilot Data Space Functionality Assessment - Proof of Compliance (DECIDe)](decide-project/addendums/pilot-data-space-functionality-assessment-proof-of-compliance-decide.md)
