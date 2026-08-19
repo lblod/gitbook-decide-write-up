@@ -251,7 +251,7 @@ A similar provider-agnostic approach is taken for the embedding model used by th
 
 #### Bamberg
 
-Bamberg deployed the Smart Search as implemented by ABB. As the processing LLM for creating prompts an external Mistral API is used.
+Bamberg deployed the Smart Search as implemented by ABB. For the processing LLM to create prompts an external Mistral API is used.
 
 #### Ghent
 
@@ -307,7 +307,7 @@ N/A
 
 #### Bamberg
 
-There are no firm plans yet regarding the UI, though several options are being considered. During a previous software test and public consultation process on the further development of the Bamberg app, citizens expressed a desire for more information on city council resolutions and council updates in the local city app. Instead of listing pages of database entries, the Smart Search feature could be integrated into the app to meet citizens’ needs.
+There are no firm plans yet regarding the UI, though several options are being considered. During a previous software test and public consultation process on the further development of the local city app, citizens expressed a desire for more information on city council resolutions and council updates in it. Instead of listing pages of database entries, the Smart Search feature could be integrated into the app to meet citizens’ needs.
 
 For the UI the open-source solution Parla from Berlin is also under consideration which serves a similar purpose and has already been under longer development. At this stage, both approaches remain under evaluation, and no final decision has been made regarding the preferred solution. In either case, a responsive design that provides a user-friendly mobile view will be an essential requirement to ensure accessibility and usability across different devices.
 
@@ -337,19 +337,35 @@ When a question is asked, the user is presented with an answer, accompanied by t
 
 <figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
+### Pilot Cities
+
 #### Bamberg
 
-In addition to the quantitative evaluation conducted through the survey by the research partners mentioned earlier in [#testing-approach](write-up-uc0.1-policy-impact-report.md#testing-approach "mention"), the City of Bamberg also wants to test what specific efficiency gains we will achieve by introducing Smart Search.
+In addition to the evaluation conducted through the survey by the research partners mentioned earlier in [#testing-approach](write-up-uc0.1-policy-impact-report.md#testing-approach "mention"), the City of Bamberg also wants to directly compare the Smart Search to its existing CCIS search functionality regarding efficiency, usability and trustworthiness. To this end, Bamberg is conducting a comparative study based upon a usability study: People will compare the AI-supported workflow with the traditional workflow and be prompted to seek for specific information.
 
-To this end, it is using an experimental design: Four to eight people will compare the AI-supported workflow with the traditional workflow and be prompted to seek for specific information. The test group will primarily consist of administrative staff and members of the Bamberg City Council, as they are the ones who work with the council information system most frequently.
+**Goals**
 
-The goal of the test is to answer the following questions:
+The overall research goal of the test is to answer the following questions:
 
-* Is it possible to find content more efficiently compared to the CCIS?
-* Are relevant pieces of information overlooked when using natural language queries?
+* Is it possible to find content more efficiently via Smart Search compared to the CCIS?
+* Are relevant pieces of information being overlooked due to natural language queries?
 * How trustworthy is the generated response to users?
 
-To achieve this, testers will be asked various search questions, and the workflows will then be evaluated based on different metrics (success rate; average time to completion; perceived difficulty).
+**Test group**
+
+For the test group, Bamberg is surveying people who are familiar with the existing system as well as those who have no experience with any of the systems. It is expected that the subgroup of experienced users will primarily consist of administrative staff and members of the Bamberg City Council, as they are the ones who work with the council information system most frequently.
+
+**Randomization**
+
+Order of questions and topics are constructed according to the following scheme (then repeat with topics C and D) and so on.
+
+<table data-header-hidden><thead><tr><th valign="top">Text</th><th valign="top"></th><th valign="top"></th><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">Person</td><td valign="top">Part 1</td><td valign="top">Topic</td><td valign="top">Part 2</td><td valign="top">Topic</td></tr><tr><td valign="top">P1</td><td valign="top">a) CCIS</td><td valign="top">A</td><td valign="top">b) Smart Search</td><td valign="top">B</td></tr><tr><td valign="top">P2</td><td valign="top">a) CCIS</td><td valign="top">B</td><td valign="top">b) Smart Search</td><td valign="top">A</td></tr><tr><td valign="top">P3</td><td valign="top">b) Smart Search</td><td valign="top">A</td><td valign="top">a) CCIS</td><td valign="top">B</td></tr><tr><td valign="top">P4</td><td valign="top">b) Smart Search</td><td valign="top">B</td><td valign="top">a) CCIS</td><td valign="top">A</td></tr></tbody></table>
+
+**Evaluation Criteria**
+
+To answer the research questions, testers will be asked to carry out tasks and then get asked retrospective questions (e.g. on experienced difficulty, subjective confidence and correctness). Also objective measurements are taken aswell (success rate; avg. time to completion; realtive number of correct answers).
+
+{% file src="../.gitbook/assets/Design Usertest (Bamberg) [German].pdf" %}
 
 #### Ghent
 
@@ -365,7 +381,7 @@ For basic introduction about the survey please check the [related topic in the U
 
 #### Results for UC 2 Smart Search
 
-The Smart Search was generally received positively, particularly regarding usability. More than half of respondents had a positive initial experience with the chatbot (51.6%). Technical usability was rated especially well: all respondents considered the chatbot at least feasible to use. This indicates that interacting with the prototype did not present major technical barriers.&#x20;
+The Smart Search was generally received positively, particularly regarding usability. More than half of respondents had a positive initial experience with the chatbot (51.6%). Technical usability was rated especially well: all respondents considered the chatbot at least feasible to use. This indicates that interacting with the prototype did not present major technical barriers.
 
 Respondents saw clear potential for improving access to municipal information. A majority expected the Smart Search to make searching for local government information faster and more efficient (70.0%). More than half (56.7%) also believed the chatbot helped them discover information they might not otherwise have found, while another 26.7% considered this possible.
 
@@ -451,7 +467,7 @@ SPARQL is a very expressive language. Giving the LLM the ability to formulate an
 
 #### Based on the Survey results
 
-Data quality, transparency and traceability emerged as the key requirements for further development. Open feedback consistently highlighted the need for more complete, accurate and up-to-date data, better source references, greater transparency about how answers are generated, more detailed responses, improved search and filtering options, multilingual support, and clearer presentation of results. Respondents generally supported the Smart Search concept, but emphasised that trustworthiness depends on reliable data, traceable sources and transparent system behaviour.&#x20;
+Data quality, transparency and traceability emerged as the key requirements for further development. Open feedback consistently highlighted the need for more complete, accurate and up-to-date data, better source references, greater transparency about how answers are generated, more detailed responses, improved search and filtering options, multilingual support, and clearer presentation of results. Respondents generally supported the Smart Search concept, but emphasised that trustworthiness depends on reliable data, traceable sources and transparent system behaviour.
 
 ### Possible future work LBLOD related
 
