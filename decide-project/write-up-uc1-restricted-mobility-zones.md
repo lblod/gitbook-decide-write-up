@@ -504,9 +504,7 @@ As stated in the architecture section, Ghent is testing the central and decentra
 
 Testing is being done by the Ghent project lead and in a second phase by the city service that assist on drafting decisions.
 
-### Risks & mitigations
-
-There was the same risk as the Policy Impact Report that we would have to build a Restricted Mobility Zone validation visualization, separate from the human validation tool, which would increase the maintenance effort. Albeit, putting it in the Human Validation Tool was the logical decision here as there is no separate frontend for Restricted Mobility Zones. This is mitigated by developing the Restricted Mobility Zone validation inside the Human Validation Tool, along with the other validations. This allows to build it on the same principles, UI, UX...
+##
 
 ## Possible future work
 
