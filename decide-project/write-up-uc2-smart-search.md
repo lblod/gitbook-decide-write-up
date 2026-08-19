@@ -71,13 +71,11 @@ With the Smart Search, this search process can be made significantly more effici
 
 #### Ghent
 
-Local decisions and legislation might be the most important data set in the city, but as it is complex and time consuming to search this data, it is barely used. The main obstacles are the long and ofter difficult text, but also the hastle to search into this big data set.&#x20;
+Local decisions and legislation might be the most important data set in the city, but as it is complex and time consuming to search this data, it is barely used. The main obstacles are the long and ofter difficult text, but also the hastle to search into this big data set.
 
 Already in 2018 Ghent was considering using a semantic search solution on local decisions, but the market solutions were not mature enough to work on a specific context like local decisions without extensive training. So Ghent is very interested if this can be realized with current AI tooling within the short project period of DECIDe.
 
-Ghent will test the ABB solutions in a centrally organised architecture and via a query via an API call.&#x20;
-
-
+Ghent will test the ABB solutions in a centrally organised architecture and via a query via an API call.
 
 ### Target audience / Personas
 
@@ -257,9 +255,7 @@ Bamberg deployed the Smart Search as implemented by ABB. As the processing LLM f
 
 #### Ghent
 
-Ghent wil mostly use this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent will also conduct tests using the API.&#x20;
-
-
+Ghent wil mostly use this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent will also conduct tests using the API.
 
 ## Final UI design (and why) (if any)
 
@@ -317,16 +313,15 @@ For the UI the open-source solution Parla from Berlin is also under consideratio
 
 #### Ghent
 
-As Ghent will only build a simple interface to test the API, concerns about design won't be taken into account.&#x20;
+As Ghent will only build a simple interface to test the API, concerns about design won't be taken into account.
 
 ## Testing approach
 
-Each pilot city carried out manual testing on the [deployed test instance](./write-up-uc2-smart-search.md#deployed-test-instance "mention").
-Answers and corresponding sources were validated using the process described in [Validating responses (HV)](./write-up-uc2-smart-search.md#validating-responses-hv "mention").
+Each pilot city carried out manual testing on the [#deployed-test-instance](write-up-uc2-smart-search.md#deployed-test-instance "mention"). Answers and corresponding sources were validated using the process described in [#validating-responses-hv](write-up-uc2-smart-search.md#validating-responses-hv "mention").
 
 Each pilot city provided a list of example questions, which is used to test the accuracy of the question answering service.
 
-To complement this manual testing, two SPARQL queries were configured in the "export_csv" script ([documentation](https://github.com/lblod/app-decide/tree/development/scripts/project/export_csv)) to aggregate the human validation results collected so far. The script runs both queries against the triplestore and writes their results to two CSV files. [The first query](https://github.com/lblod/app-decide/blob/development/scripts/project/export_csv/queries/smart-search-question-validations.sparql) counts, across all generated answers, how many received a positive (thumbs up) review, a negative (thumbs down) review, or no review at all. [The second query](https://github.com/lblod/app-decide/blob/development/scripts/project/export_csv/queries/smart-search-quotation-validations.sparql) does the same for the quotations (sources) used to construct those answers. This gives a quick, aggregate view of how well the generated answers and their underlying sources are being received, without needing to inspect individual questions one by one.
+To complement this manual testing, two SPARQL queries were configured in the "export\_csv" script ([documentation](https://github.com/lblod/app-decide/tree/development/scripts/project/export_csv)) to aggregate the human validation results collected so far. The script runs both queries against the triplestore and writes their results to two CSV files. [The first query](https://github.com/lblod/app-decide/blob/development/scripts/project/export_csv/queries/smart-search-question-validations.sparql) counts, across all generated answers, how many received a positive (thumbs up) review, a negative (thumbs down) review, or no review at all. [The second query](https://github.com/lblod/app-decide/blob/development/scripts/project/export_csv/queries/smart-search-quotation-validations.sparql) does the same for the quotations (sources) used to construct those answers. This gives a quick, aggregate view of how well the generated answers and their underlying sources are being received, without needing to inspect individual questions one by one.
 
 ### Deployed Test Instance
 
@@ -344,7 +339,7 @@ When a question is asked, the user is presented with an answer, accompanied by t
 
 #### Bamberg
 
-In addition to the quantitative evaluation conducted through the survey by the research partners mentioned earlier in [#testing-approach](write-up-uc0.1-policy-impact-report.md#testing-approach "mention"), the City of Bamberg also wants to test what specific efficiency gains we will achieve by introducing Smart Search.&#x20;
+In addition to the quantitative evaluation conducted through the survey by the research partners mentioned earlier in [#testing-approach](write-up-uc0.1-policy-impact-report.md#testing-approach "mention"), the City of Bamberg also wants to test what specific efficiency gains we will achieve by introducing Smart Search.
 
 To this end, it is using an experimental design: Four to eight people will compare the AI-supported workflow with the traditional workflow and be prompted to seek for specific information. The test group will primarily consist of administrative staff and members of the Bamberg City Council, as they are the ones who work with the council information system most frequently.
 
@@ -358,11 +353,25 @@ To achieve this, testers will be asked various search questions, and the workflo
 
 #### Ghent
 
-Ghent has tested this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent also conducts some tests using the API.&#x20;
+Ghent has tested this UC2 in a centralized manner using the ABB infrastructure and specifically the human validation tool. To test wether this information can be consulted from the Ghent infrastruction Ghent also conducts some tests using the API.
 
-Test focusses on the quality of the provided links and of the answers it formulates to the quesion. The main focus of Ghent was on checking weather the most relevant decisions are found.&#x20;
+Test focusses on the quality of the provided links and of the answers it formulates to the quesion. The main focus of Ghent was on checking weather the most relevant decisions are found.
 
-In a first phase testing was being done by the project lead. In a second phase by the city service that assist on drafting the council decisions.&#x20;
+In a first phase testing was being done by the project lead. In a second phase by the city service that assist on drafting the council decisions.
+
+### Survey by Hochschule Kehl <mark style="background-color:red;">(add link to full report)</mark>
+
+For basic introduction about the survey please check the [related topic in the UC 0.0 Data space write up](write-up-uc0.0-data-space/).
+
+#### Results for UC 2 Smart Search
+
+The Smart Search was generally received positively, particularly regarding usability. More than half of respondents had a positive initial experience with the chatbot (51.6%). Technical usability was rated especially well: all respondents considered the chatbot at least feasible to use. This indicates that interacting with the prototype did not present major technical barriers.&#x20;
+
+Respondents saw clear potential for improving access to municipal information. A majority expected the Smart Search to make searching for local government information faster and more efficient (70.0%). More than half (56.7%) also believed the chatbot helped them discover information they might not otherwise have found, while another 26.7% considered this possible.
+
+The Smart Search was considered useful and valuable, but mostly at a moderate level. Nearly three quarters of respondents (74.2%) considered the chatbot somewhat or very helpful, and 71.9% perceived a clear general added value. However, most positive responses were concentrated in the "somewhat helpful" and "somewhat added value" categories, suggesting that users recognised value in the concept while also seeing room for improvement in the current prototype.
+
+Respondents were highly positive about the Smart Search's future development potential. This view was shared by both supporters and more critical users. Most respondents expected its benefits to increase as the application and underlying datasets are expanded.
 
 ### Risks & mitigations
 
@@ -436,11 +445,13 @@ SPARQL is a very expressive language. Giving the LLM the ability to formulate an
 * Other ill-meaning users could decide to have the LLM run a lot of very heavy queries, resulting in a Denial of Service attack on the system. This can be mitigated by 1) providing the LLM with patterns of such malicious queries and telling it to refuse executing them, 2) extending mu-authorization so it disallows queries matching such patterns, 3) putting limits on the execution time of queries (built in for virtuoso) or queries sent from a certain service (requires an extension of mu-authorization).
 * Because the LLM now operates as an agent that can take actions there is a risk of prompt injection where malicious content in a retrieved document manipulates the model's behavior. This becomes more consequential than in the current stateless pipeline, however the plan-execute architecture partially mitigates this by separating planning from execution and by running the monitor as deterministic code rather than as an LLM call, but careful prompt engineering and input sanitisation remain important concerns.
 
+#### Based on the Survey results
+
+Data quality, transparency and traceability emerged as the key requirements for further development. Open feedback consistently highlighted the need for more complete, accurate and up-to-date data, better source references, greater transparency about how answers are generated, more detailed responses, improved search and filtering options, multilingual support, and clearer presentation of results. Respondents generally supported the Smart Search concept, but emphasised that trustworthiness depends on reliable data, traceable sources and transparent system behaviour.&#x20;
+
 ### Possible future work LBLOD related
 
-
-
-### Possible future work Bamberg
+#### Possible future work Bamberg
 
 In the future, additional data sources could be integrated into Smart Search. For example, in addition to decisions, motions submitted by political parties that have not yet been brought to a vote could also be entered. This would enable the city council caucuses and the administration to monitor which of these motions still need to be processed or which motions or ideas have already been proposed regarding a specific policy issue.
 
@@ -448,9 +459,7 @@ A second potential future data source is data from a municipal project managemen
 
 #### Possible future work Ghent
 
-There are no short term plans yet. Gent will first focus on quality of the annotations on themes (as result of the Probe project) and locations (al result of the DECIDe project) and realise the step by step rollout of these results.&#x20;
-
-
+There are no short term plans yet. Gent will first focus on quality of the annotations on themes (as result of the Probe project) and locations (al result of the DECIDe project) and realise the step by step rollout of these results.
 
 ## Relevant links
 
