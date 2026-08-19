@@ -180,8 +180,8 @@ The testing of the link to the SDG's is a relevant test case for:
 In the DECIDE project Ghent wants to test this features and realize some components that are directly usable for the city.
 
 * Ghent will implement and test the NER And NEL service for the identification of location locally. Data will be published as open data on the Ghent LOD services.
-* Based on the location, Ghent will link locations in the decisions to the list of the [25 city districts](https://stad.gent/nl/over-gent-stadsbestuur/over-gent/gent-25-wijken). To make this possible Ghent will publish the 25 city district as linked open data. In this way the link to to the district can be added as an annotation based on the location that's determined by the NEL service.&#x20;
-* Ghent will implement widgets on the city website that shows recent decisions related to predefined topics and city districts. The widget essentially is a view on the results of the relevant SPARQL query on the linked open data set.&#x20;
+* Based on the location, Ghent will link locations in the decisions to the list of the [25 city districts](https://stad.gent/nl/over-gent-stadsbestuur/over-gent/gent-25-wijken). To make this possible Ghent will publish the 25 city district as linked open data. In this way the link to to the district can be added as an annotation based on the location that's determined by the NEL service.
+* Ghent will implement widgets on the city website that shows recent decisions related to predefined topics and city districts. The widget essentially is a view on the results of the relevant SPARQL query on the linked open data set.
 
 Data will be retrieved from the Ghent open data on decisions and annotations, and will be retrieved from the ABB pipelines.
 
@@ -301,13 +301,38 @@ All environments use the same docker-compose based deployment, so testing at eve
 
 Each pilot has only a single environment, configured through its own docker-compose override capturing its specific setup (data sources, pilot-specific services). Pilots can decide their own test approach, such as: running a pipeline in the dashboard, running the [publish dataset](write-up-dcat.md#datasets-and-datastandards) script to share a dataset, experiment with SPARQL queries, and visual inspect the different frontends.
 
+### Survey by Hochschule Kehl <mark style="background-color:red;">(add link to full report)</mark>
+
+<mark style="background-color:red;">In the periode of July and August 2026 Hochschule Kehl (partner in the DECIDE project) carried out a survey to mark the conclusion of the project. The goal was to gain additional perspectives on the use cases deloped during the project.</mark>&#x20;
+
+<mark style="background-color:red;">Due to the lower numbers of respondents (48 in total) this survey is not representative. However</mark> given the small sample size, **the results should be interpreted as preliminary indications of user acceptance rather than as representative evidence. With a total of 48 respondents, there is not a sufficiently robust data set to obtain a sufficiently nuanced picture of the population with regard to the issues addressed.**
+
+Participation was voluntary and anonymous. No personally identifiable information was collected.&#x20;
+
+The survey conducted online and was available in German, English and Flemish.&#x20;
+
+#### Target groups
+
+* actors from politics and public administration
+* stakeholders from business and infrastructure
+* academia and research organisations
+* civil society and media
+
+By targeting these groups, the survey aimed to capture a broad range of perspectives from individuals who regularly interact with municipal decision-making processes or make use of mu-nicipal information in their professional or civic activities. This approach ensured that the findings re-flect the requirements and expectations of those most likely to benefit from and contribute to the de-velopment of innovative digital services for transparent and interoperable local governance.
+
+#### Results for UC 0.0 Data Space set up
+
+
+
+
+
 ## Possible future work
 
 ### Analysis of the possibility of linking FIM-based ontologies
 
 #### What is FIM?
 
-[Federal Information Management (FIM)](https://www.fimportal.de/) is a framework used in Germany by the federal government, states, and municipalities to describe public services (e.g., applying for a national ID card) in a standardized way. The three main components of FIM are:&#x20;
+[Federal Information Management (FIM)](https://www.fimportal.de/) is a framework used in Germany by the federal government, states, and municipalities to describe public services (e.g., applying for a national ID card) in a standardized way. The three main components of FIM are:
 
 * Service description: A description of the public service for citizens or businesses.
 * Process description: The administrative steps required to deliver the service.
@@ -319,18 +344,18 @@ Several [ontologies](https://fusion-jena.github.io/gerps-onto-landingpage/) have
 
 <figure><img src="../../.gitbook/assets/gerps-process.png" alt=""><figcaption></figcaption></figure>
 
-In FIM, each process step is not randomly defined but is always based on a legal basis (e.g., law). A legal basis can belong to one of 20 [predefined types](https://www.xrepository.de/api/xrepository/urn:xoev-de:fim:codeliste:handlungsgrundlagenart_20230301:technischerBestandteilGenericode). Some of those types are:&#x20;
+In FIM, each process step is not randomly defined but is always based on a legal basis (e.g., law). A legal basis can belong to one of 20 [predefined types](https://www.xrepository.de/api/xrepository/urn:xoev-de:fim:codeliste:handlungsgrundlagenart_20230301:technischerBestandteilGenericode). Some of those types are:
 
-* EU Decision&#x20;
-* EU Regulation&#x20;
-* Act / Statute&#x20;
-* EU Directive (transposed into national law)&#x20;
-* &#x20;Statutory Ordinance / Regulation&#x20;
-* By-law (Satzung)&#x20;
-* Administrative Regulation / Administrative Guideline&#x20;
-* Rules of Procedure&#x20;
-* Resolution / Decision&#x20;
-* Standard / Norm&#x20;
+* EU Decision
+* EU Regulation
+* Act / Statute
+* EU Directive (transposed into national law)
+* Statutory Ordinance / Regulation
+* By-law (Satzung)
+* Administrative Regulation / Administrative Guideline
+* Rules of Procedure
+* Resolution / Decision
+* Standard / Norm
 * Administrative Act
 
 #### Connection with the DECIDe project
