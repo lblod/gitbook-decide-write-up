@@ -504,7 +504,21 @@ As stated in the architecture section, Ghent is testing the central and decentra
 
 Testing is being done by the Ghent project lead and in a second phase by the city service that assist on drafting decisions.
 
-##
+### Survey by Hochschule Kehl <mark style="background-color:red;">(add link to full report)</mark>
+
+For basic introduction about the survey please check the [related topic in the UC 0.0 Data space write up](write-up-uc0.0-data-space/).
+
+#### Results for UC 1 Mappin local decisions and legislation to geo-locations&#x20;
+
+This part of the survey was only conducted in Freiburg.&#x20;
+
+The survey results indicate that the UC1 geoportal prototype was generally well received by Freiburg respondents. The first impression was positive, with two thirds of respondents rating the geoportal positively and no negative assessments recorded. However, due to the small Freiburg-specific sample, the report emphasizes that these findings should be regarded as exploratory rather than representative.&#x20;
+
+Respondents perceived practical value in the geoportal, although assessments were moderate rather than overwhelming. A majority considered the demonstrator helpful for their daily or professional activities, while a substantial proportion remained neutral. The results suggest that the spatial presentation of municipal mobility-related decision information has practical potential, but that its relevance was not equally evident to all users.&#x20;
+
+The strongest support emerged for the concept of automatically extracting mobility-related information from municipal decisions and displaying it spatially. More than three quarters of respondents considered this functionality personally useful. The report concludes that the core idea of transforming information on road closures, detours and mobility restrictions into spatially accessible information addresses a perceived user need and was positively assessed by most respondents.&#x20;
+
+When asked about benefits, respondents primarily associated the geoportal with greater time efficiency, access to up-to-date information and improved data quality. Confidence in automatically extracted information was also high, provided that quality assurance is carried out before publication. The findings highlight quality assurance as an important condition for user trust and acceptance of AI-supported information extraction.
 
 ## Possible future work
 
@@ -529,6 +543,10 @@ The current pipeline extracts and classifies RMZ decisions but does not differen
 #### Linking to RMZ events instead of to entire decision
 
 The current implementation for UC1 detects locations and periods and links them to a decision. If a single decision affects multiple restricted mobility zones, it will therefore not be possible to distinguish which location is restricted for which period. This simplification was deemed acceptable to keep the scope contained for now. To solve this, the NER pipeline would have to discover restricted mobility zones as an entity itself and it would have to make sure that each period and location is linked to the restricted mobility zone entity that was discovered in this way, instead of directly to the decision. In the data model, this would mean an extension of the `Normative provision` with an activity indicating the RMZ.
+
+#### Based on the Survey results
+
+Regarding future development, respondents of the conducted servey showed particular interest in information on pedestrian zones and bicycle lanes. Open-ended responses further suggested expanding the geoportal with information on cycling networks, accessible routes, parking facilities, public toilets, water fountains, shaded areas and features that address the needs of people with disabilities.&#x20;
 
 ### Possible future work LBLOD related
 
