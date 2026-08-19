@@ -322,11 +322,23 @@ By targeting these groups, the survey aimed to capture a broad range of perspect
 
 #### Results for UC 0.0 Data Space set up
 
+The questions in the survey on UC 0.0 focused on the value of reusing local decisions.&#x20;
 
+Overall, the results provide strong support for the rationale underlying the development of a Local Decision and Legislation Data Space. Respondents recognised substantial potential benefits from machine-readable decision data, while the survey repeatedly identified limitations in finding, retrieving and using existing information. The report concludes that the challenge lies less in publishing more information and more in improving the structure, accessibility and reusability of municipal decision information.
 
-
+Full results for the survey questions about UC 0.0 can be found in the report.&#x20;
 
 ## Possible future work
+
+### Based on the Survey results
+
+#### Improve Findability and Retrieval of Relevant Decisions
+
+Future development should focus on helping users identify, retrieve and navigate decision information that is relevant to their specific needs. The survey indicates that awareness of online availability is already high, while confidence in finding relevant information is substantially lower. Improving retrieval mechanisms would address a key limitation identified by respondents.
+
+#### Strengthen Contextualisation and User-Oriented Presentation
+
+The survey highlights the importance of contextualising decision information and presenting it in a way that is useful to stakeholders. Respondents' current reliance on curated information sources suggests the need for approaches that help users understand and navigate decision information more effectively. Future developments should therefore focus on improving the presentation and contextual accessibility of decision-related information.
 
 ### Analysis of the possibility of linking FIM-based ontologies
 
