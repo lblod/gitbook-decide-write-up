@@ -303,9 +303,9 @@ Each pilot has only a single environment, configured through its own docker-comp
 
 ### Survey by Hochschule Kehl <mark style="background-color:red;">(add link to full report)</mark>
 
-<mark style="background-color:red;">In the periode of July and August 2026 Hochschule Kehl (partner in the DECIDE project) carried out a survey to mark the conclusion of the project. The goal was to gain additional perspectives on the use cases deloped during the project.</mark>&#x20;
+In the periode of July and August 2026 Hochschule Kehl (partner in the DECIDE project) carried out a survey to mark the conclusion of the project. The goal was to gain additional perspectives on the use cases deloped during the project.&#x20;
 
-<mark style="background-color:red;">Due to the lower numbers of respondents (48 in total) this survey is not representative. However</mark> given the small sample size, **the results should be interpreted as preliminary indications of user acceptance rather than as representative evidence. With a total of 48 respondents, there is not a sufficiently robust data set to obtain a sufficiently nuanced picture of the population with regard to the issues addressed.**
+Due to the lower numbers of respondents (48 in total) this survey is not representative. However given the small sample size, **the results should be interpreted as preliminary indications of user acceptance rather than as representative evidence. With a total of 48 respondents, there is not a sufficiently robust data set to obtain a sufficiently nuanced picture of the population with regard to the issues addressed.**
 
 Participation was voluntary and anonymous. No personally identifiable information was collected.&#x20;
 
