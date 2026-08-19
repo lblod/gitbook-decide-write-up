@@ -663,27 +663,6 @@ The process works as follows:
 
 The extraction tasks described above identify entities as text spans, strings like "City Council" or "Gent", but do not resolve them to specific linked data resources with a fixed known URI. Two documents from different cities might both mention "City Council", yet refer to entirely different organizations. The Named Entity Linking (NEL) service closes this gap: it takes the extracted entities and attempts to find their corresponding URI in the target LOD endpoints. Currently, the service links administrative bodies and locations; support for additional entity types (e.g. mandatees, legal documents) has been investigated but is not yet implemented.
 
-The NEL service is built as a FastAPI application that integrates a [LangChain](https://www.langchain.com/)-based agent with a Model Context Protocol (MCP) server. The architecture is designed around one central insight: writing correct SPARQL queries against an unfamiliar schema requires both knowledge of the SPARQL language and understanding of the target triplestore's class hierarchy, property names, and naming conventions. Rather than hard-coding queries for each entity type –which would be brittle and difficult to extend– the service delegates query construction to an LLM, augmented with schema context retrieved from a vector knowledge base (i.e. RAG).;
-
-* **FastAPI application:** Serves as the entry point. It exposes the `/delta` webhook endpoint through which the delta notifier triggers processing of newly scheduled entity linking tasks. When a delta arrives, the service polls the triplestore for tasks with status "scheduled", picks them up, and processes them asynchronously. The MCP server is mounted directly into the application routing (`/mcp`), making it accessible to both the internal agent and external clients.
-* **LangChain agent:** A tool-calling agent that receives a structured request (containing entity class, entity label, and location) and autonomously determines how to find the corresponding URI. The agent supports multiple LLM providers (OpenAI, Mistral, Ollama) and returns a structured `SparqlResponse` containing the matched URI, its label, and the reasoning behind the selection.
-* **MCP server:** Exposes a standardized set of tools to the agent following the Model Context Protocol. Three tools are central to the linking flow:
-  * `search_sparql_docs`: retrieves relevant SPARQL examples and schema definitions from the vector knowledge base, giving the LLM the context it needs to construct a syntactically and semantically correct query.
-  * `execute_sparql_query`: validates the LLM-generated SPARQL query against the known schema (using the [sparql\_llm](https://pypi.org/project/sparql-llm/) library), fixes minor issues automatically, and executes the query against the target LOD endpoint. If validation fails, the error is returned to the agent so it can refine and retry. After three retries the agent stops and the entity remains unlinked.
-  * `search_location`**:** resolves a location string to structured geographic information via a Nominatim lookup, returning precise coordinates along with contextual details such as the municipality, region, and neighborhood.
-* **Knowledge base:** A vector database ([Qdrant](https://qdrant.tech/) in production, in-memory for development) storing VOID shapes (schema definitions describing available classes and properties) and example SPARQL queries for the target endpoints. Loaded from configuration files at initialization, embedded using embeddinggemma via Ollama, and indexed. When the agent calls `search_sparql_docs`, the knowledge base returns the most relevant documents by cosine similarity, giving the LLM the precise schema context it needs to write a correct query for the entity type at hand.
-
-1. A delta notification arrives, signaling that a new entity linking task has been scheduled in the triplestore.
-2. The service picks up the task and transitions its status from "scheduled" to "busy".
-3. The task's input is fetched from the triplestore: the NER annotation containing the entity class, label, and optionally a spatial reference (`dct:spatial`).
-4. The entity class, label, and location are passed to the LangChain agent as a structured request.
-5. The agent selects a linking strategy based on entity type.
-   1. For administrative bodies, it calls `search_sparql_docs` to retrieve schema definitions and example queries, uses this context to generate a SPARQL query targeting the appropriate LOD endpoint, then calls `execute_sparql_query` to validate and run it –refining and retrying if the query fails, up to three times.
-   2. For locations, it calls `search_location` directly, which performs a Nominatim lookup and returns structured geographic information without involving SPARQL.
-6. Once the agent has identified the best matching URI, it returns a `SparqlResponse` with the URI, label, and reasoning.
-7. The service creates a new `oa:Annotation` in the triplestore, with an `oa:hasBody` pointing to a new `rdf:Statement` that asserts `skos:exactMatch` between the extracted entity and the found URI.
-8. The task transitions to "success" and its results container is written to the triplestore, making the output available to the job controller for any subsequent pipeline steps.
-
 The services used to realize Named Entity Linking are shown in the figure below:
 
 <figure><img src="../../../.gitbook/assets/lokale-bron-architecture-NEL.jpg" alt=""><figcaption></figcaption></figure>
