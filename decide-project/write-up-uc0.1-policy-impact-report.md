@@ -6,7 +6,7 @@ description: >-
 
 # Write-up UC0.1 Policy Impact Report
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 {% hint style="info" %}
 **Note:** In the original project proposal, this use case is embedded within Use Case 0.
@@ -89,8 +89,6 @@ Equally shared is the ambition to look beyond the SDGs. While the SDGs serve as 
 **Freiburg** sees the Policy Impact Report primarily as a tool for the city council. The insights are intended to be fed back as a periodic, evidence-based input, showing which SDG areas receive more or less legislative attention relative to strategic priorities. Publication via the open data portal extends the city's existing transparency commitments, and once established, the report has the potential to complement existing processes such as sustainability or climate reporting.
 
 **Ghent** frames the matching of local decisions with regional, national or international policy as a premium function for a future data space business case (see final architecture and possible future work). Checks against regional, national or international policy are considered best located at the regional or national level, which is why Ghent tests the quality of these annotations and impact assessments in the human validation tool realised by ABB. For checks against the local strategy of the city itself, a different setup may be required, in which the AI solution is trained and hosted on the servers of the City of Ghent.
-
-
 
 ### Target audience / Personas
 
@@ -232,7 +230,7 @@ The service is mounted behind the DECIDe dispatcher at `/policy-impact-report/`,
 
 #### Codelist Management tools
 
-Initially, the creation of custom codelist management tools was considered. These tools would allow the user to create their own codelist or import a csv file with the labels and descriptions of the concepts and turn that into a linked data codelist for them. However, there are already many tools on the market that do just that. [SEMIC even published a nice list of tools to manage codelists](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/toolkit). All of the tools there work on SKOS codelists. These can then easily be imported into the DECIDe triplestore as a migration (see the [migrations service](../#migrations) in the Core Components section of UC0.0). Once the codelist has been stored in the triplestore, referring to the SKOS `ConceptScheme` URI from in the job configuration is the next step towards creating a classifier for the newly added codelist. More information on the latter can be found in the next section.&#x20;
+Initially, the creation of custom codelist management tools was considered. These tools would allow the user to create their own codelist or import a csv file with the labels and descriptions of the concepts and turn that into a linked data codelist for them. However, there are already many tools on the market that do just that. [SEMIC even published a nice list of tools to manage codelists](https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/toolkit). All of the tools there work on SKOS codelists. These can then easily be imported into the DECIDe triplestore as a migration (see the [migrations service](../#migrations) in the Core Components section of UC0.0). Once the codelist has been stored in the triplestore, referring to the SKOS `ConceptScheme` URI from in the job configuration is the next step towards creating a classifier for the newly added codelist. More information on the latter can be found in the next section.
 
 Since the creation of codelists is a solved problem and not the core of the DECIDe project, we decided against creating our own solution.
 
@@ -483,11 +481,9 @@ The validation journey explored approaches where users validate the SDG link and
 
 ## Testing approach
 
-Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Policy Impact Report. 
-The process described in the [Validating the decision-SDG linking](write-up-uc0.0-data-space/write-up-uc0.1-policy-impact-report.md#validating-the-decision-sdg-linking "mention") section is followed.
+Each pilot city carried out manual testing on the enriched decisions delivered by ABB using the Policy Impact Report. The process described in the [write-up-uc0.1-policy-impact-report.md](write-up-uc0.0-data-space/write-up-uc0.1-policy-impact-report.md#validating-the-decision-sdg-linking "mention") section is followed.
 
-The Policy Impact Reporting was subsequently used in a survey led by consortium partner Kehl to assess its usefulness.
-All pilots are testing the report via the human validation tool as well as via the policy impact dashboard the ABB has realised.
+The Policy Impact Reporting was subsequently used in a survey led by consortium partner Kehl to assess its usefulness. All pilots are testing the report via the human validation tool as well as via the policy impact dashboard the ABB has realised.
 
 #### **Ghent**
 
@@ -501,10 +497,21 @@ The Policy Impact Report will be evaluated quantitatively through a survey condu
 
 In addition, the Policy Impact Report has been qualitatively tested by the Climate and Environmental Office. These tests identified several minor issues, including the need to provide additional context on why the SDG assessment was selected and the need to further regionalize the impact categories.
 
-### Risks & mitigations
+### Survey by Hochschule Kehl <mark style="background-color:red;">(add link to full report)</mark>
 
-There was the risk that the Policy Impact Report would have its own validation visualization, separate from the human validation tool, which would increase the maintenance effort.
-This is mitigated by developing the Policy Impact Report validation inside the Human Validation Tool, along with the other validations. This allows to build it on the same principles, UI, UX...
+For basic introduction about the survey please check the [related topic in the UC 0.0 Data space write up](write-up-uc0.0-data-space/).
+
+#### Results for UC 0.1 Policy Impact Report&#x20;
+
+The Policy Impact Report dashboard received a predominantly positive initial evaluation. A majority of respondents (60.4%) reported a positive first impression, while only 6.3% gave a rather negative assessment and none rated it very negatively. Technical usability was also assessed favourably: 91.7% considered the dashboard at least feasible to use, and 41.7% rated it as easy or very easy.&#x20;
+
+Respondents generally considered the dashboard useful for engaging with local political decisions. However, most positive responses were concentrated in the moderate category (“somewhat helpful”). The report therefore notes a positive assessment of the dashboard, but one that remains moderate rather than strongly pronounced.
+
+Confidence in the future development of the dashboard was particularly high. Respondents believed further development could generate positive effects.&#x20;
+
+The dashboard was also perceived as contributing to a better understanding of local political decisions and information retrieval. Slightly more than half of respondents (52.1%) felt it improved the clarity of local political decisions, while 41.7% reported a clear improvement in finding information compared with previous sources. In addition, 72.3% expressed a positive willingness to recommend the dashboard to others.
+
+Regarding broader value, 85.4% of respondents believed the dashboard has at least moderate potential to support political participation through greater transparency and efficiency. Likewise, 87.5% attributed general added value to the dashboard.&#x20;
 
 ## Possible future work
 
@@ -561,6 +568,10 @@ As the system moves into operational use, monitoring model behavior over time be
 Future work could introduce a monitoring layer that tracks both model outputs and human validation patterns. This includes observing label distributions and confidence trends over time, as well as tracking validator agreement and correction rates as indicators of model quality. In addition, the supervised classifier can be periodically evaluated against validated datasets to ensure stable and measurable performance.
 
 Alerting mechanisms could be implemented to flag potential drift or degradation when thresholds are exceeded, enabling timely retraining and maintaining reliability as the system scales.
+
+#### Based on the Survey results
+
+Open-ended feedback identified recurring improvement areas, including greater transparency and explainability of AI classifications and SDG linkages, improved data quality and reliability, better navigation and filtering, mobile and multilingual accessibility, more contextual information, and stronger alignment with the needs of different stakeholder groups.
 
 ### Possible future work LBLOD related
 
