@@ -6,10 +6,6 @@ description: Data ingestion & (AI) enrichment pipelines
 
 Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
-{% hint style="warning" %}
-This page is under construction
-{% endhint %}
-
 ## Description UC/wanted deliverable
 
 The DECIDe data space connects local governments from three pilot cities across two countries — Ghent (Belgium), Bamberg (Germany), and Freiburg (Germany) — each of which publishes its local decisions and legislation (LD\&L) through different digital infrastructures and in different formats. Before any cross-city analysis, AI-based enrichment, or downstream application can be built, this heterogeneous input must be harvested, converted to a common representation, and made available in the data space.
@@ -570,7 +566,7 @@ n/a
 
 The AI pipeline operates on the normalized ELI data produced by the previously mentioned ingestion pipelines. Its purpose is to extract structured, machine-readable information from the unstructured text of decisions and connect it to existing resources as linked data. The pipeline consists of four sequential tasks, orchestrated by the job controller in the same way as the ingestion steps.
 
-A general overview of the AI pipeline is given in the <mark style="background-color:$warning;">following figure</mark>. The tasks are organized in 2 services: the Named Entity Recognition (NER) service which houses three tasks, and the Named Entity Linking (NEL) which has one.
+A general overview of the AI pipeline is given in the following figure. The tasks are organized in 2 services: the Named Entity Recognition (NER) service which houses three tasks, and the Named Entity Linking (NEL) which has one.
 
 <figure><img src="../../../.gitbook/assets/models-Copy of UC0.0.drawio.png" alt=""><figcaption></figcaption></figure>
 

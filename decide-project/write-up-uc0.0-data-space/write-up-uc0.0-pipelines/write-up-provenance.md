@@ -297,8 +297,6 @@ A dedicated provenance browser was not implemented during the pilot. A future br
 
 The provenance data, including the tracked AI calls with input/output tokens is actively used for generating reports on the cost of the AI systems in DECIDe. No interface was created for this yet, but they SPARQL queries run can be found in the project's GitHub repository: https://github.com/lblod/app-decide/blob/development/scripts/project/export_csv/queries/ai-calls.sparql
 
-### Risks & mitigations
-
 ## Possible future work
 
 As discussed, the AI components used within the DECIDe project generate a `prov:Activity` for every `oa:Annotation`, essentially storing provenance for AI-generated data. We could expand on this by also generating activities for annotations that are the result of user-related actions.

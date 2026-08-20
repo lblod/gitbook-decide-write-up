@@ -6,9 +6,6 @@ description: Human Validation
 
 Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
 
-{% hint style="warning" %}
-This page is under construction
-{% endhint %}
 
 ## Description UC/wanted deliverable
 

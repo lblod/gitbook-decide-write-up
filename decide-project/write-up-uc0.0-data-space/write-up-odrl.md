@@ -207,7 +207,7 @@ Expanding our table above, and applying it to an example within the context of D
 
 #### Detailed mapping: ODRL to sparql-parser's Lisp-style configuration
 
-{% hint style="warning" %}
+{% hint style="info" %}
 This section requires technical knowledge of how to write authorization policies for sparql-parser using its Lisp-style configuration interface. If you are looking for an explanation to simply configure sparql-parser using ODRL instead please consult its [README](https://github.com/mu-semtech/sparql-parser/tree/feature/odrl-configuration#defining-an-authorization-policy-in-odrl).
 {% endhint %}
 
@@ -501,8 +501,6 @@ These scenario tests were extended to also cover authorization policies specifie
 Second, the DECIDe application has been configured to use an authorization policy described in ODRL as early as possible, middle of December 2025.
 Meaning that since then each instance of the application actively used an ODRL authorization policy.
 Since sparql-parser is crucial to an application's correct functioning, issues should reveal themselves, be it mistakes in the policy itself or bugs in its conversion or enforcement.
-
-### Risks & mitigations
 
 ## Possible future work
 
