@@ -22,7 +22,7 @@ As part of the Information Management specialisation, 25 students on the Bachelo
 * _Requirements for setting up an urban data space, using the City of Bamberg as an example_
 * _Developments in applications for an urban data space, using the example of the ‘Innovative Disaster Management’ use case in the city of Bamberg_
 
-<figure><img src="../.gitbook/assets/image (48).png" alt="Picture1 : Student excursion to Smart City Bamberg on 27 November 2025 (Source: Kehl University of Applied Sciences)"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (48).png" alt="Picture1 : Student excursion to Smart City Bamberg on 27 November 2025 (Source: Kehl University of Applied Sciences)"><figcaption></figcaption></figure>
 
 ### DECIDe seminar as part of the ITIL and Distributed Systems sub-module in the ‘Digital Public Administration Management’ Bachelor’s degree programme: Active involvement of students in an empirical research process conducted by DECIDe
 
@@ -36,7 +36,7 @@ Involvement in a real-world pre-test thus generated mutual added value for both 
 
 The seminar thus serves as a prime example of Kehl University of Applied Sciences’ approach to combining academic accompanying research with research-based learning. The students were not merely informed about the results of a research project, but were actively involved in a concrete research process. At the same time, an additional user perspective was incorporated into the preparation of the empirical survey. DECIDe thus served both as a subject of research and as a practice-oriented learning environment for future professionals in digital public administration.
 
-<figure><img src="../.gitbook/assets/image (49).png" alt="Picture2 : Final presentations by the two student project groups in the DECIDe seminar under academic lead of Prof. Dr.-Ing. Antje Dietrich (3 July 2026, source: Kehl University of Public Administration)"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (49).png" alt="Picture2 : Final presentations by the two student project groups in the DECIDe seminar under academic lead of Prof. Dr.-Ing. Antje Dietrich (3 July 2026, source: Kehl University of Public Administration)"><figcaption></figcaption></figure>
 
 ### Student dissertation in the Master’s programme ‘European Public Administration Management’: DECIDe as the subject of an independent academic study
 
@@ -55,10 +55,6 @@ Beyond the direct skills development of the participating students, DECIDe also 
 The insights gained during the project’s duration form a basis for incorporating topics such as municipal data rooms, data governance, interoperability, data-driven administrative modernisation and user-centred digital administrative services more extensively into the university’s teaching and continuing professional development programmes in future. The teaching and learning formats tested in DECIDe can serve as a starting point for longer-term curricular and pedagogical development at the university.
 
 In this way, the accompanying academic research has an impact that extends beyond the immediate duration of the research project: findings from a European innovation project are being harnessed for academic qualification, linked to experience from local government practice, and, in the long term, made available for the training and further education of senior civil servants in Baden-Württemberg. DECIDe thus contributes to the sustainable transfer of expertise and knowledge between European research, higher education and local government practice.
-
-&#x20;
-
-&#x20;
 
 <br>
 
