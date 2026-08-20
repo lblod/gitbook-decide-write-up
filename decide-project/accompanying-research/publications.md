@@ -17,7 +17,7 @@
 
 Local decisions form the backbone of governmental action at the municipal level. To strengthen their impact and interoperability, we aim to implement key components of a dataspace for local decision data. In this environment, decisions from different levels of government can interoperate and be linked to thematic datasets. This integration pursues three main objectives: improving the quality of decision data, enabling more efficient and proactive public service delivery, and enhancing data transparency. This paper presents insights from the DECIDe (Data Driven Exploration in Contextual Information on DEcisions) project, which aims to establish a semantic dataspace for local decision data from two countries (Germany and Belgium). The dataspace provides a policy-aware infrastructure for secure and sovereign data exchange, while knowledge graphs ensure semantic harmonization and machine-interpretable data structures. Furthermore, we introduce practical use cases and describe the overall system architecture, including the semantic mapping of heterogeneous data sources to a unified ontology and the AI-based enrichment of the resulting knowledge graph.
 
-### DECIDe: Data Spaces for Evidence-Based Decisions and Research-Based Learning
+### DECIDe: Data Spaces for Evidence-Based Decisions and Research-Based Learning (translated)
 
 * **Authors**: Antje Dietrich, Hannes Köninger, and Marianne Mauch.
 * **Status**: published
