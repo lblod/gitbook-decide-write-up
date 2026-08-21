@@ -130,8 +130,8 @@ The foundational data sources and datasets for DECIDe are documented in the UC0.
 
 | Dataset                                                                                  | IdP/Authentication service | Country of origin | Domain     | Shared within the project | Reused within the project                                        |
 | ---------------------------------------------------------------------------------------- | -------------------------- | ----------------- | ---------- | ------------------------- | ---------------------------------------------------------------- |
-| LD\&L decisions annotated with SDG codelist mappings (`oa:Annotation`)                   | Data space authentication  | Belgium / Germany | Government | Yes                       | Yes - consumed by Human Validation Tool and Policy Impact Report |
-| Human feedback on LD\&L decisions annotated with SDG codelist mappings (`oa:Annotation`) | Data space authentication  | Belgium / Germany | Government | Yes                       | Yes - consumed by codelist labeling service for training         |
+| LD\&L decisions annotated with SDG codelist mappings (`oa:Annotation`)                   | Data space authentication  | Belgium ([Ghent](https://catalog.decide.lblod.info/dcat/datasets/8f98549f-163e-51ba-bcd4-33c7432944d0)) / Germany ([Bamberg](https://catalog.decide.lblod.info/dcat/datasets/7b71ed66-462d-5e9a-a271-953d7baf9a85), [Freiburg](https://catalog.decide.lblod.info/dcat/datasets/5b338cc9-89fb-595d-82f2-e0015384dc90)) | Government | Yes                       | Yes - consumed by Human Validation Tool and Policy Impact Report |
+| Human feedback on LD\&L decisions annotated with SDG codelist mappings (`oa:Annotation`) | Data space authentication  | Belgium ([Ghent](https://catalog.decide.lblod.info/dcat/datasets/79f9ed1c-94cb-5a77-a17e-af9a192acfcb)) / Germany ([Bamberg](https://catalog.decide.lblod.info/dcat/datasets/e177b2ce-a73f-5530-83d9-940b03a8e8fc), [Freiburg]()) | Government | Yes                       | Yes - consumed by codelist labeling service for training         |
 
 ### Data standards
 
