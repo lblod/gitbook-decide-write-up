@@ -292,7 +292,7 @@ Practical guidance:
 * **Fully open models are a real option for simple, structured tasks.** Apertus 8B and 70B were evaluated in DECIDe: usable for cleaning, formatting, extraction and single-step tool use, not reliable for strict output formats or multi-step reasoning.
 * **Check what your organization allows before you design around a provider.** Next to the data-level policies of Step 4.2, many organizations restrict _which_ external providers may be used at all, and expect the choice to be motivated and approved. Find out early whether a list of permitted providers, internal AI guidelines or a reference architecture apply, because any of them can rule out an otherwise sensible design.
 
-### 5.2: Maintenance
+#### 5.2: Maintenance
 
 A data plan should mention the next actions that are required for a successful deployment.
 
