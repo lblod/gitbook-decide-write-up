@@ -23,6 +23,5 @@
   * [Ethical Data Sharing Agreement](decide-project/legal-and-governance/ethical-data-sharing-agreement.md)
 * [Accompanying research](decide-project/accompanying-research/README.md)
   * [Publications](decide-project/accompanying-research/publications.md)
-* [Addendums](decide-project/addendums/README.md)
-  * [Architecture mapping to DSSC/DS4SSCC and growth](decide-project/addendums/architecture-mapping-to-dssc-ds4sscc-and-growth.md)
+* [Addenda](decide-project/addendums/README.md)
   * [Pilot Data Space Functionality Assessment - Proof of Compliance (DECIDe)](decide-project/addendums/pilot-data-space-functionality-assessment-proof-of-compliance-decide.md)
