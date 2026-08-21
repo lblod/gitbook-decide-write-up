@@ -29,7 +29,7 @@ Each step is briefly described below. For each use case and for each technical c
 It is important that each new partner or new use case goes over these steps and **documents** how these steps are tackled. Documentation is required to give insight to other future new participants. And also so that the data space members keep on having an overview on lessons learned.
 {% endhint %}
 
-<mark style="color:red;">(Insert Figma)</mark>
+{% embed url="https://www.figma.com/design/ibao25c1tpRVUncvoYrwuL/repeatable_dataplan?node-id=0-1&t=wSsLqJ3j93XEACSW-1" %}
 
 ### Step 1: Preparation
 
