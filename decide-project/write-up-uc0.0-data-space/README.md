@@ -275,6 +275,45 @@ The migrations service allows the definition of migration files to modify the co
 
 **GitHub:** [https://github.com/mu-semtech/mu-migrations-service](https://github.com/mu-semtech/mu-migrations-service)
 
+### Architecture mapping to DSSC/DS4SSCC and growth
+
+ABB has developed an open source technology stack built on top of the [semantic.works](https://semantic.works/) microservice architecture. This architecture comprises of various reusable, containerized services that process and publish Linked Data. It was reused as the core architecture of the DECIDe project.
+
+In the context of the DECIDe project, many new containerized services were created and existing ones were extended. The images below give a graphical overview of this evolution. Note that only services that are used in the DECIDe project are shown, there are others.
+
+The first image shows general services and frontend components:
+
+<figure><img src="../../.gitbook/assets/decide-ds4sscc-mapping-DSSC Part 1(1) (1).jpg" alt=""><figcaption></figcaption></figure>
+
+The second image shows services that are more related to the pipelines in the DECIDe project:
+
+<figure><img src="../../.gitbook/assets/decide-ds4sscc-mapping-DSSC Part 2(1).jpg" alt=""><figcaption></figcaption></figure>
+
+In both these images, services created in DECIDe were marked with a star, services extended in DECIDe with a triangle. Some services were simply used ‘as-is’ from the existing architecture, these don’t have a mark. The image also maps the various services to technical components from the [DSSC blueprint (v2)](https://archive.dssc.eu/space/BVE2/1071251457/Data+Spaces+Blueprint+v2.0+-+Home).
+
+Below is a mapping to the [DS4SSCC](https://www.ds4sscc.eu/) Participant Platform Architecture v2.0 as taken from the [3rd Technical Presentation in Ljubljana](https://static1.squarespace.com/static/63718ba2d90d0263d7fc1857/t/6a6ca51c8eba8c66874fbb55/1785505052108/Day+01+-+1c+-+Verifiable+Credentials+in+Data+Spaces+\(1\).pptx+\(1\).pdf). The DECIDe solution is marked up on the original drawing using red arrows pointing to the DS4SSCC component it implements.
+
+<figure><img src="../../.gitbook/assets/decide-ds4sscc-mapping-Participant Platform Architecture v2.0(2).jpg" alt=""><figcaption></figcaption></figure>
+
+Briefly, this means:
+
+* The various harvesting Services harvest existing data sources
+* These are transformed into Linked data according to standard models and stored into a triplestore, which functions as a Data Broker
+* This data is then enriched by the various AI enrichment services (Data Processing)
+* Data Translation is unnecessary as at harvest time, data is already transformed into standardized Linked Data
+* There are various ways the data is made available (SPARQL, mu-resources, file download, LDES) in our Data API
+* Our publication is handled by our DCAT service
+* We have a DSP connector that deals with creating offerings and the dataspace protocol
+* An OID4VC service handles everything that is about credentials. This includes credential management, credential exchange, issuance, verification and a universal trust data registry
+* IDM depends on the partner, but an example case has been created with ACM/IDM on the ABB side
+* Authorization and Proxy/Gateway is different in the DECIDe dataspace. Authorization is not just enforced on a request level (access yes/no) in a Gateway, rather it is enforced on a SPARQL query level by a complex set of access rules expressed in ODRL and enforced by mu-authorization
+* Onboarding is a manual process at the moment that involves configuring the correct access rights in the data space by a technical team
+* The federation layer is provided by a federated DCAT catalog, fed by LDES feeds
+* Our vocabularies are standardized and we publish SHACL shapes as part of the DCAT datasets
+* Observability is tackled by adding provenance information to all of our AI and human review annotations. Observability of the inner workings stack is done through the semantic.works app-http-logger.
+
+More information about the services named in this section and their interplay can be found in the various architectural sections on this GitBook page.
+
 ## Testing approach
 
 The data space provides a shared infrastructure layer covering data ingestion and normalization, AI-assisted semantic enrichment, human oversight and validation, federated discovery... Testing this infrastructure follows the same layered structure as its deployment: local, ABB-side, and pilot-specific.
@@ -299,13 +338,13 @@ Each pilot has only a single environment, configured through its own docker-comp
 
 ### Survey by Hochschule Kehl <mark style="background-color:red;">(add link to full report)</mark>
 
-In the periode of July and August 2026 Hochschule Kehl (partner in the DECIDE project) carried out a survey to mark the conclusion of the project. The goal was to gain additional perspectives on the use cases deloped during the project.&#x20;
+In the periode of July and August 2026 Hochschule Kehl (partner in the DECIDE project) carried out a survey to mark the conclusion of the project. The goal was to gain additional perspectives on the use cases deloped during the project.
 
 Due to the lower numbers of respondents (48 in total) this survey is not representative. However given the small sample size, **the results should be interpreted as preliminary indications of user acceptance rather than as representative evidence. With a total of 48 respondents, there is not a sufficiently robust data set to obtain a sufficiently nuanced picture of the population with regard to the issues addressed.**
 
-Participation was voluntary and anonymous. No personally identifiable information was collected.&#x20;
+Participation was voluntary and anonymous. No personally identifiable information was collected.
 
-The survey conducted online and was available in German, English and Flemish.&#x20;
+The survey conducted online and was available in German, English and Flemish.
 
 #### Target groups
 
@@ -318,11 +357,11 @@ By targeting these groups, the survey aimed to capture a broad range of perspect
 
 #### Results for UC 0.0 Data Space set up
 
-The questions in the survey on UC 0.0 focused on the value of reusing local decisions.&#x20;
+The questions in the survey on UC 0.0 focused on the value of reusing local decisions.
 
 Overall, the results provide strong support for the rationale underlying the development of a Local Decision and Legislation Data Space. Respondents recognised substantial potential benefits from machine-readable decision data, while the survey repeatedly identified limitations in finding, retrieving and using existing information. The report concludes that the challenge lies less in publishing more information and more in improving the structure, accessibility and reusability of municipal decision information.
 
-Full results for the survey questions about UC 0.0 can be found in the report.&#x20;
+Full results for the survey questions about UC 0.0 can be found in the report.
 
 ## Possible future work
 
