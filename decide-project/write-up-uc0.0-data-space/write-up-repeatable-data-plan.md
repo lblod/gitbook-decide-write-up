@@ -112,7 +112,7 @@ For every row of the matrix that reads "needs to be generated with AI", the data
 
 #### 1.3: Define data models and standards
 
-This step considers how the information needs can be mapped onto (inter)national standards. This involves a separate process of selecting the appropriate data models (see "The process for selecting the appropriate data model per use case" lower on this page).
+This step considers how the information needs can be mapped onto (inter)national standards. This involves a separate process of selecting the appropriate data models (see "[The process for selecting the appropriate data model per use case](https://abb-vlaanderen.gitbook.io/informatie-over-slimme-lokale-bronnen/decide-project/write-up-uc0.0-data-space/write-up-repeatable-data-plan#the-process-for-selecting-the-appropriate-data-model-per-use-case)" lower on this page).
 
 If the data model supports WKT and GeoSPARQL, you get GeoSPARQL querying functionality in the triplestore for free. Consumers can then retrieve and map location-bound decisions to GIS consumable formats
 
