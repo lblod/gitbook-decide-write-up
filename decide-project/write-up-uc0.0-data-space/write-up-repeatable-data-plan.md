@@ -112,7 +112,7 @@ For every row of the matrix that reads "needs to be generated with AI", the data
 
 #### 1.3: Define data models and standards
 
-This step considers how the information needs can be mapped onto (inter)national standards. This involves a separate process of selecting the appropriate data models.
+This step considers how the information needs can be mapped onto (inter)national standards. This involves a separate process of selecting the appropriate data models (see "The process for selecting the appropriate data model per use case" lower on this page).
 
 If the data model supports WKT and GeoSPARQL, you get GeoSPARQL querying functionality in the triplestore for free. Consumers can then retrieve and map location-bound decisions to GIS consumable formats
 
@@ -331,12 +331,6 @@ A data plan must explicitly mention the conclusions that are made during analysi
 
 For the AI components, document at least a model inventory: which model performs which task, which version is deployed, where it comes from, and how it scored on which evaluation set. In DECIDe the first three are registered automatically in the triplestore: each AI service is recorded as an agent with a hash of its configuration and the model it calls, see [Agent and configuration registration](https://abb-vlaanderen.gitbook.io/informatie-over-slimme-lokale-bronnen/decide-project/write-up-uc0.0-data-space/write-up-uc0.0-pipelines/write-up-provenance#agent-and-configuration-registration). Also decide how the use of AI is documented to end users of the service: annotations that look like facts but are inferred should be recognizable as such in the interface, not only in the data.
 
-### Testing
-
-The repeatable data plan has been tested when adding a fourth data ingestion pipeline: [write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#final-architecture-and-why "mention") from the city of Bamberg. This pipeline was introduced at the end of the project and thus a good candidate for evaluating the repeatable data plan whether all steps are mentioned to integrate a new dataset.
-
-The Flanders Environment Agency (VMM) is interested in reusing the codelist mapping tooling for mapping policies of local government to their more high-level policies. In the future, VMM can try out the steps of the plan for their deployment.
-
 ### The process for selecting the appropriate data model per use case
 
 Each use case entails a certain information need. Before information can be stored in the local source, we need to align with semantic data models (or standards) so the data is interoperable with other stakeholders in the data space. This document describes the steps that need to be considered when aligning the information need of a use case with existing standards, for the following, simplified use case:
@@ -409,6 +403,12 @@ If these questions show that this term corresponds in definition and use to that
 #### Step 4: Find a solution for unmapped terms <a href="#step-4-find-a-solution-for-unmapped-terms" id="step-4-find-a-solution-for-unmapped-terms"></a>
 
 Unmapped terms must be created ourselves.At ABB (Flemish government), we do this by creating an ontology in Turtle format here: [https://github.com/lblod/vocabularies](https://github.com/lblod/vocabularies)​A similar approach is taken by the city of Ghent: [https://github.com/StadGent/Vocabularies](https://github.com/StadGent/Vocabularies) and University of Jena: [https://github.com/fusion-jena/GerPS-Process/tree/main/ontology](https://github.com/fusion-jena/GerPS-Process/tree/main/ontology)
+
+### Testing
+
+The repeatable data plan has been tested when adding a fourth data ingestion pipeline: [write-up-uc0.0-pipelines.md](write-up-uc0.0-data-space/write-up-uc0.0-pipelines.md#final-architecture-and-why "mention") from the city of Bamberg. This pipeline was introduced at the end of the project and thus a good candidate for evaluating the repeatable data plan whether all steps are mentioned to integrate a new dataset.
+
+The Flanders Environment Agency (VMM) is interested in reusing the codelist mapping tooling for mapping policies of local government to their more high-level policies. In the future, VMM can try out the steps of the plan for their deployment.
 
 ## Repeatable method evaluation of use cases (D4.1)
 
