@@ -522,7 +522,7 @@ Not every VLOCA project requires the full DCC. Activate DCC components when:
 
 The DCC components deepen and extend the VLOCA analysis for UC1, addressing the governance, data-sharing, and technical architecture dimensions that the VLOCA tiles cover at a higher level of abstraction:
 
-<mark style="background-color:$warning;">See full data cooperation canvas for the DECIDE project (to be added).</mark>
+See [full data cooperation canvas](../addendums/data-cooperation-canvas-for-the-project.md) for the DECIDE project.
 
 ### Key Insights from the UC1 Application
 
