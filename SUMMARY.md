@@ -24,4 +24,5 @@
 * [Accompanying research](decide-project/accompanying-research/README.md)
   * [Publications](decide-project/accompanying-research/publications.md)
 * [Addenda](decide-project/addendums/README.md)
+  * [Data Cooperation Canvas for the project](decide-project/addendums/data-cooperation-canvas-for-the-project.md)
   * [Pilot Data Space Functionality Assessment - Proof of Compliance (DECIDe)](decide-project/addendums/pilot-data-space-functionality-assessment-proof-of-compliance-decide.md)
