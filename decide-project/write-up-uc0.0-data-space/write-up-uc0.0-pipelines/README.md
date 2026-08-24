@@ -729,6 +729,8 @@ Data from this SQL database can then be served in a structured JSON format. This
 
 For Named Entity Recognition (NER) and Named Entity Linking (NEL), Bamberg currently uses an external Mistral model, as the current server infrastructure does not reliably support running a local large language model for these tasks. To further test out a wide variety of open and closed models while aligning with strict GDPR-compliance, ISO-27001-certified servers and hosting within Germany, Bamberg decided to use [Ayunis](https://www.ayunis.com/) as a provider and successfully connected it to the DECIDE system.
 
+In addition to the [main repository](https://github.com/lblod/app-decide), the project is also actively mirrored by Bamberg to a [repository in openCode](https://gitlab.opencode.de/smart-city-bamberg/decide) – a project for the distribution of open-source software for public administration in Germany.
+
 #### Freiburg
 
 Freiburg relied on the central pipeline infrastructure operated by ABB rather than running its own instance. The Freiburg data is harvested and normalized directly by the ABB-hosted pipeline, and Freiburg consumed the resulting enriched outputs for its use case work. This kept the setup simple and let Freiburg focus on validating the use case itself, while the option to move to a locally operated pipeline remains open for the future.
@@ -899,3 +901,4 @@ Documentation should clarify which endpoint metadata, access roles, credential r
 * Webscraper for ALLRIS (Bamberg): [https://gitlab.com/DarkSirath/linkinallris](https://gitlab.com/DarkSirath/linkinallris)
 * Ui! DECIDe demo application consuming DECIDe data-space outputs: [Ui! DECIDe demo application](https://app.decide.ai-native-ri.eu)
 * DECIDe private SPARQL endpoint used for partner-side consumption tests: [DECIDe private SPARQL endpoint](https://ds.decide.lblod.info/api/private/sparql)
+* Repository mirror in openCode: [https://gitlab.opencode.de/smart-city-bamberg/decide](https://gitlab.opencode.de/smart-city-bamberg/decide)
