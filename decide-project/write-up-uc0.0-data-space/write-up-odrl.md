@@ -4,7 +4,7 @@ description: Authorization Policies Store
 
 # Write-up ODRL
 
-Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .&#x20;
+Basic information on the DECIDE project can be found on the [website ](https://www.vlaanderen.be/lokaal-bestuur/digitale-transformatie/slimme-lokale-databronnen/over-decide)in Dutch, English and German. The webpage explains what the project acronym stands for, what the project is about, who the partners are, ... .
 
 ## Description UC/wanted deliverable
 
@@ -475,32 +475,25 @@ In this case, the permission to read is only granted to an `odrl:PartyCollection
 
 These policies are only there for users to read (and possibly also automated systems that understand ODRL), they are not parsed, let alone enforced in the DECIDe data space. The only rules applied by the DECIDe dataspace are the ODRL authorization policies above. This is because they work on a different level.
 
-### Other explored semantic components (and why not)
+### Remarks on pilot site implementation
 
-### Final AI components (and why) (if any)
+Within the project, a deliberate decision was made not to deploy dedicated ODRL implementations in every individual pilot city. This decision was aligned with the objectives of the project and the maturity level of the data space during the implementation phase.
 
-n/a
+The purpose of the ODRL activities was to demonstrate how data usage rights, obligations, permissions and restrictions can be expressed in a standardized, machine-readable manner and linked to data assets within the data space ecosystem. The project successfully achieved this objective by developing, modelling and validating ODRL-based policies as part of the common data space architecture.
 
-### Other explored AI components (and why not)
+The key innovation and value of the ODRL work resided in the establishment of a generic and reusable policy framework rather than in the replication of local implementations. Once the ability to define, interpret and apply ODRL policies within the data space context had been demonstrated, implementing the same policy mechanisms separately in each pilot city would have provided limited additional evidence of feasibility or interoperability.
 
-n/a
+The project therefore focused its efforts on validating the common semantic approach, policy model and governance mechanisms that enable data providers and data consumers to communicate usage conditions in a consistent way. This delivered a reusable capability that can be adopted by future participants in the data space without requiring substantial redesign or redevelopment.
 
-## Final UI design (and why) (if any)
+From a data space perspective, demonstrating that a shared ODRL framework can support policy-driven data sharing across organisational boundaries was more valuable than repeating the same implementation within multiple local pilot environments. The project thereby validated the foundational building blocks required for future scaling and onboarding of additional cities and stakeholders.
 
-n/a
-
-### Other explored UI design (and why not)
-
-n/a
+Consequently, the project successfully delivered the intended ODRL outcomes and demonstrated the applicability of policy-based data governance within the data space. At this stage in the lifecycle of the data space, extending identical ODRL implementations to every pilot city would not have generated significant new insights or additional value, as the core technical concepts, interoperability principles and governance mechanisms had already been proven through the common framework and demonstration activities.
 
 ## Testing approach
-The extension to sparql-parser to support configuration via ODRL was testing in two ways.
-First, the service itself contains some [scenario tests](https://github.com/mu-semtech/sparql-parser/tree/feature/odrl-configuration/test) which test whether different policies are correctly loaded and enforced.
-These scenario tests were extended to also cover authorization policies specified in ODRL.
 
-Second, the DECIDe application has been configured to use an authorization policy described in ODRL as early as possible, middle of December 2025.
-Meaning that since then each instance of the application actively used an ODRL authorization policy.
-Since sparql-parser is crucial to an application's correct functioning, issues should reveal themselves, be it mistakes in the policy itself or bugs in its conversion or enforcement.
+The extension to sparql-parser to support configuration via ODRL was testing in two ways. First, the service itself contains some [scenario tests](https://github.com/mu-semtech/sparql-parser/tree/feature/odrl-configuration/test) which test whether different policies are correctly loaded and enforced. These scenario tests were extended to also cover authorization policies specified in ODRL.
+
+Second, the DECIDe application has been configured to use an authorization policy described in ODRL as early as possible, middle of December 2025. Meaning that since then each instance of the application actively used an ODRL authorization policy. Since sparql-parser is crucial to an application's correct functioning, issues should reveal themselves, be it mistakes in the policy itself or bugs in its conversion or enforcement.
 
 ## Possible future work
 
