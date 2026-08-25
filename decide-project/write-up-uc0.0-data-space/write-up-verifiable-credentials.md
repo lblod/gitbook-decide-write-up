@@ -380,6 +380,16 @@ Any participant wanting to **verify** DECIDe credentials must:
 
 Once this is done, a participant can use any of our supported wallets to confirm that the OID4VCI and OID4VP interaction works as expected. Paradym wallet is recommended as it builds on the DID specification and has a great debug support to understand what exactly is going wrong when building the issuer or verifier. The EUDI Wallet reference implementation requires additional configuration effort on the participant's end (see earlier).
 
+### Remarks on pilot site implementation
+
+Within the project, a conscious decision was made not to implement a separate Verifiable Credential issuer setup in each individual pilot city. This decision was based on the maturity level and objectives of the data space at this stage of its lifecycle.The primary goal of the Verifiable Credentials work package was to demonstrate that credentials can be issued, exchanged and verified across organisational boundaries in a trusted and interoperable manner. This objective was successfully achieved through the cross-issuer validation scenario, including the validation of credentials originating from a German partner. By proving interoperability between different issuers and jurisdictions, the project demonstrated one of the most important value propositions of Verifiable Credentials: the ability to operate beyond a single local environment.
+
+Implementing a separate VC issuer implementation for every pilot city would largely have repeated the same technical capabilities and would therefore have provided limited additional learning or evidence. Once interoperability between independent issuers was demonstrated, additional local implementations would primarily have served as replication exercises rather than introducing new functional insights.
+
+As a result, project resources were focused on validating the cross-organisational trust framework, governance model and interoperability mechanisms that are essential building blocks for a future data space ecosystem. This approach allowed the consortium to deliver a stronger proof of concept by showing that credentials can be reused and verified across different authorities and contexts, rather than only within a single local deployment.
+
+Consequently, the project delivered the intended Verifiable Credential capabilities and successfully demonstrated their applicability in a multi-party environment. At the current stage of the data space's evolution, extending the same implementation to each pilot city would not have generated significant additional value, as the core technical and organisational objectives had already been validated through the cross-issuer demonstration.
+
 ## Final UI design (and why) (if any)
 
 {% hint style="info" %}
