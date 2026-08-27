@@ -1,3 +1,9 @@
+---
+description: >-
+  This is part of deliverable D4.4 future of DECIDE ensured with clear view of
+  purpose, potential use cases and engagement of potential participants
+---
+
 # Governance proposition after the projectphase
 
 Also check our [Data Cooperation Canvas](../addendums/data-cooperation-canvas-for-the-project.md)

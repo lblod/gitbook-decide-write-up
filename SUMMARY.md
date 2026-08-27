@@ -20,6 +20,7 @@
 * [Write-up UC2 Smart Search](decide-project/write-up-uc2-smart-search.md)
 * [Legal and governance](decide-project/legal-and-governance/README.md)
   * [Governance proposition after the projectphase](decide-project/legal-and-governance/governance-proposition-after-the-projectphase.md)
+  * [Potential growth strategy](decide-project/legal-and-governance/potential-growth-strategy.md)
   * [Ethical Data Sharing Agreement](decide-project/legal-and-governance/ethical-data-sharing-agreement.md)
 * [Accompanying research](decide-project/accompanying-research/README.md)
   * [Publications](decide-project/accompanying-research/publications.md)
