@@ -151,7 +151,7 @@ Also see all future work sections in the write-ups on the DECIDE gitbook for mor
 
 <figure><img src="../../.gitbook/assets/image (63).png" alt=""><figcaption></figcaption></figure>
 
-## Why? (red/pink)
+## Why? (red)
 
 ### Context
 
@@ -202,7 +202,7 @@ DECIDe's ambition is to show what becomes possible when LD\&L is treated as a co
 
 The wanted deliverable is a functioning LD\&L data space grounded in the DS4SSCC Reference Architecture, built across three pilot cities –Ghent (Belgium), Freiburg (Germany), and Bamberg (Germany). The data space provides a shared infrastructure layer covering data ingestion and normalization, AI-assisted semantic enrichment, human oversight and validation, federated discovery, access policy enforcement, and identity and trust management.
 
-## Technical (green/grey)
+## Technical (green)
 
 ### Data & datasources
 
