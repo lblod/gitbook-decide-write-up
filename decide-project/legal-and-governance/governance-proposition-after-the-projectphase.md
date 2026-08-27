@@ -1,5 +1,7 @@
 # Governance proposition after the projectphase
 
+Also check our [Data Cooperation Canvas](../addendums/data-cooperation-canvas-for-the-project.md)
+
 ## Organisational Form and Governance Authority
 
 For all information on this topic we kept in mind that the maturity level of the data space that we might want to establish is still early stage. Keeping in mind the levels of maturity within GAIA-X (initial, building, operational) we are somewhere between initial and building. That means that a lot of decisions will have to be made once we are more advanced. The DECIDE project was planned to be a pilot and should give the partners in the project enough information to collectively conclude on the future work that the partners would want to do to fully establish an operational data space for local decisions or decision-making.
