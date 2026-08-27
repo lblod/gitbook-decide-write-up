@@ -1,6 +1,6 @@
 # Data Cooperation Canvas for the project
 
-We have used the [Data Cooperation Canvas](https://www.datacooperationcanvas.eu/canvas/intro) to get a grip on our use cases and business case.&#x20;
+We have used the [Data Cooperation Canvas](https://www.datacooperationcanvas.eu/canvas/intro) to get a grip on our use cases and business case.
 
 <figure><img src="../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
 
@@ -10,13 +10,13 @@ We have used the [Data Cooperation Canvas](https://www.datacooperationcanvas.eu/
 
 <figure><img src="../../.gitbook/assets/image (57).png" alt=""><figcaption></figcaption></figure>
 
-<table data-search="false"><thead><tr><th width="140.88885498046875" valign="top">Partner</th><th width="414" valign="top">Role in the data exchange</th><th valign="top">Role(s)</th></tr></thead><tbody><tr><td valign="top">Agency for Home Affairs Flanders</td><td valign="top">Operates the central DECIDe data space infrastructure, develops and manages ingestion pipelines, AI enrichment services, validation tooling, federation services, catalog services, and data-space governance components. ABB acts as the primary technical operator of the shared data space.</td><td valign="top">Initiator, Coordinator, Developer, Contributor</td></tr><tr><td valign="top">City of Ghent</td><td valign="top"><p>Original provider of local decisions and legislation (LD&#x26;L). Publishes decisions through the LBLOD/OSLO ecosystem and contributes data to the data space. Also acts as pilot city for testing enrichment and citizen-facing services.</p><p>Actively contributes to the human validation of the AI generated data.</p><p>Is pilot city for UC1 and UC2.</p></td><td valign="top">Participant, Contributor, User</td></tr><tr><td valign="top">City of Freiburg</td><td valign="top"><p>Original provider of LD&#x26;L data through its OParl-based Council and Citizen Information System (RIS). Supplies structured decision data and participates in pilot implementations and validation activities.</p><p>Actively contributes to the human validation of the AI generated data.</p><p>Is pilot city for UC1</p></td><td valign="top">Participant, Contributor, User</td></tr><tr><td valign="top">City of Bamberg</td><td valign="top"><p>Original provider of LD&#x26;L data. Supplies decisions and council information that are transformed from PDFs and other local publication formats into the data space.</p><p>Actively contributes to the human validation of the AI generated data.</p><p>Is pilot city for UC2</p></td><td valign="top">Participant, Contributor, User</td></tr><tr><td valign="top">University of Jena</td><td valign="top">Supports the technical translation development to linked open data. Provides knowledge, research capacity and prework regarding the translation progress and development of knowledge graphs for AI development</td><td valign="top">Expert</td></tr><tr><td valign="top">University of Applied Science Kehl</td><td valign="top">Provides insight on legal decision process in Germany. Scientific expert on public administration processes in Germany. Conducts citizen survey on UC1 and UC2.</td><td valign="top">Expert</td></tr><tr><td valign="top"><p>Urban Software Institute</p><p> </p></td><td valign="top">Provides open urban data platform for demonstration of the projects deliverable, technical support of solution development and  administrational support of project management on German side of the project</td><td valign="top">Coordinator, Developer</td></tr><tr><td valign="top">Domain validators</td><td valign="top">Human experts who review and validate AI-generated annotations using the Human Validation interfaces. Their validation increases trustworthiness and quality of the data space.</td><td valign="top">User</td></tr><tr><td valign="top">Data engineers and technical operators</td><td valign="top">Configure pipelines, monitor services, maintain infrastructure and ensure availability of the data space.</td><td valign="top">Developer</td></tr><tr><td valign="top">Data consumers</td><td valign="top">External organizations and individuals that discover and consume DECIDe datasets through the data space, DCAT catalog and APIs.</td><td valign="top">User</td></tr></tbody></table>
+<table data-search="false"><thead><tr><th width="140.88885498046875" valign="top">Partner</th><th width="414" valign="top">Role in the data exchange</th><th valign="top">Role(s)</th></tr></thead><tbody><tr><td valign="top">Agency for Home Affairs Flanders</td><td valign="top">Operates the central DECIDe data space infrastructure, develops and manages ingestion pipelines, AI enrichment services, validation tooling, federation services, catalog services, and data-space governance components. ABB acts as the primary technical operator of the shared data space.</td><td valign="top">Initiator, Coordinator, Developer, Contributor</td></tr><tr><td valign="top">City of Ghent</td><td valign="top"><p>Original provider of local decisions and legislation (LD&#x26;L). Publishes decisions through the LBLOD/OSLO ecosystem and contributes data to the data space. Also acts as pilot city for testing enrichment and citizen-facing services.</p><p>Actively contributes to the human validation of the AI generated data.</p><p>Is pilot city for UC1 and UC2.</p></td><td valign="top">Participant, Contributor, User</td></tr><tr><td valign="top">City of Freiburg</td><td valign="top"><p>Original provider of LD&#x26;L data through its OParl-based Council and Citizen Information System (RIS). Supplies structured decision data and participates in pilot implementations and validation activities.</p><p>Actively contributes to the human validation of the AI generated data.</p><p>Is pilot city for UC1</p></td><td valign="top">Participant, Contributor, User</td></tr><tr><td valign="top">City of Bamberg</td><td valign="top"><p>Original provider of LD&#x26;L data. Supplies decisions and council information that are transformed from PDFs and other local publication formats into the data space.</p><p>Actively contributes to the human validation of the AI generated data.</p><p>Is pilot city for UC2</p></td><td valign="top">Participant, Contributor, User</td></tr><tr><td valign="top">University of Jena</td><td valign="top">Supports the technical translation development to linked open data. Provides knowledge, research capacity and prework regarding the translation progress and development of knowledge graphs for AI development</td><td valign="top">Expert</td></tr><tr><td valign="top">University of Applied Science Kehl</td><td valign="top">Provides insight on legal decision process in Germany. Scientific expert on public administration processes in Germany. Conducts citizen survey on UC1 and UC2.</td><td valign="top">Expert</td></tr><tr><td valign="top">Urban Software Institute</td><td valign="top">Provides open urban data platform for demonstration of the projects deliverable, technical support of solution development and administrational support of project management on German side of the project</td><td valign="top">Coordinator, Developer</td></tr><tr><td valign="top">Domain validators</td><td valign="top">Human experts who review and validate AI-generated annotations using the Human Validation interfaces. Their validation increases trustworthiness and quality of the data space.</td><td valign="top">User</td></tr><tr><td valign="top">Data engineers and technical operators</td><td valign="top">Configure pipelines, monitor services, maintain infrastructure and ensure availability of the data space.</td><td valign="top">Developer</td></tr><tr><td valign="top">Data consumers</td><td valign="top">External organizations and individuals that discover and consume DECIDe datasets through the data space, DCAT catalog and APIs.</td><td valign="top">User</td></tr></tbody></table>
 
 ### Shared processes
 
 <figure><img src="../../.gitbook/assets/image (58).png" alt=""><figcaption></figcaption></figure>
 
-<table data-search="false"><thead><tr><th width="108.111083984375" valign="top">Process step</th><th width="81.5555419921875" valign="top">Individual</th><th width="77.8887939453125" valign="top">Shared</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">Create</td><td valign="top">✅</td><td valign="top"></td><td valign="top">Decisions are created independently by each local authority through its own governance and decision-making procedures. Ghent, Freiburg and Bamberg remain fully responsible for producing LD&#x26;L.</td></tr><tr><td valign="top">Store (source data)</td><td valign="top">✅</td><td valign="top"></td><td valign="top">Cities maintain their own publication infrastructures (LBLOD/OSLO, OParl, PDFs). The original data remains under responsibility of the source city.</td></tr><tr><td valign="top">Transform</td><td valign="top"></td><td valign="top">✅</td><td valign="top"><p>DECIDe pipelines harvest and normalize decisions into a common ELI representation. This is a common data-space activity executed through shared infrastructure.</p><p>Shared Restricted mobility zone and SDG classification and impact assessment are executed centrally through the Codelist Mapping Tool.</p></td></tr><tr><td valign="top">Combine</td><td valign="top"></td><td valign="top">✅</td><td valign="top"><p>Data from Ghent, Freiburg and Bamberg are linked with shared semantic standards, annotations and policies.</p><p>Decisions from all pilot cities are combined with SDG and impact annotations.</p><p>Decisions from all pilot cities are combined with the Open Street Map information.</p><p> </p></td></tr><tr><td valign="top">Interpret</td><td valign="top"></td><td valign="top">✅</td><td valign="top">AI enrichment pipelines perform semantic interpretation through classification, NER, NEL and other annotation processes. Human Validation complements this with expert review.</td></tr><tr><td valign="top">Visualize</td><td valign="top"></td><td valign="top">✅</td><td valign="top">Shared applications such as the Policy Impact Report, Smart Search and GIS-ready outputs present the common data in reusable ways.</td></tr><tr><td valign="top">Use</td><td valign="top">✅</td><td valign="top">✅</td><td valign="top">Data is reused both within the shared data space and by individual cities for local business needs and applications.</td></tr></tbody></table>
+<table data-search="false"><thead><tr><th width="108.111083984375" valign="top">Process step</th><th width="81.5555419921875" valign="top">Individual</th><th width="77.8887939453125" valign="top">Shared</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">Create</td><td valign="top">✅</td><td valign="top"></td><td valign="top">Decisions are created independently by each local authority through its own governance and decision-making procedures. Ghent, Freiburg and Bamberg remain fully responsible for producing LD&#x26;L.</td></tr><tr><td valign="top">Store (source data)</td><td valign="top">✅</td><td valign="top"></td><td valign="top">Cities maintain their own publication infrastructures (LBLOD/OSLO, OParl, PDFs). The original data remains under responsibility of the source city.</td></tr><tr><td valign="top">Transform</td><td valign="top"></td><td valign="top">✅</td><td valign="top"><p>DECIDe pipelines harvest and normalize decisions into a common ELI representation. This is a common data-space activity executed through shared infrastructure.</p><p>Shared Restricted mobility zone and SDG classification and impact assessment are executed centrally through the Codelist Mapping Tool.</p></td></tr><tr><td valign="top">Combine</td><td valign="top"></td><td valign="top">✅</td><td valign="top"><p>Data from Ghent, Freiburg and Bamberg are linked with shared semantic standards, annotations and policies.</p><p>Decisions from all pilot cities are combined with SDG and impact annotations.</p><p>Decisions from all pilot cities are combined with the Open Street Map information.</p></td></tr><tr><td valign="top">Interpret</td><td valign="top"></td><td valign="top">✅</td><td valign="top">AI enrichment pipelines perform semantic interpretation through classification, NER, NEL and other annotation processes. Human Validation complements this with expert review.</td></tr><tr><td valign="top">Visualize</td><td valign="top"></td><td valign="top">✅</td><td valign="top">Shared applications such as the Policy Impact Report, Smart Search and GIS-ready outputs present the common data in reusable ways.</td></tr><tr><td valign="top">Use</td><td valign="top">✅</td><td valign="top">✅</td><td valign="top">Data is reused both within the shared data space and by individual cities for local business needs and applications.</td></tr></tbody></table>
 
 ### Resources
 
@@ -24,15 +24,15 @@ We have used the [Data Cooperation Canvas](https://www.datacooperationcanvas.eu/
 
 #### Human Resources
 
-<table><thead><tr><th width="154.22216796875" valign="top">Resource</th><th width="138.111083984375" valign="top">Available?</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">Data engineers</td><td valign="top">✅ Available</td><td valign="top">ABB operates and maintains the ingestion pipelines, semantic infrastructure, AI enrichment services and data-space components.</td></tr><tr><td valign="top">Domain experts / validators</td><td valign="top">✅ Available</td><td valign="top">Human Validation is a central DECIDe component and relies on subject-matter experts to review AI-generated annotations.</td></tr><tr><td valign="top">Local government staff</td><td valign="top">✅ Available</td><td valign="top">Ghent, Freiburg and Bamberg provide operational, policy and domain expertise. + Expertise from other partners</td></tr><tr><td valign="top">Additional validator capacity</td><td valign="top">⚠️ Future need</td><td valign="top">Scaling the data space beyond the pilot phase may require larger validation communities.</td></tr><tr><td valign="top">Citizens</td><td valign="top">✅ Available</td><td valign="top"> </td></tr></tbody></table>
+<table><thead><tr><th width="154.22216796875" valign="top">Resource</th><th width="138.111083984375" valign="top">Available?</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">Data engineers</td><td valign="top">✅ Available</td><td valign="top">ABB operates and maintains the ingestion pipelines, semantic infrastructure, AI enrichment services and data-space components.</td></tr><tr><td valign="top">Domain experts / validators</td><td valign="top">✅ Available</td><td valign="top">Human Validation is a central DECIDe component and relies on subject-matter experts to review AI-generated annotations.</td></tr><tr><td valign="top">Local government staff</td><td valign="top">✅ Available</td><td valign="top">Ghent, Freiburg and Bamberg provide operational, policy and domain expertise. + Expertise from other partners</td></tr><tr><td valign="top">Additional validator capacity</td><td valign="top">⚠️ Future need</td><td valign="top">Scaling the data space beyond the pilot phase may require larger validation communities.</td></tr><tr><td valign="top">Citizens</td><td valign="top">✅ Available</td><td valign="top"></td></tr></tbody></table>
 
-#### &#x20;Knowledge & Expertise
+#### Knowledge & Expertise
 
 <table><thead><tr><th width="165.33331298828125" valign="top">Resource</th><th width="153.3333740234375" valign="top">Available?</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">Semantic modelling expertise</td><td valign="top">✅ Available</td><td valign="top">DECIDe builds on ELI, RDF, SKOS, DCAT, SHACL, ODRL and related semantic standards.</td></tr><tr><td valign="top">AI and NLP expertise</td><td valign="top">✅ Available</td><td valign="top">Required for classification, NER, NEL, enrichment and search services.</td></tr><tr><td valign="top">Local government expertise</td><td valign="top">✅ Available</td><td valign="top">Necessary to correctly interpret municipal decision-making processes and outputs.</td></tr><tr><td valign="top">Additional AI quality monitoring expertise</td><td valign="top">⚠️ Future need</td><td valign="top">Several future work items mention explainability, monitoring and model drift management.</td></tr><tr><td valign="top">Legal expertise</td><td valign="top">✅ Available</td><td valign="top">F.i. GDPR, AI Act, ...</td></tr></tbody></table>
 
-#### &#x20;Data Resources
+#### Data Resources
 
-<table data-search="false"><thead><tr><th width="179.77783203125" valign="top">Resource</th><th width="158" valign="top">Available?</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">LD&#x26;L decisions</td><td valign="top">✅ Available</td><td valign="top">Supplied by Ghent, Freiburg and Bamberg.</td></tr><tr><td valign="top">Linked Open Data from LBLOD</td><td valign="top">✅ Available</td><td valign="top">Used for Ghent data ingestion.</td></tr><tr><td valign="top">OParl council data</td><td valign="top">✅ Available</td><td valign="top">Used for Freiburg data ingestion.</td></tr><tr><td valign="top">PDF-based decision collections</td><td valign="top">✅ Available</td><td valign="top">Used for Bamberg ingestion.</td></tr><tr><td valign="top">Human validation data</td><td valign="top">✅ Available</td><td valign="top">Generated through Human Validation interfaces.</td></tr><tr><td valign="top">Larger validated datasets</td><td valign="top">⚠️ Future need</td><td valign="top">Needed to train production-grade supervised models.</td></tr><tr><td valign="top">SDG/RMZ codelist and annotations</td><td valign="top">✅ Available</td><td valign="top"> </td></tr><tr><td valign="top">Geopgraphic registries</td><td valign="top">✅ Available</td><td valign="top"> </td></tr><tr><td valign="top">Area-level geographic datasets</td><td valign="top">⚠️ Future need</td><td valign="top">Needed for neighborhood and parcel-based RMZ detection.</td></tr><tr><td valign="top">Extended mobility reference data</td><td valign="top">⚠️ Future need</td><td valign="top">Needed for mobility-mode-aware filtering.</td></tr><tr><td valign="top">Additional linked sources beyond LD&#x26;L</td><td valign="top">⚠️ Future need</td><td valign="top">Identified as future expansion for higher-quality RMZ detection.</td></tr></tbody></table>
+<table data-search="false"><thead><tr><th width="179.77783203125" valign="top">Resource</th><th width="158" valign="top">Available?</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">LD&#x26;L decisions</td><td valign="top">✅ Available</td><td valign="top">Supplied by Ghent, Freiburg and Bamberg.</td></tr><tr><td valign="top">Linked Open Data from LBLOD</td><td valign="top">✅ Available</td><td valign="top">Used for Ghent data ingestion.</td></tr><tr><td valign="top">OParl council data</td><td valign="top">✅ Available</td><td valign="top">Used for Freiburg data ingestion.</td></tr><tr><td valign="top">PDF-based decision collections</td><td valign="top">✅ Available</td><td valign="top">Used for Bamberg ingestion.</td></tr><tr><td valign="top">Human validation data</td><td valign="top">✅ Available</td><td valign="top">Generated through Human Validation interfaces.</td></tr><tr><td valign="top">Larger validated datasets</td><td valign="top">⚠️ Future need</td><td valign="top">Needed to train production-grade supervised models.</td></tr><tr><td valign="top">SDG/RMZ codelist and annotations</td><td valign="top">✅ Available</td><td valign="top"></td></tr><tr><td valign="top">Geopgraphic registries</td><td valign="top">✅ Available</td><td valign="top"></td></tr><tr><td valign="top">Area-level geographic datasets</td><td valign="top">⚠️ Future need</td><td valign="top">Needed for neighborhood and parcel-based RMZ detection.</td></tr><tr><td valign="top">Extended mobility reference data</td><td valign="top">⚠️ Future need</td><td valign="top">Needed for mobility-mode-aware filtering.</td></tr><tr><td valign="top">Additional linked sources beyond LD&#x26;L</td><td valign="top">⚠️ Future need</td><td valign="top">Identified as future expansion for higher-quality RMZ detection.</td></tr></tbody></table>
 
 #### Technical Resources
 
@@ -42,13 +42,13 @@ We have used the [Data Cooperation Canvas](https://www.datacooperationcanvas.eu/
 
 <table><thead><tr><th width="226" valign="top">Resource</th><th width="155.333251953125" valign="top">Available?</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">Pilot city network</td><td valign="top">✅ Available</td><td valign="top">Ghent, Freiburg and Bamberg provide real-world implementation environments.</td></tr><tr><td valign="top">Shared governance structure</td><td valign="top">✅ Available</td><td valign="top">Achieved through data-space architecture, trust framework and access policies.</td></tr><tr><td valign="top">Reusable standards ecosystem</td><td valign="top">✅ Available</td><td valign="top">Based on European semantic and data-space standards.</td></tr><tr><td valign="top">Additional city participation</td><td valign="top">⚠️ Future opportunity</td><td valign="top">Explicitly identified as a scaling objective.</td></tr></tbody></table>
 
-#### &#x20;Financial Resources
+#### Financial Resources
 
 <table><thead><tr><th width="173.4444580078125" valign="top">Resource</th><th width="129.7777099609375" valign="top">Available?</th><th valign="top">Motivation</th></tr></thead><tbody><tr><td valign="top">DECIDe project funding</td><td valign="top">✅ Available</td><td valign="top">The pilot infrastructure and use cases were developed within the project framework.</td></tr><tr><td valign="top">Long-term operational funding</td><td valign="top">⚠️ Future need</td><td valign="top">Not explicitly defined in the write-ups and would need to be addressed for large-scale deployment.</td></tr></tbody></table>
 
-#### &#x20;Cost Categories
+#### Cost Categories
 
-<table data-search="false"><thead><tr><th valign="top">Cost Category</th><th valign="top">Description</th></tr></thead><tbody><tr><td valign="top">Cost Category</td><td valign="top">Description</td></tr><tr><td valign="top">Infrastructure cost</td><td valign="top">Triplestore, semantic.works platform, search components, federation services and deployment environments.</td></tr><tr><td valign="top">Development cost</td><td valign="top">Development of ingestion pipelines, AI services, Human Validation interfaces and use-case applications.</td></tr><tr><td valign="top">Data management cost</td><td valign="top">Data harvesting, standardization and maintenance.  </td></tr><tr><td valign="top">AI cost</td><td valign="top">Model training, model inference, annotation generation and continuous improvement</td></tr><tr><td valign="top">Validation cost</td><td valign="top">Human review of AI-generated annotations.</td></tr><tr><td valign="top">Operational cost</td><td valign="top">Hosting, monitoring, support and maintenance of the data space.</td></tr></tbody></table>
+<table data-search="false"><thead><tr><th valign="top">Cost Category</th><th valign="top">Description</th></tr></thead><tbody><tr><td valign="top">Cost Category</td><td valign="top">Description</td></tr><tr><td valign="top">Infrastructure cost</td><td valign="top">Triplestore, semantic.works platform, search components, federation services and deployment environments.</td></tr><tr><td valign="top">Development cost</td><td valign="top">Development of ingestion pipelines, AI services, Human Validation interfaces and use-case applications.</td></tr><tr><td valign="top">Data management cost</td><td valign="top">Data harvesting, standardization and maintenance.</td></tr><tr><td valign="top">AI cost</td><td valign="top">Model training, model inference, annotation generation and continuous improvement</td></tr><tr><td valign="top">Validation cost</td><td valign="top">Human review of AI-generated annotations.</td></tr><tr><td valign="top">Operational cost</td><td valign="top">Hosting, monitoring, support and maintenance of the data space.</td></tr></tbody></table>
 
 ### Business case
 
@@ -103,7 +103,7 @@ See Gitbook page on [Governance](https://abb-vlaanderen.gitbook.io/informatie-ov
 
 <figure><img src="../../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
 
-<table data-search="false"><thead><tr><th valign="top">Aspect</th><th width="93.5555419921875" valign="top">Exploratory stage</th><th width="91.3333740234375" valign="top">Preparatory stage</th><th width="103.5555419921875" valign="top">Implementation stage</th><th width="90.2222900390625" valign="top">Operational stage</th><th width="100.7950439453125" valign="top">Scaling stage</th></tr></thead><tbody><tr><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top"></td></tr><tr><td valign="top">Financial</td><td valign="top"> </td><td valign="top">✅</td><td valign="top">✅</td><td valign="top"> </td><td valign="top"> </td></tr><tr><td valign="top">Participation</td><td valign="top"> </td><td valign="top"> </td><td valign="top"> </td><td valign="top">✅</td><td valign="top"> </td></tr><tr><td valign="top">Use cases</td><td valign="top"> </td><td valign="top"> </td><td valign="top"> </td><td valign="top">✅</td><td valign="top"> </td></tr><tr><td valign="top">Technology</td><td valign="top"> </td><td valign="top"> </td><td valign="top"> </td><td valign="top">✅</td><td valign="top">✅</td></tr><tr><td valign="top">Organization</td><td valign="top"> </td><td valign="top"> </td><td valign="top">✅</td><td valign="top"> </td><td valign="top"> </td></tr><tr><td valign="top">Legal</td><td valign="top"> </td><td valign="top">✅</td><td valign="top"> </td><td valign="top"> </td><td valign="top"> </td></tr></tbody></table>
+<table data-search="false"><thead><tr><th valign="top">Aspect</th><th width="93.5555419921875" valign="top">Exploratory stage</th><th width="91.3333740234375" valign="top">Preparatory stage</th><th width="103.5555419921875" valign="top">Implementation stage</th><th width="90.2222900390625" valign="top">Operational stage</th><th width="100.7950439453125" valign="top">Scaling stage</th></tr></thead><tbody><tr><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top"></td></tr><tr><td valign="top">Financial</td><td valign="top"></td><td valign="top">✅</td><td valign="top">✅</td><td valign="top"></td><td valign="top"></td></tr><tr><td valign="top">Participation</td><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top">✅</td><td valign="top"></td></tr><tr><td valign="top">Use cases</td><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top">✅</td><td valign="top"></td></tr><tr><td valign="top">Technology</td><td valign="top"></td><td valign="top"></td><td valign="top"></td><td valign="top">✅</td><td valign="top">✅</td></tr><tr><td valign="top">Organization</td><td valign="top"></td><td valign="top"></td><td valign="top">✅</td><td valign="top"></td><td valign="top"></td></tr><tr><td valign="top">Legal</td><td valign="top"></td><td valign="top">✅</td><td valign="top"></td><td valign="top"></td><td valign="top"></td></tr></tbody></table>
 
 **Financial**: at this point the LD\&L data space within the DECIDE project does not have actual use case that could generate revenues. The technical building blocks to enable such use cases are in place, hence the checkmark with “Implementation stage”. The DECIDE consortium should, over time, explore use case options that could generate revenue.
 
@@ -117,7 +117,7 @@ Opportunities for scaling participation:
 * Athumi
 * The city of Bamberg other administrative offices within our city
 
-&#x20;**Use cases**: 3 actual use cases at the moment (besides the basic set up of the data space):
+**Use cases**: 3 actual use cases at the moment (besides the basic set up of the data space):
 
 * [Policy Impact report](https://abb-vlaanderen.gitbook.io/informatie-over-slimme-lokale-bronnen/decide-project/write-up-uc0.1-policy-impact-report)
 * [Restricted Mobility Zones](https://abb-vlaanderen.gitbook.io/informatie-over-slimme-lokale-bronnen/decide-project/write-up-uc1-restricted-mobility-zones)
@@ -155,7 +155,7 @@ Also see all future work sections in the write-ups on the DECIDE gitbook for mor
 
 ### Context
 
-<figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (57).png" alt=""><figcaption></figcaption></figure>
 
 Local decisions and legislation (LD\&L) are the backbone of every action in local government, yet they remain among the hardest types of public data to work with at scale. Decisions are scattered across multiple repositories, managed by different actors, encoded in different formats, and rarely linked to the broader policy context they relate to. The result is a constant cycle of re-collection and duplication across government levels, friction for businesses and citizens trying to understand what applies to them, and limited capacity for governments themselves to track how their decisions connect to the goals they have committed to.
 
@@ -163,7 +163,21 @@ Local decisions and legislation (LD\&L) are the backbone of every action in loca
 
 <figure><img src="../../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
 
-In the current situation of the data space, all of the incentives below have been triggering the set up of the LD\&L data space and the services build upon them.
+The main goal is to establish data space for local decisions and legislation that enables governments, citizens, researchers and businesses to discover, share, analyse and reuse decision-related information across administrative boundaries. And in that way, to support evidence-based policymaking, transparency, interoperability and public innovation by making local decisions and related legislative information available as machine-readable, federated and reusable data.
+
+**Local decisions are among the most important information assets produced by public administrations.** Yet they remain fragmented across thousands of local governments and are often difficult to discover, analyse or compare.
+
+DECIDE addresses this challenge by:
+
+* transforming local decisions into interoperable semantic data;
+* linking decisions and decision data with URI's, policies and thematic datasets;
+* showcasing how to enable AI-supported enrichment and analysis;
+* supporting transparency and democratic accountability;
+* showcasing how to enable reuse by public, private and research actors.
+
+
+
+In the **current situation** of the data space, all of the incentives below have been triggering the set up of the LD\&L data space and the services build upon them.
 
 * Create value from combined data and Development of new data driven products/services: increased reuse of public-sector information.
 * UC0.1, UC1 and UC2 show case the possibilities of reuse of combined data. F.i. improved policy monitoring.
@@ -171,7 +185,7 @@ In the current situation of the data space, all of the incentives below have bee
 * Knowledge exchange and enabling innovation/joint innovation providing vendor independence through open standards and open-source architecture
 * Empowering citizens & communities, including greater common good through better policy transparency
 
-It might be relevant and necessary for the data space to have a more clear focus on one or a few of these incentives. This might be a challenge for the governance authority to tackle.
+It might be relevant and necessary, for the future, for the data space to have a more clear focus on one or a few of these incentives. This might be a challenge for the governance authority to tackle.
 
 For each of the current use cases, the added value is described in the write ups:
 
@@ -242,8 +256,6 @@ C4 Access to information can be restricted
 * Authorization happens in two steps. First, the Verifiable Credential is verified and results in a session of the user. Second, the session allows the database to authorize the user through ODRL rules (sparql parser component).
 * data asset-level policies (MIM6.C1.R4) are supported through ODRL: instances of a target class are odrl:Asset and part of a named graph in the triple store (odrl:AssetCollection)
 
-
-
 **Interlinking Data (MIM1)**
 
 C1: Entities are identified using unique identifiers: We use HTTP URIs for every resource. Also, we add a UUID property, which is mainly used by the JSON API component.
@@ -257,11 +269,9 @@ C3: Entities can be (de)referenced
 * Relations on an entity can be dereferenced, as they are HTTP URIs
 * Additional semantics can be applied to an existing ontology: all data is stored and queryable in a triple store, where knowledge can easily be extended using other ontologies or custom extensions
 
-&#x20;
-
 **Representing Data (MIM2)**
 
-&#x20;C1: All entities included in data sources are described using consistent data models to enable interoperability for applications and systems. Recognised standardised data models are reused as much as possible (ELI, Schema.org, PROV-O, AIRO, Web Annotation Data Model)
+C1: All entities included in data sources are described using consistent data models to enable interoperability for applications and systems. Recognised standardised data models are reused as much as possible (ELI, Schema.org, PROV-O, AIRO, Web Annotation Data Model)
 
 C2: Different data models for the same entity that are used within a common data sharing ecosystem should be easily transformable into a common data model: LD\&L of the three partner cities are all mapped to the ELI-EP data model as common data model (https://europarl.github.io/eli-ep/) to enable interoperability on an European level.
 
@@ -271,8 +281,6 @@ C4: When useful, it should be possible to create "Application Profiles" for a da
 
 Documentation is provided by generating a landing page from the generated SHACL shape.
 
-&#x20;
-
 **Securing Data (MIM6)**
 
 C1: Data is only accessible to users that should have access to it. OIDC4VCI / OIDC4VP, OpenID for Verifiable Credential Issuance and Presentations is used as mechanism for giving access to users that should have access to it.
@@ -280,8 +288,6 @@ C1: Data is only accessible to users that should have access to it. OIDC4VCI / O
 C2: Data accessed by users has not been altered. The Transport Layer Security (TLS) Protocol is used to ensure data does not get altered when retrieving data.
 
 C3: Data accessed by users originates from a verified source. HTTPS/TLS is used as secure protocol when fetching the data sources in the pipelines.
-
-&#x20;
 
 **Exchanging Data (MIM3)**
 
@@ -295,7 +301,7 @@ Governance rules are described in multiple documents:
 
 In future work, one rule book should be created.
 
-C2: Terms and conditions for data sharing can be defined: Each public dataset in the DCAT is linked with license “Open Data Commons Public Domain Dedication and License (PDDL) v1.0”. Private datasets use ODRL to define terms and conditions. See [https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-odrl#odrl-use-to-describe-dataset-usage-restrictions](https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-odrl#odrl-use-to-describe-dataset-usage-restrictions) &#x20;
+C2: Terms and conditions for data sharing can be defined: Each public dataset in the DCAT is linked with license “Open Data Commons Public Domain Dedication and License (PDDL) v1.0”. Private datasets use ODRL to define terms and conditions. See [https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-odrl#odrl-use-to-describe-dataset-usage-restrictions](../write-up-uc0.0-data-space/write-up-odrl.md#odrl-use-to-describe-dataset-usage-restrictions)
 
 C3: Compliance with data sharing terms and conditions can be validated: 'dataset access restrictions', i.e. whether users can just read or write to the dataset, can be validated using ODRL.
 
@@ -303,15 +309,13 @@ C4: Available data assets can be discovered: LDES with DCAT information is avail
 
 C5: Ecosystem participants can be discovered:
 
-* Data users are be able to identify data providers who share data in a data ecosystem before accessing or using that data. This is done by using the federated catalog UI or by consuming the LDES DCAT feed.  Data users remain anonymous by default when accessing the public data.
+* Data users are be able to identify data providers who share data in a data ecosystem before accessing or using that data. This is done by using the federated catalog UI or by consuming the LDES DCAT feed. Data users remain anonymous by default when accessing the public data.
 * Data providers reliably identify data users who want to access their data assets and verify their metadata before granting access. This is done using OIDC4VCI / OIDC4VP and ODRL.
 * Ecosystem participants are currently not able to discover each other. This can be tackled in future work.
 
-C6: Data exchange can be agreed upon: A journey “'Buying' access to a data space” has been provided to demonstrate how we can agree on a data exchange: [https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-verifiable-credentials#buying-access-to-a-data-space](https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-verifiable-credentials#buying-access-to-a-data-space)
+C6: Data exchange can be agreed upon: A journey “'Buying' access to a data space” has been provided to demonstrate how we can agree on a data exchange: [https://app.gitbook.com/o/-MP9Yduzf5xu7wIebqPG/s/PzeOtGh2pfnNKyqa7G5w/decide-project/write-up-uc0.0-data-space/write-up-verifiable-credentials#buying-access-to-a-data-space](../write-up-uc0.0-data-space/write-up-verifiable-credentials.md#buying-access-to-a-data-space)
 
 C7: New data currently not available can be requested: Data users can only express their interest in data assets currently unavailable in the data sharing ecosystem by sending a request to the Flanders helpdesk.
-
-&#x20;
 
 **Geospatial Data (MIM7)**
 
@@ -325,18 +329,16 @@ C4: Cities and communities have a consistent and persistent way of describing in
 
 C5: Coordinate Reference Systems (CRS) used in data sharing are easily transformable into a common CRS: Geo data is by default stored and queryable in EPSG:4326. Using bif:st\_transform(?geom, target\_srid), the geodata can be reprojected other common CRS.
 
-&#x20;
-
 **Local Digital Twins (MIM8)**
 
-We are currently on the category “Visualisation” of LDT.&#x20;
+We are currently on the category “Visualisation” of LDT.
 
 Aspects of category “Analytics” are also touched upon:
 
 * ‘descriptive’ capabilities using Named Entity Recognition, Named Entity Linking, and Codelist mapping AI services.
 * ‘diagnostic’ capabilities using the Data Quality Manager
 
-In future work, simulation would be an interesting route: the DECIDe services can be used when drafting  legislation to simulate the data that will be generated (detect entities), and the impact the legislation will have has on local, or high-level policies (cfr SDG codelist mapping with impact).
+In future work, simulation would be an interesting route: the DECIDe services can be used when drafting legislation to simulate the data that will be generated (detect entities), and the impact the legislation will have has on local, or high-level policies (cfr SDG codelist mapping with impact).
 
 C1: Provide access to datasets used within the LDT, including static, real-time, and simulation data and calculation models: Datasets of the use cases are available on the DCAT catalog, with datadumps and links to data services. This encompasses the LD\&L data from the data sources in ELI format, enrichments generated by AI, human validations, and provenance of the pipelines and its components.
 
@@ -355,8 +357,6 @@ Workflows (pipelines) can be defined that connect data sources, data transformat
 C5: Provide multiple visualisations of data and results (e.g. 2D, 3D, dashboards) from common underlying data and models for interaction and comparison: Simulation is not in scope of DECIDe, so scenario- and variant-assumptions are not available. Spatial scope is currently limited on a city-level selection. Visualisation is done with several dashboards: human validation tool (HVT), Policy Impact Report (PIR), and Smart Search.
 
 C6: Ensure that data exchanged (and simulation outputs) within and between LDTs can be interpreted consistently through shared or mapped semantics and clear provenance: See MIM2 (Representing Data) and MIM7 (Geospatial Data). Documentation of the semantic data model(s) is provided in the write ups for each use case.
-
-&#x20;
 
 ### Infrastructure characteristics
 
