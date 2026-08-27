@@ -10,13 +10,11 @@ To determine the organizational form of the data space we used [figure 1](https:
 
 <figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
-&#x20;
-
 **Step 1** – we want to establish a data space: yes
 
 **Step 2** – we don’t know if our data space will be temporarily or permanent yet. Therefore and with the insights the partners are have at this point, we will continue with the scenario temporarily. So no legal form personality is required yet. In this scenario and at this point of the lifecycle of the data space the partners within the project and the data space are working together from the viewpoint of strategic alliance and as a consortium for the time of the project.
 
-The partnership agreements between the different partners in the DECIDE project consortium and the Agency for Home Affairs in Flanders as lead partner for the project will end together with the grant agreement for the project. All partners do agree that the project runtime will be too short to fully evaluate the value of the data space that we want to establish. Hence, we will continue, as long as it reasonably takes, to come to a well-motivated conclusion on the evolution of the data space. If partners feel it is necessary to support this with a subsequent agreement of another kind, this will be put into place at that point. &#x20;
+The partnership agreements between the different partners in the DECIDE project consortium and the Agency for Home Affairs in Flanders as lead partner for the project will end together with the grant agreement for the project. All partners do agree that the project runtime will be too short to fully evaluate the value of the data space that we want to establish. Hence, we will continue, as long as it reasonably takes, to come to a well-motivated conclusion on the evolution of the data space. If partners feel it is necessary to support this with a subsequent agreement of another kind, this will be put into place at that point.
 
 If, at a later point in time, and most probably that will be after the runtime of the DECIDE project, the partners agree to evolve towards a permanent data space the figure below should be used as a guideline to set up a formal governance structure. And the guidelines within the DSSC building blocks toolbox will be used as a starting point.
 
@@ -86,12 +84,10 @@ In the future these might be extend with:
 * Other regional and/or national governments
 * A representation of data.europa.eu(The official portal for European data)
 
-&#x20;
-
 The data might be used and/or enriched by:
 
 * Administration(s) (e.g. other governments, also other institutions, …)
-* Politics  (e.g. local councils)
+* Politics (e.g. local councils)
 * Civil Society (e.g. Data Journalists, NGOs, Citizens)
 * Economy (e.g. IT-Provider, consultants, … all private companies - Private partners that would like to share enriched data on top of data on local decisions)
 * Research organization
@@ -99,7 +95,7 @@ The data might be used and/or enriched by:
 
 These might also be potential members of the data space. The formalities to support such a growth of the data space, will still have to be established if this would be an aspiration.
 
-&#x20;A rule could be that all use of data from the data space which leads to enrichments has to be reinjected into the data space too. In that way the data space can grow and become extra relevant. It has to be clear that enrichments/manipulations are not actual formal basic decisions and it should be clear how/by who/what party/what technical solutions enrichments were brought into the data space.
+A rule could be that all use of data from the data space which leads to enrichments has to be reinjected into the data space too. In that way the data space can grow and become extra relevant. It has to be clear that enrichments/manipulations are not actual formal basic decisions and it should be clear how/by who/what party/what technical solutions enrichments were brought into the data space.
 
 For the roles in the governance form we rely on the scheme provided during the bootcamp in Ljubljana in October 2025.
 
@@ -107,7 +103,7 @@ For the roles in the governance form we rely on the scheme provided during the b
 
 Figure 5 – from the DS4SSCC Bootcamp in Ljubljana October 2025
 
-&#x20;After the project phase has been completed the structure should be transferred to a governance model for a data space. Initially the project structure will be slightly transformed towards a data space governance model. Roles we be kept in place until the role of “overall data space lead” is organized as a rotating presidency of the data space. At that point founding members of the data space will take this role in a rotating system of 6 months. The governance authority, which consists of representatives of each founding member of the data space will have to determine the mandate for the overall data space lead (see below).
+After the project phase has been completed the structure should be transferred to a governance model for a data space. Initially the project structure will be slightly transformed towards a data space governance model. Roles we be kept in place until the role of “overall data space lead” is organized as a rotating presidency of the data space. At that point founding members of the data space will take this role in a rotating system of 6 months. The governance authority, which consists of representatives of each founding member of the data space will have to determine the mandate for the overall data space lead (see below).
 
 <figure><img src="../../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
 
@@ -117,10 +113,7 @@ Figure 6 – Data space governance structure
 
 Starting from the scheme in Figure 5 and taking into account the maturity level of the data space the following roles will be in place to start with:
 
-* Governance authority for strategy and governance: strategic decision making, membership rules, conflict resolution
-* Technical committee for both operations and advisory on technical standards
-* Non-technical committee for both operations and advisory on policy, legal matters and use cases
-* Market master day tot day coordinator (see further down)
+<table><thead><tr><th valign="top">Governance Authority</th><th valign="top">Technical Committee</th><th valign="top">Non-Technical Committee</th><th valign="top">Market Master</th></tr></thead><tbody><tr><td valign="top"><ul><li>strategic decisions</li><li>membership policies</li><li>conflict resolution</li><li>roadmap approval</li></ul></td><td valign="top"><ul><li>standards</li><li>interoperability</li><li>architecture</li><li>security</li></ul><p> </p></td><td valign="top"><ul><li>legal matters</li><li>governance</li><li>policy use cases</li><li>ecosystem development</li></ul><p> </p></td><td valign="top"><p>Rotating coordination role ensuring:</p><ul><li>operational continuity</li><li>onboarding support</li><li>representation of the data space</li></ul><p> </p></td></tr></tbody></table>
 
 Other relevant stakeholders and participants at this phase is more ad hoc of managed throughout the DECIDE project.
 
@@ -135,7 +128,7 @@ All basic principles on interoperability, data spaces, … and obviously all leg
 * Cost sharing (for the infrastructure)
 * Importance of openness, neutrality, transparency
 * Reliable AI (AI Advisory Board)
-* Trust and transparency (f.i. controllable and explainable AI (possibility to check and correct the annotations (work in progress)) (also see Public trust and transparency assessment)\[SK5]&#x20;
+* Trust and transparency (f.i. controllable and explainable AI (possibility to check and correct the annotations (work in progress)) (also see Public trust and transparency assessment)\[SK5]
 
 There is a possibility that the cost sharing principle and the openness of the information might conflict. It will be important to take this into account when putting a business model for the data space in place, if any and if ever.
 
