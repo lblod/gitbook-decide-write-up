@@ -22,6 +22,7 @@
   * [Governance proposition after the projectphase](decide-project/legal-and-governance/governance-proposition-after-the-projectphase.md)
   * [Potential growth strategy](decide-project/legal-and-governance/potential-growth-strategy.md)
   * [Ethical Data Sharing Agreement](decide-project/legal-and-governance/ethical-data-sharing-agreement.md)
+  * [Public trust and transparency assessment](decide-project/legal-and-governance/public-trust-and-transparency-assessment.md)
 * [Accompanying research](decide-project/accompanying-research/README.md)
   * [Publications](decide-project/accompanying-research/publications.md)
 * [Addenda](decide-project/addendums/README.md)
