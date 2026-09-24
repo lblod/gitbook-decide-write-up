@@ -271,6 +271,8 @@ A simple Ember.js frontend, aimed primarily at developers and data space adminis
 
 **GitHub**: [https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting](https://github.com/lblod/frontend-harvesting-self-service/tree/feature/oparl-harvesting)
 
+**YouTube**: [Demo video - harvester frontend](https://www.youtube.com/watch?v=884zT46THRA&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App&index=4)
+
 #### Job Controller
 
 The [job controller](https://github.com/lblod/job-controller-service) is the sequencer of a pipeline. It works from a configurable JSON file in which each pipeline is defined as a job, and each job contains an ordered array of task definitions representing the steps of that pipeline. The job controller is fully data-driven: it monitors the triplestore for task status changes and, when a task reaches a terminal state, creates the next task in the sequence.
