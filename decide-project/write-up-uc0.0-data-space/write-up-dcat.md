@@ -296,3 +296,6 @@ As stated before, currently no create, delete or update support exists in the DC
 | DCAT **Freiburg** Databumps link                                                                                                             | [https://decide.datenraum-dev.freiburg.de/datadumps/](https://decide.datenraum-dev.freiburg.de/datadumps/)                                                                    |
 | Ui! live demo application consuming DECIDe data-space endpoints                                                                              | [Ui! DECIDe demo application](https://app.decide.ai-native-ri.eu)                                                                                                             |
 | DECIDe private SPARQL endpoint used for the license-gated dataset test                                                                       |  [DECIDe private SPARQL endpoint](https://ds.decide.lblod.info/api/private/sparql)                                                                                            |
+## References
+
+* [Demo video - data product discovery](https://www.youtube.com/watch?v=XWhq6U1M82s&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App&index=5)
