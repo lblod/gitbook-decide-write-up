@@ -516,4 +516,6 @@ ACM/IDM is currently used only as a pre-authorization mechanism. Deeper integrat
 * [LBLOD github repository](https://github.com/lblod/oid4vc-login-service)
 * [OID4VC login service](https://github.com/lblod/oid4vc-login-service): implements [OID4VC Issuance](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) and [OID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
 * [Demo video](https://www.youtube.com/watch?v=M6LQeelM0BY\&list=PL4lITq-CVBnvVOkVYNI5Y94BqQNcIUHN1\&index=3)
+* [Demo video (short version)](https://www.youtube.com/watch?v=jjGVh2dnxOo&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App&index=6)
+* [Demo video - Buy access (short version)](https://www.youtube.com/watch?v=26HUwWSF1Us&list=PL4lITq-CVBnsEoKXRF9ZHrw56mkCm3App&index=4)
 * [Application](https://yasgui.decide.lblod.info/authorization)
